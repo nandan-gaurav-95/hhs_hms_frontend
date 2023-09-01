@@ -15,7 +15,7 @@ function PropertyDetails() {
     const location = useLocation();
     const { companyName } = location.state || {};
 
-    const [propData, setPropData] = useState([]);
+    const [propData, setPropData] = useState("");
     const [editMode, setEditMode] = useState(false);
 
     const navigate = useNavigate();
@@ -23,13 +23,12 @@ function PropertyDetails() {
     useEffect(() => {
         async function propDetails() {
             try {
-                const companyNm = companyName;
-                // console.log(companyNm);
+              
                 const response = await axios.get(`${APIS.GETPROPBYCMPNYNM}/${companyName}`);
                 if (response.status === 200) {
                     // console.log("maheshhh");
-                    setPropData(response.data); // Assuming the response contains the list of company names
-                    console.log(propData);
+                    setPropData(response.data[0]); 
+                    
                 } else {
                     console.error("Error while fetching company names");
                 }
@@ -59,95 +58,93 @@ function PropertyDetails() {
     <Container className="bg-light p-5 mt-5 w-75 rounded shadow justify-content-center align-items-center">
     <h2 className="text-center mb-4">Property Details of {companyName}</h2>
     <Row className="justify-content-center">
-      
-    {propData.map((data, index) => (
-                
+            
                     <ul className="list-group">
                          <Row className="justify-content-center">
                         <Col md="6">
                         {/* <strong>Name:</strong>
-                        <li key={index} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.companyNm}</li> */}
+                        <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.companyNm}</li> */}
                         
                         <strong>CST No:</strong>
                         {editMode ? (
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.ctsNo}
+                                        value={propData.ctsNo}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].ctsNo = e.target.value;
+                                            newData.ctsNo = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.ctsNo}
+                                        {propData.ctsNo}
                                     </li>
                                 )}
-                        {/* <li  key={index} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.ctsNo}</li> */}
+                        {/* <li  key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.ctsNo}</li> */}
 
                         <strong>Email:</strong>
                         {editMode ? (
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.email}
+                                        value={propData.email}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].email = e.target.value;
+                                            newData.email = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.email}
+                                        {propData.email}
                                     </li>
                                 )}
-                        {/* <li key={index} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.email}</li> */}
+                        {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {propData.email}</li> */}
                         
                         <strong>Account Name:</strong>
                         {editMode ? (
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.accountNm}
+                                        value={propData.accountNm}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].accountNm = e.target.value;
+                                            newData.accountNm = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.accountNm}
+                                        {propData.accountNm}
                                     </li>
                                 )}
-                        {/* <li key={index} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.accountNm}</li> */}
+                        {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.accountNm}</li> */}
 
                         <strong>Address:</strong>
                         {editMode ? (
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.address}
+                                        value={propData.address}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].address = e.target.value;
+                                            newData.address = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.address}
+                                        {propData.address}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.address}</li> */}
@@ -157,18 +154,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.annualIncome}
+                                        value={propData.annualIncome}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].annualIncome = e.target.value;
+                                            newData.annualIncome = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.annualIncome}
+                                        {propData.annualIncome}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-centeannualIncomedata.annualIncome}</li> */}
@@ -178,18 +175,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.boundries}
+                                        value={propData.boundries}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].boundries = e.target.value;
+                                            newData.boundries = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.boundries}
+                                        {propData.boundries}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.boundries}</li> */}
@@ -201,18 +198,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.extentAcres}
+                                        value={propData.extentAcres}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].extentAcres = e.target.value;
+                                            newData.extentAcres = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.extentAcres}
+                                        {propData.extentAcres}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.extentAcres}</li> */}
@@ -222,18 +219,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.gazzetNo}
+                                        value={propData.gazzetNo}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].gazzetNo = e.target.value;
+                                            newData.gazzetNo = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.gazzetNo}
+                                        {propData.gazzetNo}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.gazzetNo}</li> */}
@@ -243,18 +240,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.gstNo}
+                                        value={propData.gstNo}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].gstNo = e.target.value;
+                                            newData.gstNo = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.gstNo}
+                                        {propData.gstNo}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.gstNo}</li> */}
@@ -264,18 +261,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.registrationNo}
+                                        value={propData.registrationNo}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].registrationNo = e.target.value;
+                                            newData.registrationNo = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.registrationNo}
+                                        {propData.registrationNo}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.registrationNo}</li> */}
@@ -285,18 +282,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.taxAmt}
+                                        value={propData.taxAmt}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].taxAmt = e.target.value;
+                                            newData.taxAmt = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.taxAmt}
+                                        {propData.taxAmt}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.taxAmt}</li> */}
@@ -306,18 +303,18 @@ function PropertyDetails() {
                                     <input
                                         className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                                         type="text"
-                                        value={data.villageNm}
+                                        value={propData.villageNm}
                                         onChange={(e) => {
                                             // Update input value in edit mode
                                             const newData = [...propData];
-                                            newData[index].villageNm = e.target.value;
+                                            newData.villageNm = e.target.value;
                                             setPropData(newData);
                                         }}
                                     />
                             
                                 ) : (
                                     <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                                        {data.villageNm}
+                                        {propData.villageNm}
                                     </li>
                                 )}
                         {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.villageNm}</li> */}
@@ -325,7 +322,7 @@ function PropertyDetails() {
                         </Row>
                     </ul>
                     
-            ))}
+            
       
      
     </Row>
