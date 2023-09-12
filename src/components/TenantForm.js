@@ -23,7 +23,7 @@ const TenantForm = () => {
         electricityDue:'',
         // electricityCollectionDetails:'',
 
-        date:'',
+        // date:'',
     }
 
 
@@ -150,13 +150,13 @@ const TenantForm = () => {
                             onChange={handleChange}
                             
                         /> */}
-                         <Input
+                         {/* <Input
                            label=""
                              type="Date" 
                              name="date" 
                              value={formData.date}
                              onChange={handleChange}
-                        />
+                        /> */}
                     </Col>
                 </Row>
                 <div className="text-center mt-4 ">
