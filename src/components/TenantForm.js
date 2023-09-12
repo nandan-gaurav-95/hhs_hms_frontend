@@ -86,9 +86,6 @@ const TenantForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
-                   
-                </Row>
-                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
                             label="Shop No"
@@ -98,6 +95,9 @@ const TenantForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    
                     <Col className="col-sm-5 ">
                         <Input
                             label="Collected Rent"
@@ -107,8 +107,6 @@ const TenantForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
-                </Row>
-                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
                             label="Rent Due"
@@ -118,6 +116,9 @@ const TenantForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                   
                     <Col className="col-sm-5 ">
                         <Input
                             label="Deposit"
@@ -127,8 +128,6 @@ const TenantForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
-                </Row>
-                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
                             label="Electricity Due"
@@ -138,6 +137,9 @@ const TenantForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                   
                     <Col className="col-sm-5 ">
                         {/* <Input
                             label="Electricity Collections"
