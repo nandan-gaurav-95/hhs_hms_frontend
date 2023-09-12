@@ -135,7 +135,7 @@ const TenantForm = () => {
                             name="electricityDue"
                             value={formData.electricityDue}
                             onChange={handleChange}
-                            //gauravvvvvvvvvvvvvvvvvvvvvvvvvv
+                            
                         />
                     </Col>
                 </Row>
