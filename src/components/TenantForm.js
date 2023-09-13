@@ -32,8 +32,10 @@ const TenantForm = () => {
         e.preventDefault();
 
         try{
-            const response= await axios.post(APIS.TENANT,formData);
-            console.log("Gauravvvvvv",response.data.id);
+            const response= await axios.post(APIS.CREATETENANT,formData);
+
+            console.log("TenantId",response.data.id);
+
             if(response.status===201){
                 console.log("Tenant Created Successfully");
             }else{

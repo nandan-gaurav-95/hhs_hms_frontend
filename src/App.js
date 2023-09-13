@@ -9,6 +9,8 @@ import PropertyDetails from './components/PropertyDetails';
 import PropertyPhotoForm from './components/PropertyPhoto';
 import TenantForm from './components/TenantForm';
 import PayrollForm from './components/Payroll';
+import InventoryForm from './components/InventoryItem';
+import DayBook from './components/DayBook';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
       <Route path="/property-photo/:id" element={<PropertyPhotoForm/>}></Route>
       <Route path="/tenant" element={<TenantForm/>}></Route>
       <Route path="/payroll" element={<PayrollForm/>}></Route>
+      <Route path="/inventory" element={<InventoryForm/>}></Route>
+      <Route path="/daybook" element={<DayBook/>}></Route>
 
       {/* <Route path="/" element={<RegistrationForm/>}></Route> */}
       {/* <Route path="/show-company" element={<RegistrationForm/>}></Route> */}

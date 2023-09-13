@@ -6,32 +6,55 @@ import {
     MDBInput as Input,
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
+import axios from "axios";
+import { APIS } from "./constants/api";
+
 const PayrollForm = () => {
 
     const initialState ={
         emp_id: '',
-        firstName: '',
-        lastName: '',
-        salary: '',
-        deductions: '',
+        emp_name: '',
+        dateOfHiring: '',
+        dateOfLeaving: '',
+        basicSalary: '',
+        allowance: '',
+        deduction: '',
+        grossSalary: '',
         netSalary: '',
-        // pay: '',
-        // totalhrs: '',
-        // overtime: '',
-        // totalovertimehrs: '',
-        // grosspay: '',
+        pfEmployeeContribution: '',
+        pfEmployerContribution: '',
+        loanAmount: '',
+        loanRepaymentAmount: '',
     }
+    const [formData, setFormData] = useState({ initialState });
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post(APIS.CREATEPAYROLL, formData);
 
+            console.log("PayrollId",response.data.id);
 
-    const [formData, setFormData] = useState(initialState);
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
+            if (response.status === 201) {
+                console.log("Form data saved successfully");
+                setFormData(initialState);
+            } else {
+                console.error("Error while saving from data");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+
     };
+
     return (
         <Container className="bg-light p-5 mt-5 rounded shadow  justify-content-center align-items-center">
             <h1 className=" mb-4 text-center"> Payroll </h1>
@@ -48,10 +71,10 @@ const PayrollForm = () => {
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="First Name"
+                            label="Employee Name"
                             type="text"
-                            name="firstName"
-                            value={formData.firstName}
+                            name="emp_name"
+                            value={formData.emp_name}
                             onChange={handleChange}
                         />
                     </Col>
@@ -59,19 +82,39 @@ const PayrollForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Last Name"
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
+                            label="Date Of Hiring"
+                            type="date"
+                            name="dateOfHiring"
+                            value={formData.dateOfHiring}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Salary"
+                            label="Date Of Leaving"
+                            type="date"
+                            name="dateOfLeaving"
+                            value={formData.dateOfLeaving}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Basic Salary"
                             type="number"
-                            name="salary"
-                            value={formData.salary}
+                            name="basicSalary"
+                            value={formData.basicSalary}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Allowance"
+                            type="text"
+                            name="allowance"
+                            value={formData.allowance}
                             onChange={handleChange}
                         />
                     </Col>
@@ -79,19 +122,70 @@ const PayrollForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Deductions"
+                            label="Deduction"
                             type="text"
-                            name="deductions"
-                            value={formData.deductions}
+                            name="deduction"
+                            value={formData.deduction}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="NetSalary"
+                            label="Gross Salary"
+                            type="number"
+                            name="grossSalary"
+                            value={formData.grossSalary}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Net Salary"
                             type="number"
                             name="netSalary"
                             value={formData.netSalary}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="PF Employee Contribution"
+                            type="text"
+                            name="pfEmployeeContribution"
+                            value={formData.pfEmployeeContribution}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="PF Employer(Cmpny) Contribution"
+                            type="text"
+                            name="pfEmployerContribution"
+                            value={formData.pfEmployerContribution}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Loan Amount"
+                            type="number"
+                            name="loanAmount"
+                            value={formData.loanAmount}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                </Row>
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Loan Repayment Amount"
+                            type="number"
+                            name="loanRepaymentAmount"
+                            value={formData.loanRepaymentAmount}
                             onChange={handleChange}
                         />
                     </Col>
