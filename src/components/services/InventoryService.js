@@ -9,6 +9,8 @@ export const InventoryService ={
             const response = await axios.post(APIS.CREATEINVENTORY, formData);
             return response.data;
 
+            //Hiii gaurav
+
         }catch(error){
             throw error;
         }
