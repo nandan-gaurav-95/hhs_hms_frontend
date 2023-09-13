@@ -6,8 +6,6 @@ import {
     MDBInput as Input,
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
-import axios from "axios";
-import { APIS } from "./constants/api";
 import{InventoryService}from '../services/InventoryService'
 // import {createInventoryItem} from './services/InventoryService'
 
@@ -28,10 +26,8 @@ const InventoryForm = () => {
         event.preventDefault();
         try {
             const response = await InventoryService.createInventoryItem (formData);
-
-            console.log("InventoryId",response.data.id);
-
-            if (response.status === 201) {
+            // console.log(response.data.id);
+            if (response.data) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
             } else {
