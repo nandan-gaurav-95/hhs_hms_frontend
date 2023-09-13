@@ -46,5 +46,11 @@ export const APIS ={
      UPDATEPAYROLLBYID:`${API_BASE_URL}/payroll`,//Update an existing payroll entry
      DELETEPAYROLLBYID:`${API_BASE_URL}/payroll`,//Delete a payroll entry by ID
 
+     //Employee
+     CREATEEMPLOYEE: `${API_BASE_URL}/employee`,//Post-method
+     GETALLEMPLOYEE:`${API_BASE_URL}/employee`,// Get-method
+     GETEMPLOYEEBYID:`${API_BASE_URL}/employee`,// Get specific employee by ID
+     UPDATEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Update an existing employee 
+     DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
 }
