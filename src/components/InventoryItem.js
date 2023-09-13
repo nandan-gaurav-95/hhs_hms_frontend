@@ -8,7 +8,7 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from "axios";
 import { APIS } from "./constants/api";
-import{InventoryService}from './services/InventoryService'
+import{InventoryService}from '../services/InventoryService'
 // import {createInventoryItem} from './services/InventoryService'
 
 const InventoryForm = () => {
