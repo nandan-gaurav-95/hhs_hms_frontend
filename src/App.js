@@ -12,6 +12,9 @@ import PayrollForm from './components/Payroll';
 import InventoryForm from './components/InventoryItem';
 import DayBook from './components/DayBook';
 import EmployeeForm from './components/Employee';
+import PaymentForm from './components/PaymentForm';
+import ReceiptForm from './components/ReceiptForm';
+import ExpenseForm from './components/ExpenseForm';
 
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
       <Route path="/inventory" element={<InventoryForm/>}></Route>
       <Route path="/daybook" element={<DayBook/>}></Route>
       <Route path="/empolyee" element={<EmployeeForm/>}></Route>
+      <Route path="/payment" element={<PaymentForm/>}></Route>
+      <Route path="/receipt" element={<ReceiptForm/>}></Route>
+      <Route path="/expense" element={<ExpenseForm/>}></Route>
 
       {/* <Route path="/" element={<RegistrationForm/>}></Route> */}
       {/* <Route path="/show-company" element={<RegistrationForm/>}></Route> */}

@@ -19,7 +19,6 @@ export const InventoryService ={
         try {
             const response= await axios.get(APIS.GETALLINVENTORY,)
             return response.data;
-
         }catch(error){
             throw error;
         }
