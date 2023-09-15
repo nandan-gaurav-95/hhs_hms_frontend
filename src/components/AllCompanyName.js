@@ -18,6 +18,8 @@ const AllCompanyName = () => {
     async function fetchCompanyNames() {
       try {
         const response = await axios.get(APIS.ALLCOMPANYNAME);
+        console.log("Alll",response);
+        // console.log("PhotoData",response.data.propertyPhotos);
         if (response.status === 200) {
           setAllCompany(response.data); // Assuming the response contains the list of company names
         } else {

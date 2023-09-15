@@ -25,6 +25,9 @@ function PropertyDetails() {
       try {
         if (!id) return;
         const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
+
+        console.log("Gauravvvvvvv",response);
+        
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
