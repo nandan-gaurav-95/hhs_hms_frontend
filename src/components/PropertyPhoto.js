@@ -53,12 +53,11 @@ function PropertyPhotoForm() {
       console.log("ID:", id);
       const formData = new FormData();
       selectedPhotos.forEach((photo) => {
-        formData.append("files", photo);
+        formData.append("file", photo);
       });
       setUploading(true); // Set uploading status
-      const response = await axios.post(
-        // `${APIS.PROPERTYPHOTOS}/${id}`,
-        `${APIS.MULTIPLEPHOTOS}/${id}`,
+      const response = await axios.put(
+        `${APIS.PROPERTYPHOTOS}/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -91,14 +90,14 @@ function PropertyPhotoForm() {
   };
 
   return (
-    <Container className="bg-light p-5 w-50 mt-5 rounded shadow justify-content-center align-items-center">
+    <div className=" p-5 mt-5 ">
       <h2 className="mb-4 text-center">Property Photos:</h2>
       {error && <div className="text-danger">{error}</div>}{" "}
       {/* Display error message if there's an error */}
       <ul className="list-group">
         <form onSubmit={handleSubmit}>
           <Row className="justify-content-center">
-            <Col md="6">
+            <Col className="col-sm-5">
               <Input
                 label="Company Name"
                 type="text"
@@ -108,7 +107,7 @@ function PropertyPhotoForm() {
                 //   onChange={handleChange}
               />
             </Col>
-            <Col md="6">
+            <Col className="col-sm-5">
               <Input
                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                 type="file"
@@ -148,7 +147,7 @@ function PropertyPhotoForm() {
       {/* <div className="text-center mt-4">
         <Button>Upload Photos</Button>
       </div> */}
-    </Container>
+    </div>
   );
 }
 export default PropertyPhotoForm;

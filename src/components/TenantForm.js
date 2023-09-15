@@ -55,7 +55,7 @@ const TenantForm = () => {
 
     
     return (
-        <Container className="bg-light p-5 mt-5 rounded shadow  justify-content-center align-items-center">
+        <div className=" p-2 mt-5 ">
             <h1 className=" mb-4 text-center">Tenant Management</h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -103,7 +103,7 @@ const TenantForm = () => {
                     <Col className="col-sm-5 ">
                         <Input
                             label="Collected Rent"
-                            type="text"
+                            type="number"
                             name="rentCollected"
                             value={formData.rentCollected}
                             onChange={handleChange}
@@ -112,7 +112,7 @@ const TenantForm = () => {
                     <Col className="col-sm-5 ">
                         <Input
                             label="Rent Due"
-                            type="tel"
+                            type="date"
                             name="rentDue"
                             value={formData.rentDue}
                             onChange={handleChange}
@@ -133,7 +133,7 @@ const TenantForm = () => {
                     <Col className="col-sm-5 ">
                         <Input
                             label="Electricity Due"
-                            type="text"
+                            type="date"
                             name="electricityDue"
                             value={formData.electricityDue}
                             onChange={handleChange}
@@ -165,7 +165,7 @@ const TenantForm = () => {
                     <Button type="submit">Submit</Button>
                 </div>
             </form>
-        </Container>
+        </div>
     );
 };
 export default TenantForm;

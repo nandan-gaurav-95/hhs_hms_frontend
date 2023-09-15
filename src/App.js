@@ -15,13 +15,19 @@ import EmployeeForm from './components/Employee';
 import PaymentForm from './components/PaymentForm';
 import ReceiptForm from './components/ReceiptForm';
 import ExpenseForm from './components/ExpenseForm';
+import Sidebar from './components/admin/Sidebar';
+import Header from './components/admin/Header';
+import SidebarHeader from './components/admin/Sidebar';
 
 
 function App() {
   return (
     <div className="App">
     <BrowserRouter>
+    <Sidebar>
       <Routes>
+      {/* <Route path="/header" element={<Header />}></Route>
+      <Route path="/sidebarHeader" element={<SidebarHeader/>}></Route> */}
       <Route path="/" element={<SampleRegForm/>}></Route>
       <Route path="/allCompanyName" element={<AllCompanyName/>}></Route>
       <Route path="/comapany-details/:id" element={<PropertyDetails/>}></Route>
@@ -36,11 +42,8 @@ function App() {
       <Route path="/receipt" element={<ReceiptForm/>}></Route>
       <Route path="/expense" element={<ExpenseForm/>}></Route>
 
-      {/* <Route path="/" element={<RegistrationForm/>}></Route> */}
-      {/* <Route path="/show-company" element={<RegistrationForm/>}></Route> */}
-      {/* <Route path="/properties" element={<MyComponent/>}></Route> */}
-
       </Routes>
+      </Sidebar>
     </BrowserRouter>
     </div>
   );

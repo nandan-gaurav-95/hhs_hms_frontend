@@ -1,20 +1,120 @@
-/* Input[type="file"] {
-    display: none;
-  } */
+
 .delete-button {
   margin-top: 10px;
-  margin-left: 10px; /* Add space between image name and button */
-  padding: 4px 10px; /* Add padding to the button */
-  background-color: #e75a4a; /* Red background color */
-  color: white; /* White text color */
-  border: none; /* Remove button border */
-  border-radius: 5px; /* Add rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
+  margin-left: 10px;
+  padding: 4px 10px; 
+  background-color: #e75a4a; 
+  color: white; 
+  border: none; 
+  border-radius: 5px;
+  cursor: pointer; 
+}
+.sideBar-div{
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .delete-button:hover {
-  background-color: #d32f2f; /* Darker red background color on hover */
+  background-color: #d32f2f; 
 }
 .text-danger {
   text-align: center;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+}
+.icon{
+  color: black;
+}
+.link_text {
+  color:black; 
+}
+.sidebar {
+
+  width: 30%;
+  max-height: 100vh; 
+  min-width: 50px; 
+  transition: width 0.3s ease; 
+background-color: rgb(235, 213, 226);
+  
+}
+.children{
+  width:70%;
+  max-height:100%;
+  /* background-color: rgb(187, 235, 235); */
+}
+.link-content {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center items vertically */
+  /* background-color: #d32f2f; */
+}
+
+.icon {
+  margin-right: 10px;
+  margin-bottom: 20px; 
+}
+.link-text {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: black;
+} 
+.hidden-text {
+  display: none;
+}
+
+
+ /* .sidebar-form {
+  width: 100%;
+  margin-bottom: 10px; 
+  background-color: #e75a4a;
+}
+
+
+.sidebar-input {
+  width: 100%;
+  padding: 5px;
+  background-color: aqua;
+} */
+
+/* .logo-text-container {
+  display: grid; 
+  grid-template-columns: auto auto;
+  gap: 10px; 
+}
+
+
+.logo-text-container {
+  display: flex; 
+  align-items: center;
+  gap: 10px; 
+} */
+
+
+/* .logo {
+  display: inline-block;
+  
+}
+
+
+.link_text {
+  display: inline-block;
+  
+} */
+/* .logo {
+  width:40px;
+}
+.link_text {
+  width:20px;
+}  */
+
+
+
+
+
+
+

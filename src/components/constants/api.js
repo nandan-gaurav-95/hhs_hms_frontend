@@ -16,9 +16,7 @@ export const APIS ={
      SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
      ALLCOMPANYNAME:`${API_BASE_URL}/getall`,
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
-    //  PROPERTYPHOTOS:`${API_BASE_URL}/property-photo`,//upload single photo
-    MULTIPLEPHOTOS:`${API_BASE_URL}/company-photo`,// upload multiple photos
-
+     PROPERTYPHOTOS:`${API_BASE_URL}/property-photo`,//upload properties photo with particular company
 
      //tenants
      CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method
@@ -56,7 +54,7 @@ export const APIS ={
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
      //Payment
-     CREATEPAYMENT: `${API_BASE_URL}/payment`,//Post-method
+     CREATEPAYMENT: `${API_BASE_URL}/payroll`,//Post-method
     //  GETALLEMPLOYEE:`${API_BASE_URL}/employee`,// Get-method
     //  GETEMPLOYEEBYID:`${API_BASE_URL}/employee`,// Get specific employee by ID
     //  UPDATEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Update an existing employee 

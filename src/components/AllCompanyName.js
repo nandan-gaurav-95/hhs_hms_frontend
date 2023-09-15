@@ -18,8 +18,6 @@ const AllCompanyName = () => {
     async function fetchCompanyNames() {
       try {
         const response = await axios.get(APIS.ALLCOMPANYNAME);
-        console.log("Alll",response);
-        // console.log("PhotoData",response.data.propertyPhotos);
         if (response.status === 200) {
           setAllCompany(response.data); // Assuming the response contains the list of company names
         } else {
@@ -37,10 +35,10 @@ const AllCompanyName = () => {
   };
 
   return (
-    <Container className="bg-light p-5 mt-5 w-50 rounded shadow justify-content-center align-items-center">
+    <div className=" p-5 mt-5 ">
       <h2 className="text-center mb-4">Company Names:</h2>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col className="col-sm-5">
           <ul className="list-group">
             {allCompany.map((company, index) => (
               <li
@@ -59,7 +57,7 @@ const AllCompanyName = () => {
           </ul>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 

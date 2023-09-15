@@ -25,9 +25,6 @@ function PropertyDetails() {
       try {
         if (!id) return;
         const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
-
-        console.log("Gauravvvvvvv",response);
-        
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
@@ -97,9 +94,9 @@ function PropertyDetails() {
 
   // Use the companyName in your component
   return (
-    <Container className="bg-light p-5 mt-5 w-75 rounded shadow justify-content-center align-items-center">
+    <div className=" p-2 mt-2 ">
       <Row className="justify-content-center">
-        <Col md="2">
+        <Col md="1">
           {propData?.company?.logo && (
             <img
               style={{
@@ -121,7 +118,7 @@ function PropertyDetails() {
       <Row className="justify-content-center">
         <ul className="list-group">
           <Row className="justify-content-center">
-            <Col md="6">
+            <Col className="col-sm-5 ">
               {/* <strong>Name:</strong>
                         <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.companyNm}</li> */}
 
@@ -221,7 +218,7 @@ function PropertyDetails() {
               )}
               {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.boundries}</li> */}
             </Col>
-            <Col md="6">
+            <Col className="col-sm-5 ">
               <strong>Extent Acres:</strong>
               {editMode ? (
                 <input
@@ -328,8 +325,8 @@ function PropertyDetails() {
              style={{
               // marginLeft: '10px',
               marginTop: '35px',
-              width: '700px',
-              height: '500px',
+              width: '200px',
+              height: '150px',
             }}
               // width={200}
               // height={150}
@@ -360,7 +357,7 @@ function PropertyDetails() {
           </Button>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 

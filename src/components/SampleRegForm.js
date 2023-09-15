@@ -165,7 +165,7 @@ const SampleRegForm = () => {
   // };
   const condition = true;
   return (
-    <Container className="bg-light p-5 mt-5 w-50 rounded shadow justify-content-center align-items-center">
+    <div className=" p-2 mt-2 ">
       <h1 className=" mb-4 text-center">Sample Reg Form Company</h1>
       <Row className="justify-content-center">
         <Col md="6">
@@ -266,7 +266,7 @@ const SampleRegForm = () => {
           </div>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 

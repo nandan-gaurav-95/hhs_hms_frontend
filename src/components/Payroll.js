@@ -56,8 +56,9 @@ const PayrollForm = () => {
     };
 
     return (
-        <Container className="bg-light p-5 mt-5 rounded shadow  justify-content-center align-items-center">
-            <h1 className=" mb-4 text-center"> Payroll </h1>
+        <div className=" p-2 mt-2 ">
+           <Row className="mb-4">
+            <h1 className=" mb-4 text-center"> Payroll </h1></Row>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
@@ -160,7 +161,7 @@ const PayrollForm = () => {
                     </Col>
                 </Row>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-                    <Col className="col-sm-5 ">
+                    {/* <Col className="col-sm-5 ">
                         <Input
                             label="PF Employer(Cmpny) Contribution"
                             type="text"
@@ -168,7 +169,7 @@ const PayrollForm = () => {
                             value={formData.pfEmployerContribution}
                             onChange={handleChange}
                         />
-                    </Col>
+                    </Col> */}
                     <Col className="col-sm-5 ">
                         <Input
                             label="Loan Amount"
@@ -178,8 +179,6 @@ const PayrollForm = () => {
                             onChange={handleChange}
                         />
                     </Col>
-                </Row>
-                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
                             label="Loan Repayment Amount"
@@ -190,11 +189,22 @@ const PayrollForm = () => {
                         />
                     </Col>
                 </Row>
+                {/* <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Loan Repayment Amount"
+                            type="number"
+                            name="loanRepaymentAmount"
+                            value={formData.loanRepaymentAmount}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                </Row> */}
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
             </form>
-        </Container>
+        </div>
     );
 };
 export default PayrollForm;

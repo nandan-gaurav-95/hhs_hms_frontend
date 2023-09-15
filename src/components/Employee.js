@@ -50,7 +50,7 @@ const EmployeeForm = () => {
     };
     
     return (
-        <Container className="bg-light p-5 mt-5 rounded shadow  justify-content-center align-items-center">
+        <div className=" p-2  mt-5  ">
             <h1 className=" mb-4 text-center">Empolyee Management</h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -152,7 +152,7 @@ const EmployeeForm = () => {
                     <Button>Submit</Button>
                 </div>
             </form>
-        </Container>
+        </div>
     );
 };
 export default EmployeeForm;
