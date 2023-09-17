@@ -155,6 +155,10 @@ const SampleRegForm = () => {
     });
   };
 
+ 
+
+  
+
   // const areAllFieldsFilled = () => {
   //   return (
   //     formData.companyNm.trim() &&
@@ -264,6 +268,8 @@ const SampleRegForm = () => {
               AllCompanyName
             </Button>
           </div>
+
+        
         </Col>
       </Row>
     </div>

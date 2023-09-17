@@ -18,6 +18,7 @@ import ExpenseForm from './components/ExpenseForm';
 import Sidebar from './components/admin/Sidebar';
 import Header from './components/admin/Header';
 import SidebarHeader from './components/admin/Sidebar';
+import Photos from './components/constants/Photos';
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
       <Route path="/payment" element={<PaymentForm/>}></Route>
       <Route path="/receipt" element={<ReceiptForm/>}></Route>
       <Route path="/expense" element={<ExpenseForm/>}></Route>
+
+      <Route path="/photo" element={<Photos/>}></Route>
 
       </Routes>
       </Sidebar>
