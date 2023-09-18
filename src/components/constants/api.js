@@ -16,7 +16,7 @@ export const APIS ={
      SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
      ALLCOMPANYNAME:`${API_BASE_URL}/companies`,
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
-     PROPERTYPHOTOS:`${API_BASE_URL}/property-photo`,//upload properties photo with particular company
+     COMPANYPHOTOS:`${API_BASE_URL}/company-photo`,//upload properties photo with particular company
      GETCOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,// Retrieve the list of photo file names for the specified company ID
 
      //tenants
