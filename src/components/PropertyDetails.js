@@ -109,6 +109,16 @@ function PropertyDetails() {
 
   }
 
+  const handleDelete = (index) => {
+    // const updatedImages = [...selectedPhotos];
+    // updatedImages.splice(index, 1);
+    // setSelectedPhotos(updatedImages);
+
+    // const updatedThumbnails = [...thumbnails];
+    // updatedThumbnails.splice(index, 1);
+    // setThumbnails(updatedThumbnails);
+  };
+
   // Use the companyName in your component
   return (
     <div className=" p-2 mt-2 ">
@@ -397,6 +407,12 @@ function PropertyDetails() {
                 src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
                 alt={`Property photo ${index + 1}`}
               />
+              <button
+              className="delete-button ml-4"
+              onClick={() => handleDelete(index)}
+            >
+              Delete
+            </button>
             </div>
           ))}
         </div>
