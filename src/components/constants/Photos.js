@@ -34,22 +34,7 @@ const fetchPhoto =async() =>{
 
 
   return (
-    // <div className="text-center mt-4 form-group row">
-    //   <img
-    //     style={{
-    //       marginLeft: "10px",
-    //       marginTop: "0px",
-    //       width: "150px",
-    //       height: "100px",
-    //     }}
-    //     src={`data:${responseData?.data?.type};base64,${responseData?.data}`}
-    //     alt="Property photo"
-    //   />
-
-    //   <Button variant="primary" type="button" square onClick={showPhotos}>
-    //     Show photos
-    //   </Button>
-    // </div>
+    
 
     <div className="text-center mt-4 form-group row">
     {responseData && responseData.map((base64String, index)  => (

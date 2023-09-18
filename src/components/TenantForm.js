@@ -9,6 +9,7 @@ import {
 
 import axios from 'axios';
 import {APIS} from './constants/api'
+import { TenantService } from '../services/TenantService';
 
 const TenantForm = () => {
 
@@ -32,7 +33,8 @@ const TenantForm = () => {
         e.preventDefault();
 
         try{
-            const response= await axios.post(APIS.CREATETENANT,formData);
+            // const response= await axios.post(APIS.CREATETENANT,formData);
+            const response= await TenantService.createTenant (formData);
 
             console.log("TenantId",response.data.id);
 

@@ -8,6 +8,7 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from "axios";
 import { APIS } from "./constants/api";
+import { PaymentService } from '../services/PaymentService';
 
 const PaymentForm = () => {
 
@@ -27,7 +28,8 @@ const PaymentForm = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(APIS. CREATEPAYMENT, formData);
+            // const response = await axios.post(APIS. CREATEPAYMENT, formData);
+            const response = await PaymentService.createPayment(formData);
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);

@@ -25,11 +25,13 @@ function PropertyDetails() {
       try {
         if (!id) return;
         const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
+        // console.log("Hiiiiiiiiiii",response);
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
-          setUpdatedCompany(data.company); // Initialize updatedCompany with the current data
-          console.log('data got from get',data);
+          
+          setUpdatedCompany(data); // Initialize updatedCompany with the current data
+         
         } else {
           console.error("Error while fetching company data");
         }
@@ -92,12 +94,27 @@ function PropertyDetails() {
     // console.log(propData);
   };
 
+  const handlePhotos = async()=>{
+    try {
+      if (!id) return;
+      const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
+      console.log("Gauravv",response);
+     
+      } 
+     catch (error) {
+      console.error("Error:", error);
+      setLoading(false);
+    }
+
+
+  }
+
   // Use the companyName in your component
   return (
     <div className=" p-2 mt-2 ">
       <Row className="justify-content-center">
         <Col md="1">
-          {propData?.company?.logo && (
+          {propData?.imageData && (
             <img
               style={{
                 marginLeft: '10px',
@@ -105,13 +122,13 @@ function PropertyDetails() {
                 width: '150px',
                 height: '100px',
               }}
-              src={`data:${propData?.company?.logo?.type};base64,${propData?.imageData}`}
+              src={`data:${propData?.logo?.type};base64,${propData?.imageData}`}
               alt="Company Logo"
             />
           )}
         </Col>
         <Col>
-          <h1 className="text-center mb-4">Property Details of {propData?.company?.companyNm}</h1>
+          <h1 className="text-center mb-4">Property Details of {propData?.companyNm}</h1>
         </Col>
       </Row>
 
@@ -318,7 +335,7 @@ function PropertyDetails() {
           </Row>
         </ul>
       </Row>
-      <Row className="justify-content-center">
+      {/* <Row className="justify-content-center">
         {propData?.company?.propertyPhoto && (
           <Col md="6">
             <img
@@ -335,7 +352,7 @@ function PropertyDetails() {
             />
           </Col>
         )}
-      </Row>
+      </Row> */}
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
           <Button
@@ -354,6 +371,15 @@ function PropertyDetails() {
             onClick={handleEditMode}
           >
             {editMode ? "Update" : "Edit"}
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            square
+            style={{ marginLeft: "10px", width: "100px" }}
+            onClick={handlePhotos}
+          >
+            Photos
           </Button>
         </Col>
       </Row>

@@ -8,6 +8,8 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from "axios";
 import { APIS } from "./constants/api";
+import { ExpenseService } from '../services/ExpenseService';
+
 const ExpenseForm = () => {
 
     const initialState = {
@@ -26,7 +28,8 @@ const ExpenseForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(APIS.CREATEEXPENSE, formData);
+            // const response = await axios.post(APIS.CREATEEXPENSE, formData);
+            const response = await ExpenseService.createExpense(formData);
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);

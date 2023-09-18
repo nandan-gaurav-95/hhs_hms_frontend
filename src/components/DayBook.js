@@ -8,6 +8,8 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from "axios";
 import { APIS } from "./constants/api";
+import { DaybookService } from '../services/DaybookService';
+
 const DayBook = () => {
 
     const initialState = {
@@ -25,8 +27,8 @@ const DayBook = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(APIS.CREATEDAYBOOK, formData);
-
+            // const response = await axios.post(APIS.CREATEDAYBOOK, formData);
+            const response = await DaybookService.createDaybook(formData);
             console.log("DayBookId",response.data.id);
 
             if (response.status === 201) {

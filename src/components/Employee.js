@@ -8,6 +8,9 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from "axios";
 import { APIS } from "./constants/api";
+import { EmployeeService } from '../services/EmployeeService';
+
+
 const EmployeeForm = () => {
 
     const initialState ={
@@ -28,7 +31,8 @@ const EmployeeForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(APIS.CREATEEMPLOYEE, formData);
+            // const response = await axios.post(APIS.CREATEEMPLOYEE, formData);
+            const response = await EmployeeService.createEmployee(formData);
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
