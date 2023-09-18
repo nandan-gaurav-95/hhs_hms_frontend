@@ -20,6 +20,7 @@ const AllCompanyName = () => {
     async function fetchCompanyNames() {
       try {
         const response = await axios.get(APIS.ALLCOMPANYNAME);
+        // console.log("Hiiiii",response.data);
         if (response.status === 200) {
           setAllCompany(response.data);
         } else {

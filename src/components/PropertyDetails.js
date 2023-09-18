@@ -17,7 +17,7 @@ function PropertyDetails() {
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
   const [updatedCompany, setUpdatedCompany] = useState(propData.company || {});
-
+  const [imageData, setImageData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,9 +29,9 @@ function PropertyDetails() {
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
-          
+
           setUpdatedCompany(data); // Initialize updatedCompany with the current data
-         
+
         } else {
           console.error("Error while fetching company data");
         }
@@ -58,9 +58,9 @@ function PropertyDetails() {
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
-     
+
       try {
-        console.log('data sent to upda',updatedCompany);
+        console.log('data sent to upda', updatedCompany);
         const response = await axios.put(`${APIS.SAVECOMPANY}/${id}`, updatedCompany);
         if (response.status === 200) {
           console.log("Company details updated successfully");
@@ -72,7 +72,7 @@ function PropertyDetails() {
       } catch (error) {
         console.error("Error:", error);
       }
-    }else {
+    } else {
       // Enter edit mode
       setEditMode(true);
     }
@@ -94,20 +94,30 @@ function PropertyDetails() {
     // console.log(propData);
   };
 
-  const handlePhotos = async()=>{
+  const handlePhotos = async () => {
     try {
+      console.log("in handle photos", id);
       if (!id) return;
       const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
-      console.log("Gauravv",response);
-     
-      } 
-     catch (error) {
+      setImageData(response.data);
+    }
+    catch (error) {
       console.error("Error:", error);
       setLoading(false);
     }
 
 
   }
+
+  const handleDelete = (index) => {
+    // const updatedImages = [...selectedPhotos];
+    // updatedImages.splice(index, 1);
+    // setSelectedPhotos(updatedImages);
+
+    // const updatedThumbnails = [...thumbnails];
+    // updatedThumbnails.splice(index, 1);
+    // setThumbnails(updatedThumbnails);
+  };
 
   // Use the companyName in your component
   return (
@@ -382,6 +392,30 @@ function PropertyDetails() {
             Photos
           </Button>
         </Col>
+      </Row>
+      <Row>
+        <div className="text-center mt-4 form-group row">
+          {imageData && imageData.map((base64String, index) => (
+            <div key={index}>
+              <img
+                style={{
+                  marginLeft: '10px',
+                  marginTop: '0px',
+                  width: '150px',
+                  height: '100px',
+                }}
+                src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
+                alt={`Property photo ${index + 1}`}
+              />
+              <button
+              className="delete-button ml-4"
+              onClick={() => handleDelete(index)}
+            >
+              Delete
+            </button>
+            </div>
+          ))}
+        </div>
       </Row>
     </div>
   );
