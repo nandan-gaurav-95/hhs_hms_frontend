@@ -96,27 +96,30 @@ function PropertyDetails() {
 
   const handlePhotos = async () => {
     try {
-      console.log("in handle photos", id);
+     
       if (!id) return;
       const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
+      console.log("Hoiiiiiii",response.data);
       setImageData(response.data);
     }
     catch (error) {
       console.error("Error:", error);
       setLoading(false);
     }
-
-
   }
 
-  const handleDelete = (index) => {
-    // const updatedImages = [...selectedPhotos];
-    // updatedImages.splice(index, 1);
-    // setSelectedPhotos(updatedImages);
-
-    // const updatedThumbnails = [...thumbnails];
-    // updatedThumbnails.splice(index, 1);
-    // setThumbnails(updatedThumbnails);
+  const handleDelete = async (index) => {
+       try {
+      console.log("in handle photos", id,index);
+      if (!id) return;
+      const response = await axios.delete(`${APIS.DELETECOMPANYPHOTOS}/${index}`);
+      console.log("Deleted",response);
+   
+    }
+    catch (error) {
+      console.error("Error:", error);
+      
+    }
   };
 
   // Use the companyName in your component
