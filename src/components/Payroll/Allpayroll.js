@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { APIS } from "./constants/api";
+import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaMicrophone } from "react-icons/fa"; 
 
@@ -11,30 +11,30 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 
-const AllCompanyName = () => {
-  const [allCompany, setAllCompany] = useState([]);
+const AllPayroll = () => {
+  const [allpayroll, setAllPayroll] = useState([]); // Corrected variable name
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchCompanyNames() {
+    async function fetchPayroll() {
       try {
-        const response = await axios.get(APIS.ALLCOMPANYNAME);
+        const response = await axios.get(APIS.GETALLPAYROLL);
         // console.log("Hiiiii",response.data);
         if (response.status === 200) {
-          setAllCompany(response.data);
+          setAllPayroll(response.data); // Corrected variable name
         } else {
-          console.error("Error while fetching company names");
+          console.error("Error while fetching payrolls");
         }
       } catch (error) {
         console.error("Error:", error);
       }
     }
-    fetchCompanyNames();
+    fetchPayroll();
   }, []);
 
   const handleViewDetails = async (id) => {
-    navigate(`/comapany-details/${id}`);
+    navigate(`/payroll-details/${id}`);
   };
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
@@ -46,12 +46,12 @@ const AllCompanyName = () => {
 
   return (
     <div className="p-5 mt-5 text-center">
-      <h2 className="mb-4">Company Names:</h2>
+      <h2 className="mb-4">Payroll Details:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
           <input
             type="text"
-            placeholder="Search Company..."
+            placeholder="Search payroll..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
@@ -73,27 +73,26 @@ const AllCompanyName = () => {
       <Row className="justify-content-center">
         <Col className="col-sm-5 d-flex justify-content-center">
           <ul className="list-group">
-            {allCompany
-              .filter((company) =>
-                company?.companyNm
-                  .toLowerCase()
-                  .includes(searchQuery.toLowerCase())
-              )
-              .map((company, index) => (
-                <li
-                  key={index}
-                  className="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  {company?.companyNm}
-                  <Button
-                    color="primary"
-                    onClick={() => handleViewDetails(company.id)}
-                    
-                  >
-                    View Property Details
-                  </Button>
-                </li>
-              ))}
+          {allpayroll
+  .filter((Payroll) =>
+    Payroll?.emp_name &&
+    Payroll.emp_name.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+  .map((Payroll, index) => (
+    <li
+      key={index}
+      className="list-group-item d-flex justify-content-between align-items-center"
+    >
+      {Payroll?.emp_name}
+      <Button
+        color="primary"
+        onClick={() => handleViewDetails(Payroll.id)}
+      >
+        View Payroll Details
+      </Button>
+    </li>
+  ))}
+
           </ul>
         </Col>
       </Row>
@@ -101,4 +100,4 @@ const AllCompanyName = () => {
   );
 };
 
-export default AllCompanyName;
+export default AllPayroll;

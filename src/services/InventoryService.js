@@ -4,7 +4,7 @@ import { APIS } from "../components/constants/api";
 export const InventoryService ={
 
 // Create a new day book entry 
-    createInventoryItem : async (formData) => {
+    createInventory: async (formData) => {
         try{
             const response = await axios.post(APIS.CREATEINVENTORY, formData);
             console.log("InventoryId",response.data.id);
@@ -13,6 +13,7 @@ export const InventoryService ={
             throw error;
         }
     },
+
 
       // Retrieve all inventory items
       getAllInventoryItem :async () => {

@@ -27,7 +27,7 @@ export const APIS ={
      DELETETENANTBYID:`${API_BASE_URL}/tenants`,//Delete an tenants  by ID
 
      // inventory 
-     CREATEINVENTORY: `${API_BASE_URL}/inventory`,//Post-method
+     createInventory: `${API_BASE_URL}/inventory`,//Post-method
      GETALLINVENTORY:`${API_BASE_URL}/inventory`,// Get-method
      GETINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Get specific inventory item by ID
      UPDATEINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Update an existing inventory item
@@ -55,11 +55,11 @@ export const APIS ={
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
      //Payment
-     CREATEPAYMENT: `${API_BASE_URL}/payroll`,//Post-method
-     GETALLPAYMENT:`${API_BASE_URL}/payroll`,// Get-method
-     GETPAYMENTBYID:`${API_BASE_URL}/payroll`,// Get specific Payment by ID
-     UPDATEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Update an existing Payment 
-     DELETEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Delete a Payment by ID
+     CREATEPAYMENT: `${API_BASE_URL}/payment`,//Post-method
+     GETALLPAYMENT:`${API_BASE_URL}/payment`,// Get-method
+     GETPAYMENTBYID:`${API_BASE_URL}/payment`,// Get specific Payment by ID
+     UPDATEPAYMENTBYID:`${API_BASE_URL}/payment`,//Update an existing Payment 
+     DELETEPAYMENTBYID:`${API_BASE_URL}/payment`,//Delete a Payment by ID
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method

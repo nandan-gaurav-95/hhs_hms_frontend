@@ -7,15 +7,15 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { PaymentService } from '../services/PaymentService';
+import { APIS } from "../constants/api";
+import { ReceiptService } from '../../services/ReceiptService';
 
-const PaymentForm = () => {
+const ReceiptForm = () => {
 
     const initialState = {
         id: '',
-        voucherDate: '',
         voucherNum: '',
+        voucherDate: '',
         amount: '',
         paymentMethod: '',
         remark: '',
@@ -23,13 +23,13 @@ const PaymentForm = () => {
     }
 
 
-    const [formData, setFormData] = useState(initialState);
-
-    const handleSubmit = async(e) => {
-        e.preventDefault();
+    const [formData, setFormData] = useState({ initialState });
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         try {
-            // const response = await axios.post(APIS. CREATEPAYMENT, formData);
-            const response = await PaymentService.createPayment(formData);
+            // const response = await axios.post(APIS.CREATERECEIPT, formData);
+            const response = await ReceiptService.createReceipt(formData);
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
@@ -40,15 +40,18 @@ const PaymentForm = () => {
             console.error("Error:", error);
         }
     };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
     return (
-        <div className=" p-2 mt-5 ">
-            <h1 className=" mb-4 text-center"> Payment </h1>
+        <div className=" p-2 mt-5  ">
+            <h1 className=" mb-4 text-center">Receipt Voucher</h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
@@ -62,10 +65,10 @@ const PaymentForm = () => {
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Voucher Date"
-                            type="date"
-                            name="voucherDate"
-                            value={formData.voucherDate}
+                            label="Voucher Num"
+                            type="number"
+                            name="voucherNum"
+                            value={formData.voucherNum}
                             onChange={handleChange}
                         />
                     </Col>
@@ -73,10 +76,10 @@ const PaymentForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="voucherNum"
-                            type="text"
-                            name="voucherNum"
-                            value={formData.voucherNum}
+                            label="voucherDate"
+                            type="date"
+                            name="voucherDate"
+                            value={formData.voucherDate}
                             onChange={handleChange}
                         />
                     </Col>
@@ -92,33 +95,31 @@ const PaymentForm = () => {
                 </Row>
                 <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
                     <Col className="col-sm-5">
-                        
+
                         <select
-                            className="form-select"
                             id="paymentMethod"
                             name="paymentMethod"
                             value={formData.paymentMethod}
                             onChange={handleChange}
+                            className="form-select"
                         >
                             <option value="">Select Payment Method</option>
-                            <option value="online">Online</option>
                             <option value="Cash">Cash</option>
-                            <option value="Cheque">Cheque</option>
-                            {/* Add more payment methods as needed */}
+                            <option value="Online">Online</option>
                         </select>
                     </Col>
-                    <Col className="col-sm-5 ">
+                    <Col className="col-sm-5">
+
                         <Input
-                            label="Remarks"
+                            label="Remark"
                             type="text"
+                            id="remark"
                             name="remark"
                             value={formData.remark}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
-               
-                
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
@@ -126,4 +127,4 @@ const PaymentForm = () => {
         </div>
     );
 };
-export default PaymentForm;
+export default ReceiptForm;
