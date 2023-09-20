@@ -6,29 +6,28 @@ import {
     MDBInput as Input,
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
-import axios from "axios";
-import { APIS } from "./constants/api";
-import {PaymentService} from '../services/PaymentService';
-const PaymentForm = () => {
+import{InventoryService}from '../../services/InventoryService'
+// import {createInventoryItem} from './services/InventoryService'
+
+const InventoryForm = () => {
 
     const initialState = {
         id: '',
-        voucherDate: '',
-        voucherNum: '',
-        amount: '',
-        paymentMethod: '',
-        remark: '',
+        itemName: '',
+        itemDescription: '',
+        unitPrice: '',
+        quantityAvailable: '',
+        category: '',
+    } 
+    const [formData, setFormData] = useState({ initialState });
 
-    }
 
-
-    const [formData, setFormData] = useState(initialState);
-
-    const handleSubmit = async(e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         try {
-            const response = await PaymentService.createPayment(formData);
-            if (response.status === 201) {
+            const response = await InventoryService.createInventoryItem (formData);
+            // console.log(response.data.id);
+            if (response.data) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
             } else {
@@ -38,15 +37,19 @@ const PaymentForm = () => {
             console.error("Error:", error);
         }
     };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
+   
 
     return (
         <div className=" p-2 mt-5 ">
-            <h1 className=" mb-4 text-center"> Payment </h1>
+            <h1 className=" mb-4 text-center"> Inventory Management </h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
@@ -60,10 +63,10 @@ const PaymentForm = () => {
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Voucher Date"
-                            type="date"
-                            name="voucherDate"
-                            value={formData.voucherDate}
+                            label="Item Name"
+                            type="text"
+                            name="itemName"
+                            value={formData.itemName}
                             onChange={handleChange}
                         />
                     </Col>
@@ -71,52 +74,43 @@ const PaymentForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="voucherNum"
+                            label="Item Description"
                             type="text"
-                            name="voucherNum"
-                            value={formData.voucherNum}
+                            name="itemDescription"
+                            value={formData.itemDescription}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Amount"
+                            label="Unit Price"
                             type="number"
-                            name="amount"
-                            value={formData.amount}
+                            name="unitPrice"
+                            value={formData.unitPrice}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
-                <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
-                    <Col className="col-sm-5">
-                        
-                        <select
-                            className="form-select"
-                            id="paymentMethod"
-                            name="paymentMethod"
-                            value={formData.paymentMethod}
+                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+                    <Col className="col-sm-5 ">
+                        <Input
+                            label="Quantity Available"
+                            type="text"
+                            name="quantityAvailable"
+                            value={formData.quantityAvailable}
                             onChange={handleChange}
-                        >
-                            <option value="">Select Payment Method</option>
-                            <option value="online">Online</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Cheque">Cheque</option>
-                            {/* Add more payment methods as needed */}
-                        </select>
+                        />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Remarks"
+                            label="Category"
                             type="text"
-                            name="remark"
-                            value={formData.remark}
+                            name="category"
+                            value={formData.category}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
-               
-                
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
@@ -124,4 +118,4 @@ const PaymentForm = () => {
         </div>
     );
 };
-export default PaymentForm;
+export default InventoryForm;

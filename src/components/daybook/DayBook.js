@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -7,29 +8,32 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { EmployeeService } from '../services/EmployeeService';
-const EmployeeForm = () => {
+import { APIS } from "../constants/api";
+import { DaybookService } from '../../services/DaybookService';
+// import AllDaybook from './AllDaybook';
 
-    const initialState ={
-        emp_id: '',
-        empName: '',
-        dateOfHiring: '',
-        dateOfLeaving: '',
-        address: '',
-        contactNumber: '',
-        salary: '',
-        pfContribution: '',
-        loanAmount: '',
+const DayBook = () => {
+    const navigate = useNavigate();
+    const initialState = {
+        id: '',
+        date: '',
+        description: '',
+        cashInFlow: '',
+        cashOutFlow: '',
+        chequeInFlow: '',
+        chequeOutFlow: '',
     }
+   
 
 
-    
     const [formData, setFormData] = useState({ initialState });
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await EmployeeService.createEmployee(formData);
+            const response = await DaybookService.createDaybook(formData);
+
+            console.log("DayBookId",response.data.id);
+
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
@@ -40,120 +44,102 @@ const EmployeeForm = () => {
             console.error("Error:", error);
         }
     };
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
-        }));
-
+        }))   
     };
-    
+    const handleAllDayBook = (event) => {
+        event.preventDefault();
+        navigate("/alldaybook");
+       };
     return (
-        <div className=" p-2  mt-5  ">
-            <h1 className=" mb-4 text-center">Empolyee Management</h1>
+        <div className=" p-2 mt-5">
+            <h1 className=" mb-4 text-center">Day Book </h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Empolyee ID"
+                            label="ID"
                             type="text"
-                            name="emp_id"
-                            value={formData.emp_id}
+                            name="id"
+                            value={formData.id}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Employee Name"
-                            type="text"
-                            name="empName"
-                            value={formData.empName}
-                            onChange={handleChange}
-                        />
-                    </Col>
-                </Row>
-                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-                   
-                    <Col className="col-sm-5 ">
-                        <Input
-                            label="Date Of Hiring"
+                            label="Date"
                             type="date"
-                            name="dateOfHiring"
-                            value={formData.dateOfHiring}
-                            onChange={handleChange}
-                        />
-                    </Col>
-                    <Col className="col-sm-5 ">
-                        <Input
-                            label="Date Of Leaving"
-                            type="date"
-                            name="dateOfLeaving"
-                            value={formData.dateOfLeaving}
+                            name="date"
+                            value={formData.date}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-                  
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Address"
+                            label="Description"
                             type="text"
-                            name="address"
-                            value={formData.address}
+                            name="description"
+                            value={formData.description}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Contact Number"
-                            type="tel"
-                            name="contactNumber"
-                            value={formData.contactNumber}
+                            label="Cash In Flow"
+                            type="number"
+                            name="cashInFlow"
+                            value={formData.cashInFlow}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-                    
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Salary"
+                            label="Cash Out Flow"
                             type="number"
-                            name="salary"
-                            value={formData.salary}
+                            name="cashOutFlow"
+                            value={formData.cashOutFlow}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="PF Contribution"
-                            type="text"
-                            name="pfContribution"
-                            value={formData.pfContribution}
+                            label="Cheque In Flow"
+                            type="number"
+                            name="chequeInFlow"
+                            value={formData.chequeInFlow}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-                   
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Loan Amount"
+                            label="Cheque Out Flow"
                             type="number"
-                            name="loanAmount"
-                            value={formData.loanAmount}
+                            name="chequeOutFlow"
+                            value={formData.chequeOutFlow}
                             onChange={handleChange}
                         />
                     </Col>
-                </Row>
+                    </Row>
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
+                <div className="text-center mt-4 ">
+          <Button variant="primary" type="button" square onClick={handleAllDayBook}>
+          AllDaybook
+          </Button>
+        </div>
             </form>
         </div>
     );
 };
-export default EmployeeForm;
+export default DayBook;

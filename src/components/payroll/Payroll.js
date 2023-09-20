@@ -7,8 +7,8 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { PayrollService } from '../services/PayrollService';
+import { APIS } from "../constants/api";
+import { PayrollService } from '../../services/PayrollService';
 
 const PayrollForm = () => {
 

@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { APIS } from "./constants/api";
+import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaMicrophone } from "react-icons/fa"; 
+import { FaSearch, FaMicrophone } from "react-icons/fa";
 
 import {
   MDBContainer as Container,
@@ -12,37 +11,38 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 
-const AllCompanyName = () => {
-  const [allCompany, setAllCompany] = useState([]);
+const AllReceipt = () => {
+  const [allReceipt, setAllReceipt] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchCompanyNames() {
+    async function fetchReceipt() {
       try {
-        const response = await axios.get(APIS.ALLCOMPANYNAME);
+        const response = await axios.get(APIS.GETALLRECEIPT);
         if (response.status === 200) {
-          setAllCompany(response.data);
+          setAllReceipt(response.data);
         } else {
-          console.error("Error while fetching company names");
+          console.error("Error while fetching daybook");
         }
       } catch (error) {
         console.error("Error:", error);
       }
     }
-    fetchCompanyNames();
+    fetchReceipt();
   }, []);
 
   const handleViewDetails = async (id) => {
-    navigate(`/comapany-details/${id}`);
+    navigate(`/receipt-details/${id}`);
   };
+
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
-    const results = allCompany.filter((company) =>
-      company?.companyNm.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(results);
+    // const results = allTenant.filter((tenant) =>
+    //   tenant?.tenantName.toLowerCase().includes(searchQuery.toLowerCase())
+    // );
+    // setSearchResults(results);
   };
 
   const handleVoiceSearch = () => {
@@ -51,16 +51,19 @@ const AllCompanyName = () => {
 
   return (
     <div className="p-2 mt-2 text-center">
-      <h2 className="mb-4">Company Names:</h2>
+      <h2 className="mb-4">Receipt Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
           <input
             type="text"
-            placeholder="Search Company..."
+            placeholder="Search Receipt..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
-            style={{ borderTopRightRadius: "1.25rem", borderBottomRightRadius: "1.25rem" }}
+            style={{
+              borderTopRightRadius: "1.25rem",
+              borderBottomRightRadius: "1.25rem",
+            }}
           />
           <div className="input-group-append">
             <span className="input-group-text" onClick={handleSearch}>
@@ -73,27 +76,27 @@ const AllCompanyName = () => {
             </span>
           </div>
         </div>
-        
       </Col>
       <Row className="justify-content-center">
         <Col className="col-sm-5 d-flex justify-content-center">
           <ul className="list-group">
-            {allCompany
-              .filter((company) =>
-                company?.companyNm
+            {allReceipt
+              .filter((receipt) => receipt?.voucherNum) // Filter out undefined/null receipts
+              .filter((receipt) =>
+                receipt.voucherNum
                   .toLowerCase()
                   .includes(searchQuery.toLowerCase())
               )
-              .map((company, index) => (
+              .map((receipt, index) => (
                 <li
                   key={index}
                   className="list-group-item d-flex justify-content-between align-items-center"
                 >
-                  {company?.companyNm}
+                  {receipt.voucherNum}
                   <Button
                     color="primary"
-                    onClick={() => handleViewDetails(company.id)}
-                   >
+                    onClick={() => handleViewDetails(receipt.id)}
+                  >
                     View Property Details
                   </Button>
                 </li>
@@ -105,5 +108,4 @@ const AllCompanyName = () => {
   );
 };
 
-export default AllCompanyName;
-
+export default AllReceipt;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -7,10 +8,10 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { ReceiptService } from '../services/ReceiptService';
+import { APIS } from "../constants/api";
+import { ReceiptService } from '../../services/ReceiptService';
 const ReceiptForm = () => {
-
+    const navigate = useNavigate();
     const initialState = {
         id: '',
         voucherNum: '',
@@ -46,6 +47,10 @@ const ReceiptForm = () => {
         }));
 
     };
+    const AllReceipt = (event) => {
+        event.preventDefault();
+        navigate("/allreceipt");
+      };
 
     return (
         <div className=" p-2 mt-5  ">
@@ -74,7 +79,7 @@ const ReceiptForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="voucherDate"
+                            label="Voucher Date"
                             type="date"
                             name="voucherDate"
                             value={formData.voucherDate}
@@ -121,6 +126,11 @@ const ReceiptForm = () => {
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
+                <div className="text-center mt-4 ">
+          <Button variant="primary" type="button" square onClick={AllReceipt}>
+          All Receipt
+          </Button>
+        </div>
             </form>
         </div>
     );

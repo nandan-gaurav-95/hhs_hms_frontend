@@ -54,24 +54,24 @@ export const APIS ={
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
      //Payment
-     CREATEPAYMENT: `${API_BASE_URL}/payment`,//Post-method
-    //  GETALLEMPLOYEE:`${API_BASE_URL}/employee`,// Get-method
-    //  GETEMPLOYEEBYID:`${API_BASE_URL}/employee`,// Get specific employee by ID
-    //  UPDATEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Update an existing employee 
-    //  DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
+     CREATEPAYMENT: `${API_BASE_URL}/payroll`,//Post-method
+     GETALLPAYMENT:`${API_BASE_URL}/payroll`,// Get-method
+     GETPAYMENTBYID:`${API_BASE_URL}/payroll`,// Get specific Payment by ID
+     UPDATEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Update an existing Payment 
+     DELETEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Delete a Payment by ID
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method
-    GETALLEMPLOYEE:`${API_BASE_URL}/employee`,// Get-method
-    //  GETEMPLOYEEBYID:`${API_BASE_URL}/employee`,// Get specific employee by ID
-    //  UPDATEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Update an existing employee 
-    //  DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
+     GETALLRECEIPT:`${API_BASE_URL}/receipt`,// Get-method
+     GETRECEIPTBYID:`${API_BASE_URL}/receipt`,// Get specific Receipt by ID
+     UPDATERECEIPTBYID:`${API_BASE_URL}/receipt`,//Update an existing Receipt 
+     DELETERECEIPTBYID:`${API_BASE_URL}/receipt`,//Delete a Receipt by ID
 
     //Expense
     CREATEEXPENSE: `${API_BASE_URL}/expense`,//Post-method
-     // GETALLEMPLOYEE:`${API_BASE_URL}/employee`,// Get-method
-    //  GETEMPLOYEEBYID:`${API_BASE_URL}/employee`,// Get specific employee by ID
-    //  UPDATEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Update an existing employee 
-    //  DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
+     GETALLEXPENSE:`${API_BASE_URL}/expense`,// Get-method
+     GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
+     UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
+     DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
 
 }

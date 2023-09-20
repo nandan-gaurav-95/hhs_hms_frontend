@@ -7,27 +7,27 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { ExpenseService } from '../services/ExpenseService';
-const ExpenseForm = () => {
+import { APIS } from "../constants/api";
+import {PaymentService} from '../../services/PaymentService';
+const PaymentForm = () => {
 
     const initialState = {
         id: '',
-        voucherNumber: '',
         voucherDate: '',
+        voucherNum: '',
         amount: '',
-        expenseCategory: '',
-        remarks: '',
+        paymentMethod: '',
+        remark: '',
 
     }
 
 
-    const [formData, setFormData] = useState({ initialState });
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const [formData, setFormData] = useState(initialState);
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
         try {
-            const response = await ExpenseService.createExpense(formData);
+            const response = await PaymentService.createPayment(formData);
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
@@ -38,18 +38,15 @@ const ExpenseForm = () => {
             console.error("Error:", error);
         }
     };
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
     return (
         <div className=" p-2 mt-5 ">
-            <h1 className=" mb-4 text-center">Expense Voucher</h1>
+            <h1 className=" mb-4 text-center"> Payment </h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
@@ -63,10 +60,10 @@ const ExpenseForm = () => {
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Voucher Number"
-                            type="number"
-                            name="voucherNumber"
-                            value={formData.voucherNumber}
+                            label="Voucher Date"
+                            type="date"
+                            name="voucherDate"
+                            value={formData.voucherDate}
                             onChange={handleChange}
                         />
                     </Col>
@@ -74,10 +71,10 @@ const ExpenseForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Voucher Date"
-                            type="date"
-                            name="voucherDate"
-                            value={formData.voucherDate}
+                            label="voucherNum"
+                            type="text"
+                            name="voucherNum"
+                            value={formData.voucherNum}
                             onChange={handleChange}
                         />
                     </Col>
@@ -92,28 +89,34 @@ const ExpenseForm = () => {
                     </Col>
                 </Row>
                 <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
-                    
                     <Col className="col-sm-5">
-
-                        <Input
-                            label="Expense Category"
-                            type="text"
-                            name="expenseCategory"
-                            value={formData.expenseCategory}
+                        
+                        <select
+                            className="form-select"
+                            id="paymentMethod"
+                            name="paymentMethod"
+                            value={formData.paymentMethod}
                             onChange={handleChange}
-                        />
+                        >
+                            <option value="">Select Payment Method</option>
+                            <option value="online">Online</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Cheque">Cheque</option>
+                            {/* Add more payment methods as needed */}
+                        </select>
                     </Col>
-                    <Col className="col-sm-5">
-
+                    <Col className="col-sm-5 ">
                         <Input
-                            label="Remark"
+                            label="Remarks"
                             type="text"
-                            name="remarks"
-                            value={formData.remarks}
+                            name="remark"
+                            value={formData.remark}
                             onChange={handleChange}
                         />
                     </Col>
                 </Row>
+               
+                
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
@@ -121,4 +124,4 @@ const ExpenseForm = () => {
         </div>
     );
 };
-export default ExpenseForm;
+export default PaymentForm;

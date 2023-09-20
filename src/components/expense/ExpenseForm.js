@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -6,28 +7,29 @@ import {
     MDBInput as Input,
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
-import{InventoryService}from '../services/InventoryService'
-// import {createInventoryItem} from './services/InventoryService'
-
-const InventoryForm = () => {
-
+import axios from "axios";
+import { APIS } from "../constants/api";
+import { ExpenseService } from '../../services/ExpenseService';
+const ExpenseForm = () => {
+    const navigate = useNavigate();
     const initialState = {
         id: '',
-        itemName: '',
-        itemDescription: '',
-        unitPrice: '',
-        quantityAvailable: '',
-        category: '',
-    } 
+        voucherNumber: '',
+        voucherDate: '',
+        amount: '',
+        expenseCategory: '',
+        remarks: '',
+
+    }
+
+
     const [formData, setFormData] = useState({ initialState });
-
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await InventoryService.createInventoryItem (formData);
-            // console.log(response.data.id);
-            if (response.data) {
+            const response = await ExpenseService.createExpense(formData);
+            if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
             } else {
@@ -45,11 +47,14 @@ const InventoryForm = () => {
         }));
 
     };
-   
+    const AllExpense = (event) => {
+        event.preventDefault();
+        navigate("/allexpense");
+      };
 
     return (
         <div className=" p-2 mt-5 ">
-            <h1 className=" mb-4 text-center"> Inventory Management </h1>
+            <h1 className=" mb-4 text-center">Expense Voucher</h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
@@ -63,30 +68,10 @@ const InventoryForm = () => {
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Item Name"
-                            type="text"
-                            name="itemName"
-                            value={formData.itemName}
-                            onChange={handleChange}
-                        />
-                    </Col>
-                </Row>
-                <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-                    <Col className="col-sm-5 ">
-                        <Input
-                            label="Item Description"
-                            type="text"
-                            name="itemDescription"
-                            value={formData.itemDescription}
-                            onChange={handleChange}
-                        />
-                    </Col>
-                    <Col className="col-sm-5 ">
-                        <Input
-                            label="Unit Price"
+                            label="Voucher Number"
                             type="number"
-                            name="unitPrice"
-                            value={formData.unitPrice}
+                            name="voucherNumber"
+                            value={formData.voucherNumber}
                             onChange={handleChange}
                         />
                     </Col>
@@ -94,19 +79,42 @@ const InventoryForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Quantity Available"
-                            type="text"
-                            name="quantityAvailable"
-                            value={formData.quantityAvailable}
+                            label="Voucher Date"
+                            type="date"
+                            name="voucherDate"
+                            value={formData.voucherDate}
                             onChange={handleChange}
                         />
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Category"
+                            label="Amount"
+                            type="number"
+                            name="amount"
+                            value={formData.amount}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                </Row>
+                <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
+                    
+                    <Col className="col-sm-5">
+
+                        <Input
+                            label="Expense Category"
                             type="text"
-                            name="category"
-                            value={formData.category}
+                            name="expenseCategory"
+                            value={formData.expenseCategory}
+                            onChange={handleChange}
+                        />
+                    </Col>
+                    <Col className="col-sm-5">
+
+                        <Input
+                            label="Remark"
+                            type="text"
+                            name="remarks"
+                            value={formData.remarks}
                             onChange={handleChange}
                         />
                     </Col>
@@ -114,8 +122,13 @@ const InventoryForm = () => {
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
+                <div className="text-center mt-4 ">
+          <Button variant="primary" type="button" square onClick={AllExpense}>
+            All Expense
+          </Button>
+        </div>
             </form>
         </div>
     );
 };
-export default InventoryForm;
+export default ExpenseForm;
