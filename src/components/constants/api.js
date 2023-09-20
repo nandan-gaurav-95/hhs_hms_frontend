@@ -18,7 +18,7 @@ export const APIS ={
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
      COMPANYPHOTOS:`${API_BASE_URL}/company-photo`,//upload properties photo with particular company
      GETCOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,// Retrieve the list of photo file names for the specified company ID
-     DELETECOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,
+     DELETECOMPANYPHOTOS:`${API_BASE_URL}/company-photos`,
 
      //tenants
      CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method
@@ -56,11 +56,11 @@ export const APIS ={
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
      //Payment
-     CREATEPAYMENT: `${API_BASE_URL}/payroll`,//Post-method
-     GETALLPAYMENT:`${API_BASE_URL}/payroll`,// Get-method
-     GETPAYMENTBYID:`${API_BASE_URL}/payroll`,// Get specific Payment by ID
-     UPDATEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Update an existing Payment 
-     DELETEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Delete a Payment by ID
+     CREATEPAYMENT: `${API_BASE_URL}/payment`,//Post-method
+     GETALLPAYMENT:`${API_BASE_URL}/payment`,// Get-method
+     GETPAYMENTBYID:`${API_BASE_URL}/payment`,// Get specific Payment by ID
+     UPDATEPAYMENTBYID:`${API_BASE_URL}/payment`,//Update an existing Payment 
+     DELETEPAYMENTBYID:`${API_BASE_URL}/payment`,//Delete a Payment by ID
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method

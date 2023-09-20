@@ -10,7 +10,6 @@ import {
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
 
-
 function PropertyDetails() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
@@ -31,7 +30,6 @@ function PropertyDetails() {
           setPropData(data);
 
           setUpdatedCompany(data); // Initialize updatedCompany with the current data
-
         } else {
           console.error("Error while fetching company data");
         }
@@ -43,7 +41,6 @@ function PropertyDetails() {
     }
     fetchData();
   }, [id]);
-
 
   if (loading) {
     // Handle loading state here (e.g., display a loading spinner)
@@ -58,13 +55,15 @@ function PropertyDetails() {
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
-
       try {
-        console.log('data sent to upda', updatedCompany);
-        const response = await axios.put(`${APIS.SAVECOMPANY}/${id}`, updatedCompany);
+        console.log("data sent to upda", updatedCompany);
+        const response = await axios.put(
+          `${APIS.SAVECOMPANY}/${id}`,
+          updatedCompany
+        );
         if (response.status === 200) {
           console.log("Company details updated successfully");
-          navigate(`/comapany-details/${id}`)
+          navigate(`/comapany-details/${id}`);
         } else {
           console.error("Error while updating company data");
           // Additional error handling or notifications can be added here
@@ -96,29 +95,27 @@ function PropertyDetails() {
 
   const handlePhotos = async () => {
     try {
-     
       if (!id) return;
       const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
-      console.log("Hoiiiiiii",response.data);
+      console.log("Hoiiiiiii", response);
       setImageData(response.data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error("Error:", error);
       setLoading(false);
     }
-  }
+  };
 
-  const handleDelete = async (index) => {
-       try {
-      console.log("in handle photos", id,index);
+  const handleDelete = async () => {
+    try {
+      console.log("in handle photos", id);
       if (!id) return;
-      const response = await axios.delete(`${APIS.DELETECOMPANYPHOTOS}/${index}`);
-      console.log("Deleted",response);
-   
-    }
-    catch (error) {
+      const response = await axios.delete(
+        `${APIS.DELETECOMPANYPHOTOS}/${id}`
+      );
+      setImageData(null);
+      console.log("Deleted", response);
+    } catch (error) {
       console.error("Error:", error);
-      
     }
   };
 
@@ -130,10 +127,10 @@ function PropertyDetails() {
           {propData?.imageData && (
             <img
               style={{
-                marginLeft: '10px',
-                marginTop: '0px',
-                width: '150px',
-                height: '100px',
+                marginLeft: "10px",
+                marginTop: "0px",
+                width: "150px",
+                height: "100px",
               }}
               src={`data:${propData?.logo?.type};base64,${propData?.imageData}`}
               alt="Company Logo"
@@ -141,7 +138,9 @@ function PropertyDetails() {
           )}
         </Col>
         <Col>
-          <h1 className="text-center mb-4">Property Details of {propData?.companyNm}</h1>
+          <h1 className="text-center mb-4">
+            Property Details of {propData?.companyNm}
+          </h1>
         </Col>
       </Row>
 
@@ -149,9 +148,6 @@ function PropertyDetails() {
         <ul className="list-group">
           <Row className="justify-content-center">
             <Col className="col-sm-5 ">
-              {/* <strong>Name:</strong>
-                        <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.companyNm}</li> */}
-
               <strong>CST No:</strong>
               {editMode ? (
                 <input
@@ -166,7 +162,6 @@ function PropertyDetails() {
                   {updatedCompany.ctsNo}
                 </li>
               )}
-              {/* <li  key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.ctsNo}</li> */}
 
               <strong>Email:</strong>
               {editMode ? (
@@ -182,7 +177,6 @@ function PropertyDetails() {
                   {updatedCompany.email}
                 </li>
               )}
-              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {propData.email}</li> */}
 
               <strong>Account Name:</strong>
               {editMode ? (
@@ -198,7 +192,6 @@ function PropertyDetails() {
                   {updatedCompany.accountNm}
                 </li>
               )}
-              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.accountNm}</li> */}
 
               <strong>Address:</strong>
               {editMode ? (
@@ -214,7 +207,6 @@ function PropertyDetails() {
                   {updatedCompany.address}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.address}</li> */}
 
               <strong>Annual Income:</strong>
               {editMode ? (
@@ -230,7 +222,6 @@ function PropertyDetails() {
                   {updatedCompany.annualIncome}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-centeannualIncomedata.annualIncome}</li> */}
 
               <strong>Boundries:</strong>
               {editMode ? (
@@ -246,7 +237,6 @@ function PropertyDetails() {
                   {updatedCompany.boundries}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.boundries}</li> */}
             </Col>
             <Col className="col-sm-5 ">
               <strong>Extent Acres:</strong>
@@ -263,7 +253,6 @@ function PropertyDetails() {
                   {updatedCompany.extentAcres}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.extentAcres}</li> */}
 
               <strong>Gazzet No:</strong>
               {editMode ? (
@@ -279,7 +268,6 @@ function PropertyDetails() {
                   {updatedCompany.gazzetNo}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.gazzetNo}</li> */}
 
               <strong>GST No:</strong>
               {editMode ? (
@@ -295,7 +283,6 @@ function PropertyDetails() {
                   {updatedCompany.gstNo}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.gstNo}</li> */}
 
               <strong>Registration Number:</strong>
               {editMode ? (
@@ -311,7 +298,6 @@ function PropertyDetails() {
                   {updatedCompany.registrationNo}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.registrationNo}</li> */}
 
               <strong>Tax Amount:</strong>
               {editMode ? (
@@ -343,29 +329,11 @@ function PropertyDetails() {
                   {updatedCompany.villageNm}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.villageNm}</li> */}
             </Col>
           </Row>
         </ul>
       </Row>
-      {/* <Row className="justify-content-center">
-        {propData?.company?.propertyPhoto && (
-          <Col md="6">
-            <img
-             style={{
-              // marginLeft: '10px',
-              marginTop: '35px',
-              width: '200px',
-              height: '150px',
-            }}
-              // width={200}
-              // height={150}
-              src={`data:${propData?.company?.propertyPhoto?.type};base64,${propData?.company?.propertyPhoto?.photoData}`}
-              alt="Property Photo"
-            />
-          </Col>
-        )}
-      </Row> */}
+
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
           <Button
@@ -398,27 +366,33 @@ function PropertyDetails() {
       </Row>
       <Row>
         <div className="text-center mt-4 form-group row">
-          {imageData && imageData.map((base64String, index) => (
-            <div key={index}>
-              <img
-                style={{
-                  marginLeft: '10px',
-                  marginTop: '0px',
-                  width: '150px',
-                  height: '100px',
-                }}
-                src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
-                alt={`Property photo ${index + 1}`}
-              />
-              <button
+          {imageData &&
+            imageData.map((base64String, index) => (
+              <div key={index}>
+                <img
+                  style={{
+                    marginLeft: "10px",
+                    marginTop: "0px",
+                    width: "150px",
+                    height: "100px",
+                  }}
+                  src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
+                  alt={`Property photo ${index + 1}`}
+                />
+              </div>
+              
+            ))
+            }
+            {imageData && (<button
               className="delete-button ml-4"
-              onClick={() => handleDelete(index)}
+              onClick={handleDelete}
             >
               Delete
-            </button>
-            </div>
-          ))}
+          </button>
+           )}
+            
         </div>
+        
       </Row>
     </div>
   );
