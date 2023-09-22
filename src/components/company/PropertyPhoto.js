@@ -53,12 +53,19 @@ function PropertyPhotoForm() {
       console.log("ID:", id);
       const formData = new FormData();
       selectedPhotos.forEach((photo) => {
+<<<<<<< HEAD
         formData.append("file", photo);
       });
       setUploading(true); // Set uploading status
       const response = await axios.put(
         `${APIS.PROPERTYPHOTOS}/${id}`,
         formData,
+=======
+        formData.append("files", photo);
+      });
+      setUploading(true); // Set uploading status
+      const response = await axios.post(`${APIS.COMPANYPHOTOS}/${id}`,formData,
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
         {
           headers: { "Content-Type": "multipart/form-data" },
         }

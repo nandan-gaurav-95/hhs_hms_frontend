@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
@@ -15,47 +11,33 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 
-const AllCompanyName = () => {
-  const [allCompany, setAllCompany] = useState([]);
+const AllEmployee = () => {
+  const [allEmployee, setAllEmployee] = useState([]); // Corrected variable name
   const [searchQuery, setSearchQuery] = useState("");
-<<<<<<< HEAD
-  const [searchResults, setSearchResults] = useState([]);
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchCompanyNames() {
+    async function fetchEmployee() {
       try {
-        const response = await axios.get(APIS.ALLCOMPANYNAME);
-<<<<<<< HEAD
-=======
+        const response = await axios.get(APIS.CREATEEMPLOYEE);
         // console.log("Hiiiii",response.data);
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
         if (response.status === 200) {
-          setAllCompany(response.data);
+          setAllEmployee(response.data); // Corrected variable name
         } else {
-          console.error("Error while fetching company names");
+          console.error("Error while fetching Employee");
         }
       } catch (error) {
         console.error("Error:", error);
       }
     }
-    fetchCompanyNames();
+    fetchEmployee();
   }, []);
 
-  const handleViewDetails = async (id) => {
-    navigate(`/comapany-details/${id}`);
+  const handleViewDetails = async (emp_id) => {
+    navigate(`/empolyee-details/${emp_id}`);
   };
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
-<<<<<<< HEAD
-    const results = allCompany.filter((company) =>
-      company?.companyNm.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(results);
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
   };
 
   const handleVoiceSearch = () => {
@@ -63,17 +45,13 @@ const AllCompanyName = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="p-2 mt-2 text-center">
-=======
     <div className="p-5 mt-5 text-center">
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
-      <h2 className="mb-4">Company Names:</h2>
+      <h2 className="mb-4">Employee Details:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
           <input
             type="text"
-            placeholder="Search Company..."
+            placeholder="Search Employee..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
@@ -95,28 +73,24 @@ const AllCompanyName = () => {
       <Row className="justify-content-center">
         <Col className="col-sm-5 d-flex justify-content-center">
           <ul className="list-group">
-            {allCompany
-              .filter((company) =>
-                company?.companyNm
+            {allEmployee
+              .filter((Employee) =>
+              Employee?.empName
                   .toLowerCase()
                   .includes(searchQuery.toLowerCase())
               )
-              .map((company, index) => (
+              .map((Employee, index) => (
                 <li
                   key={index}
                   className="list-group-item d-flex justify-content-between align-items-center"
                 >
-                  {company?.companyNm}
+                  {Employee?.empName}
                   <Button
                     color="primary"
-                    onClick={() => handleViewDetails(company.id)}
-<<<<<<< HEAD
-                   >
-=======
+                    onClick={() => handleViewDetails(Employee.emp_id)}
                     
                   >
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
-                    View Property Details
+                    View Employee Details
                   </Button>
                 </li>
               ))}
@@ -127,9 +101,4 @@ const AllCompanyName = () => {
   );
 };
 
-<<<<<<< HEAD
-export default AllCompanyName;
-
-=======
-export default AllCompanyName;
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+export default AllEmployee;

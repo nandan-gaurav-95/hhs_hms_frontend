@@ -47,7 +47,11 @@ export const ExpenseService ={
          // Delete an tenant by ID
         deleteExpenseById : async ()=>{
            try {
+<<<<<<< HEAD
              const response =await axios.delete(APIS.DELETEXPENSEBYID,)
+=======
+             const response =await axios.delete(APIS.DELETEEXPENSEBYID,)
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
              return response.data;
            } catch (error) {
             throw error;

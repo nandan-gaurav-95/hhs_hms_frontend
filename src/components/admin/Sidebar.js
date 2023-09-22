@@ -21,7 +21,10 @@ import {
     AiTwotoneHome,
     AiFillAlipayCircle,
     AiFillAccountBook,
+<<<<<<< HEAD
     AiFillBank,
+=======
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 const Sidebar = ({ children }) => {
@@ -55,7 +58,11 @@ const Sidebar = ({ children }) => {
         },
         {
             path: "/empolyee",
+<<<<<<< HEAD
             name: "Employee",
+=======
+            name: "Empolyee",
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
             icon: <BsFillFilePersonFill />,
         },
         {
@@ -73,11 +80,14 @@ const Sidebar = ({ children }) => {
             name: "Expense",
             icon: <GiExpense />,
         },
+<<<<<<< HEAD
         {
             path: "/bankform",
             name: "Bank",
             icon: <AiFillBank />,
         },
+=======
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
     ];
     return (
         <div className="container sideBar-div">
@@ -115,9 +125,14 @@ const Sidebar = ({ children }) => {
 
             </div>
             <div className={`children ${isOpen ? "expanded" : "collapsed"}`}>
+<<<<<<< HEAD
         
         <main>{children}</main>
       </div>
+=======
+                <main>{children}</main>
+            </div>
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 
         </div>
     );
