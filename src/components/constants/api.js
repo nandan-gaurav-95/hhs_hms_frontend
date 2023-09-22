@@ -18,6 +18,7 @@ export const APIS ={
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
      COMPANYPHOTOS:`${API_BASE_URL}/company-photo`,//upload properties photo with particular company
      GETCOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,// Retrieve the list of photo file names for the specified company ID
+     DELETECOMPANYPHOTOS:`${API_BASE_URL}/company-photos`,
 
      //tenants
      CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method
@@ -74,8 +75,4 @@ export const APIS ={
      GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
-
-
-    //  Code from testing7
-
 }
