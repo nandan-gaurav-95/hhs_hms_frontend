@@ -1,31 +1,23 @@
 import axios from "axios";
 import { APIS } from "../components/constants/api";
 
-export const InventoryService ={
+export const BankService ={
 
 // Create a new day book entry 
-<<<<<<< HEAD
-    createInventoryItem : async (formData) => {
-=======
-    createInventory: async (formData) => {
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+    createBank : async (formData) => {
         try{
-            const response = await axios.post(APIS.CREATEINVENTORY, formData);
-            console.log("InventoryId",response.data.id);
+            const response = await axios.post(APIS.CREATEBANK, formData);
+            console.log("BankId",response.data.id);
             return response;
         }catch(error){
             throw error;
         }
     },
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
       // Retrieve all inventory items
-      getAllInventoryItem :async () => {
+      getAllBank :async () => {
         try {
-            const response= await axios.get(APIS.GETALLINVENTORY,)
+            const response= await axios.get(APIS.GETALLBANK,)
             return response.data;
         }catch(error){
             throw error;
@@ -33,9 +25,9 @@ export const InventoryService ={
       },
 
        // Retrieve a specific inventory item by ID
-       getInventoryItemById :async ()=>{
+       getBankById :async ()=>{
         try {
-        const response=await axios.get(APIS.GETINVENTORYITEMBYID,)
+        const response=await axios.get(APIS.GETBANKBYID,)
         return response.data;  
         } catch (error) {
             throw error;
@@ -43,9 +35,9 @@ export const InventoryService ={
        },
 
         // Update an existing inventory item
-        updateInventoryItemById : async ()=>{
+        updateBankById : async ()=>{
             try {
-                const response= await axios.put(APIS.UPDATEINVENTORYITEMBYID,)
+                const response= await axios.put(APIS.UPDATEBANKBYID,)
                 return response.data;
                 
             } catch (error) {
@@ -53,9 +45,9 @@ export const InventoryService ={
             }
         },
          // Delete an inventory item by ID
-        deleteInventoryItemById : async ()=>{
+        deleteBankById : async ()=>{
            try {
-             const response =await axios.delete(APIS.DELETEINVENTORYITEMBYID,)
+             const response =await axios.delete(APIS.DELETEBANKBYID,)
              return response.data;
            } catch (error) {
             throw error;

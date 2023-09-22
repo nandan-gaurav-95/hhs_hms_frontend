@@ -3,7 +3,11 @@ import { APIS } from "../components/constants/api";
 
 export const PaymentService ={
 
+<<<<<<< HEAD
+// Create a new day book entry 
+=======
 // Create a new Payment entry 
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
     createPayment : async (formData) => {
         try{
             const response = await axios.post(APIS.CREATEPAYMENT, formData);
@@ -53,6 +57,8 @@ export const PaymentService ={
             throw error;
            }
         },
+<<<<<<< HEAD
+=======
 
          // Retrieve all items payment pdf
       generatePdf :async () => {
@@ -65,4 +71,5 @@ export const PaymentService ={
             throw error;
         }
       },
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 }

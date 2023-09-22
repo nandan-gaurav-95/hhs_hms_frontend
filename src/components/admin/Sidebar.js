@@ -21,6 +21,7 @@ import {
     AiTwotoneHome,
     AiFillAlipayCircle,
     AiFillAccountBook,
+    AiFillBank,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 const Sidebar = ({ children }) => {
@@ -54,7 +55,7 @@ const Sidebar = ({ children }) => {
         },
         {
             path: "/empolyee",
-            name: "Empolyee",
+            name: "Employee",
             icon: <BsFillFilePersonFill />,
         },
         {
@@ -71,6 +72,11 @@ const Sidebar = ({ children }) => {
             path: "/expense",
             name: "Expense",
             icon: <GiExpense />,
+        },
+        {
+            path: "/bankform",
+            name: "Bank",
+            icon: <AiFillBank />,
         },
     ];
     return (
@@ -109,8 +115,9 @@ const Sidebar = ({ children }) => {
 
             </div>
             <div className={`children ${isOpen ? "expanded" : "collapsed"}`}>
-                <main>{children}</main>
-            </div>
+        
+        <main>{children}</main>
+      </div>
 
         </div>
     );
