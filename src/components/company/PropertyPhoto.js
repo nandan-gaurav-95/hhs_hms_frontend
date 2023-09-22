@@ -6,7 +6,7 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
-import { APIS } from "./constants/api";
+import { APIS } from "../constants/api";
 import axios from "axios";
 import "react-select-search/style.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";

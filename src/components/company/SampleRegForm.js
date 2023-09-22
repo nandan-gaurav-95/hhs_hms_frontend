@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { APIS } from "./constants/api";
-import "../asset/style.css";
+import { APIS } from "../constants/api";
+import "../../asset/style.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

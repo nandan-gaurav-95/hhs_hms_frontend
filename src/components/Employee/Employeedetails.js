@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { APIS } from "./constants/api";
+import { APIS } from "../constants/api";
 import axios from "axios";
 import {
   MDBContainer as Container,
@@ -10,28 +10,30 @@ import {
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
 
-function PropertyDetails() {
+
+function EmployeeDetails() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedCompany, setUpdatedCompany] = useState(propData.company || {});
-  const [imageData, setImageData] = useState(null);
+  const [updatedEmployee, setUpdatedEmployee] = useState(propData.Employee || {});
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       try {
         if (!id) return;
-        const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
+        const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
         // console.log("Hiiiiiiiiiii",response);
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
 
-          setUpdatedCompany(data); // Initialize updatedCompany with the current data
+          setUpdatedEmployee(data); // Initialize updatedPayroll with the current data
+
         } else {
-          console.error("Error while fetching company data");
+          console.error("Error while fetching Payroll data");
         }
         setLoading(false);
       } catch (error) {
@@ -41,6 +43,7 @@ function PropertyDetails() {
     }
     fetchData();
   }, [id]);
+
 
   if (loading) {
     // Handle loading state here (e.g., display a loading spinner)
@@ -55,17 +58,15 @@ function PropertyDetails() {
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
+
       try {
-        console.log("data sent to upda", updatedCompany);
-        const response = await axios.put(
-          `${APIS.SAVECOMPANY}/${id}`,
-          updatedCompany
-        );
+        console.log('data sent to upda', updatedEmployee);
+        const response = await axios.put(`${APIS.GETALLEMPLOYEE}/${id}`, updatedEmployee);
         if (response.status === 200) {
-          console.log("Company details updated successfully");
-          navigate(`/comapany-details/${id}`);
+          console.log("Employee details updated successfully");
+          navigate(`/payroll-details/${id}`)
         } else {
-          console.error("Error while updating company data");
+          console.error("Error while updating Employee data");
           // Additional error handling or notifications can be added here
         }
       } catch (error) {
@@ -79,68 +80,38 @@ function PropertyDetails() {
 
   const goBack = (event) => {
     event.preventDefault();
-    navigate("/allCompanyName");
+    navigate("/allempolyee");
   };
 
   const handleChange = (event) => {
     // Update input value in edit mode
     const { name, value } = event.target;
     console.log(value);
-    setUpdatedCompany((prevData) => ({
+    setUpdatedEmployee((prevData) => ({
       ...prevData,
       [name]: value,
     }));
     // console.log(propData);
   };
 
-  const handlePhotos = async () => {
-    try {
-      if (!id) return;
-      const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
-      console.log("Hoiiiiiii", response);
-      setImageData(response.data);
-    } catch (error) {
-      console.error("Error:", error);
-      setLoading(false);
-    }
-  };
+ 
+  const handleDelete = (index) => {
+    // const updatedImages = [...selectedPhotos];
+    // updatedImages.splice(index, 1);
+    // setSelectedPhotos(updatedImages);
 
-  const handleDelete = async () => {
-    try {
-      console.log("in handle photos", id);
-      if (!id) return;
-      const response = await axios.delete(
-        `${APIS.DELETECOMPANYPHOTOS}/${id}`
-      );
-      setImageData(null);
-      console.log("Deleted", response);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    // const updatedThumbnails = [...thumbnails];
+    // updatedThumbnails.splice(index, 1);
+    // setThumbnails(updatedThumbnails);
   };
 
   // Use the companyName in your component
   return (
     <div className=" p-2 mt-2 ">
       <Row className="justify-content-center">
-        <Col md="1">
-          {propData?.imageData && (
-            <img
-              style={{
-                marginLeft: "10px",
-                marginTop: "0px",
-                width: "150px",
-                height: "100px",
-              }}
-              src={`data:${propData?.logo?.type};base64,${propData?.imageData}`}
-              alt="Company Logo"
-            />
-          )}
-        </Col>
+        
         <Col>
-          <h1 className="text-center mb-4">
-            Property Details of {propData?.companyNm}
-          </h1>
+          <h1 className="text-center mb-4">Employee Details of {propData?.empName}</h1>
         </Col>
       </Row>
 
@@ -148,192 +119,168 @@ function PropertyDetails() {
         <ul className="list-group">
           <Row className="justify-content-center">
             <Col className="col-sm-5 ">
-              <strong>CST No:</strong>
+              {/* <strong>Name:</strong>
+                        <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.companyNm}</li> */}
+
+              <strong>Empolyee ID:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="ctsNo"
-                  value={updatedCompany.ctsNo}
+                  name="emp_id"
+                  value={updatedEmployee.emp_id}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.ctsNo}
+                  {updatedEmployee.emp_id}
                 </li>
               )}
+              {/* <li  key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.ctsNo}</li> */}
 
-              <strong>Email:</strong>
+              <strong>Employee Name</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="email"
-                  value={updatedCompany.email}
+                  name="empName"
+                  value={updatedEmployee.empName}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.email}
+                  {updatedEmployee.empName}
                 </li>
               )}
+              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {propData.email}</li> */}
 
-              <strong>Account Name:</strong>
+              <strong>Date Of Hiring:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="accountNm"
-                  value={updatedCompany.accountNm}
+                  type="date"
+                  name="dateOfHiring"
+                  value={updatedEmployee.dateOfHiring}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.accountNm}
+                  {updatedEmployee.dateOfHiring}
                 </li>
               )}
+              <strong>Loan Amount:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="number"
+                  name="loanAmount"
+                  value={updatedEmployee.loanAmount}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedEmployee.loanAmount}
+                </li>
+              )}
+              {/* <strong>PF Contribution:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="number"
+                  name="pfContribution"
+                  value={updatedEmployee.pfContribution}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedEmployee.pfContribution}
+                </li>
+              )} */}
+              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.accountNm}</li> */}
+ </Col>
+            <Col className="col-md-5">
+              <strong>Date Of Leaving:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="date"
+                  name="dateOfLeaving"
+                  value={updatedEmployee.dateOfLeaving}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedEmployee.dateOfLeaving}
+                </li>
+              )}
+              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.address}</li> */}
 
-              <strong>Address:</strong>
+              <strong>Addres:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="address"
-                  value={updatedCompany.address}
+                  value={updatedEmployee.address}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.address}
+                  {updatedEmployee.address}
                 </li>
               )}
+              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-centeannualIncomedata.annualIncome}</li> */}
 
-              <strong>Annual Income:</strong>
+              <strong>Contact Numbe:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="annualIncome"
-                  value={updatedCompany.annualIncome}
+                  type="tel"
+                  name="contactNumber"
+                  value={updatedEmployee.contactNumber}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.annualIncome}
+                  {updatedEmployee.contactNumber}
                 </li>
               )}
-
-              <strong>Boundries:</strong>
+              <strong>Salary:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="boundries"
-                  value={updatedCompany.boundries}
+                  type="number"
+                  name="salary"
+                  value={updatedEmployee.salary}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.boundries}
+                  {updatedEmployee.salary}
                 </li>
               )}
+              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.boundries}</li> */}
             </Col>
             <Col className="col-sm-5 ">
-              <strong>Extent Acres:</strong>
+            <strong>PF Contribution:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="extentAcres"
-                  value={updatedCompany.extentAcres}
+                  type="number"
+                  name="pfContribution"
+                  value={updatedEmployee.pfContribution}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.extentAcres}
-                </li>
-              )}
-
-              <strong>Gazzet No:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="gazzetNo"
-                  value={updatedCompany.gazzetNo}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.gazzetNo}
-                </li>
-              )}
-
-              <strong>GST No:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="gstNo"
-                  value={updatedCompany.gstNo}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.gstNo}
-                </li>
-              )}
-
-              <strong>Registration Number:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="registrationNo"
-                  value={updatedCompany.registrationNo}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.registrationNo}
-                </li>
-              )}
-
-              <strong>Tax Amount:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="taxAmt"
-                  value={updatedCompany.taxAmt}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.taxAmt}
-                </li>
-              )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.taxAmt}</li> */}
-
-              <strong>Village Name:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="villageNm"
-                  value={updatedCompany.villageNm}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.villageNm}
+                  {updatedEmployee.pfContribution}
                 </li>
               )}
             </Col>
           </Row>
         </ul>
       </Row>
-
+      
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
           <Button
@@ -353,49 +300,13 @@ function PropertyDetails() {
           >
             {editMode ? "Update" : "Edit"}
           </Button>
-          <Button
-            variant="primary"
-            type="submit"
-            square
-            style={{ marginLeft: "10px", width: "100px" }}
-            onClick={handlePhotos}
-          >
-            Photos
-          </Button>
+         
         </Col>
       </Row>
-      <Row>
-        <div className="text-center mt-4 form-group row">
-          {imageData &&
-            imageData.map((base64String, index) => (
-              <div key={index}>
-                <img
-                  style={{
-                    marginLeft: "10px",
-                    marginTop: "0px",
-                    width: "150px",
-                    height: "100px",
-                  }}
-                  src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
-                  alt={`Property photo ${index + 1}`}
-                />
-              </div>
-              
-            ))
-            }
-            {imageData && (<button
-              className="delete-button ml-4"
-              onClick={handleDelete}
-            >
-              Delete
-          </button>
-           )}
-            
-        </div>
-        
-      </Row>
+      
+     
     </div>
   );
 }
 
-export default PropertyDetails;
+export default EmployeeDetails;

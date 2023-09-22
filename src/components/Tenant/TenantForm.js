@@ -8,8 +8,8 @@ import {
 } from 'mdb-react-ui-kit';
 
 import axios from 'axios';
-import {APIS} from './constants/api'
-import { TenantService } from '../services/TenantService';
+import {APIS} from '../constants/api'
+import { TenantService } from '../../services/TenantService';
 
 const TenantForm = () => {
 

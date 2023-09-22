@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -7,11 +8,11 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { PayrollService } from '../services/PayrollService';
+import { APIS } from "../constants/api";
+import { PayrollService } from '../../services/PayrollService';
 
 const PayrollForm = () => {
-
+    const navigate = useNavigate();
     const initialState ={
         emp_id: '',
         emp_name: '',
@@ -54,6 +55,11 @@ const PayrollForm = () => {
         }));
 
     };
+    
+  const allpayrolldetails= (event) => {
+    event.preventDefault();
+    navigate("/allpayroll");
+  };
 
     return (
         <div className=" p-2 mt-2 ">
@@ -204,6 +210,21 @@ const PayrollForm = () => {
                     <Button>Submit</Button>
                 </div>
             </form>
+            <div className="text-center mt-4 form-group row ">
+                <div className="col">
+            <Button
+              variant="primary"
+              type="button"
+              square
+              onClick={allpayrolldetails}
+            >
+              Show Payroll
+            </Button>
+            </div>
+          </div>
+
+        
+        
         </div>
     );
 };

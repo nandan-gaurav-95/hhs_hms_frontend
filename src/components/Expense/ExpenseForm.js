@@ -7,18 +7,18 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import axios from "axios";
-import { APIS } from "./constants/api";
-import { ReceiptService } from '../services/ReceiptService';
+import { APIS } from "../constants/api";
+import { ExpenseService } from '../../services/ExpenseService';
 
-const ReceiptForm = () => {
+const ExpenseForm = () => {
 
     const initialState = {
         id: '',
-        voucherNum: '',
+        voucherNumber: '',
         voucherDate: '',
         amount: '',
-        paymentMethod: '',
-        remark: '',
+        expenseCategory: '',
+        remarks: '',
 
     }
 
@@ -28,8 +28,8 @@ const ReceiptForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            // const response = await axios.post(APIS.CREATERECEIPT, formData);
-            const response = await ReceiptService.createReceipt(formData);
+            // const response = await axios.post(APIS.CREATEEXPENSE, formData);
+            const response = await ExpenseService.createExpense(formData);
             if (response.status === 201) {
                 console.log("Form data saved successfully");
                 setFormData(initialState);
@@ -50,8 +50,8 @@ const ReceiptForm = () => {
     };
 
     return (
-        <div className=" p-2 mt-5  ">
-            <h1 className=" mb-4 text-center">Receipt Voucher</h1>
+        <div className=" p-2 mt-5 ">
+            <h1 className=" mb-4 text-center">Expense Voucher</h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
@@ -65,10 +65,10 @@ const ReceiptForm = () => {
                     </Col>
                     <Col className="col-sm-5 ">
                         <Input
-                            label="Voucher Num"
+                            label="Voucher Number"
                             type="number"
-                            name="voucherNum"
-                            value={formData.voucherNum}
+                            name="voucherNumber"
+                            value={formData.voucherNumber}
                             onChange={handleChange}
                         />
                     </Col>
@@ -76,7 +76,7 @@ const ReceiptForm = () => {
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
                     <Col className="col-sm-5 ">
                         <Input
-                            label="voucherDate"
+                            label="Voucher Date"
                             type="date"
                             name="voucherDate"
                             value={formData.voucherDate}
@@ -94,28 +94,24 @@ const ReceiptForm = () => {
                     </Col>
                 </Row>
                 <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
+                    
                     <Col className="col-sm-5">
 
-                        <select
-                            id="paymentMethod"
-                            name="paymentMethod"
-                            value={formData.paymentMethod}
+                        <Input
+                            label="Expense Category"
+                            type="text"
+                            name="expenseCategory"
+                            value={formData.expenseCategory}
                             onChange={handleChange}
-                            className="form-select"
-                        >
-                            <option value="">Select Payment Method</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Online">Online</option>
-                        </select>
+                        />
                     </Col>
                     <Col className="col-sm-5">
 
                         <Input
                             label="Remark"
                             type="text"
-                            id="remark"
-                            name="remark"
-                            value={formData.remark}
+                            name="remarks"
+                            value={formData.remarks}
                             onChange={handleChange}
                         />
                     </Col>
@@ -127,4 +123,4 @@ const ReceiptForm = () => {
         </div>
     );
 };
-export default ReceiptForm;
+export default ExpenseForm;

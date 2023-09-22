@@ -28,7 +28,7 @@ export const APIS ={
      DELETETENANTBYID:`${API_BASE_URL}/tenants`,//Delete an tenants  by ID
 
      // inventory 
-     CREATEINVENTORY: `${API_BASE_URL}/inventory`,//Post-method
+     createInventory: `${API_BASE_URL}/inventory`,//Post-method
      GETALLINVENTORY:`${API_BASE_URL}/inventory`,// Get-method
      GETINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Get specific inventory item by ID
      UPDATEINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Update an existing inventory item

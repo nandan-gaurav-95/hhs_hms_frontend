@@ -8,7 +8,7 @@ import {
 } from "mdb-react-ui-kit";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { APIS } from "./constants/api";
+import { APIS } from "../constants/api";
 
 import  "react-select-search/style.css";
 
