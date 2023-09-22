@@ -59,10 +59,8 @@ function InventoryDetails() {
     if (editMode) {
       try {
         console.log("data sent to upda", updatedInventory);
-        const response = await axios.put(
-          `${APIS.GETALLINVENTORY}/${id}`,
-          updatedInventory
-        );
+        const response = await axios.put(`${APIS.GETALLINVENTORY}/${id}`,updatedInventory );
+        
         if (response.status === 200) {
           console.log("Inventory details updated successfully");
           navigate(`/inventory-details/${id}`);

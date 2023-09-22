@@ -3,7 +3,7 @@ import { APIS } from "../components/constants/api";
 
 export const PaymentService ={
 
-// Create a new day book entry 
+// Create a new Payment entry 
     createPayment : async (formData) => {
         try{
             const response = await axios.post(APIS.CREATEPAYMENT, formData);
@@ -53,4 +53,16 @@ export const PaymentService ={
             throw error;
            }
         },
+
+         // Retrieve all items payment pdf
+      generatePdf :async () => {
+        try {
+            const response= await axios.get(APIS.GENERATEPDF,)
+            console.log("API Response:", response); 
+            return response.data;
+        }catch(error){
+            console.error("API Error:", error);
+            throw error;
+        }
+      },
 }

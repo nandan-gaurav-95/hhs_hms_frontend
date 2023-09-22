@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import { PaymentService } from "../../services/PaymentService";
 
 function PaymentDetails() {
   const { id } = useParams() || {};
@@ -95,13 +96,30 @@ function PaymentDetails() {
     // console.log(propData);
   };
 
-  const handleDelete = (index) => {
-    // const updatedImages = [...selectedPhotos];
-    // updatedImages.splice(index, 1);
-    // setSelectedPhotos(updatedImages);
-    // const updatedThumbnails = [...thumbnails];
-    // updatedThumbnails.splice(index, 1);
-    // setThumbnails(updatedThumbnails);
+  const handlPdf = async() => {
+
+    try {
+      const response = await PaymentService.generatePdf();
+      console.log("pdf done",response.data);
+        // Create a Blob from the PDF data
+        const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+
+        // Create a Blob URL for the PDF
+        const pdfUrl = window.URL.createObjectURL(pdfBlob);
+  
+        // Create an anchor element for downloading
+        const a = document.createElement('a');
+        a.href = pdfUrl;
+        a.download = 'hhs-hms.pdf'; // Set the desired file name here
+  
+        // Programmatically trigger the download
+        a.click();
+  
+        // Clean up the Blob URL
+        window.URL.revokeObjectURL(pdfUrl);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   // Use the companyName in your component
@@ -240,7 +258,16 @@ function PaymentDetails() {
           >
             {editMode ? "Update" : "Edit"}
           </Button>
+
+          <Button
+            variant="primary"
+            square
+            style={{ marginLeft: "10px", width: "150px" }}
+            onClick={handlPdf}
+          >Download PDF
+          </Button>
         </Col>
+
       </Row>
     </div>
   );

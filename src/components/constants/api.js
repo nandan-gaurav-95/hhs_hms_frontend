@@ -28,7 +28,7 @@ export const APIS ={
      DELETETENANTBYID:`${API_BASE_URL}/tenants`,//Delete an tenants  by ID
 
      // inventory 
-     createInventory: `${API_BASE_URL}/inventory`,//Post-method
+     CREATEINVENTORY: `${API_BASE_URL}/inventory`,//Post-method
      GETALLINVENTORY:`${API_BASE_URL}/inventory`,// Get-method
      GETINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Get specific inventory item by ID
      UPDATEINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Update an existing inventory item
@@ -61,6 +61,7 @@ export const APIS ={
      GETPAYMENTBYID:`${API_BASE_URL}/payment`,// Get specific Payment by ID
      UPDATEPAYMENTBYID:`${API_BASE_URL}/payment`,//Update an existing Payment 
      DELETEPAYMENTBYID:`${API_BASE_URL}/payment`,//Delete a Payment by ID
+     GENERATEPDF: `${API_BASE_URL}/generatepdf`,//Get-method
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method
