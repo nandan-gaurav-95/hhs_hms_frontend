@@ -21,6 +21,7 @@ import {
     AiTwotoneHome,
     AiFillAlipayCircle,
     AiFillAccountBook,
+    AiFillBank,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 const Sidebar = ({ children }) => {
@@ -71,6 +72,11 @@ const Sidebar = ({ children }) => {
             path: "/expense",
             name: "Expense",
             icon: <GiExpense />,
+        },
+        {
+            path: "/bankform",
+            name: "Bank",
+            icon: <AiFillBank />,
         },
     ];
     return (

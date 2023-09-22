@@ -73,5 +73,13 @@ export const APIS ={
      GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
+      
+     //Bank
+     CREATEBANK: `${API_BASE_URL}/bank`,//Post-method
+     GETALLBANK:`${API_BASE_URL}/bank`,// Get-method
+     GETBANKBYID:`${API_BASE_URL}/bank`,// Get specific Bank by ID
+     UPDATEBANKBYID:`${API_BASE_URL}/bank`,//Update an existing Bank 
+     DELETEBANKBYID:`${API_BASE_URL}/bank`,//Delete a Bank by ID
+
 
 }

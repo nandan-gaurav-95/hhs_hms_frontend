@@ -111,8 +111,108 @@ background-color: whitesmoke;
   margin-left: 150px;
   transition: margin-left 0.3s ease;
 }
+.loginpic {
+  width: 150px;
+  height: 30px;
+}
 
+.loginimage {
+  width: 40%;
+  height: 15vh;
+  /* object-fit: cover; */
+  position: left;
+}
+.alllogin-container {
+  width: 70%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+.backArrowlogin {
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
+}
 
+.backLogin:hover {
+  background-color: #FFF;
+  border-radius: 5px;
+  color: #FFF;
+}
+.backLoginForm:hover {
+  border: 1px solid gray;
+}
+
+/* login pages bottom links list */
+.listcontainer {
+  width: 100%;
+  display: flex;
+
+}
+.forbusiness-page {
+ width:50%;
+ height:100%;
+  background: linear-gradient(to bottom right, #abf47a, #cbe77c, #c6eec6, #edf5e9, #e9f3e0, #e3f1d6);
+ 
+
+}
+.login-logo-margin {
+  border: 1px solid rgb(199, 195, 195);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-logo-margin:hover {
+  border-color: #000000 !important;
+}
+.hr-lines {
+  position: relative;
+  max-width: 500px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.hr-lines:before {
+  content: " ";
+  height: 2px;
+  width: 200px;
+  background: rgb(204, 196, 196);
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.hr-lines:after {
+  content: " ";
+  height: 2px;
+  width: 200px;
+  background: rgb(204, 196, 196);
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+.forgetpagemaindiv,
+.Otpmaindiv {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Forgetdiv {
+    width: 100%;
+}
+ .signupimage {
+  width: 100%;
+  height: 110vh;
+  object-fit: cover;
+  position: left;
+} 
 
 
 

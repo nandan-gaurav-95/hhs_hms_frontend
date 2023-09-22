@@ -21,10 +21,21 @@ import PropertyDetailsDaybook from "./components/daybook/PropertyDetailsDaybook"
 import AllReceipt from "./components/receipt/AllReceipt";
 import ReceiptDetails from "./components/receipt/ReceiptDetails";
 import AllExpense from "./components/expense/AllExpense";
+import ExpenseDetails from "./components/expense/ExpenseDetails";
+import BankForm from "./components/Bank/BankForm";
+import ShowBank from "./components/Bank/ShowBank";
+import BankDetails from "./components/Bank/BankDetails";
+import LoginForm from "./components/constants/LoginFlow/Login";
+import ForgetPage from "./components/constants/LoginFlow/Forgetpage";
+import ForgetPassword from "./components/constants/LoginFlow/ForgetPassword";
+import Otp from "./components/constants/LoginFlow/Otp";
+import ResetPassword from "./components/constants/LoginFlow/ResetPassword";
+import Signup from "./components/constants/LoginFlow/Signup";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+       {/* <BrowserRouter>
+      
         <Sidebar>
           <Routes>
             <Route path="/" element={<SampleRegForm />}></Route>
@@ -47,9 +58,24 @@ function App() {
             <Route path="/receipt-details/:id" element={<ReceiptDetails />}></Route>
             <Route path="/expense" element={<ExpenseForm />}></Route>
             <Route path="/allexpense" element={<AllExpense />}></Route>
+            <Route path="/expense-details/:id" element={<ExpenseDetails />}></Route>
+            <Route path="/bankform" element={<BankForm />}></Route>
+            <Route path="/showbank" element={<ShowBank />}></Route>
+            <Route path="/bank-details/:id" element={<BankDetails />}></Route>
+
           </Routes>
         </Sidebar>
-      </BrowserRouter>
+      </BrowserRouter>  */}
+       <BrowserRouter>
+        <Routes>
+          <Route path="/loginform" element={<LoginForm />}></Route>
+          <Route path="/forgetPage" element={<ForgetPage />}></Route>
+          <Route path="/forgetPassword" element={<ForgetPassword />}></Route>
+          <Route path="/otp" element={<Otp />}></Route>
+          <Route path="/resetPassword" element={<ResetPassword />}></Route>
+          <Route path="/signUp" element={<Signup />}></Route>
+        </Routes>
+      </BrowserRouter> 
     </div>
   );
 }
