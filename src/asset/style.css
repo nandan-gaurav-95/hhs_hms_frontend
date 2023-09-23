@@ -1,4 +1,3 @@
-
 .delete-button {
   margin-top: 10px;
   margin-left: 10px;
@@ -29,18 +28,20 @@
   width:100%;
 }
 .icon{
-  color: black;
+  color: white;
+
 }
 .link_text {
-  color:black; 
+  color:white; 
+  
 }
 .sidebar {
 
-  width: 30%;
+  width: 40%;
   max-height: 100vh; 
   min-width: 50px; 
   transition: width 0.3s ease; 
-background-color: rgb(235, 213, 226);
+background-color:#333;
   
 }
 .children{
@@ -57,14 +58,35 @@ background-color: rgb(235, 213, 226);
 .icon {
   margin-right: 10px;
   margin-bottom: 20px; 
+  color: white;
 }
 .link-text {
   display: inline-block;
   margin-bottom: 20px;
-  color: black;
+  color: white;
+  /* font-size: 20px; */
+  font-weight: bold;
 } 
 .hidden-text {
   display: none;
+}
+
+.submenu-item .submenu-text {
+  color: white;
+  margin-right:10px;
+  margin-bottom: 20px;
+}
+.bars {
+  margin-bottom: 20px; /* Adjust the margin as needed */
+  color: white;
+}
+.backLogin:hover {
+  background-color: #FFF;
+  border-radius: 5px;
+  color: #FFF;
+}
+.backLoginForm:hover {
+  border: 1px solid gray;
 }
 
 
@@ -95,26 +117,16 @@ background-color: rgb(235, 213, 226);
 } */
 
 
-/* .logo {
-  display: inline-block;
+ .logo {
+  color: #FFF;
   
 }
 
 
-.link_text {
-  display: inline-block;
-  
-} */
+
 /* .logo {
   width:40px;
 }
 .link_text {
   width:20px;
 }  */
-
-
-
-
-
-
-

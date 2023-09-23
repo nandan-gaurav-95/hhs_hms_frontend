@@ -76,6 +76,16 @@ export const APIS ={
      GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
+
+
+     //Student
+     CREATESTUDENT: `${API_BASE_URL}/students`,//Post-method
+     GETALLSTUDENT:`${API_BASE_URL}/students`,// Get-method
+     GETSTUDENTBYID:`${API_BASE_URL}/students`,// Get specific Expense by ID
+     UPDATESTUDEBTID:`${API_BASE_URL}/students`,//Update an existing Expense 
+     DELETESTUDENTBYID:`${API_BASE_URL}/students`,//Delete a Expense by ID
+
+
       
      //Bank
      CREATEBANK: `${API_BASE_URL}/bank`,//Post-method
