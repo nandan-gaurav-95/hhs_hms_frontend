@@ -10,28 +10,29 @@ import {
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
 
-function PropertyDetails() {
+function PropertyDetailsDaybook() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
+  const [tenantData, setTenantData] = useState({});
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedCompany, setUpdatedCompany] = useState(propData.company || {});
-  const [imageData, setImageData] = useState(null);
+  const [updatedDaybook, setUpdatedDaybook] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       try {
         if (!id) return;
-        const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
-        // console.log("Hiiiiiiiiiii",response);
+        const response = await axios.get(`${APIS.GETDAYBOOKBYID}/${id}`);
+
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
-
-          setUpdatedCompany(data); // Initialize updatedCompany with the current data
+          setUpdatedDaybook(data); // Initialize updatedTenant with the current data
+          console.log("data got from get", data);
         } else {
-          console.error("Error while fetching company data");
+          console.error("Error while fetching tenant data");
         }
         setLoading(false);
       } catch (error) {
@@ -56,14 +57,14 @@ function PropertyDetails() {
     setEditMode(!editMode);
     if (editMode) {
       try {
-        console.log("data sent to upda", updatedCompany);
+        console.log("data sent to upda", updatedDaybook);
         const response = await axios.put(
-          `${APIS.SAVECOMPANY}/${id}`,
-          updatedCompany
+          `${APIS.GETALLDAYBOOK}/${id}`,
+          updatedDaybook
         );
         if (response.status === 200) {
           console.log("Company details updated successfully");
-          navigate(`/comapany-details/${id}`);
+          navigate(`/daybook-details/${id}`);
         } else {
           console.error("Error while updating company data");
           // Additional error handling or notifications can be added here
@@ -79,44 +80,18 @@ function PropertyDetails() {
 
   const goBack = (event) => {
     event.preventDefault();
-    navigate("/allCompanyName");
+    navigate("/daybook");
   };
 
   const handleChange = (event) => {
     // Update input value in edit mode
     const { name, value } = event.target;
     console.log(value);
-    setUpdatedCompany((prevData) => ({
+    setUpdatedDaybook((prevData) => ({
       ...prevData,
       [name]: value,
     }));
     // console.log(propData);
-  };
-
-  const handlePhotos = async () => {
-    try {
-      if (!id) return;
-      const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
-      console.log("Hoiiiiiii", response);
-      setImageData(response.data);
-    } catch (error) {
-      console.error("Error:", error);
-      setLoading(false);
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      console.log("in handle photos", id);
-      if (!id) return;
-      const response = await axios.delete(
-        `${APIS.DELETECOMPANYPHOTOS}/${id}`
-      );
-      setImageData(null);
-      console.log("Deleted", response);
-    } catch (error) {
-      console.error("Error:", error);
-    }
   };
 
   // Use the companyName in your component
@@ -124,7 +99,7 @@ function PropertyDetails() {
     <div className=" p-2 mt-2 ">
       <Row className="justify-content-center">
         <Col md="1">
-          {propData?.imageData && (
+          {propData?.Daybook?.logo && (
             <img
               style={{
                 marginLeft: "10px",
@@ -132,14 +107,14 @@ function PropertyDetails() {
                 width: "150px",
                 height: "100px",
               }}
-              src={`data:${propData?.logo?.type};base64,${propData?.imageData}`}
+              src={`data:${propData?.Daybook?.logo?.type};base64,${propData?.imageData}`}
               alt="Company Logo"
             />
           )}
         </Col>
         <Col>
           <h1 className="text-center mb-4">
-            Property Details of {propData?.companyNm}
+            Property Details of {propData?.description}
           </h1>
         </Col>
       </Row>
@@ -148,190 +123,152 @@ function PropertyDetails() {
         <ul className="list-group">
           <Row className="justify-content-center">
             <Col className="col-sm-5 ">
-              <strong>CST No:</strong>
+             
+              <strong>ID:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="ctsNo"
-                  value={updatedCompany.ctsNo}
+                  name="id"
+                  value={updatedDaybook.id}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.ctsNo}
+                  {updatedDaybook.id}
                 </li>
               )}
+              {/* <li  key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.ctsNo}</li> */}
 
-              <strong>Email:</strong>
+              <strong>Date:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="email"
-                  value={updatedCompany.email}
+                  type="date"
+                  name="date"
+                  value={updatedDaybook.date}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.email}
+                  {updatedDaybook.date}
                 </li>
               )}
+              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {propData.email}</li> */}
 
-              <strong>Account Name:</strong>
+              <strong>Description:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="accountNm"
-                  value={updatedCompany.accountNm}
+                  name="description"
+                  value={updatedDaybook.description}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.accountNm}
+                  {updatedDaybook.description}
                 </li>
               )}
+              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.accountNm}</li> */}
 
-              <strong>Address:</strong>
+              {/* <strong>Cash In Flow:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="address"
-                  value={updatedCompany.address}
+                  name="cashInFlow"
+                  value={updatedDaybook.cashInFlow}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.address}
+                  {updatedDaybook.cashInFlow}
                 </li>
-              )}
-
-              <strong>Annual Income:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="annualIncome"
-                  value={updatedCompany.annualIncome}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.annualIncome}
-                </li>
-              )}
-
-              <strong>Boundries:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="boundries"
-                  value={updatedCompany.boundries}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.boundries}
-                </li>
-              )}
+              )} */}
             </Col>
             <Col className="col-sm-5 ">
-              <strong>Extent Acres:</strong>
+              <strong>Cash Out Flow:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="extentAcres"
-                  value={updatedCompany.extentAcres}
+                  name="cashOutFlow"
+                  value={updatedDaybook.cashOutFlow}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.extentAcres}
+                  {updatedDaybook.cashOutFlow}
+                </li>
+              )}
+              <strong>Cheque In Flow:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="chequeInFlow"
+                  value={updatedDaybook.chequeInFlow}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedDaybook.chequeInFlow}
+                </li>
+              )}
+              <strong>Cheque Out Flow:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="chequeOutFlow"
+                  value={updatedDaybook.chequeOutFlow}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedDaybook.chequeOutFlow}
                 </li>
               )}
 
-              <strong>Gazzet No:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="gazzetNo"
-                  value={updatedCompany.gazzetNo}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.gazzetNo}
-                </li>
-              )}
-
-              <strong>GST No:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="gstNo"
-                  value={updatedCompany.gstNo}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.gstNo}
-                </li>
-              )}
-
-              <strong>Registration Number:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="registrationNo"
-                  value={updatedCompany.registrationNo}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.registrationNo}
-                </li>
-              )}
-
-              <strong>Tax Amount:</strong>
-              {editMode ? (
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="taxAmt"
-                  value={updatedCompany.taxAmt}
-                  onChange={handleChange}
-                />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.taxAmt}
-                </li>
-              )}
               
-
-              <strong>Village Name:</strong>
+            </Col>
+            <Col className="col-sm-5 ">
+            <strong>Cash In Flow:</strong>
               {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="villageNm"
-                  value={updatedCompany.villageNm}
+                  name="cashInFlow"
+                  value={updatedDaybook.cashInFlow}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.villageNm}
+                  {updatedDaybook.cashInFlow}
                 </li>
               )}
-            </Col>
+              </Col>
           </Row>
         </ul>
+      </Row>
+      <Row className="justify-content-center">
+        {propData?.Daybook?.propertyPhoto && (
+          <Col md="6">
+            <img
+              style={{
+                // marginLeft: '10px',
+                marginTop: "35px",
+                width: "200px",
+                height: "150px",
+              }}
+              // width={200}
+              // height={150}
+              src={`data:${propData?.Daybook?.propertyPhoto?.type};base64,${propData?.Daybook?.propertyPhoto?.photoData}`}
+              alt="Property Photo"
+            />
+          </Col>
+        )}
       </Row>
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
@@ -352,49 +289,10 @@ function PropertyDetails() {
           >
             {editMode ? "Update" : "Edit"}
           </Button>
-          <Button
-            variant="primary"
-            type="submit"
-            square
-            style={{ marginLeft: "10px", width: "100px" }}
-            onClick={handlePhotos}
-          >
-            Photos
-          </Button>
         </Col>
-      </Row>
-      <Row>
-        <div className="text-center mt-4 form-group row">
-          {imageData &&
-            imageData.map((base64String, index) => (
-              <div key={index}>
-                <img
-                  style={{
-                    marginLeft: "10px",
-                    marginTop: "0px",
-                    width: "150px",
-                    height: "100px",
-                  }}
-                  src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
-                  alt={`Property photo ${index + 1}`}
-                />
-              </div>
-              
-            ))
-            }
-            {imageData && (<button
-              className="delete-button"
-              onClick={handleDelete}
-            >
-              Delete
-          </button>
-           )}
-            
-        </div>
-        
       </Row>
     </div>
   );
 }
 
-export default PropertyDetails;
+export default PropertyDetailsDaybook;

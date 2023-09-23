@@ -6,6 +6,10 @@ import "../../asset/style.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 import { ToastContainer } from "react-toastify";
 
 import {
@@ -15,7 +19,11 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+<<<<<<< HEAD
+// import { SampleRegFormService } from "../services/SampleRegFormService";
+=======
 
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 const SampleRegForm = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -155,10 +163,13 @@ const SampleRegForm = () => {
     });
   };
 
+<<<<<<< HEAD
+=======
  
 
   
 
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
   // const areAllFieldsFilled = () => {
   //   return (
   //     formData.companyNm.trim() &&
@@ -223,7 +234,11 @@ const SampleRegForm = () => {
                 name="mobNo"
                 value={formData.mobNo}
                 onChange={handleChange}
+<<<<<<< HEAD
+                className="mt-4"
+=======
                 className="mt-4 "
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
               />
               {validationErrors.mobNo && (
                 <div className="text-danger">{validationErrors.mobNo}</div>
@@ -259,6 +274,10 @@ const SampleRegForm = () => {
           </form>
 
           <div className="text-center mt-4 form-group row ">
+<<<<<<< HEAD
+          <div className="col">
+=======
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
             <Button
               variant="primary"
               type="button"
@@ -267,9 +286,14 @@ const SampleRegForm = () => {
             >
               AllCompanyName
             </Button>
+<<<<<<< HEAD
+            </div>
+          </div>
+=======
           </div>
 
         
+>>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
         </Col>
       </Row>
     </div>
