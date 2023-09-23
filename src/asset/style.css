@@ -49,6 +49,10 @@ background-color:#333;
   max-height:100%;
   /* background-color: rgb(187, 235, 235); */
 }
+.children.collapsed {
+  margin-left: 150px;
+  transition: margin-left 0.3s ease;
+}
 .link-content {
   display: flex; /* Use flexbox */
   align-items: center; /* Center items vertically */
