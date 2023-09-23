@@ -1,46 +1,36 @@
 import React, { useState } from "react";
 import "react-select-search/style.css";
 import { FaBars } from "react-icons/fa";
+import { MdAppRegistration, MdInventory2, MdPayment } from "react-icons/md";
+import { GiExpense } from "react-icons/gi";
+import { BsFillFilePersonFill, BsReceiptCutoff } from "react-icons/bs";
+import { PiStudentFill } from "react-icons/pi";
 import {
-  MdAppRegistration,
-  MdInventory2,
-  MdPayment,
-} from "react-icons/md";
-import {
-  GiExpense,
-} from "react-icons/gi";
-import {
-  BsFillFilePersonFill,
-  BsReceiptCutoff,
-} from "react-icons/bs";
-import {
-
-  PiStudentFill
-} from "react-icons/pi";
-import {
+  AiFillBank,
   AiTwotoneHome,
   AiFillAlipayCircle,
   AiFillAccountBook,
-  AiFillPropertySafety
-
+  AiFillPropertySafety,
 } from "react-icons/ai";
-import{
-  BiSolidInstitution
-}from "react-icons/bi";
+import { BiSolidInstitution } from "react-icons/bi";
+
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // Set isOpen to false initially
+  const [activeMenu, setActiveMenu] = useState(null); // State to track the active top-level menu item
+
   const toggle = () => {
     setIsOpen(!isOpen);
+    setActiveMenu(null); // Close all submenus when collapsing the sidebar
   };
 
   const menuItem = [
     {
-      path: "/",
       name: "Property",
-      icon: < AiFillPropertySafety />,
-      subMenu: [ // Submenu items for Property
+      icon: <AiFillPropertySafety />,
+      subMenu: [
+        // Submenu items for Property
         {
           path: "/",
           name: "Registration",
@@ -89,23 +79,33 @@ const Sidebar = ({ children }) => {
       ],
     },
     {
-      path: "/",
       name: "Institute",
-      icon: <BiSolidInstitution />, // Replace with your icon component
+      icon: <BiSolidInstitution />,
       subMenu: [
         {
           path: "/student",
           name: "Student",
           icon: <PiStudentFill />,
         },
+      ],
+    },
+    {
+      name: "Banks",
+      icon: <AiFillBank />,
+      subMenu: [
         {
-            path: "/bankform",
-            name: "Bank",
-            icon: <AiFillBank />,
+          path: "/bankform",
+          name: "Bank",
+          icon: <AiFillBank />,
         },
-    ];
-    return (
-        <div className="container sideBar-div">
+      ],
+    },
+  ];
+
+  const handleMenuClick = (menuName) => {
+    setActiveMenu(activeMenu === menuName ? null : menuName); // Toggle active top-level menu
+  };
+
   return (
     <div className="container sideBar-div">
       <div
@@ -113,7 +113,8 @@ const Sidebar = ({ children }) => {
         className={`sidebar ${isOpen ? "expanded" : "collapsed"}`}
       >
         <div className="top_section">
-          <h3 className="logo">Admin Panel</h3>
+          {/* Conditionally render the "Admin Panel" name above the menu button */}
+          {isOpen && <h3 className="logo">Admin Panel</h3>}
           <div className="bars">
             <FaBars onClick={toggle} />
           </div>
@@ -122,18 +123,16 @@ const Sidebar = ({ children }) => {
         {menuItem.map((item, index) => (
           <div key={index}>
             <div
-              onClick={() => toggle()} // Toggle submenu on click
+              onClick={() => handleMenuClick(item.name)} // Pass item.name as an argument
               className="link text-decoration-none"
             >
               <div className="link-content">
                 <div className="icon">{item.icon}</div>
-                <div className={`link-text ${isOpen ? "" : "hidden"}`}>
-                  {isOpen ? item.name : null}
-                </div>
-
+                {/* Conditionally render the menu name based on isOpen */}
+                {isOpen && <div className="link-text">{item.name}</div>}
               </div>
             </div>
-            {item.subMenu && isOpen && ( // Display submenu if open
+            {item.subMenu && isOpen && activeMenu === item.name && (
               <div className="submenu">
                 {item.subMenu.map((subItem, subIndex) => (
                   <NavLink
@@ -144,9 +143,7 @@ const Sidebar = ({ children }) => {
                   >
                     <div className="link-content submenu-item">
                       <div className="icon">{subItem.icon}</div>
-                      <div className="submenu-text">
-                        {subItem.name}
-                      </div>
+                      <div className="submenu-text">{subItem.name}</div>
                     </div>
                   </NavLink>
                 ))}
@@ -160,31 +157,6 @@ const Sidebar = ({ children }) => {
       </div>
     </div>
   );
-
-                {menuItem.map((item, index) => (
-                    <NavLink
-                        to={item.path}
-                        key={index}
-                        className="link text-decoration-none"
-                        activeClassName="active"
-                    >
-                        <div className="link-content">
-                            <div className="icon">{item.icon}</div>
-                            <div className={`link-text ${isOpen ? '' : 'hidden-text'}`}>
-                                {isOpen ? item.name : ''}
-                            </div>
-                        </div>
-                    </NavLink>
-                ))}
-
-            </div>
-            <div className={`children ${isOpen ? "expanded" : "collapsed"}`}>
-        
-        <main>{children}</main>
-      </div>
-
-        </div>
-    );
 };
 
 export default Sidebar;

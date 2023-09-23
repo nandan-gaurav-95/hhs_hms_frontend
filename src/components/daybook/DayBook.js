@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -9,9 +10,10 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { DaybookService } from '../../services/DaybookService';
+// import AllDaybook from './AllDaybook';
 
 const DayBook = () => {
-
+    const navigate = useNavigate();
     const initialState = {
         id: '',
         date: '',
@@ -21,14 +23,15 @@ const DayBook = () => {
         chequeInFlow: '',
         chequeOutFlow: '',
     }
+   
 
 
     const [formData, setFormData] = useState({ initialState });
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            // const response = await axios.post(APIS.CREATEDAYBOOK, formData);
             const response = await DaybookService.createDaybook(formData);
+
             console.log("DayBookId",response.data.id);
 
             if (response.status === 201) {
@@ -46,9 +49,12 @@ const DayBook = () => {
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
-        }));
-
+        }))   
     };
+    const handleAllDayBook = (event) => {
+        event.preventDefault();
+        navigate("/alldaybook");
+       };
     return (
         <div className=" p-2 mt-5">
             <h1 className=" mb-4 text-center">Day Book </h1>
@@ -127,6 +133,11 @@ const DayBook = () => {
                 <div className="text-center mt-4 ">
                     <Button>Submit</Button>
                 </div>
+                <div className="text-center mt-4 ">
+          <Button variant="primary" type="button" square onClick={handleAllDayBook}>
+          AllDaybook
+          </Button>
+        </div>
             </form>
         </div>
     );

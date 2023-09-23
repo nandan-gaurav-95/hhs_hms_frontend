@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaMicrophone } from "react-icons/fa"; 
+import { FaSearch, FaMicrophone } from "react-icons/fa";
 
 import {
   MDBContainer as Container,
@@ -12,15 +11,13 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 
-
 const AllDaybook = () => {
   const [allDaybook, setAllDaybook] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
- const [searchResults, setSearchResults] = useState([]);
- const navigate = useNavigate();
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
-  
-useEffect(() => {
+  useEffect(() => {
     async function fetchDaybook() {
       try {
         const response = await axios.get(APIS.GETALLDAYBOOK);
@@ -35,11 +32,11 @@ useEffect(() => {
     }
     fetchDaybook();
   }, []);
-  
+
   const handleViewDetails = async (id) => {
     navigate(`/daybook-details/${id}`);
   };
-  
+
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
     // const results = allTenant.filter((tenant) =>
@@ -47,11 +44,11 @@ useEffect(() => {
     // );
     // setSearchResults(results);
   };
-  
+
   const handleVoiceSearch = () => {
     console.log("Initiating voice search...");
   };
-  
+
   return (
     <div className="p-2 mt-2 text-center">
       <h2 className="mb-4">Daybook Names:</h2>
@@ -63,7 +60,10 @@ useEffect(() => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
-            style={{ borderTopRightRadius: "1.25rem", borderBottomRightRadius: "1.25rem" }}
+            style={{
+              borderTopRightRadius: "1.25rem",
+              borderBottomRightRadius: "1.25rem",
+            }}
           />
           <div className="input-group-append">
             <span className="input-group-text" onClick={handleSearch}>
@@ -79,12 +79,12 @@ useEffect(() => {
       </Col>
       <Row className="justify-content-center">
         <Col className="col-sm-5 d-flex justify-content-center">
-        <ul className="list-group">
+          <ul className="list-group">
             {allDaybook
               .filter((daybook) =>
                 daybook?.description
-                  .toLowerCase()
-                  .includes(searchQuery.toLowerCase())
+                  ?.toLowerCase()
+                  ?.includes(searchQuery.toLowerCase())
               )
               .map((daybook, index) => (
                 <li
@@ -95,7 +95,7 @@ useEffect(() => {
                   <Button
                     color="primary"
                     onClick={() => handleViewDetails(daybook.id)}
-                   >
+                  >
                     View Property Details
                   </Button>
                 </li>
@@ -105,8 +105,6 @@ useEffect(() => {
       </Row>
     </div>
   );
-
 };
 
 export default AllDaybook;
-

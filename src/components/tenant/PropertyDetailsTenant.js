@@ -123,7 +123,6 @@ function PropertyDetailsTenant() {
         <ul className="list-group">
           <Row className="justify-content-center">
             <Col className="col-sm-5 ">
-             
               <strong>Name:</strong>
               {editMode ? (
                 <input

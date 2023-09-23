@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaMicrophone } from "react-icons/fa"; 
+import { FaSearch, FaMicrophone } from "react-icons/fa";
 
 import {
   MDBContainer as Container,
@@ -15,11 +14,10 @@ import {
 const ShowTenant = () => {
   const [allTenant, setAllTenant] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
- const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
-  
-useEffect(() => {
+  useEffect(() => {
     async function fetchTenant() {
       try {
         const response = await axios.get(APIS.GETALLTENANT);
@@ -34,11 +32,11 @@ useEffect(() => {
     }
     fetchTenant();
   }, []);
-  
+
   const handleViewDetails = async (id) => {
     navigate(`/tenant-details/${id}`);
   };
-  
+
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
     // const results = allTenant.filter((tenant) =>
@@ -46,11 +44,11 @@ useEffect(() => {
     // );
     // setSearchResults(results);
   };
-  
+
   const handleVoiceSearch = () => {
     console.log("Initiating voice search...");
   };
-  
+
   return (
     <div className="p-2 mt-2 text-center">
       <h2 className="mb-4">Tenant Names:</h2>
@@ -62,7 +60,10 @@ useEffect(() => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
-            style={{ borderTopRightRadius: "1.25rem", borderBottomRightRadius: "1.25rem" }}
+            style={{
+              borderTopRightRadius: "1.25rem",
+              borderBottomRightRadius: "1.25rem",
+            }}
           />
           <div className="input-group-append">
             <span className="input-group-text" onClick={handleSearch}>
@@ -78,7 +79,7 @@ useEffect(() => {
       </Col>
       <Row className="justify-content-center">
         <Col className="col-sm-5 d-flex justify-content-center">
-        <ul className="list-group">
+          <ul className="list-group">
             {allTenant
               .filter((tenant) =>
                 tenant?.tenantName
@@ -94,7 +95,7 @@ useEffect(() => {
                   <Button
                     color="primary"
                     onClick={() => handleViewDetails(tenant.id)}
-                   >
+                  >
                     View Property Details
                   </Button>
                 </li>
@@ -104,8 +105,6 @@ useEffect(() => {
       </Row>
     </div>
   );
-
 };
 
 export default ShowTenant;
-
