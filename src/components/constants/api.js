@@ -28,7 +28,7 @@ export const APIS ={
      DELETETENANTBYID:`${API_BASE_URL}/tenants`,//Delete an tenants  by ID
 
      // inventory 
-     createInventory: `${API_BASE_URL}/inventory`,//Post-method
+     CREATEINVENTORY: `${API_BASE_URL}/inventory`,//Post-method
      GETALLINVENTORY:`${API_BASE_URL}/inventory`,// Get-method
      GETINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Get specific inventory item by ID
      UPDATEINVENTORYITEMBYID:`${API_BASE_URL}/inventory`,// Update an existing inventory item
@@ -75,4 +75,11 @@ export const APIS ={
      GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
+
+     //Student
+     CREATESTUDENT: `${API_BASE_URL}/students`,//Post-method
+     GETALLSTUDENT:`${API_BASE_URL}/students`,// Get-method
+     GETSTUDENTBYID:`${API_BASE_URL}/students`,// Get specific Expense by ID
+     UPDATESTUDEBTID:`${API_BASE_URL}/students`,//Update an existing Expense 
+     DELETESTUDENTBYID:`${API_BASE_URL}/students`,//Delete a Expense by ID
 }
