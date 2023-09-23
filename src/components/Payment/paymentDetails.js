@@ -96,11 +96,11 @@ function PaymentDetails() {
     // console.log(propData);
   };
 
-  const handlPdf = async() => {
+  const handlPdf = async(id) => {
 
     try {
-      const response = await PaymentService.generatePdf();
-      console.log("pdf done",response.data);
+      const response = await PaymentService.generatePdf(id);
+      console.log("pdf done",response);
         // Create a Blob from the PDF data
         const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
 

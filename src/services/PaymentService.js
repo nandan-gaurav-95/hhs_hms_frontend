@@ -55,9 +55,13 @@ export const PaymentService ={
         },
 
          // Retrieve all items payment pdf
-      generatePdf :async () => {
+      generatePdf :async (id) => {
         try {
-            const response= await axios.get(APIS.GENERATEPDF,)
+            const response= await axios.get(`APIS.GENERATEPDF/${id}`,
+            {
+                responseType: 'blob', // Treat the response as a binary blob
+              }
+            );
             console.log("API Response:", response); 
             return response.data;
         }catch(error){
