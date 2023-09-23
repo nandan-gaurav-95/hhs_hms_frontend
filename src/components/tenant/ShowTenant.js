@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
@@ -15,65 +12,53 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 
-const AllCompanyName = () => {
-  const [allCompany, setAllCompany] = useState([]);
+const ShowTenant = () => {
+  const [allTenant, setAllTenant] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-<<<<<<< HEAD
-  const [searchResults, setSearchResults] = useState([]);
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+ const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchCompanyNames() {
+  
+useEffect(() => {
+    async function fetchTenant() {
       try {
-        const response = await axios.get(APIS.ALLCOMPANYNAME);
-<<<<<<< HEAD
-=======
-        // console.log("Hiiiii",response.data);
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+        const response = await axios.get(APIS.GETALLTENANT);
         if (response.status === 200) {
-          setAllCompany(response.data);
+          setAllTenant(response.data);
         } else {
-          console.error("Error while fetching company names");
+          console.error("Error while fetching tenant");
         }
       } catch (error) {
         console.error("Error:", error);
       }
     }
-    fetchCompanyNames();
+    fetchTenant();
   }, []);
-
+  
   const handleViewDetails = async (id) => {
-    navigate(`/comapany-details/${id}`);
+    navigate(`/tenant-details/${id}`);
   };
+  
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
-<<<<<<< HEAD
-    const results = allCompany.filter((company) =>
-      company?.companyNm.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(results);
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+    // const results = allTenant.filter((tenant) =>
+    //   tenant?.tenantName.toLowerCase().includes(searchQuery.toLowerCase())
+    // );
+    // setSearchResults(results);
   };
-
+  
   const handleVoiceSearch = () => {
     console.log("Initiating voice search...");
   };
-
+  
   return (
-<<<<<<< HEAD
     <div className="p-2 mt-2 text-center">
-=======
-    <div className="p-5 mt-5 text-center">
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
-      <h2 className="mb-4">Company Names:</h2>
+      <h2 className="mb-4">Tenant Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
           <input
             type="text"
-            placeholder="Search Company..."
+            placeholder="Search Tenant..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
@@ -90,32 +75,26 @@ const AllCompanyName = () => {
             </span>
           </div>
         </div>
-        
       </Col>
       <Row className="justify-content-center">
         <Col className="col-sm-5 d-flex justify-content-center">
-          <ul className="list-group">
-            {allCompany
-              .filter((company) =>
-                company?.companyNm
+        <ul className="list-group">
+            {allTenant
+              .filter((tenant) =>
+                tenant?.tenantName
                   .toLowerCase()
                   .includes(searchQuery.toLowerCase())
               )
-              .map((company, index) => (
+              .map((tenant, index) => (
                 <li
                   key={index}
                   className="list-group-item d-flex justify-content-between align-items-center"
                 >
-                  {company?.companyNm}
+                  {tenant?.tenantName}
                   <Button
                     color="primary"
-                    onClick={() => handleViewDetails(company.id)}
-<<<<<<< HEAD
+                    onClick={() => handleViewDetails(tenant.id)}
                    >
-=======
-                    
-                  >
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
                     View Property Details
                   </Button>
                 </li>
@@ -125,11 +104,8 @@ const AllCompanyName = () => {
       </Row>
     </div>
   );
+
 };
 
-<<<<<<< HEAD
-export default AllCompanyName;
+export default ShowTenant;
 
-=======
-export default AllCompanyName;
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4

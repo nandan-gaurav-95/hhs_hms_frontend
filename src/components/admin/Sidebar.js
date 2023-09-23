@@ -14,6 +14,7 @@ import {
   BsReceiptCutoff,
 } from "react-icons/bs";
 import {
+
   PiStudentFill
 } from "react-icons/pi";
 import {
@@ -21,6 +22,7 @@ import {
   AiFillAlipayCircle,
   AiFillAccountBook,
   AiFillPropertySafety
+
 } from "react-icons/ai";
 import{
   BiSolidInstitution
@@ -96,12 +98,14 @@ const Sidebar = ({ children }) => {
           name: "Student",
           icon: <PiStudentFill />,
         },
-      ],
-    },
-  ];
-
-  // ...
-
+        {
+            path: "/bankform",
+            name: "Bank",
+            icon: <AiFillBank />,
+        },
+    ];
+    return (
+        <div className="container sideBar-div">
   return (
     <div className="container sideBar-div">
       <div
@@ -126,6 +130,7 @@ const Sidebar = ({ children }) => {
                 <div className={`link-text ${isOpen ? "" : "hidden"}`}>
                   {isOpen ? item.name : null}
                 </div>
+
               </div>
             </div>
             {item.subMenu && isOpen && ( // Display submenu if open
@@ -155,6 +160,31 @@ const Sidebar = ({ children }) => {
       </div>
     </div>
   );
+
+                {menuItem.map((item, index) => (
+                    <NavLink
+                        to={item.path}
+                        key={index}
+                        className="link text-decoration-none"
+                        activeClassName="active"
+                    >
+                        <div className="link-content">
+                            <div className="icon">{item.icon}</div>
+                            <div className={`link-text ${isOpen ? '' : 'hidden-text'}`}>
+                                {isOpen ? item.name : ''}
+                            </div>
+                        </div>
+                    </NavLink>
+                ))}
+
+            </div>
+            <div className={`children ${isOpen ? "expanded" : "collapsed"}`}>
+        
+        <main>{children}</main>
+      </div>
+
+        </div>
+    );
 };
 
 export default Sidebar;

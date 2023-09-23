@@ -313,7 +313,7 @@ function PropertyDetails() {
                   {updatedCompany.taxAmt}
                 </li>
               )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.taxAmt}</li> */}
+              
 
               <strong>Village Name:</strong>
               {editMode ? (
@@ -333,7 +333,6 @@ function PropertyDetails() {
           </Row>
         </ul>
       </Row>
-
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
           <Button
@@ -384,7 +383,7 @@ function PropertyDetails() {
             ))
             }
             {imageData && (<button
-              className="delete-button ml-4"
+              className="delete-button"
               onClick={handleDelete}
             >
               Delete

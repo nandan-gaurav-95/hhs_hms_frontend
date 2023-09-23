@@ -14,11 +14,13 @@ export const APIS ={
 
      CREATECOMPANY:`${API_BASE_URL}/create`,//Post-method for company 
      SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
+
      ALLCOMPANYNAME:`${API_BASE_URL}/companies`,
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
      COMPANYPHOTOS:`${API_BASE_URL}/company-photo`,//upload properties photo with particular company
      GETCOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,// Retrieve the list of photo file names for the specified company ID
      DELETECOMPANYPHOTOS:`${API_BASE_URL}/company-photos`,
+
 
      //tenants
      CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method
@@ -56,11 +58,14 @@ export const APIS ={
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
      //Payment
+
      CREATEPAYMENT: `${API_BASE_URL}/payment`,//Post-method
      GETALLPAYMENT:`${API_BASE_URL}/payment`,// Get-method
      GETPAYMENTBYID:`${API_BASE_URL}/payment`,// Get specific Payment by ID
      UPDATEPAYMENTBYID:`${API_BASE_URL}/payment`,//Update an existing Payment 
      DELETEPAYMENTBYID:`${API_BASE_URL}/payment`,//Delete a Payment by ID
+     GENERATEPDF: `${API_BASE_URL}/generatepdf`,//Get-method
+
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method
@@ -76,10 +81,23 @@ export const APIS ={
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
 
+
      //Student
      CREATESTUDENT: `${API_BASE_URL}/students`,//Post-method
      GETALLSTUDENT:`${API_BASE_URL}/students`,// Get-method
      GETSTUDENTBYID:`${API_BASE_URL}/students`,// Get specific Expense by ID
      UPDATESTUDEBTID:`${API_BASE_URL}/students`,//Update an existing Expense 
      DELETESTUDENTBYID:`${API_BASE_URL}/students`,//Delete a Expense by ID
+
+
+      
+     //Bank
+     CREATEBANK: `${API_BASE_URL}/bank`,//Post-method
+     GETALLBANK:`${API_BASE_URL}/bank`,// Get-method
+     GETBANKBYID:`${API_BASE_URL}/bank`,// Get specific Bank by ID
+     UPDATEBANKBYID:`${API_BASE_URL}/bank`,//Update an existing Bank 
+     DELETEBANKBYID:`${API_BASE_URL}/bank`,//Delete a Bank by ID
+
+
+
 }

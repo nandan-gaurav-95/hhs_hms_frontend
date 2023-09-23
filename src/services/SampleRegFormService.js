@@ -1,13 +1,13 @@
 import axios from "axios";
 import { APIS } from "../components/constants/api";
 
-export const ExpenseService ={
+export const SampleRegFormService ={
 
  
-    createExpense : async (formData) => {
+    createSampleRegForm : async (formData) => {
         try{
-            const response = await axios.post(APIS.CREATEEXPENSE, formData);
-            console.log("ExpenseId",response.data.id);
+            const response = await axios.post(APIS.CREATECOMPANY, formData);
+            console.log("SampleRegFormId",response.data.id);
             return response;
         }catch(error){
             throw error;
@@ -15,9 +15,9 @@ export const ExpenseService ={
     },
 
       // Retrieve all tenant
-      getAllExpense :async () => {
+      getAllSampleRegForm :async () => {
         try {
-            const response= await axios.get(APIS.GETALLEXPENSE,)
+            const response= await axios.get(APIS.GETALLSAMPLEREGFORM,)
             return response.data;
         }catch(error){
             throw error;
@@ -25,9 +25,9 @@ export const ExpenseService ={
       },
 
        // Retrieve a specific tenant by ID
-       getExpenseById :async ()=>{
+       getSampleRegFormById :async ()=>{
         try {
-        const response=await axios.get(APIS.GETEXPENSEBYID,)
+        const response=await axios.get(APIS.GETSAMPLEREGFORMBYID,)
         return response.data;  
         } catch (error) {
             throw error;
@@ -35,9 +35,9 @@ export const ExpenseService ={
        },
 
         // Update an existing tenant
-        updateExpenseById : async ()=>{
+        updateSampleRegFormById : async ()=>{
             try {
-                const response= await axios.put(APIS.UPDATEEXPENSEBYID,)
+                const response= await axios.put(APIS.UPDATESAMPLEREGFORMBYID,)
                 return response.data;
                 
             } catch (error) {
@@ -45,13 +45,9 @@ export const ExpenseService ={
             }
         },
          // Delete an tenant by ID
-        deleteExpenseById : async ()=>{
+        deleteSampleRegFormIById : async ()=>{
            try {
-<<<<<<< HEAD
-             const response =await axios.delete(APIS.DELETEXPENSEBYID,)
-=======
-             const response =await axios.delete(APIS.DELETEEXPENSEBYID,)
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+             const response =await axios.delete(APIS.DELETESAMPLEREGFORMBYID,)
              return response.data;
            } catch (error) {
             throw error;
