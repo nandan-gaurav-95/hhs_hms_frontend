@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
@@ -18,20 +14,13 @@ import {
 const AllCompanyName = () => {
   const [allCompany, setAllCompany] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-<<<<<<< HEAD
-  const [searchResults, setSearchResults] = useState([]);
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCompanyNames() {
       try {
         const response = await axios.get(APIS.ALLCOMPANYNAME);
-<<<<<<< HEAD
-=======
         // console.log("Hiiiii",response.data);
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
         if (response.status === 200) {
           setAllCompany(response.data);
         } else {
@@ -49,13 +38,6 @@ const AllCompanyName = () => {
   };
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
-<<<<<<< HEAD
-    const results = allCompany.filter((company) =>
-      company?.companyNm.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(results);
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
   };
 
   const handleVoiceSearch = () => {
@@ -63,11 +45,7 @@ const AllCompanyName = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="p-2 mt-2 text-center">
-=======
     <div className="p-5 mt-5 text-center">
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
       <h2 className="mb-4">Company Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -110,12 +88,8 @@ const AllCompanyName = () => {
                   <Button
                     color="primary"
                     onClick={() => handleViewDetails(company.id)}
-<<<<<<< HEAD
-                   >
-=======
                     
                   >
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
                     View Property Details
                   </Button>
                 </li>
@@ -127,9 +101,4 @@ const AllCompanyName = () => {
   );
 };
 
-<<<<<<< HEAD
 export default AllCompanyName;
-
-=======
-export default AllCompanyName;
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
