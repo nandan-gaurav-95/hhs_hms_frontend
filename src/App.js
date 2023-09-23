@@ -107,7 +107,9 @@ import AllEmployeeForm from './components/Employee/AllEmployee';
 import EmpolyeeDetails from './components/Employee/Employeedetails';
 import AllpaymentForm from './components/Payment/Allpayment';
 import PaymentDetails from './components/Payment/paymentDetails';
-
+import StudentData from './components/Student/StudentData';
+import AllStudentForm from './components/Student/AllStudent';
+import StudentDetails from './components/Student/StudentDetails';
 function App() {
   return (
     <div className="App">
@@ -147,6 +149,10 @@ function App() {
       <Route path="/expense" element={<ExpenseForm/>}></Route>
 
       <Route path="/photo" element={<Photos/>}></Route>
+
+      <Route path="/student" element={<StudentData/>}></Route>
+      <Route path="/allstudent" element={<AllStudentForm/>}></Route>
+      <Route path="/student-details/:id" element={<StudentDetails/>}></Route>
 
       </Routes>
       </Sidebar>

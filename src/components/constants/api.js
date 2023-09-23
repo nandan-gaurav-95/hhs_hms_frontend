@@ -14,17 +14,13 @@ export const APIS ={
 
      CREATECOMPANY:`${API_BASE_URL}/create`,//Post-method for company 
      SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
-<<<<<<< HEAD
-     ALLCOMPANYNAME:`${API_BASE_URL}/getall`,
-     GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
-     PROPERTYPHOTOS:`${API_BASE_URL}/property-photo`,//upload properties photo with particular company
-=======
+
      ALLCOMPANYNAME:`${API_BASE_URL}/companies`,
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
      COMPANYPHOTOS:`${API_BASE_URL}/company-photo`,//upload properties photo with particular company
      GETCOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,// Retrieve the list of photo file names for the specified company ID
      DELETECOMPANYPHOTOS:`${API_BASE_URL}/company-photos`,
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+
 
      //tenants
      CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method
@@ -62,20 +58,14 @@ export const APIS ={
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
 
      //Payment
-<<<<<<< HEAD
-     CREATEPAYMENT: `${API_BASE_URL}/payroll`,//Post-method
-     GETALLPAYMENT:`${API_BASE_URL}/payroll`,// Get-method
-     GETPAYMENTBYID:`${API_BASE_URL}/payroll`,// Get specific Payment by ID
-     UPDATEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Update an existing Payment 
-     DELETEPAYMENTBYID:`${API_BASE_URL}/payroll`,//Delete a Payment by ID
-=======
+
      CREATEPAYMENT: `${API_BASE_URL}/payment`,//Post-method
      GETALLPAYMENT:`${API_BASE_URL}/payment`,// Get-method
      GETPAYMENTBYID:`${API_BASE_URL}/payment`,// Get specific Payment by ID
      UPDATEPAYMENTBYID:`${API_BASE_URL}/payment`,//Update an existing Payment 
      DELETEPAYMENTBYID:`${API_BASE_URL}/payment`,//Delete a Payment by ID
      GENERATEPDF: `${API_BASE_URL}/generatepdf`,//Get-method
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method
@@ -90,7 +80,16 @@ export const APIS ={
      GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
-<<<<<<< HEAD
+
+
+     //Student
+     CREATESTUDENT: `${API_BASE_URL}/students`,//Post-method
+     GETALLSTUDENT:`${API_BASE_URL}/students`,// Get-method
+     GETSTUDENTBYID:`${API_BASE_URL}/students`,// Get specific Expense by ID
+     UPDATESTUDEBTID:`${API_BASE_URL}/students`,//Update an existing Expense 
+     DELETESTUDENTBYID:`${API_BASE_URL}/students`,//Delete a Expense by ID
+
+
       
      //Bank
      CREATEBANK: `${API_BASE_URL}/bank`,//Post-method
@@ -100,6 +99,5 @@ export const APIS ={
      DELETEBANKBYID:`${API_BASE_URL}/bank`,//Delete a Bank by ID
 
 
-=======
->>>>>>> d04171144032451eaaf49e14d23f24edb91b2ee4
+
 }
