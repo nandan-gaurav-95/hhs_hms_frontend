@@ -47,7 +47,7 @@ background-color:#333;
 .children{
   width:70%;
   max-height:100%;
-  /* background-color: rgb(187, 235, 235);     gaurav*/
+  /* background-color: rgb(187, 235, 235);*/
 }
 .children.collapsed {
   margin-left: 150px;

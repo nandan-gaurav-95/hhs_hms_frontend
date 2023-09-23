@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaMicrophone } from "react-icons/fa";
+import { FaSearch, FaMicrophone, FaDownload } from "react-icons/fa";
 
 import {
   MDBContainer as Container,
@@ -10,6 +10,7 @@ import {
   MDBCol as Col,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+import { PaymentService } from "../../services/PaymentService";
 
 const AllPayment = () => {
   const [allPayment, setAllPayment] = useState([]); // Corrected variable name
@@ -40,12 +41,42 @@ const AllPayment = () => {
     console.log("Performing search for:", searchQuery);
   };
 
-  const handleVoiceSearch = () => {
-    console.log("Initiating voice search...");
-  };
+  // const handleVoiceSearch = () => {
+  //   console.log("Initiating voice search...");
+  // };
 
+  const handleDownloadPdf =async () => {
+    console.log("Downloading PDF...");
+    try {
+      const response = await PaymentService.generatePdf();
+      console.log("pdf done",response);
+        // Create a Blob from the PDF data
+        const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+
+        // Create a Blob URL for the PDF
+        const pdfUrl = window.URL.createObjectURL(pdfBlob);
+  
+        // Create an anchor element for downloading
+        const a = document.createElement('a');
+        a.href = pdfUrl;
+        a.download = 'hhs-hms.pdf'; // Set the desired file name here
+  
+        // Programmatically trigger the download
+        a.click();
+  
+        // Clean up the Blob URL
+        window.URL.revokeObjectURL(pdfUrl);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <div className="p-5 mt-5 text-center">
+      <div className="position-fixed top-0 end-0 mt-4 me-4">
+        <Button variant="primary" onClick={handleDownloadPdf}>
+          <FaDownload /> Download PDF
+        </Button>
+      </div>
       <h2 className="mb-4">Payment Details:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -65,11 +96,11 @@ const AllPayment = () => {
               <FaSearch />
             </span>
           </div>
-          <div className="input-group-append">
+          {/* <div className="input-group-append">
             <span className="input-group-text" onClick={handleVoiceSearch}>
               <FaMicrophone />
             </span>
-          </div>
+          </div> */}
         </div>
       </Col>
       <Row className="justify-content-center">

@@ -40,9 +40,9 @@ const AllPayroll = () => {
     console.log("Performing search for:", searchQuery);
   };
 
-  const handleVoiceSearch = () => {
-    console.log("Initiating voice search...");
-  };
+  // const handleVoiceSearch = () => {
+  //   console.log("Initiating voice search...");
+  // };
 
   return (
     <div className="p-5 mt-5 text-center">
@@ -62,11 +62,11 @@ const AllPayroll = () => {
               <FaSearch />
             </span>
           </div>
-          <div className="input-group-append">
+          {/* <div className="input-group-append">
             <span className="input-group-text" onClick={handleVoiceSearch}>
               <FaMicrophone />
             </span>
-          </div>
+          </div> */}
         </div>
         
       </Col>

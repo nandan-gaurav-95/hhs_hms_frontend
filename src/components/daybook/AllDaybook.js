@@ -70,11 +70,11 @@ const AllDaybook = () => {
               <FaSearch />
             </span>
           </div>
-          <div className="input-group-append">
+          {/* <div className="input-group-append">
             <span className="input-group-text" onClick={handleVoiceSearch}>
               <FaMicrophone />
             </span>
-          </div>
+          </div> */}
         </div>
       </Col>
       <Row className="justify-content-center">

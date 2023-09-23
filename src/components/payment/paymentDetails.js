@@ -96,31 +96,31 @@ function PaymentDetails() {
     // console.log(propData);
   };
 
-  const handlPdf = async(id) => {
+  // const handlPdf = async(id) => {
 
-    try {
-      const response = await PaymentService.generatePdf(id);
-      console.log("pdf done",response);
-        // Create a Blob from the PDF data
-        const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+  //   try {
+  //     const response = await PaymentService.generatePdf(id);
+  //     console.log("pdf done",response);
+  //       // Create a Blob from the PDF data
+  //       const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
 
-        // Create a Blob URL for the PDF
-        const pdfUrl = window.URL.createObjectURL(pdfBlob);
+  //       // Create a Blob URL for the PDF
+  //       const pdfUrl = window.URL.createObjectURL(pdfBlob);
   
-        // Create an anchor element for downloading
-        const a = document.createElement('a');
-        a.href = pdfUrl;
-        a.download = 'hhs-hms.pdf'; // Set the desired file name here
+  //       // Create an anchor element for downloading
+  //       const a = document.createElement('a');
+  //       a.href = pdfUrl;
+  //       a.download = 'hhs-hms.pdf'; // Set the desired file name here
   
-        // Programmatically trigger the download
-        a.click();
+  //       // Programmatically trigger the download
+  //       a.click();
   
-        // Clean up the Blob URL
-        window.URL.revokeObjectURL(pdfUrl);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  //       // Clean up the Blob URL
+  //       window.URL.revokeObjectURL(pdfUrl);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
   // Use the companyName in your component
   return (
@@ -259,13 +259,13 @@ function PaymentDetails() {
             {editMode ? "Update" : "Edit"}
           </Button>
 
-          <Button
+          {/* <Button
             variant="primary"
             square
             style={{ marginLeft: "10px", width: "150px" }}
             onClick={handlPdf}
           >Download PDF
-          </Button>
+          </Button> */}
         </Col>
 
       </Row>

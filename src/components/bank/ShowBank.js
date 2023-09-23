@@ -45,9 +45,9 @@ const ShowBank = () => {
     // setSearchResults(results);
   };
 
-  const handleVoiceSearch = () => {
-    console.log("Initiating voice search...");
-  };
+  // const handleVoiceSearch = () => {
+  //   console.log("Initiating voice search...");
+  // };
 
   return (
     <div className="p-2 mt-2 text-center">
@@ -70,11 +70,11 @@ const ShowBank = () => {
               <FaSearch />
             </span>
           </div>
-          <div className="input-group-append">
+          {/* <div className="input-group-append">
             <span className="input-group-text" onClick={handleVoiceSearch}>
               <FaMicrophone />
             </span>
-          </div>
+          </div> */}
         </div>
       </Col>
       <Row className="justify-content-center">
