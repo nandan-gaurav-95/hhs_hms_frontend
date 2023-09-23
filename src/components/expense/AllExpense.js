@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaMicrophone } from "react-icons/fa";
+import { FaSearch, FaMicrophone, FaDownload } from "react-icons/fa";
 
 import {
   MDBContainer as Container,
@@ -48,9 +48,17 @@ const AllExpense = () => {
   // const handleVoiceSearch = () => {
   //   console.log("Initiating voice search...");
   // };
+  const handleDownloadPdf = () => {
+    console.log("Downloading PDF...");
+  };
 
   return (
     <div className="p-2 mt-2 text-center">
+      <div className="position-fixed top-0 end-0 mt-4 me-4">
+        <Button variant="primary" onClick={handleDownloadPdf}>
+          <FaDownload /> Download PDF
+        </Button>
+      </div>
       <h2 className="mb-4">Expense Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -83,7 +91,7 @@ const AllExpense = () => {
             {allExpense
               .filter((expense) => expense?.voucherNumber) // Filter out undefined/null receipts
               .filter((expense) =>
-              expense.voucherNumber
+                expense.voucherNumber
                   .toLowerCase()
                   .includes(searchQuery.toLowerCase())
               )

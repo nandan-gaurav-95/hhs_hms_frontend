@@ -37,11 +37,26 @@ import PropertyDetailsTenant from "./components/tenant/PropertyDetailsTenant";
 import DayBook from "./components/daybook/DayBook";
 import AllDaybook from "./components/daybook/AllDaybook";
 import PropertyDetailsDaybook from "./components/daybook/PropertyDetailsDaybook";
+import LoginForm from "./components/constants/LoginFlow/Login";
+import ForgetPage from "./components/constants/LoginFlow/Forgetpage";
+import ForgetPassword from "./components/constants/LoginFlow/ForgetPassword";
+import Otp from "./components/constants/LoginFlow/Otp";
+import ResetPassword from "./components/constants/LoginFlow/ResetPassword";
+import Signup from "./components/constants/LoginFlow/Signup";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+
+      <Routes>
+          <Route path="/loginform" element={<LoginForm />}></Route>
+          <Route path="/forgetPage" element={<ForgetPage />}></Route>
+          <Route path="/forgetPassword" element={<ForgetPassword />}></Route>
+          <Route path="/otp" element={<Otp />}></Route>
+          <Route path="/resetPassword" element={<ResetPassword />}></Route>
+          <Route path="/signUp" element={<Signup />}></Route>
+        </Routes>
         <Sidebar>
           <Routes>
             {/* <Route path="/header" element={<Header />}></Route>

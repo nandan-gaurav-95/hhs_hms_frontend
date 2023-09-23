@@ -45,16 +45,22 @@ const AllPayment = () => {
   //   console.log("Initiating voice search...");
   // };
 
-  const handleDownloadPdf =async () => {
-    console.log("Downloading PDF...");
+  const handleDownloadPdf = async () => {
     try {
       const response = await PaymentService.generatePdf();
-      console.log("pdf done",response);
+      console.log("API Response:", response);
+  
+      // Check if the response contains data
+      if (response.data) {
         // Create a Blob from the PDF data
         const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
-
+  
+        // Log the size of the Blob to verify it's not empty
+        console.log("PDF Blob Size:", pdfBlob.size);
+  
         // Create a Blob URL for the PDF
-        const pdfUrl = window.URL.createObjectURL(pdfBlob);
+        const pdfUrl = window.URL.createObjectURL(response.data);
+        window.open(pdfUrl);
   
         // Create an anchor element for downloading
         const a = document.createElement('a');
@@ -66,10 +72,16 @@ const AllPayment = () => {
   
         // Clean up the Blob URL
         window.URL.revokeObjectURL(pdfUrl);
+      } else {
+        console.error("Empty PDF response");
+      }
     } catch (error) {
       console.error("Error:", error);
     }
   };
+  
+
+
   return (
     <div className="p-5 mt-5 text-center">
       <div className="position-fixed top-0 end-0 mt-4 me-4">
