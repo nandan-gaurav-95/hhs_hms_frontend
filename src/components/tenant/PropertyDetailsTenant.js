@@ -114,7 +114,7 @@ function PropertyDetailsTenant() {
         </Col>
         <Col>
           <h1 className="text-center mb-4">
-            Property Details of {propData?.tenantName}
+          Tenant Details of {propData?.tenantName}
           </h1>
         </Col>
       </Row>

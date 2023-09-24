@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import { FaDownload } from "react-icons/fa";
 
 function ExpenseDetails() {
   const { id } = useParams() || {};
@@ -95,8 +96,17 @@ function ExpenseDetails() {
   };
 
   // Use the companyName in your component
+
+  const handleDownloadPdf = () => {
+    console.log("Downloading PDF...");
+  };
   return (
     <div className=" p-2 mt-2 ">
+      <div className="position-fixed top-0 end-0 mt-4 me-4">
+        <Button variant="primary" onClick={handleDownloadPdf}>
+          <FaDownload /> Download PDF
+        </Button>
+      </div>
       <Row className="justify-content-center">
         <Col md="1">
           {propData?.Expense?.logo && (
@@ -114,7 +124,7 @@ function ExpenseDetails() {
         </Col>
         <Col>
           <h1 className=" mb-5 text-center">
-            Property Details of {propData?.voucherNumber}
+            Expense Details of {propData?.voucherNumber}
           </h1>
         </Col>
       </Row>

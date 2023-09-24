@@ -135,7 +135,7 @@ const DayBook = () => {
                 </div>
                 <div className="text-center mt-4 ">
           <Button variant="primary" type="button" square onClick={handleAllDayBook}>
-          AllDaybook
+          All Daybook
           </Button>
         </div>
             </form>

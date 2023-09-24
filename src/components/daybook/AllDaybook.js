@@ -96,7 +96,7 @@ const AllDaybook = () => {
                     color="primary"
                     onClick={() => handleViewDetails(daybook.id)}
                   >
-                    View Property Details
+                    View Daybook Details
                   </Button>
                 </li>
               ))}

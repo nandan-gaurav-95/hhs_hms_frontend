@@ -71,11 +71,12 @@ export const APIS ={
      DELETERECEIPTBYID:`${API_BASE_URL}/receipt`,//Delete a Receipt by ID
 
     //Expense
-    CREATEEXPENSE: `${API_BASE_URL}/expense`,//Post-method
+     CREATEEXPENSE: `${API_BASE_URL}/expense`,//Post-method
      GETALLEXPENSE:`${API_BASE_URL}/expense`,// Get-method
      GETEXPENSEBYID:`${API_BASE_URL}/expense`,// Get specific Expense by ID
      UPDATEEXPENSEBYID:`${API_BASE_URL}/expense`,//Update an existing Expense 
      DELETEEXPENSEBYID:`${API_BASE_URL}/expense`,//Delete a Expense by ID
+     GENERATEEXPENSEPDFBYID:`${API_BASE_URL}/expensegeneratepdf`, //Generate Expense pdf by id 
 
 
      //Student

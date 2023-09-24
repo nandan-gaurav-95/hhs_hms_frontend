@@ -99,7 +99,7 @@ const ShowBank = () => {
                     color="primary"
                     onClick={() => handleViewDetails(bank.id)}
                   >
-                    View Property Details
+                    View Bank Details
                   </Button>
                 </li>
               ))}

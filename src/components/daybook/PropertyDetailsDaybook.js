@@ -114,7 +114,7 @@ function PropertyDetailsDaybook() {
         </Col>
         <Col>
           <h1 className="text-center mb-4">
-            Property Details of {propData?.description}
+          Daybook Details of {propData?.description}
           </h1>
         </Col>
       </Row>

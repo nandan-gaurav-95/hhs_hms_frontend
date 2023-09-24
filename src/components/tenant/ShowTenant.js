@@ -96,7 +96,7 @@ const ShowTenant = () => {
                     color="primary"
                     onClick={() => handleViewDetails(tenant.id)}
                   >
-                    View Property Details
+                    View Tenant Details
                   </Button>
                 </li>
               ))}

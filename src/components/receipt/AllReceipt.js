@@ -105,7 +105,7 @@ const AllReceipt = () => {
                     color="primary"
                     onClick={() => handleViewDetails(receipt.id)}
                   >
-                    View Property Details
+                    View Receipt Details
                   </Button>
                 </li>
               ))}
