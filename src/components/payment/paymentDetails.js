@@ -96,9 +96,34 @@ function PaymentDetails() {
     // console.log(propData);
   };
 
-  const handleDownloadPdf = async(id) => {
+  const handleDownloadPdf = async() => {
 
-    console.log("Downloading PDF...");
+    try {
+      const response = await axios.get(`${APIS.GENERATEPAYMENTPDFBYID}/${id}`, {
+        responseType: "blob", // Set the response type to blob to handle binary data
+      });
+  
+      if (response.status === 200) {
+        // Create a Blob from the binary data
+        const blob = new Blob([response.data], { type: "application/pdf" });
+  
+        // Create a URL for the Blob
+        const url = window.URL.createObjectURL(blob);
+  
+        // Create a link element to trigger the download
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "payment.pdf"; // Set the filename for the downloaded PDF
+        link.click();
+  
+        // Release the URL object
+        window.URL.revokeObjectURL(url);
+      } else {
+        console.error("Error while generating PDF");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   // Use the companyName in your component

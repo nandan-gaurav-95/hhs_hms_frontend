@@ -61,7 +61,7 @@ export const APIS ={
      GETPAYMENTBYID:`${API_BASE_URL}/payment`,// Get specific Payment by ID
      UPDATEPAYMENTBYID:`${API_BASE_URL}/payment`,//Update an existing Payment 
      DELETEPAYMENTBYID:`${API_BASE_URL}/payment`,//Delete a Payment by ID
-     GENERATEPDF: `${API_BASE_URL}/generatepdf`,//Get-method
+     GENERATEPAYMENTPDFBYID:`${API_BASE_URL}/paymentgeneratepdf`,//Get-method
 
     //Receipt
     CREATERECEIPT: `${API_BASE_URL}/receipt`,//Post-method
@@ -69,6 +69,7 @@ export const APIS ={
      GETRECEIPTBYID:`${API_BASE_URL}/receipt`,// Get specific Receipt by ID
      UPDATERECEIPTBYID:`${API_BASE_URL}/receipt`,//Update an existing Receipt 
      DELETERECEIPTBYID:`${API_BASE_URL}/receipt`,//Delete a Receipt by ID
+     GENERATERECEIPTPDFBYID :`${API_BASE_URL}/receiptgeneratepdf`,//Get-method
 
     //Expense
      CREATEEXPENSE: `${API_BASE_URL}/expense`,//Post-method
