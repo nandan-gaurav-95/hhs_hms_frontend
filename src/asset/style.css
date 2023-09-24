@@ -1,12 +1,13 @@
 .delete-button {
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 47%;
   padding: 4px 10px; 
   background-color: #e75a4a; 
   color: white; 
   border: none; 
   border-radius: 5px;
   cursor: pointer; 
+  width: 100px;
 }
 .sideBar-div{
   max-width: 100%;
@@ -26,6 +27,7 @@
   display: flex;
   flex-direction: row;
   width:100%;
+  height: 100vh;
 }
 .icon{
   color: white;
@@ -88,6 +90,7 @@ background-color:#333;
   background-color: #FFF;
   border-radius: 5px;
   color: #FFF;
+  
 }
 .backLoginForm:hover {
   border: 1px solid gray;
