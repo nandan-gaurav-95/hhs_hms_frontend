@@ -52,7 +52,6 @@ const AllExpense = () => {
 
   return (
     <div className="p-2 mt-2 text-center">
-      
       <h2 className="mb-4">Expense Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>

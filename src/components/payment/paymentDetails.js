@@ -9,7 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
-import { PaymentService } from "../../services/PaymentService";
+import {FaDownload } from "react-icons/fa";
 
 function PaymentDetails() {
   const { id } = useParams() || {};
@@ -96,35 +96,19 @@ function PaymentDetails() {
     // console.log(propData);
   };
 
-  // const handlPdf = async(id) => {
+  const handleDownloadPdf = async(id) => {
 
-  //   try {
-  //     const response = await PaymentService.generatePdf(id);
-  //     console.log("pdf done",response);
-  //       // Create a Blob from the PDF data
-  //       const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
-
-  //       // Create a Blob URL for the PDF
-  //       const pdfUrl = window.URL.createObjectURL(pdfBlob);
-  
-  //       // Create an anchor element for downloading
-  //       const a = document.createElement('a');
-  //       a.href = pdfUrl;
-  //       a.download = 'hhs-hms.pdf'; // Set the desired file name here
-  
-  //       // Programmatically trigger the download
-  //       a.click();
-  
-  //       // Clean up the Blob URL
-  //       window.URL.revokeObjectURL(pdfUrl);
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
+    console.log("Downloading PDF...");
+  };
 
   // Use the companyName in your component
   return (
     <div className=" p-2 mt-2 ">
+      <div className="position-fixed top-0 end-0 mt-4 me-4">
+        <Button variant="primary" onClick={handleDownloadPdf}>
+          <FaDownload /> Download PDF
+        </Button>
+      </div>
       <Row className="justify-content-center">
         <Col>
           <h1 className="text-center mb-4">
