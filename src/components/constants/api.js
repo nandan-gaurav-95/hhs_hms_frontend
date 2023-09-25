@@ -11,7 +11,12 @@ export const APIS ={
      //Form save these api are from hhs which is backend project
      CLOUDUPLOAD:`${API_BASE_URL}/cloud-upload`,//multiple image are uploaded to the cloud not create in frontend
 
+     //login api
+     CREATEACCOUNT:`${API_BASE_URL}/register`,//Post-method for create acc
+     LOGINACCOUNT:`${API_BASE_URL}/login`,//post-method for login
+     FORGOTPASSWORD:`${API_BASE_URL}/forgot-password`,//Post-method for password reset request
 
+     //company
      CREATECOMPANY:`${API_BASE_URL}/create`,//Post-method for company 
      SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
      ALLCOMPANYNAME:`${API_BASE_URL}/companies`,

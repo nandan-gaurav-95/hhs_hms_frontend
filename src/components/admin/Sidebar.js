@@ -15,14 +15,12 @@ import {
 import { BiSolidInstitution } from "react-icons/bi";
 
 import { NavLink } from "react-router-dom";
-
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false); // Set isOpen to false initially
-  const [activeMenu, setActiveMenu] = useState(null); // State to track the active top-level menu item
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
 
   const toggle = () => {
     setIsOpen(!isOpen);
-    setActiveMenu(null); // Close all submenus when collapsing the sidebar
   };
 
   const menuItem = [
@@ -32,7 +30,7 @@ const Sidebar = ({ children }) => {
       subMenu: [
         // Submenu items for Property
         {
-          path: "/",
+          path: "/register",
           name: "Registration",
           icon: <MdAppRegistration />,
         },
@@ -103,7 +101,7 @@ const Sidebar = ({ children }) => {
   ];
 
   const handleMenuClick = (menuName) => {
-    setActiveMenu(activeMenu === menuName ? null : menuName); // Toggle active top-level menu
+    setActiveMenu(activeMenu === menuName ? null : menuName);
   };
 
   return (
@@ -113,7 +111,6 @@ const Sidebar = ({ children }) => {
         className={`sidebar ${isOpen ? "expanded" : "collapsed"}`}
       >
         <div className="top_section">
-          {/* Conditionally render the "Admin Panel" name above the menu button */}
           {isOpen && <h3 className="logo">Admin Panel</h3>}
           <div className="bars">
             <FaBars onClick={toggle} />
@@ -123,32 +120,32 @@ const Sidebar = ({ children }) => {
         {menuItem.map((item, index) => (
           <div key={index}>
             <div
-              onClick={() => handleMenuClick(item.name)} // Pass item.name as an argument
-              className="link text-decoration-none"
+              onClick={() => handleMenuClick(item.name)}
+              className={`link text-decoration-none ${activeMenu === item.name ? "active" : ""}`}
             >
               <div className="link-content">
                 <div className="icon">{item.icon}</div>
-                {/* Conditionally render the menu name based on isOpen */}
                 {isOpen && <div className="link-text">{item.name}</div>}
               </div>
             </div>
-            {item.subMenu && isOpen && activeMenu === item.name && (
-              <div className="submenu">
-                {item.subMenu.map((subItem, subIndex) => (
-                  <NavLink
-                    to={subItem.path}
-                    key={subIndex}
-                    className="sublink text-decoration-none"
-                    activeClassName="active"
-                  >
-                    <div className="link-content submenu-item">
-                      <div className="icon">{subItem.icon}</div>
-                      <div className="submenu-text">{subItem.name}</div>
-                    </div>
-                  </NavLink>
-                ))}
-              </div>
-            )}
+            {item.subMenu && activeMenu === item.name && (
+  <div className="submenu">
+    {item.subMenu.map((subItem, subIndex) => (
+      <NavLink
+        to={subItem.path}
+        key={subIndex}
+        className="sublink text-decoration-none"
+        activeClassName="active"
+      >
+        <div className="link-content submenu-item"> {/* Use the correct class name "submenu-item" */}
+          <div className="submenu-icon">{subItem.icon}</div> {/* Use the correct class name "submenu-icon" */}
+          {isOpen && <div className="submenu-text">{subItem.name}</div>}
+        </div>
+      </NavLink>
+    ))}
+  </div>
+)}
+
           </div>
         ))}
       </div>

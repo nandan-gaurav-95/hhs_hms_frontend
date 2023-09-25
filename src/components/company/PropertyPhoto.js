@@ -66,7 +66,7 @@ function PropertyPhotoForm() {
         console.log("Property Photos saved successfully");
         setSelectedPhotos([]);
         setThumbnails([]); // Clear thumbnails after submission
-        navigate("/");
+        navigate("/register");
       } else {
         setError("Error saving property photos"); // Set error message
       }
@@ -121,20 +121,23 @@ function PropertyPhotoForm() {
         </form>
       </ul>
       <h5>Selected Photos:</h5>
-      <ul>
+      <ul className="list-unstyled">
         {selectedPhotos.map((photo, index) => (
-          <li key={index} className="d-flex align-items-center">
-            <div>
+          <li
+            key={index}
+            className="d-flex align-items-center justify-content-between"
+          >
+            <div className="d-flex align-items-center">
               <img
                 src={thumbnails[index]}
                 alt={`Thumbnail ${index}`}
                 width="40"
                 height="40"
               />
+              <span className="ps-2">{photo.name}</span>
             </div>
-            <span className="ps-2">{photo.name}</span>
             <button
-              className="delete-button ml-4"
+              className="btn btn-danger"
               onClick={() => handleDelete(index)}
             >
               Delete

@@ -200,7 +200,22 @@ background-color:#333;
 .logo {
   color: #FFF;
 }
+.loginBOdyDiv{
+  height: 100vh;
+}
 
+.submenu-text {
+  color: white;
+  margin-right:10px;
+  margin-bottom: 20px;
+  
+}
+.submenu-icon{
+  color: white;
+ 
+ margin: 0px 10px 20px 20px;
+  
+}
 
  /* .sidebar-form {
   width: 100%;

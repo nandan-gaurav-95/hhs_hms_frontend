@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState} from "react";
+
 import "../../../asset/style.css";
 import {
   MDBContainer,
@@ -8,22 +9,84 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import hhsLogo from "../../../asset/images/hhs logo.jpg";
-import hhspage from "../../../asset/images/hhs page.jpg";
+// import hhspage from "../../../asset/images/hhs page.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
-import { AiFillEyeInvisible } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import { HiOutlineSupport } from "react-icons/hi";
-
+import axios from "axios";
+import { APIS } from "../api";
+import { ToastContainer, toast } from "react-toastify";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 export default function Signup() {
   // back arrow
   const navigate = useNavigate();
 
+  // State to store user registration data
+  const initialState = {
+    name: "",
+    email: "",
+    password: "",
+    gender: "",
+    address: "",
+  }
+  const [formData, setFormData] = useState(initialState);
+  // const [password, setPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmpasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  // Function to handle form submission
+  const handleSignup = async () => {
+    try {
+      // Make a POST request to the registration API
+      console.log("HHIiiiiiii",formData);
+      const response = await axios.post(APIS.CREATEACCOUNT, formData);
+      if (response.status===200) {
+        console.log("Registration successful!");
+        setFormData(initialState);
+        toast.success("Submit successful!", {
+          position: "top-right", // Adjust the position as needed
+          autoClose: 1000,
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      } else {
+        // Handle registration error, e.g., show an error message
+        console.error("Registration failed.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+    // Function to update form data when input fields change
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    };
+    
+  // const handlePasswordChange = (event) => {
+  //   const newPassword = event.target.value;
+  //   setPassword(newPassword);
+
+  //   // Password validation rules
+  //   const passwordPattern = /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+  //   if (!passwordPattern.test(newPassword)) {
+  //     setPasswordError(
+  //       "Password must contain at least 8 characters, including one lowercase letter, one uppercase letter, and one number."
+  //     );
+  //   } else {
+  //     setPasswordError("");
+  //   }
+  // };
+
   return (
-    <body class="loginBOdyDiv  bg-light p-0">
-      <MDBContainer fluid>
-        <MDBRow>
+    <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center">
+      <ToastContainer />
+      <MDBContainer fluid className="loginBOdyDiv d-flex align-items-center justify-content-center">
+        {/* <MDBRow> */}
           <MDBCol className="forbusiness-page col-sm-6 rounded py-0">
             <BiArrowBack
               className="backLoginForm fs-2 mt-4 ms-3 rounded  text-dark d-flex justify-content-start align-item-start"
@@ -38,16 +101,22 @@ export default function Signup() {
                 <p className="text-center pb-3">Sign Up to Account</p>
 
                 <MDBInput
-                  wrapperClass="px-5 mb-4"
+                  wrapperClass="mb-4"
                   label="Name"
                   id="signupform2"
-                  type="name"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
                 <MDBInput
                   wrapperClass=" mb-4 "
                   label="Email address"
                   id="form1"
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
                 <MDBRow>
                   <MDBCol>
@@ -55,45 +124,76 @@ export default function Signup() {
                       wrapperClass="mb-4"
                       label="Gender"
                       id="form2"
-                      type="gender"
+                      type="text"
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleChange}
                     />
                   </MDBCol>
-                  <MDBCol>
+                  {/* <MDBCol>
                     <MDBInput
                       wrapperClass="mb-4"
                       label="Age"
                       id="form2"
                       type="age"
                     />
-                  </MDBCol>
+                  </MDBCol> */}
                 </MDBRow>
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Addresss"
                   id="form2"
-                  type="address"
+                  type="text"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
                 />
 
-                <MDBInput
-                  wrapperClass="mb-4 d-flex align-item-center "
-                  label="Password"
-                  id="form2"
-                  type="password"
+<MDBInput
+                wrapperClass="mb-4  py-1 d-flex align-item-center "
+                label="Password"
+                id="form2"
+                name="password"
+                type={passwordVisible ? "text" : "password"}
+                value={formData.password}
+                onChange={handleChange}
+              >
+                <span
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  style={{ cursor: "pointer" }}
                 >
-                  {" "}
-                  <AiFillEyeInvisible className="mt-2 me-3" />
-                </MDBInput>
-                <MDBInput
-                  wrapperClass="mb-4"
-                  label="Confirm Password"
-                  id="form2"
-                  type=" confirm password"
-                />
-                <MDBBtn>
-                  <Link to="" className="Login_Btm ">
-                    <text className="log in text-white">Sign Up</text>
-                  </Link>
-                </MDBBtn>
+                  {passwordVisible ? (
+                    <AiFillEye className="mt-2 me-3" />
+                  ) : (
+                    <AiFillEyeInvisible className="mt-2 me-3" />
+                  )}
+                </span>
+              </MDBInput>
+              {passwordError && (
+                <div className="text-danger">{passwordError}</div>
+              )}
+              <MDBInput
+                wrapperClass="mb-4  py-1 d-flex align-item-center "
+                label="Confirm Password"
+                id="form2"
+                type={confirmpasswordVisible ? "text" : "Password"}
+              >
+                <span
+                  onClick={() =>
+                    setConfirmPasswordVisible(!confirmpasswordVisible)
+                  }
+                  style={{ cursor: "pointer" }}
+                >
+                  {confirmpasswordVisible ? (
+                    <AiFillEye className="mt-2 me-3" />
+                  ) : (
+                    <AiFillEyeInvisible className="mt-2 me-3" />
+                  )}
+                </span>
+              </MDBInput>
+                <MDBBtn onClick={handleSignup}>
+      <text className="login text-white">Sign Up</text>
+    </MDBBtn>
                 <div className="text-center">
                   <p className="my-2">
                     Already have an account?
@@ -102,9 +202,9 @@ export default function Signup() {
                     </Link>
                   </p>
 
-                  <p className="hr-lines mb-4">OR </p>
+                  {/* <p className="hr-lines mb-4">OR </p> */}
 
-                  <MDBCol className=" login-logo-margin col-sm-12 mb-4">
+                  {/* <MDBCol className=" login-logo-margin col-sm-12 mb-4">
                     <Link to="" className="loginfacebook ">
                       <text className="facebook_log  py-2 d-flex  align-items-center">
                         {" "}
@@ -126,7 +226,7 @@ export default function Signup() {
                         </span>
                       </text>
                     </Link>
-                  </MDBCol>
+                  </MDBCol> */}
                   
                   <div className="loginformpic mt-0 mb-0">
                     <img
@@ -166,11 +266,11 @@ export default function Signup() {
             </div>
           </MDBCol>
 
-          <MDBCol sm="6" className="d-none d-sm-block pe-0">
+          {/* <MDBCol sm="6" className="d-none d-sm-block pe-0">
              <img src={hhspage} alt="Login image" className="signupimage" /> 
-          </MDBCol>
-        </MDBRow>
+          </MDBCol> */}
+        {/* </MDBRow> */}
       </MDBContainer>
-    </body>
+    </div>
   );
 }

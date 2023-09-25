@@ -365,23 +365,28 @@ function PropertyDetails() {
       </Row>
       <Row>
         <div className="text-center mt-4 form-group row">
-          {imageData &&
-            imageData.map((base64String, index) => (
-              <div key={index}>
-                <img
-                  style={{
-                    marginLeft: "10px",
-                    marginTop: "0px",
-                    width: "150px",
-                    height: "100px",
-                  }}
-                  src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
-                  alt={`Property photo ${index + 1}`}
-                />
-              </div>
-              
-            ))
-            }
+        <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent:"center"
+            }}
+          >
+            {imageData &&
+              imageData.map((base64String, index) => (
+                <div key={index} style={{ marginRight: "10px" }}>
+                  <img
+                    style={{
+                      width: "200px",
+                      height: "150px",
+                    }}
+                    src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
+                    alt={`Property photo ${index + 1}`}
+                  />
+                </div>
+              ))}
+          </div>
             {imageData && (<button
               className="delete-button"
               onClick={handleDelete}
