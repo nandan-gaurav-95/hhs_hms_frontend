@@ -9,8 +9,9 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
-import Sidebar from "../admin/Sidebar";
 
+import { FaDownload } from "react-icons/fa"; 
+import Sidebar from "../admin/Sidebar";
 function PropertyDetailsTenant() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
@@ -94,12 +95,32 @@ function PropertyDetailsTenant() {
     }));
     // console.log(propData);
   };
-
-  // Use the companyName in your component
+  const handleDownloadPdf = () => {
+    // Add code for PDF download here
+    console.log("Download PDF clicked");
+  };
+  const handlesubmitDownloadPdf = () => {
+    // Add code for PDF download here
+    console.log("Download PDF clicked");
+  };
+  // Use the companyName in your component 
   return (
-    <div className="">
+    <div className=" ">
       <Sidebar>
-      
+      <div className="position-fixed top-0 end-0 mt-4 me-4">
+        <div className="d-flex flex-column">
+          <div style={{ marginBottom: "10px" }}>
+            <Button variant="primary" onClick={handleDownloadPdf}>
+              <FaDownload /> PDF for Rent
+            </Button>
+          </div>
+          <div>
+            <Button variant="primary" onClick={handlesubmitDownloadPdf}>
+              <FaDownload />  PDF for Electricity Bill
+            </Button>
+          </div>
+        </div>
+      </div>
       <Row className="justify-content-center">
         <Col md="1">
           {propData?.Tenant?.logo && (
@@ -188,6 +209,20 @@ function PropertyDetailsTenant() {
                   {updatedTenant.allocatedShop}
                 </li>
               )}
+              <strong>Bill Generation/Total Bill:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="billGeneration"
+                  value={updatedTenant.billGeneration}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedTenant.billGeneration}
+                </li>
+              )}
             </Col>
             <Col className="col-sm-5 ">
               <strong>Collected Rent:</strong>
@@ -247,8 +282,40 @@ function PropertyDetailsTenant() {
                   {updatedTenant.electricityDue}
                 </li>
               )}
+              <strong>Collection Details:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="collectionDetails"
+                  value={updatedTenant.collectionDetails}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedTenant.collectionDetails}
+                </li>
+              )}
             </Col>
           </Row>
+          <Row className="justify-content-center">
+            <Col className="col-sm-5 ">
+              <strong>Payment Method:</strong>
+              {editMode ? (
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="tenantName"
+                  value={updatedTenant.paymentMethod}
+                  onChange={handleChange}
+                />
+              ) : (
+                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                  {updatedTenant.paymentMethod}
+                </li>
+              )}
+              </Col>
+              </Row>
         </ul>
       </Row>
       <Row className="justify-content-center">
@@ -269,6 +336,7 @@ function PropertyDetailsTenant() {
           </Col>
         )}
       </Row>
+      
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
           <Button
