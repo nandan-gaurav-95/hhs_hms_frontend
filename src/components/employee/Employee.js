@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { EmployeeService } from '../../services/EmployeeService';
+import Sidebar from '../admin/Sidebar';
 const EmployeeForm = () => {
     const navigate = useNavigate();
     const initialState ={
@@ -56,7 +57,8 @@ const EmployeeForm = () => {
       };
     
     return (
-        <div className=" p-2  mt-5  ">
+        <div className="">
+            <Sidebar>
             <h1 className=" mb-4 text-center">Empolyee Management</h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -170,7 +172,7 @@ const EmployeeForm = () => {
             </Button>
             </div>
           </div>
-
+          </Sidebar>
         </div>
     );
 };

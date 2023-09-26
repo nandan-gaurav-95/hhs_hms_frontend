@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { StudentService } from '../../services/StudentService';
+import Sidebar from '../admin/Sidebar';
 
 const StudentForm = () => {
     const navigate = useNavigate();
@@ -61,7 +62,8 @@ const StudentForm = () => {
   };
 
     return (
-        <div className=" p-2 mt-2 ">
+        <div className="">
+            <Sidebar>
            <Row className="mb-4">
             <h1 className=" mb-4 text-center"> Student Data </h1></Row>
             <form onSubmit={handleSubmit}>
@@ -212,7 +214,7 @@ const StudentForm = () => {
           </div>
 
         
-        
+          </Sidebar>
         </div>
     );
 };

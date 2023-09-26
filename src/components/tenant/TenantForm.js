@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { TenantService } from "../../services/TenantService";
+import Sidebar from "../admin/Sidebar";
 
 const TenantForm = () => {
   const navigate = useNavigate();
@@ -59,7 +60,8 @@ const TenantForm = () => {
   };
 
   return (
-    <div className=" p-2 mt-5 ">
+    <div className=" ">
+      <Sidebar>
       <h1 className=" mb-4 text-center">Tenant Management</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -151,6 +153,7 @@ const TenantForm = () => {
           </Button>
         </div>
       </form>
+      </Sidebar>
     </div>
   );
 };

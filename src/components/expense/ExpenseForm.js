@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { ExpenseService } from "../../services/ExpenseService";
+import Sidebar from "../admin/Sidebar";
 const ExpenseForm = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -50,7 +51,8 @@ const ExpenseForm = () => {
   };
 
   return (
-    <div className=" p-2 mt-5 ">
+    <div className="">
+      <Sidebar>
       <h1 className=" mb-4 text-center">Expense Voucher</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -122,6 +124,7 @@ const ExpenseForm = () => {
           </Button>
         </div>
       </form>
+      </Sidebar>
     </div>
   );
 };

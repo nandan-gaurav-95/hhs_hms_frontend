@@ -11,6 +11,7 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 import { PaymentService } from "../../services/PaymentService";
+import Sidebar from "../admin/Sidebar";
 
 const AllPayment = () => {
   const [allPayment, setAllPayment] = useState([]); // Corrected variable name
@@ -50,7 +51,8 @@ const AllPayment = () => {
 
 
   return (
-    <div className="p-5 mt-5 text-center">
+    <div className="text-center">
+      <Sidebar>
       <h2 className="mb-4">Payment Details:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -103,6 +105,7 @@ const AllPayment = () => {
           </ul>
         </Col>
       </Row>
+      </Sidebar>
     </div>
   );
 };

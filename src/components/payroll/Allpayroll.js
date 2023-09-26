@@ -10,6 +10,7 @@ import {
   MDBCol as Col,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 
 const AllPayroll = () => {
   const [allpayroll, setAllPayroll] = useState([]); // Corrected variable name
@@ -45,7 +46,8 @@ const AllPayroll = () => {
   // };
 
   return (
-    <div className="p-5 mt-5 text-center">
+    <div className="text-center">
+      <Sidebar>
       <h2 className="mb-4">Payroll Details:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -96,6 +98,7 @@ const AllPayroll = () => {
           </ul>
         </Col>
       </Row>
+      </Sidebar>
     </div>
   );
 };

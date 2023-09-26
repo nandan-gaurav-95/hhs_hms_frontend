@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 
 
 function StudentDetails() {
@@ -107,7 +108,8 @@ function StudentDetails() {
 
   // Use the companyName in your component
   return (
-    <div className=" p-2 mt-2 ">
+    <div className=" ">
+      <Sidebar>
       <Row className="justify-content-center">
         
         <Col>
@@ -320,7 +322,7 @@ function StudentDetails() {
         </Col>
       </Row>
       
-     
+      </Sidebar>
     </div>
   );
 }

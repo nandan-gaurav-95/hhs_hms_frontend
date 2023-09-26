@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 
 function PropertyDetailsDaybook() {
   const { id } = useParams() || {};
@@ -96,7 +97,8 @@ function PropertyDetailsDaybook() {
 
   // Use the companyName in your component
   return (
-    <div className=" p-2 mt-2 ">
+    <div className="">
+      <Sidebar>
       <Row className="justify-content-center">
         <Col md="1">
           {propData?.Daybook?.logo && (
@@ -291,6 +293,7 @@ function PropertyDetailsDaybook() {
           </Button>
         </Col>
       </Row>
+      </Sidebar>
     </div>
   );
 }

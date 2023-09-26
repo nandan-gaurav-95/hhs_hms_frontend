@@ -11,6 +11,7 @@ import axios from "axios";
 import { APIS } from "../constants/api";
 
 import  "react-select-search/style.css";
+import Sidebar from "../admin/Sidebar";
 
 const SampleMyComponent = () => {
   const initialState = {
@@ -97,7 +98,8 @@ const handleSubmit = async (event) => {
   
 
   return (
-    <div className=" p-3 mt-2">
+    <div className="">
+      <Sidebar>
       <h1 className=" mb-4 text-center">From SampleMyComponent Details</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
@@ -219,6 +221,7 @@ const handleSubmit = async (event) => {
           <Button type="submit">Submit</Button>
         </div>
       </form>
+      </Sidebar>
     </div>
   );
 };

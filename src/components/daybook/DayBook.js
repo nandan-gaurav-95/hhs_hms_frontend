@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { DaybookService } from '../../services/DaybookService';
+import Sidebar from '../admin/Sidebar';
 // import AllDaybook from './AllDaybook';
 
 const DayBook = () => {
@@ -56,7 +57,8 @@ const DayBook = () => {
         navigate("/alldaybook");
        };
     return (
-        <div className=" p-2 mt-5">
+        <div className="">
+            <Sidebar>
             <h1 className=" mb-4 text-center">Day Book </h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -139,6 +141,7 @@ const DayBook = () => {
           </Button>
         </div>
             </form>
+            </Sidebar>
         </div>
     );
 };

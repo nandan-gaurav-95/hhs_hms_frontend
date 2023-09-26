@@ -3,7 +3,7 @@ import "../../../asset/style.css";
 import { MDBContainer, MDBCol, MDBInput, MDBBtn } from "mdb-react-ui-kit";
 import { Link, useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
-import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { APIS } from "../api";
 
@@ -15,7 +15,8 @@ export default function ForgetPage() {
     confirmPassword: "",
   }
   const [formData, setFormData] = useState(initialState);
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
+ 
   const handleResetPassword = async () => {
     try {
       if (formData.newPassword !== formData.confirmPassword) {
@@ -70,14 +71,22 @@ export default function ForgetPage() {
                 wrapperClass="mb-4 d-flex align-item-center "
                 label="Enter New Password"
                 id="form2"
-                type="password"
+                type={passwordVisible ? "text" : "password"}
           
                 value={formData.newPassword}
                 onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
               >
-                {" "}
-                <AiFillEyeInvisible className="mt-2 me-3" />
-              </MDBInput>
+                <span
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {passwordVisible ? (
+                      <AiFillEye className="mt-2 me-3" />
+                    ) : (
+                      <AiFillEyeInvisible className="mt-2 me-3" />
+                    )}
+                  </span>
+                </MDBInput>
 
               <MDBInput
                 wrapperClass="mb-4 d-flex align-item-center "

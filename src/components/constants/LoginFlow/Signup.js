@@ -197,7 +197,7 @@ export default function Signup() {
                 <div className="text-center">
                   <p className="my-2">
                     Already have an account?
-                    <Link to="/loginform" className="Signupdiv">
+                    <Link to="/register" className="Signupdiv">
                       <text className="signup">Login</text>
                     </Link>
                   </p>

@@ -40,6 +40,11 @@ const Sidebar = ({ children }) => {
           icon: <AiTwotoneHome />,
         },
         {
+          path: "/empolyee",
+          name: "Empolyee",
+          icon: <BsFillFilePersonFill />,
+        },
+        {
           path: "/payroll",
           name: "Payroll",
           icon: <AiFillAlipayCircle />,
@@ -49,16 +54,8 @@ const Sidebar = ({ children }) => {
           name: "Inventory",
           icon: <MdInventory2 />,
         },
-        {
-          path: "/daybook",
-          name: "Daybook",
-          icon: <AiFillAccountBook />,
-        },
-        {
-          path: "/empolyee",
-          name: "Empolyee",
-          icon: <BsFillFilePersonFill />,
-        },
+       
+        
         {
           path: "/payment",
           name: "Payment",
@@ -73,6 +70,11 @@ const Sidebar = ({ children }) => {
           path: "/expense",
           name: "Expense",
           icon: <GiExpense />,
+        },
+        {
+          path: "/daybook",
+          name: "Daybook",
+          icon: <AiFillAccountBook />,
         },
       ],
     },

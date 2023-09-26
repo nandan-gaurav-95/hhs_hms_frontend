@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 
 function PropertyDetails() {
   const { id } = useParams() || {};
@@ -121,7 +122,8 @@ function PropertyDetails() {
 
   // Use the companyName in your component
   return (
-    <div className=" p-2 mt-2 ">
+    <div className="">
+      <Sidebar>
       <Row className="justify-content-center">
         <Col md="1">
           {propData?.imageData && (
@@ -398,6 +400,7 @@ function PropertyDetails() {
         </div>
         
       </Row>
+      </Sidebar>
     </div>
   );
 }

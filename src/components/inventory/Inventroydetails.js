@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 
 function InventoryDetails() {
   const { id } = useParams() || {};
@@ -104,7 +105,8 @@ function InventoryDetails() {
 
   // Use the companyName in your component
   return (
-    <div className=" p-2 mt-2 ">
+    <div className="">
+      <Sidebar>
       <Row className="justify-content-center">
         <Col>
           <h1 className="text-center mb-4">
@@ -240,6 +242,7 @@ function InventoryDetails() {
           </Button>
         </Col>
       </Row>
+      </Sidebar>
     </div>
   );
 }

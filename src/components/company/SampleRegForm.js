@@ -15,6 +15,7 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 const SampleRegForm = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -168,7 +169,8 @@ const SampleRegForm = () => {
   // };
   const condition = true;
   return (
-    <div className=" p-2 mt-2 ">
+    <div className="">
+    <Sidebar>
       <h1 className=" mb-4 text-center">Sample Reg Form Company</h1>
       <Row className="justify-content-center">
         <Col md="6">
@@ -271,6 +273,7 @@ const SampleRegForm = () => {
         
         </Col>
       </Row>
+      </Sidebar>
     </div>
   );
 };

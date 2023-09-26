@@ -10,6 +10,7 @@ import {
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
 import {FaDownload } from "react-icons/fa";
+import Sidebar from "../admin/Sidebar";
 
 function PaymentDetails() {
   const { id } = useParams() || {};
@@ -128,7 +129,8 @@ function PaymentDetails() {
 
   // Use the companyName in your component
   return (
-    <div className=" p-2 mt-2 ">
+    <div className="">
+<Sidebar>
       <div className="position-fixed top-0 end-0 mt-4 me-4">
         <Button variant="primary" onClick={handleDownloadPdf}>
           <FaDownload /> Download PDF
@@ -278,6 +280,7 @@ function PaymentDetails() {
         </Col>
 
       </Row>
+      </Sidebar>
     </div>
   );
 }

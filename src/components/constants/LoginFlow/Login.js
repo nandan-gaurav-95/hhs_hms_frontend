@@ -77,6 +77,7 @@ function LoginForm() {
   return (
      <body class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
      ">
+     
       <Container fluid className="loginBOdyDiv mt-4 d-flex align-items-center justify-content-center h-100">
       <ToastContainer/>
           <Col className="forbusiness-page col-sm-6 rounded py-0">
@@ -101,7 +102,7 @@ function LoginForm() {
                   id="form2"
                   type={passwordVisible ? "text" : "password"}
                   // value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  // onChange={(e) => setPassword(e.target.value)}
                 >
                   <span
                     onClick={() => setPasswordVisible(!passwordVisible)}
@@ -209,6 +210,7 @@ function LoginForm() {
           </Col> */}
         {/* </Row> */}
       </Container>
+    
      </body>
   );
 }

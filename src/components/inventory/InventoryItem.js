@@ -8,6 +8,7 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import{InventoryService}from '../../services/InventoryService'
+import Sidebar from '../admin/Sidebar';
 // import {createInventoryItem} from './services/InventoryService'
 
 const InventoryForm = () => {
@@ -54,7 +55,8 @@ const InventoryForm = () => {
    
 
     return (
-        <div className=" p-2 mt-5 ">
+        <div className="">
+            <Sidebar>
             <h1 className=" mb-4 text-center"> Inventory Management </h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -133,7 +135,7 @@ const InventoryForm = () => {
             </Button>
             </div>
           </div>
-
+          </Sidebar>
         </div>
     );
 };

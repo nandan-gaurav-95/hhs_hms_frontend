@@ -10,6 +10,7 @@ import { APIS } from "../constants/api";
 import axios from "axios";
 import "react-select-search/style.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import Sidebar from "../admin/Sidebar";
 
 function PropertyPhotoForm() {
   const { id } = useParams() || {};
@@ -88,7 +89,8 @@ function PropertyPhotoForm() {
   };
 
   return (
-    <div className=" p-5 mt-5 ">
+    <div className="">
+      <Sidebar>
       <h2 className="mb-4 text-center">Property Photos:</h2>
       {error && <div className="text-danger">{error}</div>}{" "}
       {/* Display error message if there's an error */}
@@ -148,6 +150,7 @@ function PropertyPhotoForm() {
       {/* <div className="text-center mt-4">
         <Button>Upload Photos</Button>
       </div> */}
+      </Sidebar>
     </div>
   );
 }

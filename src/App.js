@@ -53,93 +53,44 @@ function App() {
           <Route path="/forgetPage" element={<ForgetPage />}></Route>
           <Route path="/signUp" element={<Signup />}></Route>
 
-          {/* <Route path="/forgetPassword" element={<ForgetPassword />}></Route>
-          <Route path="/otp" element={<Otp />}></Route>
-          <Route path="/resetPassword" element={<ResetPassword />}></Route> */}
-        </Routes>
-        <Sidebar>
-        <Routes>
-
-          <Route path="/register" element={<SampleRegForm />}></Route>
-          <Route path="/allCompanyName" element={<AllCompanyName />}></Route>
-          <Route
-            path="/comapany-details/:id"
-            element={<PropertyDetails />}
-          ></Route>
-          <Route path="/properties" element={<SampleMyComponent />}></Route>
-          <Route
-            path="/property-photo/:id"
-            element={<PropertyPhotoForm />}
-          ></Route>
-
-          <Route path="/tenant" element={<TenantForm />}></Route>
-          <Route path="/showtenant" element={<ShowTenant />}></Route>
-          <Route
-            path="/tenant-details/:id"
-            element={<PropertyDetailsTenant />}
-          ></Route>
-
-          <Route path="/payroll" element={<PayrollForm />}></Route>
-          <Route path="/allpayroll" element={<Allpayroll />}></Route>
-          <Route
-            path="/payroll-details/:id"
-            element={<PayrollDetails />}
-          ></Route>
-
-          <Route path="/inventory" element={<InventoryForm />}></Route>
-          <Route path="/allinventory" element={<AllinventoryForm />}></Route>
-          <Route
-            path="/inventory-details/:id"
-            element={<InventoryDetails />}
-          ></Route>
-
-          <Route path="/daybook" element={<DayBook />}></Route>
-          <Route path="/alldaybook" element={<AllDaybook />}></Route>
-          <Route
-            path="/daybook-details/:id"
-            element={<PropertyDetailsDaybook />}
-          ></Route>
-
-          <Route path="/empolyee" element={<EmployeeForm />}></Route>
-          <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
-          <Route
-            path="/empolyee-details/:id"
-            element={<EmpolyeeDetails />}
-          ></Route>
-
-          <Route path="/payment" element={<PaymentForm />}></Route>
-          <Route path="/allpayment" element={<AllpaymentForm />}></Route>
-          <Route
-            path="/payment-details/:id"
-            element={<PaymentDetails />}
-          ></Route>
-
-          <Route path="/receipt" element={<ReceiptForm />}></Route>
-          <Route path="/allreceipt" element={<AllReceipt />}></Route>
-          <Route
-            path="/receipt-details/:id"
-            element={<ReceiptDetails />}
-          ></Route>
-
-          <Route path="/expense" element={<ExpenseForm />}></Route>
-          <Route path="/allexpense" element={<AllExpense />}></Route>
-          <Route
-            path="/expense-details/:id"
-            element={<ExpenseDetails />}
-          ></Route>
-
-          <Route path="/student" element={<StudentData />}></Route>
-          <Route path="/allstudent" element={<AllStudentForm />}></Route>
-          <Route
-            path="/student-details/:id"
-            element={<StudentDetails />}
-          ></Route>
-
-          <Route path="/bankform" element={<BankForm />}></Route>
-          <Route path="/showbank" element={<ShowBank />}></Route>
-          <Route path="/bank-details/:id" element={<BankDetails />}></Route>
-        </Routes>
-        </Sidebar>
+            <Route path="/register" element={<SampleRegForm />}></Route>
+            <Route path="/allCompanyName" element={<AllCompanyName />}></Route>
+            <Route path="/comapany-details/:id" element={<PropertyDetails />}></Route>
+            <Route path="/properties" element={<SampleMyComponent />}></Route>
+            <Route path="/property-photo/:id" element={<PropertyPhotoForm />}></Route>
+            <Route path="/tenant" element={<TenantForm />}></Route>
+            <Route path="/showtenant" element={<ShowTenant />}></Route>
+            <Route path="/tenant-details/:id" element={<PropertyDetailsTenant />}></Route>
+            <Route path="/payroll" element={<PayrollForm />}></Route>
+            <Route path="/allpayroll" element={<Allpayroll />}></Route>
+            <Route path="/payroll-details/:id" element={<PayrollDetails />}></Route>
+            <Route path="/inventory" element={<InventoryForm />}></Route>
+            <Route path="/allinventory" element={<AllinventoryForm />}></Route>
+            <Route path="/inventory-details/:id" element={<InventoryDetails />}></Route>
+            <Route path="/daybook" element={<DayBook />}></Route>
+            <Route path="/alldaybook" element={<AllDaybook />}></Route>
+            <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>
+            <Route path="/empolyee" element={<EmployeeForm />}></Route>
+            <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
+            <Route path="/empolyee-details/:id" element={<EmpolyeeDetails />}></Route>
+            <Route path="/payment" element={<PaymentForm />}></Route>
+            <Route path="/allpayment" element={<AllpaymentForm />}></Route>
+            <Route path="/payment-details/:id" element={<PaymentDetails />}></Route>
+            <Route path="/receipt" element={<ReceiptForm />}></Route>
+            <Route path="/allreceipt" element={<AllReceipt />}></Route>
+            <Route path="/receipt-details/:id" element={<ReceiptDetails />}></Route>
+            <Route path="/expense" element={<ExpenseForm />}></Route>
+            <Route path="/allexpense" element={<AllExpense />}></Route>
+            <Route path="/expense-details/:id" element={<ExpenseDetails />}></Route>
+            <Route path="/student" element={<StudentData />}></Route>
+            <Route path="/allstudent" element={<AllStudentForm />}></Route>
+            <Route path="/student-details/:id" element={<StudentDetails />}></Route>
+            <Route path="/bankform" element={<BankForm />}></Route>
+            <Route path="/showbank" element={<ShowBank />}></Route>
+            <Route path="/bank-details/:id" element={<BankDetails />}></Route>
+          </Routes>
+        
+       
       </BrowserRouter>
     </div>
   );

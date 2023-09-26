@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { ReceiptService } from "../../services/ReceiptService";
+import Sidebar from "../admin/Sidebar";
 const ReceiptForm = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -50,7 +51,8 @@ const ReceiptForm = () => {
   };
 
   return (
-    <div className=" p-2 mt-5  ">
+    <div className="">
+      <Sidebar>
       <h1 className=" mb-4 text-center">Receipt Voucher</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -127,6 +129,7 @@ const ReceiptForm = () => {
           </Button>
         </div>
       </form>
+      </Sidebar>
     </div>
   );
 };

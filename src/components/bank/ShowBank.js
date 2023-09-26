@@ -10,6 +10,7 @@ import {
   MDBCol as Col,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
 
 const ShowBank = () => {
   const [allBank, setAllBank] = useState([]);
@@ -50,7 +51,8 @@ const ShowBank = () => {
   // };
 
   return (
-    <div className="p-2 mt-2 text-center">
+    <div className="text-center">
+      <Sidebar>
       <h2 className="mb-4">Bank Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -106,6 +108,7 @@ const ShowBank = () => {
           </ul>
         </Col>
       </Row>
+      </Sidebar>
     </div>
   );
 };

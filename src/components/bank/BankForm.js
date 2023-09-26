@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { BankService } from "../../services/BankService";
+import Sidebar from "../admin/Sidebar";
 
 const BankForm = () => {
   const navigate = useNavigate();
@@ -55,7 +56,8 @@ const BankForm = () => {
   };
 
   return (
-    <div className=" p-2 mt-5 ">
+    <div className="">
+      <Sidebar>
       <h1 className=" mb-4 text-center">Bank</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -138,6 +140,7 @@ const BankForm = () => {
           </Button>
         </div>
       </form>
+      </Sidebar>
     </div>
   );
 };
