@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import SampleRegForm from "./components/company/SampleRegForm";
-import SampleMyComponent from "./components/company/SampleMyComponent";
 import AllCompanyName from "./components/company/AllCompanyName";
 import PropertyDetails from "./components/company/PropertyDetails";
 import PropertyPhotoForm from "./components/company/PropertyPhoto";
@@ -46,6 +45,7 @@ import Signup from "./components/constants/LoginFlow/Signup";
 import HomePage from "./components/admin/HomePage";
 import ConsumableForm from "./components/inventory/Consumable";
 import NonConsumable from "./components/inventory/NonConsumable";
+import Property from "./components/company/Property";
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
             <Route path="/register" element={<SampleRegForm />}></Route>
             <Route path="/allCompanyName" element={<AllCompanyName />}></Route>
             <Route path="/comapany-details/:id" element={<PropertyDetails />}></Route>
-            <Route path="/properties" element={<SampleMyComponent />}></Route>
+            <Route path="/properties" element={<Property/>}></Route>
             <Route path="/property-photo/:id" element={<PropertyPhotoForm />}></Route>
             <Route path="/tenant" element={<TenantForm />}></Route>
             <Route path="/showtenant" element={<ShowTenant />}></Route>

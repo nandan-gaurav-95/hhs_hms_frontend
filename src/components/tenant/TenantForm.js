@@ -27,6 +27,9 @@ const TenantForm = () => {
     collectionDetails: "",
     billGeneration: "",
     paymentMethod: "",
+    // Agreement Related Dates
+    startDate:"",
+    expiryDate:"",
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -286,6 +289,26 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
+        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+        <Col className="col-sm-5 ">
+              <Input
+                label="Agreement Start Date"
+                type="date"
+                name="startDate"
+                value={formData.startDate}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col className="col-sm-5 ">
+              <Input
+                label="Agreement Expiry Date"
+                type="date"
+                name="expiryDate"
+                value={formData.expiryDate}
+                onChange={handleChange}
+              />
+            </Col>
+        </Row>
         <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
@@ -301,6 +324,7 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
+       
         <div className="text-center mt-4 ">
           <Button type="submit">Submit</Button>
         </div>
