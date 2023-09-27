@@ -258,7 +258,7 @@ const handleSubmit = async (event) => {
               </select>
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+        {/* <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
         <Col className="col-sm-5 ">
               <Input
                 label="Agreement Start Date"
@@ -277,7 +277,7 @@ const handleSubmit = async (event) => {
                 onChange={handleChange}
               />
             </Col>
-        </Row>
+        </Row> */}
         <div className="mt-4 text-center">
           <Button type="submit">Submit</Button>
         </div>

@@ -16,8 +16,9 @@ export const APIS ={
      LOGINACCOUNT:`${API_BASE_URL}/login`,//post-method for login
      FORGOTPASSWORD:`${API_BASE_URL}/forgot-password`,//Post-method for password reset request
 
-     //company
-     CREATECOMPANY:`${API_BASE_URL}/create`,//Post-method for company 
+     //property (please replace company to the 'property')
+     
+     CREATEPROPERTY:`${API_BASE_URL}/create`,//Post-method for property 
      SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
      ALLCOMPANYNAME:`${API_BASE_URL}/companies`,
      GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
