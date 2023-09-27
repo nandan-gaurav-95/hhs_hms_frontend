@@ -12,7 +12,14 @@ import {
   AiFillAccountBook,
   AiFillPropertySafety,
 } from "react-icons/ai";
-import { BiSolidInstitution } from "react-icons/bi";
+import { BiSolidInstitution,
+  BiSolidDonateBlood,
+  BiSolidSchool
+} from "react-icons/bi";
+import {BsFillHouseHeartFill,
+} from "react-icons/bs";
+import {GiSkills,
+} from "react-icons/gi";
 
 import { NavLink } from "react-router-dom";
 const Sidebar = ({ children }) => {
@@ -99,7 +106,34 @@ const Sidebar = ({ children }) => {
           icon: <AiFillBank />,
         },
       ],
+     },
+     {
+      name: "Inventory",
+      icon: <MdInventory2 />,
+      subMenu: [
+        {
+          path: "/bloodbankform",
+          name: "Blood Bank",
+          icon: < BiSolidDonateBlood />,
+        },
+        {
+          path: "/hostelform",
+          name: "hostel",
+          icon: <BsFillHouseHeartFill />,
+        },
+        {
+          path: "/iticollege",
+          name: "ITI College",
+          icon: <BiSolidSchool />,
+        },
+        {
+          path: "/skillcenterform",
+          name: "Skill Center",
+          icon: <GiSkills />,
+        },
+      ],
     },
+   
   ];
 
   const handleMenuClick = (menuName) => {
