@@ -51,9 +51,16 @@ background-color:#333;
   max-height:100%;
   /* background-color: rgb(187, 235, 235);*/
 }
+.children {
+  flex-grow: 1; /* Allow main content area to grow */
+  transition: margin-left 0.3s ease; /* Add transition for smooth margin change */
+}
 .children.collapsed {
   margin-left: 150px;
   transition: margin-left 0.3s ease;
+}
+.collapsed .sidebar {
+  width: 50px; /* Adjusted width when collapsed */
 }
 .link-content {
   display: flex; /* Use flexbox */
@@ -216,41 +223,3 @@ background-color:#333;
  margin: 0px 10px 20px 20px;
   
 }
-
- /* .sidebar-form {
-  width: 100%;
-  margin-bottom: 10px; 
-  background-color: #e75a4a;
-}
-
-
-.sidebar-input {
-  width: 100%;
-  padding: 5px;
-  background-color: aqua;
-} */
-
-/* .logo-text-container {
-  display: grid; 
-  grid-template-columns: auto auto;
-  gap: 10px; 
-}
-
-
-.logo-text-container {
-  display: flex; 
-  align-items: center;
-  gap: 10px; 
-} */
-
-
-
-
-
-
-/* .logo {
-  width:40px;
-}
-.link_text {
-  width:20px;
-}  */

@@ -44,6 +44,8 @@ import Otp from "./components/constants/LoginFlow/Otp";
 import ResetPassword from "./components/constants/LoginFlow/ResetPassword";
 import Signup from "./components/constants/LoginFlow/Signup";
 import HomePage from "./components/admin/HomePage";
+import ConsumableForm from "./components/inventory/Consumable";
+import NonConsumable from "./components/inventory/NonConsumable";
 
 function App() {
   return (
@@ -65,10 +67,17 @@ function App() {
             <Route path="/tenant-details/:id" element={<PropertyDetailsTenant />}></Route>
             <Route path="/payroll" element={<PayrollForm />}></Route>
             <Route path="/allpayroll" element={<Allpayroll />}></Route>
-            <Route path="/payroll-details/:id" element={<PayrollDetails />}></Route>
+            {/* <Route path="/payroll-details/:id" element={<PayrollDetails />}></Route> */}
+            <Route path="/payroll-details" element={<PayrollDetails />}></Route>
+
             <Route path="/inventory" element={<InventoryForm />}></Route>
             <Route path="/allinventory" element={<AllinventoryForm />}></Route>
             <Route path="/inventory-details/:id" element={<InventoryDetails />}></Route>
+            <Route path="/consumableform" element={<ConsumableForm />}></Route>
+            <Route path="/nonconsumableform" element={<NonConsumable />}></Route>
+
+
+
             <Route path="/daybook" element={<DayBook />}></Route>
             <Route path="/alldaybook" element={<AllDaybook />}></Route>
             <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>

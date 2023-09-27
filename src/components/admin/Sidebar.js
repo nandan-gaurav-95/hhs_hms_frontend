@@ -20,7 +20,7 @@ import {BsFillHouseHeartFill,
 } from "react-icons/bs";
 import {GiSkills,
 } from "react-icons/gi";
-
+import {SiConsul,} from "react-icons/si"
 import { NavLink } from "react-router-dom";
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,6 +89,27 @@ const Sidebar = ({ children }) => {
       name: "Institute",
       icon: <BiSolidInstitution />,
       subMenu: [
+       
+        {
+          path: "/bloodbankform",
+          name: "Blood Bank",
+          icon: < BiSolidDonateBlood />,
+        },
+        {
+          path: "/hostelform",
+          name: "hostel",
+          icon: <BsFillHouseHeartFill />,
+        },
+        {
+          path: "/iticollege",
+          name: "ITI College",
+          icon: <BiSolidSchool />,
+        },
+        {
+          path: "/skillcenterform",
+          name: "Skill Center",
+          icon: <GiSkills />,
+        },
         {
           path: "/student",
           name: "Student",
@@ -111,25 +132,36 @@ const Sidebar = ({ children }) => {
       name: "Inventory",
       icon: <MdInventory2 />,
       subMenu: [
+        // {
+        //   path: "/bloodbankform",
+        //   name: "Blood Bank",
+        //   icon: < BiSolidDonateBlood />,
+        // },
+        // {
+        //   path: "/hostelform",
+        //   name: "hostel",
+        //   icon: <BsFillHouseHeartFill />,
+        // },
+        // {
+        //   path: "/iticollege",
+        //   name: "ITI College",
+        //   icon: <BiSolidSchool />,
+        // },
+        // {
+        //   path: "/skillcenterform",
+        //   name: "Skill Center",
+        //   icon: <GiSkills />,
+        // },
+
         {
-          path: "/bloodbankform",
-          name: "Blood Bank",
-          icon: < BiSolidDonateBlood />,
+          path: "/consumableform",
+          name: "Consumable Item",
+          icon: <SiConsul />,
         },
         {
-          path: "/hostelform",
-          name: "hostel",
-          icon: <BsFillHouseHeartFill />,
-        },
-        {
-          path: "/iticollege",
-          name: "ITI College",
-          icon: <BiSolidSchool />,
-        },
-        {
-          path: "/skillcenterform",
-          name: "Skill Center",
-          icon: <GiSkills />,
+          path: "/nonconsumableform",
+          name: "Non-Consumable Item",
+          icon: <SiConsul />,
         },
       ],
     },
