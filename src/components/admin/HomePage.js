@@ -16,6 +16,8 @@ export default function HomePage(){
                 <Card title="Staff Management" />
                 <Card title=" Inventory Management" />
                 <Card title="Day Book" />
+                
+
             </div>
             </Sidebar>
        </div>

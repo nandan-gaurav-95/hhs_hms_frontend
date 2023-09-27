@@ -19,7 +19,7 @@ const SampleMyComponent = () => {
     companyName: "",
     villageNm: "",
     ctsNo: "",
-    extentAcres: "",
+    area: "",
     boundries: "",
     taxAmt: "",
     accountNm: "",
@@ -27,6 +27,13 @@ const SampleMyComponent = () => {
     address: "",
     registrationNo: "",
     gazzetNo: "",
+    rent:"",
+    mcharges:"",
+    occupied:"",
+    
+// Agreement Related Dates
+    startDate:"",
+    expiryDate:"",
     
   };
  
@@ -135,11 +142,11 @@ const handleSubmit = async (event) => {
           </Col>
           <Col className="col-sm-5 ">
             <Input
-              label="extentAcres"
+              label="Area/size"
               type="number"
               step="any"
-              name="extentAcres"
-              value={formData.extentAcres}
+              name="area"
+              value={formData.area}
               onChange={handleChange}
             />
           </Col>
@@ -209,13 +216,67 @@ const handleSubmit = async (event) => {
         <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
-              label="gazzetNo"
+              label="Gazzet No"
               type="text"
               name="gazzetNo"
               value={formData.gazzetNo}
               onChange={handleChange}
             />
           </Col>
+          <Col className="col-sm-5 ">
+            <Input
+              label="Rent"
+              type="text"
+              name="rent"
+              value={formData.rent}
+              onChange={handleChange}
+            />
+          </Col>
+        </Row>
+        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+        <Col className="col-sm-5 ">
+            <Input
+              label="Maintenance Charges"
+              type="text"
+              name="mcharges"
+              value={formData.mcharges}
+              onChange={handleChange}
+            />
+          </Col>
+          <Col className="col-sm-5 ">
+          <select
+                className="form-select"
+                id="occupied"
+                name="occupied"
+                value={formData.occupied}
+                onChange={handleChange}
+              >
+                <option value="">Is Occupied ?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+               
+              </select>
+          </Col>
+        </Row>
+        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+        <Col className="col-sm-5 ">
+              <Input
+                label="Agreement Start Date"
+                type="date"
+                name="startDate"
+                value={formData.startDate}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col className="col-sm-5 ">
+              <Input
+                label="Agreement Expiry Date"
+                type="date"
+                name="expiryDate"
+                value={formData.expiryDate}
+                onChange={handleChange}
+              />
+            </Col>
         </Row>
         <div className="mt-4 text-center">
           <Button type="submit">Submit</Button>
