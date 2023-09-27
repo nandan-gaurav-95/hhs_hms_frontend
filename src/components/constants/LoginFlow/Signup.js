@@ -8,7 +8,7 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
-import hhsLogo from "../../../asset/images/hhs logo.jpg";
+import hhsLogo from "../../../asset/images/hhslogo.jpg";
 // import hhspage from "../../../asset/images/hhs page.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";

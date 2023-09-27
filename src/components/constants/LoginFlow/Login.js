@@ -19,7 +19,7 @@ import {
   MDBBtn as Button,
   MDBCheckbox as Checkbox,
 } from "mdb-react-ui-kit";
-import hhsLogo from "../../../asset/images/hhs logo.jpg";
+import hhsLogo from "../../../asset/images/hhslogo.jpg";
 function LoginForm() {
  
   const [passwordVisible, setPasswordVisible] = useState(false);

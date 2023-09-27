@@ -43,13 +43,15 @@ import ForgetPassword from "./components/constants/LoginFlow/ForgetPassword";
 import Otp from "./components/constants/LoginFlow/Otp";
 import ResetPassword from "./components/constants/LoginFlow/ResetPassword";
 import Signup from "./components/constants/LoginFlow/Signup";
+import HomePage from "./components/admin/HomePage";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="" element={<LoginForm />}></Route>
+          {/* <Route path="" element={<LoginForm />}></Route> */}
+          <Route path="/" element={<HomePage />}></Route> 
           <Route path="/forgetPage" element={<ForgetPage />}></Route>
           <Route path="/signUp" element={<Signup />}></Route>
 
