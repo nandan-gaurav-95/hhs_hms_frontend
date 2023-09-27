@@ -3,13 +3,7 @@ import Sidebar from "./Sidebar";
 
 import "../../asset/homepage.css";
 import Header from "../common/Header";
-import
-{
-NavLink
-}
-from
-"react-router-dom"
-;
+import { NavLink } from "react-router-dom";
 import {
   MDBDropdown,
   MDBDropdownMenu,
@@ -22,14 +16,16 @@ export default function HomePage() {
         <Header />
       <Sidebar>
         <div className="card-container">
-          <div className="card upper-card">
+           <div className="card upper-card">
             <h3>Institutation Management</h3>
             <MDBDropdown>
               <MDBDropdownToggle tag="a" className="btn btn-dark">
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <MDBDropdownItem link><b>Schools</b></MDBDropdownItem>
+              <NavLink to="/register">
+                  <MDBDropdownItem><b>Schools</b></MDBDropdownItem>
+              </NavLink>
                 <MDBDropdownItem link><b>ITI College</b></MDBDropdownItem>
                 <MDBDropdownItem link><b>Blood Collections Center</b></MDBDropdownItem>
                 <MDBDropdownItem link><b>Skill Center</b></MDBDropdownItem>
@@ -39,7 +35,7 @@ export default function HomePage() {
                 <MDBDropdownItem link><b>Dargah</b></MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
-          </div>
+          </div> 
 
           <div className="card upper-card">
             <h3>Property Management</h3>
@@ -48,8 +44,10 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-              <NavLink to="/register"><MDBDropdownItem><b>Add Property</b></MDBDropdownItem></NavLink> 
-              <NavLink to="/allCompanyName"><MDBDropdownItem><b>View Property Details</b></MDBDropdownItem></NavLink>              
+                
+                <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
+                <MDBDropdownItem link><b>View</b></MDBDropdownItem>
+    
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>
@@ -61,8 +59,14 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-              <MDBDropdownItem link><b>Consumable</b></MDBDropdownItem>
-                <MDBDropdownItem link><b>Non-Consumable</b></MDBDropdownItem>
+              <NavLink to="/consumableform">
+
+                  <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
+
+              </NavLink>
+              <NavLink to="/nonconsumableform">
+                <MDBDropdownItem link><b>View</b></MDBDropdownItem>
+                </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>
@@ -75,46 +79,48 @@ export default function HomePage() {
               </MDBDropdownToggle>
               <MDBDropdownMenu>
               <MDBDropdownItem link><b>View Employees</b></MDBDropdownItem>
+              <MDBDropdownItem link><b>Add Employees</b></MDBDropdownItem>
                 <MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>
-          <div className="card upper-card">
-  <div className="card-content">
-    <h3>Daybook</h3>
-  </div>
-  <div className="proceed-button">
-    <MDBDropdown>
+        
+
+        </div>
+        <div className="card-container">
+        <div className="card upper-card">
+      <h3>Daybook</h3>
+       <div className="proceed-button">
+      <MDBDropdown>
       <MDBDropdownToggle tag="a" className="btn btn-dark">
         proceed
       </MDBDropdownToggle>
       <MDBDropdownMenu>
         <MDBDropdownItem link><b>All Transactions</b></MDBDropdownItem>
         <MDBDropdownItem link><b>Payments</b></MDBDropdownItem>
-        <MDBDropdownItem link><b>Daily Cash Book</b></MDBDropdownItem>
-        <MDBDropdownItem link><b>Petty Cash Book</b></MDBDropdownItem>
         <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem>
-   
       </MDBDropdownMenu>
     </MDBDropdown>
   </div>
+</div> 
+<div className="card upper-card">
+      <h3>Tenant Management</h3>
+       <div className="proceed-button">
+      <MDBDropdown>
+      <MDBDropdownToggle tag="a" className="btn btn-dark">
+        proceed
+      </MDBDropdownToggle>
+      <MDBDropdownMenu>
+        <MDBDropdownItem link><b>Add Tenant</b></MDBDropdownItem>
+        <MDBDropdownItem link><b>View Tenants</b></MDBDropdownItem>
+        <MDBDropdownItem link><b>Payments</b></MDBDropdownItem>
+        <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem>
+      </MDBDropdownMenu>
+    </MDBDropdown>
+  </div>
+</div> 
+
 </div>
-        </div>
-        {/* <div className="card-container">
-          <div className="card daybook-card">
-            <h3>Daybook</h3>
-            <MDBDropdown>
-              <MDBDropdownToggle tag="a" className="btn btn-dark">
-                proceed
-              </MDBDropdownToggle>
-              <MDBDropdownMenu>
-                <MDBDropdownItem link>Action</MDBDropdownItem>
-                <MDBDropdownItem link>Another action</MDBDropdownItem>
-                <MDBDropdownItem link>Something else here</MDBDropdownItem>
-              </MDBDropdownMenu>
-            </MDBDropdown>
-          </div>
-        </div> */}
       </Sidebar>
     </div>
   );

@@ -13,7 +13,7 @@ import { APIS } from "../constants/api";
 import  "react-select-search/style.css";
 import Sidebar from "../admin/Sidebar";
 
-const SampleMyComponent = () => {
+const Property = () => {
   const initialState = {
     companyId:null,
     companyName: "",
@@ -30,10 +30,6 @@ const SampleMyComponent = () => {
     rent:"",
     mcharges:"",
     occupied:"",
-    
-// Agreement Related Dates
-    startDate:"",
-    expiryDate:"",
     
   };
  
@@ -258,26 +254,7 @@ const handleSubmit = async (event) => {
               </select>
           </Col>
         </Row>
-        {/* <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-        <Col className="col-sm-5 ">
-              <Input
-                label="Agreement Start Date"
-                type="date"
-                name="startDate"
-                value={formData.startDate}
-                onChange={handleChange}
-              />
-            </Col>
-            <Col className="col-sm-5 ">
-              <Input
-                label="Agreement Expiry Date"
-                type="date"
-                name="expiryDate"
-                value={formData.expiryDate}
-                onChange={handleChange}
-              />
-            </Col>
-        </Row> */}
+        
         <div className="mt-4 text-center">
           <Button type="submit">Submit</Button>
         </div>
@@ -287,4 +264,4 @@ const handleSubmit = async (event) => {
   );
 };
 
-export default SampleMyComponent;
+export default Property;
