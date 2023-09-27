@@ -171,7 +171,7 @@ const SampleRegForm = () => {
   return (
     <div className="">
     <Sidebar>
-      <h1 className=" mb-4 text-center">Sample Reg Form Company</h1>
+      <h1 className=" mb-4 text-center">Add Property Details</h1>
       <Row className="justify-content-center">
         <Col md="6">
           <form onSubmit={handleSubmit}>
@@ -231,7 +231,7 @@ const SampleRegForm = () => {
               )}
             </div>
 
-            <div className="form-field">
+            {/* <div className="form-field">
               <Input
                 label=" "
                 type="file"
@@ -242,7 +242,7 @@ const SampleRegForm = () => {
               {validationErrors.logo && (
                 <div className="text-danger">{validationErrors.logo}</div>
               )}
-            </div>
+            </div> */}
 
             <div className="text-center mt-4 form-group row ">
               <div className="col">

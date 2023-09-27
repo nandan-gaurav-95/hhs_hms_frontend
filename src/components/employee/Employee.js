@@ -125,6 +125,11 @@ const EmployeeForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    // Clear the corresponding error when the input changes
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "", // Clear the error for this field
+    }));
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,

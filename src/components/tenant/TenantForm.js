@@ -161,7 +161,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.address}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          {/* <Col className="col-sm-5 ">
             <Input
               label="Shop No"
               type="text"
@@ -173,13 +173,34 @@ const TenantForm = () => {
             {errors.allocatedShop && (
               <div className="text-danger">{errors.allocatedShop}</div>
             )}
+          </Col> */}
+
+<Col className="col-sm-5">
+            <select
+              className="form-select"
+              id="paymentMethod"
+              name="allocatedShop"
+              value={formData.allocatedShop}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Shop No </option>
+              <option value="A-1001">A-1001</option>
+              <option value="A-1002">A-1002</option>
+              <option value="A-1003">A-1003</option>
+              <option value="A-1004">A-1004</option>
+              {/* Add more payment methods as needed */}
+            </select>
+            {errors.paymentMethod && (
+              <div className="text-danger">{errors.paymentMethod}</div>
+            )}
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
               label="Collected Rent"
-              type="number"
+              type="text"
               name="rentCollected"
               value={formData.rentCollected}
               onChange={handleChange}

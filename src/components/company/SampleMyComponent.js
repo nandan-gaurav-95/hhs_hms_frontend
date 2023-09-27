@@ -107,7 +107,7 @@ const handleSubmit = async (event) => {
   return (
     <div className="">
       <Sidebar>
-      <h1 className=" mb-4 text-center">From SampleMyComponent Details</h1>
+      <h1 className=" mb-4 text-center">Add Property Details of {receivedFormData.companyName}</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
