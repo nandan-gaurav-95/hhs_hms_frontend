@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -7,174 +8,119 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import Sidebar from '../admin/Sidebar';
-import Table from 'react-bootstrap/Table';
 
 const NonConsumable = () => {
-    const tableData = [
-        {
-            id: 1,
-            name: 'bed',
-            quantity: 4,
-            date: '1-9-99',
-            price: 5000,
-            department: 'Hostel',
-            type: 'Consumable',
-        },
-        {
-            id: 2,
-            name: 'Pen',
-            quantity: 8,
-            date: '2-9-99',
-            price: 50,
-            department: 'Schools',
-            type: 'NonConsumable',
-        },
-        {
-            id: 3,
-            name: 'blanket',
-            quantity: 8,
-            date: '3-9-99',
-            price: 5999990,
-            department: 'Hostel',
-            type: 'NonConsumable',
-        },
-    ];
 
-    const [searchInput, setSearchInput] = useState('');
-    const [filteredData, setFilteredData] = useState(tableData);
-    const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
-    const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
+    const initialState = {
+        department:"",
+        computers: '',
+        chairs: '',
+        projector: '',
+        otherToolsEquipment: '',
+       
+    } 
+    const [formData, setFormData] = useState({ initialState });
 
-    const handleSearchChange = (event) => {
-        const { value } = event.target;
-        setSearchInput(value);
-
-        // Filter the tableData based on the search input, sort type, and department sort type
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(value.toLowerCase());
-            
-            if (sortType === 'Consumable' || sortType === 'NonConsumable') {
-                return nameMatches && item.type === sortType && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
-        });
-
-        setFilteredData(filtered);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
     };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
 
-    const handleSortChange = (event) => {
-        const { value } = event.target;
-        setSortType(value);
-
-        // Reapply the search filter when the sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (value === 'all') {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else {
-                return nameMatches && item.type === value && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
-        });
-
-        setFilteredData(filtered);
     };
+  return (
+    <div className="">
+    <Sidebar>
+    <h1 className=" mb-4 text-center">Non-Consumable Inventory</h1>
+    <form onSubmit={handleSubmit}>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
 
-    const handleDepartmentSortChange = (event) => {
-        const { value } = event.target;
-        setDepartmentSortType(value);
-
-        // Reapply the search filter when the department sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (sortType === 'all') {
-                return nameMatches && (value === 'all' || item.department === value);
-            } else {
-                return nameMatches && item.type === sortType && (value === 'all' || item.department === value);
-            }
-        });
-
-        setFilteredData(filtered);
-    };
-
-    return (
-        <div className="">
-            <Sidebar>
-                <h1 className="mb-4 text-center">Show All Inventory</h1>
-
-                <div className="d-flex mb-8 align-items-center">
-                    <Input
-                        label="Search"
-                        type="text"
-                        value={searchInput}
-                        onChange={handleSearchChange}
-                    />
-
-                    <div className="ms-3">
-                      
-                        <select
-                            id="sortType"
-                            className="form-select"
-                            value={sortType}
-                            onChange={handleSortChange}
-                        >
-                            <option value="Type">Type</option>
-                            <option value="Consumable">Consumable</option>
-                            <option value="NonConsumable">NonConsumable</option>
-                        </select>
-                    </div>
-
-                    <div className="ms-3">
-                     
-                        <select
-                            id="departmentSortType"
-                            className="form-select"
-                            value={departmentSortType}
-                            onChange={handleDepartmentSortChange}
-                        >
-                            <option value="Department">Department</option>
-                            <option value="Schools">Schools</option>
-                            <option value="ITI College">ITI College</option>
-                            <option value="Skill Center">Skill Center</option>
-                            <option value="Blood Collection Center"> Blood Collection Center</option>
-                            <option value="Hostel">Hostel</option>
-                            <option value="Masjid">Masjid</option>
-                            <option value="Dargah">Dargah</option>
-                        </select>
-                    </div>
-                </div>
-
-                <Table striped>
-                    <thead>
-                        <tr>
-                            <th>Sr. No.</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Date</th>
-                            <th>Price</th>
-                            <th>Department</th>
-                            <th>Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredData.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.date}</td>
-                                <td>{item.price}</td>
-                                <td>{item.department}</td>
-                                <td>{item.type}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            </Sidebar>
+        <Col className="col-sm-5">
+              <select
+                className="form-select"
+                id="Department"
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+              >
+                <option value="">Select Department</option>
+                <option value="Schools">Schools</option>
+                <option value="ITI College">ITI College</option>
+                <option value="Skill Center">Skill Center</option>
+                <option value="Blood Collection Center"> Blood Collection Center</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Masjid">Masjid</option>
+                <option value="Dargah">Dargah</option>
+              </select>
+            </Col>
+            <Col className="col-sm-5 ">
+                <Input
+                    label="Computers"
+                    type="text"
+                    name="computers"
+                    value={formData.computers}
+                    onChange={handleChange}
+                />
+            </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+            <Col className="col-sm-5 ">
+                <Input
+                    label="Chairs"
+                    type="text"
+                    name="chairs"
+                    value={formData.chairs}
+                    onChange={handleChange}
+                />
+            </Col>
+            <Col className="col-sm-5 ">
+                <Input
+                    label="Projectors"
+                    type="text"
+                    name="projector"
+                    value={formData.projector}
+                    onChange={handleChange}
+                />
+            </Col>
+           
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+        <Col className="col-sm-5 ">
+                <Input
+                    label="Other Tools Equipment"
+                    type="text"
+                    name="otherToolsEquipment"
+                    value={formData.otherToolsEquipment}
+                    onChange={handleChange}
+                />
+            </Col>
+           
+        </Row>
+        
+        
+        <div className="text-center mt-4 ">
+            <Button>Submit</Button>
         </div>
-    );
-};
+    </form>
+    <div className="text-center mt-4 form-group row ">
+        <div className="col">
+    <Button
+      variant="primary"
+      type="button"
+      square
+    //   onClick={allinventorydetails}
+    >
+      Next Page ?
+    </Button>
+    </div>
+  </div>
+  </Sidebar>
+</div>
+  )
+}
 
-export default NonConsumable;
+export default NonConsumable

@@ -36,11 +36,8 @@ import PropertyDetailsTenant from "./components/tenant/PropertyDetailsTenant";
 import DayBook from "./components/daybook/DayBook";
 import AllDaybook from "./components/daybook/AllDaybook";
 import PropertyDetailsDaybook from "./components/daybook/PropertyDetailsDaybook";
-import LoginForm from "./components/constants/LoginFlow/Login";
 import ForgetPage from "./components/constants/LoginFlow/Forgetpage";
-import ForgetPassword from "./components/constants/LoginFlow/ForgetPassword";
-import Otp from "./components/constants/LoginFlow/Otp";
-import ResetPassword from "./components/constants/LoginFlow/ResetPassword";
+
 import Signup from "./components/constants/LoginFlow/Signup";
 import HomePage from "./components/admin/HomePage";
 import ConsumableForm from "./components/inventory/Consumable";
@@ -83,12 +80,12 @@ function App() {
             {/* Employee Management */}
             <Route path="/empolyee" element={<EmployeeForm />}></Route>
             <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
+            <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
 
 
             <Route path="/daybook" element={<DayBook />}></Route>
             <Route path="/alldaybook" element={<AllDaybook />}></Route>
             <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>
-            <Route path="/empolyee-details/:id" element={<EmpolyeeDetails />}></Route>
             <Route path="/payment" element={<PaymentForm />}></Route>
             <Route path="/allpayment" element={<AllpaymentForm />}></Route>
             <Route path="/payment-details/:id" element={<PaymentDetails />}></Route>

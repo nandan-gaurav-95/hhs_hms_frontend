@@ -7,8 +7,6 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
-import axios from "axios";
-import { APIS } from "../constants/api";
 import { EmployeeService } from "../../services/EmployeeService";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
@@ -28,7 +26,7 @@ const EmployeeForm = () => {
     qualification: "",
     pan: "",
     dateOfHiring: "",
-    dateOfLeaving: "",
+    position: "",
     basicSalary: "",
     netSalary: "",
     grossSalary: "",
@@ -299,6 +297,7 @@ const EmployeeForm = () => {
             </Col>
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+          
           <Col className="col-sm-5 ">
               <Input
                 label="Qualification"
@@ -351,17 +350,17 @@ const EmployeeForm = () => {
             </Col>
             <Col className="col-sm-5 ">
               <Input
-                
-                label="Date Of Leaving"
-                type="date"
-                name="dateOfLeaving"
-                value={formData.dateOfLeaving}
+                label="Position"
+                type="text"
+                name="position"
+                value={formData.position}
                 onChange={handleChange}
                 required
-                />
-                 {errors.dateOfLeaving && <div className="text-danger">{errors.dateOfLeaving}</div>}
-        
-            </Col> 
+              />
+              {errors.qualification && (
+                <div className="text-danger">{errors.position}</div>
+              )}
+            </Col>
            
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
