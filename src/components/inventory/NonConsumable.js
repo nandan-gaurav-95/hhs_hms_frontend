@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -44,76 +45,28 @@ const NonConsumable = () => {
         },
     ];
 
-    const [searchInput, setSearchInput] = useState('');
-    const [filteredData, setFilteredData] = useState(tableData);
-    const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
-    const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
+    const initialState = {
+        department:"",
+        computers: '',
+        chairs: '',
+        projector: '',
+        otherToolsEquipment: '',
+       
+    } 
+    const [formData, setFormData] = useState({ initialState });
 
-    const handleSearchChange = (event) => {
-        const { value } = event.target;
-        setSearchInput(value);
-
-        // Filter the tableData based on the search input, sort type, and department sort type
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(value.toLowerCase());
-            
-            if (sortType === 'Consumable' || sortType === 'NonConsumable') {
-                return nameMatches && item.type === sortType && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
-        });
-
-        setFilteredData(filtered);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
     };
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
 
-    const handleSortChange = (event) => {
-        const { value } = event.target;
-        setSortType(value);
-
-        // Reapply the search filter when the sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (value === 'all') {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else {
-                return nameMatches && item.type === value && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
-        });
-
-        setFilteredData(filtered);
     };
-
-    const handleDepartmentSortChange = (event) => {
-        const { value } = event.target;
-        setDepartmentSortType(value);
-
-        // Reapply the search filter when the department sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (sortType === 'all') {
-                return nameMatches && (value === 'all' || item.department === value);
-            } else {
-                return nameMatches && item.type === sortType && (value === 'all' || item.department === value);
-            }
-        });
-
-        setFilteredData(filtered);
-    };
-
-    const handleViewProfile= (id)=>{
-        console.log("Showing Inventory on view Inventory Profile");
-        navigate(`/inventory-details/${id}`);
-        
-      }
-      
-      const handleDelete= ()=>{
-        // console.log("Delete tenant Successfully");
-        window.confirm("Do you want to Delete this Inventory Item ?");
-      }
-
+    
     return (
         <div className="">
             {/* <Sidebar> */}
@@ -208,8 +161,10 @@ const NonConsumable = () => {
                     </tbody>
                 </Table>
             {/* </Sidebar> */}
+            {/* </form> */}
         </div>
-    );
-};
+   
+  )
+}
 
 export default NonConsumable;
