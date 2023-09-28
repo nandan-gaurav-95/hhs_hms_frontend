@@ -105,8 +105,6 @@ function App() {
             <Route path="/showbank" element={<ShowBank />}></Route>
             <Route path="/bank-details/:id" element={<BankDetails />}></Route>
           </Routes>
-        
-       
       </BrowserRouter>
     </div>
   );

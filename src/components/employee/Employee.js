@@ -11,6 +11,7 @@ import axios from "axios";
 import { APIS } from "../constants/api";
 import { EmployeeService } from "../../services/EmployeeService";
 import Sidebar from "../admin/Sidebar";
+import Header from "../common/Header";
 
 const EmployeeForm = () => {
   const navigate = useNavigate();
@@ -136,15 +137,17 @@ const EmployeeForm = () => {
     }));
   };
 
-  const allemployeedetails = (event) => {
-    event.preventDefault();
-    navigate("/allemployees");
-  };
+  // deleted show button
+  // const allemployeedetails = (event) => {
+  //   event.preventDefault();
+  //   navigate("/allemployees");
+  // };
 
   return (
     <div className="">
+      <Header/>
       <Sidebar>
-        <h1 className=" mb-4 text-center">Empolyee Management</h1>
+        <h1 className=" mb-4 text-center">Register New Empolyee</h1>
         <form onSubmit={handleSubmit}>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
             <Col className="col-sm-5 ">
@@ -212,7 +215,7 @@ const EmployeeForm = () => {
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Others">Others</option>
+                <option value="Others">Transgender</option>
               </select>
               {errors.gender && (
                 <div className="text-danger">{errors.gender}</div>
@@ -486,7 +489,7 @@ const EmployeeForm = () => {
             <Button >Submit</Button>
           </div>
         </form>
-        <div className="text-center mt-4 form-group row ">
+        {/* <div className="text-center mt-4 form-group row ">
           <div className="col">
             <Button
               variant="primary"
@@ -497,7 +500,7 @@ const EmployeeForm = () => {
               Show Employee
             </Button>
           </div>
-        </div>
+        </div> */}
       </Sidebar>
     </div>
   );

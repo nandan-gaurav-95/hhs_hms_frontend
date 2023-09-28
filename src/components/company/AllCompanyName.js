@@ -67,8 +67,8 @@ const AllCompanyName = () => {
         </div>
         
       </Col>
-      <Table striped bordered hover>
-      <thead>
+      <Table>
+      <thead class="shadow-lg p-3 mb-5 bg-white rounded">
         <tr>
           <th>SI.No</th>
           <th>Property Name</th>
@@ -84,7 +84,7 @@ const AllCompanyName = () => {
          
         </tr>
       </thead>
-      <tbody>
+      <tbody class="shadow-lg p-3 mb-5 bg-white rounded">
         <tr>
           <td>1</td>
           <td>Mark</td>
@@ -98,7 +98,7 @@ const AllCompanyName = () => {
           <td>Yes</td>
           
         </tr>
-        <tr>
+        <tr class="shadow-lg p-3 mb-5 bg-white rounded">
           <td>2</td>
           <td>Jacob</td>
           <td>mai@gmail.com</td>

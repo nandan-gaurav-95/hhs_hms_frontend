@@ -16,7 +16,7 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
-const SampleRegForm = () => {
+const RegisterProp = () => {
   const navigate = useNavigate();
   const initialState = {
     companyNm: "",
@@ -304,4 +304,4 @@ const SampleRegForm = () => {
   );
 };
 
-export default SampleRegForm;
+export default RegisterProp;
