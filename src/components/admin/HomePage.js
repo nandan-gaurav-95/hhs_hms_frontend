@@ -24,7 +24,7 @@ export default function HomePage() {
               </MDBDropdownToggle>
               <MDBDropdownMenu>
               <NavLink to="/register">
-                  <MDBDropdownItem><b>Schools</b></MDBDropdownItem>
+                  <MDBDropdownItem link ><b>Schools</b></MDBDropdownItem>
               </NavLink>
                 <MDBDropdownItem link><b>ITI College</b></MDBDropdownItem>
                 <MDBDropdownItem link><b>Blood Collections Center</b></MDBDropdownItem>
@@ -80,9 +80,7 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <NavLink to="/empolyee">
-                  <MDBDropdownItem link><b>Add Employee</b></MDBDropdownItem>
-                </NavLink>
+                <NavLink to="/empolyee"><MDBDropdownItem link><b>Add Employee</b></MDBDropdownItem> </NavLink>
                 <NavLink to="/allempolyee">
                   <MDBDropdownItem link><b>View Employees</b></MDBDropdownItem>
                 </NavLink>
