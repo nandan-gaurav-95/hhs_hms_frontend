@@ -44,10 +44,12 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                
+                <NavLink to="/register">
                 <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/consumableform">
                 <MDBDropdownItem link><b>View</b></MDBDropdownItem>
-    
+                </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>
@@ -78,9 +80,15 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-              <MDBDropdownItem link><b>View Employees</b></MDBDropdownItem>
-              <MDBDropdownItem link><b>Add Employees</b></MDBDropdownItem>
-                <MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem>
+                <NavLink to="/empolyee">
+                  <MDBDropdownItem link><b>Add Employee</b></MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/allempolyee">
+                  <MDBDropdownItem link><b>View Employees</b></MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/nonconsumableform">
+                  <MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem>
+                </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>

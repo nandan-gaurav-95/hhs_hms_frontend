@@ -7,9 +7,10 @@ import {
   MDBRow as Row,
   MDBCol as Col,
   MDBBtn as Button,
-  // MDBInput as Input,
+ 
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
+import Header from "../common/Header";
 
 
 function EmployeeDetails() {
@@ -18,24 +19,36 @@ function EmployeeDetails() {
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
   const [updatedEmployee, setUpdatedEmployee] = useState(propData.Employee || {});
- 
   const navigate = useNavigate();
 
+  const tableData = 
+    {
+      emp_id: 1656565,
+      name: 'Mahesh Tawade',
+      contact:'9657089541',
+      status: "Former",
+      j_date: '01-06-2023',
+      b_salary:'50000',
+      position:"Teacher",
+      department: 'School',
+      gender: 'Male',
+  }
+  
   useEffect(() => {
     async function fetchData() {
       try {
-        if (!id) return;
-        const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
-        // console.log("Hiiiiiiiiiii",response);
-        const { status = "", data } = response;
-        if (status === 200) {
-          setPropData(data);
+        // if (!id) return;
+        // const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
 
-          setUpdatedEmployee(data); // Initialize updatedPayroll with the current data
+        // const { status = "", data } = response;
+        // if (status === 200) {
+        //   // setPropData(data);
 
-        } else {
-          console.error("Error while fetching Payroll data");
-        }
+        //   // setUpdatedEmployee(data); // Initialize updatedPayroll with the current data
+
+        // } else {
+        //   console.error("Error while fetching Payroll data");
+        // }
         setLoading(false);
       } catch (error) {
         console.error("Error:", error);
@@ -51,28 +64,28 @@ function EmployeeDetails() {
     return <div>Loading...</div>;
   }
 
-  if (!propData) {
-    // Handle the case when data is not available
-    return <div>Data not available</div>;
-  }
+  // if (!propData) {
+  //   // Handle the case when data is not available
+  //   return <div>Data not available</div>;
+  // }
 
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
 
-      try {
-        console.log('data sent to upda', updatedEmployee);
-        const response = await axios.put(`${APIS.GETALLEMPLOYEE}/${id}`, updatedEmployee);
-        if (response.status === 200) {
-          console.log("Employee details updated successfully");
-          navigate(`/payroll-details/${id}`)
-        } else {
-          console.error("Error while updating Employee data");
-          // Additional error handling or notifications can be added here
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
+      // try {
+      
+      //   // const response = await axios.put(`${APIS.GETALLEMPLOYEE}/${id}`, updatedEmployee);
+      //   if (response.status === 200) {
+      //     console.log("Employee details updated successfully");
+      //     // navigate(`/payroll-details/${id}`)
+      //   } else {
+      //     console.error("Error while updating Employee data");
+      //     // Additional error handling or notifications can be added here
+      //   }
+      // } catch (error) {
+      //   console.error("Error:", error);
+      // }
     } else {
       // Enter edit mode
       setEditMode(true);
@@ -109,11 +122,12 @@ function EmployeeDetails() {
   // Use the companyName in your component
   return (
     <div className="">
+      <Header/>
       <Sidebar>
       <Row className="justify-content-center">
         
         <Col>
-          <h1 className="text-center mb-4">Employee Details of {propData?.empName}</h1>
+          <h1 className="text-center mb-4">Details of {propData?.empName}</h1>
         </Col>
       </Row>
 
@@ -121,43 +135,29 @@ function EmployeeDetails() {
         <ul className="list-group">
           <Row className="justify-content-center">
             <Col className="col-sm-5 ">
-              {/* <strong>Name:</strong>
-                        <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.companyNm}</li> */}
 
               <strong>Empolyee ID:</strong>
-              {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="emp_id"
-                  value={updatedEmployee.emp_id}
+                  value={tableData.emp_id}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.emp_id}
-                </li>
-              )}
-              {/* <li  key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.ctsNo}</li> */}
 
               <strong>Employee Name</strong>
-              {editMode ? (
+             
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="empName"
-                  value={updatedEmployee.empName}
+                  value={tableData.name}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.empName}
-                </li>
-              )}
-              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {propData.email}</li> */}
+            
 
               <strong>Date Of Hiring:</strong>
-              {editMode ? (
+              
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="date"
@@ -165,13 +165,10 @@ function EmployeeDetails() {
                   value={updatedEmployee.dateOfHiring}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.dateOfHiring}
-                </li>
-              )}
+            
+              
               <strong>Loan Amount:</strong>
-              {editMode ? (
+            
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="number"
@@ -179,13 +176,9 @@ function EmployeeDetails() {
                   value={updatedEmployee.loanAmount}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.loanAmount}
-                </li>
-              )}
-              {/* <strong>PF Contribution:</strong>
-              {editMode ? (
+            
+            
+             
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="number"
@@ -193,16 +186,10 @@ function EmployeeDetails() {
                   value={updatedEmployee.pfContribution}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.pfContribution}
-                </li>
-              )} */}
-              {/* <li key={} className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.accountNm}</li> */}
- </Col>
+           </Col>
             <Col className="col-md-5">
               <strong>Date Of Leaving:</strong>
-              {editMode ? (
+             
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="date"
@@ -210,15 +197,12 @@ function EmployeeDetails() {
                   value={updatedEmployee.dateOfLeaving}
                   onChange={handleChange}
                 />
-              ) : (
+            
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
                   {updatedEmployee.dateOfLeaving}
                 </li>
-              )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.address}</li> */}
-
+            
               <strong>Addres:</strong>
-              {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
@@ -226,15 +210,8 @@ function EmployeeDetails() {
                   value={updatedEmployee.address}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.address}
-                </li>
-              )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-centeannualIncomedata.annualIncome}</li> */}
 
               <strong>Contact Numbe:</strong>
-              {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="tel"
@@ -242,13 +219,7 @@ function EmployeeDetails() {
                   value={updatedEmployee.contactNumber}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.contactNumber}
-                </li>
-              )}
               <strong>Salary:</strong>
-              {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="number"
@@ -256,16 +227,9 @@ function EmployeeDetails() {
                   value={updatedEmployee.salary}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.salary}
-                </li>
-              )}
-              {/* <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center"> {data.boundries}</li> */}
             </Col>
             <Col className="col-sm-5 ">
             <strong>PF Contribution:</strong>
-              {editMode ? (
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="number"
@@ -273,11 +237,6 @@ function EmployeeDetails() {
                   value={updatedEmployee.pfContribution}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.pfContribution}
-                </li>
-              )}
             </Col>
           </Row>
         </ul>
@@ -300,7 +259,7 @@ function EmployeeDetails() {
             style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
-            {editMode ? "Update" : "Edit"}
+            Update
           </Button>
          
         </Col>
