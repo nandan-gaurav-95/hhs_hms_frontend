@@ -47,7 +47,7 @@ export default function HomePage() {
                 <NavLink to="/register">
                 <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
                 </NavLink>
-                <NavLink to="/consumableform">
+                <NavLink to="/allProperties">
                 <MDBDropdownItem link><b>View</b></MDBDropdownItem>
                 </NavLink>
               </MDBDropdownMenu>
@@ -117,10 +117,11 @@ export default function HomePage() {
         proceed
       </MDBDropdownToggle>
       <MDBDropdownMenu>
-        <MDBDropdownItem link><b>Add Tenant</b></MDBDropdownItem>
-        <MDBDropdownItem link><b>View Tenants</b></MDBDropdownItem>
-        <MDBDropdownItem link><b>Payments</b></MDBDropdownItem>
-        <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem>
+      <NavLink to="/tenant"><MDBDropdownItem link><b>Add Tenant</b></MDBDropdownItem> </NavLink>
+        
+        <NavLink to= "/showtenant"><MDBDropdownItem link><b>View Tenants</b></MDBDropdownItem></NavLink>
+        <NavLink to= "/payment"><MDBDropdownItem link><b>Payments</b></MDBDropdownItem></NavLink>
+       <NavLink to="/receipt"> <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem></NavLink>
       </MDBDropdownMenu>
     </MDBDropdown>
   </div>

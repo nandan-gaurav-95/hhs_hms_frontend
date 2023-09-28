@@ -8,8 +8,12 @@ import {
 } from 'mdb-react-ui-kit';
 import Sidebar from '../admin/Sidebar';
 import Table from 'react-bootstrap/Table';
+import { Dropdown } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 
 const NonConsumable = () => {
+    const navigate = useNavigate();
     const tableData = [
         {
             id: 1,
@@ -99,9 +103,20 @@ const NonConsumable = () => {
         setFilteredData(filtered);
     };
 
+    const handleViewProfile= (id)=>{
+        console.log("Showing Inventory on view Inventory Profile");
+        navigate(`/inventory-details/${id}`);
+        
+      }
+      
+      const handleDelete= ()=>{
+        // console.log("Delete tenant Successfully");
+        window.confirm("Do you want to Delete this Inventory Item ?");
+      }
+
     return (
         <div className="">
-            <Sidebar>
+            {/* <Sidebar> */}
                 <h1 className="mb-4 text-center">Show All Inventory</h1>
 
                 <div className="d-flex mb-8 align-items-center">
@@ -156,6 +171,7 @@ const NonConsumable = () => {
                             <th>Price</th>
                             <th>Department</th>
                             <th>Type</th>
+                            <th>Action</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -167,12 +183,31 @@ const NonConsumable = () => {
                                 <td>{item.date}</td>
                                 <td>{item.price}</td>
                                 <td>{item.department}</td>
-                                <td>{item.type}</td>
+                                <td>{item.action}
+                                </td>
+                                <td>
+                                  <div className="dropdown">
+                                    <Dropdown >
+                                      <Dropdown.Toggle
+                                        variant="secondary"
+                                        id="dropdownMenuButton"
+                                      >
+                                        &#8942;
+                                      </Dropdown.Toggle>
+                                      <Dropdown.Menu>
+                                        <Dropdown.Item onClick={() => handleViewProfile(item.id)}>View Profile</Dropdown.Item>
+                                        <Dropdown.Item>Edit Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
+                                        <Dropdown.Item>Mark as a Resigned</Dropdown.Item>
+                                      </Dropdown.Menu>
+                                    </Dropdown>
+                                  </div>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
-            </Sidebar>
+            {/* </Sidebar> */}
         </div>
     );
 };

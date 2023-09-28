@@ -17,6 +17,7 @@ const TenantForm = () => {
   const navigate = useNavigate();
   const initialState = {
     tenantName: "",
+    department:"",
     address: "",
     contactNum: "",
     allocatedShop: "",
@@ -112,10 +113,10 @@ const TenantForm = () => {
     return errors;
   };
 
-  const ShowTenant = (event) => {
-    event.preventDefault();
-    navigate("/showtenant");
-  };
+  // const ShowTenant = (event) => {
+  //   event.preventDefault();
+  //   navigate("/showtenant");
+  // };
 
   return (
     <div className=" ">
@@ -136,6 +137,34 @@ const TenantForm = () => {
               <div className="text-danger">{errors.tenantName}</div>
             )}
           </Col>
+          <Col className="col-sm-5">
+              <select
+                className="form-select"
+                id="Department"
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                required
+                >
+                <option value="">Select Department</option>
+                <option value="Schools">Schools</option>
+                <option value="ITI College">ITI College</option>
+                <option value="Skill Center">Skill Center</option>
+                <option value="Blood Collection Center">
+                  Blood Collection Center
+                </option>
+                <option value="Hostel">Hostel</option>
+                <option value="Masjid">Masjid</option>
+                <option value="Dargah">Dargah</option>
+              </select>
+              {errors.department && (
+                <div className="text-danger">{errors.department}</div>
+              )}
+            </Col>
+
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+         
           <Col className="col-sm-5 ">
             <Input
               label="Contact No"
@@ -149,34 +178,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.contactNum}</div>
             )}
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
-            <Input
-              label="Current Address"
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-            {errors.address && (
-              <div className="text-danger">{errors.address}</div>
-            )}
-          </Col>
-          {/* <Col className="col-sm-5 ">
-            <Input
-              label="Shop No"
-              type="text"
-              name="allocatedShop"
-              value={formData.allocatedShop}
-              onChange={handleChange}
-              required
-            />
-            {errors.allocatedShop && (
-              <div className="text-danger">{errors.allocatedShop}</div>
-            )}
-          </Col> */}
+         
 
 <Col className="col-sm-5">
             <select
@@ -200,32 +202,34 @@ const TenantForm = () => {
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+         
+           <Col className="col-sm-5 ">
             <Input
-              label="Collected Rent"
+              label="Current Address"
               type="text"
-              name="rentCollected"
-              value={formData.rentCollected}
+              name="address"
+              value={formData.address}
               onChange={handleChange}
               required
             />
-            {errors.rentCollected && (
-              <div className="text-danger">{errors.rentCollected}</div>
+            {errors.address && (
+              <div className="text-danger">{errors.address}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+         
+           {/* <Col className="col-sm-5 ">
             <Input
-              label="Rent Due"
+              label="Current Address"
               type="text"
-              name="rentDue"
-              value={formData.rentDue}
+              name="address"
+              value={formData.address}
               onChange={handleChange}
               required
             />
-            {errors.rentDue && (
-              <div className="text-danger">{errors.rentDue}</div>
+            {errors.address && (
+              <div className="text-danger">{errors.address}</div>
             )}
-          </Col>
+          </Col> */}
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
@@ -241,6 +245,23 @@ const TenantForm = () => {
               <div className="text-danger">{errors.securityDeposit}</div>
             )}
           </Col>
+          
+           <Col className="col-sm-5 ">
+            <Input
+              label="Rent Due"
+              type="text"
+              name="rentDue"
+              value={formData.rentDue}
+              onChange={handleChange}
+              required
+            />
+            {errors.rentDue && (
+              <div className="text-danger">{errors.rentDue}</div>
+            )}
+          </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+         
           <Col className="col-sm-5 ">
             <Input
               label="Electricity Due"
@@ -252,21 +273,6 @@ const TenantForm = () => {
             />
             {errors.electricityDue && (
               <div className="text-danger">{errors.electricityDue}</div>
-            )}
-          </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
-            <Input
-              label="Collection Details"
-              type="text"
-              name="collectionDetails"
-              value={formData.collectionDetails}
-              onChange={handleChange}
-              required
-            />
-            {errors.collectionDetails && (
-              <div className="text-danger">{errors.collectionDetails}</div>
             )}
           </Col>
           <Col className="col-sm-5">
@@ -290,6 +296,35 @@ const TenantForm = () => {
           </Col>
         </Row>
         <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+           <Col className="col-sm-5 ">
+            <Input
+              label="Collection Details"
+              type="text"
+              name="collectionDetails"
+              value={formData.collectionDetails}
+              onChange={handleChange}
+              required
+            />
+            {errors.collectionDetails && (
+              <div className="text-danger">{errors.collectionDetails}</div>
+            )}
+          </Col>
+          <Col className="col-sm-5 ">
+            <Input
+              label="Bill Generation/Total Bill"
+              type="text"
+              name="billGeneration"
+              value={formData.billGeneration}
+              onChange={handleChange}
+              required
+            />
+            {errors.billGeneration && (
+              <div className="text-danger">{errors.billGeneration}</div>
+            )}
+          </Col>
+        </Row>
+       
+        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
         <Col className="col-sm-5 ">
               <Input
                 label="Agreement Start Date"
@@ -309,30 +344,15 @@ const TenantForm = () => {
               />
             </Col>
         </Row>
-        <Row className="row mt-8 mb-4 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
-            <Input
-              label="Bill Generation/Total Bill"
-              type="text"
-              name="billGeneration"
-              value={formData.billGeneration}
-              onChange={handleChange}
-              required
-            />
-            {errors.billGeneration && (
-              <div className="text-danger">{errors.billGeneration}</div>
-            )}
-          </Col>
-        </Row>
-       
+      
         <div className="text-center mt-4 ">
           <Button type="submit">Submit</Button>
         </div>
-        <div className="text-center mt-4 ">
+        {/* <div className="text-center mt-4 ">
           <Button variant="primary" type="button" square onClick={ShowTenant}>
             Show Tenant
           </Button>
-        </div>
+        </div> */}
       </form>
       </Sidebar>
     </div>

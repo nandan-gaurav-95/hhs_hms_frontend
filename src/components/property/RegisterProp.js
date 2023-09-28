@@ -16,11 +16,11 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
-import Header from "../common/Header";
 const RegisterProp = () => {
   const navigate = useNavigate();
   const initialState = {
     companyNm: "",
+    proptype:"",
     email: "",
     gstNo: "",
     mobNo: "",
@@ -35,7 +35,11 @@ const RegisterProp = () => {
 
     // Validate company name
     if (!formData.companyNm.trim()) {
-      errors.companyNm = "Company Name is required";
+      errors.companyNm = "proptype Name is required";
+    }
+     // Validate property type
+    if (!formData.proptype) {
+      errors.proptype = "Property type is required";
     }
 
     // Validate email
@@ -137,17 +141,17 @@ const RegisterProp = () => {
         });
       }
     } else {
-      toast.error("Validation errors. Please check your input.", {
+      toast.error("Please filled the required fields.", {
         position: "top-right",
         autoClose: 1000,
       });
     }
   };
 
-  const AllCompanyNameDetails = (event) => {
-    event.preventDefault();
-    navigate("/allCompanyName");
-  };
+  // const AllCompanyNameDetails = (event) => {
+  //   event.preventDefault();
+  //   navigate("/allCompanyName");
+  // };
 
   const diffToast = () => {
     toast.success("Submit successful!", {
@@ -171,15 +175,14 @@ const RegisterProp = () => {
   const condition = true;
   return (
     <div className="">
-    <Header/>
     <Sidebar>
-      <h1 className="mb-4 text-center">Register New Property</h1>
+      <h1 className=" mb-4 text-center">Add Property Details</h1>
       <Row className="justify-content-center">
         <Col md="6">
           <form onSubmit={handleSubmit}>
             <div className="form-field ">
               <Input
-                label="Company Name"
+                label="Proptype Name"
                 type="text"
                 name="companyNm"
                 value={formData.companyNm}
@@ -189,6 +192,27 @@ const RegisterProp = () => {
               {validationErrors.companyNm && (
                 <div className="text-danger ">{validationErrors.companyNm}</div>
               )}
+                <select
+                className="form-select"
+                id="proptype"
+                name="proptype"
+                value={formData.proptype}
+                onChange={handleChange}
+                required
+                >
+                <option value="">Property Type</option>
+                <option value="Schools">Schools</option>
+                <option value="ITI College">ITI College</option>
+                <option value="Skill Center">Skill Center</option>
+                <option value="Blood Collection Center"> Blood Collection Center</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Masjid">Masjid</option>
+                <option value="Dargah">Dargah</option>
+              </select>
+              {validationErrors.proptype && (
+                <div className="text-danger ">{validationErrors.proptype}</div>
+              )}
+             
             </div>
 
             <div className="form-field">
@@ -233,7 +257,7 @@ const RegisterProp = () => {
               )}
             </div>
 
-            {/* <div className="form-field">
+            <div className="form-field">
               <Input
                 label=" "
                 type="file"
@@ -244,7 +268,7 @@ const RegisterProp = () => {
               {validationErrors.logo && (
                 <div className="text-danger">{validationErrors.logo}</div>
               )}
-            </div> */}
+            </div>
 
             <div className="text-center mt-4 form-group row ">
               <div className="col">
@@ -261,7 +285,7 @@ const RegisterProp = () => {
             </div>
           </form>
 
-          <div className="text-center mt-4 form-group row ">
+          {/* <div className="text-center mt-4 form-group row ">
             <Button
               variant="primary"
               type="button"
@@ -270,7 +294,7 @@ const RegisterProp = () => {
             >
               AllCompanyName
             </Button>
-          </div>
+          </div> */}
 
         
         </Col>
