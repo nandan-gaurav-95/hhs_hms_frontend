@@ -3,15 +3,15 @@ import axios from "axios";
 import { APIS } from "../constants/api";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaMicrophone } from "react-icons/fa"; 
-
+import Table from 'react-bootstrap/Table';
 import {
   MDBContainer as Container,
   MDBRow as Row,
   MDBCol as Col,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
-import Sidebar from "../admin/Sidebar";
-
+// import Sidebar from "../admin/Sidebar";
+import "../../asset/style.css";
 const AllCompanyName = () => {
   const [allCompany, setAllCompany] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,7 +47,7 @@ const AllCompanyName = () => {
 
   return (
     <div className="text-center">
-      <Sidebar>
+      {/* <Sidebar> */}
       <h2 className="mb-4">Company Names:</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -64,42 +64,58 @@ const AllCompanyName = () => {
               <FaSearch />
             </span>
           </div>
-          {/* <div className="input-group-append">
-            <span className="input-group-text" onClick={handleVoiceSearch}>
-              <FaMicrophone />
-            </span>
-          </div> */}
         </div>
         
       </Col>
-      <Row className="justify-content-center">
-        <Col className="col-sm-5 d-flex justify-content-center">
-          <ul className="list-group">
-            {allCompany
-              .filter((company) =>
-                company?.companyNm
-                  .toLowerCase()
-                  .includes(searchQuery.toLowerCase())
-              )
-              .map((company, index) => (
-                <li
-                  key={index}
-                  className="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  {company?.companyNm}
-                  <Button
-                    color="primary"
-                    onClick={() => handleViewDetails(company.id)}
-                    
-                  >
-                    View Property Details
-                  </Button>
-                </li>
-              ))}
-          </ul>
-        </Col>
-      </Row>
-      </Sidebar>
+      <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>SI.No</th>
+          <th>Property Name</th>
+          <th>Email ID</th>
+          <th>GST NO</th>
+          <th>Contact NO</th>
+          <th>Location</th>
+          <th>Size</th>
+          <th>CTS NO</th>
+          <th>Gazzet NO</th>
+          <th>Maintenance Charges</th>
+          <th>Action</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>mai@gmail.com</td>
+          <td>12</td>
+          <td>9214569877</td>
+          <td>nashik</td>
+          <td>12sq.ft</td>
+          <td>12</td>
+          <td>1200</td>
+          <td>Yes</td>
+          
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jacob</td>
+          <td>mai@gmail.com</td>
+          <td>12</td>
+          <td>9214569877</td>
+          <td>nashik</td>
+          <td>12sq.ft</td>
+          <td>12</td>
+          <td>1200</td>
+          <td>Yes</td>
+          
+        </tr>
+        
+        
+      </tbody>
+    </Table>
+      {/* </Sidebar> */}
     </div>
   );
 };

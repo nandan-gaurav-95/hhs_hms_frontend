@@ -20,6 +20,7 @@ const SampleRegForm = () => {
   const navigate = useNavigate();
   const initialState = {
     companyNm: "",
+    proptype:"",
     email: "",
     gstNo: "",
     mobNo: "",
@@ -34,7 +35,11 @@ const SampleRegForm = () => {
 
     // Validate company name
     if (!formData.companyNm.trim()) {
-      errors.companyNm = "Company Name is required";
+      errors.companyNm = "proptype Name is required";
+    }
+     // Validate property type
+    if (!formData.proptype) {
+      errors.proptype = "Property type is required";
     }
 
     // Validate email
@@ -136,17 +141,17 @@ const SampleRegForm = () => {
         });
       }
     } else {
-      toast.error("Validation errors. Please check your input.", {
+      toast.error("Please filled the required fields.", {
         position: "top-right",
         autoClose: 1000,
       });
     }
   };
 
-  const AllCompanyNameDetails = (event) => {
-    event.preventDefault();
-    navigate("/allCompanyName");
-  };
+  // const AllCompanyNameDetails = (event) => {
+  //   event.preventDefault();
+  //   navigate("/allCompanyName");
+  // };
 
   const diffToast = () => {
     toast.success("Submit successful!", {
@@ -177,7 +182,7 @@ const SampleRegForm = () => {
           <form onSubmit={handleSubmit}>
             <div className="form-field ">
               <Input
-                label="Company Name"
+                label="Proptype Name"
                 type="text"
                 name="companyNm"
                 value={formData.companyNm}
@@ -187,6 +192,27 @@ const SampleRegForm = () => {
               {validationErrors.companyNm && (
                 <div className="text-danger ">{validationErrors.companyNm}</div>
               )}
+                <select
+                className="form-select"
+                id="proptype"
+                name="proptype"
+                value={formData.proptype}
+                onChange={handleChange}
+                required
+                >
+                <option value="">Property Type</option>
+                <option value="Schools">Schools</option>
+                <option value="ITI College">ITI College</option>
+                <option value="Skill Center">Skill Center</option>
+                <option value="Blood Collection Center"> Blood Collection Center</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Masjid">Masjid</option>
+                <option value="Dargah">Dargah</option>
+              </select>
+              {validationErrors.proptype && (
+                <div className="text-danger ">{validationErrors.proptype}</div>
+              )}
+             
             </div>
 
             <div className="form-field">
@@ -231,7 +257,7 @@ const SampleRegForm = () => {
               )}
             </div>
 
-            {/* <div className="form-field">
+            <div className="form-field">
               <Input
                 label=" "
                 type="file"
@@ -242,7 +268,7 @@ const SampleRegForm = () => {
               {validationErrors.logo && (
                 <div className="text-danger">{validationErrors.logo}</div>
               )}
-            </div> */}
+            </div>
 
             <div className="text-center mt-4 form-group row ">
               <div className="col">
@@ -259,7 +285,7 @@ const SampleRegForm = () => {
             </div>
           </form>
 
-          <div className="text-center mt-4 form-group row ">
+          {/* <div className="text-center mt-4 form-group row ">
             <Button
               variant="primary"
               type="button"
@@ -268,7 +294,7 @@ const SampleRegForm = () => {
             >
               AllCompanyName
             </Button>
-          </div>
+          </div> */}
 
         
         </Col>
