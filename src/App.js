@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import SampleRegForm from "./components/company/SampleRegForm";
-import AllCompanyName from "./components/company/AllCompanyName";
-import PropertyDetails from "./components/company/PropertyDetails";
-import PropertyPhotoForm from "./components/company/PropertyPhoto";
+import RegisterProp from "./components/property/RegisterProp";
+import AllCompanyName from "./components/property/AllCompanyName";
+import PropertyDetails from "./components/property/PropertyDetails";
+import PropertyPhotoForm from "./components/property/PropertyPhoto";
 import TenantForm from "./components/tenant/TenantForm";
 import PayrollForm from "./components/payroll/Payroll";
 import InventoryForm from "./components/inventory/InventoryItem";
@@ -18,7 +18,7 @@ import ReceiptDetails from "./components/receipt/ReceiptDetails";
 import ExpenseForm from "./components/expense/ExpenseForm";
 import AllExpense from "./components/expense/AllExpense";
 import ExpenseDetails from "./components/expense/ExpenseDetails";
-import Sidebar from "./components/admin/Sidebar";
+
 import Allpayroll from "./components/payroll/Allpayroll";
 import PayrollDetails from "./components/payroll/PayrollDetails";
 import AllEmployeeForm from "./components/employee/AllEmployee";
@@ -45,19 +45,21 @@ import Signup from "./components/constants/LoginFlow/Signup";
 import HomePage from "./components/admin/HomePage";
 import ConsumableForm from "./components/inventory/Consumable";
 import NonConsumable from "./components/inventory/NonConsumable";
-import Property from "./components/company/Property";
+import Property from "./components/property/Property";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          {/* <Route path="" element={<LoginForm />}></Route> */}
-          <Route path="/" element={<HomePage />}></Route> 
-          <Route path="/forgetPage" element={<ForgetPage />}></Route>
-          <Route path="/signUp" element={<Signup />}></Route>
+<Routes>
+            {/* sign in */}
+            {/* <Route path="" element={<LoginForm />}></Route> */}
+            <Route path="/" element={<HomePage />}></Route> 
+            <Route path="/forgetPage" element={<ForgetPage />}></Route>
+            <Route path="/signUp" element={<Signup />}></Route>
 
-            <Route path="/register" element={<SampleRegForm />}></Route>
+            {/*prpperty management*/}
+            <Route path="/register" element={<RegisterProp />}></Route>
             <Route path="/allCompanyName" element={<AllCompanyName />}></Route>
             <Route path="/comapany-details/:id" element={<PropertyDetails />}></Route>
             <Route path="/properties" element={<Property/>}></Route>
@@ -70,6 +72,7 @@ function App() {
             {/* <Route path="/payroll-details/:id" element={<PayrollDetails />}></Route> */}
             <Route path="/payroll-details" element={<PayrollDetails />}></Route>
 
+            {/* Inventory Management */}
             <Route path="/inventory" element={<InventoryForm />}></Route>
             <Route path="/allinventory" element={<AllinventoryForm />}></Route>
             <Route path="/inventory-details/:id" element={<InventoryDetails />}></Route>
@@ -77,12 +80,14 @@ function App() {
             <Route path="/nonconsumableform" element={<NonConsumable />}></Route>
 
 
+            {/* Employee Management */}
+            <Route path="/empolyee" element={<EmployeeForm />}></Route>
+            <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
+
 
             <Route path="/daybook" element={<DayBook />}></Route>
             <Route path="/alldaybook" element={<AllDaybook />}></Route>
             <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>
-            <Route path="/empolyee" element={<EmployeeForm />}></Route>
-            <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
             <Route path="/empolyee-details/:id" element={<EmpolyeeDetails />}></Route>
             <Route path="/payment" element={<PaymentForm />}></Route>
             <Route path="/allpayment" element={<AllpaymentForm />}></Route>
