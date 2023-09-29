@@ -183,6 +183,23 @@ const AllEmployee = () => {
         setFilteredData(filtered);
     };
 
+    const handleMarkAsResigned = (empId) => {
+        // Find the employee data by emp_id
+        const updatedData = tableData.map((employee) => {
+          if (employee.emp_id === empId) {
+            // If it's the matching employee, update the status to "Former"
+            return { ...employee, status: 'Former' };
+          }
+          return employee;
+        });
+      
+        // Update the filteredData state to reflect the change
+        setFilteredData(updatedData);
+      
+        // Optionally, you can save the updated data to your data source or state management
+      };
+      
+
     const handleSortChange = (event) => {
         const { value } = event.target;
         setSortType(value);
@@ -223,9 +240,9 @@ const AllEmployee = () => {
       window.confirm("The Employee will be get deleted permanantly");
     };
 
-    const handleEditProfile =()=> {
+    const handleEditProfile =(emp_id)=> {
      
-     navigate(`/employee-details/:1656565`)
+     navigate(`/employee-details/:${emp_id}`)
     };
 
     return (
@@ -314,9 +331,9 @@ const AllEmployee = () => {
                                       </Dropdown.Toggle>
                                       <Dropdown.Menu>
                                         <Dropdown.Item >View Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={handleEditProfile}>Edit Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleEditProfile(item.emp_id)}>Edit Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
-                                        <Dropdown.Item>Mark as Resigned</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleMarkAsResigned(item.emp_id)}>Mark as Resigned</Dropdown.Item>
                                       </Dropdown.Menu>
                                     </Dropdown>
                                   </div>

@@ -46,18 +46,20 @@ const EmployeeForm = () => {
       setErrors(validationErrors);
       return;
     }
-    try {
-      const response = await EmployeeService.createEmployee(formData);
-      if (response.status === 201) {
-        console.log("Form data saved successfully");
-        setFormData(initialState);
-        setErrors({});
-      } else {
-        console.error("Error while saving from data");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    navigate(`/allempolyee`)
+    // code for connecting to the backend
+    // try {
+    //   const response = await EmployeeService.createEmployee(formData);
+    //   if (response.status === 201) {
+    //     console.log("Form data saved successfully");
+    //     setFormData(initialState);
+    //     setErrors({});
+    //   } else {
+    //     console.error("Error while saving from data");
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
   const validateForm = (data) => {
     const errors = {};

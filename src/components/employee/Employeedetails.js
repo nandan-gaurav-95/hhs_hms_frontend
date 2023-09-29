@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { APIS } from "../constants/api";
-import axios from "axios";
+
 import {
   MDBContainer as Container,
   MDBRow as Row,
@@ -18,21 +17,37 @@ function EmployeeDetails() {
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedEmployee, setUpdatedEmployee] = useState(propData.Employee || {});
   const navigate = useNavigate();
+  const [updatedEmployee, setUpdatedEmployee] = useState( {
+    emp_id: 1656565,
+    name: 'Mahesh Tawade',
+    department: 'School',
+    dob: "1990-01-15",
+    gender: 'Male',
+    contact:'9657089541',
+    bloodgroup: "A+",
+    address: "123 Main Street, City",
+    status: "Former",
+    j_date: '01-06-2023',
+    b_salary:'50000',
+    position:"Teacher",
+    aadhar: "123456789012",
+    qualification: "Bachelor's Degree",
+    pan: "ABCDE1234F",
+    dateOfHiring: "2022-03-01",
+    position: "Manager",
+    netSalary: "50000",
+    grossSalary: "70000",
+    allowance: "2000",
+    deduction: "1000",
+    pfEmployeeContribution: "1500",
+    loanAmount: "0",
+    loanRepaymentAmount: "0",
 
-  const tableData = 
-    {
-      emp_id: 1656565,
-      name: 'Mahesh Tawade',
-      contact:'9657089541',
-      status: "Former",
-      j_date: '01-06-2023',
-      b_salary:'50000',
-      position:"Teacher",
-      department: 'School',
-      gender: 'Male',
-  }
+
+});
+
+   
   
   useEffect(() => {
     async function fetchData() {
@@ -70,9 +85,10 @@ function EmployeeDetails() {
   // }
 
   const handleEditMode = async () => {
-    setEditMode(!editMode);
+    setEditMode(editMode);
     if (editMode) {
 
+      goBack();
       // try {
       
       //   // const response = await axios.put(`${APIS.GETALLEMPLOYEE}/${id}`, updatedEmployee);
@@ -93,7 +109,7 @@ function EmployeeDetails() {
   };
 
   const goBack = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     navigate("/allempolyee");
   };
 
@@ -127,10 +143,12 @@ function EmployeeDetails() {
       <Row className="justify-content-center">
         
         <Col>
-          <h1 className="text-center mb-4">Details of {propData?.empName}</h1>
+          <h1 className="text-center mb-4">Details of {updatedEmployee?.name}</h1>
         </Col>
       </Row>
 
+          
+      
       <Row className="justify-content-center">
         <ul className="list-group">
           <Row className="justify-content-center">
@@ -141,8 +159,9 @@ function EmployeeDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="emp_id"
-                  value={tableData.emp_id}
+                  value={updatedEmployee.emp_id}
                   onChange={handleChange}
+                  readOnly
                 />
 
               <strong>Employee Name</strong>
@@ -150,98 +169,219 @@ function EmployeeDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="empName"
-                  value={tableData.name}
+                  name="name"
+                  value={updatedEmployee.name}
                   onChange={handleChange}
                 />
-            
 
-              <strong>Date Of Hiring:</strong>
+              <strong>Department:</strong>
               
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="date"
-                  name="dateOfHiring"
-                  value={updatedEmployee.dateOfHiring}
-                  onChange={handleChange}
-                />
-            
-              
-              <strong>Loan Amount:</strong>
-            
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="number"
-                  name="loanAmount"
-                  value={updatedEmployee.loanAmount}
-                  onChange={handleChange}
-                />
-            
-            
-             
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="number"
-                  name="pfContribution"
-                  value={updatedEmployee.pfContribution}
-                  onChange={handleChange}
-                />
-           </Col>
-            <Col className="col-md-5">
-              <strong>Date Of Leaving:</strong>
-             
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="date"
-                  name="dateOfLeaving"
-                  value={updatedEmployee.dateOfLeaving}
-                  onChange={handleChange}
-                />
-            
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedEmployee.dateOfLeaving}
-                </li>
-            
-              <strong>Addres:</strong>
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="address"
-                  value={updatedEmployee.address}
+                  name="department"
+                  value={updatedEmployee.department}
+                  onChange={handleChange}
+                />
+              
+              <strong>DOB:</strong>
+            
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="date"
+                  name="dob"
+                  value={updatedEmployee.dob}
                   onChange={handleChange}
                 />
 
-              <strong>Contact Numbe:</strong>
+              <strong>Gender:</strong>
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="gender"
+                  value={updatedEmployee.gender}
+                  onChange={handleChange}
+                />
+
+              <strong>Contact Number:</strong>
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="tel"
-                  name="contactNumber"
-                  value={updatedEmployee.contactNumber}
+                  name="contact"
+                  value={updatedEmployee.contact}
                   onChange={handleChange}
                 />
-              <strong>Salary:</strong>
+                
+              <strong>Blood Group:</strong>
+              <select
+                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                id="Blood Group"
+                name="bloodgroup"
+                value={updatedEmployee.bloodgroup}
+                onChange={handleChange}
+                >
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+              <strong>Aadhar Number:</strong>
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="number"
-                  name="salary"
-                  value={updatedEmployee.salary}
+                  name="aadhar"
+                  value={updatedEmployee.aadhar}
                   onChange={handleChange}
+                  required
                 />
-            </Col>
-            <Col className="col-sm-5 ">
-            <strong>PF Contribution:</strong>
+            
+   
+            <strong>Qualification:</strong>
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="number"
-                  name="pfContribution"
-                  value={updatedEmployee.pfContribution}
+                  type="text"
+                  name="qualification"
+                  value={updatedEmployee.qualification}
                   onChange={handleChange}
+                  required
+                />
+
+                <strong>PAN Number:</strong>
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="pan"
+                  value={updatedEmployee.pan}
+                  onChange={handleChange}
+                  required
+                />
+                <strong>Date Of Hiring:</strong>
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="date"
+                  name="j_date"
+                  value={updatedEmployee.j_date}
+                  onChange={handleChange}
+                  required
+                />
+                </Col>
+                 <Col className="col-sm-5 ">
+
+                <strong>Position:</strong>
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="position"
+                  value={updatedEmployee.position}
+                  onChange={handleChange}
+                  required
+                />
+            
+            <strong>Basic Salary:</strong>            
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 type="text"
+                 name="b_salary"
+                 value={updatedEmployee.b_salary}
+                 onChange={handleChange}
+                 required
+                />
+          
+              <strong>Net Salary:</strong>
+   
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="netSalary"
+                  value={updatedEmployee.netSalary}
+                  onChange={handleChange}
+                  required
+                />
+
+                <strong>Gross Salary:</strong>
+  
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                  name="grossSalary"
+                  value={updatedEmployee.grossSalary}
+                  onChange={handleChange}
+                  required
+                />
+
+              <strong>Allowance:</strong>            
+
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 type="text"
+                 name="allowance"
+                 value={updatedEmployee.allowance}
+                 onChange={handleChange}
+                 required
+                />
+              <strong>Deduction:</strong>
+   
+                <input
+                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                type="text"
+                name="deduction"
+                value={updatedEmployee.deduction}
+                onChange={handleChange}
+                required
+                />
+ 
+
+                <strong>PF Employee Contribution:</strong>
+  
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 type="text"
+                 name="pfEmployeeContribution"
+                 value={updatedEmployee.pfEmployeeContribution}
+                 onChange={handleChange}
+                 required
+                />
+
+              <strong>Loan Amount:</strong>            
+
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                type="text"
+                name="loanAmount"
+                value={updatedEmployee.loanAmount}
+                onChange={handleChange}
+                required
+                />
+              <strong>Loan Repayment Amount:</strong>
+   
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="text"
+                name="loanRepaymentAmount"
+                value={updatedEmployee.loanRepaymentAmount}
+                onChange={handleChange}
+                required
+                />
+                <strong>PF Employee Contribution:</strong>
+  
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 type="text"
+                 name="pfEmployeeContribution"
+                 value={updatedEmployee.pfEmployeeContribution}
+                 onChange={handleChange}
+                 required
                 />
             </Col>
+           
           </Row>
         </ul>
       </Row>
-      
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
           <Button
@@ -250,7 +390,7 @@ function EmployeeDetails() {
             style={{ width: "100px" }}
             onClick={goBack}
           >
-            Back
+            Cancel
           </Button>
           <Button
             variant="primary"
