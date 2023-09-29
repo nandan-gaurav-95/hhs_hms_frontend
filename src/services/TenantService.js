@@ -28,7 +28,8 @@ export const TenantService ={
        getTenantById :async ()=>{
         try {
         const response=await axios.get(APIS.GETTENANTBYID,)
-        return response.data;  
+        return response;  
+        // console.log( "Service",response);
         } catch (error) {
             throw error;
         }

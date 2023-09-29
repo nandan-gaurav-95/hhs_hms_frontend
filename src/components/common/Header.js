@@ -17,7 +17,7 @@ export default function Header() {
       </Navbar.Brand>
 
       <Navbar.Brand className="text-center text-secondary mx-auto ">
-        <h1 className="custom-text">HHS HMS Complex</h1>
+        <h1 className="custom-text">HHS HMS</h1>
       </Navbar.Brand>
     </Navbar>
   );
