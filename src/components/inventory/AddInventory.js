@@ -9,7 +9,7 @@ import {
 import Sidebar from '../admin/Sidebar';
 
 
-const ConsumableForm = () => {
+const AddInventory = () => {
     const initialState = {
         department: '',
         inventory: '',
@@ -185,4 +185,4 @@ const ConsumableForm = () => {
     );
 };
 
-export default ConsumableForm;
+export default AddInventory;

@@ -40,9 +40,9 @@ import ForgetPage from "./components/constants/LoginFlow/Forgetpage";
 
 import Signup from "./components/constants/LoginFlow/Signup";
 import HomePage from "./components/admin/HomePage";
-import ConsumableForm from "./components/inventory/Consumable";
-import NonConsumable from "./components/inventory/NonConsumable";
 import Property from "./components/property/Property";
+import ShowInventory from "./components/inventory/ShowInventory";
+import AddInventory from "./components/inventory/AddInventory";
 
 function App() {
   return (
@@ -73,8 +73,8 @@ function App() {
             <Route path="/inventory" element={<InventoryForm />}></Route>
             <Route path="/allinventory" element={<AllinventoryForm />}></Route>
             <Route path="/inventory-details/:id" element={<InventoryDetails />}></Route>
-            <Route path="/consumableform" element={<ConsumableForm />}></Route>
-            <Route path="/nonconsumableform" element={<NonConsumable />}></Route>
+            <Route path="/addinventory" element={<AddInventory />}></Route>
+            <Route path="/showinventory" element={<ShowInventory />}></Route>
 
 
             {/* Employee Management */}

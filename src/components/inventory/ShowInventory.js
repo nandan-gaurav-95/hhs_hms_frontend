@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -9,12 +8,8 @@ import {
 } from 'mdb-react-ui-kit';
 import Sidebar from '../admin/Sidebar';
 import Table from 'react-bootstrap/Table';
-import { Dropdown } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
-
-const NonConsumable = () => {
-    const navigate = useNavigate();
+const ShowInventory = () => {
     const tableData = [
         {
             id: 1,
@@ -45,31 +40,68 @@ const NonConsumable = () => {
         },
     ];
 
-    const initialState = {
-        department:"",
-        computers: '',
-        chairs: '',
-        projector: '',
-        otherToolsEquipment: '',
-       
-    } 
-    const [formData, setFormData] = useState({ initialState });
+    const [searchInput, setSearchInput] = useState('');
+    const [filteredData, setFilteredData] = useState(tableData);
+    const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
+    const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-    };
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+    const handleSearchChange = (event) => {
+        const { value } = event.target;
+        setSearchInput(value);
 
+        // Filter the tableData based on the search input, sort type, and department sort type
+        const filtered = tableData.filter((item) => {
+            const nameMatches = item.name.toLowerCase().includes(value.toLowerCase());
+            
+            if (sortType === 'Consumable' || sortType === 'NonConsumable') {
+                return nameMatches && item.type === sortType && (departmentSortType === 'all' || item.department === departmentSortType);
+            } else {
+                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
+            }
+        });
+
+        setFilteredData(filtered);
     };
-    
+
+    const handleSortChange = (event) => {
+        const { value } = event.target;
+        setSortType(value);
+
+        // Reapply the search filter when the sort type changes
+        const filtered = tableData.filter((item) => {
+            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
+
+            if (value === 'all') {
+                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
+            } else {
+                return nameMatches && item.type === value && (departmentSortType === 'all' || item.department === departmentSortType);
+            }
+        });
+
+        setFilteredData(filtered);
+    };
+
+    const handleDepartmentSortChange = (event) => {
+        const { value } = event.target;
+        setDepartmentSortType(value);
+
+        // Reapply the search filter when the department sort type changes
+        const filtered = tableData.filter((item) => {
+            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
+
+            if (sortType === 'all') {
+                return nameMatches && (value === 'all' || item.department === value);
+            } else {
+                return nameMatches && item.type === sortType && (value === 'all' || item.department === value);
+            }
+        });
+
+        setFilteredData(filtered);
+    };
+
     return (
         <div className="">
-            {/* <Sidebar> */}
+            <Sidebar>
                 <h1 className="mb-4 text-center">Show All Inventory</h1>
 
                 <div className="d-flex mb-8 align-items-center">
@@ -124,7 +156,6 @@ const NonConsumable = () => {
                             <th>Price</th>
                             <th>Department</th>
                             <th>Type</th>
-                            <th>Action</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -136,35 +167,14 @@ const NonConsumable = () => {
                                 <td>{item.date}</td>
                                 <td>{item.price}</td>
                                 <td>{item.department}</td>
-                                <td>{item.action}
-                                </td>
-                                <td>
-                                  <div className="dropdown">
-                                    <Dropdown >
-                                      <Dropdown.Toggle
-                                        variant="secondary"
-                                        id="dropdownMenuButton"
-                                      >
-                                        &#8942;
-                                      </Dropdown.Toggle>
-                                      <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => handleViewProfile(item.id)}>View Profile</Dropdown.Item>
-                                        <Dropdown.Item>Edit Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
-                                        <Dropdown.Item>Mark as a Resigned</Dropdown.Item>
-                                      </Dropdown.Menu>
-                                    </Dropdown>
-                                  </div>
-                                </td>
+                                <td>{item.type}</td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
-            {/* </Sidebar> */}
-            {/* </form> */}
+            </Sidebar>
         </div>
-   
-  )
-}
+    );
+};
 
-export default NonConsumable;
+export default ShowInventory;

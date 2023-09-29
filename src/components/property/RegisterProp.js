@@ -35,7 +35,7 @@ const RegisterProp = () => {
 
     // Validate company name
     if (!formData.companyNm.trim()) {
-      errors.companyNm = "proptype Name is required";
+      errors.companyNm = "Property Name is required";
     }
      // Validate property type
     if (!formData.proptype) {
@@ -182,7 +182,7 @@ const RegisterProp = () => {
           <form onSubmit={handleSubmit}>
             <div className="form-field ">
               <Input
-                label="Proptype Name"
+                label="Property Name"
                 type="text"
                 name="companyNm"
                 value={formData.companyNm}
@@ -199,6 +199,8 @@ const RegisterProp = () => {
                 value={formData.proptype}
                 onChange={handleChange}
                 required
+                style={{ marginTop: '20px' }} 
+                
                 >
                 <option value="">Property Type</option>
                 <option value="Schools">Schools</option>

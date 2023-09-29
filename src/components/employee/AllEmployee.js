@@ -315,7 +315,7 @@ const AllEmployee = () => {
                                       <Dropdown.Menu>
                                         <Dropdown.Item >View Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={handleEditProfile}>Edit Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
+                                        <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
                                         <Dropdown.Item>Mark as Resigned</Dropdown.Item>
                                       </Dropdown.Menu>
                                     </Dropdown>

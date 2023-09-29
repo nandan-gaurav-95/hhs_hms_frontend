@@ -11,25 +11,25 @@ const TenantDetails = (props) => {
     const [tenantData, setTenantData] = useState(null);
     
 
-    useEffect(  ()=>{
-        const fetchTenantById = async ()=>{
-            try {
+    // useEffect(  ()=>{
+    //     const fetchTenantById = async ()=>{
+    //         try {
                 
-                const response = await TenantService.getTenantById(id);
+    //             const response = await TenantService.getTenantById(id);
                 
-                console.log("tenant Details",response);
-                setTenantData(response);
+    //             console.log("tenant Details",response);
+    //             setTenantData(response);
                 
 
                 
-            } catch (error) {
-                console.error("Error fetching tenant details:", error);
+    //         } catch (error) {
+    //             console.error("Error fetching tenant details:", error);
                 
-            }
-        };
-        fetchTenantById();
+    //         }
+    //     };
+    //     fetchTenantById();
 
-    },[id])
+    // },[id])
 
   
       

@@ -233,6 +233,11 @@ const ShowTenant = () => {
       navigate(`/tenant-details/${id}`);
       
     }
+    const handleEditProfile= (id)=>{
+        console.log("Showing All Tenants on view Tenants Profile");
+        navigate(`/tenant-details/${id}`);
+        
+      }
     
     const handleDelete= ()=>{
       // console.log("Delete tenant Successfully");
@@ -330,7 +335,7 @@ const ShowTenant = () => {
                                       </Dropdown.Toggle>
                                       <Dropdown.Menu>
                                         <Dropdown.Item onClick={() => handleViewProfile(item.id)}>View Profile</Dropdown.Item>
-                                        <Dropdown.Item>Edit Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleEditProfile()}>Edit Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
                                         <Dropdown.Item>Mark as a Resigned</Dropdown.Item>
                                       </Dropdown.Menu>

@@ -61,12 +61,12 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-              <NavLink to="/consumableform">
+              <NavLink to="/addinventory">
 
                   <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
 
               </NavLink>
-              <NavLink to="/nonconsumableform">
+              <NavLink to="/showinventory">
                 <MDBDropdownItem link><b>View</b></MDBDropdownItem>
                 </NavLink>
               </MDBDropdownMenu>
