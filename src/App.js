@@ -47,7 +47,7 @@ import ViewPropertyDetail from "./components/property/ViewPropertyDetails";
 import TenantDetails from "./components/tenant/TenantDetails";
 import AllProperties from "./components/property/AllProperties";
 import ViewTenantDetail from "./components/tenant/ViewTenantDetail";
-import ViewEmployeeDetail from "./components/employee/ViewEmployeeDetails";
+import ViewEmpProfile from "./components/employee/ViewEmpProfile";
 function App() {
   return (
     <div className="App">
@@ -90,7 +90,7 @@ function App() {
             <Route path="/empolyee" element={<EmployeeForm />}></Route>
             <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
             <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
-            <Route path="/employeeprofile/:id" element={<ViewEmployeeDetail />}></Route>
+            <Route path="/employeeprofile/:id" element={<ViewEmpProfile />}></Route>
 
             <Route path="/daybook" element={<DayBook />}></Route>
             <Route path="/alldaybook" element={<AllDaybook />}></Route>

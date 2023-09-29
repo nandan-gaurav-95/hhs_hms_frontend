@@ -333,7 +333,7 @@ const AllEmployee = () => {
                                         &#8942;
                                       </Dropdown.Toggle>
                                       <Dropdown.Menu>
-                                        <Dropdown.Item >View Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleViewProfile(item.emp_id)}>View Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleEditProfile(item.emp_id)}>Edit Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleMarkAsResigned(item.emp_id)}>Mark as Resigned</Dropdown.Item>
