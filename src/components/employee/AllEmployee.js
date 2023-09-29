@@ -124,7 +124,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const AllEmployee = () => {
     const tableData = [
       {
-        emp_id: 1656565,
+        emp_id: 1,
         name: 'Mahesh Tawade',
         contact:'9657089541',
         status: "Former",
@@ -244,6 +244,9 @@ const AllEmployee = () => {
      
      navigate(`/employee-details/:${emp_id}`)
     };
+    const handleViewProfile = (id) => {
+        navigate(`/employeeprofile/${id}`);
+      };
 
     return (
         <div className="">

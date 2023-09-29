@@ -125,7 +125,6 @@ import Header from '../common/Header';
 import { Dropdown } from 'react-bootstrap';
 import { logDOM } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
-import TenantDetails from './TenantDetails';
 const ShowTenant = () => {
   const navigate = useNavigate();
     const tableData = [
@@ -138,7 +137,7 @@ const ShowTenant = () => {
         securityDeposit:"20000.36",
         rentDue: '3000.00',
         electricityDue:"299.03",
-        expiryDate:'20/12/2003',
+        expiryDate:'20/12/2023',
         status:"Active",
 
     },
@@ -151,7 +150,7 @@ const ShowTenant = () => {
         securityDeposit:"25000.00",
         rentDue: '3000.00',
         electricityDue:"299.03",
-        expiryDate:'20/12/2003',
+        expiryDate:'20/12/2023',
         status:"Active",
     },
     {
@@ -228,21 +227,27 @@ const ShowTenant = () => {
 
         setFilteredData(filtered);
     };
-    const handleViewProfile= (id)=>{
-      console.log("Showing All Tenants on view Tenants Profile");
-      navigate(`/tenant-details/${id}`);
+    // const handleViewProfile= (id)=>{
+    //   console.log("Showing All Tenants on view Tenants Profile");
+    //   navigate(`/tenant-details/${id}`);
       
-    }
-    const handleEditProfile= (id)=>{
-        console.log("Showing All Tenants on view Tenants Profile");
-        navigate(`/tenant-details/${id}`);
+    // }
+    // const handleEditProfile= (id)=>{
+    //     console.log("Showing All Tenants on view Tenants Profile");
+    //     navigate(`/tenant-details/${id}`);
         
-      }
+    //   }
+    const handleEditProfile =(id)=> {
+        navigate(`/tenant-details/${id}`)
+       };
     
     const handleDelete= ()=>{
       // console.log("Delete tenant Successfully");
       window.confirm("Do you want to Delete this Tenant ?");
     }
+    const handleViewProfile = (id) => {
+        navigate(`/tenantprofile/${id}`);
+      };
 
 
     return (
@@ -335,9 +340,9 @@ const ShowTenant = () => {
                                       </Dropdown.Toggle>
                                       <Dropdown.Menu>
                                         <Dropdown.Item onClick={() => handleViewProfile(item.id)}>View Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleEditProfile()}>Edit Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleEditProfile(item.id)}>Edit Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
-                                        <Dropdown.Item>Mark as a Resigned</Dropdown.Item>
+                                       
                                       </Dropdown.Menu>
                                     </Dropdown>
                                   </div>
@@ -347,7 +352,7 @@ const ShowTenant = () => {
                         ))}
                     </tbody>
                 </Table>
-                <TenantDetails tableData={tableData} />
+               
             {/* </Sidebar> */}
         </div>
     );

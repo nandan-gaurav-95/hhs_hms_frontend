@@ -1,0 +1,198 @@
+import React from "react";
+import { useParams } from "react-router-dom";
+
+import Header from "../common/Header";
+import jsPDF from "jspdf";
+import {
+  MDBContainer as Container,
+  MDBRow as Row,
+  MDBCol as Col,
+  MDBBtn as Button,
+  // MDBInput as Input,
+} from "mdb-react-ui-kit";
+import logo from "../../asset/images/hhslogo.jpg";
+import { FaDownload } from "react-icons/fa";
+const ViewTenantDetail = () => {
+  const { id } = useParams();
+  const tenants = [
+    {
+      id: 1,
+      Name: "Mahesh Tawade",
+      ContactNo: "1234567890",
+      Address: "nashik",
+      ShopNo: "1",
+      CollectedRent: "2500",
+      RentDue: "1300",
+      Deposit: "5000",
+      ElectricityDue: "233",
+      TotalBill: "654",
+      CollectionDetails: "456",
+      PaymentMethod: "Online",
+    },
+  ];
+
+  const tenantToShow = tenants.find((prop) => prop.id === parseInt(id));
+
+  if (!tenantToShow) {
+    return <div>Property not found.</div>;
+  }
+
+  const renderTenantRow = (key, value) => (
+    <div key={key} className="d-flex entity-row">
+      <div className="entity-name">
+        {key.replace(/([A-Z])/g, " $1").trim()}:
+      </div>
+      <div className="entity-value">{value}</div>
+    </div>
+  );
+
+  const handleRentPdf = () => {
+    // Create a new jsPDF instance
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const logoImage = new Image();
+    logoImage.src = logo;
+  
+  logoImage.src = logo; // Use the imported logo image
+
+  // Wait for the image to load before rendering it
+  logoImage.onload = () => {
+    // Add the logo image to the PDF
+    doc.addImage(
+      logoImage,
+      "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+      10,     // X position
+      10,     // Y position
+      50,     // Image width
+      25      // Image height
+    );
+
+    doc.setTextColor(255, 0, 0); // RGB color (red)
+
+    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.text("Rent Details", 50, 40); // Adjust the Y position as needed
+    doc.setFont('helvetica', 'normal'); // Reset font style to normal
+
+ // Reset text color to default (black)
+    doc.setTextColor(0);
+    doc.setFont('calibre', 'bold'); 
+    doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 50); // Adjust the Y position as needed
+    doc.setFont('calibre','normal');
+    // Add tenant details here...
+ 
+    doc.text(`Name: ${tenantToShow.Name}`, 25, 70);
+    doc.text(`Contact No: ${tenantToShow.ContactNo}`, 25, 80);
+    doc.text(`Address: ${tenantToShow.Address}`, 25, 90);
+    doc.text(`Shop No: ${tenantToShow.ShopNo}`, 25, 100);
+    doc.text(`Collected Rent: ${tenantToShow.CollectedRent}`, 25, 110);
+    doc.text(`Rent Due: ${tenantToShow.RentDue}`, 25, 120);
+    doc.text(`Deposit: ${tenantToShow.Deposit}`, 25, 130);
+    doc.text(`Total Bill: ${tenantToShow.TotalBill}`, 25, 140);
+    doc.text(`Collection Details: ${tenantToShow.CollectionDetails}`, 25, 150);
+    doc.text(`Payment Method: ${tenantToShow.PaymentMethod}`, 25, 160);
+
+    // Save the PDF with a specific name
+    doc.save("rent_details.pdf");
+    console.log("Download PDF clicked");
+  };
+  };
+
+  const handleEleBillPdf = () => {
+    // Add code for PDF download here
+    console.log("Download PDF clicked");
+  };
+
+  return (
+    <div>
+      <Header />
+      <h2 className="mb-4 text-center entity-column">Tenant Details</h2>
+
+      <Container
+        className="detail w-75 text-center"
+        style={{
+          height: "490px",
+          width: "50%",
+          boxShadow:
+            "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
+          marginBottom: "0",
+          marginTop: "10px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+        }}
+      >
+        <div>
+          <div className="d-flex w-100 flex-column">
+            <div className="d-flex entity-row">
+              {renderTenantRow("id", tenantToShow.id)}
+              {renderTenantRow("Name", tenantToShow.Name)}
+            </div>
+            <div className="d-flex entity-row">
+              {renderTenantRow("ContactNo", tenantToShow.ContactNo)}
+              {renderTenantRow("Address", tenantToShow.Address)}
+            </div>
+            <div className="d-flex entity-row">
+              {renderTenantRow("ShopNo", tenantToShow.ShopNo)}
+              {renderTenantRow("CollectedRent", tenantToShow.CollectedRent)}
+            </div>
+            <div className="d-flex entity-row">
+              {renderTenantRow("RentDue", tenantToShow.RentDue)}
+              {renderTenantRow("Deposit", tenantToShow.Deposit)}
+            </div>
+            <div className="d-flex entity-row">
+              {renderTenantRow("ElectricityDue", tenantToShow.ElectricityDue)}
+              {renderTenantRow("TotalBill", tenantToShow.TotalBill)}
+            </div>
+            <div className="d-flex entity-row">
+              {renderTenantRow(
+                "CollectionDetails",
+                tenantToShow.CollectionDetails
+              )}
+              {renderTenantRow("PaymentMethod", tenantToShow.PaymentMethod)}
+            </div>
+            <div style={{ marginBottom: "10px" }}>
+              <Button
+                variant="primary"
+                onClick={handleRentPdf}
+                className="w-25" 
+              >
+                <FaDownload /> PDF for Rent
+              </Button>
+           
+
+            
+              <Button
+                variant="primary"
+                onClick={handleEleBillPdf}
+                className="w-25 mt-3"
+              >
+                <FaDownload /> PDF for Electricity Bill
+              </Button>
+            </div>
+
+            {Object.entries(tenantToShow)
+              .filter(
+                ([key]) =>
+                  ![
+                    "id",
+                    "Name",
+                    "ContactNo",
+                    "Address",
+                    "ShopNo",
+                    "CollectedRent",
+                    "RentDue",
+                    "Deposit",
+                    "ElectricityDue",
+                    "TotalBill",
+                    "CollectionDetails",
+                    "PaymentMethod",
+                  ].includes(key)
+              )
+              .map(([key, value]) => renderTenantRow(key, value))}
+          </div>
+        </div>
+      </Container>
+    </div>
+  );
+};
+
+export default ViewTenantDetail;

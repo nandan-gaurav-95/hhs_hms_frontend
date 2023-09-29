@@ -12,6 +12,8 @@ import {
 
 import { FaDownload } from "react-icons/fa"; 
 import Sidebar from "../admin/Sidebar";
+import jsPDF from 'jspdf';
+
 function PropertyDetailsTenant() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
@@ -95,10 +97,34 @@ function PropertyDetailsTenant() {
     }));
     // console.log(propData);
   };
-  const handleDownloadPdf = () => {
-    // Add code for PDF download here
+  const handleDownloadRentPdf = () => {
+   // Create a new jsPDF instance
+  const doc = new jsPDF();
+
+  // Add content to the PDF
+  doc.text("Rent Details", 10, 10);
+  // Add tenant details
+  doc.setFontSize(12); // Set font size for details
+  doc.text(15, 30, `Name: ${updatedTenant.tenantName}`);
+  doc.text(15, 40, `Contact No: ${updatedTenant.contactNum}`);
+  doc.text(15, 50, `Current Address: ${updatedTenant.address}`);
+  doc.text(15, 60, `Shop No: ${updatedTenant.allocatedShop}`);
+  doc.text(15, 70, `Bill Generation/Total Bill: ${updatedTenant.billGeneration}`);
+  doc.text(15, 80, `Rent Collected: ${updatedTenant.rentCollected}`);
+  doc.text(15, 90, `Rent Due: ${updatedTenant.rentDue}`);
+  doc.text(15, 110, `Rent Deposit: ${updatedTenant.securityDeposit}`);
+  doc.text(15, 120, `Payment Method: ${updatedTenant.paymentMethod}`);
+
+
+
+  // Add more details as needed
+
+  // Save the PDF with a specific name
+  doc.save("rent_details.pdf");
     console.log("Download PDF clicked");
   };
+
+
   const handlesubmitDownloadPdf = () => {
     // Add code for PDF download here
     console.log("Download PDF clicked");
@@ -110,10 +136,10 @@ function PropertyDetailsTenant() {
       <div className="position-fixed top-0 end-0 mt-4 me-4">
         <div className="d-flex flex-column">
           <div style={{ marginBottom: "10px" }}>
-            <Button variant="primary" onClick={handleDownloadPdf}>
-              <FaDownload /> PDF for Rent
-            </Button>
-          </div>
+  <Button variant="primary" onClick={handleDownloadRentPdf}>
+    <FaDownload /> PDF for Rent
+  </Button>
+</div>
           <div>
             <Button variant="primary" onClick={handlesubmitDownloadPdf}>
               <FaDownload />  PDF for Electricity Bill

@@ -8,7 +8,8 @@ import {
 } from 'mdb-react-ui-kit';
 import Sidebar from '../admin/Sidebar';
 import Table from 'react-bootstrap/Table';
-
+import { Dropdown } from 'react-bootstrap';
+import { NavLink, useNavigate } from 'react-router-dom';
 const ShowInventory = () => {
     const tableData = [
         {
@@ -39,7 +40,7 @@ const ShowInventory = () => {
             type: 'NonConsumable',
         },
     ];
-
+    const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState('');
     const [filteredData, setFilteredData] = useState(tableData);
     const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
@@ -98,6 +99,14 @@ const ShowInventory = () => {
 
         setFilteredData(filtered);
     };
+    const handleDelete =function(){ 
+        window.confirm("The Employee will be get deleted permanantly");
+      };
+  
+      const handleEditProfile =(id)=> {
+       
+       navigate(`/inventory-details/${id}`)
+      };
 
     return (
         <div className="">
@@ -156,6 +165,7 @@ const ShowInventory = () => {
                             <th>Price</th>
                             <th>Department</th>
                             <th>Type</th>
+                            <th>Action</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -168,6 +178,24 @@ const ShowInventory = () => {
                                 <td>{item.price}</td>
                                 <td>{item.department}</td>
                                 <td>{item.type}</td>
+                                <td>
+                                  <div className="dropdown">
+                                    <Dropdown>
+                                      <Dropdown.Toggle
+                                        variant="secondary"
+                                        id="dropdownMenuButton"
+                                      >
+                                        &#8942;
+                                      </Dropdown.Toggle>
+                                      <Dropdown.Menu>
+                                        
+                                        <Dropdown.Item onClick={()=>handleEditProfile(item.id)}>Edit </Dropdown.Item>
+                                        <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
+                                       
+                                      </Dropdown.Menu>
+                                    </Dropdown>
+                                  </div>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

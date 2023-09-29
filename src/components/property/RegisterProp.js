@@ -109,37 +109,40 @@ const RegisterProp = () => {
       formDataToSend.append("companyData", JSON.stringify(formData));
       formDataToSend.append("image", formData.logo);
 
-      try {
-        const response = await axios.post(APIS.CREATECOMPANY, formDataToSend, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
 
-        if (response.status === 200) {
-          console.log("Company details saved successfully");
-          setFormData(initialState);
+      //code to connect backend
+      navigate("/properties")
+      // try {
+      //   const response = await axios.post(APIS.CREATECOMPANY, formDataToSend, {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   });
 
-          // Move the diffToast function call here
-          diffToast();
+      //   if (response.status === 200) {
+      //     console.log("Company details saved successfully");
+      //     setFormData(initialState);
 
-          setTimeout(() => {
-            navigate("/properties", {
-              state: {
-                companyId: response.data.id,
-                companyName: formData.companyNm,
-              },
-            });
-          }, 1000);
-        }
-      } catch (error) {
-        console.error("Error:", error);
+      //     // Move the diffToast function call here
+      //     diffToast();
 
-        toast.error("Submission failed. Please try again later.", {
-          position: "top-right",
-          autoClose: 1000,
-        });
-      }
+      //     setTimeout(() => {
+      //       navigate("/properties", {
+      //         state: {
+      //           companyId: response.data.id,
+      //           companyName: formData.companyNm,
+      //         },
+      //       });
+      //     }, 1000);
+      //   }
+      // } catch (error) {
+      //   console.error("Error:", error);
+
+      //   toast.error("Submission failed. Please try again later.", {
+      //     position: "top-right",
+      //     autoClose: 1000,
+      //   });
+      // }
     } else {
       toast.error("Please filled the required fields.", {
         position: "top-right",
@@ -175,7 +178,7 @@ const RegisterProp = () => {
   const condition = true;
   return (
     <div className="">
-    <Sidebar>
+    {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Add Property Details</h1>
       <Row className="justify-content-center">
         <Col md="6">
@@ -301,7 +304,7 @@ const RegisterProp = () => {
         
         </Col>
       </Row>
-      </Sidebar>
+      {/* </Sidebar> */}
     </div>
   );
 };
