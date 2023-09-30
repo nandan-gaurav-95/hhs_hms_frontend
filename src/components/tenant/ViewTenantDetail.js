@@ -71,25 +71,47 @@ const ViewTenantDetail = () => {
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.text("Rent Details", 50, 40); // Adjust the Y position as needed
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
-
- // Reset text color to default (black)
+    
+    // Reset text color to default (black)
     doc.setTextColor(0);
+    doc.rect(20, 50, 160, 230); // (X, Y, Width, Height)
+
+
     doc.setFont('calibre', 'bold'); 
     doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 50); // Adjust the Y position as needed
     doc.setFont('calibre','normal');
+    doc.rect(20, 70, 160, 10);
     // Add tenant details here...
  
-    doc.text(`Name: ${tenantToShow.Name}`, 25, 70);
-    doc.text(`Contact No: ${tenantToShow.ContactNo}`, 25, 80);
-    doc.text(`Address: ${tenantToShow.Address}`, 25, 90);
-    doc.text(`Shop No: ${tenantToShow.ShopNo}`, 25, 100);
-    doc.text(`Collected Rent: ${tenantToShow.CollectedRent}`, 25, 110);
-    doc.text(`Rent Due: ${tenantToShow.RentDue}`, 25, 120);
-    doc.text(`Deposit: ${tenantToShow.Deposit}`, 25, 130);
-    doc.text(`Total Bill: ${tenantToShow.TotalBill}`, 25, 140);
-    doc.text(`Collection Details: ${tenantToShow.CollectionDetails}`, 25, 150);
-    doc.text(`Payment Method: ${tenantToShow.PaymentMethod}`, 25, 160);
+    doc.text(`Name: ${tenantToShow.Name}`, 30, 80);
+    doc.rect(20, 90, 160, 10);
 
+    doc.text(`Contact No: ${tenantToShow.ContactNo}`, 30, 100);
+    doc.rect(20, 110, 160, 10);
+
+    doc.text(`Address: ${tenantToShow.Address}`, 30, 120);
+    doc.rect(20, 130, 160, 10);
+
+    doc.text(`Shop No: ${tenantToShow.ShopNo}`, 30, 140);
+    doc.rect(20, 150, 160, 10);
+
+    doc.text(`Collected Rent: ${tenantToShow.CollectedRent}`, 30, 160);
+    doc.rect(20, 170, 160, 10);
+
+    doc.text(`Rent Due: ${tenantToShow.RentDue}`, 30, 180);
+    doc.rect(20, 190, 160, 10);
+
+    doc.text(`Deposit: ${tenantToShow.Deposit}`, 30, 200);
+    doc.rect(20, 210, 160, 10);
+
+    doc.text(`Total Bill: ${tenantToShow.TotalBill}`, 30, 220);
+    doc.rect(20, 230, 160, 10);
+
+    doc.text(`Collection Details: ${tenantToShow.CollectionDetails}`, 30, 240);
+    doc.rect(20, 250, 160, 10);
+
+    doc.text(`Payment Method: ${tenantToShow.PaymentMethod}`, 30, 260);
+    doc.rect(20, 270, 160, 10);
     // Save the PDF with a specific name
     doc.save("rent_details.pdf");
     console.log("Download PDF clicked");

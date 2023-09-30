@@ -139,7 +139,7 @@ function EmployeeDetails() {
   return (
     <div className="">
       <Header/>
-      <Sidebar>
+      {/* <Sidebar> */}
       <Row className="justify-content-center">
         
         <Col>
@@ -405,7 +405,7 @@ function EmployeeDetails() {
         </Col>
       </Row>
       
-      </Sidebar>
+      {/* </Sidebar> */}
     </div>
   );
 }
