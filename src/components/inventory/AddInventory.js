@@ -7,6 +7,7 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import Sidebar from '../admin/Sidebar';
+import Header from '../common/Header';
 
 
 const AddInventory = () => {
@@ -75,6 +76,7 @@ const AddInventory = () => {
 
     return (
         <div className="">
+             <Header />
             <Sidebar>
                 <h1 className=" mb-4 text-center">Add Inventory</h1>
                 <form onSubmit={handleSubmit}>

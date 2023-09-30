@@ -380,6 +380,7 @@ function EmployeeDetails() {
             </Col>
            
           </Row>
+          
         </ul>
       </Row>
       <Row className="text-center mt-4 form-group row ">

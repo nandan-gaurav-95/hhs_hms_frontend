@@ -16,6 +16,7 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
+import Header from "../common/Header";
 const RegisterProp = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -178,6 +179,7 @@ const RegisterProp = () => {
   const condition = true;
   return (
     <div className="">
+      <Header/>
     {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Add Property Details</h1>
       <Row className="justify-content-center">

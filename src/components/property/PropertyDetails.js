@@ -9,6 +9,7 @@ import {
   MDBBtn as Button,
   // MDBInput as Input,
 } from "mdb-react-ui-kit";
+import Header from "../common/Header";
 import Sidebar from "../admin/Sidebar";
 
 function PropertyDetails() {
@@ -20,20 +21,33 @@ function PropertyDetails() {
   const [imageData, setImageData] = useState(null);
   const navigate = useNavigate();
 
+  const tableData = {
+    id: 1,
+    name: "Mahesh Tawade",
+    department: "ITI College",
+    allocatedShop: "A-1001",
+    contactNum: "9657089541",
+    securityDeposit: "20000.36",
+    rentDue: "3000.00",
+    electricityDue: "299.03",
+    expiryDate: "20/12/2003",
+    status: "Active",
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
-        if (!id) return;
-        const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
-        // console.log("Hiiiiiiiiiii",response);
-        const { status = "", data } = response;
-        if (status === 200) {
-          setPropData(data);
+        // if (!id) return;
+        // const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
+        // // console.log("Hiiiiiiiiiii",response);
+        // const { status = "", data } = response;
+        // if (status === 200) {
+        //   setPropData(data);
 
-          setUpdatedCompany(data); // Initialize updatedCompany with the current data
-        } else {
-          console.error("Error while fetching company data");
-        }
+        //   setUpdatedCompany(data); // Initialize updatedCompany with the current data
+        // } else {
+        //   console.error("Error while fetching company data");
+        // }
         setLoading(false);
       } catch (error) {
         console.error("Error:", error);
@@ -48,30 +62,30 @@ function PropertyDetails() {
     return <div>Loading...</div>;
   }
 
-  if (!propData) {
-    // Handle the case when data is not available
-    return <div>Data not available</div>;
-  }
+  // if (!propData) {
+  //   // Handle the case when data is not available
+  //   return <div>Data not available</div>;
+  // }
 
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
-      try {
-        console.log("data sent to upda", updatedCompany);
-        const response = await axios.put(
-          `${APIS.SAVECOMPANY}/${id}`,
-          updatedCompany
-        );
-        if (response.status === 200) {
-          console.log("Company details updated successfully");
-          navigate(`/comapany-details/${id}`);
-        } else {
-          console.error("Error while updating company data");
-          // Additional error handling or notifications can be added here
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
+      // try {
+      //   console.log("data sent to upda", updatedCompany);
+      //   const response = await axios.put(
+      //     `${APIS.SAVECOMPANY}/${id}`,
+      //     updatedCompany
+      //   );
+      //   if (response.status === 200) {
+      //     console.log("Company details updated successfully");
+      //     navigate(`/comapany-details/${id}`);
+      //   } else {
+      //     console.error("Error while updating company data");
+      //     // Additional error handling or notifications can be added here
+      //   }
+      // } catch (error) {
+      //   console.error("Error:", error);
+      // }
     } else {
       // Enter edit mode
       setEditMode(true);
@@ -95,35 +109,36 @@ function PropertyDetails() {
   };
 
   const handlePhotos = async () => {
-    try {
-      if (!id) return;
-      const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
-      console.log("Hoiiiiiii", response);
-      setImageData(response.data);
-    } catch (error) {
-      console.error("Error:", error);
-      setLoading(false);
-    }
+    // try {
+    //   if (!id) return;
+    //   const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
+    //   console.log("Hoiiiiiii", response);
+    //   setImageData(response.data);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   setLoading(false);
+    // }
   };
 
   const handleDelete = async () => {
-    try {
-      console.log("in handle photos", id);
-      if (!id) return;
-      const response = await axios.delete(
-        `${APIS.DELETECOMPANYPHOTOS}/${id}`
-      );
-      setImageData(null);
-      console.log("Deleted", response);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    // try {
+    //   console.log("in handle photos", id);
+    //   if (!id) return;
+    //   const response = await axios.delete(
+    //     `${APIS.DELETECOMPANYPHOTOS}/${id}`
+    //   );
+    //   setImageData(null);
+    //   console.log("Deleted", response);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
 
   // Use the companyName in your component
   return (
     <div className="">
-      <Sidebar>
+      <Header/>
+      {/* <Sidebar> */}
       <Row className="justify-content-center">
         <Col md="1">
           {propData?.imageData && (
@@ -354,7 +369,7 @@ function PropertyDetails() {
           >
             {editMode ? "Update" : "Edit"}
           </Button>
-          <Button
+          {/* <Button
             variant="primary"
             type="submit"
             square
@@ -362,7 +377,7 @@ function PropertyDetails() {
             onClick={handlePhotos}
           >
             Photos
-          </Button>
+          </Button> */}
         </Col>
       </Row>
       <Row>
@@ -400,7 +415,7 @@ function PropertyDetails() {
         </div>
         
       </Row>
-      </Sidebar>
+      {/* </Sidebar> */}
     </div>
   );
 }

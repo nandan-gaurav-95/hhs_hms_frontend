@@ -12,6 +12,7 @@ import axios from "axios";
 import { APIS } from "../constants/api";
 import { TenantService } from "../../services/TenantService";
 import Sidebar from "../admin/Sidebar";
+import Header from "../common/Header";
 
 const TenantForm = () => {
   const navigate = useNavigate();
@@ -120,6 +121,7 @@ const TenantForm = () => {
 
   return (
     <div className=" ">
+      <Header/>
       <Sidebar>
       <h1 className=" mb-4 text-center">Tenant Management</h1>
       <form onSubmit={handleSubmit}>
@@ -217,21 +219,6 @@ const TenantForm = () => {
             )}
           </Col>
          
-           {/* <Col className="col-sm-5 ">
-            <Input
-              label="Current Address"
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-            {errors.address && (
-              <div className="text-danger">{errors.address}</div>
-            )}
-          </Col> */}
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
               label="Deposit"
@@ -245,6 +232,9 @@ const TenantForm = () => {
               <div className="text-danger">{errors.securityDeposit}</div>
             )}
           </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+         
           
            <Col className="col-sm-5 ">
             <Input
@@ -259,9 +249,6 @@ const TenantForm = () => {
               <div className="text-danger">{errors.rentDue}</div>
             )}
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-         
           <Col className="col-sm-5 ">
             <Input
               label="Electricity Due"
@@ -275,6 +262,10 @@ const TenantForm = () => {
               <div className="text-danger">{errors.electricityDue}</div>
             )}
           </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+         
+          
           <Col className="col-sm-5">
             <select
               className="form-select"
@@ -294,9 +285,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.paymentMethod}</div>
             )}
           </Col>
-        </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-           <Col className="col-sm-5 ">
+          <Col className="col-sm-5 ">
             <Input
               label="Collection Details"
               type="text"
@@ -309,6 +298,9 @@ const TenantForm = () => {
               <div className="text-danger">{errors.collectionDetails}</div>
             )}
           </Col>
+        </Row>
+        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+           
           <Col className="col-sm-5 ">
             <Input
               label="Bill Generation/Total Bill"
@@ -322,10 +314,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.billGeneration}</div>
             )}
           </Col>
-        </Row>
-       
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-        <Col className="col-sm-5 ">
+          <Col className="col-sm-5 ">
               <Input
                 label="Agreement Start Date"
                 type="date"
@@ -334,7 +323,11 @@ const TenantForm = () => {
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-sm-5 ">
+           
+        </Row>
+       
+        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
+        <Col className="col-sm-5 ">
               <Input
                 label="Agreement Expiry Date"
                 type="date"

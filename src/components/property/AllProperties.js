@@ -161,6 +161,12 @@ const AllProperties = () => {
   const handleEditProfile=(id)=>{
     navigate (`/property-details/${id}`)
    }
+
+   const handleDelete = (id) => {
+    navigate(`/profile/${id}`);
+  };
+
+
   return (
     <div className="text-center">
       <Header/>
@@ -224,7 +230,7 @@ const AllProperties = () => {
                     <Dropdown.Menu>
                       <Dropdown.Item onClick={() => handleViewProfile(company.id)}>View Profile</Dropdown.Item>
                       <Dropdown.Item onClick={() => handleEditProfile(company.id)}>Edit Profile</Dropdown.Item>
-                      <Dropdown.Item>Delete Profile</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
                       
                     </Dropdown.Menu>
                   </Dropdown>

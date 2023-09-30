@@ -10,6 +10,7 @@ import Sidebar from '../admin/Sidebar';
 import Table from 'react-bootstrap/Table';
 import { Dropdown } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Header from '../common/Header';
 const ShowInventory = () => {
     const tableData = [
         {
@@ -110,6 +111,7 @@ const ShowInventory = () => {
 
     return (
         <div className="">
+            <Header/>
             <Sidebar>
                 <h1 className="mb-4 text-center">Show All Inventory</h1>
 
