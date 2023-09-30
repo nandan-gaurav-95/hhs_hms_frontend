@@ -46,6 +46,7 @@ const ViewTenantDetail = () => {
     </div>
   );
 
+// Rent pdf
   const handleRentPdf = () => {
     // Create a new jsPDF instance
     const doc = new jsPDF('p', 'mm', 'a4');
@@ -66,61 +67,242 @@ const ViewTenantDetail = () => {
       25      // Image height
     );
 
-    doc.setTextColor(255, 0, 0); // RGB color (red)
+    //Header Part
+    doc.setTextColor(255, 138, 0); // RGB color (red)
+    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.text("HHS HMS", 70, 20); // Adjust the Y position as needed
+    doc.setFont('helvetica', 'normal'); // Reset font style to normal
 
+
+//PDF Heading 
+    doc.setTextColor(255, 0, 0); // RGB color (red)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.text("Rent Details", 50, 40); // Adjust the Y position as needed
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
     
     // Reset text color to default (black)
     doc.setTextColor(0);
-    doc.rect(20, 50, 160, 230); // (X, Y, Width, Height)
-
-
+    doc.rect(20, 50, 160, 105); // (X, Y, Width, Height)
     doc.setFont('calibre', 'bold'); 
-    doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 50); // Adjust the Y position as needed
+    doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 60); // Adjust the Y position as needed
     doc.setFont('calibre','normal');
-    doc.rect(20, 70, 160, 10);
-    // Add tenant details here...
+
+   // Add tenant details here...
  
-    doc.text(`Name: ${tenantToShow.Name}`, 30, 80);
-    doc.rect(20, 90, 160, 10);
+//Name
+   doc.setFontSize(12); // Set font size for labels
+   doc.setFont('calibre', 'bold');
+   doc.rect(20, 65, 160, 10);// (X, Y, Width, Height)
+   doc.rect(20, 65, 45, 10);// (X, Y, Width, Height)
+   doc.text("Name :", 25, 71); // Label "Name:"
+   doc.setFont('calibre', 'normal'); // Reset font style to normal
+   doc.setFontSize(10); // Reset font size to normal
+   doc.text(`${tenantToShow.Name}`, 70, 71); // (X, Y,Actual name)
 
-    doc.text(`Contact No: ${tenantToShow.ContactNo}`, 30, 100);
-    doc.rect(20, 110, 160, 10);
+//contact no
+    doc.setFontSize(12); // Set font size for labels
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 75, 160, 10);// (X, Y, Width, Height)
+    doc.rect(20, 75, 45, 10);// (X, Y, Width, Height)
+    doc.text("Contact No :", 25, 81); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.ContactNo}`, 70, 81); //(X, Y, Actual name)
 
-    doc.text(`Address: ${tenantToShow.Address}`, 30, 120);
-    doc.rect(20, 130, 160, 10);
+//Address
+    doc.setFontSize(12); // Set font size for labels
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 85, 160, 10);// (X, Y, Width, Height)
+    doc.rect(20, 85, 45, 10);// (X, Y, Width, Height)
+    doc.text("Address :", 25, 91); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.Address}`, 70, 91); // (X, Y, Actual name)
 
-    doc.text(`Shop No: ${tenantToShow.ShopNo}`, 30, 140);
-    doc.rect(20, 150, 160, 10);
+//CollectedRent
+    doc.setFontSize(12); // Set font size for labels
+    doc.rect(20, 95, 160, 10);// (X, Y, Width, Height)
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 95, 45, 10);// (X, Y, Width, Height)
+    doc.text("Collected Rent:", 25, 101); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.CollectedRent}`, 70, 101); // (X, Y, Actual name)
 
-    doc.text(`Collected Rent: ${tenantToShow.CollectedRent}`, 30, 160);
-    doc.rect(20, 170, 160, 10);
+//Rent Due
+    doc.setFontSize(12); // Set font size for labels
+    doc.rect(20, 105, 160, 10);// (X, Y, Width, Height)
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 105, 45, 10);// (X, Y, Width, Height)
+    doc.text("Rent Due :", 25, 111); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.RentDue}`, 70, 111); // (X, Y, Actual name)
 
-    doc.text(`Rent Due: ${tenantToShow.RentDue}`, 30, 180);
-    doc.rect(20, 190, 160, 10);
+//Deposit
+    doc.setFontSize(12); // Set font size for labels
+    doc.rect(20, 105, 160, 10);// (X, Y, Width, Height)
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 115, 45, 10);// (X, Y, Width, Height)
+    doc.text("Deposit :", 25, 121); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.Deposit}`, 70, 121); // (X, Y, Actual name)
 
-    doc.text(`Deposit: ${tenantToShow.Deposit}`, 30, 200);
-    doc.rect(20, 210, 160, 10);
+//TotalBill
+    doc.setFontSize(12); // Set font size for labels
+    doc.rect(20, 125, 160, 10);// (X, Y, Width, Height)
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 125, 45, 10);// (X, Y, Width, Height)
+    doc.text("TotalBill :", 25, 131); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.TotalBill}`, 70, 131); // (X, Y, Actual name)
 
-    doc.text(`Total Bill: ${tenantToShow.TotalBill}`, 30, 220);
-    doc.rect(20, 230, 160, 10);
+//CollectionDetails
+    doc.setFontSize(12); // Set font size for labels
+    doc.rect(20, 135, 160, 10);// (X, Y, Width, Height)
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 135, 45, 10);// (X, Y, Width, Height)
+    doc.text("Collection Details :", 25, 141); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.CollectionDetails}`, 70, 141); // (X, Y, Actual name)
 
-    doc.text(`Collection Details: ${tenantToShow.CollectionDetails}`, 30, 240);
-    doc.rect(20, 250, 160, 10);
+//PaymentMethod
+    doc.setFontSize(12); // Set font size for labels
+    doc.rect(20, 145, 160, 10);// (X, Y, Width, Height)
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 145, 45, 10);// (X, Y, Width, Height)
+    doc.text("Payment Method :", 25, 151); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.PaymentMethod}`, 70, 151); // (X, Y, Actual name)
 
-    doc.text(`Payment Method: ${tenantToShow.PaymentMethod}`, 30, 260);
-    doc.rect(20, 270, 160, 10);
     // Save the PDF with a specific name
     doc.save("rent_details.pdf");
     console.log("Download PDF clicked");
   };
   };
 
+
+  //Electricity bill pdf
   const handleEleBillPdf = () => {
-    // Add code for PDF download here
-    console.log("Download PDF clicked");
+     // Create a new jsPDF instance
+     const doc = new jsPDF('p', 'mm', 'a4');
+     const logoImage = new Image();
+     logoImage.src = logo;
+   
+   logoImage.src = logo; // Use the imported logo image
+ 
+   // Wait for the image to load before rendering it
+   logoImage.onload = () => {
+     // Add the logo image to the PDF
+     doc.addImage(
+       logoImage,
+       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+       10,     // X position
+       10,     // Y position
+       50,     // Image width
+       25      // Image height
+     );
+ 
+     //Header Part
+     doc.setTextColor(255, 138, 0); // RGB color (red)
+     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+     doc.text("HHS HMS", 70, 20); // Adjust the Y position as needed
+     doc.setFont('helvetica', 'normal'); // Reset font style to normal
+ 
+ 
+ //PDF Heading 
+     doc.setTextColor(255, 0, 0); // RGB color (red)
+     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+     doc.text("Electricity Bill Details", 50, 40); // Adjust the Y position as needed
+     doc.setFont('helvetica', 'normal'); // Reset font style to normal
+     
+     // Reset text color to default (black)
+     doc.setTextColor(0);
+     doc.rect(20, 50, 160, 75); // (X, Y, Width, Height)
+     doc.setFont('calibre', 'bold'); 
+     doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 60); // Adjust the Y position as needed
+     doc.setFont('calibre','normal');
+ 
+    // Add tenant details here...
+  
+ //Name
+    doc.setFontSize(12); // Set font size for labels
+    doc.setFont('calibre', 'bold');
+    doc.rect(20, 65, 160, 10);// (X, Y, Width, Height)
+    doc.rect(20, 65, 45, 10);// (X, Y, Width, Height)
+    doc.text("Name :", 25, 71); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${tenantToShow.Name}`, 70, 71); // (X, Y,Actual name)
+ 
+ //contact no
+     doc.setFontSize(12); // Set font size for labels
+     doc.setFont('calibre', 'bold');
+     doc.rect(20, 75, 160, 10);// (X, Y, Width, Height)
+     doc.rect(20, 75, 45, 10);// (X, Y, Width, Height)
+     doc.text("Contact No :", 25, 81); // Label "Name:"
+     doc.setFont('calibre', 'normal'); // Reset font style to normal
+     doc.setFontSize(10); // Reset font size to normal
+     doc.text(`${tenantToShow.ContactNo}`, 70, 81); //(X, Y, Actual name)
+ 
+ //Address
+     doc.setFontSize(12); // Set font size for labels
+     doc.setFont('calibre', 'bold');
+     doc.rect(20, 85, 160, 10);// (X, Y, Width, Height)
+     doc.rect(20, 85, 45, 10);// (X, Y, Width, Height)
+     doc.text("Address :", 25, 91); // Label "Name:"
+     doc.setFont('calibre', 'normal'); // Reset font style to normal
+     doc.setFontSize(10); // Reset font size to normal
+     doc.text(`${tenantToShow.Address}`, 70, 91); // (X, Y, Actual name)
+ 
+ //ElectricityDue
+     doc.setFontSize(12); // Set font size for labels
+     doc.rect(20, 95, 160, 10);// (X, Y, Width, Height)
+     doc.setFont('calibre', 'bold');
+     doc.rect(20, 95, 45, 10);// (X, Y, Width, Height)
+     doc.text("Electricity Due :", 25, 101); // Label "Name:"
+     doc.setFont('calibre', 'normal'); // Reset font style to normal
+     doc.setFontSize(10); // Reset font size to normal
+     doc.text(`${tenantToShow.ElectricityDue}`, 70, 101); // (X, Y, Actual name)
+ 
+ //Total Bill
+     doc.setFontSize(12); // Set font size for labels
+     doc.rect(20, 105, 160, 10);// (X, Y, Width, Height)
+     doc.setFont('calibre', 'bold');
+     doc.rect(20, 105, 45, 10);// (X, Y, Width, Height)
+     doc.text("Total Bill :", 25, 111); // Label "Name:"
+     doc.setFont('calibre', 'normal'); // Reset font style to normal
+     doc.setFontSize(10); // Reset font size to normal
+     doc.text(`${tenantToShow.TotalBill}`, 70, 111); // (X, Y, Actual name)
+ 
+ //PaymentMethod
+     doc.setFontSize(12); // Set font size for labels
+     doc.rect(20, 105, 160, 10);// (X, Y, Width, Height)
+     doc.setFont('calibre', 'bold');
+     doc.rect(20, 115, 45, 10);// (X, Y, Width, Height)
+     doc.text("PaymentMethod :", 25, 121); // Label "Name:"
+     doc.setFont('calibre', 'normal'); // Reset font style to normal
+     doc.setFontSize(10); // Reset font size to normal
+     doc.text(`${tenantToShow.PaymentMethod}`, 70, 121); // (X, Y, Actual name)
+ 
+ //CollectionDetails
+    //  doc.setFontSize(12); // Set font size for labels
+    //  doc.rect(20, 125, 160, 10);// (X, Y, Width, Height)
+    //  doc.setFont('calibre', 'bold');
+    //  doc.rect(20, 125, 45, 10);// (X, Y, Width, Height)
+    //  doc.text("CollectionDetails :", 25, 131); // Label "Name:"
+    //  doc.setFont('calibre', 'normal'); // Reset font style to normal
+    //  doc.setFontSize(10); // Reset font size to normal
+    //  doc.text(`${tenantToShow.CollectionDetails}`, 70, 131); // (X, Y, Actual name)
+ 
+     // Save the PDF with a specific name
+     doc.save("electricity-bill.pdf");
+     console.log("Download PDF clicked");
+   };
   };
 
   return (
@@ -179,9 +361,6 @@ const ViewTenantDetail = () => {
               >
                 <FaDownload /> PDF for Rent
               </Button>
-           
-
-            
               <Button
                 variant="primary"
                 onClick={handleEleBillPdf}

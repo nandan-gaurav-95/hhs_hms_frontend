@@ -111,7 +111,7 @@ function InventoryDetails() {
   return (
     <div className="">
       <Header />
-      <Sidebar>
+      {/* <Sidebar> */}
         <Row className="justify-content-center">
           <Col>
             <h1 className="text-center mb-4">Details of {propData?.name}</h1>
@@ -217,7 +217,7 @@ function InventoryDetails() {
             </Button>
           </Col>
         </Row>
-      </Sidebar>
+      {/* </Sidebar> */}
     </div>
   );
 }

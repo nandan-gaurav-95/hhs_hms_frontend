@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { MDBContainer as Container } from "mdb-react-ui-kit";
+import { MDBContainer as Container,
+          MDBBtn as Button, } from "mdb-react-ui-kit";
+import { FaDownload } from "react-icons/fa";
 import Header from "../common/Header";
 
 const ViewEmpProfile = () => {
@@ -48,6 +50,11 @@ const ViewEmpProfile = () => {
     </div>
   );
 
+
+  const handleSalarySlipPdf =()=>{
+    console.log("hiii");
+  }
+
   return (
     <div>
       <Header />
@@ -55,7 +62,7 @@ const ViewEmpProfile = () => {
       <Container
         className="detail w-75 text-center"
         style={{
-          height: "700px",
+          height: "730px",
           width: "50%",
           boxShadow:
             "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
@@ -67,7 +74,7 @@ const ViewEmpProfile = () => {
         }}
       >
         <div>
-          <div className="d-flex w-100 flex-column">
+          <div className="d-flex w-120 flex-column">
             <div className="d-flex entity-row">
               {renderEmployeeRow("id", employeeToShow.id)}
               {renderEmployeeRow("Name", employeeToShow.Name)}
@@ -143,6 +150,16 @@ const ViewEmpProfile = () => {
               .map(([key, value]) => renderEmployeeRow(key, value))}
           </div>
         </div>
+        <div style={{ marginBottom: "10px", marginLeft:"990px"}}>
+              <Button
+                variant="primary"
+                onClick={handleSalarySlipPdf}
+                className="w-70" 
+              >
+                <FaDownload /> Salary Slip
+              </Button>
+             
+            </div>
       </Container>
     </div>
   );

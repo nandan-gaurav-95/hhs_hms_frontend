@@ -77,7 +77,7 @@ const AddInventory = () => {
     return (
         <div className="">
              <Header />
-            <Sidebar>
+            {/* <Sidebar> */}
                 <h1 className=" mb-4 text-center">Add Inventory</h1>
                 <form onSubmit={handleSubmit}>
                     <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -182,7 +182,7 @@ const AddInventory = () => {
                         <Button type="submit">Submit</Button>
                     </div>
                 </form>
-            </Sidebar>
+            {/* </Sidebar> */}
         </div>
     );
 };

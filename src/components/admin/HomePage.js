@@ -102,7 +102,7 @@ export default function HomePage() {
         proceed
       </MDBDropdownToggle>
       <MDBDropdownMenu>
-        <MDBDropdownItem link><b>All Transactions</b></MDBDropdownItem>
+      <NavLink to="/transaction"><MDBDropdownItem link><b>All Transactions</b></MDBDropdownItem></NavLink>
         <MDBDropdownItem link><b>Payments</b></MDBDropdownItem>
         <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem>
       </MDBDropdownMenu>

@@ -56,7 +56,7 @@ const InventoryForm = () => {
 
     return (
         <div className="">
-            <Sidebar>
+            {/* <Sidebar> */}
             <h1 className=" mb-4 text-center"> Inventory Management </h1>
             <form onSubmit={handleSubmit}>
                 <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -135,7 +135,7 @@ const InventoryForm = () => {
             </Button>
             </div>
           </div>
-          </Sidebar>
+          {/* </Sidebar> */}
         </div>
     );
 };

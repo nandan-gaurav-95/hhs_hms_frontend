@@ -112,7 +112,7 @@ const ShowInventory = () => {
     return (
         <div className="">
             <Header/>
-            <Sidebar>
+            {/* <Sidebar> */}
                 <h1 className="mb-4 text-center">Show All Inventory</h1>
 
                 <div className="d-flex mb-8 align-items-center">
@@ -202,7 +202,7 @@ const ShowInventory = () => {
                         ))}
                     </tbody>
                 </Table>
-            </Sidebar>
+            {/* </Sidebar> */}
         </div>
     );
 };

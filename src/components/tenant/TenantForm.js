@@ -122,7 +122,7 @@ const TenantForm = () => {
   return (
     <div className=" ">
       <Header/>
-      <Sidebar>
+      {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Tenant Management</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -347,7 +347,7 @@ const TenantForm = () => {
           </Button>
         </div> */}
       </form>
-      </Sidebar>
+      {/* </Sidebar> */}
     </div>
   );
 };

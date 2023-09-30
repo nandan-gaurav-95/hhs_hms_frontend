@@ -48,6 +48,7 @@ import TenantDetails from "./components/tenant/TenantDetails";
 import AllProperties from "./components/property/AllProperties";
 import ViewTenantDetail from "./components/tenant/ViewTenantDetail";
 import ViewEmpProfile from "./components/employee/ViewEmpProfile";
+import Transactions from "./components/daybook/Transactions ";
 function App() {
   return (
     <div className="App">
@@ -92,9 +93,13 @@ function App() {
             <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
             <Route path="/employeeprofile/:id" element={<ViewEmpProfile />}></Route>
 
+              {/* Daybook */}
             <Route path="/daybook" element={<DayBook />}></Route>
             <Route path="/alldaybook" element={<AllDaybook />}></Route>
             <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>
+            <Route path="/transaction" element={<Transactions />}></Route>
+
+
             <Route path="/payment" element={<PaymentForm />}></Route>
             <Route path="/allpayment" element={<AllpaymentForm />}></Route>
             <Route path="/payment-details/:id" element={<PaymentDetails />}></Route>
