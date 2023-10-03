@@ -10,11 +10,6 @@
     width: 100px;
     margin-left: 50px;
   }
-
-
-
-
-
 .card-container {
   display: flex;
   /* justify-content: space-between;  */
@@ -51,3 +46,11 @@
 .proceed-button {
   margin-top: auto; 
 }
+.hhshms{
+  font-Family: Arial Black, sans-serif;
+    font-size: large;
+    background-image: linear-gradient(to right, #0b752b, #309b2c, #85c50d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }

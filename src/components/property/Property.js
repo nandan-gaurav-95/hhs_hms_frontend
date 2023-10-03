@@ -17,7 +17,7 @@ import Header from "../common/Header";
 const Property = () => {
   const initialState = {
     companyId:null,
-    companyName: "",
+    propertyName: "",
     villageNm: "",
     ctsNo: "",
     area: "",
@@ -87,7 +87,7 @@ const handleSubmit = async (event) => {
         navigate(`/property-photo/${formData.companyId}`,{
           state: {
             companyId: formData.companyId,
-            companyName: formData.companyName,
+            propertyName: formData.propertyName,
             // Add other data you want to pass here
           },
         });
@@ -105,15 +105,15 @@ const handleSubmit = async (event) => {
     <div className="">
       <Header/>
       {/* <Sidebar> */}
-      <h1 className=" mb-4 text-center">Add Property Details of {receivedFormData.companyName}</h1>
+      <h1 className=" mb-4 text-center">Add Property Details of {receivedFormData.propertyName}</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
-              label="Company Name"
+              label="Property Name"
               type="text"
-              name="companyName"
-              value={receivedFormData.companyName}
+              name="propertyName"
+              value={receivedFormData.propertyName}
               readOnly
             />
           </Col>

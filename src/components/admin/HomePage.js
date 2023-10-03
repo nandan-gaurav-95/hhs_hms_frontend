@@ -23,7 +23,7 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-              <NavLink to="/register">
+              <NavLink to="/school">
                   <MDBDropdownItem link ><b>Schools</b></MDBDropdownItem>
               </NavLink>
                 <MDBDropdownItem link><b>ITI College</b></MDBDropdownItem>

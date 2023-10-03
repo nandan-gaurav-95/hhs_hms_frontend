@@ -49,6 +49,8 @@ import AllProperties from "./components/property/AllProperties";
 import ViewTenantDetail from "./components/tenant/ViewTenantDetail";
 import ViewEmpProfile from "./components/employee/ViewEmpProfile";
 import Transactions from "./components/daybook/Transactions";
+import School from "./components/institute/School";
+import Viewdaybook from "./components/daybook/Viewdaybook";
 function App() {
   return (
     <div className="App">
@@ -98,6 +100,8 @@ function App() {
             <Route path="/alldaybook" element={<AllDaybook />}></Route>
             <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>
             <Route path="/transaction" element={<Transactions/>}></Route>
+            <Route path="/viewdaybook" element={<Viewdaybook />}></Route>
+
 
 
             <Route path="/payment" element={<PaymentForm />}></Route>
@@ -115,6 +119,8 @@ function App() {
             <Route path="/bankform" element={<BankForm />}></Route>
             <Route path="/showbank" element={<ShowBank />}></Route>
             <Route path="/bank-details/:id" element={<BankDetails />}></Route>
+
+            <Route path="/school" element={<School/>}></Route>
           </Routes>
       </BrowserRouter>
     </div>

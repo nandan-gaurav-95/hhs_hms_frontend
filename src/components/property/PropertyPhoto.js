@@ -99,10 +99,10 @@ function PropertyPhotoForm() {
           <Row className="justify-content-center">
             <Col className="col-sm-5">
               <Input
-                label="Company Name"
+                label="Property Name"
                 type="text"
-                name="companyName"
-                value={receivedData.companyName}
+                name="propertyName"
+                value={receivedData.propertyName}
                 readOnly
                 //   onChange={handleChange}
               />

@@ -20,7 +20,7 @@ import Header from "../common/Header";
 const RegisterProp = () => {
   const navigate = useNavigate();
   const initialState = {
-    companyNm: "",
+    propertyName: "",
     proptype:"",
     email: "",
     gstNo: "",
@@ -35,8 +35,8 @@ const RegisterProp = () => {
     const errors = {};
 
     // Validate company name
-    if (!formData.companyNm.trim()) {
-      errors.companyNm = "Property Name is required";
+    if (!formData.propertyName.trim()) {
+      errors.propertyName = "Property Name is required";
     }
      // Validate property type
     if (!formData.proptype) {
@@ -131,7 +131,7 @@ const RegisterProp = () => {
       //       navigate("/properties", {
       //         state: {
       //           companyId: response.data.id,
-      //           companyName: formData.companyNm,
+      //           companyName: formData.propertyName,
       //         },
       //       });
       //     }, 1000);
@@ -170,7 +170,7 @@ const RegisterProp = () => {
 
   // const areAllFieldsFilled = () => {
   //   return (
-  //     formData.companyNm.trim() &&
+  //     formData.propertyName.trim() &&
   //     formData.email.trim() &&
   //     formData.gstNo.trim() &&
   //     formData.mobNo.trim()
@@ -189,13 +189,13 @@ const RegisterProp = () => {
               <Input
                 label="Property Name"
                 type="text"
-                name="companyNm"
-                value={formData.companyNm}
+                name="propertyName"
+                value={formData.propertyName}
                 onChange={handleChange}
                 className="mt-4"
               />
-              {validationErrors.companyNm && (
-                <div className="text-danger ">{validationErrors.companyNm}</div>
+              {validationErrors.propertyName && (
+                <div className="text-danger ">{validationErrors.propertyName}</div>
               )}
                 <select
                 className="form-select"
