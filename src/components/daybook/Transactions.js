@@ -1,46 +1,44 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   MDBContainer as Container,
   MDBRow as Row,
   MDBCol as Col,
   MDBInput as Input,
   MDBBtn as Button,
-} from "mdb-react-ui-kit";
-import Sidebar from "../admin/Sidebar";
-import Table from "react-bootstrap/Table";
-import Header from "../common/Header";
-import { Dropdown } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "../../asset/style.css";
-import CustomColumn from "./CustomColumn"; // Update the path accordingly
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { BsReverseListColumnsReverse , BsFillFilterSquareFill,BsFillCalendarDateFill} from "react-icons/bs";
+} from 'mdb-react-ui-kit';
+import Sidebar from '../admin/Sidebar';
+import Table from 'react-bootstrap/Table';
+import Header from '../common/Header';
+import { FaFilter } from 'react-icons/fa';
+import { BsReverseListColumnsReverse, BsFillFilterSquareFill, BsFillCalendarDateFill } from 'react-icons/bs';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
+import '../../asset/style.css';
 
 const Transactions = () => {
   const [filteredData, setFilteredData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedColumn, setSelectedColumn] = useState(""); 
-  const [filterValue, setFilterValue] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedColumn, setSelectedColumn] = useState('');
+  const [filterValue, setFilterValue] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Custom");
+  const [startDate, setStartDate] = useState(moment().subtract(29, 'days').toDate());
+  const [endDate, setEndDate] = useState(new Date());
+  const [calendarVisible, setCalendarVisible] = useState(false);
 
-  const transactionData = [
-    { id: 1, description: "Transaction 1", amount: 100 },
-    { id: 2, description: "Transaction 2", amount: 150 },
-    // Add more transaction data as needed
-  ];
+  const presets = {
+    'Today': [moment(), moment()],
+    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+    'This Month': [moment().startOf('month'), moment().endOf('month')],
+    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+  };
 
   const handleSearch = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchTerm(searchTerm);
-
-    const filteredTransactions = transactionData.filter((transaction) =>
-      transaction.description.toLowerCase().includes(searchTerm)
-    );
-
-    setFilteredData(filteredTransactions);
+    // Rest of your search logic
   };
 
   const handleColumnSelect = (event) => {
@@ -51,66 +49,57 @@ const Transactions = () => {
     setFilterValue(event.target.value);
   };
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setShowDropdown(false);
+  const handlePresetClick = (preset) => {
+    const [start, end] = presets[preset];
+    setStartDate(start.toDate());
+    setEndDate(end.toDate());
   };
 
-  const handleApplyDateFilter = () => {
-   
-    console.log("Selected date:", selectedDate);
-  };
-  const handleOptionSelect = (option) => {
-    if (option === "Custom") {
-      // Handle the "Custom" option here, you can show a custom date picker.
-      // For now, let's just select the current date.
-      setSelectedDate(new Date());
-    } else {
-      // Handle other options like "Past six months," "This Month," etc.
-      // You can update the selectedDate accordingly.
-    }
-    setSelectedOption(option);
-    setShowDropdown(false);
+  const handleDateChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
   };
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+  const toggleCalendar = () => {
+    setCalendarVisible(!calendarVisible);
   };
+
+  const selectDateText = calendarVisible ? 'Close Calendar' : 'Select Date';
 
   return (
     <div>
       <Header />
-      
       <div className="box">
-      <div className="search-input">
-        <Input
-          type="text"
-          label="Search Transactions"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="search-input"
-        />
-      </div>
+        <div className="search-input">
+          <Input
+            type="text"
+            label="Search Transactions"
+            value={searchTerm}
+            onChange={handleSearch}
+            className="search-input"
+          />
+        </div>
         <div className="button-container">
           <Button variant="primary" className="mx-2">
             View Live Transaction
           </Button>
           <div className="filter-options">
-          <div className="input-group-append">
-            <span className="input-group-text">
-              <BsReverseListColumnsReverse />
-            </span>
-          </div>
+            <div className="input-group-append">
+              <span className="input-group-text">
+                <BsReverseListColumnsReverse />
+              </span>
+            </div>
             <select onChange={handleColumnSelect} className="filter-select">
-              <option value="">Select Column to Filter</option>
+              <option value="">Customize Columns</option>
               <option value="description">Description</option>
               <option value="amount">Amount</option>
             </select>
             <div className="input-group-append">
-            <span className="input-group-text">
-              <BsFillFilterSquareFill />
-            </span>
-          </div>
+              <span className="input-group-text">
+                <BsFillFilterSquareFill />
+              </span>
+            </div>
             <Input
               type="text"
               label="Filters"
@@ -119,56 +108,48 @@ const Transactions = () => {
               className="filter-input"
             />
           </div>
-          <div className="date-filter" style={{ marginLeft: '10px' }}>
-          <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text">
-                  <BsFillCalendarDateFill />
-                </span>
+          <div
+            style={{
+              position: 'relative',
+              display: 'inline-block',
+              marginLeft: '10px',
+              width: '500px',
+
+            }}
+          >
+            <Button variant="link" onClick={toggleCalendar}>
+              <BsFillCalendarDateFill />
+              &nbsp;{selectDateText}
+            </Button>
+            {calendarVisible && (
+              <div style={{ position: 'absolute', top: '30px', zIndex: '999' }}>
+                <DatePicker
+                  selected={startDate}
+                  onChange={handleDateChange}
+                  startDate={startDate}
+                  endDate={endDate}
+                  selectsRange
+                  inline
+                />
+                <div style={{ marginTop: '0px' }}>
+                  {Object.keys(presets).map((preset) => (
+                    <button
+                      key={preset}
+                      className="btn btn-link"
+                      onClick={() => handlePresetClick(preset)}
+                    >
+                      {preset}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <DatePicker
-                selected={selectedDate}
-                onChange={handleDateChange}
-                dateFormat="dd/MM/yyyy"
-                placeholderText="Select Date"
-                className="form-control" // Use Bootstrap form-control class
-              />
-            </div>
-           
-          </div>
-          {/* <div className="date-filter" style={{ marginLeft: "10px" }}>
-        <div className="date-picker-container">
-          <DatePicker
-            selected={selectedDate}
-            onChange={handleDateChange}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Select Date"
-            className="date-input"
-          />
-          <div className={`date-dropdown ${showDropdown ? "show" : ""}`}>
-            <button className="date-dropdown-button" onClick={toggleDropdown}>
-              {selectedOption}
-            </button>
-            <ul className="date-dropdown-options horizontal">
-              <li onClick={() => handleOptionSelect("Past six months")}>
-                Past six months
-              </li>
-              <li onClick={() => handleOptionSelect("This Month")}>
-                This Month
-              </li>
-              <li onClick={() => handleOptionSelect("This Week")}>This Week</li>
-              <li onClick={() => handleOptionSelect("Today")}>Today</li>
-              <li onClick={() => handleOptionSelect("Custom")}>Custom</li>
-            </ul>
+            )}
           </div>
         </div>
-      </div> */}
-        </div>
-        
       </div>
       <div>
-           <h2 className="title">Transaction History</h2>
-        </div>
+        <h2 className="title">Transaction History</h2>
+      </div>
     </div>
   );
 };
