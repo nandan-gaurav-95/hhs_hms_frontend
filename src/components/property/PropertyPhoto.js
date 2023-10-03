@@ -90,7 +90,7 @@ function PropertyPhotoForm() {
 
   return (
     <div className="">
-      <Sidebar>
+      {/* <Sidebar> */}
       <h2 className="mb-4 text-center">Property Photos:</h2>
       {error && <div className="text-danger">{error}</div>}{" "}
       {/* Display error message if there's an error */}
@@ -150,7 +150,7 @@ function PropertyPhotoForm() {
       {/* <div className="text-center mt-4">
         <Button>Upload Photos</Button>
       </div> */}
-      </Sidebar>
+      {/* </Sidebar> */}
     </div>
   );
 }

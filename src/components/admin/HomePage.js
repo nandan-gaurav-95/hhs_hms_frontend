@@ -45,10 +45,10 @@ export default function HomePage() {
               </MDBDropdownToggle>
               <MDBDropdownMenu>
                 <NavLink to="/register">
-                <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
+                <MDBDropdownItem link><b>Add Property</b></MDBDropdownItem>
                 </NavLink>
                 <NavLink to="/allProperties">
-                <MDBDropdownItem link><b>View</b></MDBDropdownItem>
+                <MDBDropdownItem link><b>View Property</b></MDBDropdownItem>
                 </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
@@ -63,11 +63,11 @@ export default function HomePage() {
               <MDBDropdownMenu>
               <NavLink to="/addinventory">
 
-                  <MDBDropdownItem link><b>Add</b></MDBDropdownItem>
+                  <MDBDropdownItem link><b>Add Inventory</b></MDBDropdownItem>
 
               </NavLink>
               <NavLink to="/showinventory">
-                <MDBDropdownItem link><b>View</b></MDBDropdownItem>
+                <MDBDropdownItem link><b>View Inventory</b></MDBDropdownItem>
                 </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
@@ -84,9 +84,7 @@ export default function HomePage() {
                 <NavLink to="/allempolyee">
                   <MDBDropdownItem link><b>View Employees</b></MDBDropdownItem>
                 </NavLink>
-                <NavLink to="/nonconsumableform">
-                  <MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem>
-                </NavLink>
+                {/* <NavLink to="/nonconsumableform"><MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem></NavLink> */}
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>
@@ -118,10 +116,9 @@ export default function HomePage() {
       </MDBDropdownToggle>
       <MDBDropdownMenu>
       <NavLink to="/tenant"><MDBDropdownItem link><b>Add Tenant</b></MDBDropdownItem> </NavLink>
-        
         <NavLink to= "/showtenant"><MDBDropdownItem link><b>View Tenants</b></MDBDropdownItem></NavLink>
-        <NavLink to= "/payment"><MDBDropdownItem link><b>Payments</b></MDBDropdownItem></NavLink>
-       <NavLink to="/receipt"> <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem></NavLink>
+        {/* <NavLink to= "/payment"><MDBDropdownItem link><b>Payments</b></MDBDropdownItem></NavLink>
+       <NavLink to="/receipt"> <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem></NavLink> */}
       </MDBDropdownMenu>
     </MDBDropdown>
   </div>

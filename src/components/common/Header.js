@@ -6,7 +6,7 @@ import "../../asset/homepage.css";
 export default function Header() {
   
     const gradientStyle = {
-      backgroundImage: "linear-gradient(to right, #ff8a00, #da1b60, #ff0066)",
+      backgroundImage: "linear-gradient(to top right, #0c332d)",
       WebkitBackgroundClip: "text",
       color: "transparent",
       letterSpacing: "1px", 
@@ -17,13 +17,16 @@ export default function Header() {
       <Navbar.Brand href="#home" className="d-flex justify-content-start mx-3">
         <img
           src={logo}
-          width="90"
-          height="60"
+          width="140"
+          height="90"
           className=" align-top"
           alt="Brand logo"
         />
         <span className="ml-2">
-          <h1 style={gradientStyle}>HHS HMS</h1>
+          <h1 style={gradientStyle}>Hazrath Hameed Shah Hazrath Muhib Shah</h1>
+          <p style={{textAlign:"center",
+                    fontFamily: "Arial Black, sans-serif",
+        }}>(HHS-HMS 2018)</p>
         </span>
       </Navbar.Brand>
     </Navbar>

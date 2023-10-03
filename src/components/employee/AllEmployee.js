@@ -152,6 +152,7 @@ const AllEmployee = () => {
         status: "Active",
         j_date: '01-06-2023',
         b_salary:'70000',
+        inventory:"Former",
         position:"HR",
         department: 'Skill Center',
         gender: 'Female',
@@ -306,9 +307,11 @@ const AllEmployee = () => {
                             <th>Position</th>
                             <th>Gender</th>
                             <th>Basic Salary</th>
+                            <th>Inventory</th> 
                             <th>Contact No</th>
                             <th>Status</th> 
-                            <th>Action</th>              
+                            <th>Action</th>   
+                                    
                         </tr>
                     </thead>
                     <tbody>
@@ -321,6 +324,7 @@ const AllEmployee = () => {
                                 <td>{item.position}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.b_salary}</td>
+                                <td>{item.inventory}</td>
                                 <td>{item.contact}</td>
                                 <td>{item.status}</td>
                                 <td>

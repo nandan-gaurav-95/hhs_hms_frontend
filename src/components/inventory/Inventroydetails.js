@@ -15,12 +15,12 @@ function InventoryDetails() {
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedInventory, setUpdatedInventory] = useState(
-    propData.Inventory || {}
-  );
   const navigate = useNavigate();
+  const [updatedInventory, setUpdatedInventory] = useState( {
+   
 
-  const tableData = {
+  
+  // const tableData = {
     id: 1,
     name: "bed",
     quantity: 4,
@@ -28,7 +28,7 @@ function InventoryDetails() {
     price: 5000,
     department: "Hostel",
     type: "Consumable",
-  };
+  });
   useEffect(() => {
     async function fetchData() {
       try {
@@ -114,7 +114,7 @@ function InventoryDetails() {
       {/* <Sidebar> */}
         <Row className="justify-content-center">
           <Col>
-            <h1 className="text-center mb-4">Details of {propData?.name}</h1>
+            <h1 className="text-center mb-4">Details of {updatedInventory?.name}</h1>
           </Col>
         </Row>
         <Row className="justify-content-center">
@@ -126,7 +126,7 @@ function InventoryDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="id"
-                  value={tableData.id}
+                  value={updatedInventory.id}
                   onChange={handleChange}
                 />
 
@@ -136,7 +136,7 @@ function InventoryDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="name"
-                  value={tableData.name}
+                  value={updatedInventory.name}
                   onChange={handleChange}
                 />
 

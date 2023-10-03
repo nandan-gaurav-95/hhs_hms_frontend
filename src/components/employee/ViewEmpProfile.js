@@ -33,7 +33,7 @@ const ViewEmpProfile = () => {
       PfEmployeeContribution: "1444",
       LoanAmount: "4440",
       LoanRepaymentAmount: "5550",
-      Vacations: "10days",
+      inventory: "Former",
     },
    
   ];
@@ -364,8 +364,9 @@ const ViewEmpProfile = () => {
             </div>
             <div className="d-flex entity-row">
               {renderEmployeeRow("allowance", employeeToShow.allowance)}
-              {renderEmployeeRow("Vacations", employeeToShow.Vacations)}
+              {renderEmployeeRow("inventory", employeeToShow.inventory)}
             </div>
+            
             {Object.entries(employeeToShow)
               .filter(
                 ([key]) =>
@@ -391,7 +392,7 @@ const ViewEmpProfile = () => {
                     "LoanAmount",
                     "LoanRepaymentAmount",
                     "allowance",
-                    "Vacations",
+                    "inventory",
                   ].includes(key)
               )
               .map(([key, value]) => renderEmployeeRow(key, value))}
