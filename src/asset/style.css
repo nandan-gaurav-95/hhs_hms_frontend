@@ -280,3 +280,52 @@ th {
   flex: 1;
   padding-left: 10px; 
 }
+.search-input {
+  width: 40%;
+  padding: 15px;
+  margin-left: 25px;
+}
+.title{
+  margin-left: 20px;
+ 
+}
+.transaction-history-title {
+  margin-top: 40px;
+  position: relative;
+}
+
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  width: 40%; 
+  height:50px;
+  margin-left: 40px; 
+}
+.space{
+  width:15%;
+}
+.box{
+  display: flex;
+  flex-direction: row;
+}
+.filter-options {
+  display: flex;
+  align-items: center;
+}
+
+.filter-select {
+  margin-right: 10px; 
+}
+.filter-input{
+  width:100px;
+  margin-right: 10px;
+}
+
+.date-input{
+  margin-right: 10px;
+  width:100px;
+}
