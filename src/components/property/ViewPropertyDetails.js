@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
 import { MDBContainer as Container, MDBCol as Col } from "mdb-react-ui-kit";
 import "../../asset/style.css";
+import { BiArrowBack } from "react-icons/bi";
 
 import Header from "../common/Header";
 
@@ -44,6 +45,7 @@ const ViewPropertyDetail = () => {
       maintenanceCharges: "No",
     },
   ];
+  const navigate = useNavigate();
 
   const propertyToShow = property.find((prop) => prop.id === parseInt(id));
 
@@ -61,6 +63,12 @@ const ViewPropertyDetail = () => {
   return (
     <div>
       <Header />
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       <h2 className="mb-4 text-center entity-column">Property Details:</h2>
       <Container
         className="detail w-75 text-center"

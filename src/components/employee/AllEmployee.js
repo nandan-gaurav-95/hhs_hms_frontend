@@ -119,7 +119,8 @@ import Sidebar from '../admin/Sidebar';
 import Table from 'react-bootstrap/Table';
 import Header from '../common/Header';
 import { Dropdown } from 'react-bootstrap';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { BiArrowBack } from "react-icons/bi";
 
 const AllEmployee = () => {
     const tableData = [
@@ -253,6 +254,12 @@ const AllEmployee = () => {
         <div className="">
             {/* <Sidebar> */}
             <Header/>
+            <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
                 <h1 className="mb-4 text-center">Employee Details</h1>
 
                 <div className="d-flex mb-8 align-items-center">

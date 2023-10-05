@@ -13,6 +13,7 @@ import { APIS } from "../constants/api";
 import { TenantService } from "../../services/TenantService";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
+import { BiArrowBack } from "react-icons/bi";
 
 const TenantForm = () => {
   const navigate = useNavigate();
@@ -122,6 +123,12 @@ const TenantForm = () => {
   return (
     <div className=" ">
       <Header/>
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Tenant Management</h1>
       <form onSubmit={handleSubmit}>

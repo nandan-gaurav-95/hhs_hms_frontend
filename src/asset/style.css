@@ -287,7 +287,7 @@ th {
   margin-left: 25px;
 }
 .title{
-  margin-left: 20px;
+  text-align: center;
  
 }
 .transaction-history-title {
@@ -330,4 +330,8 @@ th {
 .date-input{
   margin-right: 10px;
   width:100px;
+}
+.arrow-back-container {
+  position: absolute;
+  left: 20px; 
 }

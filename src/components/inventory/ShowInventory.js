@@ -11,6 +11,8 @@ import Table from 'react-bootstrap/Table';
 import { Dropdown } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../common/Header';
+import { BiArrowBack } from "react-icons/bi";
+
 const ShowInventory = () => {
     const tableData = [
         {
@@ -112,6 +114,12 @@ const ShowInventory = () => {
     return (
         <div className="">
             <Header/>
+            <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
             {/* <Sidebar> */}
                 <h1 className="mb-4 text-center">Show All Inventory</h1>
 

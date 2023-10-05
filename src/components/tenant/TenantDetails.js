@@ -10,6 +10,8 @@ import {
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
+import { BiArrowBack } from "react-icons/bi";
+
 function TenantDetails() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
@@ -112,6 +114,12 @@ function TenantDetails() {
   return (
     <div className="">
       <Header />
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       {/* <Sidebar> */}
         <Row className="justify-content-center">
           <Col>

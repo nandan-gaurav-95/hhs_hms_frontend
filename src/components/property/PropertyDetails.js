@@ -11,6 +11,7 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import Sidebar from "../admin/Sidebar";
+import { BiArrowBack } from "react-icons/bi";
 
 function PropertyDetails() {
   const { id } = useParams() || {};
@@ -138,6 +139,12 @@ function PropertyDetails() {
   return (
     <div className="">
       <Header/>
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       {/* <Sidebar> */}
       <Row className="justify-content-center">
         <Col md="1">
@@ -352,14 +359,14 @@ function PropertyDetails() {
       </Row>
       <Row className="text-center mt-4 form-group row ">
         <Col md-2>
-          <Button
+          {/* <Button
             variant="primary"
             square
             style={{ width: "100px" }}
             onClick={goBack}
           >
             Back
-          </Button>
+          </Button> */}
           <Button
             variant="primary"
             type="submit"

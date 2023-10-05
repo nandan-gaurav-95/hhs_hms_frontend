@@ -69,6 +69,11 @@ export default function HomePage() {
               <NavLink to="/showinventory">
                 <MDBDropdownItem link><b>View Inventory</b></MDBDropdownItem>
                 </NavLink>
+                <NavLink to="/distributeinventory">
+                  <MDBDropdownItem link>
+                    <b>Distributed Inventory</b>
+                  </MDBDropdownItem>
+                </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
           </div>

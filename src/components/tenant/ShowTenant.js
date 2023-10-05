@@ -125,6 +125,8 @@ import Header from '../common/Header';
 import { Dropdown } from 'react-bootstrap';
 import { logDOM } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
+import { BiArrowBack } from "react-icons/bi";
+
 const ShowTenant = () => {
   const navigate = useNavigate();
     const tableData = [
@@ -251,110 +253,129 @@ const ShowTenant = () => {
 
 
     return (
-        <div className="">
-            {/* <Sidebar> */}
-            <Header/>
-                <h1 className="mb-4 text-center">Tenants Details</h1>
-
-                <div className="d-flex mb-8 align-items-center">
-                    <Input
-                        label="Search"
-                        type="text"
-                        value={searchInput}
-                        onChange={handleSearchChange}
-                    />
-
-                    <div className="ms-3">
-                      
-                        <select
-                            id="sortType"
-                            className="form-select"
-                            value={sortType}
-                            onChange={handleSortChange}
-                        >
-                            <option value="all">All</option>
-                            <option value="Active">Active</option>
-                           <option value="Inactive">Inactive</option>
-                        </select>
-                    </div>
-
-                    <div className="ms-3">
-                     
-                        <select
-                            id="departmentSortType"
-                            className="form-select"
-                            value={departmentSortType}
-                            onChange={handleDepartmentSortChange}
-                        >
-                            <option value="Department">Department</option>
-                            <option value="Schools">Schools</option>
-                            <option value="ITI College">ITI College</option>
-                            <option value="Skill Center">Skill Center</option>
-                            <option value="Blood Collection Center"> Blood Collection Center</option>
-                            <option value="Hostel">Hostel</option>
-                            <option value="Masjid">Masjid</option>
-                            <option value="Dargah">Dargah</option>
-                        </select>
-                    </div>
-                </div>
-
-                <Table striped>
-                    <thead>
-                        <tr>
-                            <th>Sr. No.</th>
-                            <th>Name</th>
-                            <th>Department</th>
-                            <th>AllocatedShop</th>
-                            <th>Contact No</th>
-                            <th>Deposit</th>
-                            <th>Rent Due</th>
-                            <th>ElectricityDue</th>
-                            <th>Expiry Date</th>
-                            <th>status</th>
-                            <th>Action</th>              
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredData.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.department}</td>
-                                <td>{item.allocatedShop}</td>
-                                <td>{item.contactNum}</td>
-                                <td>{item.securityDeposit}</td>
-                                <td>{item.rentDue}</td>
-                                <td>{item.electricityDue}</td>
-                                <td>{item.expiryDate}</td>
-                                <td>{item.status}</td>
-                                <td>{item.action}
-                                {/* </td>
-                                <td> */}
-                                  <div className="dropdown">
-                                    <Dropdown >
-                                      <Dropdown.Toggle
-                                        variant="secondary"
-                                        id="dropdownMenuButton"
-                                      >
-                                        &#8942;
-                                      </Dropdown.Toggle>
-                                      <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => handleViewProfile(item.id)}>View Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleEditProfile(item.id)}>Edit Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
-                                       
-                                      </Dropdown.Menu>
-                                    </Dropdown>
-                                  </div>
-                                </td>
-                               
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
-               
-            {/* </Sidebar> */}
+      <div className="">
+        {/* <Sidebar> */}
+        <Header />
+        <div className="arrow-back-container">
+          <BiArrowBack
+            className="backLoginForm fs-2 text-dark"
+            onClick={() => navigate(-1)}
+          />
         </div>
+        <h1 className="mb-4 text-center">Tenants Details</h1>
+
+        <div className="d-flex mb-8 align-items-center">
+          <Input
+            label="Search"
+            type="text"
+            value={searchInput}
+            onChange={handleSearchChange}
+          />
+
+          <div className="ms-3">
+            <select
+              id="sortType"
+              className="form-select"
+              value={sortType}
+              onChange={handleSortChange}
+            >
+              <option value="all">All</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+
+          <div className="ms-3">
+            <select
+              id="departmentSortType"
+              className="form-select"
+              value={departmentSortType}
+              onChange={handleDepartmentSortChange}
+            >
+              <option value="Department">Department</option>
+              <option value="Schools">Schools</option>
+              <option value="ITI College">ITI College</option>
+              <option value="Skill Center">Skill Center</option>
+              <option value="Blood Collection Center">
+                {" "}
+                Blood Collection Center
+              </option>
+              <option value="Hostel">Hostel</option>
+              <option value="Masjid">Masjid</option>
+              <option value="Dargah">Dargah</option>
+            </select>
+          </div>
+        </div>
+
+        <Table striped>
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>AllocatedShop</th>
+              <th>Contact No</th>
+              <th>Deposit</th>
+              <th>Rent Due</th>
+              <th>ElectricityDue</th>
+              <th>Expiry Date</th>
+              <th>status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.department}</td>
+                <td>{item.allocatedShop}</td>
+                <td>{item.contactNum}</td>
+                <td>{item.securityDeposit}</td>
+                <td>{item.rentDue}</td>
+                <td>{item.electricityDue}</td>
+                <td>{item.expiryDate}</td>
+                <td>{item.status}</td>
+                <td>
+                  {item.action}
+                  {/* </td>
+                                <td> */}
+                  <div className="dropdown">
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        variant="secondary"
+                        id="dropdownMenuButton"
+                      >
+                        &#8942;
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item
+                          onClick={() => handleViewProfile(item.id)}
+                        >
+                          View Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleEditProfile(item.id)}
+                        >
+                          Edit Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete()}
+                          className="red-text"
+                        >
+                          Delete Profile
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+
+        {/* </Sidebar> */}
+      </div>
     );
 };
 

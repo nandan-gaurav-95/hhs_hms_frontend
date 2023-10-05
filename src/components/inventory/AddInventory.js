@@ -6,8 +6,10 @@ import {
     MDBInput as Input,
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
+import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from '../admin/Sidebar';
 import Header from '../common/Header';
+import { BiArrowBack } from "react-icons/bi";
 
 
 const AddInventory = () => {
@@ -21,6 +23,7 @@ const AddInventory = () => {
     } 
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -77,6 +80,12 @@ const AddInventory = () => {
     return (
         <div className="">
              <Header />
+             <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
             {/* <Sidebar> */}
                 <h1 className=" mb-4 text-center">Add Inventory</h1>
                 <form onSubmit={handleSubmit}>

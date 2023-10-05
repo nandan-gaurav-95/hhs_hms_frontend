@@ -17,6 +17,7 @@ import {
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
+import { BiArrowBack } from "react-icons/bi";
 const RegisterProp = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -180,6 +181,12 @@ const RegisterProp = () => {
   return (
     <div className="">
       <Header/>
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
     {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Add Property Details</h1>
       <Row className="justify-content-center">

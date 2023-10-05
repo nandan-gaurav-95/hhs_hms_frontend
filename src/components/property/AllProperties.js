@@ -119,6 +119,7 @@ import {
 import "../../asset/style.css";
 import { Dropdown } from 'react-bootstrap';
 import Header from "../common/Header";
+import { BiArrowBack } from "react-icons/bi";
 const AllProperties = () => {
   const tableData = [
     {
@@ -170,6 +171,12 @@ const AllProperties = () => {
   return (
     <div className="text-center">
       <Header/>
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       <h2 className="mb-4"> Available Properties</h2>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>

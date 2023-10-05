@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 
 import Header from "../common/Header";
 import jsPDF from "jspdf";
@@ -12,6 +12,8 @@ import {
 } from "mdb-react-ui-kit";
 import logo from "../../asset/images/hhslogo.jpg";
 import { FaDownload } from "react-icons/fa";
+import { BiArrowBack } from "react-icons/bi";
+
 const ViewTenantDetail = () => {
   const { id } = useParams();
   const tenants = [
@@ -30,6 +32,7 @@ const ViewTenantDetail = () => {
       PaymentMethod: "Online",
     },
   ];
+  const navigate = useNavigate();
 
   const tenantToShow = tenants.find((prop) => prop.id === parseInt(id));
 
@@ -308,6 +311,12 @@ const ViewTenantDetail = () => {
   return (
     <div>
       <Header />
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       <h2 className="mb-4 text-center entity-column">Tenant Details</h2>
 
       <Container

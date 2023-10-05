@@ -1,15 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import { MDBContainer as Container,
           MDBBtn as Button, } from "mdb-react-ui-kit";
 import { FaDownload } from "react-icons/fa";
 import Header from "../common/Header";
 import jsPDF from "jspdf";
 import logo from "../../asset/images/hhslogo.jpg";
+import { BiArrowBack } from "react-icons/bi";
 
 
 const ViewEmpProfile = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const employees = [
     {
       id: "1",
@@ -305,6 +308,12 @@ const ViewEmpProfile = () => {
   return (
     <div>
       <Header />
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
       <h2 className="mb-4 text-center entity-column">Employee Details</h2>
       <Container
         className="detail w-75 text-center"
