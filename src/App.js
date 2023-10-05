@@ -51,6 +51,7 @@ import ViewEmpProfile from "./components/employee/ViewEmpProfile";
 import Transactions from "./components/daybook/Transactions";
 import School from "./components/institute/School";
 import Viewdaybook from "./components/daybook/Viewdaybook";
+import AllocatedInventory from "./components/employee/AllocatedInventory";
 function App() {
   return (
     <div className="App">
@@ -94,6 +95,7 @@ function App() {
             <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
             <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
             <Route path="/employeeprofile/:id" element={<ViewEmpProfile />}></Route>
+            <Route path="/allocated-inventory/:id" element={<AllocatedInventory/>} />
 
               {/* Daybook */}
             <Route path="/daybook" element={<DayBook />}></Route>

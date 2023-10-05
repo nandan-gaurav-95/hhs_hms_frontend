@@ -119,7 +119,7 @@ import Sidebar from '../admin/Sidebar';
 import Table from 'react-bootstrap/Table';
 import Header from '../common/Header';
 import { Dropdown } from 'react-bootstrap';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 const AllEmployee = () => {
     const tableData = [
@@ -307,7 +307,7 @@ const AllEmployee = () => {
                             <th>Position</th>
                             <th>Gender</th>
                             <th>Basic Salary</th>
-                            <th>Inventory</th> 
+                             
                             <th>Contact No</th>
                             <th>Status</th> 
                             <th>Action</th>   
@@ -324,7 +324,7 @@ const AllEmployee = () => {
                                 <td>{item.position}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.b_salary}</td>
-                                <td>{item.inventory}</td>
+                               
                                 <td>{item.contact}</td>
                                 <td>{item.status}</td>
                                 <td>
@@ -340,6 +340,7 @@ const AllEmployee = () => {
                                         <Dropdown.Item onClick={() => handleViewProfile(item.emp_id)}>View Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleEditProfile(item.emp_id)}>Edit Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
+                                        <Dropdown.Item> <Link to={`/allocated-inventory/${item.emp_id}`}>Inventory Details</Link></Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleMarkAsResigned(item.emp_id)}>Mark as Resigned</Dropdown.Item>
                                       </Dropdown.Menu>
                                     </Dropdown>
