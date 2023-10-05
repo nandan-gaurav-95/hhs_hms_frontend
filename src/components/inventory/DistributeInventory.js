@@ -15,7 +15,7 @@ import { TenantService } from "../../services/TenantService";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
 
-const DistributedInventory = () => {
+const DistributeInventory = () => {
   const navigate = useNavigate();
   const initialState = {
     empid: "",
@@ -31,7 +31,6 @@ const DistributedInventory = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
@@ -44,7 +43,7 @@ const DistributedInventory = () => {
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className=" mb-4 text-center">Distributed Inventory</h1>
+      <h1 className=" mb-4 text-center">Distribute Inventory</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
@@ -118,4 +117,4 @@ const DistributedInventory = () => {
     </div>
   );
 };
-export default DistributedInventory;
+export default DistributeInventory;

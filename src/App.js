@@ -51,11 +51,8 @@ import ViewEmpProfile from "./components/employee/ViewEmpProfile";
 import Transactions from "./components/daybook/Transactions";
 import School from "./components/institute/School";
 import Viewdaybook from "./components/daybook/Viewdaybook";
-<<<<<<< Updated upstream
 import AllocatedInventory from "./components/employee/AllocatedInventory";
-=======
-import DistributedInventory from "./components/inventory/DistributedInventory";
->>>>>>> Stashed changes
+import DistributedInventory from "./components/inventory/DistributeInventory";
 function App() {
   return (
     <div className="App">
