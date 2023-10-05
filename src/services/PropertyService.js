@@ -43,8 +43,8 @@ getPropertyById : async () => {
         }
     
     },
-      // get Property by Id
-      getPropertyById : async () => {
+      // delete Property by Id
+      deletePropertyById : async () => {
         try{
             const response = await axios.delete(APIS.DELETEPROPERTY);
             return response.data;

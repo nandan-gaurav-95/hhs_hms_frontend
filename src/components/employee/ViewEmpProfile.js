@@ -407,16 +407,16 @@ const ViewEmpProfile = () => {
               .map(([key, value]) => renderEmployeeRow(key, value))}
           </div>
         </div>
-        <div style={{ marginBottom: "10px", marginLeft:"990px"}}>
-              <Button
-                variant="primary"
-                onClick={handleSalarySlipPdf}
-                className="w-70" 
-              >
-                <FaDownload /> Salary Slip
-              </Button>
-             
-            </div>
+        <div style={{ marginBottom: "10px", marginLeft: "auto" }}>
+          <Button
+            variant="primary"
+            onClick={handleSalarySlipPdf}
+            className="w-75"
+            style={{ height: "40px", lineHeight: "25px" }}
+          >
+            <FaDownload style={{ marginRight: "5px" }} /> Salary Slip
+          </Button>
+        </div>
       </Container>
     </div>
   );

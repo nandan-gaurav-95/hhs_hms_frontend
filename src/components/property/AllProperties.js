@@ -122,31 +122,8 @@ import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
 import { PropertyService } from "../../services/PropertyService";
 const AllProperties = () => {
-//   const tableData = [
-//     {
-//       id: 1,
-//       propertyName: "Company A",
-//       email: "companya@example.com",
-//       gstNo: "GST123456",
-//       contactNo: "1234567890",
-//       location: "Location A",
-//       size: "1000 sq.ft",
-//       gazzetNo: "Gazzet789",
-//       maintenanceCharges: "Yes",
-//     },
-//     {
-//       id: 2,
-//       propertyName: "Company B",
-//       email: "companyb@example.com",
-//       gstNo: "GST654321",
-//       contactNo: "9876543210",
-//       location: "Location B",
-//       size: "800 sq.ft",
-//       gazzetNo: "Gazzet456",
-//       maintenanceCharges: "No",
-//     },
-// ];
-  const [allProperty, setAllProperty] = useState([]);
+
+  const [allProperty, setAllProperty] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -155,8 +132,13 @@ const AllProperties = () => {
    const fetchAllProperties = async () => {
     try {
       const response = await PropertyService.getAllProperties();
-      console.log("Hiiiii",response.data[0].prop_id);
-      setAllProperty(response.data);
+      const propertyObject = {};
+      response.data.forEach((property) => {
+        // Use the property's prop_id as the key in the object
+        propertyObject[property.prop_id] = property;
+      });
+      console.log("prop_id =",propertyObject.prop_id);
+      setAllProperty(propertyObject);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -169,18 +151,34 @@ const AllProperties = () => {
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
   };
-  const handleViewProfile = (id) => {
-    navigate(`/profile/${id}`);
+  const handleViewProfile = (prop_id) => {
+    navigate(`/profile/${prop_id}`);
   };
 
 
   const handleEditProfile=(id)=>{
     navigate (`/property-details/${id}`)
    }
-
-   const handleDelete = (id) => {
-    navigate(`/profile/${id}`);
+   const handleDelete = async (prop_id) => {
+    try {
+      // Make a delete request to the backend API to delete the property
+      await axios.delete(`${APIS.DELETEPROPERTY}/${prop_id}`);
+      console.log("Deleted Successfully");
+  
+      // Create a copy of the state object
+      const updatedProperties = { ...allProperty };
+  
+      // Remove the property with the given prop_id
+      delete updatedProperties[prop_id];
+  
+      // Update the state with the modified object
+      setAllProperty(updatedProperties);
+    } catch (error) {
+      console.error("Error deleting property:", error);
+    }
   };
+  
+  
 
 
   return (
@@ -229,39 +227,47 @@ const AllProperties = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {allProperty.map((property, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{property.propertyName}</td>
-              <td>{property.email}</td>
-              <td>{property.gstNo}</td>
-              <td>{property.mobNo}</td>
-              <td>{property.villageNm}</td>
-              <td>{property.area}</td>
-              <td>{property.gazzetNo}</td>
-              <td>{property.mcharges}</td>
-              <td>
-                <div className="dropdown">
-                  <Dropdown>
-                    <Dropdown.Toggle
-                      variant="secondary"
-                      id="dropdownMenuButton"
-                    >
-                      &#8942; 
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => handleViewProfile(property.id)}>View Profile</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleEditProfile(property.id)}>Edit Profile</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
-                      
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>
-              </td>
-              
-            </tr>
-          ))}
-        </tbody>
+  {Object.keys(allProperty).map((propId, index) => {
+    const property = allProperty[propId];
+    return (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{property.propertyName}</td>
+        <td>{property.email}</td>
+        <td>{property.gstNo}</td>
+        <td>{property.mobNo}</td>
+        <td>{property.villageNm}</td>
+        <td>{property.area}</td>
+        <td>{property.gazzetNo}</td>
+        <td>{property.mcharges}</td>
+        <td>
+          <div className="dropdown">
+            <Dropdown>
+              <Dropdown.Toggle variant="secondary" id="dropdownMenuButton">
+                &#8942;
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => handleViewProfile(propId)}>
+                  View Profile
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => handleEditProfile(propId)}>
+                  Edit Profile
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => handleDelete(propId)}
+                  className="red-text"
+                >
+                  Delete Profile
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </td>
+      </tr>
+    );
+  })}
+</tbody>
+
       </Table>
     </div>
   );
