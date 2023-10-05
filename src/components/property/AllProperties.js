@@ -146,7 +146,7 @@ const AllProperties = () => {
 //       maintenanceCharges: "No",
 //     },
 // ];
-  const [allCompany, setAllCompany] = useState([]);
+  const [allProperty, setAllProperty] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -156,19 +156,15 @@ const AllProperties = () => {
     try {
       const response = await PropertyService.getAllProperties();
       console.log("Hiiiii",response.data[0].prop_id);
-      setAllCompany(response.data);
+      setAllProperty(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
     fetchAllProperties(); // Fetch data when the component mounts
- 
   }, []);
 
-  const handleViewDetails = (id) => {
-    navigate(`/company-details/${id}`);
-  };
 
   const handleSearch = () => {
     console.log("Performing search for:", searchQuery);
@@ -233,17 +229,17 @@ const AllProperties = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {allCompany.map((company, index) => (
+          {allProperty.map((property, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{company.propertyName}</td>
-              <td>{company.email}</td>
-              <td>{company.gstNo}</td>
-              <td>{company.mobNo}</td>
-              <td>{company.villageNm}</td>
-              <td>{company.area}</td>
-              <td>{company.gazzetNo}</td>
-              <td>{company.mcharges}</td>
+              <td>{property.propertyName}</td>
+              <td>{property.email}</td>
+              <td>{property.gstNo}</td>
+              <td>{property.mobNo}</td>
+              <td>{property.villageNm}</td>
+              <td>{property.area}</td>
+              <td>{property.gazzetNo}</td>
+              <td>{property.mcharges}</td>
               <td>
                 <div className="dropdown">
                   <Dropdown>
@@ -254,8 +250,8 @@ const AllProperties = () => {
                       &#8942; 
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => handleViewProfile(company.id)}>View Profile</Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleEditProfile(company.id)}>Edit Profile</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleViewProfile(property.id)}>View Profile</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleEditProfile(property.id)}>Edit Profile</Dropdown.Item>
                       <Dropdown.Item onClick={() => handleDelete()} className="red-text">Delete Profile</Dropdown.Item>
                       
                     </Dropdown.Menu>
