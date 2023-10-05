@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-
+import backgroundImage  from "../../asset/images/istockphoto-505757382-612x612.jpg";
 import "../../asset/homepage.css";
 import Header from "../common/Header";
 import { NavLink } from "react-router-dom";
@@ -11,8 +11,15 @@ import {
   MDBDropdownItem,
 } from "mdb-react-ui-kit";
 export default function HomePage() {
+  const backgroundImageStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+   
+  };
   return (
-    <div>
+    <div className="background-wrapper" style={backgroundImageStyle}>
         <Header />
       <Sidebar>
         <div className="card-container">
@@ -44,7 +51,7 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <NavLink to="/register">
+                <NavLink to="/properties">
                 <MDBDropdownItem link><b>Add Property</b></MDBDropdownItem>
                 </NavLink>
                 <NavLink to="/allProperties">

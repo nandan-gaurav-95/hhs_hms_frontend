@@ -14,7 +14,7 @@
   max-height: 100%;
   padding: 0;
   margin: 0;
-  background: linear-gradient(to top right, #0a8270, #7cff6b);
+  /* background: linear-gradient(to top right, #0a8270, #7cff6b); */
 }
 
 .delete-button:hover {
@@ -50,7 +50,7 @@ background-color:#333;
 .children{
   width:70%;
   max-height:100%;
-  background-image: linear-gradient(to top right, #0a8270, #7cff6b);  /* background-color: rgb(187, 235, 235);*/
+  /* background-image: linear-gradient(to top right, #0a8270, #7cff6b);   */
 }
 .children {
   flex-grow: 1; 
@@ -109,7 +109,7 @@ background-color:#333;
 }
 
 .loginimage {
-  width: 40%;
+  width: 75%;
   height: 15vh;
   /* object-fit: cover; */
   position: left;
@@ -146,8 +146,8 @@ background-color:#333;
 .forbusiness-page {
  width:50%;
  height:100%;
-  background: linear-gradient(to bottom right, #abf47a, #cbe77c, #c6eec6, #edf5e9, #e9f3e0, #e3f1d6);
- 
+  background: linear-gradient(to bottom right, #abf47a, #cbe77c, #a9e4a9, #b8f898, #bbe994, #c9eea6);
+
 
 }
 .login-logo-margin {
@@ -333,5 +333,6 @@ th {
 }
 .arrow-back-container {
   position: absolute;
+  /* top:0px; */
   left: 20px; 
 }

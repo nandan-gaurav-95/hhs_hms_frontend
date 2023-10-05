@@ -120,34 +120,51 @@ import "../../asset/style.css";
 import { Dropdown } from 'react-bootstrap';
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { PropertyService } from "../../services/PropertyService";
 const AllProperties = () => {
-  const tableData = [
-    {
-      id: 1,
-      propertyName: "Company A",
-      email: "companya@example.com",
-      gstNo: "GST123456",
-      contactNo: "1234567890",
-      location: "Location A",
-      size: "1000 sq.ft",
-      gazzetNo: "Gazzet789",
-      maintenanceCharges: "Yes",
-    },
-    {
-      id: 2,
-      propertyName: "Company B",
-      email: "companyb@example.com",
-      gstNo: "GST654321",
-      contactNo: "9876543210",
-      location: "Location B",
-      size: "800 sq.ft",
-      gazzetNo: "Gazzet456",
-      maintenanceCharges: "No",
-    },
-];
-  const [allCompany, setAllCompany] = useState(tableData);
+//   const tableData = [
+//     {
+//       id: 1,
+//       propertyName: "Company A",
+//       email: "companya@example.com",
+//       gstNo: "GST123456",
+//       contactNo: "1234567890",
+//       location: "Location A",
+//       size: "1000 sq.ft",
+//       gazzetNo: "Gazzet789",
+//       maintenanceCharges: "Yes",
+//     },
+//     {
+//       id: 2,
+//       propertyName: "Company B",
+//       email: "companyb@example.com",
+//       gstNo: "GST654321",
+//       contactNo: "9876543210",
+//       location: "Location B",
+//       size: "800 sq.ft",
+//       gazzetNo: "Gazzet456",
+//       maintenanceCharges: "No",
+//     },
+// ];
+  const [allCompany, setAllCompany] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+
+   // Function to fetch data from the API
+   const fetchAllProperties = async () => {
+    try {
+      const response = await PropertyService.getAllProperties();
+      console.log("Hiiiii",response.data[0].prop_id);
+      setAllCompany(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllProperties(); // Fetch data when the component mounts
+ 
+  }, []);
 
   const handleViewDetails = (id) => {
     navigate(`/company-details/${id}`);
@@ -159,6 +176,8 @@ const AllProperties = () => {
   const handleViewProfile = (id) => {
     navigate(`/profile/${id}`);
   };
+
+
   const handleEditProfile=(id)=>{
     navigate (`/property-details/${id}`)
    }
@@ -220,11 +239,11 @@ const AllProperties = () => {
               <td>{company.propertyName}</td>
               <td>{company.email}</td>
               <td>{company.gstNo}</td>
-              <td>{company.contactNo}</td>
-              <td>{company.location}</td>
-              <td>{company.size}</td>
+              <td>{company.mobNo}</td>
+              <td>{company.villageNm}</td>
+              <td>{company.area}</td>
               <td>{company.gazzetNo}</td>
-              <td>{company.maintenanceCharges}</td>
+              <td>{company.mcharges}</td>
               <td>
                 <div className="dropdown">
                   <Dropdown>

@@ -6,24 +6,27 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
-import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { APIS } from "../constants/api";
 
 import  "react-select-search/style.css";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
+import {  PropertyService } from "../../services/PropertyService";
 
 const Property = () => {
   const initialState = {
-    companyId:null,
     propertyName: "",
+    proptype:"",
+    email: "",
+    gstNo: "",
+    mobNo: "",
     villageNm: "",
     ctsNo: "",
     area: "",
     boundries: "",
     taxAmt: "",
-    accountNm: "",
+    accountName: "",
     annualIncome: "",
     address: "",
     registrationNo: "",
@@ -31,16 +34,9 @@ const Property = () => {
     rent:"",
     mcharges:"",
     occupied:"",
-    
   };
  
-  const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
-  const location = useLocation();
-  const receivedFormData = location.state || {}; // Default to empty object if state is not present
-
-
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -49,55 +45,21 @@ const Property = () => {
     });
   };
 
-
-  useEffect(() => {
-    setFormData({
-      ...receivedFormData,
-      companyId: receivedFormData.companyId, // Set the companyId from the state
-    });
-  }, [receivedFormData]);
-
- 
-
 const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const formDataToSend = new FormData();
-      // Append all form fields to the FormData object
-      for (const key in formData) {
-        if (formData.hasOwnProperty(key)) {
-          formDataToSend.append(key, formData[key]);
-        }
-      }
-      const response = await axios.put(
-        `${APIS.SAVECOMPANY}/${formData.companyId}`,
-       formDataToSend,  // Send the FormData object
-        {
-          headers: {
-            //"Content-Type": "multipart/form-data", // Set the content type for FormData
-            "Content-Type": "application/json","Accept": "application/json"
-          },
-        }
-      );
-  
-      console.log(response);
-  
-      if (response.status === 200) {
-        console.log("Company details updated successfully");
-        navigate(`/property-photo/${formData.companyId}`,{
-          state: {
-            companyId: formData.companyId,
-            propertyName: formData.propertyName,
-            // Add other data you want to pass here
-          },
-        });
+      const response = await PropertyService.createProperty(formData);
+      console.log("PropertyId",response.data.id);
+      // console.log(response.data.id);
+      if (response.status === 201) {
+          console.log("Property data saved successfully");
+          setFormData(initialState);
       } else {
-        console.error("Error while updating company data");
-        // Additional error handling or notifications can be added here
+          console.error("Error while saving Property data");
       }
-    } catch (error) {
+  } catch (error) {
       console.error("Error:", error);
-    }
+  }
   };
   
 
@@ -105,7 +67,7 @@ const handleSubmit = async (event) => {
     <div className="">
       <Header/>
       {/* <Sidebar> */}
-      <h1 className=" mb-4 text-center">Add Property Details of {receivedFormData.propertyName}</h1>
+      <h1 className=" mb-4 text-center">Add Property Details</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
@@ -113,8 +75,8 @@ const handleSubmit = async (event) => {
               label="Property Name"
               type="text"
               name="propertyName"
-              value={receivedFormData.propertyName}
-              readOnly
+              value={formData.propertyName}
+              onChange={handleChange}
             />
           </Col>
           <Col className="col-sm-5 ">
@@ -123,6 +85,57 @@ const handleSubmit = async (event) => {
               type="text"
               name="villageNm"
               value={formData.villageNm}
+              onChange={handleChange}
+            />
+          </Col>
+        </Row>
+        <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
+          <Col className="col-sm-5 ">
+          <select
+                className="form-select"
+                id="proptype"
+                name="proptype"
+                value={formData.proptype}
+                onChange={handleChange}
+                required
+                style={{ marginTop: '20px' }} 
+                >
+                <option value="">Property Type</option>
+                <option value="Schools">Schools</option>
+                <option value="ITI College">ITI College</option>
+                <option value="Skill Center">Skill Center</option>
+                <option value="Blood Collection Center"> Blood Collection Center</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Masjid">Masjid</option>
+                <option value="Dargah">Dargah</option>
+              </select>
+          </Col>
+          <Col className="col-sm-5 ">
+            <Input
+              label="Enter E-mail"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </Col>
+        </Row> <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
+          <Col className="col-sm-5 ">
+            <Input
+              label="GST No."
+              type="text"
+              name="gstNo"
+              value={formData.gstNo}
+              onChange={handleChange}
+              
+            />
+          </Col>
+          <Col className="col-sm-5 ">
+            <Input
+              label="Phone No."
+              type="text"
+              name="mobNo"
+              value={formData.mobNo}
               onChange={handleChange}
             />
           </Col>
@@ -173,10 +186,10 @@ const handleSubmit = async (event) => {
         <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
-              label="accountNm"
+              label="accountName"
               type="text"
-              name="accountNm"
-              value={formData.accountNm}
+              name="accountName"
+              value={formData.accountName}
               onChange={handleChange}
             />
           </Col>

@@ -15,6 +15,7 @@ const ViewPropertyDetail = () => {
   const property = [
     {
       id: 1,
+      propType:" School",
       PropertyName: "Shop A",
       Email: "comp@exa.com",
       GstNo: "GST123456",
@@ -84,9 +85,9 @@ const ViewPropertyDetail = () => {
         }}
       >
         <div>
-          <div className="d-flex w-100 flex-column">
+          <div className="d-flex w-150 flex-column">
             <div className="d-flex entity-row">
-              {renderPropertyRow("id", propertyToShow.id)}
+              {renderPropertyRow("Property Type", propertyToShow.propType)}
               {renderPropertyRow("PropertyName", propertyToShow.PropertyName)}
             </div>
             <div className="d-flex entity-row">
@@ -122,7 +123,7 @@ const ViewPropertyDetail = () => {
               {renderPropertyRow("Village", propertyToShow.Village)}
             </div>
             {Object.entries(propertyToShow)
-              .filter(([key]) => !["id", "PropertyName", "Email", "GstNo","ContactNo", "Size", "GazzetNo", "Maintenancecharges","CtsNo", "Boundaries", "AccountNm", "Address", "TaxAmt", "Annualincome", "RegisterNo", "Rent", "Isoccupied", "Village",].includes(key))
+              .filter(([key]) => !["id","Property Type", "PropertyName", "Email", "GstNo","ContactNo", "Size", "GazzetNo", "Maintenancecharges","CtsNo", "Boundaries", "AccountNm", "Address", "TaxAmt", "Annualincome", "RegisterNo", "Rent", "Isoccupied", "Village",].includes(key))
               .map(([key, value]) => renderPropertyRow(key, value))}
           </div>
         </div>

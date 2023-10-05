@@ -13,8 +13,8 @@ export default function Header() {
     //   fontFamily: "Arial Black, sans-serif",
     // };
   return (
-    <Navbar className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-      <Navbar.Brand href="#home" className="d-flex justify-content-start mx-3">
+    <Navbar className="navbar justify-content-between">
+      <Navbar.Brand href="#home" className=" mx-3">
         <img
           src={logo}
           width="140"

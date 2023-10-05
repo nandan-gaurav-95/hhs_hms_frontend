@@ -2,29 +2,20 @@ const API_BASE_URL = "http://localhost:8080/api";
 
 export const APIS ={
 
-    //Form save these api are from hhs_hms which is backend project 
-    PROPERTIES:`${API_BASE_URL}/properties`,
-    REGISTER:`${API_BASE_URL}/regstr`,
-    COMPANYNAME:`${API_BASE_URL}/companyNames`,
 
 
-     //Form save these api are from hhs which is backend project
-     CLOUDUPLOAD:`${API_BASE_URL}/cloud-upload`,//multiple image are uploaded to the cloud not create in frontend
 
      //login api
      CREATEACCOUNT:`${API_BASE_URL}/register`,//Post-method for create acc
      LOGINACCOUNT:`${API_BASE_URL}/login`,//post-method for login
      FORGOTPASSWORD:`${API_BASE_URL}/forgot-password`,//Post-method for password reset request
 
-     //property (please replace company to the 'property')
-     
-     CREATEPROPERTY:`${API_BASE_URL}/create`,//Post-method for property 
-     SAVECOMPANY:`${API_BASE_URL}/company`,//PutMapping
-     ALLCOMPANYNAME:`${API_BASE_URL}/companies`,
-     GETPROPBYCMPNYID:`${API_BASE_URL}/companiesById`,// Get company data by Id 
-     COMPANYPHOTOS:`${API_BASE_URL}/company-photo`,//upload properties photo with particular company
-     GETCOMPANYPHOTOS:`${API_BASE_URL}/company-photo`,// Retrieve the list of photo file names for the specified company ID
-     DELETECOMPANYPHOTOS:`${API_BASE_URL}/company-photos`,
+    //  property
+     CREATEPROPERTY:`${API_BASE_URL}/property`,//Post-method for property 
+     ALLPROPERTIES:`${API_BASE_URL}/property`,//Get-method
+     GETPROPBYID:`${API_BASE_URL}/property`,// Get property by Id 
+     UPDATEPROPERTY:`${API_BASE_URL}/property`,//  Update an existing property
+     DELETEPROPERTY:`${API_BASE_URL}/property`,//Delete an property  by ID
 
      //tenants
      CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method

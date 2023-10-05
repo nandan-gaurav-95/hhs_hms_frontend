@@ -52,7 +52,7 @@ import Transactions from "./components/daybook/Transactions";
 import School from "./components/institute/School";
 import Viewdaybook from "./components/daybook/Viewdaybook";
 import AllocatedInventory from "./components/employee/AllocatedInventory";
-import DistributedInventory from "./components/inventory/DistributeInventory";
+import DistributeInventory from "./components/inventory/DistributeInventory";
 function App() {
   return (
     <div className="App">
@@ -89,7 +89,7 @@ function App() {
             <Route path="/inventory-details/:id" element={<InventoryDetails />}></Route>
             <Route path="/addinventory" element={<AddInventory />}></Route>
             <Route path="/showinventory" element={<ShowInventory />}></Route>
-            <Route path="/distributeinventory" element={<DistributedInventory/>}></Route>
+            <Route path="/distributeinventory" element={<DistributeInventory/>}></Route>
 
 
             {/* Employee Management */}
