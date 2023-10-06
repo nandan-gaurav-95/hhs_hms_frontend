@@ -307,7 +307,7 @@ const ViewEmpProfile = () => {
       <Container
         className="detail w-75 text-center"
         style={{
-          height: "1000px",
+          height: "150vh",
           width: "50%",
           boxShadow:
             "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
