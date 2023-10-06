@@ -12,67 +12,68 @@ import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
 
 import { BiArrowBack } from "react-icons/bi";
+import axios from "axios";
+import { APIS } from "../constants/api";
 
 function EmployeeDetails() {
   const { id } = useParams() || {};
-  const [propData, setPropData] = useState("");
+  const [empData, setEmpData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [updatedEmployee, setUpdatedEmployee] = useState(empData.employee || {});
   const navigate = useNavigate();
-  const [updatedEmployee, setUpdatedEmployee] = useState( {
-    emp_id: 1656565,
-    name: 'Mahesh Tawade',
-    department: 'School',
-    dob: "1990-01-15",
-    gender: 'Male',
-    contact:'9657089541',
-    bloodgroup: "A+",
-    address: "123 Main Street, City",
-    status: "Former",
-    j_date: '01-06-2023',
-    b_salary:'50000',
-    position:"Teacher",
-    aadhar: "123456789012",
-    qualification: "Bachelor's Degree",
-    pan: "ABCDE1234F",
-    dateOfHiring: "2022-03-01",
-    position: "Manager",
-    netSalary: "50000",
-    grossSalary: "70000",
-    allowance: "2000",
-    deduction: "1000",
-    pfEmployeeContribution: "1500",
-    loanAmount: "0",
-    loanRepaymentAmount: "0",
 
 
-});
+//   const [updatedEmployee, setUpdatedEmployee] = useState( {
+//     emp_id: 1656565,
+//     name: 'Mahesh Tawade',
+//     department: 'School',
+//     dob: "1990-01-15",
+//     gender: 'Male',
+//     contact:'9657089541',
+//     bloodgroup: "A+",
+//     address: "123 Main Street, City",
+//     status: "Former",
+//     j_date: '01-06-2023',
+//     b_salary:'50000',
+//     position:"Teacher",
+//     aadhar: "123456789012",
+//     qualification: "Bachelor's Degree",
+//     pan: "ABCDE1234F",
+//     dateOfHiring: "2022-03-01",
+//     position: "Manager",
+//     netSalary: "50000",
+//     grossSalary: "70000",
+//     allowance: "2000",
+//     deduction: "1000",
+//     pfEmployeeContribution: "1500",
+//     loanAmount: "0",
+//     loanRepaymentAmount: "0",
+// });
 
    
   
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // if (!id) return;
-        // const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
-
-        // const { status = "", data } = response;
-        // if (status === 200) {
-        //   // setPropData(data);
-
-        //   // setUpdatedEmployee(data); // Initialize updatedPayroll with the current data
-
-        // } else {
-        //   console.error("Error while fetching Payroll data");
-        // }
-        setLoading(false);
-      } catch (error) {
-        console.error("Error:", error);
-        setLoading(false);
+useEffect(() => {
+  async function fetchData() {
+    try {
+      const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
+      const { status, data } = response;
+    
+      console.log("Hiii",response.data)
+      if (status === 200) {
+        setEmpData(data);
+        setUpdatedEmployee(data);
+      } else {
+        console.error("Error while fetching property data");
       }
+      setLoading(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setLoading(false);
     }
-    fetchData();
-  }, [id]);
+  }
+  fetchData();
+}, [id]);
 
 
   if (loading) {
@@ -86,28 +87,28 @@ function EmployeeDetails() {
   // }
 
   const handleEditMode = async () => {
-    setEditMode(editMode);
+    setEditMode(!editMode);
     if (editMode) {
-
-      goBack();
-      // try {
-      
-      //   // const response = await axios.put(`${APIS.GETALLEMPLOYEE}/${id}`, updatedEmployee);
-      //   if (response.status === 200) {
-      //     console.log("Employee details updated successfully");
-      //     // navigate(`/payroll-details/${id}`)
-      //   } else {
-      //     console.error("Error while updating Employee data");
-      //     // Additional error handling or notifications can be added here
-      //   }
-      // } catch (error) {
-      //   console.error("Error:", error);
-      // }
+      try {
+        const response = await axios.put(`${APIS.UPDATEEMPLOYEEBYID}/${id}`, updatedEmployee);
+        if (response.status === 200) {
+          console.log("Employee details updated successfully");
+          navigate(`/employee-details/${id}`);
+        } else {
+          console.error("Error while updating property data");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
     } else {
       // Enter edit mode
       setEditMode(true);
     }
   };
+
+
+
+
 
   const goBack = (event) => {
     // event.preventDefault();
@@ -150,7 +151,7 @@ function EmployeeDetails() {
       <Row className="justify-content-center">
         
         <Col>
-          <h1 className="text-center mb-4">Details of {updatedEmployee?.name}</h1>
+          <h1 className="text-center mb-4">Details of {updatedEmployee?.empName}</h1>
         </Col>
       </Row>
 
@@ -176,8 +177,8 @@ function EmployeeDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="name"
-                  value={updatedEmployee.name}
+                  name="empName"
+                  value={updatedEmployee.empName}
                   onChange={handleChange}
                 />
 
@@ -214,8 +215,8 @@ function EmployeeDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="tel"
-                  name="contact"
-                  value={updatedEmployee.contact}
+                  name="contactNum"
+                  value={updatedEmployee.contactNum}
                   onChange={handleChange}
                 />
                 
@@ -293,8 +294,8 @@ function EmployeeDetails() {
                 <input
                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                  type="text"
-                 name="b_salary"
-                 value={updatedEmployee.b_salary}
+                 name="basicSalary"
+                 value={updatedEmployee.basicSalary}
                  onChange={handleChange}
                  required
                 />
@@ -384,6 +385,15 @@ function EmployeeDetails() {
                  onChange={handleChange}
                  required
                 />
+                <strong>Inventory Item</strong>
+                <input
+                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 type="text"
+                 name="inventoryItem"
+                 value={updatedEmployee.inventoryItem}
+                 onChange={handleChange}
+                 required
+                />
             </Col>
            
           </Row>
@@ -407,7 +417,7 @@ function EmployeeDetails() {
             style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
-            Update
+            {editMode ? "Update" : "Edit"}
           </Button>
          
         </Col>

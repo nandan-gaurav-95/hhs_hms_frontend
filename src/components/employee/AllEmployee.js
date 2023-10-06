@@ -122,44 +122,11 @@ import { Dropdown } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { BiArrowBack } from "react-icons/bi";
 import { EmployeeService } from '../../services/EmployeeService';
+import axios from 'axios';
+import { APIS } from '../constants/api';
 
 const AllEmployee = () => {
-     const tableData = [
-    //   {
-    //     emp_id: 1,
-    //     name: 'Mahesh Tawade',
-    //     contact:'9657089541',
-    //     status: "Former",
-    //     j_date: '01-06-2023',
-    //     loanAmount:'50000',
-    //     position:"Teacher",
-    //     department: 'School',
-    //     gender: 'Male',
-    // },
-    // {
-    //     emp_id: 5435355,
-    //     name: 'Gaurav Nandan',
-    //     contact:'9657089541',
-    //     status: "Active",
-    //     j_date: '01-06-2023',
-    //     b_salary:'60000',
-    //     position:"Doctor",
-    //     department: 'Blood Collection Center',
-    //     gender: 'Male',
-    // },
-    // {
-    //     emp_id: 6453432,
-    //     name: 'Ankita Patil',
-    //     contact:'9657089541',
-    //     status: "Active",
-    //     j_date: '01-06-2023',
-    //     b_salary:'70000',
-    //     inventory:"Former",
-    //     position:"HR",
-    //     department: 'Skill Center',
-    //     gender: 'Female',
-    // },
-     ];
+     const tableData = [];
 
     const [allEmployee, setAllEmployee]=useState({});
     const navigate = useNavigate();
@@ -179,7 +146,7 @@ const AllEmployee = () => {
         // Use the employee's emp_id as the key in the object
         employeeObject[employee.emp_id] = employee;
       });
-      console.log("emp_id =",employeeObject.emp_id);
+      console.log("hiiiiii",employeeObject);
       setAllEmployee(employeeObject);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -260,17 +227,32 @@ const AllEmployee = () => {
         setFilteredData(filtered);
     };
 
-    const handleDelete =function(){ 
-      window.confirm("The Employee will be get deleted permanantly");
-    };
-
-    const handleEditProfile =(emp_id)=> {
-     
-     navigate(`/employee-details/:${emp_id}`)
-    };
-    const handleViewProfile = (id) => {
-        navigate(`/employeeprofile/${id}`);
+    const handleViewProfile = (emp_id) => {
+        navigate(`/employeeprofile/${emp_id}`);
       };
+    const handleEditProfile =(id)=> {
+     navigate(`/employee-details/${id}`)
+    };
+  
+
+      const handleDelete =async (emp_id)=>{ 
+        //    window.confirm("The Employee will be get deleted permanantly");
+    
+        try {
+          await axios.delete(`${APIS.DELETEEMPLOYEEBYID}/${emp_id}`);
+          console.log("Deleted Successfully");
+            // Create a copy of the state object
+            const updatedEmployes = { ...allEmployee };
+            // Remove the employee with the given emp_id
+          delete updatedEmployes[emp_id];
+      
+          // Update the state with the modified object
+          setAllEmployee(updatedEmployes);
+        } catch (error) {
+            console.error("Error deleting employee:", error);  
+        }
+        };
+    
 
     return (
         <div className="">
@@ -350,14 +332,14 @@ const AllEmployee = () => {
                             return(
                                 <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{employee.name}</td>
-                                <td>{employee.j_date}</td>
+                                <td>{employee.empName}</td>
+                                <td>{employee.dateOfHiring}</td>
                                 <td>{employee.department}</td>
                                 <td>{employee.position}</td>
                                 <td>{employee.gender}</td>
                                 <td>{employee.loanAmount}</td>
                                
-                                <td>{employee.contact}</td>
+                                <td>{employee.contactNum}</td>
                                 <td>{employee.status}</td>
                                 <td>
                                   <div className="dropdown">
@@ -369,11 +351,11 @@ const AllEmployee = () => {
                                         &#8942;
                                       </Dropdown.Toggle>
                                       <Dropdown.Menu>
-                                        {/* <Dropdown.Item onClick={() => handleViewProfile(emp_id)}>View Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleEditProfile(item.emp_id)}>Edit Profile</Dropdown.Item>
-                                        <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
-                                        <Dropdown.Item> <Link to={`/allocated-inventory/${item.emp_id}`}>Inventory Details</Link></Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleMarkAsResigned(item.emp_id)}>Mark as Resigned</Dropdown.Item> */}
+                                        <Dropdown.Item onClick={() => handleViewProfile(empId)}>View Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleEditProfile(empId)}>Edit Profile</Dropdown.Item>
+                                        <Dropdown.Item onClick={()=>handleDelete(empId)} className="red-text">Delete</Dropdown.Item>
+                                        <Dropdown.Item> <Link to={`/allocated-inventory/${empId}`}>Inventory Details</Link></Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleMarkAsResigned(empId)}>Mark as Resigned</Dropdown.Item>
                                       </Dropdown.Menu>
                                     </Dropdown>
                                   </div>

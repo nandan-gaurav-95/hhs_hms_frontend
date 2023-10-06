@@ -64,7 +64,7 @@ function App() {
             <Route path="/forgetPage" element={<ForgetPage />}></Route>
             <Route path="/signUp" element={<Signup />}></Route>
 
-            {/*prpperty management*/}
+            {/*property management*/}
             <Route path="/register" element={<RegisterProp />}></Route>
             <Route path="/allProperties" element={<AllProperties />}></Route>
             <Route path="/profile/:id" element={<ViewPropertyDetail />}></Route>

@@ -18,7 +18,7 @@ function PropertyDetails() {
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedCompany, setUpdatedCompany] = useState(propData.property || {});
+  const [updatedProperty, setUpdatedProperty] = useState(propData.property || {});
   const [imageData, setImageData] = useState(null);
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function PropertyDetails() {
         console.log("Hiii",response.data)
         if (status === 200) {
           setPropData(data);
-          setUpdatedCompany(data);
+          setUpdatedProperty(data);
         } else {
           console.error("Error while fetching property data");
         }
@@ -58,7 +58,7 @@ function PropertyDetails() {
     setEditMode(!editMode);
     if (editMode) {
       try {
-        const response = await axios.put(`${APIS.UPDATEPROPERTY}/${id}`, updatedCompany);
+        const response = await axios.put(`${APIS.UPDATEPROPERTY}/${id}`, updatedProperty);
         if (response.status === 200) {
           console.log("Property details updated successfully");
           navigate(`/property-details/${id}`);
@@ -83,7 +83,7 @@ function PropertyDetails() {
     // Update input value in edit mode
     const { name, value } = event.target;
     console.log(value);
-    setUpdatedCompany((prevData) => ({
+    setUpdatedProperty((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -159,12 +159,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="ctsNo"
-                  value={updatedCompany.ctsNo}
+                  value={updatedProperty.ctsNo}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.ctsNo}
+                  {updatedProperty.ctsNo}
                 </li>
               )}
 
@@ -174,12 +174,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="email"
-                  value={updatedCompany.email}
+                  value={updatedProperty.email}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.email}
+                  {updatedProperty.email}
                 </li>
               )}
 
@@ -189,12 +189,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="accountName"
-                  value={updatedCompany.accountName}
+                  value={updatedProperty.accountName}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.accountName}
+                  {updatedProperty.accountName}
                 </li>
               )}
 
@@ -204,12 +204,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="address"
-                  value={updatedCompany.address}
+                  value={updatedProperty.address}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.address}
+                  {updatedProperty.address}
                 </li>
               )}
 
@@ -219,12 +219,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="annualIncome"
-                  value={updatedCompany.annualIncome}
+                  value={updatedProperty.annualIncome}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.annualIncome}
+                  {updatedProperty.annualIncome}
                 </li>
               )}
 
@@ -234,12 +234,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="boundries"
-                  value={updatedCompany.boundries}
+                  value={updatedProperty.boundries}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.boundries}
+                  {updatedProperty.boundries}
                 </li>
               )}
             </Col>
@@ -250,12 +250,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="area"
-                  value={updatedCompany.area}
+                  value={updatedProperty.area}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.area}
+                  {updatedProperty.area}
                 </li>
               )}
 
@@ -265,12 +265,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="gazzetNo"
-                  value={updatedCompany.gazzetNo}
+                  value={updatedProperty.gazzetNo}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.gazzetNo}
+                  {updatedProperty.gazzetNo}
                 </li>
               )}
 
@@ -280,12 +280,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="gstNo"
-                  value={updatedCompany.gstNo}
+                  value={updatedProperty.gstNo}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.gstNo}
+                  {updatedProperty.gstNo}
                 </li>
               )}
 
@@ -295,12 +295,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="registrationNo"
-                  value={updatedCompany.registrationNo}
+                  value={updatedProperty.registrationNo}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.registrationNo}
+                  {updatedProperty.registrationNo}
                 </li>
               )}
 
@@ -310,12 +310,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="taxAmt"
-                  value={updatedCompany.taxAmt}
+                  value={updatedProperty.taxAmt}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.taxAmt}
+                  {updatedProperty.taxAmt}
                 </li>
               )}
               
@@ -326,12 +326,12 @@ function PropertyDetails() {
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
                   name="villageNm"
-                  value={updatedCompany.villageNm}
+                  value={updatedProperty.villageNm}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.villageNm}
+                  {updatedProperty.villageNm}
                 </li>
               )}
             </Col>
