@@ -92,8 +92,8 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <NavLink to="/empolyee"><MDBDropdownItem link><b>Add Employee</b></MDBDropdownItem> </NavLink>
-                <NavLink to="/allempolyee">
+                <NavLink to="/employee"><MDBDropdownItem link><b>Add Employee</b></MDBDropdownItem> </NavLink>
+                <NavLink to="/allemployee">
                   <MDBDropdownItem link><b>View Employees</b></MDBDropdownItem>
                 </NavLink>
                 {/* <NavLink to="/nonconsumableform"><MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem></NavLink> */}

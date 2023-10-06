@@ -93,8 +93,8 @@ function App() {
 
 
             {/* Employee Management */}
-            <Route path="/empolyee" element={<EmployeeForm />}></Route>
-            <Route path="/allempolyee" element={<AllEmployeeForm />}></Route>
+            <Route path="/employee" element={<EmployeeForm />}></Route>
+            <Route path="/allemployee" element={<AllEmployeeForm />}></Route>
             <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
             <Route path="/employeeprofile/:id" element={<ViewEmpProfile />}></Route>
             <Route path="/allocated-inventory/:id" element={<AllocatedInventory/>} />

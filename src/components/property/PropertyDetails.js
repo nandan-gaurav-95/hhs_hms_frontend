@@ -18,37 +18,23 @@ function PropertyDetails() {
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedCompany, setUpdatedCompany] = useState(propData.company || {});
+  const [updatedCompany, setUpdatedCompany] = useState(propData.property || {});
   const [imageData, setImageData] = useState(null);
   const navigate = useNavigate();
-
-  const tableData = {
-    id: 1,
-    name: "Mahesh Tawade",
-    department: "ITI College",
-    allocatedShop: "A-1001",
-    contactNum: "9657089541",
-    securityDeposit: "20000.36",
-    rentDue: "3000.00",
-    electricityDue: "299.03",
-    expiryDate: "20/12/2003",
-    status: "Active",
-  };
 
   useEffect(() => {
     async function fetchData() {
       try {
-        // if (!id) return;
-        // const response = await axios.get(`${APIS.GETPROPBYCMPNYID}/${id}`);
-        // // console.log("Hiiiiiiiiiii",response);
-        // const { status = "", data } = response;
-        // if (status === 200) {
-        //   setPropData(data);
-
-        //   setUpdatedCompany(data); // Initialize updatedCompany with the current data
-        // } else {
-        //   console.error("Error while fetching company data");
-        // }
+        const response = await axios.get(`${APIS.GETPROPBYID}/${id}`);
+        const { status, data } = response;
+      
+        console.log("Hiii",response.data)
+        if (status === 200) {
+          setPropData(data);
+          setUpdatedCompany(data);
+        } else {
+          console.error("Error while fetching property data");
+        }
         setLoading(false);
       } catch (error) {
         console.error("Error:", error);
@@ -71,22 +57,17 @@ function PropertyDetails() {
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
-      // try {
-      //   console.log("data sent to upda", updatedCompany);
-      //   const response = await axios.put(
-      //     `${APIS.SAVECOMPANY}/${id}`,
-      //     updatedCompany
-      //   );
-      //   if (response.status === 200) {
-      //     console.log("Company details updated successfully");
-      //     navigate(`/comapany-details/${id}`);
-      //   } else {
-      //     console.error("Error while updating company data");
-      //     // Additional error handling or notifications can be added here
-      //   }
-      // } catch (error) {
-      //   console.error("Error:", error);
-      // }
+      try {
+        const response = await axios.put(`${APIS.UPDATEPROPERTY}/${id}`, updatedCompany);
+        if (response.status === 200) {
+          console.log("Property details updated successfully");
+          navigate(`/property-details/${id}`);
+        } else {
+          console.error("Error while updating property data");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
     } else {
       // Enter edit mode
       setEditMode(true);
@@ -147,7 +128,7 @@ function PropertyDetails() {
       </div>
       {/* <Sidebar> */}
       <Row className="justify-content-center">
-        <Col md="1">
+        {/* <Col md="1">
           {propData?.imageData && (
             <img
               style={{
@@ -160,10 +141,10 @@ function PropertyDetails() {
               alt="Company Logo"
             />
           )}
-        </Col>
+        </Col> */}
         <Col>
           <h1 className="text-center mb-4">
-            Property Details of {propData?.companyNm}
+            Property Details of {propData?.propertyName}
           </h1>
         </Col>
       </Row>
@@ -207,13 +188,13 @@ function PropertyDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="accountNm"
-                  value={updatedCompany.accountNm}
+                  name="accountName"
+                  value={updatedCompany.accountName}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.accountNm}
+                  {updatedCompany.accountName}
                 </li>
               )}
 
@@ -268,13 +249,13 @@ function PropertyDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="extentAcres"
-                  value={updatedCompany.extentAcres}
+                  name="area"
+                  value={updatedCompany.area}
                   onChange={handleChange}
                 />
               ) : (
                 <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedCompany.extentAcres}
+                  {updatedCompany.area}
                 </li>
               )}
 

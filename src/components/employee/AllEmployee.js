@@ -107,7 +107,7 @@
 // export default AllEmployee;
 
 
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -121,51 +121,73 @@ import Header from '../common/Header';
 import { Dropdown } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { BiArrowBack } from "react-icons/bi";
+import { EmployeeService } from '../../services/EmployeeService';
 
 const AllEmployee = () => {
-    const tableData = [
-      {
-        emp_id: 1,
-        name: 'Mahesh Tawade',
-        contact:'9657089541',
-        status: "Former",
-        j_date: '01-06-2023',
-        b_salary:'50000',
-        position:"Teacher",
-        department: 'School',
-        gender: 'Male',
-    },
-    {
-        emp_id: 5435355,
-        name: 'Gaurav Nandan',
-        contact:'9657089541',
-        status: "Active",
-        j_date: '01-06-2023',
-        b_salary:'60000',
-        position:"Doctor",
-        department: 'Blood Collection Center',
-        gender: 'Male',
-    },
-    {
-        emp_id: 6453432,
-        name: 'Ankita Patil',
-        contact:'9657089541',
-        status: "Active",
-        j_date: '01-06-2023',
-        b_salary:'70000',
-        inventory:"Former",
-        position:"HR",
-        department: 'Skill Center',
-        gender: 'Female',
-    },
-    ];
+     const tableData = [
+    //   {
+    //     emp_id: 1,
+    //     name: 'Mahesh Tawade',
+    //     contact:'9657089541',
+    //     status: "Former",
+    //     j_date: '01-06-2023',
+    //     loanAmount:'50000',
+    //     position:"Teacher",
+    //     department: 'School',
+    //     gender: 'Male',
+    // },
+    // {
+    //     emp_id: 5435355,
+    //     name: 'Gaurav Nandan',
+    //     contact:'9657089541',
+    //     status: "Active",
+    //     j_date: '01-06-2023',
+    //     b_salary:'60000',
+    //     position:"Doctor",
+    //     department: 'Blood Collection Center',
+    //     gender: 'Male',
+    // },
+    // {
+    //     emp_id: 6453432,
+    //     name: 'Ankita Patil',
+    //     contact:'9657089541',
+    //     status: "Active",
+    //     j_date: '01-06-2023',
+    //     b_salary:'70000',
+    //     inventory:"Former",
+    //     position:"HR",
+    //     department: 'Skill Center',
+    //     gender: 'Female',
+    // },
+     ];
 
+    const [allEmployee, setAllEmployee]=useState({});
     const navigate = useNavigate();
 
     const [searchInput, setSearchInput] = useState('');
     const [filteredData, setFilteredData] = useState(tableData);
     const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
     const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
+
+
+    // Function to fetch data from the API
+   const fetchAllEmployee = async () => {
+    try {
+      const response = await EmployeeService.getAllEmployee();
+      const employeeObject = {};
+      response.data.forEach((employee) => {
+        // Use the employee's emp_id as the key in the object
+        employeeObject[employee.emp_id] = employee;
+      });
+      console.log("emp_id =",employeeObject.emp_id);
+      setAllEmployee(employeeObject);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+    useEffect(()=>{
+        fetchAllEmployee();
+    },[]);
 
     const handleSearchChange = (event) => {
         const { value } = event.target;
@@ -314,7 +336,7 @@ const AllEmployee = () => {
                             <th>Department</th>
                             <th>Position</th>
                             <th>Gender</th>
-                            <th>Basic Salary</th>
+                            <th>Loan Amount</th>
                              
                             <th>Contact No</th>
                             <th>Status</th> 
@@ -323,18 +345,20 @@ const AllEmployee = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.emp_id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.j_date}</td>
-                                <td>{item.department}</td>
-                                <td>{item.position}</td>
-                                <td>{item.gender}</td>
-                                <td>{item.b_salary}</td>
+                        {Object.keys(allEmployee).map((empId,index)=>{
+                            const employee= allEmployee[empId];
+                            return(
+                                <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{employee.name}</td>
+                                <td>{employee.j_date}</td>
+                                <td>{employee.department}</td>
+                                <td>{employee.position}</td>
+                                <td>{employee.gender}</td>
+                                <td>{employee.loanAmount}</td>
                                
-                                <td>{item.contact}</td>
-                                <td>{item.status}</td>
+                                <td>{employee.contact}</td>
+                                <td>{employee.status}</td>
                                 <td>
                                   <div className="dropdown">
                                     <Dropdown>
@@ -345,18 +369,19 @@ const AllEmployee = () => {
                                         &#8942;
                                       </Dropdown.Toggle>
                                       <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => handleViewProfile(item.emp_id)}>View Profile</Dropdown.Item>
+                                        {/* <Dropdown.Item onClick={() => handleViewProfile(emp_id)}>View Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={() => handleEditProfile(item.emp_id)}>Edit Profile</Dropdown.Item>
                                         <Dropdown.Item onClick={handleDelete} className="red-text">Delete</Dropdown.Item>
                                         <Dropdown.Item> <Link to={`/allocated-inventory/${item.emp_id}`}>Inventory Details</Link></Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleMarkAsResigned(item.emp_id)}>Mark as Resigned</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleMarkAsResigned(item.emp_id)}>Mark as Resigned</Dropdown.Item> */}
                                       </Dropdown.Menu>
                                     </Dropdown>
                                   </div>
                                 </td>
                                
                             </tr>
-                        ))}
+                            );
+                             })}
                     </tbody>
                 </Table>
             {/* </Sidebar> */}

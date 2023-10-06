@@ -49,7 +49,7 @@ const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await PropertyService.createProperty(formData);
-      console.log("PropertyId",response.data.id);
+      console.log("PropertyId",response.data.prop_id);
       // console.log(response.data.id);
       if (response.status === 201) {
           console.log("Property data saved successfully");

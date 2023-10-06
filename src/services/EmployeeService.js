@@ -4,6 +4,7 @@ import { APIS } from "../components/constants/api";
 export const EmployeeService ={
 
  
+    //add Employee
     createEmployee : async (formData) => {
         try{
             const response = await axios.post(APIS.CREATEEMPLOYEE, formData);
@@ -18,7 +19,7 @@ export const EmployeeService ={
       getAllEmployee :async () => {
         try {
             const response= await axios.get(APIS.GETALLEMPLOYEE,)
-            return response.data;
+            return response;
         }catch(error){
             throw error;
         }
@@ -28,7 +29,7 @@ export const EmployeeService ={
        getEmployeeById :async ()=>{
         try {
         const response=await axios.get(APIS.GETEMPLOYEEBYID,)
-        return response.data;  
+        return response;  
         } catch (error) {
             throw error;
         }
@@ -38,7 +39,7 @@ export const EmployeeService ={
         updateEmployeeById : async ()=>{
             try {
                 const response= await axios.put(APIS.UPDATEEMPLOYEEBYID,)
-                return response.data;
+                return response;
                 
             } catch (error) {
                 throw error; 
@@ -48,7 +49,7 @@ export const EmployeeService ={
         deleteEmployeeById : async ()=>{
            try {
              const response =await axios.delete(APIS.DELETEEMPLOYEEBYID,)
-             return response.data;
+             return response;
            } catch (error) {
             throw error;
            }

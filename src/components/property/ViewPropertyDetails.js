@@ -12,40 +12,7 @@ import Header from "../common/Header";
 
 const ViewPropertyDetail = () => {
  
-  // const property = [
-  //   {
-  //     id: 1,
-  //     propType:" School",
-  //     PropertyName: "Shop A",
-  //     Email: "comp@exa.com",
-  //     GstNo: "GST123456",
-  //     ContactNo: "1234567890",
-  //     Size: "10 sq.ft",
-  //     GazzetNo: "Gazzet789",
-  //     Maintenancecharges: "Yes",
-  //     CtsNo: "CST3244",
-  //     Boundaries: "Nashik",
-  //     AccountNm: "321456",
-  //     Address: "nashik",
-  //     TaxAmt: "6540",
-  //     Annualincome: "45000",
-  //     RegisterNo: "45",
-  //     Rent: "2500",
-  //     Isoccupied: "Yes",
-  //     Village: "nashik",
-  //   },
-  //   {
-  //     id: 2,
-  //     PropertyName: "Shop2",
-  //     email: "companyb@example.com",
-  //     gstNo: "GST654321",
-  //     contactNo: "9876543210",
-  //     location: "Location B",
-  //     size: "800 sq.ft",
-  //     gazzetNo: "Gazzet456",
-  //     maintenanceCharges: "No",
-  //   },
-  // ];
+  
   const { id } = useParams();
   const [property, setProperty] = useState(null); 
   const navigate = useNavigate();
