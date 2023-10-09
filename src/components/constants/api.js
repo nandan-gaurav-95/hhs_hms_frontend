@@ -17,12 +17,12 @@ export const APIS ={
      UPDATEPROPERTY:`${API_BASE_URL}/property`,//  Update an existing property
      DELETEPROPERTY:`${API_BASE_URL}/property`,//Delete an property  by ID
 
-     //tenants
-     CREATETENANT:`${API_BASE_URL}/tenants`,//Post-method
-     GETALLTENANT:`${API_BASE_URL}/tenants`,// Get-method
-     GETTENANTBYID:`${API_BASE_URL}/tenants`,// Get specific tenants by ID
-     UPDATETENANTBYID:`${API_BASE_URL}/tenants`,// Update an existing tenants
-     DELETETENANTBYID:`${API_BASE_URL}/tenants`,//Delete an tenants  by ID
+    //tenants
+    CREATETENANT:`${API_BASE_URL}/tenant`,//Post-method
+    GETALLTENANT:`${API_BASE_URL}/tenant`,// Get-method
+    GETTENANTBYID:`${API_BASE_URL}/tenant`,// Get specific tenants by ID
+    UPDATETENANTBYID:`${API_BASE_URL}/tenant`,// Update an existing tenants
+    DELETETENANTBYID:`${API_BASE_URL}/tenant`,//Delete an tenants  by ID
      
      //Employee
      CREATEEMPLOYEE: `${API_BASE_URL}/employee`,//Post-method

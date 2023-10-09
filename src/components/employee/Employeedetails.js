@@ -23,36 +23,6 @@ function EmployeeDetails() {
   const [updatedEmployee, setUpdatedEmployee] = useState(empData.employee || {});
   const navigate = useNavigate();
 
-
-//   const [updatedEmployee, setUpdatedEmployee] = useState( {
-//     emp_id: 1656565,
-//     name: 'Mahesh Tawade',
-//     department: 'School',
-//     dob: "1990-01-15",
-//     gender: 'Male',
-//     contact:'9657089541',
-//     bloodgroup: "A+",
-//     address: "123 Main Street, City",
-//     status: "Former",
-//     j_date: '01-06-2023',
-//     b_salary:'50000',
-//     position:"Teacher",
-//     aadhar: "123456789012",
-//     qualification: "Bachelor's Degree",
-//     pan: "ABCDE1234F",
-//     dateOfHiring: "2022-03-01",
-//     position: "Manager",
-//     netSalary: "50000",
-//     grossSalary: "70000",
-//     allowance: "2000",
-//     deduction: "1000",
-//     pfEmployeeContribution: "1500",
-//     loanAmount: "0",
-//     loanRepaymentAmount: "0",
-// });
-
-   
-  
 useEffect(() => {
   async function fetchData() {
     try {
@@ -106,10 +76,6 @@ useEffect(() => {
     }
   };
 
-
-
-
-
   const goBack = (event) => {
     // event.preventDefault();
     navigate("/allempolyee");
@@ -123,21 +89,11 @@ useEffect(() => {
       ...prevData,
       [name]: value,
     }));
-    // console.log(propData);
+    
   };
 
- 
-  const handleDelete = (index) => {
-    // const updatedImages = [...selectedPhotos];
-    // updatedImages.splice(index, 1);
-    // setSelectedPhotos(updatedImages);
 
-    // const updatedThumbnails = [...thumbnails];
-    // updatedThumbnails.splice(index, 1);
-    // setThumbnails(updatedThumbnails);
-  };
-
-  // Use the companyName in your component
+  
   return (
     <div className="">
       <Header/>
@@ -417,6 +373,7 @@ useEffect(() => {
             style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
+            {/* {editMode ? "Update" : "Edit"} */}
             Update
           </Button>
          

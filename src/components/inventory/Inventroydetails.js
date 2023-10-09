@@ -1,63 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { APIS } from "../constants/api";
-import axios from "axios";
+
 import {
   MDBContainer as Container,
   MDBRow as Row,
   MDBCol as Col,
   MDBBtn as Button,
+ 
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
+
 import { BiArrowBack } from "react-icons/bi";
+import axios from "axios";
+import { APIS } from "../constants/api";
+
 
 function InventoryDetails() {
   const { id } = useParams() || {};
-  const [propData, setPropData] = useState("");
+  const [InventoryData, setInventoryData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [updatedInventory, setUpdatedInventory] = useState( {
+  const [updatedInventory, setUpdatedInventory] = useState(InventoryData.inventory || {});
    
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const response = await axios.get(`${APIS.GETINVENTORYITEMBYID}/${id}`);
+          const { status, data } = response;
 
-  
-  // const tableData = {
-    id: 1,
-    name: "bed",
-    quantity: 4,
-    date: "1-9-99",
-    price: 5000,
-    department: "Hostel",
-    type: "Consumable",
-  });
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // if (!id) return;
-        // const response = await axios.get(`${APIS.GETInventoryBYID}/${id}`);
-
-        // const { status = "", data } = response;
-        // if (status === 200) {
-        //   // setPropData(data);
-
-        //   // setupdatedInventory(data); // Initialize updatedPayroll with the current data
-
-        // } else {
-        //   console.error("Error while fetching Payroll data");
-        // }
-        setLoading(false);
-      } catch (error) {
-        console.error("Error:", error);
-        setLoading(false);
+          console.log("Hiii",response.data)
+          if (status === 200) {
+            setInventoryData(data);
+            setUpdatedInventory(data);
+          } else {
+            console.error("Error while fetching inventory data");
+          }
+          setLoading(false);
+        } catch (error) {
+          console.error("Error:", error);
+          setLoading(false);
+        }
       }
-    }
-    fetchData();
-  }, [id]);
+      fetchData();
+    }, [id]);
 
   if (loading) {
     // Handle loading state here (e.g., display a loading spinner)
-    return <div>Loading...</div>;
+    return <div>Loading</div>;
   }
 
   // if (!propData) {
@@ -68,26 +59,27 @@ function InventoryDetails() {
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
-      // try {
-      //   // const response = await axios.put(`${APIS.GETALLInventory}/${id}`, updatedInventory);
-      //   if (response.status === 200) {
-      //     console.log("Inventory details updated successfully");
-      //     // navigate(`/payroll-details/${id}`)
-      //   } else {
-      //     console.error("Error while updating Inventory data");
-      //     // Additional error handling or notifications can be added here
-      //   }
-      // } catch (error) {
-      //   console.error("Error:", error);
-      // }
+      try {
+        const response = await axios.put(`${APIS.UPDATEINVENTORYITEMBYID}/${id}`, updatedInventory);
+        if (response.status === 200) {
+          console.log("Employee details updated successfully");
+          navigate(`/inventory-details/${id}`);
+        } else {
+          console.error("Error while updating property data");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
     } else {
       // Enter edit mode
       setEditMode(true);
     }
   };
 
+  
+
   const goBack = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     navigate("/showinventory");
   };
 
@@ -102,14 +94,7 @@ function InventoryDetails() {
     // console.log(propData);
   };
 
-  const handleDelete = (index) => {
-    // const updatedImages = [...selectedPhotos];
-    // updatedImages.splice(index, 1);
-    // setSelectedPhotos(updatedImages);
-    // const updatedThumbnails = [...thumbnails];
-    // updatedThumbnails.splice(index, 1);
-    // setThumbnails(updatedThumbnails);
-  };
+ 
   return (
     <div className="">
       <Header />
@@ -133,8 +118,8 @@ function InventoryDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="id"
-                  value={updatedInventory.id}
+                  name="inv_id"
+                  value={updatedInventory.inv_id}
                   onChange={handleChange}
                 />
 
@@ -143,8 +128,8 @@ function InventoryDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="name"
-                  value={updatedInventory.name}
+                  name="inv_id"
+                  value={updatedInventory.inv_id}
                   onChange={handleChange}
                 />
 
@@ -173,8 +158,8 @@ function InventoryDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="type"
-                  value={updatedInventory.type}
+                  name="inv_type"
+                  value={updatedInventory.inv_type}
                   onChange={handleChange}
                 />
 

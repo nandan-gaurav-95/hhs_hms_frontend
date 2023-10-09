@@ -37,6 +37,7 @@ const EmployeeForm = () => {
     loanAmount: "",
     loanRepaymentAmount: "",
     inventoryItem:"",
+    status:"",
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -53,7 +54,7 @@ const EmployeeForm = () => {
     // code for connecting to the backend
     try {
       const response = await EmployeeService.createEmployee(formData);
-      console.log("Hiiiiii",response);
+      console.log("Hiiiiii",response.data);
       if (response.status === 201) {
         console.log("Form data saved successfully");
         setFormData(initialState);
@@ -499,6 +500,25 @@ const EmployeeForm = () => {
                   <div className="text-danger">{errors.inventoryItem}</div>
                 )} */}
             </Col>
+            <Col className="col-sm-5">
+           <select
+             className="form-select"
+             id="status"
+             name="status"
+             value={formData.status}
+             onChange={handleChange}
+            //  required
+           >
+             <option value="">Select Status</option>
+             <option value="Present">Present</option>
+             <option value="Former">Former</option>
+            
+             {/* Add more payment methods as needed */}
+           </select>
+           {/* {errors.status && (
+             <div className="text-danger">{errors.status}</div>
+           )} */}
+         </Col>
             
           </Row>
           <div className="text-center mt-4 ">

@@ -50,7 +50,7 @@ margin-top: auto;
 .hhshms{
 font-Family: Arial Black, sans-serif;
   font-size: large;
-  background-image: linear-gradient(to right, hsl(88, 100%, 51%), #3ef805);
+  background-image: linear-gradient(to right, #7a96e6 ,#1423e0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -111,272 +111,229 @@
 // };
 
 // export default ShowTenant;
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import {
-    MDBContainer as Container,
-    MDBRow as Row,
-    MDBCol as Col,
-    MDBInput as Input,
-    MDBBtn as Button
-} from 'mdb-react-ui-kit';
-import Sidebar from '../admin/Sidebar';
-import Table from 'react-bootstrap/Table';
-import Header from '../common/Header';
-import { Dropdown } from 'react-bootstrap';
-import { logDOM } from '@testing-library/react';
-import { useNavigate } from 'react-router-dom';
+  MDBContainer as Container,
+  MDBRow as Row,
+  MDBCol as Col,
+  MDBInput as Input,
+  MDBBtn as Button,
+} from "mdb-react-ui-kit";
+import Sidebar from "../admin/Sidebar";
+import Table from "react-bootstrap/Table";
+import Header from "../common/Header";
+import { Dropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import axios from "axios";
+import { APIS } from "../constants/api";
+import { TenantService } from "../../services/TenantService";
 
 const ShowTenant = () => {
   const navigate = useNavigate();
-    const tableData = [
-      {
-        id: 1,
-        name: 'Mahesh Tawade',
-        department: 'ITI College',
-        allocatedShop:"A-1001",
-        contactNum:'9657089541',
-        securityDeposit:"20000.36",
-        rentDue: '3000.00',
-        electricityDue:"299.03",
-        expiryDate:'20/12/2023',
-        status:"Active",
+  // const tableData = [];
 
-    },
-    {
-        id: 2,
-        name: 'Gaurav Nandan',
-        department: 'Schools',
-        allocatedShop:"A-1002",
-        contactNum:'7894561230',
-        securityDeposit:"25000.00",
-        rentDue: '3000.00',
-        electricityDue:"299.03",
-        expiryDate:'20/12/2023',
-        status:"Active",
-    },
-    {
-        id: 3,
-        name: 'Ankita Patil',
-        department: 'Skill Center',
-        allocatedShop:"A-1004",
-        contactNum:'9874563210',
-        securityDeposit:"15000.00",
-        rentDue: '3000.00',
-        electricityDue:"299.03",
-        expiryDate:'20/12/2003',
-        status:"In-Active",
-    },
-    ];
+  const [tenantData, setTenantData] = useState({});
+  const [selectedDepartment, setSelectedDepartment] = useState("all");
+  const [selectedStatus, setSelectedStatus] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-    const [searchInput, setSearchInput] = useState('');
-    const [filteredData, setFilteredData] = useState(tableData);
-    const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
-    const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
-
-    const handleSearchChange = (event) => {
-        const { value } = event.target;
-        setSearchInput(value);
-
-        // Filter the tableData based on the search input, sort type, and department sort type
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(value.toLowerCase());
-            
-            if (sortType === 'Active' || sortType === 'In-Active') {
-                return nameMatches && item.type === sortType && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
+  const fetchTenantData = async () => {
+    try {
+      const response = await TenantService.getAllTenant();
+      console.log("API Response:", response); // Log the entire response
+      if (Array.isArray(response)) {
+        const tenantObject = {};
+        response.forEach((tenant) => {
+          // Use the tenant's tnt_id as the key in the object
+          tenantObject[tenant.tnt_id] = tenant;
         });
-
-        setFilteredData(filtered);
-    };
-
-    const handleSortChange = (event) => {
-        const { value } = event.target;
-        setSortType(value);
-
-        // Reapply the search filter when the sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (value === 'all') {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            }  else if (value === 'Active') {
-              return nameMatches && item.status === 'Active' && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else if (value === 'Inactive') {
-              return nameMatches && item.status === 'In-Active' && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
-        });
-
-        setFilteredData(filtered);
-    };
-
-    const handleDepartmentSortChange = (event) => {
-        const { value } = event.target;
-        setDepartmentSortType(value);
-
-        // Reapply the search filter when the department sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (sortType === 'all') {
-                return nameMatches && (value === 'all' || item.department === value);
-            } else {
-                return nameMatches && item.type === sortType && (value === 'all' || item.department === value);
-            }
-        });
-
-        setFilteredData(filtered);
-    };
-    // const handleViewProfile= (id)=>{
-    //   console.log("Showing All Tenants on view Tenants Profile");
-    //   navigate(`/tenant-details/${id}`);
-      
-    // }
-    // const handleEditProfile= (id)=>{
-    //     console.log("Showing All Tenants on view Tenants Profile");
-    //     navigate(`/tenant-details/${id}`);
-        
-    //   }
-    const handleEditProfile =(id)=> {
-        navigate(`/tenant-details/${id}`)
-       };
-    
-    const handleDelete= ()=>{
-      // console.log("Delete tenant Successfully");
-      window.confirm("Do you want to Delete this Tenant ?");
+        console.log("Tenant data:", tenantObject);
+        setTenantData(tenantObject);
+      } else {
+        console.error("Invalid data received from the API:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching tenant data:", error);
     }
-    const handleViewProfile = (id) => {
-        navigate(`/tenantprofile/${id}`);
-      };
+  };
 
+  useEffect(() => {
+    fetchTenantData();
+  }, []);
 
-    return (
-      <div className="">
-        {/* <Sidebar> */}
-        <Header />
-        <div className="arrow-back-container">
-          <BiArrowBack
-            className="backLoginForm fs-2 text-dark"
-            onClick={() => navigate(-1)}
-          />
-        </div>
-        <h1 className="mb-4 text-center">Tenants Details</h1>
+  const handleDepartmentChange = (event) => {
+    const { value } = event.target;
+    setSelectedDepartment(value);
+  };
 
-        <div className="d-flex mb-8 align-items-center">
-          <Input
-            label="Search"
-            type="text"
-            value={searchInput}
-            onChange={handleSearchChange}
-          />
+  const handleStatusChange = (event) => {
+    const { value } = event.target;
+    setSelectedStatus(value);
+  };
 
-          <div className="ms-3">
-            <select
-              id="sortType"
-              className="form-select"
-              value={sortType}
-              onChange={handleSortChange}
-            >
-              <option value="all">All</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-          </div>
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
-          <div className="ms-3">
-            <select
-              id="departmentSortType"
-              className="form-select"
-              value={departmentSortType}
-              onChange={handleDepartmentSortChange}
-            >
-              <option value="Department">Department</option>
-              <option value="Schools">Schools</option>
-              <option value="ITI College">ITI College</option>
-              <option value="Skill Center">Skill Center</option>
-              <option value="Blood Collection Center">
-                {" "}
-                Blood Collection Center
-              </option>
-              <option value="Hostel">Hostel</option>
-              <option value="Masjid">Masjid</option>
-              <option value="Dargah">Dargah</option>
-            </select>
-          </div>
-        </div>
+  const handleEditProfile = (tnt_id) => {
+    navigate(`/tenant-details/${tnt_id}`);
+  };
 
-        <Table striped>
-          <thead>
-            <tr>
-              <th>Sr. No.</th>
-              <th>Name</th>
-              <th>Department</th>
-              <th>AllocatedShop</th>
-              <th>Contact No</th>
-              <th>Deposit</th>
-              <th>Rent Due</th>
-              <th>ElectricityDue</th>
-              <th>Expiry Date</th>
-              <th>status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.department}</td>
-                <td>{item.allocatedShop}</td>
-                <td>{item.contactNum}</td>
-                <td>{item.securityDeposit}</td>
-                <td>{item.rentDue}</td>
-                <td>{item.electricityDue}</td>
-                <td>{item.expiryDate}</td>
-                <td>{item.status}</td>
-                <td>
-                  {item.action}
-                  {/* </td>
-                                <td> */}
-                  <div className="dropdown">
-                    <Dropdown>
-                      <Dropdown.Toggle
-                        variant="secondary"
-                        id="dropdownMenuButton"
-                      >
-                        &#8942;
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item
-                          onClick={() => handleViewProfile(item.id)}
-                        >
-                          View Profile
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          onClick={() => handleEditProfile(item.id)}
-                        >
-                          Edit Profile
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          onClick={() => handleDelete()}
-                          className="red-text"
-                        >
-                          Delete Profile
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+  const handleDelete = async (tnt_id) => {
+    const confirmDelete = window.confirm("Do you want to delete this Tenant?");
+    if (confirmDelete) {
+      try {
+        await axios.delete(`${APIS.DELETETENANTBYID}/${tnt_id}`);
+        console.log("Deleted Successfully");
+        const updatedTenant = [...tenantData]; // Create a copy of the tenantData array
+        const indexToDelete = updatedTenant.findIndex(item => item.tnt_id === tnt_id);
+        if (indexToDelete !== -1) {
+          updatedTenant.splice(indexToDelete, 1); // Remove the tenant with the given tnt_id
+          setTenantData(updatedTenant); // Update the state with the modified array
+        }
+      } catch (error) {
+        console.error("Error deleting tenant:", error);
+      }
+    }
+  };
+  
 
-        {/* </Sidebar> */}
+  const handleViewProfile = (tnt_id) => {
+    navigate(`/tenantprofile/${tnt_id}`);
+  };
+
+  // const filteredData = tenantData.filter((item) => {
+  //   const departmentMatch =
+  //     selectedDepartment === "all" || item.department === selectedDepartment;
+  //   const statusMatch =
+  //     selectedStatus === "all" || item.status === selectedStatus;
+  //   const searchMatch =
+  //     searchQuery === "" ||
+  //     (item.tenantName &&
+  //       item.tenantName.toLowerCase().includes(searchQuery.toLowerCase()));
+
+  //   return departmentMatch && statusMatch && searchMatch;
+  // });
+
+  return (
+    <div className="">
+      <Header />
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
       </div>
-    );
+      <h1 className="mb-4 text-center">Tenants Details</h1>
+
+      <div className="d-flex mb-4 align-items-center">
+        <input
+          label="Search"
+          type="text"
+          className="form-control"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+        />
+
+        <div className="ms-2">
+          <select
+            id="departmentFilter"
+            className="form-select"
+            value={selectedDepartment}
+            onChange={handleDepartmentChange}
+          >
+            <option value="all">Departments</option>
+            <option value="Schools">Schools</option>
+            <option value="ITI College">ITI College</option>
+            <option value="Skill Center">Skill Center</option>
+            <option value="Blood Collection Center">
+              Blood Collection Center
+            </option>
+            <option value="Hostel">Hostel</option>
+            <option value="Masjid">Masjid</option>
+            <option value="Dargah">Dargah</option>
+          </select>
+        </div>
+
+        <div className="ms-2">
+          <select
+            id="statusFilter"
+            className="form-select"
+            value={selectedStatus}
+            onChange={handleStatusChange}
+          >
+            <option value="all">Status</option>
+            <option value="Present">Present</option>
+            <option value="Former">Former</option>
+          </select>
+        </div>
+      </div>
+      <Table striped>
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>AllocatedShop</th>
+            <th>Contact No</th>
+            <th>Deposit</th>
+            <th>Rent Due</th>
+            <th>ElectricityDue</th>
+            <th>Expiry Date</th>
+            <th>status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {Object.keys(tenantData).map((tntId, index) => {
+  const tenant = tenantData[tntId];
+  return (
+    <tr key={tntId}>
+      <td>{index + 1}</td>
+      <td>{tenant.tenantName}</td>
+      <td>{tenant.department}</td>
+      <td>{tenant.allocatedShop}</td>
+      <td>{tenant.contactNum}</td>
+      <td>{tenant.securityDeposit}</td>
+      <td>{tenant.rentDue}</td>
+      <td>{tenant.electricityDue}</td>
+      <td>{tenant.expiryDate}</td>
+      <td>{tenant.status}</td>
+      <td>
+        <div className="dropdown">
+          <Dropdown>
+            <Dropdown.Toggle
+              variant="secondary"
+              id="dropdownMenuButton"
+            >
+              &#8942;
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => handleViewProfile(tntId)}>
+                View Profile
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleEditProfile(tntId)}>
+                Edit Profile
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => handleDelete(tntId)}
+                className="red-text"
+              >
+                Delete Profile
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </td>
+    </tr>
+  );
+})}
+        </tbody>
+      </Table>
+    </div>
+  );
 };
 
 export default ShowTenant;

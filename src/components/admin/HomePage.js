@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import backgroundImage  from "../../asset/images/istockphoto-505757382-612x612.jpg";
+import backgroundImage from "../../asset/images/HHMS_bG.jpg";
+// import backgroundImage  from "../../asset/images/istockphoto-505757382-612x612.jpg";
+// import backgroundImage  from "../../asset/images/HHMS bG.jpg"
 import "../../asset/homepage.css";
 import Header from "../common/Header";
 import { NavLink } from "react-router-dom";

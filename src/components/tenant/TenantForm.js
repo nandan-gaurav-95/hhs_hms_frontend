@@ -33,15 +33,17 @@ const TenantForm = () => {
     // Agreement Related Dates
     startDate:"",
     expiryDate:"",
+    status:"",
   };
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('handleSubmit called');
     // Validate the form before submitting
     const validationErrors = validateForm(formData);
+    console.log('Validation Errors:', validationErrors);
 
     // If there are validation errors, set them in the state
     if (Object.keys(validationErrors).length > 0) {
@@ -55,7 +57,7 @@ const TenantForm = () => {
     try {
       const response = await TenantService.createTenant(formData);
 
-      console.log("TenantId", response.data.id);
+      console.log("TenantId", response.data);
 
       if (response.status === 201) {
         console.log("Tenant Created Successfully");
@@ -110,6 +112,9 @@ const TenantForm = () => {
     }
     if (!formData.paymentMethod) {
       errors.paymentMethod = "Payment Method is required.";
+    }
+    if (!formData.status) {
+      errors.status = "Status  is required.";
     }
 
     return errors;
@@ -199,10 +204,10 @@ const TenantForm = () => {
               required
             >
               <option value="">Select Shop No </option>
-              <option value="A-1001">A-1001</option>
-              <option value="A-1002">A-1002</option>
-              <option value="A-1003">A-1003</option>
-              <option value="A-1004">A-1004</option>
+              <option value="1001">1001</option>
+              <option value="1002">1002</option>
+              <option value="1003">1003</option>
+              <option value="1004">1004</option>
               {/* Add more payment methods as needed */}
             </select>
             {errors.paymentMethod && (
@@ -336,6 +341,15 @@ const TenantForm = () => {
         <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
         <Col className="col-sm-5 ">
               <Input
+                label="Collected Rent"
+                type="text"
+                name="rentCollected"
+                value={formData.rentCollected}
+                onChange={handleChange}
+              />
+            </Col>
+        <Col className="col-sm-5 ">
+              <Input
                 label="Agreement Expiry Date"
                 type="date"
                 name="expiryDate"
@@ -344,6 +358,26 @@ const TenantForm = () => {
               />
             </Col>
         </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+         <Col className="col-sm-5">
+           <select
+             className="form-select"
+             id="status"
+             name="status"
+             value={formData.status}
+             onChange={handleChange}
+             required
+             >
+             <option value="">Select Status</option>
+             <option value="Present">Present</option>
+             <option value="Former">Former</option>
+            
+             </select>
+           {errors.status && (
+             <div className="text-danger">{errors.status}</div>
+           )}
+         </Col>
+       </Row>
       
         <div className="text-center mt-4 ">
           <Button type="submit">Submit</Button>

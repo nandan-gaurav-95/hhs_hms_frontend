@@ -350,7 +350,6 @@ const AllEmployee = () => {
                                 <td>{employee.position}</td>
                                 <td>{employee.gender}</td>
                                 <td>{employee.loanAmount}</td>
-                               
                                 <td>{employee.contactNum}</td>
                                 <td>{employee.status}</td>
                                 <td>

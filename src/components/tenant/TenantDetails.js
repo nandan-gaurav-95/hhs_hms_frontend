@@ -21,32 +21,32 @@ function TenantDetails() {
   const navigate = useNavigate();
 
   const tableData = {
-    id: 1,
-    name: "Mahesh Tawade",
-    department: "ITI College",
-    allocatedShop: "A-1001",
-    contactNum: "9657089541",
-    securityDeposit: "20000.36",
-    rentDue: "3000.00",
-    electricityDue: "299.03",
-    expiryDate: "20/12/2003",
-    status: "Active",
+    // id: 1,
+    // name: "Mahesh Tawade",
+    // department: "ITI College",
+    // allocatedShop: "A-1001",
+    // contactNum: "9657089541",
+    // securityDeposit: "20000.36",
+    // rentDue: "3000.00",
+    // electricityDue: "299.03",
+    // expiryDate: "20/12/2003",
+    // status: "Active",
   };
   useEffect(() => {
     async function fetchData() {
       try {
-        // if (!id) return;
-        // const response = await axios.get(`${APIS.GETTenantBYID}/${id}`);
+        if (!id) return;
+        const response = await axios.get(`${APIS.GETTENANTBYID}/${id}`);
+console.log("tntId",response.data);
+        const { status = "", data } = response;
+        if (status === 200) {
+          setPropData(data);
 
-        // const { status = "", data } = response;
-        // if (status === 200) {
-        //   // setPropData(data);
-
-        //   // setupdateTenant(data); // Initialize updatedPayroll with the current data
-
-        // } else {
-        //   console.error("Error while fetching Payroll data");
-        // }
+          setupdateTenant(data); // Initialize updatedTenant with the current data
+          setLoading(false);
+        } else {
+          console.error("Error while fetching Tenant data");
+        }
         setLoading(false);
       } catch (error) {
         console.error("Error:", error);
@@ -69,18 +69,19 @@ function TenantDetails() {
   const handleEditMode = async () => {
     setEditMode(!editMode);
     if (editMode) {
-      // try {
-      //   // const response = await axios.put(`${APIS.GETALLTenant}/${id}`, updateTenant);
-      //   if (response.status === 200) {
-      //     console.log("Tenant details updated successfully");
-      //     // navigate(`/payroll-details/${id}`)
-      //   } else {
-      //     console.error("Error while updating Tenant data");
-      //     // Additional error handling or notifications can be added here
-      //   }
-      // } catch (error) {
-      //   console.error("Error:", error);
-      // }
+      try {
+         const response = await axios.put(`${APIS.UPDATETENANTBYID}/${id}`, updateTenant);
+        if (response.status === 200) {
+          console.log("Tenant details updated successfully");
+          // navigate(`/payroll-details/${id}`)
+          setEditMode(false);
+        } else {
+          console.error("Error while updating Tenant data");
+          // Additional error handling or notifications can be added here
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
     } else {
       // Enter edit mode
       setEditMode(true);
@@ -123,7 +124,7 @@ function TenantDetails() {
       {/* <Sidebar> */}
         <Row className="justify-content-center">
           <Col>
-            <h1 className="text-center mb-4">Details of {propData?.name}</h1>
+            <h1 className="text-center mb-4">Details of {propData?.tenantName}</h1>
           </Col>
         </Row>
         <Row className="justify-content-center">
@@ -134,8 +135,8 @@ function TenantDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="id"
-                  value={tableData.id}
+                  name="tnt_id"
+                  value={updateTenant.tnt_id}
                   onChange={handleChange}
                 />
 
@@ -144,8 +145,8 @@ function TenantDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="name"
-                  value={tableData.name}
+                  name="tenantName"
+                  value={updateTenant.tenantName}
                   onChange={handleChange}
                 />
                 <strong>Expiry Date:</strong>

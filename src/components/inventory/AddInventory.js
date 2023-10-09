@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import {
     MDBContainer as Container,
     MDBRow as Row,
@@ -10,59 +12,74 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from '../admin/Sidebar';
 import Header from '../common/Header';
 import { BiArrowBack } from "react-icons/bi";
-
+import { InventoryService } from "../../services/InventoryService";
 
 const AddInventory = () => {
+    const navigate = useNavigate();
     const initialState = {
         department: '',
-        inventory: '',
-        name: '',
+        inv_type: '',
+        inv_name: '',
         quantity: '',
         date: '',
         price: ''
     } 
-    const [formData, setFormData] = useState(initialState);
+    // const [addInventory, setAddInventory] = useState([]);
+    // const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    // useEffect(() => {
+    //     async function fetchInventory() {
+    //         try {
+    //             const response = await axios.get(APIS.CREATEINVENTORY);
+    //             console.log('Response:', response);
+    //             if (response.status === 200) {
+    //               setAddInventory(response.data);
+    //             } else {
+    //               console.error("Error while fetching inventory");
+    //             }
+    //           } catch (error) {
+    //             console.error("Error:", error);
+    //           }
+    //     }
+    //     fetchInventory();
+    //   }, []);
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
 
-        // Validate the form before submitting
-        const validationErrors = validateForm(formData);
+    //     const validationErrors = validateForm(formData);
 
-        // If there are validation errors, set them in the state
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        } else {
-            // Clear validation errors if there are none
-            setErrors({});
-        }
+       
+    //     if (Object.keys(validationErrors).length > 0) {
+    //         setErrors(validationErrors);
+    //         return;
+    //     } else {
+        
+    //         setErrors({});
+    //     }
 
-        // Handle form submission logic here
-    };
+      
+    // };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-        // Clear validation errors when the user makes changes
-        setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
-      };
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    //     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    //   };
     
 
     const validateForm = (formData) => {
         const errors = {};
 
-        // Check for mandatory fields
         if (!formData.department.trim()) {
             errors.department = 'Department is required.';
         }
-        if (!formData.inventory.trim()) {
-            errors.inventory = 'Inventory type is required.';
+        if (!formData.inv_type.trim()) {
+            errors.inv_type = 'Inventory type is required.';
         }
-        if (!formData.name.trim()) {
-            errors.name = 'Name of Inventory is required.';
+        if (!formData.inv_name.trim()) {
+            errors.inv_name = 'Name of Inventory is required.';
         }
         if (!formData.quantity.trim()) {
             errors.quantity = 'Quantity is required.';
@@ -76,6 +93,33 @@ const AddInventory = () => {
 
         return errors;
     };
+
+    const [formData, setFormData] = useState(initialState);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('handleSubmit called');
+
+    try {
+      const response = await InventoryService.createInventory(formData);
+
+      console.log("TenantId", response.data.id);
+
+      if (response.status === 201) {
+        console.log("Inventory Created Successfully");
+        setFormData(initialState);
+      } else {
+        console.error("Failed To create Tenant");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
     return (
         <div className="">
@@ -116,8 +160,8 @@ const AddInventory = () => {
                             <select
                                 className="form-select"
                                 id="select Inventory"
-                                name="inventory"
-                                value={formData.inventory}
+                                name="inv_type"
+                                value={formData.inv_type}
                                 onChange={handleChange}
                                 required
                                 >
@@ -126,8 +170,8 @@ const AddInventory = () => {
                                 <option value="NonConsumable ">NonConsumable</option>
                             </select>  
             
-                            {errors.inventory && (
-                                <div className="text-danger">{errors.inventory}</div>
+                            {errors.inv_type && (
+                                <div className="text-danger">{errors.inv_type}</div>
                             )}
                         </Col>
                     </Row>
@@ -136,13 +180,13 @@ const AddInventory = () => {
                             <Input
                                 label="Name of Inventory"
                                 type="text"
-                                name="name"
-                                value={formData.name}
+                                name="inv_name"
+                                value={formData.inv_name}
                                 onChange={handleChange}
-                                required
+                                 required
                                 />
-                            {errors.name && (
-                                <div className="text-danger">{errors.name}</div>
+                            {errors.inv_name && (
+                                <div className="text-danger">{errors.inv_name}</div>
                             )}
                         </Col>
                         <Col className="col-sm-5">
@@ -180,7 +224,7 @@ const AddInventory = () => {
                                 name="price"
                                 value={formData.price}
                                 onChange={handleChange}
-                                required
+                                 required
                                 />
                             {errors.price && (
                                 <div className="text-danger">{errors.price}</div>

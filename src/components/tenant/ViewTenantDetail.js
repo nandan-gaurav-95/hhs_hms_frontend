@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import {useNavigate, useParams } from "react-router-dom";
 
 import Header from "../common/Header";
@@ -13,28 +13,47 @@ import {
 import logo from "../../asset/images/hhslogo.jpg";
 import { FaDownload } from "react-icons/fa";
 import { BiArrowBack } from "react-icons/bi";
+import { APIS } from "../constants/api";
+import axios from "axios";
 
 const ViewTenantDetail = () => {
   const { id } = useParams();
-  const tenants = [
-    {
-      id: 1,
-      Name: "Mahesh Tawade",
-      ContactNo: "1234567890",
-      Address: "nashik",
-      ShopNo: "1",
-      CollectedRent: "2500",
-      RentDue: "1300",
-      Deposit: "5000",
-      ElectricityDue: "233",
-      TotalBill: "654",
-      CollectionDetails: "456",
-      PaymentMethod: "Online",
-    },
-  ];
+  // const tenants = [
+  //   {
+      
+  //     id: 1,
+  //     Name: "Mahesh Tawade",
+  //     ContactNo: "1234567890",
+  //     Address: "nashik",
+  //     ShopNo: "1",
+  //     CollectedRent: "2500",
+  //     RentDue: "1300",
+  //     Deposit: "5000",
+  //     ElectricityDue: "233",
+  //     TotalBill: "654",
+  //     CollectionDetails: "456",
+  //     PaymentMethod: "Online",
+  //   },
+  // ];
+  const [tenantToShow, setTenantToShow] = useState(null);
   const navigate = useNavigate();
 
-  const tenantToShow = tenants.find((prop) => prop.id === parseInt(id));
+  // const tenantToShow = tenants.find((prop) => prop.id === parseInt(id));
+
+  const fetctTenantById = async ()=>{
+    try {
+      const response= await axios.get(`${APIS.GETTENANTBYID}/${id}`);
+      console.log("hiiii",response.data);
+      setTenantToShow(response.data);
+
+    } catch (error) {
+      console.error("Error fetching property:", error);
+    }
+
+  }
+  useEffect(()=>{
+    fetctTenantById();
+  },[]);
 
   if (!tenantToShow) {
     return <div>Property not found.</div>;
@@ -317,12 +336,12 @@ const ViewTenantDetail = () => {
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="mb-4 text-center entity-column">Tenant Details</h2>
+      <h2 className="mb-4 text-center entity-column">Details of {tenantToShow?.tenantName}</h2>
 
       <Container
         className="detail w-75 text-center"
         style={{
-          height: "490px",
+          height: "110vh",
           width: "50%",
           boxShadow:
             "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
@@ -333,40 +352,16 @@ const ViewTenantDetail = () => {
           justifyContent: "flex-start",
         }}
       >
-        <div>
+         <div>
           <div className="d-flex w-100 flex-column">
-            <div className="d-flex entity-row">
-              {renderTenantRow("id", tenantToShow.id)}
-              {renderTenantRow("Name", tenantToShow.Name)}
-            </div>
-            <div className="d-flex entity-row">
-              {renderTenantRow("ContactNo", tenantToShow.ContactNo)}
-              {renderTenantRow("Address", tenantToShow.Address)}
-            </div>
-            <div className="d-flex entity-row">
-              {renderTenantRow("ShopNo", tenantToShow.ShopNo)}
-              {renderTenantRow("CollectedRent", tenantToShow.CollectedRent)}
-            </div>
-            <div className="d-flex entity-row">
-              {renderTenantRow("RentDue", tenantToShow.RentDue)}
-              {renderTenantRow("Deposit", tenantToShow.Deposit)}
-            </div>
-            <div className="d-flex entity-row">
-              {renderTenantRow("ElectricityDue", tenantToShow.ElectricityDue)}
-              {renderTenantRow("TotalBill", tenantToShow.TotalBill)}
-            </div>
-            <div className="d-flex entity-row">
-              {renderTenantRow(
-                "CollectionDetails",
-                tenantToShow.CollectionDetails
-              )}
-              {renderTenantRow("PaymentMethod", tenantToShow.PaymentMethod)}
-            </div>
+            {Object.entries(tenantToShow).map(([key, value]) =>
+              renderTenantRow(key, value)
+            )}
             <div style={{ marginBottom: "10px" }}>
               <Button
                 variant="primary"
                 onClick={handleRentPdf}
-                className="w-25" 
+                className="w-25"
               >
                 <FaDownload /> PDF for Rent
               </Button>
@@ -378,28 +373,9 @@ const ViewTenantDetail = () => {
                 <FaDownload /> PDF for Electricity Bill
               </Button>
             </div>
-
-            {Object.entries(tenantToShow)
-              .filter(
-                ([key]) =>
-                  ![
-                    "id",
-                    "Name",
-                    "ContactNo",
-                    "Address",
-                    "ShopNo",
-                    "CollectedRent",
-                    "RentDue",
-                    "Deposit",
-                    "ElectricityDue",
-                    "TotalBill",
-                    "CollectionDetails",
-                    "PaymentMethod",
-                  ].includes(key)
-              )
-              .map(([key, value]) => renderTenantRow(key, value))}
           </div>
         </div>
+        {/* </div> */}
       </Container>
     </div>
   );
