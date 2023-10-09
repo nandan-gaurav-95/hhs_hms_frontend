@@ -13,46 +13,36 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../common/Header';
 import { BiArrowBack } from "react-icons/bi";
 import { InventoryService } from '../../services/InventoryService';
+import axios from "axios";
+import { APIS } from "../constants/api";
+
+
+
 const ShowInventory = () => {
-    const tableData = [
-        // {
-        //     id: 1,
-        //     name: 'bed',
-        //     quantity: 4,
-        //     date: '1-9-99',
-        //     price: 5000,
-        //     department: 'Hostel',
-        //     type: 'Consumable',
-        // },
-        // {
-        //     id: 2,
-        //     name: 'Pen',
-        //     quantity: 8,
-        //     date: '2-9-99',
-        //     price: 50,
-        //     department: 'Schools',
-        //     type: 'NonConsumable',
-        // },
-        // {
-        //     id: 3,
-        //     name: 'blanket',
-        //     quantity: 8,
-        //     date: '3-9-99',
-        //     price: 5999990,
-        //     department: 'Hostel',
-        //     type: 'NonConsumable',
-        // },
-    ];
+    // const tableData = [];
     const navigate = useNavigate();
-    const [allInventory, setAllInventory] = useState([]);
+    const [allInventory, setAllInventory] = useState({});
     const [searchInput, setSearchInput] = useState('');
-    const [filteredData, setFilteredData] = useState(tableData);
+    const [filteredData, setFilteredData] = useState();
     const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
     const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
+
+
     const fetchallInventory = async () => {
         try {
           const response = await InventoryService.getAllInventoryItem();
-          setAllInventory(response); 
+         console.log("Api response",response);
+         if(Array.isArray(response)){
+          const inventoryObject={};
+          response.forEach((inventory) => {
+            inventoryObject[inventory.inv_id]=inventory;
+          });
+          console.log("invObject",inventoryObject);
+          setAllInventory(inventoryObject);
+         }else{
+          console.error("Invalid data received from the API:", response);
+         }
+           
         } catch (error) {
           console.error('Error fetching tenant data:', error);
         }
@@ -64,13 +54,26 @@ const ShowInventory = () => {
       }, []);
 
     
-      const handleDelete =function(){ 
-        window.confirm("The Employee will be get deleted permanantly");
+      const handleDelete =async(inv_id)=>{ 
+        try {
+          await axios.delete(`${APIS.DELETEINVENTORYITEMBYID}/${inv_id}`);
+          console.log("Deleted Successfully");
+            // Create a copy of the state object
+            const updatedInventory = { ...allInventory };
+            // Remove the employee with the given emp_id
+          delete updatedInventory[inv_id];
+      
+          // Update the state with the modified object
+          setAllInventory(updatedInventory);
+        } catch (error) {
+            console.error("Error deleting employee:", error);  
+        }
+
       };
   
-      const handleEditProfile =(id)=> {
+      const handleEditProfile =(inv_id)=> {
        
-       navigate(`/inventory-details/${id}`)
+       navigate(`/inventory-details/${inv_id}`)
       };
     
       useEffect(() => {
@@ -204,16 +207,18 @@ const ShowInventory = () => {
             </tr>
           </thead>
           <tbody>
-            {allInventory &&
-              allInventory.map((item) => (
-                <tr key={item.inv_id}>
-                  <td>{item.inv_id}</td>
-                  <td>{item.inv_name}</td>
-                  <td>{item.quantity}</td>
-                  <td>{item.date}</td>
-                  <td>{item.price}</td>
-                  <td>{item.department}</td>
-                  <td>{item.inv_type}</td>
+            {Object.keys(allInventory).map((invId,index) => {
+              const inventory=allInventory[invId];
+              return(
+                <tr key={index}>
+                  <td> {index +1}</td>
+                  <td>{inventory.inv_name}</td>
+                  <td>{inventory.quantity}</td>
+                  <td>{inventory.date}</td>
+                  <td>{inventory.price}</td>
+                  <td>{inventory.department}</td>
+                  <td>{inventory.inv_type}</td>
+
                   <td>
                     <div className="dropdown">
                       <Dropdown>
@@ -225,22 +230,19 @@ const ShowInventory = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                           <Dropdown.Item
-                            onClick={() => handleEditProfile(item.id)}
+                            onClick={() => handleEditProfile(invId)}
                           >
                             Edit{" "}
                           </Dropdown.Item>
-                          <Dropdown.Item
-                            onClick={handleDelete}
-                            className="red-text"
-                          >
-                            Delete
-                          </Dropdown.Item>
+                          <Dropdown.Item onClick={()=>handleDelete(invId)} className="red-text">Delete</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>
                   </td>
-                </tr>
-              ))}
+                  </tr>
+              );
+            }
+            )}
           </tbody>
         </Table>
         {/* </Sidebar> */}

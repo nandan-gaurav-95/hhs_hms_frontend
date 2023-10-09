@@ -132,7 +132,7 @@ const AllEmployee = () => {
     const navigate = useNavigate();
 
     const [searchInput, setSearchInput] = useState('');
-    const [filteredData, setFilteredData] = useState(tableData);
+    const [filteredData, setFilteredData] = useState();
     const [sortType, setSortType] = useState('all'); // 'all', 'Consumable', or 'NonConsumable'
     const [departmentSortType, setDepartmentSortType] = useState('all'); // 'all' or specific department
 
@@ -203,23 +203,29 @@ const AllEmployee = () => {
       };
       
 
-    const handleSortChange = (event) => {
+      const handleSortChange = (event) => {
         const { value } = event.target;
         setSortType(value);
-
-        // Reapply the search filter when the sort type changes
-        const filtered = tableData.filter((item) => {
-            const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
-
-            if (value === 'all') {
-                return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
-            } else {
-                return nameMatches && item.status === value && (departmentSortType === 'all' || item.department === departmentSortType);
-            }
+      
+        // Reapply the search filter and status filter when the sort type changes
+        const filtered = filteredData.filter((item) => {
+          const nameMatches = item.name.toLowerCase().includes(searchInput.toLowerCase());
+      
+          if (value === 'all') {
+            return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
+          } else {
+            return (
+              nameMatches &&
+              ((value === 'Present' && item.status === 'Present') ||
+                (value === 'Former' && item.status === 'Former')) &&
+              (departmentSortType === 'all' || item.department === departmentSortType)
+            );
+          }
         });
-
+      
         setFilteredData(filtered);
-    };
+      };
+      
 
     const handleDepartmentSortChange = (event) => {
         const { value } = event.target;

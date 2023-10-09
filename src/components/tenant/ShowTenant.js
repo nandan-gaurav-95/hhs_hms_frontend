@@ -1,116 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import { APIS } from "../constants/api";
-// import { useNavigate } from "react-router-dom";
-// import { FaSearch, FaMicrophone } from "react-icons/fa";
-
-// import {
-//   MDBContainer as Container,
-//   MDBRow as Row,
-//   MDBCol as Col,
-//   MDBBtn as Button,
-// } from "mdb-react-ui-kit";
-// import Sidebar from "../admin/Sidebar";
-
-// const ShowTenant = () => {
-//   const [allTenant, setAllTenant] = useState([]);
-//   const [searchQuery, setSearchQuery] = useState("");
-//   const [searchResults, setSearchResults] = useState([]);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     async function fetchTenant() {
-//       try {
-//         const response = await axios.get(APIS.GETALLTENANT);
-//         if (response.status === 200) {
-//           setAllTenant(response.data);
-//         } else {
-//           console.error("Error while fetching tenant");
-//         }
-//       } catch (error) {
-//         console.error("Error:", error);
-//       }
-//     }
-//     fetchTenant();
-//   }, []);
-
-//   const handleViewDetails = async (id) => {
-//     navigate(`/tenant-details/${id}`);
-//   };
-
-//   const handleSearch = () => {
-//     console.log("Performing search for:", searchQuery);
-//     // const results = allTenant.filter((tenant) =>
-//     //   tenant?.tenantName.toLowerCase().includes(searchQuery.toLowerCase())
-//     // );
-//     // setSearchResults(results);
-//   };
-
-//   // const handleVoiceSearch = () => {
-//   //   console.log("Initiating voice search...");
-//   // };
-
-//   return (
-//     <div className="text-center">
-//        <Sidebar>
-//       <h2 className="mb-4">All Tenants</h2>
-//       <Col className="mb-4 d-flex flex-column align-items-center">
-//         <div className="input-group" style={{ maxWidth: "300px" }}>
-//           <input
-//             type="text"
-//             placeholder="Search Tenant..."
-//             value={searchQuery}
-//             onChange={(e) => setSearchQuery(e.target.value)}
-//             className="form-control rounded"
-//             style={{
-//               borderTopRightRadius: "1.25rem",
-//               borderBottomRightRadius: "1.25rem",
-//             }}
-//           />
-//           <div className="input-group-append">
-//             <span className="input-group-text" onClick={handleSearch}>
-//               <FaSearch />
-//             </span>
-//           </div>
-//           {/* <div className="input-group-append">
-//             <span className="input-group-text" onClick={handleVoiceSearch}>
-//               <FaMicrophone />
-//             </span>
-//           </div> */}
-//         </div>
-//       </Col>
-//       <Row className="justify-content-center">
-//         <Col className="col-sm-5 d-flex justify-content-center">
-//           <ul className="list-group">
-//             {allTenant
-//               .filter((tenant) =>
-//                 tenant?.tenantName
-//                   .toLowerCase()
-//                   .includes(searchQuery.toLowerCase())
-//               )
-//               .map((tenant, index) => (
-//                 <li
-//                   key={index}
-//                   className="list-group-item d-flex justify-content-between align-items-center"
-//                 >
-//                   {tenant?.tenantName}
-//                   <Button
-//                     color="primary"
-//                     onClick={() => handleViewDetails(tenant.id)}
-//                   >
-//                     View Tenant Details
-//                   </Button>
-//                 </li>
-//               ))}
-//           </ul>
-//         </Col>
-//       </Row>
-//       </Sidebar>
-//     </div>
-//   );
-// };
-
-// export default ShowTenant;
 import React, { useState, useEffect } from "react";
 import {
   MDBContainer as Container,
@@ -131,21 +18,20 @@ import { TenantService } from "../../services/TenantService";
 
 const ShowTenant = () => {
   const navigate = useNavigate();
-  // const tableData = [];
 
   const [tenantData, setTenantData] = useState({});
   const [selectedDepartment, setSelectedDepartment] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [filteredTenants, setFilteredTenants] = useState({});
 
   const fetchTenantData = async () => {
     try {
       const response = await TenantService.getAllTenant();
-      console.log("API Response:", response); // Log the entire response
+      console.log("API Response:", response);
       if (Array.isArray(response)) {
         const tenantObject = {};
         response.forEach((tenant) => {
-          // Use the tenant's tnt_id as the key in the object
           tenantObject[tenant.tnt_id] = tenant;
         });
         console.log("Tenant data:", tenantObject);
@@ -181,40 +67,39 @@ const ShowTenant = () => {
   };
 
   const handleDelete = async (tnt_id) => {
-    const confirmDelete = window.confirm("Do you want to delete this Tenant?");
-    if (confirmDelete) {
-      try {
-        await axios.delete(`${APIS.DELETETENANTBYID}/${tnt_id}`);
-        console.log("Deleted Successfully");
-        const updatedTenant = [...tenantData]; // Create a copy of the tenantData array
-        const indexToDelete = updatedTenant.findIndex(item => item.tnt_id === tnt_id);
-        if (indexToDelete !== -1) {
-          updatedTenant.splice(indexToDelete, 1); // Remove the tenant with the given tnt_id
-          setTenantData(updatedTenant); // Update the state with the modified array
-        }
-      } catch (error) {
-        console.error("Error deleting tenant:", error);
-      }
+    try {
+      await axios.delete(`${APIS.DELETETENANTBYID}/${tnt_id}`);
+      console.log("Deleted Successfully");
+      const updatedTenant = { ...tenantData };
+      delete updatedTenant[tnt_id];
+      setTenantData(updatedTenant);
+    } catch (error) {
+      console.error("Error deleting tenant:", error);
     }
   };
-  
 
   const handleViewProfile = (tnt_id) => {
     navigate(`/tenantprofile/${tnt_id}`);
   };
 
-  // const filteredData = tenantData.filter((item) => {
-  //   const departmentMatch =
-  //     selectedDepartment === "all" || item.department === selectedDepartment;
-  //   const statusMatch =
-  //     selectedStatus === "all" || item.status === selectedStatus;
-  //   const searchMatch =
-  //     searchQuery === "" ||
-  //     (item.tenantName &&
-  //       item.tenantName.toLowerCase().includes(searchQuery.toLowerCase()));
+  useEffect(() => {
+    const filtered = Object.keys(tenantData).reduce((result, tntId) => {
+      const tenant = tenantData[tntId];
+      const matchesSearch = tenant.tenantName
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      const matchesDepartment =
+        selectedDepartment === "all" || tenant.department === selectedDepartment;
+      const matchesStatus =
+        selectedStatus === "all" || tenant.status === selectedStatus;
+      if (matchesSearch && matchesDepartment && matchesStatus) {
+        result[tntId] = tenant;
+      }
+      return result;
+    }, {});
 
-  //   return departmentMatch && statusMatch && searchMatch;
-  // });
+    setFilteredTenants(filtered);
+  }, [searchQuery, selectedDepartment, selectedStatus, tenantData]);
 
   return (
     <div className="">
@@ -287,49 +172,49 @@ const ShowTenant = () => {
           </tr>
         </thead>
         <tbody>
-        {Object.keys(tenantData).map((tntId, index) => {
-  const tenant = tenantData[tntId];
-  return (
-    <tr key={tntId}>
-      <td>{index + 1}</td>
-      <td>{tenant.tenantName}</td>
-      <td>{tenant.department}</td>
-      <td>{tenant.allocatedShop}</td>
-      <td>{tenant.contactNum}</td>
-      <td>{tenant.securityDeposit}</td>
-      <td>{tenant.rentDue}</td>
-      <td>{tenant.electricityDue}</td>
-      <td>{tenant.expiryDate}</td>
-      <td>{tenant.status}</td>
-      <td>
-        <div className="dropdown">
-          <Dropdown>
-            <Dropdown.Toggle
-              variant="secondary"
-              id="dropdownMenuButton"
-            >
-              &#8942;
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleViewProfile(tntId)}>
-                View Profile
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleEditProfile(tntId)}>
-                Edit Profile
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => handleDelete(tntId)}
-                className="red-text"
-              >
-                Delete Profile
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
-      </td>
-    </tr>
-  );
-})}
+          {Object.keys(filteredTenants).map((tntId, index) => {
+            const tenant = filteredTenants[tntId];
+            return (
+              <tr key={tntId}>
+                <td>{index + 1}</td>
+                <td>{tenant.tenantName}</td>
+                <td>{tenant.department}</td>
+                <td>{tenant.allocatedShop}</td>
+                <td>{tenant.contactNum}</td>
+                <td>{tenant.securityDeposit}</td>
+                <td>{tenant.rentDue}</td>
+                <td>{tenant.electricityDue}</td>
+                <td>{tenant.expiryDate}</td>
+                <td>{tenant.status}</td>
+                <td>
+                  <div className="dropdown">
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        variant="secondary"
+                        id="dropdownMenuButton"
+                      >
+                        &#8942;
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => handleViewProfile(tntId)}>
+                          View Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleEditProfile(tntId)}>
+                          Edit Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(tntId)}
+                          className="red-text"
+                        >
+                          Delete Profile
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>
@@ -337,4 +222,3 @@ const ShowTenant = () => {
 };
 
 export default ShowTenant;
-

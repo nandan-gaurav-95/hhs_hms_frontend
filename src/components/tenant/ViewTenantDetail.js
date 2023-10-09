@@ -18,27 +18,10 @@ import axios from "axios";
 
 const ViewTenantDetail = () => {
   const { id } = useParams();
-  // const tenants = [
-  //   {
-      
-  //     id: 1,
-  //     Name: "Mahesh Tawade",
-  //     ContactNo: "1234567890",
-  //     Address: "nashik",
-  //     ShopNo: "1",
-  //     CollectedRent: "2500",
-  //     RentDue: "1300",
-  //     Deposit: "5000",
-  //     ElectricityDue: "233",
-  //     TotalBill: "654",
-  //     CollectionDetails: "456",
-  //     PaymentMethod: "Online",
-  //   },
-  // ];
+  
   const [tenantToShow, setTenantToShow] = useState(null);
   const navigate = useNavigate();
 
-  // const tenantToShow = tenants.find((prop) => prop.id === parseInt(id));
 
   const fetctTenantById = async ()=>{
     try {
