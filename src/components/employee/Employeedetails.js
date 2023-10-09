@@ -417,7 +417,7 @@ useEffect(() => {
             style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
-            {editMode ? "Update" : "Edit"}
+            Update
           </Button>
          
         </Col>

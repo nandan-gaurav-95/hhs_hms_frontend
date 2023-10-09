@@ -20,7 +20,7 @@ const EmployeeForm = () => {
     department: "",
     dob: "",
     gender: "",
-    contactNumber: "",
+    contactNum: "",
     bloodgroup: "",
     address: "",
     aadhar: "",
@@ -239,8 +239,8 @@ const EmployeeForm = () => {
               <Input
                 label="Contact Number"
                 type="tel"
-                name="contactNumber"
-                value={formData.contactNumber}
+                name="contactNum"
+                value={formData.contactNum}
                 onChange={handleChange}
                 // required
               />

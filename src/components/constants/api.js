@@ -30,6 +30,8 @@ export const APIS ={
      GETEMPLOYEEBYID:`${API_BASE_URL}/employee`,// Get specific employee by ID
      UPDATEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Update an existing employee 
      DELETEEMPLOYEEBYID:`${API_BASE_URL}/employee`,//Delete a employee by ID
+     CHANGEEMPLOYEESTATUS:`${API_BASE_URL}/empstatus`, // Change employee status
+    
 
      // inventory 
      CREATEINVENTORY: `${API_BASE_URL}/inventory`,//Post-method

@@ -164,7 +164,7 @@ const AllEmployee = () => {
         const filtered = tableData.filter((item) => {
             const nameMatches = item.name.toLowerCase().includes(value.toLowerCase());
             
-            if (sortType === 'Active' || sortType === 'Former') {
+            if (sortType === 'Present' || sortType === 'Former') {
                 return nameMatches && item.status === sortType && (departmentSortType === 'all' || item.department === departmentSortType);
             } else {
                 return nameMatches && (departmentSortType === 'all' || item.department === departmentSortType);
@@ -174,20 +174,32 @@ const AllEmployee = () => {
         setFilteredData(filtered);
     };
 
-    const handleMarkAsResigned = (empId) => {
+    const handleMarkAsResigned = async (empId) => {
         // Find the employee data by emp_id
-        const updatedData = tableData.map((employee) => {
-          if (employee.emp_id === empId) {
-            // If it's the matching employee, update the status to "Former"
-            return { ...employee, status: 'Former' };
-          }
-          return employee;
-        });
+        // const updatedData = tableData.map((employee) => {
+        //   if (employee.emp_id === empId) {
+        //     // If it's the matching employee, update the status to "Former"
+        //     return { ...employee, status: 'Former' };
+        //   }
+        //   return employee;
+        // });
       
-        // Update the filteredData state to reflect the change
-        setFilteredData(updatedData);
+        // // Update the filteredData state to reflect the change
+        // setFilteredData(updatedData);
       
         // Optionally, you can save the updated data to your data source or state management
+
+        try {
+          await axios.put(`${APIS.CHANGEEMPLOYEESTATUS}/${empId}`);
+            // Create a copy of the state object
+            // const updatedEmployes = { ...allEmployee };
+          // Update the state with the modified object
+          // setAllEmployee(updatedEmployes);\
+          fetchAllEmployee();
+        } catch (error) {
+            console.error("Error while changing the status:", error);  
+        }
+
       };
       
 
@@ -284,7 +296,7 @@ const AllEmployee = () => {
                             onChange={handleSortChange}
                         >
                             <option value="all">All</option>
-                            <option value="Active">Active</option>
+                            <option value="Present">Present</option>
                             <option value="Former">Former</option>
                         </select>
                     </div>
