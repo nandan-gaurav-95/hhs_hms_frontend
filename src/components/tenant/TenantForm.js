@@ -19,7 +19,7 @@ const TenantForm = () => {
   const navigate = useNavigate();
   const initialState = {
     tenantName: "",
-    department:"",
+    complex:"",
     address: "",
     contactNum: "",
     allocatedShop: "",
@@ -151,31 +151,28 @@ const TenantForm = () => {
               <div className="text-danger">{errors.tenantName}</div>
             )}
           </Col>
-          {/* <Col className="col-sm-5">
+          
+          <Col className="col-sm-5">
               <select
                 className="form-select"
-                id="Department"
-
-                name="department"
-                value={formData.department}
+                id="Complex"
+                name="complex"
+                value={formData.complex}
                 onChange={handleChange}
                 required
                 >
-                <option value="">Select Department</option>
-                <option value="Schools">Schools</option>
-                <option value="ITI College">ITI College</option>
-                <option value="Skill Center">Skill Center</option>
-                <option value="Blood Collection Center">
-                  Blood Collection Center
-                </option>
-                <option value="Hostel">Hostel</option>
-                <option value="Masjid">Masjid</option>
-                <option value="Dargah">Dargah</option>
+                <option value="">Select Complex</option>
+                <option value="Bhatkal Complex">Bhatkal Complex</option>
+                <option value="Abbas Ali Complex">Abbas Ali Complex </option>
+                
               </select>
-              {errors.department && (
-                <div className="text-danger">{errors.department}</div>
+              {errors.complex && (
+                <div className="text-danger">{errors.complex}</div>
               )}
-            </Col> */}
+            </Col>
+   
+
+
 
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -196,23 +193,16 @@ const TenantForm = () => {
          
 
 <Col className="col-sm-5">
-            <select
-              className="form-select"
-              id="paymentMethod"
-              name="allocatedShop"
+             <Input
+               label="Allocated Shop"
+               type="text"
+               name="allocatedShop"
               value={formData.allocatedShop}
               onChange={handleChange}
               required
-            >
-              <option value="">Select Shop No </option>
-              <option value="1001">1001</option>
-              <option value="1002">1002</option>
-              <option value="1003">1003</option>
-              <option value="1004">1004</option>
-              {/* Add more payment methods as needed */}
-            </select>
-            {errors.paymentMethod && (
-              <div className="text-danger">{errors.paymentMethod}</div>
+              />
+            {errors.allocatedShop && (
+              <div className="text-danger">{errors.allocatedShop}</div>
             )}
           </Col>
         </Row>
@@ -289,10 +279,10 @@ const TenantForm = () => {
               required
             >
               <option value="">Select Payment Method</option>
-              <option value="demand draft">Demand Draft</option>
               <option value="online">Online</option>
               <option value="Cash">Cash</option>
               <option value="Cheque">Cheque</option>
+              <option value="demand_draft">Demand Draft</option>
               {/* Add more payment methods as needed */}
             </select>
             {errors.paymentMethod && (
@@ -360,7 +350,7 @@ const TenantForm = () => {
               />
             </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+        <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
          <Col className="col-sm-5">
            <select
              className="form-select"

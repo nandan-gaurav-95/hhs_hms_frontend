@@ -137,7 +137,20 @@ export default function HomePage() {
     </MDBDropdown>
   </div>
 </div> 
-
+<div className="card upper-card">
+      <h3>Tapal</h3>
+       <div className="proceed-button">
+      <MDBDropdown>
+      <MDBDropdownToggle tag="a" className="btn btn-dark">
+        proceed
+      </MDBDropdownToggle>
+      <MDBDropdownMenu>
+      <NavLink to="/received"><MDBDropdownItem link><b>Receive Letter</b></MDBDropdownItem> </NavLink>
+        <NavLink to= "/out"><MDBDropdownItem link><b>Out Letter</b></MDBDropdownItem></NavLink>
+      </MDBDropdownMenu>
+    </MDBDropdown>
+  </div>
+</div>
 </div>
       </Sidebar>
     </div>

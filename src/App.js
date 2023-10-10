@@ -53,6 +53,9 @@ import School from "./components/institute/School";
 import Viewdaybook from "./components/daybook/Viewdaybook";
 import AllocatedInventory from "./components/employee/AllocatedInventory";
 import DistributeInventory from "./components/inventory/DistributeInventory";
+
+import Receivedletter from "./components/tapal/Receivedletter";
+import Outletter from "./components/tapal/Outletter";
 function App() {
   return (
     <div className="App">
@@ -125,6 +128,9 @@ function App() {
             <Route path="/bank-details/:id" element={<BankDetails />}></Route>
 
             <Route path="/school" element={<School/>}></Route>
+
+            <Route path="/received" element={<Receivedletter/>}></Route>
+            <Route path="/out" element={<Outletter/>}></Route>
           </Routes>
       </BrowserRouter>
     </div>

@@ -8,12 +8,13 @@ import {
 } from "mdb-react-ui-kit";
 import axios from "axios";
 import { APIS } from "../constants/api";
+import { useNavigate, useParams } from "react-router-dom";
 
 import  "react-select-search/style.css";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
 import {  PropertyService } from "../../services/PropertyService";
-
+import { BiArrowBack } from "react-icons/bi";
 const Property = () => {
   const initialState = {
     propertyName: "",
@@ -35,7 +36,8 @@ const Property = () => {
     mcharges:"",
     occupied:"",
   };
- 
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState(initialState);
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -66,6 +68,13 @@ const handleSubmit = async (event) => {
   return (
     <div className="">
       <Header/>
+      <div className="arrow-back-container">
+        <BiArrowBack
+          className="backLoginForm fs-2 text-dark"
+          onClick={() => navigate(-1)}
+        />
+      </div>
+
       {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Add Property Details</h1>
       <form onSubmit={handleSubmit}>

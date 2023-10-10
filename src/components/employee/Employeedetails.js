@@ -300,7 +300,7 @@ useEffect(() => {
                 />
  
 
-                <strong>PF Employee Contribution:</strong>
+                {/* <strong>PF Employee Contribution:</strong>
   
                 <input
                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
@@ -309,7 +309,7 @@ useEffect(() => {
                  value={updatedEmployee.pfEmployeeContribution}
                  onChange={handleChange}
                  required
-                />
+                /> */}
 
               <strong>Loan Amount:</strong>            
 
@@ -331,7 +331,7 @@ useEffect(() => {
                 onChange={handleChange}
                 required
                 />
-                <strong>PF Employee Contribution:</strong>
+                {/* <strong>PF Employee Contribution:</strong>
   
                 <input
                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
@@ -340,7 +340,7 @@ useEffect(() => {
                  value={updatedEmployee.pfEmployeeContribution}
                  onChange={handleChange}
                  required
-                />
+                /> */}
                 <strong>Inventory Item</strong>
                 <input
                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
@@ -373,8 +373,8 @@ useEffect(() => {
             style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
-            {/* {editMode ? "Update" : "Edit"} */}
-            Update
+            {editMode ? "Update" : "Edit"}
+            {/* Update */}
           </Button>
          
         </Col>

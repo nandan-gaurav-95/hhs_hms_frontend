@@ -19,23 +19,18 @@ import "../../asset/style.css";
 const ShowTenant = () => {
   const navigate = useNavigate();
 
-  const [tenantData, setTenantData] = useState({});
-  const [selectedDepartment, setSelectedDepartment] = useState("all");
+  const [tenantData, setTenantData] = useState([]);
+  const [selectedComplex, setselectedComplex] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredTenants, setFilteredTenants] = useState({});
+  const [filteredTenants, setFilteredTenants] = useState([]);
 
   const fetchTenantData = async () => {
     try {
       const response = await TenantService.getAllTenant();
       console.log("API Response:", response);
       if (Array.isArray(response)) {
-        const tenantObject = {};
-        response.forEach((tenant) => {
-          tenantObject[tenant.tnt_id] = tenant;
-        });
-        console.log("Tenant data:", tenantObject);
-        setTenantData(tenantObject);
+        setTenantData(response);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -48,9 +43,9 @@ const ShowTenant = () => {
     fetchTenantData();
   }, []);
 
-  const handleDepartmentChange = (event) => {
+  const handleComplexChange = (event) => {
     const { value } = event.target;
-    setSelectedDepartment(value);
+    setselectedComplex(value);
   };
 
   const handleStatusChange = (event) => {
@@ -70,9 +65,8 @@ const ShowTenant = () => {
     try {
       await axios.delete(`${APIS.DELETETENANTBYID}/${tnt_id}`);
       console.log("Deleted Successfully");
-      const updatedTenant = { ...tenantData };
-      delete updatedTenant[tnt_id];
-      setTenantData(updatedTenant);
+      const updatedTenantData = tenantData.filter((tenant) => tenant.tnt_id !== tnt_id);
+      setTenantData(updatedTenantData);
     } catch (error) {
       console.error("Error deleting tenant:", error);
     }
@@ -81,25 +75,20 @@ const ShowTenant = () => {
   const handleViewProfile = (tnt_id) => {
     navigate(`/tenantprofile/${tnt_id}`);
   };
-
   useEffect(() => {
-    const filtered = Object.keys(tenantData).reduce((result, tntId) => {
-      const tenant = tenantData[tntId];
+    const filtered = tenantData.filter((tenant) => {
       const matchesSearch = tenant.tenantName
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
-      const matchesDepartment =
-        selectedDepartment === "all" || tenant.department === selectedDepartment;
+      const matchesComplex =
+        selectedComplex === "all" || tenant.complex === selectedComplex;
       const matchesStatus =
         selectedStatus === "all" || tenant.status === selectedStatus;
-      if (matchesSearch && matchesDepartment && matchesStatus) {
-        result[tntId] = tenant;
-      }
-      return result;
-    }, {});
+      return matchesSearch && matchesComplex && matchesStatus;
+    });
 
     setFilteredTenants(filtered);
-  }, [searchQuery, selectedDepartment, selectedStatus, tenantData]);
+  }, [searchQuery, selectedComplex, selectedStatus, tenantData]);
 
   return (
     <div className="">
@@ -125,21 +114,14 @@ const ShowTenant = () => {
 </div>
         <div className="ms-4">
           <select
-            id="departmentFilter"
+            id="complexFilter"
             className="form-select"
-            value={selectedDepartment}
-            onChange={handleDepartmentChange}
+            value={selectedComplex}
+            onChange={handleComplexChange}
           >
-            <option value="all">Departments</option>
-            <option value="Schools">Schools</option>
-            <option value="ITI College">ITI College</option>
-            <option value="Skill Center">Skill Center</option>
-            <option value="Blood Collection Center">
-              Blood Collection Center
-            </option>
-            <option value="Hostel">Hostel</option>
-            <option value="Masjid">Masjid</option>
-            <option value="Dargah">Dargah</option>
+            <option value="all">Complex</option>
+            <option value="Bhatkal Complex">Bhatkal Complex</option>
+            <option value="Abbas Ali Complex">Abbas Ali Complex</option>
           </select>
         </div>
 
@@ -161,7 +143,7 @@ const ShowTenant = () => {
           <tr>
             <th>Sr. No.</th>
             <th>Name</th>
-            <th>Department</th>
+            <th>Complex</th>
             <th>AllocatedShop</th>
             <th>Contact No</th>
             <th>Deposit</th>
@@ -173,49 +155,46 @@ const ShowTenant = () => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(filteredTenants).map((tntId, index) => {
-            const tenant = filteredTenants[tntId];
-            return (
-              <tr key={tntId}>
-                <td>{index + 1}</td>
-                <td>{tenant.tenantName}</td>
-                <td>{tenant.department}</td>
-                <td>{tenant.allocatedShop}</td>
-                <td>{tenant.contactNum}</td>
-                <td>{tenant.securityDeposit}</td>
-                <td>{tenant.rentDue}</td>
-                <td>{tenant.electricityDue}</td>
-                <td>{tenant.expiryDate}</td>
-                <td>{tenant.status}</td>
-                <td>
-                  <div className="dropdown">
-                    <Dropdown>
-                      <Dropdown.Toggle
-                        variant="secondary"
-                        id="dropdownMenuButton"
+          {filteredTenants.map((tenant, index) => (
+            <tr key={tenant.tnt_id}>
+              <td>{index + 1}</td>
+              <td>{tenant.tenantName}</td>
+              <td>{tenant.complex}</td>
+              <td>{tenant.allocatedShop}</td>
+              <td>{tenant.contactNum}</td>
+              <td>{tenant.securityDeposit}</td>
+              <td>{tenant.rentDue}</td>
+              <td>{tenant.electricityDue}</td>
+              <td>{tenant.expiryDate}</td>
+              <td>{tenant.status}</td>
+              <td>
+                <div className="dropdown">
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="secondary"
+                      id="dropdownMenuButton"
+                    >
+                      &#8942;
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={() => handleViewProfile(tenant.tnt_id)}>
+                        View Profile
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleEditProfile(tenant.tnt_id)}>
+                        Edit Profile
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={() => handleDelete(tenant.tnt_id)}
+                        className="red-text"
                       >
-                        &#8942;
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => handleViewProfile(tntId)}>
-                          View Profile
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleEditProfile(tntId)}>
-                          Edit Profile
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          onClick={() => handleDelete(tntId)}
-                          className="red-text"
-                        >
-                          Delete Profile
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
+                        Delete Profile
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

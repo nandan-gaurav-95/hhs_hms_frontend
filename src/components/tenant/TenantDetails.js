@@ -20,7 +20,18 @@ function TenantDetails() {
   const [updateTenant, setupdateTenant] = useState(propData.Tenant || {});
   const navigate = useNavigate();
 
-
+  const tableData = {
+    // id: 1,
+    // name: "Mahesh Tawade",
+    // department: "ITI College",
+    // allocatedShop: "A-1001",
+    // contactNum: "9657089541",
+    // securityDeposit: "20000.36",
+    // rentDue: "3000.00",
+    // electricityDue: "299.03",
+    // expiryDate: "20/12/2003",
+    // status: "Active",
+  };
   useEffect(() => {
     async function fetchData() {
       try {
@@ -157,14 +168,20 @@ console.log("tntId",response.data);
                 />
               </Col>
               <Col className="col-md-5">
-                <strong>Department:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="department"
-                  value={updateTenant.department}
-                  onChange={handleChange}
-                />
+              <strong>Complex:</strong>
+                <select
+                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                id="Complex"
+                name="complex"
+                value={updateTenant.complex}
+                onChange={handleChange}
+             
+                >
+                <option value="">Select Complex</option>
+                <option value="Bhatkal Complex">Bhatkal Complex</option>
+                <option value="Abbas Ali Complex">Abbas Ali Complex </option>
+                
+              </select>
                 <strong>Conatact no:</strong>
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
@@ -224,7 +241,8 @@ console.log("tntId",response.data);
               style={{ marginLeft: "10px", width: "100px" }}
               onClick={handleEditMode}
             >
-              Update
+              {/* Update */}
+              {editMode ? "Update" : "Edit"} 
             </Button>
           </Col>
         </Row>
