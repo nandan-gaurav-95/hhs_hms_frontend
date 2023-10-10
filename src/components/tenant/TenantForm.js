@@ -151,10 +151,11 @@ const TenantForm = () => {
               <div className="text-danger">{errors.tenantName}</div>
             )}
           </Col>
-          <Col className="col-sm-5">
+          {/* <Col className="col-sm-5">
               <select
                 className="form-select"
                 id="Department"
+
                 name="department"
                 value={formData.department}
                 onChange={handleChange}
@@ -174,7 +175,7 @@ const TenantForm = () => {
               {errors.department && (
                 <div className="text-danger">{errors.department}</div>
               )}
-            </Col>
+            </Col> */}
 
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -288,6 +289,7 @@ const TenantForm = () => {
               required
             >
               <option value="">Select Payment Method</option>
+              <option value="demand draft">Demand Draft</option>
               <option value="online">Online</option>
               <option value="Cash">Cash</option>
               <option value="Cheque">Cheque</option>

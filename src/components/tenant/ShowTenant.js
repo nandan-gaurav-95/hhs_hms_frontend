@@ -15,7 +15,7 @@ import { BiArrowBack } from "react-icons/bi";
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { TenantService } from "../../services/TenantService";
-
+import "../../asset/style.css";
 const ShowTenant = () => {
   const navigate = useNavigate();
 
@@ -113,6 +113,7 @@ const ShowTenant = () => {
       <h1 className="mb-4 text-center">Tenants Details</h1>
 
       <div className="d-flex mb-4 align-items-center">
+      <div className=" search ms-4">
         <input
           label="Search"
           type="text"
@@ -121,8 +122,8 @@ const ShowTenant = () => {
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
-
-        <div className="ms-2">
+</div>
+        <div className="ms-4">
           <select
             id="departmentFilter"
             className="form-select"
@@ -142,7 +143,7 @@ const ShowTenant = () => {
           </select>
         </div>
 
-        <div className="ms-2">
+        <div className="ms-4">
           <select
             id="statusFilter"
             className="form-select"

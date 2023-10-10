@@ -66,70 +66,70 @@ const EmployeeForm = () => {
       console.error("Error:", error);
     }
   };
-  // const validateForm = (data) => {
-  //   const errors = {};
+  const validateForm = (data) => {
+    const errors = {};
 
-  //   // Validate empName
-  //   if (!data.empName) {
-  //     errors.empName = "Employee Name is required.";
-  //   }
+    // Validate empName
+    if (!data.empName) {
+      errors.empName = "Employee Name is required.";
+    }
 
-  //   // Validate department
-  //   if (!data.department) {
-  //     errors.department = "Department is required.";
-  //   }
+    // Validate department
+    if (!data.department) {
+      errors.department = "Department is required.";
+    }
 
-  //   // Validate dob
-  //   if (!data.dob) {
-  //     errors.dob = "Date of Birth is required.";
-  //   }
+    // Validate dob
+    if (!data.dob) {
+      errors.dob = "Date of Birth is required.";
+    }
 
-  //   // Validate gender
-  //   if (!data.gender) {
-  //     errors.gender = "Gender is required.";
-  //   }
+    // Validate gender
+    if (!data.gender) {
+      errors.gender = "Gender is required.";
+    }
 
-  //   // Validate contactNumber
-  //   if (!data.contactNumber || !/^[0-9]{10}$/.test(data.contactNumber)) {
-  //       errors.contactNumber = "Please enter a valid 10-digit contact number.";
-  //     }
+    // Validate contactNumber
+    if (!data.contactNumber || !/^[0-9]{10}$/.test(data.contactNumber)) {
+        errors.contactNumber = "Please enter a valid 10-digit contact number.";
+      }
 
-  //   // Validate bloodgroup
-  //   if (!data.bloodgroup) {
-  //     errors.bloodgroup = "Blood Group is required.";
-  //   }
+    // Validate bloodgroup
+    if (!data.bloodgroup) {
+      errors.bloodgroup = "Blood Group is required.";
+    }
 
-  //   // Validate address
-  //   if (!data.address) {
-  //     errors.address = "Address is required.";
-  //   }
+    // Validate address
+    if (!data.address) {
+      errors.address = "Address is required.";
+    }
 
-  //   // Validate aadhar
-  //   if (!data.aadhar || !/^\d{12}$/.test(data.aadhar)) {
-  //     errors.aadhar = "Please enter a valid 12-digit Aadhar card number.";
-  //   }
+    // Validate aadhar
+    if (!data.aadhar || !/^\d{12}$/.test(data.aadhar)) {
+      errors.aadhar = "Please enter a valid 12-digit Aadhar card number.";
+    }
 
-  //   // Validate qualification
-  //   if (!data.qualification) {
-  //     errors.qualification = "Qualification is required.";
-  //   }
+    // Validate qualification
+    if (!data.qualification) {
+      errors.qualification = "Qualification is required.";
+    }
 
-  //   // Validate pan
-  //   if (!data.pan || !/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(data.pan)) {
-  //     errors.pan = "Please enter a valid PAN card number.";
-  //   }
+    // Validate pan
+    if (!data.pan || !/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(data.pan)) {
+      errors.pan = "Please enter a valid PAN card number.";
+    }
 
-  //   // Validate dateOfHiring
-  //   if (!data.dateOfHiring) {
-  //     errors.dateOfHiring = "Date of Hiring is required.";
-  //   }
+    // Validate dateOfHiring
+    if (!data.dateOfHiring) {
+      errors.dateOfHiring = "Date of Hiring is required.";
+    }
 
    
 
-  //   // Continue validating other fields...
+    // Continue validating other fields...
 
-  //   return errors;
-  // };
+    return errors;
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -138,11 +138,32 @@ const EmployeeForm = () => {
       ...prevErrors,
       [name]: "", // Clear the error for this field
     }));
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  
+    // Calculate pfEmployeeContribution when basicSalary changes
+    if (name === "basicSalary") {
+      const basicSalary = parseFloat(value);
+      if (!isNaN(basicSalary)) {
+        const pfEmployeeContribution = basicSalary * 0.12; // Calculate 12% contribution
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: basicSalary,
+          pfEmployeeContribution, // Update pfEmployeeContribution field
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+      }
+    } else {
+      // For other fields, simply update the form data
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
+  
 
   // deleted show button
   // const allemployeedetails = (event) => {
@@ -170,11 +191,11 @@ const EmployeeForm = () => {
                 name="empName"
                 value={formData.empName}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.empName && (
+                {errors.empName && (
                   <div className="text-danger">{errors.empName}</div>
-                )} */}
+                )}
             </Col>
             <Col className="col-sm-5">
               <select
@@ -183,7 +204,7 @@ const EmployeeForm = () => {
                 name="department"
                 value={formData.department}
                 onChange={handleChange}
-                // required
+                required
                 >
                 <option value="">Select Department</option>
                 <option value="Schools">Schools</option>
@@ -196,9 +217,9 @@ const EmployeeForm = () => {
                 <option value="Masjid">Masjid</option>
                 <option value="Dargah">Dargah</option>
               </select>
-              {/* {errors.department && (
+              {errors.department && (
                 <div className="text-danger">{errors.department}</div>
-              )} */}
+              )}
             </Col>
             
           </Row>
@@ -223,16 +244,16 @@ const EmployeeForm = () => {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
-                // required
+                required
                 >
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Others">Transgender</option>
               </select>
-              {/* {errors.gender && (
+              {errors.gender && (
                 <div className="text-danger">{errors.gender}</div>
-              )} */}
+              )}
             </Col>
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -243,11 +264,11 @@ const EmployeeForm = () => {
                 name="contactNum"
                 value={formData.contactNum}
                 onChange={handleChange}
-                // required
+                required
               />
-               {/* {errors.contactNumber && (
+               {errors.contactNumber && (
                 <div className="text-danger">{errors.contactNumber}</div>
-              )} */}
+              )}
             </Col>
             <Col className="col-sm-5">
               <select
@@ -256,7 +277,7 @@ const EmployeeForm = () => {
                 name="bloodgroup"
                 value={formData.bloodgroup}
                 onChange={handleChange}
-                // required
+                required
                 >
                 <option value="">Select Blood Group</option>
                 <option value="A+">A+</option>
@@ -268,9 +289,9 @@ const EmployeeForm = () => {
                 <option value="AB+">AB+</option>
                 <option value="AB-">AB-</option>
               </select>
-              {/* {errors.bloodgroup && (
+              {errors.bloodgroup && (
                 <div className="text-danger">{errors.bloodgroup}</div>
-              )} */}
+              )}
             </Col>
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -282,11 +303,11 @@ const EmployeeForm = () => {
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                // required
+                required
                 />
-                 {/* {errors.address && (
+                 {errors.address && (
                   <div className="text-danger">{errors.address}</div>
-                )} */}
+                )}
             </Col>
            
             <Col className="col-sm-5 ">
@@ -296,11 +317,11 @@ const EmployeeForm = () => {
                 name="aadhar"
                 value={formData.aadhar}
                 onChange={handleChange}
-                // required
+                required
               />
-              {/* {errors.aadhar && (
+              {errors.aadhar && (
                 <div className="text-danger">{errors.aadhar}</div>
-              )} */}
+              )}
             </Col>
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -312,11 +333,11 @@ const EmployeeForm = () => {
                 name="qualification"
                 value={formData.qualification}
                 onChange={handleChange}
-                // required
+                required
               />
-              {/* {errors.qualification && (
+              {errors.qualification && (
                 <div className="text-danger">{errors.qualification}</div>
-              )} */}
+              )}
             </Col>
            
              <Col className="col-sm-5 ">
@@ -326,9 +347,9 @@ const EmployeeForm = () => {
                 name="pan"
                 value={formData.pan}
                 onChange={handleChange}
-                // required
+                required
               />
-               {/* {errors.pan && <div className="text-danger">{errors.pan}</div>} */}
+               {errors.pan && <div className="text-danger">{errors.pan}</div>}
       
             </Col>
            
@@ -342,9 +363,9 @@ const EmployeeForm = () => {
                 name="dateOfHiring"
                 value={formData.dateOfHiring}
                 onChange={handleChange}
-                // required
+                required
                 />
-                 {/* {errors.dateOfHiring && <div className="text-danger">{errors.dateOfHiring}</div>} */}
+                 {errors.dateOfHiring && <div className="text-danger">{errors.dateOfHiring}</div>}
         
             </Col>
             <Col className="col-sm-5 ">
@@ -354,11 +375,11 @@ const EmployeeForm = () => {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                // required
+                required
               />
-              {/* {errors.qualification && (
+              {errors.qualification && (
                 <div className="text-danger">{errors.position}</div>
-              )} */}
+              )}
             </Col>
            
           </Row>
@@ -370,11 +391,11 @@ const EmployeeForm = () => {
                 name="basicSalary"
                 value={formData.basicSalary}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.basicSalary && (
+                {errors.basicSalary && (
                   <div className="text-danger">{errors.basicSalary}</div>
-                )} */}
+                )}
             </Col>
           <Col className="col-sm-5 ">
               <Input
@@ -383,11 +404,11 @@ const EmployeeForm = () => {
                 name="netSalary"
                 value={formData.netSalary}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.netSalary && (
+                {errors.netSalary && (
                   <div className="text-danger">{errors.netSalary}</div>
-                )} */}
+                )}
             </Col>
            
             
@@ -401,11 +422,11 @@ const EmployeeForm = () => {
                 name="grossSalary"
                 value={formData.grossSalary}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.grossSalary && (
+                {errors.grossSalary && (
                   <div className="text-danger">{errors.grossSalary}</div>
-                )} */}
+                )}
             </Col>
           <Col className="col-sm-5 ">
               <Input
@@ -414,11 +435,11 @@ const EmployeeForm = () => {
                 name="allowance"
                 value={formData.allowance}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.allowance && (
+                {errors.allowance && (
                   <div className="text-danger">{errors.allowance}</div>
-                )} */}
+                )}
             </Col>
           
             
@@ -432,27 +453,22 @@ const EmployeeForm = () => {
                 name="deduction"
                 value={formData.deduction}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.deduction && (
+                {errors.deduction && (
                   <div className="text-danger">{errors.deduction}</div>
-                )} */}
+                )}
             </Col> 
           <Col className="col-sm-5 ">
               <Input
                 label="PF Employee Contribution"
                 type="text"
                 name="pfEmployeeContribution"
-                value={formData.pfEmployeeContribution}
+                value={parseFloat(formData.pfEmployeeContribution).toFixed(2)} 
                 onChange={handleChange}
-                // required
+                readOnly
                 />
-                {/* {errors.pfEmployeeContribution && (
-                  <div className="text-danger">{errors.pfEmployeeContribution}</div>
-                )} */}
             </Col>
-            
-            
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
@@ -462,11 +478,11 @@ const EmployeeForm = () => {
                 name="loanAmount"
                 value={formData.loanAmount}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.loanAmount && (
+                {errors.loanAmount && (
                   <div className="text-danger">{errors.loanAmount}</div>
-                )} */}
+                )}
             </Col>
           <Col className="col-sm-5 ">
               <Input
@@ -475,11 +491,11 @@ const EmployeeForm = () => {
                 name="loanRepaymentAmount"
                 value={formData.loanRepaymentAmount}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.loanRepaymentAmount && (
+                {errors.loanRepaymentAmount && (
                   <div className="text-danger">{errors.loanRepaymentAmount}</div>
-                )} */}
+                )}
             </Col>
             
           </Row>

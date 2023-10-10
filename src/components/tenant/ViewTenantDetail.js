@@ -18,10 +18,11 @@ import axios from "axios";
 
 const ViewTenantDetail = () => {
   const { id } = useParams();
-  
+ 
   const [tenantToShow, setTenantToShow] = useState(null);
   const navigate = useNavigate();
 
+  // const tenantToShow = tenants.find((prop) => prop.id === parseInt(id));
 
   const fetctTenantById = async ()=>{
     try {
@@ -38,18 +39,27 @@ const ViewTenantDetail = () => {
     fetctTenantById();
   },[]);
 
+  
+
+  const renderTenantRow = (key, value) => (
+    <div key={key} className="d-flex entity-row">
+    <div className="entity-name">
+      {key.replace(/([A-Z])/g, " $1").trim()}:
+    </div>
+    <div className="entity-value" style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+      {value}
+    </div>
+  </div>
+  );
+
   if (!tenantToShow) {
     return <div>Property not found.</div>;
   }
 
-  const renderTenantRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
-      </div>
-      <div className="entity-value">{value}</div>
-    </div>
-  );
+  const tenantKeys = Object.keys(tenantToShow);
+  const halfLength = Math.ceil(tenantKeys.length / 2);
+  const firstColumnKeys = tenantKeys.slice(0, halfLength);
+  const secondColumnKeys = tenantKeys.slice(halfLength);
 
 // Rent pdf
   const handleRentPdf = () => {
@@ -324,8 +334,8 @@ const ViewTenantDetail = () => {
       <Container
         className="detail w-75 text-center"
         style={{
-          height: "110vh",
-          width: "50%",
+          height: "70vh",
+          width: "40%",
           boxShadow:
             "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
           marginBottom: "0",
@@ -335,11 +345,18 @@ const ViewTenantDetail = () => {
           justifyContent: "flex-start",
         }}
       >
-         <div>
-          <div className="d-flex w-100 flex-column">
-            {Object.entries(tenantToShow).map(([key, value]) =>
-              renderTenantRow(key, value)
-            )}
+         <div className="d-flex flex-wrap">
+        <div className="w-50">
+          {firstColumnKeys
+            .filter((key) => key !== "id")
+            .map((key) => renderTenantRow(key, tenantToShow[key]))}
+        </div>
+        <div className="w-50">
+          {secondColumnKeys
+            .filter((key) => key !== "id")
+            .map((key) => renderTenantRow(key, tenantToShow[key]))}
+        </div>
+      </div>
             <div style={{ marginBottom: "10px" }}>
               <Button
                 variant="primary"
@@ -356,8 +373,7 @@ const ViewTenantDetail = () => {
                 <FaDownload /> PDF for Electricity Bill
               </Button>
             </div>
-          </div>
-        </div>
+          
         {/* </div> */}
       </Container>
     </div>
