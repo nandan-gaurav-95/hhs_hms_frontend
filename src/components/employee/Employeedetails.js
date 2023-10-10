@@ -224,15 +224,6 @@ useEffect(() => {
                   onChange={handleChange}
                   required
                 />
-                <strong>Date Of Hiring:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="date"
-                  name="j_date"
-                  value={updatedEmployee.j_date}
-                  onChange={handleChange}
-                  required
-                />
                 </Col>
                  <Col className="col-sm-5 ">
 
@@ -298,18 +289,6 @@ useEffect(() => {
                 onChange={handleChange}
                 required
                 />
- 
-
-                {/* <strong>PF Employee Contribution:</strong>
-  
-                <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                 type="text"
-                 name="pfEmployeeContribution"
-                 value={updatedEmployee.pfEmployeeContribution}
-                 onChange={handleChange}
-                 required
-                /> */}
 
               <strong>Loan Amount:</strong>            
 
@@ -349,6 +328,15 @@ useEffect(() => {
                  value={updatedEmployee.inventoryItem}
                  onChange={handleChange}
                  required
+                />
+                <strong>Date Of Hiring:</strong>
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="date"
+                  name="dateOfHiring"
+                  value={updatedEmployee.dateOfHiring}
+                  onChange={handleChange}
+                  required
                 />
             </Col>
            

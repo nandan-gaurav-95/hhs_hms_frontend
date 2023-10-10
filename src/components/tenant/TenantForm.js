@@ -318,6 +318,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.billGeneration}</div>
             )}
           </Col>
+       
           <Col className="col-sm-5 ">
               <Input
                 label="Agreement Start Date"
