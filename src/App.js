@@ -53,9 +53,12 @@ import School from "./components/institute/School";
 import Viewdaybook from "./components/daybook/Viewdaybook";
 import AllocatedInventory from "./components/employee/AllocatedInventory";
 import DistributeInventory from "./components/inventory/DistributeInventory";
+import Addtapal from "./components/tapal/Addtapal";
+import Viewtapal from "./components/tapal/Viewtapal";
+import Edittapal from "./components/tapal/Edittapal";
 
-import Receivedletter from "./components/tapal/Receivedletter";
-import Outletter from "./components/tapal/Outletter";
+import Payment from "./components/daybook/Payment";
+import Receipt from "./components/daybook/Receipt";
 function App() {
   return (
     <div className="App">
@@ -106,8 +109,13 @@ function App() {
             <Route path="/daybook" element={<DayBook />}></Route>
             <Route path="/alldaybook" element={<AllDaybook />}></Route>
             <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />}></Route>
-            <Route path="/transaction" element={<Transactions/>}></Route>
+            {/* <Route path="/transaction" element={<Transactions/>}></Route> */}
             <Route path="/viewdaybook" element={<Viewdaybook />}></Route>
+
+              {/* Tapal */}
+            <Route path="/add" element={<Addtapal/>}></Route>
+            <Route path="/view" element={<Viewtapal/>}></Route>
+            <Route path="/edit-tapal/:id" element={<Edittapal/>}></Route>
 
 
 
@@ -129,8 +137,9 @@ function App() {
 
             <Route path="/school" element={<School/>}></Route>
 
-            <Route path="/received" element={<Receivedletter/>}></Route>
-            <Route path="/out" element={<Outletter/>}></Route>
+            <Route path="/paymentt" element={<Payment/>}></Route>
+            <Route path="/receiptt" element={<Receipt/>}></Route>
+
           </Routes>
       </BrowserRouter>
     </div>

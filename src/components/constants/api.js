@@ -46,6 +46,13 @@ export const APIS ={
      GETDAYBOOKBYID:`${API_BASE_URL}/daybook`,// Get specific day book entry by ID
      UPDATEDAYBOOKBYID:`${API_BASE_URL}/daybook`,// Update an existing day book entry
      DELETEDAYBOOKBYID:`${API_BASE_URL}/daybook`,//Delete a day book entry by ID
+    
+     // tapal
+     CREATETAPAL: `${API_BASE_URL}/tapal`, //Post-method
+     GETALLTAPAL: `${API_BASE_URL}/tapal`, // Get-method
+     GETTAPALBYID: `${API_BASE_URL}/tapal`, // Get specific tapal by ID
+     UPDATETAPALBYID: `${API_BASE_URL}/tapal`, // Update an existing tapal
+     DELETETAPALBYID: `${API_BASE_URL}/tapal`, //Delete an tapal  by ID
 
      //payroll
      CREATEPAYROLL: `${API_BASE_URL}/payroll`,//Post-method

@@ -426,7 +426,7 @@ const ViewTenantDetail = () => {
   const fetctTenantById = async ()=>{
     try {
       const response= await axios.get(`${APIS.GETTENANTBYID}/${id}`);
-      console.log("hiiii",response.data);
+      // console.log("hiiii",response.data);
       setTenantToShow(response.data);
 
     } catch (error) {
@@ -438,7 +438,6 @@ const ViewTenantDetail = () => {
     fetctTenantById();
   },[]);
 
-  
 
   const renderTenantRow = (key, value) => (
     <div key={key} className="d-flex entity-row">
@@ -480,6 +479,7 @@ const ViewTenantDetail = () => {
       50,     // Image width
       25      // Image height
     );
+   
 
     //Header Part
     doc.setTextColor(255, 138, 0); // RGB color (red)
@@ -498,7 +498,7 @@ const ViewTenantDetail = () => {
     doc.setTextColor(0);
     doc.rect(20, 50, 160, 105); // (X, Y, Width, Height)
     doc.setFont('calibre', 'bold'); 
-    doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 60); // Adjust the Y position as needed
+    doc.text(`Details of Shop No: ${tenantToShow.tenantName}`, 25, 60); // Adjust the Y position as needed
     doc.setFont('calibre','normal');
 
    // Add tenant details here...
@@ -511,7 +511,7 @@ const ViewTenantDetail = () => {
    doc.text("Name :", 25, 71); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
    doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${tenantToShow.Name}`, 70, 71); // (X, Y,Actual name)
+   doc.text(`${tenantToShow.tenantName}`, 70, 71); // (X, Y,Actual name)
 
 //contact no
     doc.setFontSize(12); // Set font size for labels
@@ -521,7 +521,7 @@ const ViewTenantDetail = () => {
     doc.text("Contact No :", 25, 81); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.ContactNo}`, 70, 81); //(X, Y, Actual name)
+    doc.text(`${tenantToShow.contactNum}`, 70, 81); //(X, Y, Actual name)
 
 //Address
     doc.setFontSize(12); // Set font size for labels
@@ -531,14 +531,14 @@ const ViewTenantDetail = () => {
     doc.text("Address :", 25, 91); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.Address}`, 70, 91); // (X, Y, Actual name)
+    doc.text(`${tenantToShow.address}`, 70, 91); // (X, Y, Actual name)
 
 //CollectedRent
     doc.setFontSize(12); // Set font size for labels
     doc.rect(20, 95, 160, 10);// (X, Y, Width, Height)
     doc.setFont('calibre', 'bold');
     doc.rect(20, 95, 45, 10);// (X, Y, Width, Height)
-    doc.text("Collected Rent:", 25, 101); // Label "Name:"
+    doc.text("Rent Collected:", 25, 101); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
     doc.text(`${tenantToShow.CollectedRent}`, 70, 101); // (X, Y, Actual name)
@@ -551,7 +551,7 @@ const ViewTenantDetail = () => {
     doc.text("Rent Due :", 25, 111); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.RentDue}`, 70, 111); // (X, Y, Actual name)
+    doc.text(`${tenantToShow.rentDue}`, 70, 111); // (X, Y, Actual name)
 
 //Deposit
     doc.setFontSize(12); // Set font size for labels
@@ -561,41 +561,41 @@ const ViewTenantDetail = () => {
     doc.text("Deposit :", 25, 121); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.Deposit}`, 70, 121); // (X, Y, Actual name)
+    doc.text(`${tenantToShow.securityDeposit}`, 70, 121); // (X, Y, Actual name)
 
-//TotalBill
+//paymentMode
     doc.setFontSize(12); // Set font size for labels
     doc.rect(20, 125, 160, 10);// (X, Y, Width, Height)
     doc.setFont('calibre', 'bold');
     doc.rect(20, 125, 45, 10);// (X, Y, Width, Height)
-    doc.text("TotalBill :", 25, 131); // Label "Name:"
+    doc.text("Payment Mode :", 25, 131); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.TotalBill}`, 70, 131); // (X, Y, Actual name)
+    doc.text(`${tenantToShow.paymentMethod}`, 70, 131); // (X, Y, Actual name)
 
-//CollectionDetails
+//Status
     doc.setFontSize(12); // Set font size for labels
     doc.rect(20, 135, 160, 10);// (X, Y, Width, Height)
     doc.setFont('calibre', 'bold');
     doc.rect(20, 135, 45, 10);// (X, Y, Width, Height)
-    doc.text("Collection Details :", 25, 141); // Label "Name:"
+    doc.text("Status :", 25, 141); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.CollectionDetails}`, 70, 141); // (X, Y, Actual name)
+    doc.text(`${tenantToShow.status}`, 70, 141); // (X, Y, Actual name)
 
-//PaymentMethod
+//expiryDate
     doc.setFontSize(12); // Set font size for labels
     doc.rect(20, 145, 160, 10);// (X, Y, Width, Height)
     doc.setFont('calibre', 'bold');
     doc.rect(20, 145, 45, 10);// (X, Y, Width, Height)
-    doc.text("Payment Method :", 25, 151); // Label "Name:"
+    doc.text("Rent Due Date:", 25, 151); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.PaymentMethod}`, 70, 151); // (X, Y, Actual name)
+    doc.text(`${tenantToShow.expiryDate}`, 70, 151); // (X, Y, Actual name)
 
     // Save the PDF with a specific name
     doc.save("rent_details.pdf");
-    console.log("Download PDF clicked");
+    // console.log("Download PDF clicked");
   };
   };
 
@@ -638,20 +638,20 @@ const ViewTenantDetail = () => {
      doc.setTextColor(0);
      doc.rect(20, 50, 160, 75); // (X, Y, Width, Height)
      doc.setFont('calibre', 'bold'); 
-     doc.text(`Details of Shop No: ${tenantToShow.ShopNo}`, 25, 60); // Adjust the Y position as needed
+     doc.text(`Details of Shop Owner: ${tenantToShow.tenantName}`, 25, 60); // Adjust the Y position as needed
      doc.setFont('calibre','normal');
  
     // Add tenant details here...
   
- //Name
+ //allocatedShop no
     doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
     doc.rect(20, 65, 160, 10);// (X, Y, Width, Height)
     doc.rect(20, 65, 45, 10);// (X, Y, Width, Height)
-    doc.text("Name :", 25, 71); // Label "Name:"
+    doc.text("Shop No. :", 25, 71); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${tenantToShow.Name}`, 70, 71); // (X, Y,Actual name)
+    doc.text(`${tenantToShow.allocatedShop}`, 70, 71); // (X, Y,Actual name)
  
  //contact no
      doc.setFontSize(12); // Set font size for labels
@@ -661,7 +661,7 @@ const ViewTenantDetail = () => {
      doc.text("Contact No :", 25, 81); // Label "Name:"
      doc.setFont('calibre', 'normal'); // Reset font style to normal
      doc.setFontSize(10); // Reset font size to normal
-     doc.text(`${tenantToShow.ContactNo}`, 70, 81); //(X, Y, Actual name)
+     doc.text(`${tenantToShow.contactNum}`, 70, 81); //(X, Y, Actual name)
  
  //Address
      doc.setFontSize(12); // Set font size for labels
@@ -671,7 +671,7 @@ const ViewTenantDetail = () => {
      doc.text("Address :", 25, 91); // Label "Name:"
      doc.setFont('calibre', 'normal'); // Reset font style to normal
      doc.setFontSize(10); // Reset font size to normal
-     doc.text(`${tenantToShow.Address}`, 70, 91); // (X, Y, Actual name)
+     doc.text(`${tenantToShow.address}`, 70, 91); // (X, Y, Actual name)
  
  //ElectricityDue
      doc.setFontSize(12); // Set font size for labels
@@ -681,27 +681,27 @@ const ViewTenantDetail = () => {
      doc.text("Electricity Due :", 25, 101); // Label "Name:"
      doc.setFont('calibre', 'normal'); // Reset font style to normal
      doc.setFontSize(10); // Reset font size to normal
-     doc.text(`${tenantToShow.ElectricityDue}`, 70, 101); // (X, Y, Actual name)
+     doc.text(`${tenantToShow.electricityDue}`, 70, 101); // (X, Y, Actual name)
  
- //Total Bill
+ //Bill due date
      doc.setFontSize(12); // Set font size for labels
      doc.rect(20, 105, 160, 10);// (X, Y, Width, Height)
      doc.setFont('calibre', 'bold');
      doc.rect(20, 105, 45, 10);// (X, Y, Width, Height)
-     doc.text("Total Bill :", 25, 111); // Label "Name:"
+     doc.text("Bill Due Date :", 25, 111); // Label "Name:"
      doc.setFont('calibre', 'normal'); // Reset font style to normal
      doc.setFontSize(10); // Reset font size to normal
      doc.text(`${tenantToShow.TotalBill}`, 70, 111); // (X, Y, Actual name)
  
- //PaymentMethod
+ //Payment Mode
      doc.setFontSize(12); // Set font size for labels
      doc.rect(20, 105, 160, 10);// (X, Y, Width, Height)
      doc.setFont('calibre', 'bold');
      doc.rect(20, 115, 45, 10);// (X, Y, Width, Height)
-     doc.text("PaymentMethod :", 25, 121); // Label "Name:"
+     doc.text("Payment Mode :", 25, 121); // Label "Name:"
      doc.setFont('calibre', 'normal'); // Reset font style to normal
      doc.setFontSize(10); // Reset font size to normal
-     doc.text(`${tenantToShow.PaymentMethod}`, 70, 121); // (X, Y, Actual name)
+     doc.text(`${tenantToShow.paymentMethod}`, 70, 121); // (X, Y, Actual name)
  
  //CollectionDetails
     //  doc.setFontSize(12); // Set font size for labels
@@ -715,7 +715,7 @@ const ViewTenantDetail = () => {
  
      // Save the PDF with a specific name
      doc.save("electricity-bill.pdf");
-     console.log("Download PDF clicked");
+    //  console.log("Download PDF clicked");
    };
   };
 

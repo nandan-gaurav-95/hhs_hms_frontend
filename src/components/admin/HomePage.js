@@ -114,9 +114,9 @@ export default function HomePage() {
         proceed
       </MDBDropdownToggle>
       <MDBDropdownMenu>
-      <NavLink to="/transaction"><MDBDropdownItem link><b>All Transactions</b></MDBDropdownItem></NavLink>
-        <MDBDropdownItem link><b>Payments</b></MDBDropdownItem>
-        <MDBDropdownItem link><b>Receipts</b></MDBDropdownItem>
+      {/* <NavLink to="/transaction"><MDBDropdownItem link><b>All Transactions</b></MDBDropdownItem></NavLink> */}
+      <NavLink to="/paymentt"><MDBDropdownItem link><b>Payments</b></MDBDropdownItem></NavLink>
+      <NavLink to="/receiptt"><MDBDropdownItem link><b>Receipts</b></MDBDropdownItem></NavLink>
       </MDBDropdownMenu>
     </MDBDropdown>
   </div>
@@ -145,8 +145,8 @@ export default function HomePage() {
         proceed
       </MDBDropdownToggle>
       <MDBDropdownMenu>
-      <NavLink to="/received"><MDBDropdownItem link><b>Receive Letter</b></MDBDropdownItem> </NavLink>
-        <NavLink to= "/out"><MDBDropdownItem link><b>Out Letter</b></MDBDropdownItem></NavLink>
+      <NavLink to="/add"><MDBDropdownItem link><b>Add Tapal</b></MDBDropdownItem> </NavLink>
+        <NavLink to= "/view"><MDBDropdownItem link><b>View Tapal</b></MDBDropdownItem></NavLink>
       </MDBDropdownMenu>
     </MDBDropdown>
   </div>

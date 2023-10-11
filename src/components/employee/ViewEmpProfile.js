@@ -17,7 +17,7 @@ const ViewEmpProfile = () => {
   const fetctEmployeeById = async () => {
     try {
       const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
-      console.log("Api response",response.data);
+      // console.log("Api response",response.data);
       setEmployee(response.data);
     } catch (error) {
       console.error("Error fetching property:", error);
@@ -52,9 +52,7 @@ const ViewEmpProfile = () => {
     const doc = new jsPDF("p", "mm", "a4");
     const logoImage = new Image();
     logoImage.src = logo;
-
     logoImage.src = logo; // Use the imported logo image
-
     // Wait for the image to load before rendering it
     logoImage.onload = () => {
       // Add the logo image to the PDF
@@ -80,216 +78,218 @@ const ViewEmpProfile = () => {
       doc.setFont("helvetica", "normal"); // Reset font style to normal
 
       // Reset text color to default (black)
-      doc.setTextColor(0);
+      doc.setTextColor(59, 48, 182);
       doc.rect(20, 50, 160, 105); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.text(`Salary Slip of Employee: ${employee.Name}`, 25, 60); // Adjust the Y position as needed
+      doc.text(`Salary Slip of Employee: ${employee.empName}`, 25, 60); // Adjust the Y position as needed
       doc.setFont("calibre", "normal");
+      doc.setTextColor(0);
 
       // Add tenant details here...
 
-      //ContactNo
+      //emp_id
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.rect(20, 65, 160, 10); // (X, Y, Width, Height)
       doc.rect(20, 65, 45, 10); // (X, Y, Width, Height)
-      doc.text("ContactNo :", 25, 71); // Label "Name:"
+      doc.text("Employee Id :", 25, 71); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.ContactNo}`, 70, 71); // (X, Y,Actual name)
+      doc.text(`${employee.emp_id}`, 70, 71); // (X, Y,Actual name)
 
-      //DOB
+      //ContactNo
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.rect(20, 75, 160, 10); // (X, Y, Width, Height)
       doc.rect(20, 75, 45, 10); // (X, Y, Width, Height)
-      doc.text("Date of Birth :", 25, 81); // Label "Name:"
+      doc.text("Contact No :", 25, 81); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.DOB}`, 70, 81); //(X, Y, Actual name)
+      doc.text(`${employee.contactNum}`, 70, 81); //(X, Y, Actual name)
 
-      //Address
+      //DateofBirth
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.rect(20, 85, 160, 10); // (X, Y, Width, Height)
       doc.rect(20, 85, 45, 10); // (X, Y, Width, Height)
-      doc.text("Address :", 25, 91); // Label "Name:"
+      doc.text("Date of Birth :", 25, 91); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Address}`, 70, 91); // (X, Y, Actual name)
+      doc.text(`${employee.dob}`, 70, 91); // (X, Y, Actual name)
 
-      //Gender
+      //Address
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 95, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 95, 45, 10); // (X, Y, Width, Height)
-      doc.text("Gender:", 25, 101); // Label "Name:"
+      doc.text("Address:", 25, 101); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Gender}`, 70, 101); // (X, Y, Actual name)
+      doc.text(`${employee.address}`, 70, 101); // (X, Y, Actual name)
+
+      //Gender
+      doc.setFontSize(12); // Set font size for labels
+      doc.rect(20, 105, 160, 10); // (X, Y, Width, Height)
+      doc.setFont("calibre", "bold");
+      doc.rect(20, 105, 45, 10); // (X, Y, Width, Height)
+      doc.text("Gender :", 25, 111); // Label "Name:"
+      doc.setFont("calibre", "normal"); // Reset font style to normal
+      doc.setFontSize(10); // Reset font size to normal
+      doc.text(`${employee.gender}`, 70, 111); // (X, Y, Actual name)
 
       //AadharNo
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 105, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 105, 45, 10); // (X, Y, Width, Height)
-      doc.text("AadharNo :", 25, 111); // Label "Name:"
+      doc.rect(20, 115, 45, 10); // (X, Y, Width, Height)
+      doc.text("Aadhar No :", 25, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.AadharNo}`, 70, 111); // (X, Y, Actual name)
+      doc.text(`${employee.aadhar}`, 70, 121); // (X, Y, Actual name)
 
       //PanNo
-      doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 105, 160, 10); // (X, Y, Width, Height)
-      doc.setFont("calibre", "bold");
-      doc.rect(20, 115, 45, 10); // (X, Y, Width, Height)
-      doc.text("PanNo :", 25, 121); // Label "Name:"
-      doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.PanNo}`, 70, 121); // (X, Y, Actual name)
-
-      //Bloodgroup
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 125, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 125, 45, 10); // (X, Y, Width, Height)
-      doc.text("Bloodgroup :", 25, 131); // Label "Name:"
+      doc.text("Pan No :", 25, 131); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Bloodgroup}`, 70, 131); // (X, Y, Actual name)
+      doc.text(`${employee.pan}`, 70, 131); // (X, Y, Actual name)
 
-      //Department
+      //Bloodgroup
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 135, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 135, 45, 10); // (X, Y, Width, Height)
-      doc.text("Department :", 25, 141); // Label "Name:"
+      doc.text("Bloodgroup :", 25, 141); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Department}`, 70, 141); // (X, Y, Actual name)
+      doc.text(`${employee.bloodgroup}`, 70, 141); // (X, Y, Actual name)
 
-      //Qualification
+      //Department
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 145, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 145, 45, 10); // (X, Y, Width, Height)
-      doc.text("Qualification :", 25, 151); // Label "Name:"
+      doc.text("Department :", 25, 151); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Qualification}`, 70, 151); // (X, Y, Actual name)
+      doc.text(`${employee.department}`, 70, 151); // (X, Y, Actual name)
 
-      //Position
+      //Qualification
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 155, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 155, 45, 10); // (X, Y, Width, Height)
-      doc.text("Position :", 25, 161); // Label "Name:"
+      doc.text("Qualification :", 25, 161); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Position}`, 70, 161); // (X, Y, Actual name)
+      doc.text(`${employee.qualification}`, 70, 161); // (X, Y, Actual name)
 
-      //DateOfHiring
+      //position
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 165, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 165, 45, 10); // (X, Y, Width, Height)
-      doc.text("DateOfHiring :", 25, 171); // Label "Name:"
+      doc.text("position :", 25, 171); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.DateOfHiring}`, 70, 171); // (X, Y, Actual name)
+      doc.text(`${employee.position}`, 70, 171); // (X, Y, Actual name)
 
-      //Salary
+      //DateOfHiring
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 175, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 175, 45, 10); // (X, Y, Width, Height)
-      doc.text("Salary :", 25, 181); // Label "Name:"
+      doc.text("Date Of Hiring :", 25, 181); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Salary}`, 70, 181); // (X, Y, Actual name)
+      doc.text(`${employee.dateOfHiring}`, 70, 181); // (X, Y, Actual name)
 
-      //NetSalary
+      //basicSalary
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 185, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 185, 45, 10); // (X, Y, Width, Height)
-      doc.text("NetSalary :", 25, 191); // Label "Name:"
+      doc.text("Basic Salary :", 25, 191); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.NetSalary}`, 70, 191); // (X, Y, Actual name)
+      doc.text(`${employee.basicSalary}`, 70, 191); // (X, Y, Actual name)
 
-      //GrossSalary
+      //NetSalary
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 195, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 195, 45, 10); // (X, Y, Width, Height)
-      doc.text("GrossSalary :", 25, 201); // Label "Name:"
+      doc.text("NetSalary :", 25, 201); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.GrossSalary}`, 70, 201); // (X, Y, Actual name)
+      doc.text(`${employee.netSalary}`, 70, 201); // (X, Y, Actual name)
 
-      //allowance
+      //GrossSalary
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 205, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 205, 45, 10); // (X, Y, Width, Height)
-      doc.text("allowance :", 25, 211); // Label "Name:"
+      doc.text("GrossSalary :", 25, 211); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.allowance}`, 70, 211); // (X, Y, Actual name)
+      doc.text(`${employee.grossSalary}`, 70, 211); // (X, Y, Actual name)
 
-      //Deduction
+      //allowance
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 215, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 215, 45, 10); // (X, Y, Width, Height)
-      doc.text("Deduction :", 25, 221); // Label "Name:"
+      doc.text("Allowance :", 25, 221); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Deduction}`, 70, 221); // (X, Y, Actual name)
+      doc.text(`${employee.allowance}`, 70, 221); // (X, Y, Actual name)
 
-      //PfEmployeeContribution
+      //Deduction
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 225, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 225, 45, 10); // (X, Y, Width, Height)
-      doc.text("Pf Contribution :", 25, 231); // Label "Name:"
+      doc.text("Deduction :", 25, 231); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.PfEmployeeContribution}`, 70, 231); // (X, Y, Actual name)
+      doc.text(`${employee.deduction}`, 70, 231); // (X, Y, Actual name)
 
-      //LoanAmount
+      //PfEmployeeContribution
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 235, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 235, 45, 10); // (X, Y, Width, Height)
-      doc.text("Loan Amount :", 25, 241); // Label "Name:"
+      doc.text("Pf Contribution :", 25, 241); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.LoanAmount}`, 70, 241); // (X, Y, Actual name)
+      doc.text(`${employee.pfEmployeeContribution}`, 70, 241); // (X, Y, Actual name)
 
-      //LoanRepaymentAmount
+      //LoanAmount
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 245, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 245, 45, 10); // (X, Y, Width, Height)
-      doc.text("Loan Paid Amount :", 25, 251); // Label "Name:"
+      doc.text("Loan Amount :", 25, 251); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.LoanRepaymentAmount}`, 70, 251); // (X, Y, Actual name)
+      doc.text(`${employee.loanAmount}`, 70, 251); // (X, Y, Actual name)
 
-      //Vacations
+      //LoanRepaymentAmount
       doc.setFontSize(12); // Set font size for labels
       doc.rect(20, 255, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.rect(20, 255, 45, 10); // (X, Y, Width, Height)
-      doc.text("Vacations :", 25, 261); // Label "Name:"
+      doc.text("Loan Paid Amount :", 25, 261); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${employee.Vacations}`, 70, 261); // (X, Y, Actual name)
+      doc.text(`${employee.loanRepaymentAmount}`, 70, 261); // (X, Y, Actual name)
 
       // Save the PDF with a specific name
       doc.save("salary_slip.pdf");
+      console.log("emp pdf data",employee);
       console.log("Download PDF clicked");
     };
   };
