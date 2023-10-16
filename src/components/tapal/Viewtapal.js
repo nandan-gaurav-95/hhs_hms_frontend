@@ -60,7 +60,7 @@ const Viewtapal = () => {
 
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
-          <tr>
+          <tr> <th>Sr. No</th>
             <th>Letter No</th>
             <th>Letter Type</th>
             <th>Date</th>

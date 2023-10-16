@@ -47,7 +47,7 @@ const ViewEmpProfile = () => {
   const firstColumnKeys = employeeKeys.slice(0, halfLength);
   const secondColumnKeys = employeeKeys.slice(halfLength);
 
-      const handleSalarySlipPdf = () => {
+  const handleSalarySlipPdf = () => {
     // Create a new jsPDF instance
     const doc = new jsPDF("p", "mm", "a4");
     const logoImage = new Image();
