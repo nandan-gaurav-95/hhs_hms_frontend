@@ -59,6 +59,7 @@ import Edittapal from "./components/tapal/Edittapal";
 
 import Payment from "./components/daybook/Payment";
 import Receipt from "./components/daybook/Receipt";
+import Pdf from "./components/medical/Pdf";
 function App() {
   return (
     <div className="App">
@@ -139,6 +140,9 @@ function App() {
 
             <Route path="/paymentt" element={<Payment/>}></Route>
             <Route path="/receiptt" element={<Receipt/>}></Route>
+
+            <Route path="/pdf" element={<Pdf/>}></Route>
+
 
           </Routes>
       </BrowserRouter>

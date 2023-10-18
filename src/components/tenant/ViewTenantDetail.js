@@ -225,7 +225,8 @@ const ViewTenantDetail = () => {
      //Header Part
      doc.setTextColor(255, 138, 0); // RGB color (red)
      doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-     doc.text("HHS HMS", 70, 20); // Adjust the Y position as needed
+     doc.text("Hameed Shah & Haz. Muhib Shah Khadri (R) Complex,", 55, 20); // Adjust the Y position as needed
+     doc.text("Banglore",95,30)
      doc.setFont('helvetica', 'normal'); // Reset font style to normal
  
  
@@ -416,8 +417,14 @@ const ViewTenantDetail = () => {
           doc.setFontSize(12); // Set font size for labels
         doc.rect(20, 165, 65, 30);// (X, Y, Width, Height)
          doc.setFont('calibre', 'bold');
-         doc.text("Note", 25, 171); // Label "Name:"
+         doc.text("Note :", 25, 171); // Label "Name:"
          doc.setFont('calibre', 'normal'); // Reset font style to normal
+         doc.text("Bills to be paid on or before", 36, 171); // Label "Name:"
+         doc.text("15th of the every month.", 21, 177); // Label "Name:"
+         doc.text("Electrical connection will be", 21, 184); // Label "Name:"
+         doc.text("Disconnected after the due date.", 21, 191); // Label "Name:"
+         doc.text("Meter Reader",31,211);  doc.text("Special Officer",131,211);
+         
          doc.text("Arrears", 90, 171); // Label "Name:"
          doc.rect(85, 165, 25, 10);// (X, Y, Width, Height) 2nd verticle line
          doc.rect(110, 165, 20, 10);doc.rect(130, 165, 20, 10);doc.rect(150, 165, 30, 10);
