@@ -22,6 +22,7 @@ const Pdf = () => {
     const [bloodCenter, setBloodCenter]=useState(null);
     const [parking, setParking]=useState(null);
     const [hhscomplexData, setHHSComplexData] = useState(null);
+    const [voucher, setVoucher] = useState(null);
 
     const navigate = useNavigate();
 
@@ -602,6 +603,119 @@ logoImage.onload = () => {
        };
 };
 
+//voucher
+const handleVoucherPdf= ()=>{
+  // Create a new jsPDF instance
+  const doc = new jsPDF('p', 'mm', 'a4');
+  const logoImage = new Image();
+  logoImage.src = logo;
+
+logoImage.src = logo; // Use the imported logo image
+
+// Wait for the image to load before rendering it
+logoImage.onload = () => {
+  // Add the logo image to the PDF
+  doc.addImage(
+    logoImage,
+    "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+    10,     // X position
+    10,     // Y position
+    50,     // Image width
+    25      // Image height
+  );
+
+  //Header Part
+  doc.rect(10,9,175,153);//(outer rectangle X,Y,width,height)
+  doc.setTextColor(255, 138, 0); // RGB color (red)
+  doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+  doc.text("H.H.S./H.M.S. COMPLEX, CUBBONPET,", 55, 20); // Adjust the Y position as needed
+  doc.text("BANGLORE - 560 002.", 65, 30); // Adjust the Y position as needed
+  doc.setTextColor(0);
+
+  //PDF Heading voucher no. & date
+  doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+  doc.setFontSize(12);
+  doc.rect(10,43,175,80);//(outer rectangle X,Y,width,height)
+  doc.rect(10,43,175,10);//(voucher date rect. X,Y,width,height)
+  doc.text("Voucher No. :", 20, 50); // Adjust the Y position as needed 
+  doc.setFont('helvetica', 'normal');
+  doc.text(`${voucher}`, 50, 50); 
+  doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+  doc.text("Date:", 130, 50);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`${voucher}`, 145, 50); 
+
+  //Particular & amount
+  doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+  doc.setFontSize(12);
+  doc.rect(10,53,175,10);//( X,Y,width,height)
+  doc.text("PARTICULARS", 60, 60); // Adjust the Y position as needed 
+ 
+  doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+  doc.rect(140,53,45,70);//( X,Y,width,height)
+  doc.text("AMOUNT", 150, 60);
+  doc.rect(175,63,10,60);//( X,Y,width,height)
+  doc.rect(140,113,45,10);//( X,Y,width,height)
+  
+
+  //amt paid to
+  doc.setFontSize(12); // Set font size for labels
+  doc.setFont('calibre', 'bold');
+  doc.text("Amount paid to:", 20, 70); // Label "Name:"
+  doc.setFont('calibre', 'normal'); // Reset font style to normal
+  doc.setFontSize(10); // Reset font size to normal
+  doc.text(`${voucher}`, 50, 70); // (X, Y,Actual name)
+
+  //towards
+  doc.setFontSize(12); // Set font size for labels
+  doc.setFont('calibre', 'bold');
+  doc.text("Towards:", 20, 80); // Label "Name:"
+  doc.setFont('calibre', 'normal'); // Reset font style to normal
+  doc.setFontSize(10); // Reset font size to normal
+  doc.text(`${voucher}`, 40, 80); // (X, Y,Actual name)
+
+    //cash/cheque no.
+    doc.setFontSize(12); // Set font size for labels
+    doc.setFont('calibre', 'bold');
+    doc.text("By Cash /Cheque No.", 20, 121); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${voucher}`, 65, 121); // (X, Y,Actual name)
+
+    //Dated
+    doc.setFontSize(12); // Set font size for labels
+    doc.setFont('calibre', 'bold');
+    doc.text("Dated:", 110, 121); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${voucher}`, 125, 121); // (X, Y,Actual name)
+
+    //rupees
+    doc.setFontSize(12); // Set font size for labels
+    doc.setFont('calibre', 'bold');
+    doc.text("Rupees:", 20, 131); // Label "Name:"
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
+    doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${voucher}`, 45, 131); // (X, Y,Actual name)
+
+    
+    doc.rect(145,128,20,20);//( X,Y,width,height)
+    doc.setFont('calibre', 'bold');
+    doc.text("Stamp",150,138)
+
+    
+     //sign
+     doc.setFontSize(12); // Set font size for labels
+     doc.setFont('calibre', 'bold');
+     doc.text("Signature ", 40, 151); // Label "Name:"
+     doc.text("Signature", 110, 151); // Label "Name:"
+      
+
+  doc.save("voucher.pdf");
+       };
+
+}
+
 return (
     <div className="">
       <Header/>
@@ -651,6 +765,13 @@ return (
           style={{ height: "60px", width: "150px", lineHeight: "25px" }}
         >
           <FaDownload style={{ marginRight: "5px" }} /> HHS & HMS Parking
+        </Button>
+        <Button
+          variant="primary"
+          onClick={handleVoucherPdf}
+          style={{ height: "60px", width: "150px", lineHeight: "25px" }}
+        >
+          <FaDownload style={{ marginRight: "5px" }} /> Voucher
         </Button>
       </div>
       </div>
