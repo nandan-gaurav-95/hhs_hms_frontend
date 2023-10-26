@@ -31,36 +31,6 @@ export default function HomePage() {
                 proceed
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <NavLink to="/hhscomplex">
-                  <MDBDropdownItem link>
-                    <b>HHS Complex</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/dargahcomplex">
-                  <MDBDropdownItem link>
-                    <b>Dargah Complex</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/bloodcenter">
-                  <MDBDropdownItem link>
-                    <b>Blood Center</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/ambulancevan">
-                  <MDBDropdownItem link>
-                    <b>Ambulance Van</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/medicalack">
-                  <MDBDropdownItem link>
-                    <b>Medical Acknowledgment</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/parking">
-                  <MDBDropdownItem link>
-                    <b>Parking</b>
-                  </MDBDropdownItem>
-                </NavLink>
                 <NavLink to="/school">
                   <MDBDropdownItem link>
                     <b>Schools</b>
@@ -319,12 +289,80 @@ export default function HomePage() {
             </div>
           </div>
           <div className="card upper-card">
-            <h3>Banking</h3>
+            <h3>HHS & Dargah Complex</h3>
             <div className="proceed-button">
               <MDBDropdown>
                 <MDBDropdownToggle tag="a" className="btn btn-dark">
                   proceed
                 </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <NavLink to="/hhscomplex">
+                  <MDBDropdownItem link>
+                    <b>HHS Complex</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/viewhhscomplex">
+                  <MDBDropdownItem link>
+                    <b>View HHS Complex</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/dargahcomplex">
+                  <MDBDropdownItem link>
+                    <b>Dargah Complex</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/viewdargahcomplex">
+                  <MDBDropdownItem link>
+                    <b>View Dargah Complex</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </div>
+          </div>
+        </div>
+        <div className="card-container">
+          <div className="card upper-card">
+            <h3>Medical</h3>
+            <div className="proceed-button">
+              <MDBDropdown>
+                <MDBDropdownToggle tag="a" className="btn btn-dark">
+                  Proceed
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <NavLink to="/bloodcenter">
+                  <MDBDropdownItem link>
+                    <b>Blood Center</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/ambulancevan">
+                  <MDBDropdownItem link>
+                    <b>Ambulance Van</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/medicalack">
+                  <MDBDropdownItem link>
+                    <b>Medical Acknowledgment</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </div>
+          </div>
+          <div className="card upper-card">
+            <h3>Parking</h3>
+            <div className="proceed-button">
+              <MDBDropdown>
+                <MDBDropdownToggle tag="a" className="btn btn-dark">
+                  proceed
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <NavLink to="/parking">
+                    <MDBDropdownItem link>
+                      <b>Parking</b>
+                    </MDBDropdownItem>{" "}
+                  </NavLink>
+                </MDBDropdownMenu>
               </MDBDropdown>
             </div>
           </div>

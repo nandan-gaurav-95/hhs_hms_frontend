@@ -9,10 +9,12 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { ElectricityBillService } from "../../services/ElectricityBillService";
 
 const ElectricityBill = () => {
   const navigate = useNavigate();
   const initialState = {
+    month:"",
     name: "",
     shopNo: "",
     rrNo: "",
@@ -28,7 +30,24 @@ const ElectricityBill = () => {
   };
   const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('handleSubmit called');
+
+    try {
+      const response = await ElectricityBillService.createElectricityBill(formData);
+
+      console.log("eleBill", response.data.id);
+
+      if (response.status === 201) {
+        console.log("eleBill Created Successfully");
+        setFormData(initialState);
+      } else {
+        console.error("Failed To create eleBill");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
     
   };
   const handleChange = (e) => {
@@ -153,13 +172,13 @@ const ElectricityBill = () => {
         <Col className="col-sm-5 ">
             <Input
               label="Date Of Reading"
-              type="text"
+              type="Date"
               name="dateOfReading"
               value={formData.dateOfReading}
               onChange={handleChange}
             />
           </Col>
-        <Col className="col-sm-5 ">
+        {/* <Col className="col-sm-5 ">
             <Input
               label="Total"
               type="text"
@@ -167,8 +186,29 @@ const ElectricityBill = () => {
               value={formData.total}
               onChange={handleChange}
             />
+          </Col> */}
+          <Col className="col-sm-5 ">
+            <Input
+              label="Month Of Reading"
+              type="month"
+              name="month"
+              value={formData.month}
+              onChange={handleChange}
+            />
           </Col>
           </Row>
+          {/* <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+        <Col className="col-sm-5 ">
+            <Input
+              label="Month Of Reading"
+              type="month"
+              name="month"
+              value={formData.month}
+              onChange={handleChange}
+            />
+          </Col>
+        
+          </Row> */}
         <div className="text-center mt-4 ">
           <Button type="submit">Submit</Button>
         </div>

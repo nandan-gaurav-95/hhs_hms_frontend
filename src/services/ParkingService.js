@@ -1,6 +1,6 @@
 import React from 'react'
 import { APIS } from '../components/constants/api';
-
+import axios from 'axios';
 export const ParkingService =  {
   // Create a new Parking entry
 createParking : async (formData) => {

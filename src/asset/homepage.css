@@ -60,9 +60,9 @@ font-Family: Arial Black, sans-serif;
 background-color: transparent;
 }
 .background-wrapper {
-position: fixed;
+/* position: fixed;
 top: 0;
-left: 0;
+left: 0; */
 width: 100%;
-height: 110%;
+height: 400%;
 }

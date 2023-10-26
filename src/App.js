@@ -56,23 +56,29 @@ import DistributeInventory from "./components/inventory/DistributeInventory";
 import Addtapal from "./components/tapal/Addtapal";
 import Viewtapal from "./components/tapal/Viewtapal";
 import Edittapal from "./components/tapal/Edittapal";
-
 import Payment from "./components/daybook/Payment";
 import Receipt from "./components/daybook/Receipt";
+import GirlsHostel from "./components/impressed_cashbook/GirlsHostel"
 
 import Pdf from "./components/financial_assistance/Pdf";
 
 import Scholarship from "./components/financial_assistance/Scholarship";
 import Medicalaid from "./components/financial_assistance/Medicalaid";
-import GirlsHostel from './components/impressed_cashbook/GirlsHostel';
 
-//institue
-import HHSComplex from "./components/institute/HHSComplex";
-import DargahComplex from "./components/institute/DargahComplex";
-import BloodCenter from "./components/institute/BloodCenter";
-import AmbulanceVan from "./components/institute/AmbulanceVan";
-import Parking from "./components/institute/Parking";
-import MedicalAck from "./components/institute/MedicalAck";
+//hhs and dargah complex
+import HHSComplex from "./components/hhs&dargahcompex/HHSComplex";
+import ViewHHSComplex from "./components/hhs&dargahcompex/ViewHHSComplex";
+import DargahComplex from "./components/hhs&dargahcompex/DargahComplex";
+import ViewDargahComplex from "./components/hhs&dargahcompex/ViewDargahComplex";
+
+//medical
+import BloodCenter from "./components/medical/BloodCenter";
+import AmbulanceVan from "./components/medical/AmbulanceVan";
+import MedicalAck from "./components/medical/MedicalAck";
+
+//parking
+import Parking from "./components/parking/Parking";
+
 
 //voucher
 import Voucher from "./components/voucher/Voucher";
@@ -156,13 +162,13 @@ function App() {
             path="/daybook-details/:id"
             element={<PropertyDetailsDaybook />}
           ></Route>
-          {/* <Route path="/transaction" element={<Transactions/>}></Route> */}
+          <Route path="/transaction" element={<Transactions />}></Route>
           <Route path="/viewdaybook" element={<Viewdaybook />}></Route>
 
           {/* Tapal */}
           <Route path="/add" element={<Addtapal />}></Route>
           <Route path="/view" element={<Viewtapal />}></Route>
-          <Route path="/edit-tapal/:id" element={<Edittapal />}></Route>
+          <Route path="/edit-tapal" element={<Edittapal />}></Route>
 
           <Route path="/payment" element={<PaymentForm />}></Route>
           <Route path="/allpayment" element={<AllpaymentForm />}></Route>
@@ -191,6 +197,7 @@ function App() {
           <Route path="/bankform" element={<BankForm />}></Route>
           <Route path="/showbank" element={<ShowBank />}></Route>
           <Route path="/bank-details/:id" element={<BankDetails />}></Route>
+
           <Route path="/school" element={<School />}></Route>
           <Route path="/paymentt" element={<Payment />}></Route>
           <Route path="/receiptt" element={<Receipt />}></Route>
@@ -201,13 +208,16 @@ function App() {
           <Route path="/hostel" element={<GirlsHostel />}></Route>
 
           <Route path="/hhscomplex" element={<HHSComplex />}></Route>
+          <Route path="/viewhhscomplex" element={<ViewHHSComplex/>}></Route>
           <Route path="/dargahcomplex" element={<DargahComplex />}></Route>
+          <Route path="/viewdargahcomplex" element={<ViewDargahComplex/>}></Route>
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
           <Route path="/ambulancevan" element={<AmbulanceVan />}></Route>
           <Route path="/parking" element={<Parking />}></Route>
           <Route path="/medicalack" element={<MedicalAck />}></Route>
           <Route path="/voucher" element={<Voucher />}></Route>
           <Route path="/electricitybill" element={<ElectricityBill />}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>
