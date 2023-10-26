@@ -73,18 +73,22 @@ import ViewDargahComplex from "./components/hhs&dargahcompex/ViewDargahComplex";
 
 //medical
 import BloodCenter from "./components/medical/BloodCenter";
+import ViewBloodCenter from "./components/medical/ViewBloodCenter";
 import AmbulanceVan from "./components/medical/AmbulanceVan";
+import ViewAmbulanceVan from "./components/medical/ViewAmbulanceVan";
 import MedicalAck from "./components/medical/MedicalAck";
+import ViewMedicalAck from "./components/medical/ViewMedicalAck";
 
 //parking
 import Parking from "./components/parking/Parking";
-
+import ViewParking from "./components/parking/ViewParking";
 
 //voucher
 import Voucher from "./components/voucher/Voucher";
-
+import ViewVoucher from "./components/voucher/ViewVoucher";
 //Electricity
 import ElectricityBill from "./components/electricity/ElectricityBill";
+import ViewElectricityBill from "./components/electricity/ViewElectricityBill";
 
 function App() {
   return (
@@ -212,11 +216,17 @@ function App() {
           <Route path="/dargahcomplex" element={<DargahComplex />}></Route>
           <Route path="/viewdargahcomplex" element={<ViewDargahComplex/>}></Route>
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
+          <Route path="/viewbloodcenter" element={<ViewBloodCenter />}></Route>
           <Route path="/ambulancevan" element={<AmbulanceVan />}></Route>
+          <Route path="/viewambulancevan" element={<ViewAmbulanceVan />}></Route>
           <Route path="/parking" element={<Parking />}></Route>
+          <Route path="/viewparking" element={<ViewParking />}></Route>
           <Route path="/medicalack" element={<MedicalAck />}></Route>
+          <Route path="/viewmedicalack" element={<ViewMedicalAck/>}></Route>
           <Route path="/voucher" element={<Voucher />}></Route>
+          <Route path="/viewvoucher" element={<ViewVoucher />}></Route>
           <Route path="/electricitybill" element={<ElectricityBill />}></Route>
+          <Route path="/viewelectricitybill" element={<ViewElectricityBill />}></Route>
 
         </Routes>
       </BrowserRouter>

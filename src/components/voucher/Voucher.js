@@ -9,11 +9,12 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { VoucherService } from "../../services/VoucherService";
 
 const Voucher = () => {
   const navigate = useNavigate();
   const initialState = {
-    v_id: "",
+   
     date: "",
     amtPaid: "",
     towards: "",
@@ -24,8 +25,22 @@ const Voucher = () => {
   };
   const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {
-    
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('handleSubmit called');
+
+    try {
+      const response = await VoucherService.createVoucher(formData);
+      console.log("Voucher", response.data.id);
+      if (response.status === 201) {
+        console.log("Voucher Created Successfully");
+        setFormData(initialState);
+      } else {
+        console.error("Failed To create Voucher");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,15 +60,7 @@ const Voucher = () => {
       <h1 className=" mb-4 text-center">Voucher</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
-            <Input
-              label="Voucher ID"
-              type="text"
-              name="v_id"
-              value={formData.v_id}
-              onChange={handleChange}
-            />
-          </Col>
+          
           <Col className="col-sm-5 ">
             <Input
               label="Date"

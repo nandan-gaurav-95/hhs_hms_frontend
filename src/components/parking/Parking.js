@@ -10,11 +10,12 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { ParkingService } from "../../services/ParkingService";
 
 const Parking = () => {
   const navigate = useNavigate();
   const initialState = {
-    ReceiverName: "",
+    receiverName: "",
     date: "",
     rupee: "",
     rupeeInWords: "",
@@ -27,8 +28,22 @@ const Parking = () => {
   };
   const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {
-    
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('handleSubmit called');
+
+    try {
+      const response = await ParkingService.createParking(formData);
+      console.log("Parking", response.data.id);
+      if (response.status === 201) {
+        console.log("Parking Created Successfully");
+        setFormData(initialState);
+      } else {
+        console.error("Failed To create Parking");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;

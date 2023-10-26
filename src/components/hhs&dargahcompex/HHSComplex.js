@@ -10,6 +10,7 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { HhsComplexService } from "../../services/HhsComplexService";
 
 const HHSComplex = () => {
   const navigate = useNavigate();
@@ -17,8 +18,8 @@ const HHSComplex = () => {
     lfNo: "",
     rrNo: "",
     date: "",
-    ReceiverName: "",
-    rupee: "",
+    receiverName: "",
+    rupees: "",
     rupeeInWords: "",
     eleCharges: "",
     month: "",
@@ -28,7 +29,24 @@ const HHSComplex = () => {
   };
   const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('handleSubmit called');
+
+    try {
+      const response = await HhsComplexService.createHhsComplex(formData);
+
+      console.log("Hhs Complex", response.data.id);
+
+      if (response.status === 201) {
+        console.log("Hhs Complex Created Successfully");
+        setFormData(initialState);
+      } else {
+        console.error("Failed To create Hhs Complex");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
     
   };
   const handleChange = (e) => {
@@ -83,8 +101,8 @@ const HHSComplex = () => {
             <Input
               label="Receiver Name"
               type="text"
-              name="ReceiverName"
-              value={formData.ReceiverName}
+              name="receiverName"
+              value={formData.receiverName}
               onChange={handleChange}
             />
           </Col>
@@ -94,8 +112,8 @@ const HHSComplex = () => {
             <Input
               label="Rupee"
               type="number"
-              name="rupee"
-              value={formData.rupee}
+              name="rupees"
+              value={formData.rupees}
               onChange={handleChange}
             />
           </Col>

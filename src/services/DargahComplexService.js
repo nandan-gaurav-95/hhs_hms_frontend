@@ -1,6 +1,6 @@
-import axios from "axios";
 import { APIS } from "../components/constants/api";
 import axios from 'axios';
+
 export const DargahComplexService ={
 
 // Create a new DargahComplex

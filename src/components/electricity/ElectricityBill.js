@@ -171,7 +171,7 @@ const ElectricityBill = () => {
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
         <Col className="col-sm-5 ">
             <Input
-              label="Date Of Reading"
+              // label="Date Of Reading"
               type="Date"
               name="dateOfReading"
               value={formData.dateOfReading}
@@ -189,7 +189,7 @@ const ElectricityBill = () => {
           </Col> */}
           <Col className="col-sm-5 ">
             <Input
-              label="Month Of Reading"
+              // label="Month Of Reading"
               type="month"
               name="month"
               value={formData.month}

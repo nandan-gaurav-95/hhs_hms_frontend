@@ -10,11 +10,12 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { DargahComplexService } from "../../services/DargahComplexService";
 
 const DargahComplex = () => {
   const navigate = useNavigate();
   const initialState = {
-    ReceiverName: "",
+    receiverName: "",
     date: "",
     rupee: "",
     rupeeInWords: "",
@@ -27,7 +28,24 @@ const DargahComplex = () => {
   };
   const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    console.log('handleSubmit called');
+
+    try {
+      const response = await DargahComplexService.createDargahComplex(formData);
+
+      console.log("dargah complex", response.data.id);
+
+      if (response.status === 201) {
+        console.log("dargah complex Created Successfully");
+        setFormData(initialState);
+      } else {
+        console.error("Failed To create dargah complex");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
     
   };
   const handleChange = (e) => {
@@ -52,8 +70,8 @@ const DargahComplex = () => {
             <Input
               label="ReceiverName"
               type="text"
-              name="ReceiverName"
-              value={formData.ReceiverName}
+              name="receiverName"
+              value={formData.receiverName}
               onChange={handleChange}
             />
           </Col>

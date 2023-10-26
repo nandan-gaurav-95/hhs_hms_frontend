@@ -232,6 +232,11 @@ export default function HomePage() {
                       <b>Electricity Bill</b>
                     </MDBDropdownItem>{" "}
                   </NavLink>
+                  <NavLink to="/viewelectricitybill">
+                    <MDBDropdownItem link>
+                      <b>View Electricity Bill</b>
+                    </MDBDropdownItem>{" "}
+                  </NavLink>
                   <MDBDropdownItem>
                     <b>Tenants</b>
                   </MDBDropdownItem>
@@ -256,6 +261,11 @@ export default function HomePage() {
                   <NavLink to="/voucher">
                     <MDBDropdownItem link>
                       <b>Voucher</b>
+                    </MDBDropdownItem>{" "}
+                  </NavLink>
+                  <NavLink to="/viewvoucher">
+                    <MDBDropdownItem link>
+                      <b>View Voucher</b>
                     </MDBDropdownItem>{" "}
                   </NavLink>
                 </MDBDropdownMenu>
@@ -335,14 +345,29 @@ export default function HomePage() {
                     <b>Blood Center</b>
                   </MDBDropdownItem>
                 </NavLink>
+                <NavLink to="/viewbloodcenter">
+                  <MDBDropdownItem link>
+                    <b>View Blood Center</b>
+                  </MDBDropdownItem>
+                </NavLink>
                 <NavLink to="/ambulancevan">
                   <MDBDropdownItem link>
                     <b>Ambulance Van</b>
                   </MDBDropdownItem>
                 </NavLink>
+                <NavLink to="/viewambulancevan">
+                  <MDBDropdownItem link>
+                    <b>View Ambulance Van</b>
+                  </MDBDropdownItem>
+                </NavLink>
                 <NavLink to="/medicalack">
                   <MDBDropdownItem link>
                     <b>Medical Acknowledgment</b>
+                  </MDBDropdownItem>
+                </NavLink>
+                <NavLink to="/viewmedicalack">
+                  <MDBDropdownItem link>
+                    <b>View Medical Acknowledgment</b>
                   </MDBDropdownItem>
                 </NavLink>
                 </MDBDropdownMenu>
@@ -360,6 +385,11 @@ export default function HomePage() {
                   <NavLink to="/parking">
                     <MDBDropdownItem link>
                       <b>Parking</b>
+                    </MDBDropdownItem>{" "}
+                  </NavLink>
+                  <NavLink to="/viewparking">
+                    <MDBDropdownItem link>
+                      <b>View Parking</b>
                     </MDBDropdownItem>{" "}
                   </NavLink>
                 </MDBDropdownMenu>
