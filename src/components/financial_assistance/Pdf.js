@@ -24,6 +24,7 @@ const Pdf = () => {
     const [hhscomplexData, setHHSComplexData] = useState(null);
     const [voucher, setVoucher] = useState(null);
 
+
     const navigate = useNavigate();
 
 
@@ -715,7 +716,100 @@ logoImage.onload = () => {
        };
 
 }
+//Medical form
 
+const handleMedicalForm =()=>{
+
+    // Create a new jsPDF instance
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const logoImage = new Image();
+    logoImage.src = logo;
+  
+  logoImage.src = logo; // Use the imported logo image
+ 
+  // Wait for the image to load before rendering it
+  logoImage.onload = () => {
+    // Add the logo image to the PDF
+    doc.addImage(
+      logoImage,
+      "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+      10,     // X position
+      10,     // Y position
+      50,     // Image width
+      25      // Image height
+    );
+ 
+    //Header Part
+    doc.rect(12,9,186,228);
+   
+    doc.setFontSize(15);
+    doc.setTextColor(24,94,26); // RGB color (dark green)
+    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
+    doc.text("Dargahs & Allied Waqf Institutions",85,28)
+    doc.setFont('helvetica', 'normal'); // Reset font style to normal
+    doc.setFontSize(9);
+    doc.setTextColor(75,93,183); // RGB color (Blue)
+    doc.text("No.2,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
+    doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+    doc.text("Tel : 080-22211356 / 22240309",145,42)
+    // doc.setTextColor(0);
+    doc.rect(12,43,186,3); 
+
+ 
+ 
+ //PDF Heading 
+ 
+    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.setFontSize(14);
+    doc.text("NO. : HHS/HMS/F.A.", 14, 52); // Adjust the Y position as needed 
+  
+  doc.setFont('calibre', 'bold'); 
+  doc.text("Date :", 155, 52); // Adjust the Y position as needed
+  doc.setFont('calibre','normal');
+  doc.text("To,", 14, 62);
+  doc.text("Sir,", 14, 102);
+  doc.setTextColor(0);
+  doc.setTextColor(24,94,26); // RGB color (dark green)
+  doc.text("Sub: Financial Assistance for Medical Treatment", 46, 108);
+  doc.setTextColor(75,93,183); // RGB color (Blue)
+
+  doc.text("Ref.:Representation from Mr./Mrs.",14,118);
+  doc.text("dated",84,127);
+
+  doc.text("With reference to the above subject, I am encloding here with a Cheque for Rs.",24,137);
+
+  doc.text("(Rupees",14,147);
+  doc.text(")",174,147);
+
+  doc.text("Vide Cheque No.",14,160);
+  doc.text("dated",130,160);
+
+  doc.text("towards Financial Assistance in respect of Mr./Mrs",14,170);
+
+  doc.text("Hospital I.P. No.",14,180);
+  doc.text("who is  getting treatment in your",127,180);
+
+  doc.text("Hospital for",14,190);
+  doc.text("disease. The amount may be utilized in respect of",94,190);
+
+  doc.text("the above said patient.",14,200);
+
+  doc.text("the receipt of the same may please be acknowledged.",14,210);
+
+  doc.text("Yours Faithfully,",152,209);
+ 
+  doc.text("Special Offer",152,223);
+  doc.text("HHS & HMS COMPLEX",144,229);
+ 
+ 
+  // Save the PDF with a specific name
+  doc.save("medical_receipt.pdf");
+  // console.log("Download PDF clicked");
+ };
+        
+
+}
 return (
     <div className="">
       <Header/>
@@ -773,10 +867,16 @@ return (
         >
           <FaDownload style={{ marginRight: "5px" }} /> Voucher
         </Button>
+        <Button 
+          variant="primary"
+          onClick={handleMedicalForm}
+          style={{ height: "60px", width: "150px", marginTop: "15px" , lineHeight: "25px" }}
+        >
+          <FaDownload  /> Medical Form
+        </Button>
       </div>
       </div>
-
   );
 };
 
-export default Pdf;
+export default Pdf
