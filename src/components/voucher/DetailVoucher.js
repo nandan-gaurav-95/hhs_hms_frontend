@@ -185,7 +185,7 @@ const DetailVoucher = () => {
               onClick={() => navigate(-1)}
             />
           </div>
-          <h2 className="mb-4 text-center entity-column">Voucher Details of </h2>
+          <h2 className="mb-4 text-center entity-column">Details of Voucher No: {voucher?.v_id} </h2>
           <Container
             className="detail w-75 text-center"
             style={{

@@ -135,7 +135,7 @@ const BloodCenter = () => {
           <Col className="col-sm-5 ">
             <Input
               label="Investigation Charges "
-              type="text"
+              type="number"
               name="invstigationCharges"
               value={formData.invstigationCharges}
               onChange={handleChange}
@@ -144,7 +144,7 @@ const BloodCenter = () => {
           <Col className="col-sm-5 ">
             <Input
               label="Unit No"
-              type="text"
+              type="number"
               name="unitNo"
               value={formData.unitNo}
               onChange={handleChange}

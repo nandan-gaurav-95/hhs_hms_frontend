@@ -50,7 +50,7 @@ const ViewHHSComplex = () => {
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="title">HHS Complex Details</h2>
+      <h2 className="title">Details of HHS Complex</h2>
 
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">

@@ -121,7 +121,7 @@ const HHSComplex = () => {
           <Col className="col-sm-5 ">
             <Input
               label="Rupee In Words "
-              type="number"
+              type="text"
               name="rupeeInWords"
               value={formData.rupeeInWords}
               onChange={handleChange}
@@ -166,7 +166,7 @@ const HHSComplex = () => {
           <Col className="col-sm-5 ">
             <Input
               label="Cheque No"
-              type="number"
+              type="text"
               name="chequeNo"
               value={formData.chequeNo}
               onChange={handleChange}

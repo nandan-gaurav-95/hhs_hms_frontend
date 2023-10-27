@@ -180,7 +180,7 @@ const handleHHSComplexPdf = () => {
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">HHS Complex Details</h2>
+    <h2 className="mb-4 text-center entity-column">Details of HHS Complex </h2>
     <Container
       className="detail w-75 text-center"
       style={{

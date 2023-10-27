@@ -180,7 +180,7 @@ const DetailDargahComplex = () => {
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">Dergah Details</h2>
+    <h2 className="mb-4 text-center entity-column">Details of {dergah?.receiverName} </h2>
     <Container
       className="detail w-75 text-center"
       style={{

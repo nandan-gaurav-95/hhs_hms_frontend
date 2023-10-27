@@ -70,8 +70,6 @@ const Voucher = () => {
               onChange={handleChange}
             />
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
               label="Amount Paid"
@@ -81,6 +79,9 @@ const Voucher = () => {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+          
 
           <Col className="col-sm-5 ">
             <Input
@@ -91,17 +92,18 @@ const Voucher = () => {
               onChange={handleChange}
             />
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-        <Col className="col-sm-5 ">
+          <Col className="col-sm-5 ">
             <Input
               label="Cheque No"
-              type="number"
+              type="text"
               name="chequeNo"
               value={formData.chequeNo}
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+       
           <Col className="col-sm-5 ">
             <Input
               label="Dated"
@@ -111,9 +113,7 @@ const Voucher = () => {
               onChange={handleChange}
             />
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-        <Col className="col-sm-5 ">
+          <Col className="col-sm-5 ">
             <Input
               label="Rupees"
               type="number"
@@ -122,6 +122,9 @@ const Voucher = () => {
               onChange={handleChange}
             />
           </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+       
         <Col className="col-sm-5 ">
             <Input
               label="Remark"

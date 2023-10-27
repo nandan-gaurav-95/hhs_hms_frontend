@@ -182,7 +182,7 @@ const handleParkingrPdf = () => {
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">Parking Details</h2>
+    <h2 className="mb-4 text-center entity-column">Parking Details of {parking?.receiverName} </h2>
     <Container
       className="detail w-75 text-center"
       style={{

@@ -92,7 +92,7 @@ const MedicalAck = () => {
           <Col className="col-sm-5 ">
             <Input
               label="Cheque No"
-              type="number"
+              type="text"
               name="chequeNo"
               value={formData.chequeNo}
               onChange={handleChange}
