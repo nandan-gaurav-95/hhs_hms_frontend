@@ -35,9 +35,9 @@ const ViewVoucher = () => {
   useEffect(() => {
     fetchAllvoucher();
   }, []);
-  //   const handleEditProfile=(id)=>{
-  //     navigate (`/`)
-  //    }
+     const handleEditProfile=(v_id)=>{
+       navigate (`/editvoucher/${v_id}`)
+    }
   //    const handleDelete=(id)=>{
   //     navigate (`/`)
   //    }
@@ -94,7 +94,12 @@ const ViewVoucher = () => {
                         <Dropdown.Item
                           onClick={() => handleViewProfile(vouId)}
                         >
-                          View Profile
+                          View Voucher
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleEditProfile(vouId)}
+                        >
+                          Edit Voucher
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
-import { Dropdown } from "react-bootstrap"; 
+import { Dropdown } from "react-bootstrap";
 import { BloodCenterService } from "../../services/BloodCenterService";
 const ViewBloodCenter = () => {
   const [allbloodcenter, setAllbloodcenter] = useState({});
-
 
   const navigate = useNavigate();
   const handleViewProfile = (bc_id) => {
@@ -20,11 +19,11 @@ const ViewBloodCenter = () => {
       const response = await BloodCenterService.getAllBloodCenter();
       console.log("API Response:", response);
       if (Array.isArray(response)) {
-        const bloodcenterobject={};
+        const bloodcenterobject = {};
         response.forEach((bloodcenter) => {
           bloodcenterobject[bloodcenter.bc_id] = bloodcenter;
-          });
-          setAllbloodcenter(bloodcenterobject);
+        });
+        setAllbloodcenter(bloodcenterobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -35,9 +34,9 @@ const ViewBloodCenter = () => {
   useEffect(() => {
     fetchAllbloodcenter();
   }, []);
-  //   const handleEditProfile=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleEditProfile = (bc_id) => {
+    navigate(`/editbloodcenter/${bc_id}`);
+  };
   //    const handleDelete=(id)=>{
   //     navigate (`/`)
   //    }
@@ -55,7 +54,7 @@ const ViewBloodCenter = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
-          <th>Sr.No</th>
+            <th>Sr.No</th>
             <th>Receiver Name</th>
             <th>Date</th>
             <th>I.P. NO.</th>
@@ -77,7 +76,7 @@ const ViewBloodCenter = () => {
                 <td>{bloodcenter.age}</td>
                 <td>{bloodcenter.gender}</td>
                 <td>{bloodcenter.hospitalName}</td>
-              
+
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -88,10 +87,11 @@ const ViewBloodCenter = () => {
                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item
-                          onClick={() => handleViewProfile(bcId)}
-                        >
-                          View Profile
+                        <Dropdown.Item onClick={() => handleViewProfile(bcId)}>
+                          View BloodCenter
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleEditProfile(bcId)}>
+                         Edit BloodCenter
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

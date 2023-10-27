@@ -60,7 +60,6 @@ import Payment from "./components/daybook/Payment";
 import Receipt from "./components/daybook/Receipt";
 import GirlsHostel from "./components/impressed_cashbook/GirlsHostel"
 
-import Pdf from "./components/financial_assistance/Pdf";
 
 import Scholarship from "./components/financial_assistance/Scholarship";
 import Medicalaid from "./components/financial_assistance/Medicalaid";
@@ -97,6 +96,16 @@ import DetailDargahComplex from "./components/hhs&dargahcompex/DetailDargahCompl
 import DetailHHSComplex from "./components/hhs&dargahcompex/DetailHHSComplex";
 import DetailBloodCenter from "./components/medical/DetailBloodCenter";
 import DetailsAmbulanceVan from "./components/medical/DetailsAmbulanceVan";
+
+//Edit
+import EditElectricityBill from "./components/electricity/EditElectricityBill";
+import EditVoucher from "./components/voucher/EditVoucher";
+import EditHHSComplex from "./components/hhs&dargahcompex/EditHHSComplex";
+import EditDargahComplex from "./components/hhs&dargahcompex/EditDargahComplex";
+import EditAmbulanceVan from "./components/medical/EditAmbulanceVan";
+import EditBloodCenter from "./components/medical/EditBloodCenter";
+import EditParking from "./components/parking/EditParking";
+import EditMedicalAck from "./components/medical/EditMedicalAck";
 
 function App() {
   return (
@@ -214,7 +223,6 @@ function App() {
           <Route path="/paymentt" element={<Payment />}></Route>
           <Route path="/receiptt" element={<Receipt />}></Route>
 
-          <Route path="/pdf" element={<Pdf />}></Route>
           <Route path="/scholarship" element={<Scholarship />}></Route>
           <Route path="/medicalaid" element={<Medicalaid />}></Route>
           <Route path="/hostel" element={<GirlsHostel />}></Route>
@@ -250,6 +258,16 @@ function App() {
           <Route path="/electricitybill" element={<ElectricityBill />}></Route>
           <Route path="/viewelectricitybill" element={<ViewElectricityBill />}></Route>
           <Route path="/detailelectricitybill/:id" element={<DetailElectricityBill />}></Route>
+
+          <Route path="/editelectricitybill/:id" element={<EditElectricityBill />}></Route>
+          <Route path="/editvoucher/:id" element={<EditVoucher />}></Route>
+          <Route path="/edithhscomplex/:id" element={<EditHHSComplex />}></Route>
+          <Route path="/editdargahcomplex/:id" element={<EditDargahComplex />}></Route>
+          <Route path="/editambulancevan/:id" element={<EditAmbulanceVan />}></Route>
+          <Route path="/editbloodcenter/:id" element={<EditBloodCenter />}></Route>
+          <Route path="/editparking/:id" element={<EditParking />}></Route>
+          <Route path="/editmedicalack/:id" element={<EditMedicalAck />}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>

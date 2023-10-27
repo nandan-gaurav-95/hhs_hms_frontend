@@ -37,9 +37,9 @@ const ViewElectricityBill = () => {
   useEffect(() => {
     fetchAllectricitybill();
   }, []);
-  //   const handleEditProfile=(id)=>{
-  //     navigate (`/`)
-  //    }
+     const handleEditProfile=(ele_id)=>{
+       navigate (`/editelectricitybill/${ele_id}`)
+      }
   //    const handleDelete=(id)=>{
   //     navigate (`/`)
   //    }
@@ -94,7 +94,12 @@ const ViewElectricityBill = () => {
                         <Dropdown.Item
                           onClick={() => handleViewProfile(eleId)}
                         >
-                          View Profile
+                          View ElectricityBill
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleEditProfile(eleId)}
+                        >
+                        Edit ElectricityBill
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

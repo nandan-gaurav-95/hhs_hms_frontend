@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
@@ -10,7 +10,6 @@ import { AmbulanceService } from "../../services/AmbulanceService";
 const ViewAmbulanceVan = () => {
   const [allambulancevan, setAllambulancevan] = useState({});
 
-
   const navigate = useNavigate();
   const handleViewProfile = (amb_id) => {
     navigate(`/detailsambulancevan/${amb_id}`);
@@ -20,11 +19,11 @@ const ViewAmbulanceVan = () => {
       const response = await AmbulanceService.getAllAmbulance();
       console.log("API Response Ambulance:", response);
       if (Array.isArray(response)) {
-        const ambulanceobject={};
+        const ambulanceobject = {};
         response.forEach((ambulance) => {
           ambulanceobject[ambulance.amb_id] = ambulance;
-          });
-          setAllambulancevan(ambulanceobject);
+        });
+        setAllambulancevan(ambulanceobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -35,9 +34,9 @@ const ViewAmbulanceVan = () => {
   useEffect(() => {
     fetchAllambulancevan();
   }, []);
-  //   const handleEditProfile=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleEditProfile = (amb_id) => {
+    navigate(`/editambulancevan/${amb_id}`);
+  };
   //    const handleDelete=(id)=>{
   //     navigate (`/`)
   //    }
@@ -75,7 +74,7 @@ const ViewAmbulanceVan = () => {
                 <td>{ambulance.accHolderName}</td>
                 <td>{ambulance.rupee}</td>
                 <td>{ambulance.remark}</td>
-              
+
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -83,13 +82,14 @@ const ViewAmbulanceVan = () => {
                         variant="secondary"
                         id="dropdownMenuButton"
                       >
-                        &#8942;
+                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item
-                          onClick={() => handleViewProfile(ambId)}
-                        >
-                          View Profile
+                        <Dropdown.Item onClick={() => handleViewProfile(ambId)}>
+                          View Ambulance Van
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleEditProfile(ambId)}>
+                      Edit Ambulance Van
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

@@ -35,9 +35,9 @@ const ViewMedicalAck = () => {
   useEffect(() => {
     fetchAllmedicalack();
   }, []);
-  //   const handleEditProfile=(id)=>{
-  //     navigate (`/`)
-  //    }
+     const handleEditProfile=(mdack_id)=>{
+      navigate (`/editmedicalack/${mdack_id}`)
+      }
   //    const handleDelete=(id)=>{
   //     navigate (`/`)
   //    }
@@ -94,7 +94,12 @@ const ViewMedicalAck = () => {
                         <Dropdown.Item
                           onClick={() => handleViewProfile(mdackId)}
                         >
-                          View Profile
+                          View Medical Ack
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleEditProfile(mdackId)}
+                        >
+                          Edit Medical Ack
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

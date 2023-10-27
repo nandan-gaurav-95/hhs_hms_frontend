@@ -35,9 +35,9 @@ const ViewHHSComplex = () => {
   useEffect(() => {
     fetchAllhhscomplex();
   }, []);
-//   const handleEditProfile=(id)=>{
-//     navigate (`/`)
-//    }
+   const handleEditProfile=(hc_id)=>{
+   navigate (`/edithhscomplex/${hc_id}`)
+   }
 //    const handleDelete=(id)=>{
 //     navigate (`/`)
 //    }
@@ -50,7 +50,7 @@ const ViewHHSComplex = () => {
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="title">Details of HHS Complex</h2>
+      <h2 className="title">HHS Complex Details</h2>
 
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
@@ -87,7 +87,10 @@ const ViewHHSComplex = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
               <Dropdown.Item onClick={() => handleViewProfile(hcId)}>
-                          View Profile
+                          View HHS Complex
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleEditProfile(hcId)}>
+                        Edit HHS Complex
                         </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
@@ -6,10 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
-import { ParkingService } from "../../services/ParkingService"
+import { ParkingService } from "../../services/ParkingService";
 const ViewParking = () => {
   const [allparking, setAllparking] = useState({});
- 
 
   const navigate = useNavigate();
   const handleViewProfile = (p_id) => {
@@ -20,11 +19,11 @@ const ViewParking = () => {
       const response = await ParkingService.getAllParking();
       console.log("API Response:", response);
       if (Array.isArray(response)) {
-        const parkingobject={};
+        const parkingobject = {};
         response.forEach((parking) => {
           parkingobject[parking.p_id] = parking;
-          });
-          setAllparking(parkingobject);
+        });
+        setAllparking(parkingobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -35,9 +34,9 @@ const ViewParking = () => {
   useEffect(() => {
     fetchAllparking();
   }, []);
-  //   const handleEditProfile=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleEditProfile = (p_id) => {
+    navigate(`/editparking/${p_id}`);
+  };
   //    const handleDelete=(id)=>{
   //     navigate (`/`)
   //    }
@@ -90,7 +89,12 @@ const ViewParking = () => {
                         <Dropdown.Item
                           onClick={() => handleViewProfile(parkId)}
                         >
-                          View Profile
+                          View Parking
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleEditProfile(parkId)}
+                        >
+                          Edit Parking
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
