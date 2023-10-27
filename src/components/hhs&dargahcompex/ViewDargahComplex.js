@@ -35,7 +35,7 @@ const ViewDargahComplex = () => {
     fetchAlldaraghcomplex();
   }, []);
      const handleEditProfile=(dc_id)=>{
-      navigate (`/edithhscomplex/${dc_id}`)
+      navigate (`/editdargahcomplex/${dc_id}`)
      }
   //    const handleDelete=(id)=>{
   //     navigate (`/`)

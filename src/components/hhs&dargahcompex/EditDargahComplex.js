@@ -124,9 +124,9 @@ function EditDargahComplex() {
               <strong>Rupees:</strong>
               <input
                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                type="text"
-                name="rupees"
-                value={updateDargahComplex.rupees}
+                type="number"
+                name="rupee"
+                value={updateDargahComplex.rupee}
                 onChange={handleChange}
               />
                <strong>Rupee In Words:</strong>
@@ -159,7 +159,7 @@ function EditDargahComplex() {
 
               <input
                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                type="number"
+                type="text"
                 name="chequeNo"
                 value={updateDargahComplex.chequeNo}
                 onChange={handleChange}

@@ -159,7 +159,7 @@ function EditParking() {
 
               <input
                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                type="number"
+                type="text"
                 name="chequeNo"
                 value={updateParking.chequeNo}
                 onChange={handleChange}

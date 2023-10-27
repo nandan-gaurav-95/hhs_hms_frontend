@@ -176,7 +176,7 @@ function EditHHSComplex() {
 
               <input
                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                type="number"
+                type="text"
                 name="chequeNo"
                 value={updateHHSComplex.chequeNo}
                 onChange={handleChange}
