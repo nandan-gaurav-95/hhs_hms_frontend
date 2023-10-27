@@ -148,15 +148,6 @@ function EditElectricityBill() {
                 value={updateElectricityBill.unitSancd}
                 onChange={handleChange}
               />
-              <strong>Date Of Reading:</strong>
-
-              <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                type="date"
-                name="dateOfReading"
-                value={updateElectricityBill.dateOfReading}
-                onChange={handleChange}
-              />
             </Col>
             <Col className="col-md-5">
               <strong>Sanction Load:</strong>
@@ -199,15 +190,20 @@ function EditElectricityBill() {
                 value={updateElectricityBill.unitConsumed}
                 onChange={handleChange}
               />
-              <strong>Total:</strong>
-              <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                type="text"
-                name="total"
-                value={updateElectricityBill.total}
-                onChange={handleChange}
-              />
             </Col>
+            <Row className="justify-content-center">
+              <Col className="col-sm-5 ">
+                <strong>Date Of Reading:</strong>
+
+                <input
+                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  type="date"
+                  name="dateOfReading"
+                  value={updateElectricityBill.dateOfReading}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Row>
           </Row>
         </ul>
       </Row>

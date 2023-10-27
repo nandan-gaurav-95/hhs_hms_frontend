@@ -125,8 +125,8 @@ function EditParking() {
               <input
                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                 type="text"
-                name="rupees"
-                value={updateParking.rupees}
+                name="rupee"
+                value={updateParking.rupee}
                 onChange={handleChange}
               />
                <strong>Rupee In Words:</strong>

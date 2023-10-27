@@ -162,7 +162,7 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "bold");
       doc.text("Dated :", 40, 135); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.chequeNo}`, 55, 135); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.dated}`, 55, 135); //(X, Y, Actual name)
   
 
       doc.text("Signature of Manager", 140, 135);
