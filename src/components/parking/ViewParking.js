@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
@@ -6,14 +6,35 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
+import { ParkingService } from "../../services/ParkingService"
 const ViewParking = () => {
-  const [viewparking, setAllViewparking] = useState({});
-  const [allViewparking] = useState({});
+  const [allparking, setAllparking] = useState({});
+ 
 
   const navigate = useNavigate();
-  const handleViewProfile = (id) => {
-    navigate(`/`);
+  const handleViewProfile = (p_id) => {
+    navigate(`/detailparking/${p_id}`);
   };
+  const fetchAllparking = async () => {
+    try {
+      const response = await ParkingService.getAllParking();
+      console.log("API Response:", response);
+      if (Array.isArray(response)) {
+        const parkingobject={};
+        response.forEach((parking) => {
+          parkingobject[parking.p_id] = parking;
+          });
+          setAllparking(parkingobject);
+      } else {
+        console.error("Invalid data received from the API:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching parking data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllparking();
+  }, []);
   //   const handleEditProfile=(id)=>{
   //     navigate (`/`)
   //    }
@@ -34,27 +55,28 @@ const ViewParking = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
+            <th>Sr.No.</th>
             <th>Receiver Name</th>
             <th>Date</th>
             <th>Rupee</th>
-            <th>Rupees in Words</th>
             <th>Parking Rent</th>
             <th>Month</th>
+            <th>Remark</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allViewparking).map((propId, index) => {
-            const property = allViewparking[propId];
+          {Object.keys(allparking).map((parkId, index) => {
+            const parking = allparking[parkId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{viewparking.ReceiverName}</td>
-                <td>{viewparking.Date}</td>
-                <td>{viewparking.Rupee}</td>
-                <td>{viewparking.RupeesinWords}</td>
-                <td>{viewparking.ParkingRent}</td>
-                <td>{viewparking.Month}</td>
+                <td>{parking.receiverName}</td>
+                <td>{parking.date}</td>
+                <td>{parking.rupee}</td>
+                <td>{parking.parkingRent}</td>
+                <td>{parking.month}</td>
+                <td>{parking.remark}</td>
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -66,7 +88,7 @@ const ViewParking = () => {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          onClick={() => handleViewProfile(propId)}
+                          onClick={() => handleViewProfile(parkId)}
                         >
                           View Profile
                         </Dropdown.Item>

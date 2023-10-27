@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
@@ -6,14 +6,35 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
+import { VoucherService } from "../../services/VoucherService";
 const ViewVoucher = () => {
-  const [viewvoucher, setAllViewvoucher] = useState({});
-  const [allViewvoucher] = useState({});
-
+  const [allvoucher, setAllvoucher] = useState({});
+  
   const navigate = useNavigate();
-  const handleViewProfile = (id) => {
-    navigate(`/`);
+  const handleViewProfile = (v_id) => {
+    navigate(`/detailvoucher/${v_id}`);
   };
+
+  const fetchAllvoucher = async () => {
+    try {
+      const response = await VoucherService.getAllVoucher();
+      console.log("API Respons:", response);
+      if (Array.isArray(response)) {
+        const voucherobject={};
+        response.forEach((voucher) => {
+          voucherobject[voucher.v_id] = voucher;
+          });
+          setAllvoucher(voucherobject);
+      } else {
+        console.error("Invalid data received from the API:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching voucher data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllvoucher();
+  }, []);
   //   const handleEditProfile=(id)=>{
   //     navigate (`/`)
   //    }
@@ -34,27 +55,31 @@ const ViewVoucher = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
-            <th>Voucher ID</th>
+          <th>Sr. No.</th>
+            
             <th>Date</th>
             <th>Amount Paid</th>
             <th>Towards</th>
             <th>Cheque No.</th>
             <th>Dated</th>
+            <th>Rupees</th>
+            <th>Remark</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allViewvoucher).map((propId, index) => {
-            const property = allViewvoucher[propId];
+          {Object.keys(allvoucher).map((vouId, index) => {
+            const voucher = allvoucher[vouId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{viewvoucher.VoucherID}</td>
-                <td>{viewvoucher.Date}</td>
-                <td>{viewvoucher.AmountPaid}</td>
-                <td>{viewvoucher.Towards}</td>
-                <td>{viewvoucher.ChequeNo}</td>
-                <td>{viewvoucher.Dated}</td>
+                <td>{voucher.date}</td>
+                <td>{voucher.amtPaid}</td>
+                <td>{voucher.towards}</td>
+                <td>{voucher.chequeNo}</td>
+                <td>{voucher.dated}</td>
+                <td>{voucher.rupees}</td>
+                <td>{voucher.remark}</td>
               
                 <td>
                   <div className="dropdown">
@@ -67,7 +92,7 @@ const ViewVoucher = () => {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          onClick={() => handleViewProfile(propId)}
+                          onClick={() => handleViewProfile(vouId)}
                         >
                           View Profile
                         </Dropdown.Item>

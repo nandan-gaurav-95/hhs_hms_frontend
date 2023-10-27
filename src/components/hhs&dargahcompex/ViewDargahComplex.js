@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
@@ -6,14 +6,34 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from 'react-bootstrap';
+import { DargahComplexService } from "../../services/DargahComplexService";
 const ViewDargahComplex = () => {
-  const [viewdaraghcomplex, setAllViewdaraghcomplex] = useState({});
-  const [allViewdaraghcomplex] = useState({});
+  const [alldaraghcomplex, setAlldaraghcomplex] = useState({});
   
   const navigate = useNavigate();
-  const handleViewProfile=(id)=>{
-    navigate (`/`)
+  const handleViewProfile=(dc_id)=>{
+    navigate (`/detaildergah/${dc_id}`)
    }
+   const fetchAlldaraghcomplex = async () => {
+    try {
+      const response = await DargahComplexService.getAllDargahComplex();
+      console.log("API Response dargah complex:", response);
+      if (Array.isArray(response)) {
+        const dargahomplexobject={};
+        response.forEach((dargah) => {
+          dargahomplexobject[dargah.dc_id] = dargah;
+          });
+          setAlldaraghcomplex(dargahomplexobject);
+      } else {
+        console.error("Invalid data received from the API:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching dargah complex data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAlldaraghcomplex();
+  }, []);
 //   const handleEditProfile=(id)=>{
 //     navigate (`/`)
 //    }
@@ -34,29 +54,30 @@ const ViewDargahComplex = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
+          <th>Sr. No.</th>
           <th>Receiver Name</th>
           <th>Date</th>
            <th>Rupee</th>
-          <th>Rupees in Words</th>
             <th>Shop Rent</th>
             <th>Month</th>
             <th>Cheque No.</th>
+            <th>Draw On</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-  {Object.keys(allViewdaraghcomplex).map((propId, index) => {
-    const property = allViewdaraghcomplex[propId];
+  {Object.keys(alldaraghcomplex).map((dcId, index) => {
+    const dargahcom = alldaraghcomplex[dcId];
     return (
       <tr key={index}>
         <td>{index + 1}</td>
-        <td>{viewdaraghcomplex.ReceiverName}</td>
-        <td>{viewdaraghcomplex.Date}</td>
-       <td>{viewdaraghcomplex.Rupee}</td>
-        <td>{viewdaraghcomplex.RupeesinWords}</td> 
-        <td>{viewdaraghcomplex.ShopRent}</td>
-        <td>{viewdaraghcomplex.Month}</td>
-        <td>{viewdaraghcomplex.ChequeNo}</td>
+        <td>{dargahcom.receiverName}</td>
+        <td>{dargahcom.date}</td>
+       <td>{dargahcom.rupee}</td>
+        <td>{dargahcom.shopRent}</td>
+        <td>{dargahcom.month}</td>
+        <td>{dargahcom.chequeNo}</td>
+        <td>{dargahcom.drawnOn}</td> 
         <td>
           <div className="dropdown">
             <Dropdown>
@@ -64,7 +85,7 @@ const ViewDargahComplex = () => {
                 &#8942;
               </Dropdown.Toggle>
               <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleViewProfile(propId)}>
+              <Dropdown.Item onClick={() => handleViewProfile(dcId)}>
                           View Profile
                         </Dropdown.Item>
               </Dropdown.Menu>

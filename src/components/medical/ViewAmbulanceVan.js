@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
@@ -6,14 +6,35 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
+import { AmbulanceService } from "../../services/AmbulanceService";
 const ViewAmbulanceVan = () => {
-  const [viewambulancevan, setAllViewambulancevan] = useState({});
-  const [allViewambulancevan] = useState({});
+  const [allambulancevan, setAllambulancevan] = useState({});
+
 
   const navigate = useNavigate();
-  const handleViewProfile = (id) => {
+  const handleViewProfile = (amb_id) => {
     navigate(`/`);
   };
+  const fetchAllambulancevan = async () => {
+    try {
+      const response = await AmbulanceService.getAllAmbulance();
+      console.log("API Response Ambulance:", response);
+      if (Array.isArray(response)) {
+        const ambulanceobject={};
+        response.forEach((ambulance) => {
+          ambulanceobject[ambulance.amb_id] = ambulance;
+          });
+          setAllambulancevan(ambulanceobject);
+      } else {
+        console.error("Invalid data received from the API:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching Ambulance data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllambulancevan();
+  }, []);
   //   const handleEditProfile=(id)=>{
   //     navigate (`/`)
   //    }
@@ -34,23 +55,26 @@ const ViewAmbulanceVan = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
+            <th>Sr. No.</th>
             <th>Receiver Name</th>
             <th>Date</th>
             <th>Account Holder Name</th>
             <th>Rupee</th>
+            <th>Remark</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allViewambulancevan).map((propId, index) => {
-            const property = allViewambulancevan[propId];
+          {Object.keys(allambulancevan).map((ambId, index) => {
+            const ambulance = allambulancevan[ambId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{viewambulancevan.ReceiverName}</td>
-                <td>{viewambulancevan.Date}</td>
-                <td>{viewambulancevan.AccountHolderName}</td>
-                <td>{viewambulancevan.Rupee}</td>
+                <td>{ambulance.receiverName}</td>
+                <td>{ambulance.date}</td>
+                <td>{ambulance.accHolderName}</td>
+                <td>{ambulance.rupee}</td>
+                <td>{ambulance.remark}</td>
               
                 <td>
                   <div className="dropdown">
@@ -63,7 +87,7 @@ const ViewAmbulanceVan = () => {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          onClick={() => handleViewProfile(propId)}
+                          onClick={() => handleViewProfile(ambId)}
                         >
                           View Profile
                         </Dropdown.Item>

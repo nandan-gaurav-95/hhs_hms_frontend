@@ -28,7 +28,7 @@ const Pdf = () => {
     const navigate = useNavigate();
 
 
-    // Rent pdf
+    // Ambulance pdf
   const handleAmbulancePdf = () => {
       // Create a new jsPDF instance
       const doc = new jsPDF('p', 'mm', 'a4');

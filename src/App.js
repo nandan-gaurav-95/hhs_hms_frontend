@@ -89,6 +89,13 @@ import ViewVoucher from "./components/voucher/ViewVoucher";
 //Electricity
 import ElectricityBill from "./components/electricity/ElectricityBill";
 import ViewElectricityBill from "./components/electricity/ViewElectricityBill";
+import DetailMedicalAck from "./components/medical/DetailMedicalAck";
+import DetailElectricityBill from "./components/electricity/DetailElectricityBill";
+import DetailVoucher from "./components/voucher/DetailVoucher";
+import DetailParking from "./components/parking/DetailParking";
+import DetailDargahComplex from "./components/hhs&dargahcompex/DetailDargahComplex";
+import DetailHHSComplex from "./components/hhs&dargahcompex/DetailHHSComplex";
+import DetailBloodCenter from "./components/medical/DetailBloodCenter";
 
 function App() {
   return (
@@ -213,21 +220,34 @@ function App() {
 
           <Route path="/hhscomplex" element={<HHSComplex />}></Route>
           <Route path="/viewhhscomplex" element={<ViewHHSComplex/>}></Route>
+          <Route path="/detailhhscomplex/:id" element={<DetailHHSComplex />}></Route>
+
           <Route path="/dargahcomplex" element={<DargahComplex />}></Route>
           <Route path="/viewdargahcomplex" element={<ViewDargahComplex/>}></Route>
+          <Route path="/detaildergah/:id" element={<DetailDargahComplex />}></Route>
+
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
           <Route path="/viewbloodcenter" element={<ViewBloodCenter />}></Route>
+          <Route path="/detailbloodcenter/:id" element={<DetailBloodCenter />}></Route>
+
           <Route path="/ambulancevan" element={<AmbulanceVan />}></Route>
           <Route path="/viewambulancevan" element={<ViewAmbulanceVan />}></Route>
+          
           <Route path="/parking" element={<Parking />}></Route>
           <Route path="/viewparking" element={<ViewParking />}></Route>
+          <Route path="/detailparking/:id" element={<DetailParking />}></Route>
+
           <Route path="/medicalack" element={<MedicalAck />}></Route>
           <Route path="/viewmedicalack" element={<ViewMedicalAck/>}></Route>
+          <Route path="/detailmedicalack/:id" element={<DetailMedicalAck />}></Route>
+
           <Route path="/voucher" element={<Voucher />}></Route>
           <Route path="/viewvoucher" element={<ViewVoucher />}></Route>
+          <Route path="/detailvoucher/:id" element={<DetailVoucher />}></Route>
+
           <Route path="/electricitybill" element={<ElectricityBill />}></Route>
           <Route path="/viewelectricitybill" element={<ViewElectricityBill />}></Route>
-
+          <Route path="/detailelectricitybill/:id" element={<DetailElectricityBill />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
