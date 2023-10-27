@@ -25,6 +25,7 @@ const DetailDargahComplex = () => {
     const fetchDergahById = async () => {
       try {
         const response = await axios.get(`${APIS.GETDARGAHCOMPLEXBYID}/${id}`);
+        console.log("dargah",response.data);
         setDargah(response.data);
       } catch (error) {
         console.error("Error fetching dergah:", error);
@@ -48,7 +49,7 @@ const DetailDargahComplex = () => {
   );
 
   if (!dergah) {
-    return <div>ElectricityBill not found.</div>;
+    return <div>Dargah Data not found.</div>;
   }
 
   const dergahKeys = Object.keys(dergah);
@@ -90,11 +91,11 @@ const DetailDargahComplex = () => {
     doc.setFontSize(10);
     doc.text("Receipt No.", 20, 50); // Adjust the Y position as needed 
     doc.setFont('helvetica', 'normal');
-    doc.text(`${dergah}`, 50, 50); 
+    doc.text(`${dergah?.dc_id}`, 50, 50); 
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Date :", 155, 50);
+    doc.text("Date :", 150, 50);
     doc.setFont('helvetica', 'normal');
-    doc.text(`${dergah}`, 170, 50); 
+    doc.text(`${dergah?.date}`, 160, 50); 
 
 
  //Received from :
@@ -103,7 +104,7 @@ const DetailDargahComplex = () => {
    doc.text("Received from :", 20, 71); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
    doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${dergah}`,55, 71); // (X, Y,Actual name)
+   doc.text(`${dergah?.receiverName}`,55, 71); // (X, Y,Actual name)
 
     //sum of rupees
     doc.setFontSize(12); // Set font size for labels
@@ -111,7 +112,7 @@ const DetailDargahComplex = () => {
     doc.text("a sum of Rupees:", 85, 91); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${dergah}`, 130, 91); // (X, Y,Actual name)
+    doc.text(`${dergah?.rupee}`, 130, 91); // (X, Y,Actual name)
 
     //rupees in the words
     doc.setFontSize(12); // Set font size for labels
@@ -119,7 +120,7 @@ const DetailDargahComplex = () => {
     doc.text("Rupees in the words:", 20, 101); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${dergah}`, 65, 101); // (X, Y,Actual name)
+    doc.text(`${dergah?.rupeeInWords}`, 65, 101); // (X, Y,Actual name)
 
       //cash/DD/premises
       doc.setFontSize(12); // Set font size for labels
@@ -127,7 +128,7 @@ const DetailDargahComplex = () => {
       doc.text("by Cash / D.D. towards the rent for shop / Premises No.", 20, 121); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${dergah}`, 125, 121); // (X, Y,Actual name)
+      doc.text(`${dergah?.shopRent}`, 125, 121); // (X, Y,Actual name)
 
       //for the month 
       doc.setFontSize(12); // Set font size for labels
@@ -135,7 +136,7 @@ const DetailDargahComplex = () => {
       doc.text("For the Month of", 20, 131); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${dergah}`, 55, 131); // (X, Y,Actual name)
+      doc.text(`${dergah?.month}`, 55, 131); // (X, Y,Actual name)
 
        //cheque/DD no
        doc.setFontSize(12); // Set font size for labels
@@ -143,7 +144,7 @@ const DetailDargahComplex = () => {
        doc.text("Cheque / D.D. No.", 20, 141); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${dergah}`, 60, 141); // (X, Y,Actual name)
+       doc.text(`${dergah?.chequeNo}`, 60, 141); // (X, Y,Actual name)
 
         //dated
         doc.setFontSize(12); // Set font size for labels
@@ -151,7 +152,7 @@ const DetailDargahComplex = () => {
         doc.text("Dated :", 100, 141); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
         doc.setFontSize(10); // Reset font size to normal
-        doc.text(`${dergah}`, 115, 141); // (X, Y,Actual name)
+        doc.text(`${dergah?.dated}`, 115, 141); // (X, Y,Actual name)
 
        //drawn on
        doc.setFontSize(12); // Set font size for labels
@@ -159,7 +160,7 @@ const DetailDargahComplex = () => {
        doc.text("Drawn on: ", 20, 151); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${dergah}`, 45, 151); // (X, Y,Actual name)
+       doc.text(`${dergah?.drawnOn}`, 45, 151); // (X, Y,Actual name)
 
         //sign
         doc.setFontSize(12); // Set font size for labels
@@ -179,7 +180,7 @@ const DetailDargahComplex = () => {
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">Dergah Details of </h2>
+    <h2 className="mb-4 text-center entity-column">Dergah Details</h2>
     <Container
       className="detail w-75 text-center"
       style={{
@@ -209,9 +210,9 @@ const DetailDargahComplex = () => {
   <Button
     variant="primary"
     onClick={handleDargahComplexPdf}
-    style={{ height: "50px", width: "130px", lineHeight: "25px", marginTop: "20px" }}
+    style={{ height: "50px", width: "190px", lineHeight: "25px", marginTop: "20px" }}
   >
-    <FaDownload style={{ marginRight: "5px" }} /> Voucher
+    <FaDownload style={{ marginRight: "5px" }} /> Dargah Complex
   </Button>
  
     </Container>

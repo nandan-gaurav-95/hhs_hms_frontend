@@ -26,6 +26,7 @@ const DetailVoucher = () => {
     const fetchVoucherById = async () => {
       try {
         const response = await axios.get(`${APIS.GETVOUCHERBYID}/${id}`);
+        console.log("vvv",response.data);
         setVoucher(response.data);
       } catch (error) {
         console.error("Error fetching Voucher:", error);
@@ -92,11 +93,11 @@ const DetailVoucher = () => {
         doc.rect(10,43,175,10);//(voucher date rect. X,Y,width,height)
         doc.text("Voucher No. :", 20, 50); // Adjust the Y position as needed 
         doc.setFont('helvetica', 'normal');
-        doc.text(`${voucher}`, 50, 50); 
+        doc.text(`${voucher?.v_id}`, 50, 50); 
         doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
         doc.text("Date:", 130, 50);
         doc.setFont('helvetica', 'normal');
-        doc.text(`${voucher}`, 145, 50); 
+        doc.text(`${voucher?.date}`, 145, 50); 
       
         //Particular & amount
         doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
@@ -117,7 +118,7 @@ const DetailVoucher = () => {
         doc.text("Amount paid to:", 20, 70); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
         doc.setFontSize(10); // Reset font size to normal
-        doc.text(`${voucher}`, 50, 70); // (X, Y,Actual name)
+        doc.text(`${voucher?.amtPaid}`, 150, 70); // (X, Y,Actual name)
       
         //towards
         doc.setFontSize(12); // Set font size for labels
@@ -125,23 +126,29 @@ const DetailVoucher = () => {
         doc.text("Towards:", 20, 80); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
         doc.setFontSize(10); // Reset font size to normal
-        doc.text(`${voucher}`, 40, 80); // (X, Y,Actual name)
+        doc.text(`${voucher?.towards}`, 150, 80); // (X, Y,Actual name)
       
+        //Total amt
+        const totalAmount = (parseFloat(voucher.amtPaid) || 0) + (parseFloat(voucher.towards) || 0);
+        doc.setFont("calibre", "normal");
+        doc.setFontSize(10);
+        doc.text(`${totalAmount}`, 150, 121);
+
           //cash/cheque no.
           doc.setFontSize(12); // Set font size for labels
           doc.setFont('calibre', 'bold');
           doc.text("By Cash /Cheque No.", 20, 121); // Label "Name:"
           doc.setFont('calibre', 'normal'); // Reset font style to normal
           doc.setFontSize(10); // Reset font size to normal
-          doc.text(`${voucher}`, 65, 121); // (X, Y,Actual name)
+          doc.text(`${voucher?.chequeNo}`, 65, 121); // (X, Y,Actual name)
       
           //Dated
           doc.setFontSize(12); // Set font size for labels
           doc.setFont('calibre', 'bold');
-          doc.text("Dated:", 110, 121); // Label "Name:"
+          doc.text("Dated:", 100, 121); // Label "Name:"
           doc.setFont('calibre', 'normal'); // Reset font style to normal
           doc.setFontSize(10); // Reset font size to normal
-          doc.text(`${voucher}`, 125, 121); // (X, Y,Actual name)
+          doc.text(`${voucher?.dated}`, 115, 121); // (X, Y,Actual name)
       
           //rupees
           doc.setFontSize(12); // Set font size for labels
@@ -149,7 +156,7 @@ const DetailVoucher = () => {
           doc.text("Rupees:", 20, 131); // Label "Name:"
           doc.setFont('calibre', 'normal'); // Reset font style to normal
           doc.setFontSize(10); // Reset font size to normal
-          doc.text(`${voucher}`, 45, 131); // (X, Y,Actual name)
+          doc.text(`${voucher?.rupees}`, 45, 131); // (X, Y,Actual name)
       
           
           doc.rect(145,128,20,20);//( X,Y,width,height)

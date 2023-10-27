@@ -28,6 +28,7 @@ const DetailMedicalAck = () => {
     const fetchMedicalAcknowledgeById = async () => {
       try {
         const response = await axios.get(`${APIS.GETMEDICALACKNWLDGEBYID}/${id}`);
+        console.log("medicalack",response.data);
         setMedicalack(response.data);
       } catch (error) {
         console.error("Error fetching medical Acknowledge:", error);
@@ -109,8 +110,15 @@ const handleMedicalAckPdf =()=>{
   
   doc.setFont('calibre', 'bold'); 
   doc.text("Date :", 155, 52); // Adjust the Y position as needed
+  
   doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.date}`, 170, 52); // (X, Y,Actual name)
+ 
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
   doc.text("To,", 14, 62);
+
   doc.text("Sir,", 14, 102);
   doc.setTextColor(0);
   doc.setTextColor(24,94,26); // RGB color (dark green)
@@ -118,22 +126,61 @@ const handleMedicalAckPdf =()=>{
   doc.setTextColor(75,93,183); // RGB color (Blue)
 
   doc.text("Ref.:Representation from Mr./Mrs.",14,118);
-  doc.text("dated",84,127);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.toName}`, 97, 118); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
+
+  doc.text("Dated:",84,127);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.dated}`, 100, 127); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
 
   doc.text("With reference to the above subject, I am encloding here with a Cheque for Rs.",24,137);
 
-  doc.text("(Rupees",14,147);
-  doc.text(")",174,147);
+  doc.text("(Rupees:",14,147);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.rupees}`, 35, 147); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
+  
+  doc.text(")",52,147);
 
   doc.text("Vide Cheque No.",14,160);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.chequeNo}`, 54, 160); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
+
   doc.text("dated",130,160);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.dated}`, 150, 160); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
 
   doc.text("towards Financial Assistance in respect of Mr./Mrs",14,170);
 
   doc.text("Hospital I.P. No.",14,180);
-  doc.text("who is  getting treatment in your",127,180);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.hospIpNo}`, 50, 180); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
 
+  doc.text("who is  getting treatment in your",127,180);
   doc.text("Hospital for",14,190);
+  doc.setFont('calibre','normal');
+  doc.setTextColor(0);
+  doc.text(`${medicalack?.disease}`, 44, 190); // (X, Y,Actual name)
+  doc.setFont('calibre', 'bold');
+  doc.setTextColor(75,93,183); // RGB color (Blue)
+  
   doc.text("disease. The amount may be utilized in respect of",94,190);
 
   doc.text("the above said patient.",14,200);
@@ -143,7 +190,7 @@ const handleMedicalAckPdf =()=>{
   doc.text("Yours Faithfully,",152,209);
  
   doc.text("Special Offer",152,223);
-  doc.text("HHS & HMS COMPLEX",144,229);
+  doc.text("HHS & HMS COMPLEX",141,229);
  
  
   // Save the PDF with a specific name

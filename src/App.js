@@ -96,6 +96,7 @@ import DetailParking from "./components/parking/DetailParking";
 import DetailDargahComplex from "./components/hhs&dargahcompex/DetailDargahComplex";
 import DetailHHSComplex from "./components/hhs&dargahcompex/DetailHHSComplex";
 import DetailBloodCenter from "./components/medical/DetailBloodCenter";
+import DetailsAmbulanceVan from "./components/medical/DetailsAmbulanceVan";
 
 function App() {
   return (
@@ -232,6 +233,7 @@ function App() {
 
           <Route path="/ambulancevan" element={<AmbulanceVan />}></Route>
           <Route path="/viewambulancevan" element={<ViewAmbulanceVan />}></Route>
+          <Route path="/detailsambulancevan/:id" element={<DetailsAmbulanceVan />}></Route>
           
           <Route path="/parking" element={<Parking />}></Route>
           <Route path="/viewparking" element={<ViewParking />}></Route>

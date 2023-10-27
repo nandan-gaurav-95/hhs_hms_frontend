@@ -27,6 +27,7 @@ const DetailHHSComplex = () => {
       const fetchHhscomplexById = async () => {
         try {
           const response = await axios.get(`${APIS.GETHHSCOMPLEXBYID}/${id}`);
+          console.log("complex",response.data);
           setHhscomplex(response.data);
         } catch (error) {
           console.error("Error fetching hhs complex:", error);
@@ -94,13 +95,21 @@ const handleHHSComplexPdf = () => {
   
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
       doc.rect(30, 40, 35, 10); // (X, Y, Width, Height)
-      doc.text("No.", 31, 47);
+      doc.text("No.:", 31, 47);
+      doc.text(`${hhscomplex?.hc_id}`, 39, 47); // (X, Y,Actual name)
+
       doc.rect(70, 40, 35, 10); // (X, Y, Width, Height)
       doc.text("L.F.No.", 71, 47);
+      doc.text(`${hhscomplex?.lfNo}`, 84, 47); // (X, Y,Actual name)
+
       doc.rect(110, 40, 35, 10); // (X, Y, Width, Height)
       doc.text("R.R.No.", 112, 47);
+      doc.text(`${hhscomplex?.rrNo}`, 126, 47); // (X, Y,Actual name)
+
       doc.rect(150, 40, 35, 10); // (X, Y, Width, Height)
       doc.text("Date", 152, 47);
+      doc.text(`${hhscomplex?.date}`, 162, 47); // (X, Y,Actual name)
+
       doc.setFontSize(14);
   
       //Received from :
@@ -109,7 +118,7 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "bold");
       doc.text("Received from :", 30, 71); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.text(`${hhscomplex}`, 65, 71); // (X, Y,Actual name)
+      doc.text(`${hhscomplex?.receiverName}`, 65, 71); // (X, Y,Actual name)
       doc.setFontSize(10); // Reset font size to normal
   
       //A sum of Rupees
@@ -117,11 +126,11 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "bold");
       doc.text("A sum of Rupees :", 30, 86); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex}`, 65, 86); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.rupees}`, 65, 86); //(X, Y, Actual name)
       doc.setFont("calibre", "bold");
       doc.text(" Rupees in words :", 100, 86);
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex}`, 135, 86); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.rupeeInWords}`, 135, 86); //(X, Y, Actual name)
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
   
@@ -134,7 +143,7 @@ const handleHHSComplexPdf = () => {
         105
       ); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.text(`${hhscomplex}`, 153, 105); // (X, Y,Actual name)
+      doc.text(`${hhscomplex?.eleCharges}`, 153, 105); // (X, Y,Actual name)
       doc.setFontSize(10); // Reset font size to normal
   
       //For the month of
@@ -142,22 +151,21 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "bold");
       doc.text("For the month of :", 30, 115); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex}`, 70, 115); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.month}`, 70, 115); //(X, Y, Actual name)
       doc.setFont("calibre", "bold");
       doc.text("Cheque/D.D.No :", 105, 115);
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex}`, 137, 115); //(X, Y, Actual name)
-      doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
+      doc.text(`${hhscomplex?.chequeNo}`, 137, 115); //(X, Y, Actual name)
   
       //Dated
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("Dated :", 40, 135); // Label "Name:"
-      doc.text("Signature of Manager", 140, 135);
-      doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
+      doc.setFont("calibre", "normal");
+      doc.text(`${hhscomplex?.chequeNo}`, 55, 135); //(X, Y, Actual name)
   
+
+      doc.text("Signature of Manager", 140, 135);
       // Save the PDF with a specific name
       doc.save("hhs_complex.pdf");
       // console.log("Download PDF clicked");
@@ -172,7 +180,7 @@ const handleHHSComplexPdf = () => {
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">HHS Complex Details of </h2>
+    <h2 className="mb-4 text-center entity-column">HHS Complex Details</h2>
     <Container
       className="detail w-75 text-center"
       style={{

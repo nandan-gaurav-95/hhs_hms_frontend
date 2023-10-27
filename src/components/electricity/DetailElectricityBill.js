@@ -186,12 +186,14 @@ const DetailElectricityBill = () => {
       doc.rect(20, 105, 90, 10);// (X, Y, Width, Height)
       doc.text("Tariff :", 25, 111); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
+      doc.setFontSize(10); // Reset font size to normal
+      doc.text(`${electricitybill?.tariff}`, 40, 111); // (X, Y, Actual name)
+
       doc.rect(20, 105, 38, 10);// (X, Y, Width, Height)
       doc.setFontSize(10); // Reset font size to normal
       doc.rect(20, 105, 90, 10);// (X, Y, Width, Height)
       doc.text("HT 2 B", 60, 111); // (X, Y, Actual name)
       doc.rect(20, 105, 65, 10);// (X, Y, Width, Height) 1st verticle line 
- 
  
      //  total
      doc.rect(20, 105, 110, 10);// (X, Y, Width, Height) 4th verticle line

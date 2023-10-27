@@ -26,6 +26,7 @@ const DetailParking = () => {
     const fetchParkingById = async () => {
       try {
         const response = await axios.get(`${APIS.GETPARKINGBYID}/${id}`);
+        console.log("parking",response.data);
         setParking(response.data);
       } catch (error) {
         console.error("Error fetching Parking:", error);
@@ -92,11 +93,11 @@ const handleParkingrPdf = () => {
     doc.setFontSize(12);
     doc.text("Receipt No.", 20, 50); // Adjust the Y position as needed 
     doc.setFont('helvetica', 'normal');
-    doc.text(`${parking}`, 50, 50); 
+    doc.text(`${parking?.p_id}`, 50, 50); 
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.text("Date:", 130, 50);
     doc.setFont('helvetica', 'normal');
-    doc.text(`${parking}`, 145, 50); 
+    doc.text(`${parking?.date}`, 145, 50); 
   
   
   //Received from :
@@ -105,7 +106,7 @@ const handleParkingrPdf = () => {
    doc.text("Received from :", 20, 71); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
    doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${parking}`,55, 71); // (X, Y,Actual name)
+   doc.text(`${parking?.receiverName}`,55, 71); // (X, Y,Actual name)
   
     //sum of rupees
     doc.setFontSize(12); // Set font size for labels
@@ -113,7 +114,7 @@ const handleParkingrPdf = () => {
     doc.text("A Sum of Rupees:", 20, 91); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${parking}`, 60, 91); // (X, Y,Actual name)
+    doc.text(`${parking?.rupee}`, 60, 91); // (X, Y,Actual name)
   
     //rupees in the words
     doc.setFontSize(12); // Set font size for labels
@@ -121,7 +122,7 @@ const handleParkingrPdf = () => {
     doc.text("Rupees in the words:", 20, 101); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${parking}`, 65, 101); // (X, Y,Actual name)
+    doc.text(`${parking?.rupeeInWords}`, 65, 101); // (X, Y,Actual name)
   
       //cash/DD/premises
       doc.setFontSize(12); // Set font size for labels
@@ -129,7 +130,7 @@ const handleParkingrPdf = () => {
       doc.text("by Cash / D.D. towards the rent for Parking:", 20, 121); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${parking}`, 105, 121); // (X, Y,Actual name)
+      doc.text(`${parking?.parkingRent}`, 105, 121); // (X, Y,Actual name)
   
       //for the month 
       doc.setFontSize(12); // Set font size for labels
@@ -137,7 +138,7 @@ const handleParkingrPdf = () => {
       doc.text("in the Month of:", 20, 131); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${parking}`, 55, 131); // (X, Y,Actual name)
+      doc.text(`${parking?.month}`, 55, 131); // (X, Y,Actual name)
   
        //cheque/DD no
        doc.setFontSize(12); // Set font size for labels
@@ -145,7 +146,7 @@ const handleParkingrPdf = () => {
        doc.text("Cheque / D.D. No.", 20, 141); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${parking}`, 60, 141); // (X, Y,Actual name)
+       doc.text(`${parking?.chequeNo}`, 60, 141); // (X, Y,Actual name)
   
         //dated
         doc.setFontSize(12); // Set font size for labels
@@ -153,7 +154,7 @@ const handleParkingrPdf = () => {
         doc.text("Dated :", 100, 141); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
         doc.setFontSize(10); // Reset font size to normal
-        doc.text(`${parking}`, 115, 141); // (X, Y,Actual name)
+        doc.text(`${parking?.dated}`, 115, 141); // (X, Y,Actual name)
   
        //drawn on
        doc.setFontSize(12); // Set font size for labels
@@ -161,7 +162,7 @@ const handleParkingrPdf = () => {
        doc.text("Drawn on: ", 20, 151); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${parking}`, 45, 151); // (X, Y,Actual name)
+       doc.text(`${parking?.drawnOn}`, 45, 151); // (X, Y,Actual name)
   
         //sign
         doc.setFontSize(12); // Set font size for labels
@@ -181,7 +182,7 @@ const handleParkingrPdf = () => {
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">Parking Details of </h2>
+    <h2 className="mb-4 text-center entity-column">Parking Details</h2>
     <Container
       className="detail w-75 text-center"
       style={{

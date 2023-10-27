@@ -13,7 +13,7 @@ const ViewAmbulanceVan = () => {
 
   const navigate = useNavigate();
   const handleViewProfile = (amb_id) => {
-    navigate(`/`);
+    navigate(`/detailsambulancevan/${amb_id}`);
   };
   const fetchAllambulancevan = async () => {
     try {
