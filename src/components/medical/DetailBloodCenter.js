@@ -83,23 +83,24 @@ const handleBloodCenterPdf = () => {
  
     //Header Part
     doc.rect(12,9,186,163);
+    doc.rect(12,9,186,43);
     doc.setFontSize(8);
     doc.text("LICENSE NUMBER - KTK/28C-409/2022", 75, 15); // Adjust the Y position as needed
     doc.setFontSize(15);
     doc.setTextColor(255, 138, 0); // RGB color (red)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("HHS & HMS", 55, 28); // Adjust the Y position as needed
+    doc.text("HHS & HMS", 65, 25); // Adjust the Y position as needed
     doc.setFontSize(10);
-    doc.text("(R.A.)",86,28)
+    doc.text("(R.A.)",96,25)
     doc.setFontSize(15);
     doc.setFont('helvetica', 'bold');
-    doc.text("BLOOD CENTRE",96,28)
+    doc.text("BLOOD CENTRE",106,25)
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
     doc.setFontSize(9);
     doc.setTextColor(0);
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-2, Ph: 22211356/22240309",45,40)
-    doc.text("Banglore-02, Ph: 080-49894916 Mob. : 9845854991,9035963914,8123294727",65,45)
-    doc.text("Email : hhshmsbloodcentre@gmail.com Website: hhshmscomplex.com",75,50)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-2, Ph: 22211356/22240309",45,37)
+    doc.text("Banglore-02, Ph: 080-49894916 Mob. : 9845854991,9035963914,8123294727",55,42)
+    doc.text("Email : hhshmsbloodcentre@gmail.com Website: hhshmscomplex.com",55,47)
  
  
  //PDF Heading 
@@ -148,7 +149,7 @@ const handleBloodCenterPdf = () => {
   doc.text("Hospital/N Home:", 25, 101); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
   doc.setFontSize(10); // Reset font size to normal
-  doc.text(`${bloodcenter?.hospitalName}`, 65, 101); // (X, Y, Actual name)
+  doc.text(`${bloodcenter?.hospitalName}`, 60, 101); // (X, Y, Actual name)
  
   //sum of rupees
   doc.setFontSize(12); // Set font size for labels
@@ -156,7 +157,7 @@ const handleBloodCenterPdf = () => {
   doc.text("Sum of Rupees:", 25, 111); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
   doc.setFontSize(10); // Reset font size to normal
-  doc.text(`${bloodcenter?.rupee}`, 60, 111); // (X, Y, Actual name)
+  doc.text(`${bloodcenter?.rupee}`, 55, 111); // (X, Y, Actual name)
  
   //sum of rupees
   doc.setFontSize(12); // Set font size for labels

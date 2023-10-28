@@ -148,7 +148,7 @@ const handleMedicalAckPdf =()=>{
   doc.setFont('calibre', 'bold');
   doc.setTextColor(75,93,183); // RGB color (Blue)
   
-  doc.text(")",52,147);
+  doc.text(")",47,147);
 
   doc.text("Vide Cheque No.",14,160);
   doc.setFont('calibre','normal');

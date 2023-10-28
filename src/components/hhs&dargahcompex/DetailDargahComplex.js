@@ -79,7 +79,8 @@ const DetailDargahComplex = () => {
     );
 
     //Header Part
-    doc.rect(10,9,175,153);
+    doc.rect(10,9,175,133);
+    doc.rect(10,9,175,33);
     doc.setTextColor(255, 138, 0); // RGB color (red)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.text("HHS & HMS DARGAH COMPLEX, CUBBONPET,", 55, 20); // Adjust the Y position as needed
@@ -101,71 +102,71 @@ const DetailDargahComplex = () => {
  //Received from :
    doc.setFontSize(12); // Set font size for labels
    doc.setFont('calibre', 'bold');
-   doc.text("Received from :", 20, 71); // Label "Name:"
+   doc.text("Received from :", 20, 60); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
    doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${dergah?.receiverName}`,55, 71); // (X, Y,Actual name)
+   doc.text(`${dergah?.receiverName}`,55, 60); // (X, Y,Actual name)
 
     //sum of rupees
     doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
-    doc.text("a sum of Rupees:", 85, 91); // Label "Name:"
+    doc.text("a sum of Rupees:", 85, 71); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${dergah?.rupee}`, 130, 91); // (X, Y,Actual name)
+    doc.text(`${dergah?.rupee}`, 120, 71); // (X, Y,Actual name)
 
     //rupees in the words
     doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
-    doc.text("Rupees in the words:", 20, 101); // Label "Name:"
+    doc.text("Rupees in the words:", 20, 81); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
     doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${dergah?.rupeeInWords}`, 65, 101); // (X, Y,Actual name)
+    doc.text(`${dergah?.rupeeInWords}`, 60, 81); // (X, Y,Actual name)
 
       //cash/DD/premises
       doc.setFontSize(12); // Set font size for labels
       doc.setFont('calibre', 'bold');
-      doc.text("by Cash / D.D. towards the rent for shop / Premises No.", 20, 121); // Label "Name:"
+      doc.text("by Cash / D.D. towards the rent for shop / Premises No.", 20, 91); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${dergah?.shopRent}`, 125, 121); // (X, Y,Actual name)
+      doc.text(`${dergah?.shopRent}`, 125, 91); // (X, Y,Actual name)
 
       //for the month 
       doc.setFontSize(12); // Set font size for labels
       doc.setFont('calibre', 'bold');
-      doc.text("For the Month of", 20, 131); // Label "Name:"
+      doc.text("For the Month of:", 20, 101); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${dergah?.month}`, 55, 131); // (X, Y,Actual name)
+      doc.text(`${dergah?.month}`, 55, 101); // (X, Y,Actual name)
 
        //cheque/DD no
        doc.setFontSize(12); // Set font size for labels
        doc.setFont('calibre', 'bold');
-       doc.text("Cheque / D.D. No.", 20, 141); // Label "Name:"
+       doc.text("Cheque / D.D. No.", 20, 111); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${dergah?.chequeNo}`, 60, 141); // (X, Y,Actual name)
+       doc.text(`${dergah?.chequeNo}`, 65, 111); // (X, Y,Actual name)
 
         //dated
         doc.setFontSize(12); // Set font size for labels
         doc.setFont('calibre', 'bold');
-        doc.text("Dated :", 100, 141); // Label "Name:"
+        doc.text("Dated :", 130, 111); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
         doc.setFontSize(10); // Reset font size to normal
-        doc.text(`${dergah?.dated}`, 115, 141); // (X, Y,Actual name)
+        doc.text(`${dergah?.dated}`, 145, 111); // (X, Y,Actual name)
 
        //drawn on
        doc.setFontSize(12); // Set font size for labels
        doc.setFont('calibre', 'bold');
-       doc.text("Drawn on: ", 20, 151); // Label "Name:"
+       doc.text("Drawn on: ", 20, 121); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${dergah?.drawnOn}`, 45, 151); // (X, Y,Actual name)
+       doc.text(`${dergah?.drawnOn}`, 45, 121); // (X, Y,Actual name)
 
         //sign
         doc.setFontSize(12); // Set font size for labels
         doc.setFont('calibre', 'bold');
-        doc.text("Signature of the Receiver", 130, 151); // Label "Name:"
+        doc.text("Signature of the Receiver", 130, 135); // Label "Name:"
         
 
     doc.save("dargah_complex.pdf");

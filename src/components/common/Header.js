@@ -3,6 +3,8 @@ import { Navbar } from "react-bootstrap";
 import { MDBContainer } from "mdb-react-ui-kit";
 import logo from "../../asset/images/hhs_logo.png";
 import "../../asset/homepage.css";
+import { Link } from "react-router-dom";
+
 
 export default function Header() {
   const h1Style = {
@@ -15,13 +17,15 @@ export default function Header() {
   return (
     <Navbar className="navbar">
       <Navbar.Brand href="#home" className="mx-3">
-        <img
-          src={logo}
-          width="140"
-          height="90"
-          className="align-top"
-          alt="Brand logo"
-        />
+      <Link to="/">
+  <img
+    src={logo}
+    width="140"
+    height="90"
+    className="align-top"
+    alt="Brand logo"
+  />
+</Link>
       </Navbar.Brand>
       <Navbar.Brand href="#home" className="mx-3">
         <div className="d-flex flex-column align-items-center justify-content-center">

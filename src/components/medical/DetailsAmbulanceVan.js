@@ -84,6 +84,7 @@ const DetailsAmbulanceVan = () => {
 
     //Header Part
     doc.rect(10,9,186,103);
+    doc.rect(10,9,186,33);
     doc.setTextColor(255, 138, 0); // RGB color (red)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri", 55, 20); // Adjust the Y position as needed
@@ -91,7 +92,7 @@ const DetailsAmbulanceVan = () => {
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
     doc.setFontSize(9);
     doc.setTextColor(0);
-    doc.text("No.2,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-2, Ph: 22211356/22240309",45,40)
+    doc.text("No.2,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-2, Ph: 22211356/22240309",45,37)
 
 
 //PDF Heading 

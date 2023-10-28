@@ -132,23 +132,23 @@ const DetailVoucher = () => {
         const totalAmount = (parseFloat(voucher.amtPaid) || 0) + (parseFloat(voucher.towards) || 0);
         doc.setFont("calibre", "normal");
         doc.setFontSize(10);
-        doc.text(`${totalAmount}`, 150, 121);
+        doc.text(`${totalAmount}`, 150, 120);
 
           //cash/cheque no.
           doc.setFontSize(12); // Set font size for labels
           doc.setFont('calibre', 'bold');
-          doc.text("By Cash /Cheque No.", 20, 121); // Label "Name:"
+          doc.text("By Cash /Cheque No.", 20, 90); // Label "Name:"
           doc.setFont('calibre', 'normal'); // Reset font style to normal
-          doc.setFontSize(10); // Reset font size to normal
-          doc.text(`${voucher?.chequeNo}`, 65, 121); // (X, Y,Actual name)
+          doc.setFontSize(12); // Reset font size to normal
+          doc.text(`${voucher?.chequeNo}`, 65, 90); // (X, Y,Actual name)
       
           //Dated
           doc.setFontSize(12); // Set font size for labels
           doc.setFont('calibre', 'bold');
-          doc.text("Dated:", 100, 121); // Label "Name:"
+          doc.text("Dated:", 100, 120); // Label "Name:"
           doc.setFont('calibre', 'normal'); // Reset font style to normal
           doc.setFontSize(10); // Reset font size to normal
-          doc.text(`${voucher?.dated}`, 115, 121); // (X, Y,Actual name)
+          doc.text(`${voucher?.dated}`, 115, 120); // (X, Y,Actual name)
       
           //rupees
           doc.setFontSize(12); // Set font size for labels
@@ -159,7 +159,7 @@ const DetailVoucher = () => {
           doc.text(`${voucher?.rupees}`, 45, 131); // (X, Y,Actual name)
       
           
-          doc.rect(145,128,20,20);//( X,Y,width,height)
+          doc.rect(145,132,20,20);//( X,Y,width,height)
           doc.setFont('calibre', 'bold');
           doc.text("Stamp",150,138)
       
@@ -167,8 +167,8 @@ const DetailVoucher = () => {
            //sign
            doc.setFontSize(12); // Set font size for labels
            doc.setFont('calibre', 'bold');
-           doc.text("Signature ", 40, 151); // Label "Name:"
-           doc.text("Signature", 110, 151); // Label "Name:"
+           doc.text("Signature ", 20, 151); // Label "Name:"
+           doc.text("Signature", 100, 151); // Label "Name:"
             
       
         doc.save("voucher.pdf");

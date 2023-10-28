@@ -89,7 +89,7 @@ const DetailElectricityBill = () => {
       doc.setTextColor(255, 0, 0); // RGB color (red)
       doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
       // expiryDate will be convert into current month
-      doc.text(`Electricity Bill, For The Month Of :${electricitybill?.month}`, 50, 40); // Adjust the Y position as needed 
+      doc.text(`Electricity Bill, For The Month Of :${electricitybill?.month}`, 55, 40); // Adjust the Y position as needed 
       doc.setFont('helvetica', 'normal'); // Reset font style to normal
       
       // Reset text color to default (black)
@@ -100,7 +100,7 @@ const DetailElectricityBill = () => {
       doc.rect(20, 55, 90, 10);// (X, Y, Width, Height)
       doc.text("Name: ",25,61); // Label "Name:"
       doc.setFont('calibre','normal');
-      doc.text(`${electricitybill?.name}`, 70, 61);// (X, Y,Actual name)
+      doc.text(`${electricitybill?.name}`, 65, 61);// (X, Y,Actual name)
  
       //unit
       doc.rect(20, 55, 110, 10);// (X, Y, Width, Height) 2nd verticle line
@@ -131,7 +131,7 @@ const DetailElectricityBill = () => {
      doc.rect(20, 65, 130, 10);//(X, Y, Width, Height) 3rd verticle line 
      doc.setFont('calibre', 'normal'); // Reset font style to normal
      doc.setFontSize(10); // Reset font size to normal
-     doc.text(`${electricitybill?.shopNo}`, 70, 71); // (X, Y,Actual name)
+     doc.text(`${electricitybill?.shopNo}`, 65, 71); // (X, Y,Actual name)
   
   //RR Num   not defined
       doc.setFontSize(12); // Set font size for labels
@@ -143,7 +143,7 @@ const DetailElectricityBill = () => {
       doc.rect(20, 75, 130, 10);//(X, Y, Width, Height) 3rd verticle line 
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${electricitybill?.rrNo}`, 70, 81); //(X, Y, Actual name)
+      doc.text(`${electricitybill?.rrNo}`, 65, 81); //(X, Y, Actual name)
   
   //Ledger & Follo
       doc.setFontSize(12); // Set font size for labels
@@ -169,7 +169,7 @@ const DetailElectricityBill = () => {
       doc.text("Sanction Load :", 25, 101); // Label saction load
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${electricitybill?.sanctionLoad}`, 60, 101); // (X, Y, Actual name)
+      doc.text(`${electricitybill?.sanctionLoad}`, 65, 101); // (X, Y, Actual name)
  
         //Consumption Charges
         doc.rect(20, 95, 90, 10);// (X, Y, Width, Height)
@@ -192,7 +192,7 @@ const DetailElectricityBill = () => {
       doc.rect(20, 105, 38, 10);// (X, Y, Width, Height)
       doc.setFontSize(10); // Reset font size to normal
       doc.rect(20, 105, 90, 10);// (X, Y, Width, Height)
-      doc.text("HT 2 B", 60, 111); // (X, Y, Actual name)
+      doc.text("HT 2 B", 65, 111); // (X, Y, Actual name)
       doc.rect(20, 105, 65, 10);// (X, Y, Width, Height) 1st verticle line 
  
      //  total
@@ -210,7 +210,7 @@ const DetailElectricityBill = () => {
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.rect(20, 115, 38, 10);// (X, Y, Width, Height) 1st verticle line
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${electricitybill?.presentReading}`, 60, 121); // (X, Y, Actual name)
+      doc.text(`${electricitybill?.presentReading}`, 65, 121); // (X, Y, Actual name)
 
       doc.rect(20, 115, 65, 10);// (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
@@ -229,7 +229,7 @@ const DetailElectricityBill = () => {
       doc.setFont('calibre', 'normal'); // Reset font style to normal
       doc.rect(20, 125, 38, 10);// (X, Y, Width, Height) 1st verticle line
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${electricitybill?.previousReading}`, 60, 131); // (X, Y, Actual name)
+      doc.text(`${electricitybill?.previousReading}`, 65, 131); // (X, Y, Actual name)
 
       doc.rect(20, 125, 65, 10);// (X, Y, Width, Height) 2nd verticle line
       doc.rect(20, 125, 160, 10);
@@ -249,7 +249,7 @@ const DetailElectricityBill = () => {
        doc.setFont('calibre', 'normal'); // Reset font style to normal
        doc.rect(20, 135, 65, 10);// (X, Y, Width, Height) 2nd verticle line
        doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${electricitybill?.unitConsumed}`, 60, 141); // (X, Y, Actual name)
+       doc.text(`${electricitybill?.unitConsumed}`, 65, 141); // (X, Y, Actual name)
 
 
        
@@ -261,7 +261,7 @@ const DetailElectricityBill = () => {
          doc.setFont('calibre', 'normal'); // Reset font style to normal
          doc.rect(20, 145, 65, 10);// (X, Y, Width, Height) 2nd verticle line
          doc.setFontSize(10); // Reset font size to normal
-         doc.text(`${electricitybill?.unitSancd}`, 60, 151); // (X, Y, Actual name)
+         doc.text(`${electricitybill?.unitSancd}`, 65, 151); // (X, Y, Actual name)
 
           //date of reading
           doc.setFontSize(12); // Set font size for labels

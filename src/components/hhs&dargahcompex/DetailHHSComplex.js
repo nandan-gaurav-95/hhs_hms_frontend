@@ -83,6 +83,7 @@ const handleHHSComplexPdf = () => {
   
       //Header Part
       doc.rect(12,9,186,133);
+      doc.rect(12,9,186,33);
       doc.setTextColor(255, 138, 0); // RGB color (red)
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
       doc.text("HAZRATH HAMEED SHAH COMPLEX, CUBBONPET,", 55, 20); // Adjust the Y position as needed
@@ -94,21 +95,21 @@ const handleHHSComplexPdf = () => {
       //PDF Heading
   
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.rect(30, 40, 35, 10); // (X, Y, Width, Height)
-      doc.text("No.:", 31, 47);
-      doc.text(`${hhscomplex?.hc_id}`, 39, 47); // (X, Y,Actual name)
+      doc.rect(30, 50, 35, 10); // (X, Y, Width, Height)
+      doc.text("No.:", 31, 57);
+      doc.text(`${hhscomplex?.hc_id}`, 39, 57); // (X, Y,Actual name)
 
-      doc.rect(70, 40, 35, 10); // (X, Y, Width, Height)
-      doc.text("L.F.No.", 71, 47);
-      doc.text(`${hhscomplex?.lfNo}`, 84, 47); // (X, Y,Actual name)
+      doc.rect(70, 50, 35, 10); // (X, Y, Width, Height)
+      doc.text("L.F.No.", 71, 57);
+      doc.text(`${hhscomplex?.lfNo}`, 84, 57); // (X, Y,Actual name)
 
-      doc.rect(110, 40, 35, 10); // (X, Y, Width, Height)
-      doc.text("R.R.No.", 112, 47);
-      doc.text(`${hhscomplex?.rrNo}`, 126, 47); // (X, Y,Actual name)
+      doc.rect(110, 50, 35, 10); // (X, Y, Width, Height)
+      doc.text("R.R.No.", 112, 57);
+      doc.text(`${hhscomplex?.rrNo}`, 126, 57); // (X, Y,Actual name)
 
-      doc.rect(150, 40, 35, 10); // (X, Y, Width, Height)
-      doc.text("Date", 152, 47);
-      doc.text(`${hhscomplex?.date}`, 162, 47); // (X, Y,Actual name)
+      doc.rect(150, 50, 35, 10); // (X, Y, Width, Height)
+      doc.text("Date:", 152, 57);
+      doc.text(`${hhscomplex?.date}`, 162, 57); // (X, Y,Actual name)
 
       doc.setFontSize(14);
   
@@ -128,9 +129,9 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "normal");
       doc.text(`${hhscomplex?.rupees}`, 65, 86); //(X, Y, Actual name)
       doc.setFont("calibre", "bold");
-      doc.text(" Rupees in words :", 100, 86);
+      doc.text(" Rupees in words :", 105, 86);
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.rupeeInWords}`, 135, 86); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.rupeeInWords}`, 140, 86); //(X, Y, Actual name)
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
   
@@ -140,10 +141,10 @@ const handleHHSComplexPdf = () => {
       doc.text(
         "by Cash/Cheque/D.D towards the Electrical Charges for Shop No. :",
         30,
-        105
+        100
       ); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.text(`${hhscomplex?.eleCharges}`, 153, 105); // (X, Y,Actual name)
+      doc.text(`${hhscomplex?.eleCharges}`, 153, 100); // (X, Y,Actual name)
       doc.setFontSize(10); // Reset font size to normal
   
       //For the month of
@@ -151,7 +152,7 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "bold");
       doc.text("For the month of :", 30, 115); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.month}`, 70, 115); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.month}`, 65, 115); //(X, Y, Actual name)
       doc.setFont("calibre", "bold");
       doc.text("Cheque/D.D.No :", 105, 115);
       doc.setFont("calibre", "normal");
@@ -160,14 +161,14 @@ const handleHHSComplexPdf = () => {
       //Dated
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Dated :", 40, 135); // Label "Name:"
+      doc.text("Dated :", 30, 135); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.dated}`, 55, 135); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.dated}`, 45, 135); //(X, Y, Actual name)
   
-
+      doc.setFont("calibre", "bold");
       doc.text("Signature of Manager", 140, 135);
       // Save the PDF with a specific name
-      doc.save("hhs_complex.pdf");
+      doc.save("hhscomplex.pdf");
       // console.log("Download PDF clicked");
     };
   };
