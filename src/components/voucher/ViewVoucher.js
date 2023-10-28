@@ -1,15 +1,17 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { VoucherService } from "../../services/VoucherService";
 const ViewVoucher = () => {
   const [allvoucher, setAllvoucher] = useState({});
-  
+
   const navigate = useNavigate();
   const handleViewProfile = (v_id) => {
     navigate(`/detailvoucher/${v_id}`);
@@ -20,11 +22,11 @@ const ViewVoucher = () => {
       const response = await VoucherService.getAllVoucher();
       console.log("API Respons:", response);
       if (Array.isArray(response)) {
-        const voucherobject={};
+        const voucherobject = {};
         response.forEach((voucher) => {
           voucherobject[voucher.v_id] = voucher;
-          });
-          setAllvoucher(voucherobject);
+        });
+        setAllvoucher(voucherobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -35,12 +37,22 @@ const ViewVoucher = () => {
   useEffect(() => {
     fetchAllvoucher();
   }, []);
-     const handleEditProfile=(v_id)=>{
-       navigate (`/editvoucher/${v_id}`)
+  const handleEditProfile = (v_id) => {
+    navigate(`/editvoucher/${v_id}`);
+  };
+  const handleDelete = async (v_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEVOUCHERBYID}/${v_id}`);
+      console.log("Deleted Successfully");
+      const updatedVoucher = { ...allvoucher };
+      delete updatedVoucher[v_id];
+      setAllvoucher(updatedVoucher);
+    } catch (error) {
+      console.error("Error deleting Voucher :", error);
     }
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+  };
   return (
     <div>
       <Header />
@@ -55,8 +67,8 @@ const ViewVoucher = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
-          <th>Sr. No.</th>
-            
+            <th>Sr. No.</th>
+
             <th>Date</th>
             <th>Amount Paid</th>
             <th>Towards</th>
@@ -80,7 +92,7 @@ const ViewVoucher = () => {
                 <td>{voucher.dated}</td>
                 <td>{voucher.rupees}</td>
                 <td>{voucher.remark}</td>
-              
+
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -91,15 +103,17 @@ const ViewVoucher = () => {
                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item
-                          onClick={() => handleViewProfile(vouId)}
-                        >
+                        <Dropdown.Item onClick={() => handleViewProfile(vouId)}>
                           View Voucher
                         </Dropdown.Item>
-                        <Dropdown.Item
-                          onClick={() => handleEditProfile(vouId)}
-                        >
+                        <Dropdown.Item onClick={() => handleEditProfile(vouId)}>
                           Edit Voucher
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(vouId)}
+                          className="red-text"
+                        >
+                          Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
@@ -114,4 +128,4 @@ const ViewVoucher = () => {
   );
 };
 
-export default ViewVoucher
+export default ViewVoucher;

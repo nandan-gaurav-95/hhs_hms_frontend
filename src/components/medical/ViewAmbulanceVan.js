@@ -4,6 +4,8 @@ import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { AmbulanceService } from "../../services/AmbulanceService";
@@ -37,9 +39,19 @@ const ViewAmbulanceVan = () => {
   const handleEditProfile = (amb_id) => {
     navigate(`/editambulancevan/${amb_id}`);
   };
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleDelete = async (amb_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEAMBULANCEBYID}/${amb_id}`);
+      console.log("Deleted Successfully");
+      const updatedAmbulanceVan = { ...allambulancevan };
+      delete updatedAmbulanceVan[amb_id];
+      setAllambulancevan(updatedAmbulanceVan);
+    } catch (error) {
+      console.error("Error deleting AmbulanceVan :", error);
+    }
+  };
   return (
     <div>
       <Header />
@@ -90,6 +102,12 @@ const ViewAmbulanceVan = () => {
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleEditProfile(ambId)}>
                       Edit Ambulance Van
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(ambId)}
+                          className="red-text"
+                        >
+                          Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

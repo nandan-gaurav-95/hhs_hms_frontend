@@ -5,6 +5,8 @@ import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { Dropdown } from "react-bootstrap";
 import { DargahComplexService } from "../../services/DargahComplexService";
 const ViewDargahComplex = () => {
@@ -34,12 +36,22 @@ const ViewDargahComplex = () => {
   useEffect(() => {
     fetchAlldaraghcomplex();
   }, []);
-     const handleEditProfile=(dc_id)=>{
-      navigate (`/editdargahcomplex/${dc_id}`)
-     }
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleEditProfile = (dc_id) => {
+    navigate(`/editdargahcomplex/${dc_id}`);
+  };
+  const handleDelete = async (dc_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEDARGAHCOMPLEXBYID}/${dc_id}`);
+      console.log("Deleted Successfully");
+      const updatedDargahComplex = { ...alldaraghcomplex };
+      delete updatedDargahComplex[dc_id];
+      setAlldaraghcomplex(updatedDargahComplex);
+    } catch (error) {
+      console.error("Error deleting DargahComplex :", error);
+    }
+  };
   return (
     <div>
       <Header />
@@ -93,6 +105,12 @@ const ViewDargahComplex = () => {
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleEditProfile(dcId)}>
                           Edit Dargah Complex
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(dcId)}
+                          className="red-text"
+                        >
+                          Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

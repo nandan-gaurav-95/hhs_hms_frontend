@@ -5,6 +5,8 @@ import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
 import { BiArrowBack } from "react-icons/bi";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { Dropdown } from "react-bootstrap";
 import { ElectricityBillService } from "../../services/ElectricityBillService";
 const ViewElectricityBill = () => {
@@ -40,9 +42,23 @@ const ViewElectricityBill = () => {
      const handleEditProfile=(ele_id)=>{
        navigate (`/editelectricitybill/${ele_id}`)
       }
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+      const handleDelete = async (ele_id) => {
+        //   window.confirm("The Employee will be get deleted permanantly");
+    
+        try {
+          await axios.delete(`${APIS.DELETEELECITYBILLBYID}/${ele_id}`);
+          console.log("Deleted Successfully");
+          // Create a copy of the state object
+          const updatedElectricityBill = { ...allectricitybill };
+          // Remove the employee with the given emp_id
+          delete updatedElectricityBill[ele_id];
+    
+          // Update the state with the modified object
+          setAllectricitybill(updatedElectricityBill);
+        } catch (error) {
+          console.error("Error deleting ElectricityBill:", error);
+        }
+      };
   return (
     <div>
       <Header />
@@ -100,6 +116,12 @@ const ViewElectricityBill = () => {
                           onClick={() => handleEditProfile(eleId)}
                         >
                         Edit ElectricityBill
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(eleId)}
+                          className="red-text"
+                        >
+                        Delete 
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

@@ -4,6 +4,8 @@ import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { ParkingService } from "../../services/ParkingService";
@@ -37,9 +39,19 @@ const ViewParking = () => {
   const handleEditProfile = (p_id) => {
     navigate(`/editparking/${p_id}`);
   };
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleDelete = async (p_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEPARKINGBYID}/${p_id}`);
+      console.log("Deleted Successfully");
+      const updatedParking = { ...allparking };
+      delete updatedParking[p_id];
+      setAllparking(updatedParking);
+    } catch (error) {
+      console.error("Error deleting Parking :", error);
+    }
+  };
   return (
     <div>
       <Header />
@@ -95,6 +107,12 @@ const ViewParking = () => {
                           onClick={() => handleEditProfile(parkId)}
                         >
                           Edit Parking
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(parkId)}
+                          className="red-text"
+                        >
+                          Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

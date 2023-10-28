@@ -1,9 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { MedicalService } from "../../services/MedicalService";
@@ -20,11 +22,11 @@ const ViewMedicalAck = () => {
       const response = await MedicalService.getAllMedical();
       console.log("API Response medical complex:", response);
       if (Array.isArray(response)) {
-        const medicalobject={};
+        const medicalobject = {};
         response.forEach((medical) => {
           medicalobject[medical.mdack_id] = medical;
-          });
-          setAllmedicalack(medicalobject);
+        });
+        setAllmedicalack(medicalobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -35,12 +37,22 @@ const ViewMedicalAck = () => {
   useEffect(() => {
     fetchAllmedicalack();
   }, []);
-     const handleEditProfile=(mdack_id)=>{
-      navigate (`/editmedicalack/${mdack_id}`)
-      }
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleEditProfile = (mdack_id) => {
+    navigate(`/editmedicalack/${mdack_id}`);
+  };
+  const handleDelete = async (mdack_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEMEDICALACKNWLDGEBYID}/${mdack_id}`);
+      console.log("Deleted Successfully");
+      const updatedMedicalAck = { ...allmedicalack };
+      delete updatedMedicalAck[mdack_id];
+      setAllmedicalack(updatedMedicalAck);
+    } catch (error) {
+      console.error("Error deleting MedicalAck :", error);
+    }
+  };
   return (
     <div>
       <Header />
@@ -55,7 +67,7 @@ const ViewMedicalAck = () => {
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
-          <th>Sr. No.</th>
+            <th>Sr. No.</th>
             <th>To Name</th>
             <th>Date</th>
             <th>Rupees</th>
@@ -100,6 +112,12 @@ const ViewMedicalAck = () => {
                           onClick={() => handleEditProfile(mdackId)}
                         >
                           Edit Medical Ack
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(mdackId)}
+                          className="red-text"
+                        >
+                          Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

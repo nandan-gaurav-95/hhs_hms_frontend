@@ -1,30 +1,31 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown } from "react-bootstrap";
 import { HhsComplexService } from "../../services/HhsComplexService";
 const ViewHHSComplex = () => {
   const [allhhscomplex, setAllhhscomplex] = useState({});
-  
-  
+
   const navigate = useNavigate();
-  const handleViewProfile=(hc_id)=>{
-    navigate (`/detailhhscomplex/${hc_id}`)
-   }
-   const fetchAllhhscomplex = async () => {
+  const handleViewProfile = (hc_id) => {
+    navigate(`/detailhhscomplex/${hc_id}`);
+  };
+  const fetchAllhhscomplex = async () => {
     try {
       const response = await HhsComplexService.getAllHhsComplex();
       console.log("API Responsehhscomplex:", response);
       if (Array.isArray(response)) {
-        const hhsComplexobject={};
+        const hhsComplexobject = {};
         response.forEach((hhscomplex) => {
           hhsComplexobject[hhscomplex.hc_id] = hhscomplex;
-          });
-          setAllhhscomplex(hhsComplexobject);
+        });
+        setAllhhscomplex(hhsComplexobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -35,12 +36,22 @@ const ViewHHSComplex = () => {
   useEffect(() => {
     fetchAllhhscomplex();
   }, []);
-   const handleEditProfile=(hc_id)=>{
-   navigate (`/edithhscomplex/${hc_id}`)
-   }
-//    const handleDelete=(id)=>{
-//     navigate (`/`)
-//    }
+  const handleEditProfile = (hc_id) => {
+    navigate(`/edithhscomplex/${hc_id}`);
+  };
+  const handleDelete = async (hc_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEHHSCOMPLEXBYID}/${hc_id}`);
+      console.log("Deleted Successfully");
+      const updatedHHSCOMPLEX = { ...allhhscomplex };
+      delete updatedHHSCOMPLEX[hc_id];
+      setAllhhscomplex(updatedHHSCOMPLEX);
+    } catch (error) {
+      console.error("Error deleting HHSCOMPLEX :", error);
+    }
+  };
   return (
     <div>
       <Header />
@@ -67,39 +78,48 @@ const ViewHHSComplex = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-  {Object.keys(allhhscomplex).map((hcId, index) => {
-    const hhscomplex = allhhscomplex[hcId];
-    return (
-      <tr key={index}>
-        <td>{index + 1}</td>
-        <td>{hhscomplex.lfNo}</td>
-        <td>{hhscomplex.rrNo}</td>
-        <td>{hhscomplex.date}</td>
-        <td>{hhscomplex.receiverName}</td>
-        <td>{hhscomplex.rupees}</td>
-        <td>{hhscomplex.month}</td> 
-        <td>{hhscomplex.eleCharges}</td>
-        <td>
-          <div className="dropdown">
-            <Dropdown>
-              <Dropdown.Toggle variant="secondary" id="dropdownMenuButton">
-                &#8942;
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleViewProfile(hcId)}>
+          {Object.keys(allhhscomplex).map((hcId, index) => {
+            const hhscomplex = allhhscomplex[hcId];
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{hhscomplex.lfNo}</td>
+                <td>{hhscomplex.rrNo}</td>
+                <td>{hhscomplex.date}</td>
+                <td>{hhscomplex.receiverName}</td>
+                <td>{hhscomplex.rupees}</td>
+                <td>{hhscomplex.month}</td>
+                <td>{hhscomplex.eleCharges}</td>
+                <td>
+                  <div className="dropdown">
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        variant="secondary"
+                        id="dropdownMenuButton"
+                      >
+                        &#8942;
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => handleViewProfile(hcId)}>
                           View HHS Complex
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleEditProfile(hcId)}>
-                        Edit HHS Complex
+                          Edit HHS Complex
                         </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        </td>
-      </tr>
-    );
-  })}
-</tbody>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(hcId)}
+                          className="red-text"
+                        >
+                          Delete
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </Table>
     </div>
   );

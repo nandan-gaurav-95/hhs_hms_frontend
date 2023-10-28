@@ -4,6 +4,8 @@ import Table from "react-bootstrap/Table";
 import Header from "../common/Header";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../asset/style.css";
+import axios from "axios";
+import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { BloodCenterService } from "../../services/BloodCenterService";
@@ -37,9 +39,19 @@ const ViewBloodCenter = () => {
   const handleEditProfile = (bc_id) => {
     navigate(`/editbloodcenter/${bc_id}`);
   };
-  //    const handleDelete=(id)=>{
-  //     navigate (`/`)
-  //    }
+  const handleDelete = async (bc_id) => {
+    //   window.confirm("The Employee will be get deleted permanantly");
+
+    try {
+      await axios.delete(`${APIS.DELETEBLOODCENTERBYID}/${bc_id}`);
+      console.log("Deleted Successfully");
+      const updatedBloodCenter = { ...allbloodcenter };
+      delete updatedBloodCenter[bc_id];
+      setAllbloodcenter(updatedBloodCenter);
+    } catch (error) {
+      console.error("Error deleting BloodCenter :", error);
+    }
+  };
   return (
     <div>
       <Header />
@@ -92,6 +104,12 @@ const ViewBloodCenter = () => {
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleEditProfile(bcId)}>
                          Edit BloodCenter
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(bcId)}
+                          className="red-text"
+                        >
+                          Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
