@@ -7,6 +7,8 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
 import { MedicalService } from "../../services/MedicalService";
@@ -24,10 +26,20 @@ const MedicalAck = () => {
     remark: "",
   };
   const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handleSubmit called');
+    console.log("handleSubmit called");
+    const validationErrors = validateForm(formData);
+    console.log("Validation Errors:", validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    } else {
+      setErrors({});
+    }
 
     try {
       const response = await MedicalService.createMedical(formData);
@@ -35,17 +47,50 @@ const MedicalAck = () => {
       if (response.status === 201) {
         console.log("MedicalAck Created Successfully");
         setFormData(initialState);
+        toast.success("Submit Successful!");
       } else {
         console.error("Failed To create MedicalAck");
+        toast.error("Failed to submit MedicalAck");
+
       }
     } catch (error) {
       console.error("Error", error);
+      toast.error("An error occurred during submission");
     }
-    
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+  };
+  const validateForm = (formData) => {
+    const errors = {};
+
+    if (!formData.toName.trim()) {
+      errors.toName = "To Name is required.";
+    }
+    if (!formData.date.trim()) {
+      errors.date = "Date is required.";
+    }
+    if (!formData.rupees.trim()) {
+      errors.rupees = "Rupees is required.";
+    }
+    if (!formData.chequeNo.trim()) {
+      errors.chequeNo = "Cheque No is required.";
+    }
+    if (!formData.dated.trim()) {
+      errors.dated = "Dated is required.";
+    }
+    if (!formData.hospIpNo.trim()) {
+      errors.hospIpNo = "Hospital Ip No is required.";
+    }
+    if (!formData.disease.trim()) {
+      errors.disease = "Disease is required.";
+    }
+    if (!formData.remark.trim()) {
+      errors.remark = "Remark is required.";
+    }
+    return errors;
   };
 
   return (
@@ -67,7 +112,11 @@ const MedicalAck = () => {
               name="toName"
               value={formData.toName}
               onChange={handleChange}
+              required
             />
+            {errors.toName && (
+              <div className="text-danger">{errors.toName}</div>
+            )}
           </Col>
           <Col className="col-sm-5 ">
             <Input
@@ -76,7 +125,9 @@ const MedicalAck = () => {
               name="date"
               value={formData.date}
               onChange={handleChange}
+              required
             />
+            {errors.date && <div className="text-danger">{errors.date}</div>}
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -87,7 +138,11 @@ const MedicalAck = () => {
               name="rupees"
               value={formData.rupees}
               onChange={handleChange}
+              required
             />
+            {errors.rupees && (
+              <div className="text-danger">{errors.rupees}</div>
+            )}
           </Col>
           <Col className="col-sm-5 ">
             <Input
@@ -96,7 +151,11 @@ const MedicalAck = () => {
               name="chequeNo"
               value={formData.chequeNo}
               onChange={handleChange}
+              required
             />
+            {errors.chequeNo && (
+              <div className="text-danger">{errors.chequeNo}</div>
+            )}
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -107,7 +166,9 @@ const MedicalAck = () => {
               name="dated"
               value={formData.dated}
               onChange={handleChange}
+              required
             />
+            {errors.dated && <div className="text-danger">{errors.dated}</div>}
           </Col>
           <Col className="col-sm-5 ">
             <Input
@@ -116,7 +177,11 @@ const MedicalAck = () => {
               name="hospIpNo"
               value={formData.hospIpNo}
               onChange={handleChange}
+              required
             />
+            {errors.hospIpNo && (
+              <div className="text-danger">{errors.hospIpNo}</div>
+            )}
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -127,7 +192,11 @@ const MedicalAck = () => {
               name="disease"
               value={formData.disease}
               onChange={handleChange}
+              required
             />
+            {errors.disease && (
+              <div className="text-danger">{errors.disease}</div>
+            )}
           </Col>
           <Col className="col-sm-5 ">
             <Input
@@ -137,6 +206,9 @@ const MedicalAck = () => {
               value={formData.remark}
               onChange={handleChange}
             />
+            {errors.remark && (
+              <div className="text-danger">{errors.remark}</div>
+            )}
           </Col>
         </Row>
 
@@ -144,6 +216,7 @@ const MedicalAck = () => {
           <Button type="submit">Submit</Button>
         </div>
       </form>
+      <ToastContainer/>
     </div>
   );
 };
