@@ -12,10 +12,13 @@ import axios from 'axios';
 import { APIS } from "../constants/api";
 const Viewtapal = () => {
  
-  const [allViewtapal] = useState({});
+  const [selectLetterNo, setSelectLetterNo]=useState("all");
+  const [selectLetterType, setSelectLetterType]=useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const [tapalData, setTapalData] = useState([]);
-  
+  const [filteredTapal, setFilteredTapal] = useState([]);
+
   const fetchTapalData = async () => {
     try {
       const response = await TapalService.getAllTapal();
@@ -47,6 +50,32 @@ const Viewtapal = () => {
       console.error("Error deleting tapal:", error);
     }
   };
+
+  
+
+
+  const handleLetterType = (event) => {
+    const { value } = event.target;
+    setSelectLetterType(value);
+  };
+
+  const handleSearchInputChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+  };
+  useEffect(() => {
+    const filtered = tapalData.filter((tapal) => {
+      const matchesLetterType = selectLetterType === "all" || tapal.letterType === selectLetterType;
+      const matchesSearch = Object.values(tapal).some((field) =>
+      String(field).toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return matchesLetterType && matchesSearch;
+    });
+
+    setFilteredTapal(filtered);
+  }, [searchQuery,selectLetterNo, selectLetterType, , tapalData]);
+
+
   return (
     <div>
       <Header />
@@ -57,7 +86,32 @@ const Viewtapal = () => {
         />
       </div>
       <h2 className="title">Tapal Details</h2>
+      <div className="d-flex seachcontentcenter mb-4 align-items-center">
+        <div className=" search ms-4">
+          <input
+            label="Search"
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+        </div>
+       
 
+        <div className="ms-4">
+          <select
+            id="lettertypeFilter"
+            className="form-select"
+            value={selectLetterType}
+            onChange={handleLetterType}
+          >
+            <option value="all">Type</option>
+            <option value="Receive">Receive</option>
+            <option value="Out Letter">Out Letter</option>
+          </select>
+        </div>
+      </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr> <th>Sr. No</th>
@@ -70,7 +124,7 @@ const Viewtapal = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-        {tapalData.map((tapal, index) => {
+        {filteredTapal.map((tapal, index) => {
           return (
             <tr key={tapal.id}>
               <td>{index + 1}</td>

@@ -337,5 +337,12 @@ th {
   left: 20px; 
 }
 .search{
-  width:68%;
+
+  width:30%;
+
+  }
+  .seachcontentcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

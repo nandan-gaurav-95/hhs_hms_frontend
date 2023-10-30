@@ -9,13 +9,17 @@ import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { HhsComplexService } from "../../services/HhsComplexService";
+
 const ViewHHSComplex = () => {
   const [allhhscomplex, setAllhhscomplex] = useState({});
-
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredHhscomplex, setFilteredHhscomplex] = useState({}); // Initially set to all hhscomplex
+
   const handleViewProfile = (hc_id) => {
     navigate(`/detailhhscomplex/${hc_id}`);
   };
+
   const fetchAllhhscomplex = async () => {
     try {
       const response = await HhsComplexService.getAllHhsComplex();
@@ -26,6 +30,7 @@ const ViewHHSComplex = () => {
           hhsComplexobject[hhscomplex.hc_id] = hhscomplex;
         });
         setAllhhscomplex(hhsComplexobject);
+        setFilteredHhscomplex(hhsComplexobject); // Set filteredHhscomplex to initially contain all hhscomplex
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -33,25 +38,47 @@ const ViewHHSComplex = () => {
       console.error("Error fetching hhscomplex data:", error);
     }
   };
+
   useEffect(() => {
     fetchAllhhscomplex();
   }, []);
+
   const handleEditProfile = (hc_id) => {
     navigate(`/edithhscomplex/${hc_id}`);
   };
-  const handleDelete = async (hc_id) => {
-    //   window.confirm("The Employee will be get deleted permanantly");
 
+  const handleDelete = async (hc_id) => {
     try {
       await axios.delete(`${APIS.DELETEHHSCOMPLEXBYID}/${hc_id}`);
       console.log("Deleted Successfully");
       const updatedHHSCOMPLEX = { ...allhhscomplex };
       delete updatedHHSCOMPLEX[hc_id];
       setAllhhscomplex(updatedHHSCOMPLEX);
+      setFilteredHhscomplex(updatedHHSCOMPLEX); // Update filteredHhscomplex after deleting
     } catch (error) {
-      console.error("Error deleting HHSCOMPLEX :", error);
+      console.error("Error deleting HHSCOMPLEX:", error);
     }
   };
+
+  const handleSearchInputChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+
+    const filtered = Object.keys(allhhscomplex).filter((hcId) => {
+      const hhscomplex = allhhscomplex[hcId];
+      const matchesSearch = Object.values(hhscomplex).some((field) =>
+        String(field).toLowerCase().includes(value.toLowerCase())
+      );
+      return matchesSearch;
+    });
+
+    const filteredHhsData = {};
+    filtered.forEach((hcId) => {
+      filteredHhsData[hcId] = allhhscomplex[hcId];
+    });
+    setFilteredHhscomplex(filteredHhsData);
+  };
+
   return (
     <div>
       <Header />
@@ -62,7 +89,18 @@ const ViewHHSComplex = () => {
         />
       </div>
       <h2 className="title">HHS Complex Details</h2>
-
+      <div className="d-flex seachcontentcenter mb-4 align-items-center">
+        <div className=" search ms-4">
+          <input
+            label="Search"
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+        </div>
+      </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
@@ -78,8 +116,8 @@ const ViewHHSComplex = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allhhscomplex).map((hcId, index) => {
-            const hhscomplex = allhhscomplex[hcId];
+          {Object.keys(filteredHhscomplex).map((hcId, index) => {
+            const hhscomplex = filteredHhscomplex[hcId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

@@ -11,6 +11,8 @@ import { Dropdown } from "react-bootstrap";
 import { ParkingService } from "../../services/ParkingService";
 const ViewParking = () => {
   const [allparking, setAllparking] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredParking, setFilteredParking] = useState({}); // Initialize with all data
 
   const navigate = useNavigate();
   const handleViewProfile = (p_id) => {
@@ -26,6 +28,7 @@ const ViewParking = () => {
           parkingobject[parking.p_id] = parking;
         });
         setAllparking(parkingobject);
+        setFilteredParking(parkingobject); // Initialize filteredParking
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -52,6 +55,25 @@ const ViewParking = () => {
       console.error("Error deleting Parking :", error);
     }
   };
+
+  const handleSearchInputChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+
+    const filtered = Object.keys(allparking).filter((parkId) => {
+      const parking = allparking[parkId];
+      const matchesSearch = Object.values(parking).some((field) =>
+        String(field).toLowerCase().includes(value.toLowerCase())
+      );
+      return matchesSearch;
+    });
+
+    const filteredParkingData = {};
+    filtered.forEach((parkId) => {
+      filteredParkingData[parkId] = allparking[parkId];
+    });
+    setFilteredParking(filteredParkingData);
+  };
   return (
     <div>
       <Header />
@@ -62,7 +84,18 @@ const ViewParking = () => {
         />
       </div>
       <h2 className="title">Parking Details</h2>
-
+      <div className="d-flex seachcontentcenter mb-4 align-items-center">
+        <div className="search ms-4">
+          <input
+            label="Search"
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+        </div>
+      </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
@@ -77,8 +110,8 @@ const ViewParking = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allparking).map((parkId, index) => {
-            const parking = allparking[parkId];
+          {Object.keys(filteredParking).map((parkId, index) => {
+            const parking = filteredParking[parkId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

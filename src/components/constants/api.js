@@ -97,56 +97,56 @@ export const APIS ={
      //Ambulance
      CREATEAMBULANCE: `${API_BASE_URL}/ambulance`,//Post-method
      GETALLAMBULANCE:`${API_BASE_URL}/ambulance`,// Get-method
-     GETAMBULANCEBYID:`${API_BASE_URL}/ambulance`,// Get specific Bank by ID
-     UPDATEAMBULANCEBYID:`${API_BASE_URL}/ambulance`,//Update an existing Bank 
-     DELETEAMBULANCEBYID:`${API_BASE_URL}/ambulance`,//Delete a Bank by ID
+     GETAMBULANCEBYID:`${API_BASE_URL}/ambulance`,// Get specific Ambulance by ID
+     UPDATEAMBULANCEBYID:`${API_BASE_URL}/ambulance`,//Update an existing Ambulance 
+     DELETEAMBULANCEBYID:`${API_BASE_URL}/ambulance`,//Delete a Ambulance by ID
 
       //Blood-center
       CREATEBLOODCENTER: `${API_BASE_URL}/blood`,//Post-method
       GETALLBLOODCENTER:`${API_BASE_URL}/blood`,// Get-method
-      GETBLOODCENTERBYID:`${API_BASE_URL}/blood`,// Get specific Bank by ID
-      UPDATEBLOODCENTERBYID:`${API_BASE_URL}/blood`,//Update an existing Bank 
-      DELETEBLOODCENTERBYID:`${API_BASE_URL}/blood`,//Delete a Bank by ID
+      GETBLOODCENTERBYID:`${API_BASE_URL}/blood`,// Get specific Blood-center by ID
+      UPDATEBLOODCENTERBYID:`${API_BASE_URL}/blood`,//Update an existing Blood-center 
+      DELETEBLOODCENTERBYID:`${API_BASE_URL}/blood`,//Delete a Blood-center by ID
 
    // Dargah complex
       CREATEDARGAHCOMPLEX: `${API_BASE_URL}/dc`,//Post-method
       GETALLDARGAHCOMPLEX:`${API_BASE_URL}/dc`,// Get-method
-      GETDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,// Get specific Bank by ID
-      UPDATEDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,//Update an existing Bank 
-      DELETEDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,//Delete a Bank by ID
+      GETDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,// Get specific  Dargah complex by ID
+      UPDATEDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,//Update an existing  Dargah complex 
+      DELETEDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,//Delete a  Dargah complex by ID
 
    //Electricity Bill
       CREATEELECITYBILL: `${API_BASE_URL}/elebill`,//Post-method
       GETALLELECITYBILL:`${API_BASE_URL}/elebill`,// Get-method
-      GETELECITYBILLBYID:`${API_BASE_URL}/elebill`,// Get specific Bank by ID
-      UPDATEELECITYBILLBYID:`${API_BASE_URL}/elebill`,//Update an existing Bank 
-      DELETEELECITYBILLBYID:`${API_BASE_URL}/elebill`,//Delete a Bank by ID
+      GETELECITYBILLBYID:`${API_BASE_URL}/elebill`,// Get specific Electricity Bill by ID
+      UPDATEELECITYBILLBYID:`${API_BASE_URL}/elebill`,//Update an existing Electricity Bill 
+      DELETEELECITYBILLBYID:`${API_BASE_URL}/elebill`,//Delete a Electricity Bill by ID
 
   // HHS -complex
       CREATEHHSCOMPLEX: `${API_BASE_URL}/hhs-complex`,//Post-method
       GETALLHHSCOMPLEX:`${API_BASE_URL}/hhs-complex`,// Get-method
-      GETHHSCOMPLEXBYID:`${API_BASE_URL}/hhs-complex`,// Get specific Bank by ID
-      UPDATEHHSCOMPLEXBYID:`${API_BASE_URL}/hhs-complex`,//Update an existing Bank 
-      DELETEHHSCOMPLEXBYID:`${API_BASE_URL}/hhs-complex`,//Delete a Bank by ID
+      GETHHSCOMPLEXBYID:`${API_BASE_URL}/hhs-complex`,// Get specific BHHS -complexank by ID
+      UPDATEHHSCOMPLEXBYID:`${API_BASE_URL}/hhs-complex`,//Update an existing HHS -complex 
+      DELETEHHSCOMPLEXBYID:`${API_BASE_URL}/hhs-complex`,//Delete a HHS -complex by ID
 
  // Parking
       CREATEPARKING: `${API_BASE_URL}/parking`,//Post-method
       GETALLPARKING:`${API_BASE_URL}/parking`,// Get-method
-      GETPARKINGBYID:`${API_BASE_URL}/parking`,// Get specific Bank by ID
-      UPDATEPARKINGBYID:`${API_BASE_URL}/parking`,//Update an existing Bank 
-      DELETEPARKINGBYID:`${API_BASE_URL}/parking`,//Delete a Bank by ID
+      GETPARKINGBYID:`${API_BASE_URL}/parking`,// Get specific Parking by ID
+      UPDATEPARKINGBYID:`${API_BASE_URL}/parking`,//Update an existing Parking 
+      DELETEPARKINGBYID:`${API_BASE_URL}/parking`,//Delete a Parking by ID
 
       // vouchers
       CREATEVOUCHER: `${API_BASE_URL}/vouchers`,//Post-method
       GETALLVOUCHER:`${API_BASE_URL}/vouchers`,// Get-method
-      GETVOUCHERBYID:`${API_BASE_URL}/vouchers`,// Get specific Bank by ID
-      UPDATEVOUCHERBYID:`${API_BASE_URL}/vouchers`,//Update an existing Bank 
-      DELETEVOUCHERBYID:`${API_BASE_URL}/vouchers`,//Delete a Bank by ID
+      GETVOUCHERBYID:`${API_BASE_URL}/vouchers`,// Get specific vouchers by ID
+      UPDATEVOUCHERBYID:`${API_BASE_URL}/vouchers`,//Update an existing vouchers 
+      DELETEVOUCHERBYID:`${API_BASE_URL}/vouchers`,//Delete a vouchers by ID
 
        // Medical Acknowledge
       CREATEMEDICALACKNWLDGE: `${API_BASE_URL}/mdclacknwldg`,//Post-method
       GETALLMEDICALACKNWLDGE:`${API_BASE_URL}/mdclacknwldg`,// Get-method
-      GETMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,// Get specific Bank by ID
-      UPDATEMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,//Update an existing Bank 
-      DELETEMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,//Delete a Bank by ID
+      GETMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,// Get specific Medical Acknowledge by ID
+      UPDATEMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,//Update an existing Medical Acknowledge 
+      DELETEMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,//Delete a Medical Acknowledge by ID
 }

@@ -11,8 +11,10 @@ import { Dropdown } from "react-bootstrap";
 import { AmbulanceService } from "../../services/AmbulanceService";
 const ViewAmbulanceVan = () => {
   const [allambulancevan, setAllambulancevan] = useState({});
-
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredAmbulanceVan, setFilteredAmbulanceVan] = useState({});
+
   const handleViewProfile = (amb_id) => {
     navigate(`/detailsambulancevan/${amb_id}`);
   };
@@ -52,6 +54,24 @@ const ViewAmbulanceVan = () => {
       console.error("Error deleting AmbulanceVan :", error);
     }
   };
+  const handleSearchInputChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+
+    const filtered = Object.keys(allambulancevan).filter((ambId) => {
+      const ambulance = allambulancevan[ambId];
+      const matchesSearch = Object.values(ambulance).some((field) =>
+        String(field).toLowerCase().includes(value.toLowerCase())
+      );
+      return matchesSearch;
+    });
+
+    const filteredAmbulanceData = {};
+    filtered.forEach((ambId) => {
+      filteredAmbulanceData[ambId] = allambulancevan[ambId];
+    });
+    setFilteredAmbulanceVan(filteredAmbulanceData);
+  };
   return (
     <div>
       <Header />
@@ -62,7 +82,18 @@ const ViewAmbulanceVan = () => {
         />
       </div>
       <h2 className="title">Ambulance Van Details</h2>
-
+      <div className="d-flex seachcontentcenter mb-4 align-items-center">
+        <div className=" search ms-4">
+          <input
+            label="Search"
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+        </div>
+      </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
@@ -76,8 +107,8 @@ const ViewAmbulanceVan = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allambulancevan).map((ambId, index) => {
-            const ambulance = allambulancevan[ambId];
+          {Object.keys(filteredAmbulanceVan).map((ambId, index) => {
+            const ambulance = filteredAmbulanceVan[ambId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -94,14 +125,14 @@ const ViewAmbulanceVan = () => {
                         variant="secondary"
                         id="dropdownMenuButton"
                       >
-                         &#8942;
+                        &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item onClick={() => handleViewProfile(ambId)}>
                           View Ambulance Van
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleEditProfile(ambId)}>
-                      Edit Ambulance Van
+                          Edit Ambulance Van
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => handleDelete(ambId)}

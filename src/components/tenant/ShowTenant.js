@@ -65,7 +65,9 @@ const ShowTenant = () => {
     try {
       await axios.delete(`${APIS.DELETETENANTBYID}/${tnt_id}`);
       console.log("Deleted Successfully");
-      const updatedTenantData = tenantData.filter((tenant) => tenant.tnt_id !== tnt_id);
+      const updatedTenantData = tenantData.filter(
+        (tenant) => tenant.tnt_id !== tnt_id
+      );
       setTenantData(updatedTenantData);
     } catch (error) {
       console.error("Error deleting tenant:", error);
@@ -101,17 +103,17 @@ const ShowTenant = () => {
       </div>
       <h1 className="mb-4 text-center">Tenants Details</h1>
 
-      <div className="d-flex mb-4 align-items-center">
-      <div className=" search ms-4">
-        <input
-          label="Search"
-          type="text"
-          className="form-control"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
-</div>
+      <div className="d-flex mb-4 align-items-center seachcontentcenter">
+        <div className=" search ms-4">
+          <input
+            label="Search"
+            type="text"
+            className="form-control"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+        </div>
         <div className="ms-4">
           <select
             id="complexFilter"
@@ -177,10 +179,14 @@ const ShowTenant = () => {
                       &#8942;
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => handleViewProfile(tenant.tnt_id)}>
+                      <Dropdown.Item
+                        onClick={() => handleViewProfile(tenant.tnt_id)}
+                      >
                         View Profile
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleEditProfile(tenant.tnt_id)}>
+                      <Dropdown.Item
+                        onClick={() => handleEditProfile(tenant.tnt_id)}
+                      >
                         Edit Profile
                       </Dropdown.Item>
                       <Dropdown.Item

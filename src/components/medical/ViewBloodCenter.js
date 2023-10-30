@@ -9,52 +9,90 @@ import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { BloodCenterService } from "../../services/BloodCenterService";
-const ViewBloodCenter = () => {
-  const [allbloodcenter, setAllbloodcenter] = useState({});
 
+const ViewBloodCenter = () => {
+  const [allBloodCenter, setAllBloodCenter] = useState({});
   const navigate = useNavigate();
-  const handleViewProfile = (bc_id) => {
-    navigate(`/detailbloodcenter/${bc_id}`);
-  };
-  const fetchAllbloodcenter = async () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [bloodGroupFilter, setBloodGroupFilter] = useState("all");
+  const [filteredBloodCenter, setFilteredBloodCenter] = useState({});
+
+  const fetchAllBloodCenter = async () => {
     try {
       const response = await BloodCenterService.getAllBloodCenter();
       console.log("API Response:", response);
       if (Array.isArray(response)) {
-        const bloodcenterobject = {};
-        response.forEach((bloodcenter) => {
-          bloodcenterobject[bloodcenter.bc_id] = bloodcenter;
+        const bloodCenterObject = {};
+        response.forEach((bloodCenter) => {
+          bloodCenterObject[bloodCenter.bc_id] = bloodCenter;
         });
-        setAllbloodcenter(bloodcenterobject);
+        setAllBloodCenter(bloodCenterObject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
     } catch (error) {
-      console.error("Error fetching blood data:", error);
+      console.error("Error fetching blood center data:", error);
     }
   };
+
   useEffect(() => {
-    fetchAllbloodcenter();
+    fetchAllBloodCenter();
   }, []);
+
+  const handleViewProfile = (bc_id) => {
+    navigate(`/detailbloodcenter/${bc_id}`);
+  };
+
   const handleEditProfile = (bc_id) => {
     navigate(`/editbloodcenter/${bc_id}`);
   };
-  const handleDelete = async (bc_id) => {
-    //   window.confirm("The Employee will be get deleted permanantly");
 
+  const handleDelete = async (bc_id) => {
     try {
       await axios.delete(`${APIS.DELETEBLOODCENTERBYID}/${bc_id}`);
       console.log("Deleted Successfully");
-      const updatedBloodCenter = { ...allbloodcenter };
+      const updatedBloodCenter = { ...allBloodCenter };
       delete updatedBloodCenter[bc_id];
-      setAllbloodcenter(updatedBloodCenter);
+      setAllBloodCenter(updatedBloodCenter);
     } catch (error) {
-      console.error("Error deleting BloodCenter :", error);
+      console.error("Error deleting BloodCenter:", error);
     }
   };
+
+  const handleSearchInputChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+  };
+
+  const handleBloodGroupFilter = (event) => {
+    const { value } = event.target;
+    setBloodGroupFilter(value);
+  };
+
+  useEffect(() => {
+    const filteredBloodCenters = Object.keys(allBloodCenter).filter((bcId) => {
+      const bloodCenter = allBloodCenter[bcId];
+      const matchesBloodGroup =
+        bloodGroupFilter === "all" ||
+        bloodCenter.bloodgroup === bloodGroupFilter;
+      const matchesSearch = Object.values(bloodCenter).some((field) =>
+        String(field).toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      return matchesBloodGroup && matchesSearch;
+    });
+
+    const filteredBloodCenterObject = {};
+    filteredBloodCenters.forEach((bcId) => {
+      filteredBloodCenterObject[bcId] = allBloodCenter[bcId];
+    });
+
+    setFilteredBloodCenter(filteredBloodCenterObject);
+  }, [searchQuery, bloodGroupFilter, allBloodCenter]);
+
   return (
     <div>
       <Header />
+
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -62,13 +100,43 @@ const ViewBloodCenter = () => {
         />
       </div>
       <h2 className="title">Blood Center Details</h2>
+      <div className="d-flex seachcontentcenter mb-4 align-items-center">
+        <div className=" search ms-4">
+          <input
+            label="Search"
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+        </div>
 
+        <div className="ms-4">
+          <select
+            id="bloodGroupFilter"
+            className="form-select"
+            value={bloodGroupFilter}
+            onChange={handleBloodGroupFilter}
+          >
+            <option value="all">Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+      </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
           <tr>
-            <th>Sr.No</th>
+            <th>Sr. No.</th>
             <th>Receiver Name</th>
-            <th>Date</th>
+            <th>Blood Group</th>
             <th>I.P. NO.</th>
             <th>Age</th>
             <th>Gender</th>
@@ -77,18 +145,17 @@ const ViewBloodCenter = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(allbloodcenter).map((bcId, index) => {
-            const bloodcenter = allbloodcenter[bcId];
+          {Object.keys(filteredBloodCenter).map((bcId, index) => {
+            const bloodCenter = allBloodCenter[bcId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{bloodcenter.receiverName}</td>
-                <td>{bloodcenter.date}</td>
-                <td>{bloodcenter.ipNo}</td>
-                <td>{bloodcenter.age}</td>
-                <td>{bloodcenter.gender}</td>
-                <td>{bloodcenter.hospitalName}</td>
-
+                <td>{bloodCenter.receiverName}</td>
+                <td>{bloodCenter.bloodgroup}</td>
+                <td>{bloodCenter.ipNo}</td>
+                <td>{bloodCenter.age}</td>
+                <td>{bloodCenter.gender}</td>
+                <td>{bloodCenter.hospitalName}</td>
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -99,11 +166,15 @@ const ViewBloodCenter = () => {
                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => handleViewProfile(bcId)}>
+                        <Dropdown.Item
+                          onClick={() => handleViewProfile(bcId)}
+                        >
                           View BloodCenter
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleEditProfile(bcId)}>
-                         Edit BloodCenter
+                        <Dropdown.Item
+                          onClick={() => handleEditProfile(bcId)}
+                        >
+                          Edit BloodCenter
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => handleDelete(bcId)}
