@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import Sidebar from "./Sidebar";
 import backgroundImage from "../../asset/images/HHMS_bG.jpg";
-// import backgroundImage  from "../../asset/images/istockphoto-505757382-612x612.jpg";
-// import backgroundImage  from "../../asset/images/HHMS bG.jpg"
 import "../../asset/homepage.css";
 import Header from "../common/Header";
 import { NavLink } from "react-router-dom";
@@ -14,6 +12,7 @@ import {
   MDBDropdownToggle,
   MDBDropdownItem,
 } from "mdb-react-ui-kit";
+import { Button } from "react-bootstrap";
 export default function HomePage() {
   const navigate = useNavigate();
   const backgroundImageStyle = {
@@ -25,11 +24,47 @@ export default function HomePage() {
   const handlePropertyLogin = () => {
     navigate("/loginprop");
   };
+  const handleInventoryLogin = () => {
+    navigate("/logininventory");
+  };
+  const handleEmployeeLogin = () => {
+    navigate("/loginemployee");
+  };
+  const handleTenantLogin = () => {
+    navigate("/logintenant");
+  };
+  const handleTapalLogin = () => {
+    navigate("/logintapal");
+  };
+  const handleElectricityLogin = () => {
+    navigate("/loginelectricity");
+  };
+  const handleVoucherLogin = () => {
+    navigate("/loginvoucher");
+  };
+  const handleHHSComplexLogin = () => {
+    navigate("/loginhhscomplex");
+  };
 
+  const handleDargahLogin = () => {
+    navigate("/logindargah");
+  };
+  const handleMedicalAckLogin = () => {
+    navigate("/loginmedicalack");
+  };
+  const handleAmbulanceVanLogin = () => {
+    navigate("/loginambulancevan");
+  };
+  const handleBloodCenterLogin = () => {
+    navigate("/loginbloodcenter");
+  };
+
+  const handleParkingLogin = () => {
+    navigate("/loginparking");
+  };
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
       <Header />
-      <Sidebar>
         <div className="card-container">
           <div className="card upper-card">
             <h3>Institutation Management</h3>
@@ -58,71 +93,24 @@ export default function HomePage() {
 
           <div className="card upper-card">
             <h3>Property Management</h3>
-            <MDBDropdown>
-              <MDBDropdownToggle tag="a" className="btn btn-dark" onClick={handlePropertyLogin}>
-                proceed
-              </MDBDropdownToggle>
-              {/* <MDBDropdownMenu>
-                <NavLink to="/properties">
-                  <MDBDropdownItem link>
-                    <b>Add Property</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/allProperties">
-                  <MDBDropdownItem link>
-                    <b>View Property</b>
-                  </MDBDropdownItem>
-                </NavLink>
-              </MDBDropdownMenu> */}
-            </MDBDropdown>
+           
+              <Button tag="a" className="btn btn-dark" onClick={handlePropertyLogin} >
+                LOGIN
+              </Button>
           </div>
 
           <div className="card upper-card">
             <h3>Inventory Management</h3>
-            <MDBDropdown>
-              <MDBDropdownToggle tag="a" className="btn btn-dark">
-                proceed
-              </MDBDropdownToggle>
-              <MDBDropdownMenu>
-                <NavLink to="/addinventory">
-                  <MDBDropdownItem link>
-                    <b>Add Inventory</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/showinventory">
-                  <MDBDropdownItem link>
-                    <b>View Inventory</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/distributeinventory">
-                  <MDBDropdownItem link>
-                    <b>Distribute Inventory</b>
-                  </MDBDropdownItem>
-                </NavLink>
-              </MDBDropdownMenu>
-            </MDBDropdown>
+              <Button tag="a" className="btn btn-dark" onClick={handleInventoryLogin} >
+                LOGIN
+              </Button>
           </div>
 
           <div className="card upper-card">
             <h3>Employee Management</h3>
-            <MDBDropdown>
-              <MDBDropdownToggle tag="a" className="btn btn-dark">
-                proceed
-              </MDBDropdownToggle>
-              <MDBDropdownMenu>
-                <NavLink to="/employee">
-                  <MDBDropdownItem link>
-                    <b>Add Employee</b>
-                  </MDBDropdownItem>{" "}
-                </NavLink>
-                <NavLink to="/allemployee">
-                  <MDBDropdownItem link>
-                    <b>View Employees</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                {/* <NavLink to="/nonconsumableform"><MDBDropdownItem link><b>Payroll Details</b></MDBDropdownItem></NavLink> */}
-              </MDBDropdownMenu>
-            </MDBDropdown>
+              <Button tag="a" className="btn btn-dark" onClick={handleEmployeeLogin}>
+                login
+              </Button>
           </div>
         </div>
         <div className="card-container">
@@ -156,45 +144,17 @@ export default function HomePage() {
           <div className="card upper-card">
             <h3>Tenant Management</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/tenant">
-                    <MDBDropdownItem link>
-                      <b>Add Tenant</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/showtenant">
-                    <MDBDropdownItem link>
-                      <b>View Tenants</b>
-                    </MDBDropdownItem>
-                  </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+                <Button tag="a" className="btn btn-dark" onClick={handleTenantLogin}>
+                  Login
+                </Button>
             </div>
           </div>
           <div className="card upper-card">
             <h3>Tapal</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/add">
-                    <MDBDropdownItem link>
-                      <b>Add Tapal</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/view">
-                    <MDBDropdownItem link>
-                      <b>View Tapal</b>
-                    </MDBDropdownItem>
-                  </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+            <Button tag="a" className="btn btn-dark" onClick={handleTapalLogin}>
+                  Login
+                </Button>
             </div>
           </div>
           <div className="card upper-card">
@@ -215,7 +175,7 @@ export default function HomePage() {
                       <b>Scholarship</b>
                     </MDBDropdownItem>{" "}
                   </NavLink>
-                  <NavLink to="/pdf">
+                  <NavLink to="/">
                     <MDBDropdownItem link>
                       <b>Receipts</b>
                     </MDBDropdownItem>{" "}
@@ -226,57 +186,20 @@ export default function HomePage() {
           </div>
         </div>
         <div className="card-container">
-          <div className="card upper-card">
+        <div className="card upper-card">
             <h3>Electricity</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  Proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/electricitybill">
-                    <MDBDropdownItem link>
-                      <b>Electricity Bill</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/viewelectricitybill">
-                    <MDBDropdownItem link>
-                      <b>View Electricity Bill</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <MDBDropdownItem>
-                    <b>Tenants</b>
-                  </MDBDropdownItem>
-                  <MDBDropdownItem>
-                    <b>Staff Quarters</b>
-                  </MDBDropdownItem>
-                  <MDBDropdownItem>
-                    <b>Rented Homes</b>
-                  </MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+                <Button tag="a" className="btn btn-dark" onClick={handleElectricityLogin}>
+                  login
+                </Button>
             </div>
           </div>
           <div className="card upper-card">
             <h3>Vouchers</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/voucher">
-                    <MDBDropdownItem link>
-                      <b>Voucher</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/viewvoucher">
-                    <MDBDropdownItem link>
-                      <b>View Voucher</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+            <Button tag="a" className="btn btn-dark" onClick={handleVoucherLogin}>
+                  Login
+                </Button>
             </div>
           </div>
           <div className="card upper-card">
@@ -306,105 +229,61 @@ export default function HomePage() {
             </div>
           </div>
           <div className="card upper-card">
-            <h3>HHS & Dargah Complex</h3>
+            <h3>HHS Complex</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                <NavLink to="/hhscomplex">
-                  <MDBDropdownItem link>
-                    <b>HHS Complex</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/viewhhscomplex">
-                  <MDBDropdownItem link>
-                    <b>View HHS Complex</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/dargahcomplex">
-                  <MDBDropdownItem link>
-                    <b>Dargah Complex</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/viewdargahcomplex">
-                  <MDBDropdownItem link>
-                    <b>View Dargah Complex</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+                <Button tag="a" className="btn btn-dark" onClick={handleHHSComplexLogin}>
+                  login
+                </Button>
             </div>
           </div>
         </div>
         <div className="card-container">
           <div className="card upper-card">
-            <h3>Medical</h3>
+            <h3>Dargah Complex</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  Proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                <NavLink to="/bloodcenter">
-                  <MDBDropdownItem link>
-                    <b>Blood Center</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/viewbloodcenter">
-                  <MDBDropdownItem link>
-                    <b>View Blood Center</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/ambulancevan">
-                  <MDBDropdownItem link>
-                    <b>Ambulance Van</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/viewambulancevan">
-                  <MDBDropdownItem link>
-                    <b>View Ambulance Van</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/medicalack">
-                  <MDBDropdownItem link>
-                    <b>Medical Acknowledgment</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/viewmedicalack">
-                  <MDBDropdownItem link>
-                    <b>View Medical Acknowledgment</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+            <Button tag="a" className="btn btn-dark" onClick={handleDargahLogin}>
+                  login
+                </Button>
             </div>
           </div>
           <div className="card upper-card">
-            <h3>Parking</h3>
+            <h3>Medical Ack</h3>
             <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/parking">
-                    <MDBDropdownItem link>
-                      <b>Parking</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/viewparking">
-                    <MDBDropdownItem link>
-                      <b>View Parking</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+            <Button tag="a" className="btn btn-dark" onClick={handleMedicalAckLogin}>
+                  login
+                </Button>
+            </div>
+          </div>
+          <div className="card upper-card">
+            <h3>Ambulance Van</h3>
+            <div className="proceed-button">
+            
+                <Button tag="a" className="btn btn-dark" onClick={handleAmbulanceVanLogin}>
+                  login
+                </Button>
+            
+            </div>
+          </div>
+          <div className="card upper-card">
+            <h3>Blood Center</h3>
+            <div className="proceed-button">
+                <Button tag="a" className="btn btn-dark" onClick={handleBloodCenterLogin}>
+                  login
+                </Button>
             </div>
           </div>
         </div>
-      </Sidebar>
+        <div className="card-container">
+          <div className="card upper-card">
+            <h3>Parking</h3>
+            <div className="proceed-button">
+               <Button tag="a" className="btn btn-dark" onClick={handleParkingLogin}>
+                  login
+                </Button>
+            </div>
+          </div>
+        </div>
+      
     </div>
   );
 }

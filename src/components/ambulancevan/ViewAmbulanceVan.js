@@ -9,6 +9,8 @@ import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { AmbulanceService } from "../../services/AmbulanceService";
+
+
 const ViewAmbulanceVan = () => {
   const [allambulancevan, setAllambulancevan] = useState({});
   const navigate = useNavigate();
@@ -28,6 +30,7 @@ const ViewAmbulanceVan = () => {
           ambulanceobject[ambulance.amb_id] = ambulance;
         });
         setAllambulancevan(ambulanceobject);
+        setFilteredAmbulanceVan(allambulancevan);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -50,6 +53,7 @@ const ViewAmbulanceVan = () => {
       const updatedAmbulanceVan = { ...allambulancevan };
       delete updatedAmbulanceVan[amb_id];
       setAllambulancevan(updatedAmbulanceVan);
+      
     } catch (error) {
       console.error("Error deleting AmbulanceVan :", error);
     }

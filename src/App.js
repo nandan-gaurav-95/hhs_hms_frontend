@@ -108,6 +108,30 @@ import EditMedicalAck from "./components/medicalack/EditMedicalAck";
 import LoginForm from "./components/constants/LoginFlow/Login";
 import LoginProperty from "./components/property/LoginProperty";
 import HomeProperty from "./components/property/HomeProperty";
+import HomeInventory from "./components/inventory/HomeInventory";
+import LoginInventory from "./components/inventory/LoginInventory";
+import LoginTenant from "./components/tenant/LoginTenant";
+import HomeTenant from "./components/tenant/HomeTenant";
+import LoginTapal from "./components/tapal/LoginTapal";
+import HomeTapal from "./components/tapal/HomeTapal";
+import LoginVoucher from "./components/voucher/LoginVoucher";
+import HomeVoucher from "./components/voucher/HomeVoucher";
+import LoginDargah from "./components/dargahcompex/LoginDargah";
+import HomeDargah from "./components/dargahcompex/HomeDargah";
+import LoginEmployee from "./components/employee/LoginEmployee";
+import HomeEmployee from "./components/employee/HomeEmployee";
+import LoginElectricity from "./components/electricity/LoginElectricity";
+import HomeElectricity from "./components/electricity/HomeElectricity";
+import LoginHHSComplex from "./components/hhscomplex/LoginHHSComplex";
+import HomeHHSComplex from "./components/hhscomplex/HomeHHSComplex";
+import LoginMedicalAck from "./components/medicalack/LoginMedicalAck";
+import HomeMedicalAck from "./components/medicalack/HomeMedicalAck";
+import LoginAmbulanceVan from "./components/ambulancevan/LoginAmbulanceVan";
+import HomeAmbulanceVan from "./components/ambulancevan/HomeAmbulanceVan";
+import LoginBloodCenter from "./components/bloodcenter/LoginBloodCenter";
+import HomeBloodCenter from "./components/bloodcenter/HomeBloodCenter";
+import LoginParking from "./components/parking/LoginParking";
+import HomeParking from "./components/parking/HomeParking";
 
 function App() {
   return (
@@ -125,13 +149,15 @@ function App() {
 
           <Route path="/loginprop" element={<LoginProperty />}></Route>
           <Route path="/homeprop" element={<HomeProperty />}></Route>
-
           <Route path="/allProperties" element={<AllProperties />}></Route>
           <Route path="/profile/:id" element={<ViewPropertyDetail />}></Route>
           <Route path="/property-details/:id" element={<PropertyDetails />}></Route>
           <Route path="/properties" element={<Property />}></Route>
           <Route path="/property-photo/:id" element={<PropertyPhotoForm />}></Route>
-
+         
+         {/* tenant */} 
+          <Route path="/logintenant" element={<LoginTenant />}></Route>
+          <Route path="/hometenant" element={<HomeTenant />}></Route>
           <Route path="/tenant" element={<TenantForm />}></Route>
           <Route path="/showtenant" element={<ShowTenant />}></Route>
           <Route path="/tenant-details/:id" element={<TenantDetails />}></Route>
@@ -147,74 +173,52 @@ function App() {
           <Route path="/payroll-details" element={<PayrollDetails />}></Route>
 
           {/* Inventory Management */}
+          <Route path="/logininventory" element={<LoginInventory />}></Route>
+          <Route path="/homeinventory" element={<HomeInventory />}></Route>
           <Route path="/inventory" element={<InventoryForm />}></Route>
           <Route path="/allinventory" element={<AllinventoryForm />}></Route>
-          <Route
-            path="/inventory-details/:id"
-            element={<InventoryDetails />}
-          ></Route>
+          <Route path="/inventory-details/:id" element={<InventoryDetails />} ></Route>
           <Route path="/addinventory" element={<AddInventory />}></Route>
           <Route path="/showinventory" element={<ShowInventory />}></Route>
-          <Route
-            path="/distributeinventory"
-            element={<DistributeInventory />}
-          ></Route>
+          <Route path="/distributeinventory" element={<DistributeInventory />}></Route>
+          <Route path="/allocated-inventory/:id" element={<AllocatedInventory />} />
+
 
           {/* Employee Management */}
+          <Route path="/loginemployee" element={<LoginEmployee />}></Route>
+          <Route path="/homeemployee" element={<HomeEmployee />}></Route>
           <Route path="/employee" element={<EmployeeForm />}></Route>
           <Route path="/allemployee" element={<AllEmployeeForm />}></Route>
-          <Route
-            path="/employee-details/:id"
-            element={<EmpolyeeDetails />}
-          ></Route>
-          <Route
-            path="/employeeprofile/:id"
-            element={<ViewEmpProfile />}
-          ></Route>
-          <Route
-            path="/allocated-inventory/:id"
-            element={<AllocatedInventory />}
-          />
+          <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
+          <Route path="/employeeprofile/:id" element={<ViewEmpProfile />} ></Route>
 
           {/* Daybook */}
           <Route path="/daybook" element={<DayBook />}></Route>
           <Route path="/alldaybook" element={<AllDaybook />}></Route>
-          <Route
-            path="/daybook-details/:id"
-            element={<PropertyDetailsDaybook />}
-          ></Route>
+          <Route path="/daybook-details/:id" element={<PropertyDetailsDaybook />} ></Route>
           <Route path="/transaction" element={<Transactions />}></Route>
           <Route path="/viewdaybook" element={<Viewdaybook />}></Route>
 
           {/* Tapal */}
+          <Route path="/logintapal" element={<LoginTapal />}></Route>
+          <Route path="/hometapal" element={<HomeTapal />}></Route>
           <Route path="/add" element={<Addtapal />}></Route>
           <Route path="/view" element={<Viewtapal />}></Route>
           <Route path="/edit-tapal" element={<Edittapal />}></Route>
 
+
           <Route path="/payment" element={<PaymentForm />}></Route>
           <Route path="/allpayment" element={<AllpaymentForm />}></Route>
-          <Route
-            path="/payment-details/:id"
-            element={<PaymentDetails />}
-          ></Route>
+          <Route path="/payment-details/:id" element={<PaymentDetails />} ></Route>
           <Route path="/receipt" element={<ReceiptForm />}></Route>
           <Route path="/allreceipt" element={<AllReceipt />}></Route>
-          <Route
-            path="/receipt-details/:id"
-            element={<ReceiptDetails />}
-          ></Route>
+          <Route path="/receipt-details/:id" element={<ReceiptDetails />} ></Route>
           <Route path="/expense" element={<ExpenseForm />}></Route>
           <Route path="/allexpense" element={<AllExpense />}></Route>
-          <Route
-            path="/expense-details/:id"
-            element={<ExpenseDetails />}
-          ></Route>
+          <Route path="/expense-details/:id" element={<ExpenseDetails />} ></Route>
           <Route path="/student" element={<StudentData />}></Route>
           <Route path="/allstudent" element={<AllStudentForm />}></Route>
-          <Route
-            path="/student-details/:id"
-            element={<StudentDetails />}
-          ></Route>
+          <Route path="/student-details/:id" element={<StudentDetails />}></Route>
           <Route path="/bankform" element={<BankForm />}></Route>
           <Route path="/showbank" element={<ShowBank />}></Route>
           <Route path="/bank-details/:id" element={<BankDetails />}></Route>
@@ -227,46 +231,76 @@ function App() {
           <Route path="/medicalaid" element={<Medicalaid />}></Route>
           <Route path="/hostel" element={<GirlsHostel />}></Route>
 
+         {/* hhscomplex */}
+          <Route path="/loginhhscomplex" element={<LoginHHSComplex />}></Route>
+          <Route path="/homehhscomplex" element={<HomeHHSComplex />}></Route>
           <Route path="/hhscomplex" element={<HHSComplex />}></Route>
           <Route path="/viewhhscomplex" element={<ViewHHSComplex/>}></Route>
           <Route path="/detailhhscomplex/:id" element={<DetailHHSComplex />}></Route>
-
+          <Route path="/edithhscomplex/:id" element={<EditHHSComplex />}></Route>
+  
+         {/* Dargah */}
+         <Route path="/logindargah" element={<LoginDargah />}></Route>
+          <Route path="/homedargah" element={<HomeDargah />}></Route>
           <Route path="/dargahcomplex" element={<DargahComplex />}></Route>
           <Route path="/viewdargahcomplex" element={<ViewDargahComplex/>}></Route>
           <Route path="/detaildergah/:id" element={<DetailDargahComplex />}></Route>
+          <Route path="/editdargahcomplex/:id" element={<EditDargahComplex />}></Route>
 
+         {/* blood center */}
+         <Route path="/loginbloodcenter" element={<LoginBloodCenter />}></Route>
+          <Route path="/homebloodcenter" element={<HomeBloodCenter />}></Route>
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
           <Route path="/viewbloodcenter" element={<ViewBloodCenter />}></Route>
           <Route path="/detailbloodcenter/:id" element={<DetailBloodCenter />}></Route>
+          <Route path="/editbloodcenter/:id" element={<EditBloodCenter />}></Route>
 
+          
+          {/* ambulance Van */}
+          <Route path="/loginambulancevan" element={<LoginAmbulanceVan />}></Route>
+          <Route path="/homeambulancevan" element={<HomeAmbulanceVan />}></Route>
           <Route path="/ambulancevan" element={<AmbulanceVan />}></Route>
           <Route path="/viewambulancevan" element={<ViewAmbulanceVan />}></Route>
           <Route path="/detailsambulancevan/:id" element={<DetailsAmbulanceVan />}></Route>
+          <Route path="/editambulancevan/:id" element={<EditAmbulanceVan />}></Route>
           
+          {/* parking */}
+          <Route path="/loginparking" element={<LoginParking />}></Route>
+          <Route path="/homeparking" element={<HomeParking />}></Route>
           <Route path="/parking" element={<Parking />}></Route>
           <Route path="/viewparking" element={<ViewParking />}></Route>
           <Route path="/detailparking/:id" element={<DetailParking />}></Route>
+          <Route path="/editparking/:id" element={<EditParking />}></Route>
 
+
+          {/* medicalack */}
+          <Route path="/loginmedicalack" element={<LoginMedicalAck />}></Route>
+          <Route path="/homemedicalack" element={<HomeMedicalAck />}></Route>
           <Route path="/medicalack" element={<MedicalAck />}></Route>
           <Route path="/viewmedicalack" element={<ViewMedicalAck/>}></Route>
           <Route path="/detailmedicalack/:id" element={<DetailMedicalAck />}></Route>
+          <Route path="/editmedicalack/:id" element={<EditMedicalAck />}></Route>
 
+
+         {/* voucher  */}
+          <Route path="/loginvoucher" element={<LoginVoucher />}></Route>
+          <Route path="/homevoucher" element={<HomeVoucher />}></Route>
           <Route path="/voucher" element={<Voucher />}></Route>
           <Route path="/viewvoucher" element={<ViewVoucher />}></Route>
           <Route path="/detailvoucher/:id" element={<DetailVoucher />}></Route>
+          <Route path="/editvoucher/:id" element={<EditVoucher />}></Route>
 
+         {/* electricity */}
+          <Route path="/loginelectricity" element={<LoginElectricity />}></Route>
+          <Route path="/homeelectricity" element={<HomeElectricity />}></Route>
           <Route path="/electricitybill" element={<ElectricityBill />}></Route>
           <Route path="/viewelectricitybill" element={<ViewElectricityBill />}></Route>
           <Route path="/detailelectricitybill/:id" element={<DetailElectricityBill />}></Route>
-
           <Route path="/editelectricitybill/:id" element={<EditElectricityBill />}></Route>
-          <Route path="/editvoucher/:id" element={<EditVoucher />}></Route>
-          <Route path="/edithhscomplex/:id" element={<EditHHSComplex />}></Route>
-          <Route path="/editdargahcomplex/:id" element={<EditDargahComplex />}></Route>
-          <Route path="/editambulancevan/:id" element={<EditAmbulanceVan />}></Route>
-          <Route path="/editbloodcenter/:id" element={<EditBloodCenter />}></Route>
-          <Route path="/editparking/:id" element={<EditParking />}></Route>
-          <Route path="/editmedicalack/:id" element={<EditMedicalAck />}></Route>
+
+
+            
+
 
         </Routes>
       </BrowserRouter>
