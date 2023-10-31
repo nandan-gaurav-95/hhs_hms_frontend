@@ -93,12 +93,10 @@ export default function HomePage() {
 
           <div className="card upper-card">
             <h3>Property Management</h3>
-           
               <Button tag="a" className="btn btn-dark" onClick={handlePropertyLogin} >
                 LOGIN
               </Button>
           </div>
-
           <div className="card upper-card">
             <h3>Inventory Management</h3>
               <Button tag="a" className="btn btn-dark" onClick={handleInventoryLogin} >

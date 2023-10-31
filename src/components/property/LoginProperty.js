@@ -10,6 +10,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { toast,ToastContainer } from "react-toastify";
 // import axios from "axios";
 // import { APIS } from "../api";
+import backgroundImage  from "../../asset/images/HHMS_bG.jpg";
 
 import {
   MDBContainer as Container,
@@ -40,7 +41,12 @@ function LoginProperty() {
   //     setPasswordError("");
   //   }
   // };
-
+  const backgroundImageStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
   const navigate = useNavigate();
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
@@ -75,9 +81,10 @@ function LoginProperty() {
   };
 
   return (
-     <body class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
-     ">
-     
+    //  <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
+    //  ">
+    <div className="background-login" style={backgroundImageStyle}>
+
       <Container fluid className="loginBOdyDiv mt-4 d-flex align-items-center justify-content-center h-100">
       <ToastContainer/>
           <Col className="forbusiness-page col-sm-6 rounded py-0">
@@ -86,7 +93,7 @@ function LoginProperty() {
                 <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
                   H.H.S & H.M.S
                 </h2>
-                <p className="text-center">Login In to Your Account</p>
+                <p className="text-center">Login In to Property Management</p>
 
                 <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
                   <Input
@@ -211,7 +218,7 @@ function LoginProperty() {
         {/* </Row> */}
       </Container>
     
-     </body>
+     </div>
   );
 }
 

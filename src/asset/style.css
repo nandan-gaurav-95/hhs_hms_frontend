@@ -145,7 +145,7 @@ background-color:#333;
 }
 .forbusiness-page {
  width:50%;
- height:100%;
+ /* height:100%; */
   background: linear-gradient(to bottom right, #abf47a, #cbe77c, #a9e4a9, #b8f898, #bbe994, #c9eea6);
 
 

@@ -90,7 +90,7 @@ function LoginHHSComplex() {
               <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
                 H.H.S & H.M.S
               </h2>
-              <p className="text-center">Login In to Employee Management</p>
+              <p className="text-center">Login In to HHS Complex</p>
 
               <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
                 <Input
