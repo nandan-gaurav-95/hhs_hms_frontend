@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import RegisterProp from "./components/property/RegisterProp";
 import PropertyDetails from "./components/property/PropertyDetails";
 import PropertyPhotoForm from "./components/property/PropertyPhoto";
@@ -65,18 +64,18 @@ import Scholarship from "./components/financial_assistance/Scholarship";
 import Medicalaid from "./components/financial_assistance/Medicalaid";
 
 //hhs and dargah complex
-import HHSComplex from "./components/hhs&dargahcompex/HHSComplex";
-import ViewHHSComplex from "./components/hhs&dargahcompex/ViewHHSComplex";
-import DargahComplex from "./components/hhs&dargahcompex/DargahComplex";
-import ViewDargahComplex from "./components/hhs&dargahcompex/ViewDargahComplex";
+import HHSComplex from "./components/hhscomplex/HHSComplex";
+import ViewHHSComplex from "./components/hhscomplex/ViewHHSComplex";
+import DargahComplex from "./components/dargahcompex/DargahComplex";
+import ViewDargahComplex from "./components/dargahcompex/ViewDargahComplex";
 
 //medical
-import BloodCenter from "./components/medical/BloodCenter";
-import ViewBloodCenter from "./components/medical/ViewBloodCenter";
-import AmbulanceVan from "./components/medical/AmbulanceVan";
-import ViewAmbulanceVan from "./components/medical/ViewAmbulanceVan";
-import MedicalAck from "./components/medical/MedicalAck";
-import ViewMedicalAck from "./components/medical/ViewMedicalAck";
+import BloodCenter from "./components/bloodcenter/BloodCenter";
+import ViewBloodCenter from "./components/bloodcenter/ViewBloodCenter";
+import AmbulanceVan from "./components/ambulancevan/AmbulanceVan";
+import ViewAmbulanceVan from "./components/ambulancevan/ViewAmbulanceVan";
+import MedicalAck from "./components/medicalack/MedicalAck";
+import ViewMedicalAck from "./components/medicalack/ViewMedicalAck";
 
 //parking
 import Parking from "./components/parking/Parking";
@@ -88,24 +87,27 @@ import ViewVoucher from "./components/voucher/ViewVoucher";
 //Electricity
 import ElectricityBill from "./components/electricity/ElectricityBill";
 import ViewElectricityBill from "./components/electricity/ViewElectricityBill";
-import DetailMedicalAck from "./components/medical/DetailMedicalAck";
+import DetailMedicalAck from "./components/medicalack/DetailMedicalAck";
 import DetailElectricityBill from "./components/electricity/DetailElectricityBill";
 import DetailVoucher from "./components/voucher/DetailVoucher";
 import DetailParking from "./components/parking/DetailParking";
-import DetailDargahComplex from "./components/hhs&dargahcompex/DetailDargahComplex";
-import DetailHHSComplex from "./components/hhs&dargahcompex/DetailHHSComplex";
-import DetailBloodCenter from "./components/medical/DetailBloodCenter";
-import DetailsAmbulanceVan from "./components/medical/DetailsAmbulanceVan";
+import DetailDargahComplex from "./components/dargahcompex/DetailDargahComplex";
+import DetailHHSComplex from "./components/hhscomplex/DetailHHSComplex";
+import DetailBloodCenter from "./components/bloodcenter/DetailBloodCenter";
+import DetailsAmbulanceVan from "./components/ambulancevan/DetailsAmbulanceVan";
 
 //Edit
 import EditElectricityBill from "./components/electricity/EditElectricityBill";
 import EditVoucher from "./components/voucher/EditVoucher";
-import EditHHSComplex from "./components/hhs&dargahcompex/EditHHSComplex";
-import EditDargahComplex from "./components/hhs&dargahcompex/EditDargahComplex";
-import EditAmbulanceVan from "./components/medical/EditAmbulanceVan";
-import EditBloodCenter from "./components/medical/EditBloodCenter";
+import EditHHSComplex from "./components/hhscomplex/EditHHSComplex";
+import EditDargahComplex from "./components/dargahcompex/EditDargahComplex";
+import EditAmbulanceVan from "./components/ambulancevan/EditAmbulanceVan";
+import EditBloodCenter from "./components/bloodcenter/EditBloodCenter";
 import EditParking from "./components/parking/EditParking";
-import EditMedicalAck from "./components/medical/EditMedicalAck";
+import EditMedicalAck from "./components/medicalack/EditMedicalAck";
+import LoginForm from "./components/constants/LoginFlow/Login";
+import LoginProperty from "./components/property/LoginProperty";
+import HomeProperty from "./components/property/HomeProperty";
 
 function App() {
   return (
@@ -113,25 +115,23 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* sign in */}
-          {/* <Route path="" element={<LoginForm />}></Route> */}
+          {/* <Route path="login" element={<LoginForm />}></Route> */}
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/forgetPage" element={<ForgetPage />}></Route>
           <Route path="/signUp" element={<Signup />}></Route>
 
           {/*property management*/}
           <Route path="/register" element={<RegisterProp />}></Route>
+
+          <Route path="/loginprop" element={<LoginProperty />}></Route>
+          <Route path="/homeprop" element={<HomeProperty />}></Route>
+
           <Route path="/allProperties" element={<AllProperties />}></Route>
           <Route path="/profile/:id" element={<ViewPropertyDetail />}></Route>
-
-          <Route
-            path="/property-details/:id"
-            element={<PropertyDetails />}
-          ></Route>
+          <Route path="/property-details/:id" element={<PropertyDetails />}></Route>
           <Route path="/properties" element={<Property />}></Route>
-          <Route
-            path="/property-photo/:id"
-            element={<PropertyPhotoForm />}
-          ></Route>
+          <Route path="/property-photo/:id" element={<PropertyPhotoForm />}></Route>
+
           <Route path="/tenant" element={<TenantForm />}></Route>
           <Route path="/showtenant" element={<ShowTenant />}></Route>
           <Route path="/tenant-details/:id" element={<TenantDetails />}></Route>

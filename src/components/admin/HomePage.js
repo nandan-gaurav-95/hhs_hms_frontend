@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import Sidebar from "./Sidebar";
 import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 // import backgroundImage  from "../../asset/images/istockphoto-505757382-612x612.jpg";
@@ -13,12 +15,17 @@ import {
   MDBDropdownItem,
 } from "mdb-react-ui-kit";
 export default function HomePage() {
+  const navigate = useNavigate();
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   };
+  const handlePropertyLogin = () => {
+    navigate("/loginprop");
+  };
+
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
       <Header />
@@ -52,10 +59,10 @@ export default function HomePage() {
           <div className="card upper-card">
             <h3>Property Management</h3>
             <MDBDropdown>
-              <MDBDropdownToggle tag="a" className="btn btn-dark">
+              <MDBDropdownToggle tag="a" className="btn btn-dark" onClick={handlePropertyLogin}>
                 proceed
               </MDBDropdownToggle>
-              <MDBDropdownMenu>
+              {/* <MDBDropdownMenu>
                 <NavLink to="/properties">
                   <MDBDropdownItem link>
                     <b>Add Property</b>
@@ -66,7 +73,7 @@ export default function HomePage() {
                     <b>View Property</b>
                   </MDBDropdownItem>
                 </NavLink>
-              </MDBDropdownMenu>
+              </MDBDropdownMenu> */}
             </MDBDropdown>
           </div>
 

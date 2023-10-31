@@ -7,7 +7,8 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { APIS } from "../constants/api";
 import { TenantService } from "../../services/TenantService";
@@ -19,7 +20,7 @@ const TenantForm = () => {
   const navigate = useNavigate();
   const initialState = {
     tenantName: "",
-    complex:"",
+    complex: "",
     address: "",
     contactNum: "",
     allocatedShop: "",
@@ -31,19 +32,19 @@ const TenantForm = () => {
     billGeneration: "",
     paymentMethod: "",
     // Agreement Related Dates
-    startDate:"",
-    expiryDate:"",
-    status:"",
+    startDate: "",
+    expiryDate: "",
+    status: "",
   };
 
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handleSubmit called');
+    console.log("handleSubmit called");
     // Validate the form before submitting
     const validationErrors = validateForm(formData);
-    console.log('Validation Errors:', validationErrors);
+    console.log("Validation Errors:", validationErrors);
 
     // If there are validation errors, set them in the state
     if (Object.keys(validationErrors).length > 0) {
@@ -62,11 +63,14 @@ const TenantForm = () => {
       if (response.status === 201) {
         console.log("Tenant Created Successfully");
         setFormData(initialState);
+        toast.success("Submit Successful!");
       } else {
         console.error("Failed To create Tenant");
+        toast.error("Failed to submit Voucher");
       }
     } catch (error) {
       console.error("Error", error);
+      toast.error("An error occurred during submission");
     }
   };
 
@@ -127,7 +131,7 @@ const TenantForm = () => {
 
   return (
     <div className=" ">
-      <Header/>
+      <Header />
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -151,32 +155,26 @@ const TenantForm = () => {
               <div className="text-danger">{errors.tenantName}</div>
             )}
           </Col>
-          
+
           <Col className="col-sm-5">
-              <select
-                className="form-select"
-                id="Complex"
-                name="complex"
-                value={formData.complex}
-                onChange={handleChange}
-                required
-                >
-                <option value="">Select Complex</option>
-                <option value="Bhatkal Complex">Bhatkal Complex</option>
-                <option value="Abbas Ali Complex">Abbas Ali Complex </option>
-                
-              </select>
-              {errors.complex && (
-                <div className="text-danger">{errors.complex}</div>
-              )}
-            </Col>
-   
-
-
-
+            <select
+              className="form-select"
+              id="Complex"
+              name="complex"
+              value={formData.complex}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Complex</option>
+              <option value="Bhatkal Complex">Bhatkal Complex</option>
+              <option value="Abbas Ali Complex">Abbas Ali Complex </option>
+            </select>
+            {errors.complex && (
+              <div className="text-danger">{errors.complex}</div>
+            )}
+          </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-         
           <Col className="col-sm-5 ">
             <Input
               label="Contact No"
@@ -190,25 +188,23 @@ const TenantForm = () => {
               <div className="text-danger">{errors.contactNum}</div>
             )}
           </Col>
-         
 
-<Col className="col-sm-5">
-             <Input
-               label="Allocated Shop"
-               type="text"
-               name="allocatedShop"
+          <Col className="col-sm-5">
+            <Input
+              label="Allocated Shop"
+              type="text"
+              name="allocatedShop"
               value={formData.allocatedShop}
               onChange={handleChange}
               required
-              />
+            />
             {errors.allocatedShop && (
               <div className="text-danger">{errors.allocatedShop}</div>
             )}
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-         
-           <Col className="col-sm-5 ">
+          <Col className="col-sm-5 ">
             <Input
               label="Current Address"
               type="text"
@@ -221,7 +217,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.address}</div>
             )}
           </Col>
-         
+
           <Col className="col-sm-5 ">
             <Input
               label="Deposit"
@@ -237,9 +233,7 @@ const TenantForm = () => {
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-         
-          
-           <Col className="col-sm-5 ">
+          <Col className="col-sm-5 ">
             <Input
               label="Rent Due"
               type="text"
@@ -267,8 +261,6 @@ const TenantForm = () => {
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-         
-          
           <Col className="col-sm-5">
             <select
               className="form-select"
@@ -304,7 +296,6 @@ const TenantForm = () => {
           </Col>
         </Row>
         <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-           
           <Col className="col-sm-5 ">
             <Input
               label="Bill Generation/Total Bill"
@@ -318,70 +309,63 @@ const TenantForm = () => {
               <div className="text-danger">{errors.billGeneration}</div>
             )}
           </Col>
-       
+
           <Col className="col-sm-5 ">
-              <Input
-                label="Agreement Start Date"
-                type="date"
-                name="startDate"
-                value={formData.startDate}
-                onChange={handleChange}
-              />
-            </Col>
-           
+            <Input
+              label="Agreement Start Date"
+              type="date"
+              name="startDate"
+              value={formData.startDate}
+              onChange={handleChange}
+            />
+          </Col>
         </Row>
-       
+
         <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-        <Col className="col-sm-5 ">
-              <Input
-                label="Collected Rent"
-                type="text"
-                name="rentCollected"
-                value={formData.rentCollected}
-                onChange={handleChange}
-              />
-            </Col>
-        <Col className="col-sm-5 ">
-              <Input
-                label="Agreement Expiry Date"
-                type="date"
-                name="expiryDate"
-                value={formData.expiryDate}
-                onChange={handleChange}
-              />
-            </Col>
+          <Col className="col-sm-5 ">
+            <Input
+              label="Collected Rent"
+              type="text"
+              name="rentCollected"
+              value={formData.rentCollected}
+              onChange={handleChange}
+            />
+          </Col>
+          <Col className="col-sm-5 ">
+            <Input
+              label="Agreement Expiry Date"
+              type="date"
+              name="expiryDate"
+              value={formData.expiryDate}
+              onChange={handleChange}
+            />
+          </Col>
         </Row>
         <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
-         <Col className="col-sm-5">
-           <select
-             className="form-select"
-             id="status"
-             name="status"
-             value={formData.status}
-             onChange={handleChange}
-             required
-             >
-             <option value="">Select Status</option>
-             <option value="Present">Present</option>
-             <option value="Former">Former</option>
-            
-             </select>
-           {errors.status && (
-             <div className="text-danger">{errors.status}</div>
-           )}
-         </Col>
-       </Row>
-      
+          <Col className="col-sm-5">
+            <select
+              className="form-select"
+              id="status"
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Status</option>
+              <option value="Present">Present</option>
+              <option value="Former">Former</option>
+            </select>
+            {errors.status && (
+              <div className="text-danger">{errors.status}</div>
+            )}
+          </Col>
+        </Row>
+
         <div className="text-center mt-4 ">
           <Button type="submit">Submit</Button>
         </div>
-        {/* <div className="text-center mt-4 ">
-          <Button variant="primary" type="button" square onClick={ShowTenant}>
-            Show Tenant
-          </Button>
-        </div> */}
       </form>
-      {/* </Sidebar> */}
+      <ToastContainer />
     </div>
   );
 };

@@ -9,7 +9,8 @@ import {
     MDBBtn as Button
 } from 'mdb-react-ui-kit';
 import { useNavigate, useParams } from "react-router-dom";
-import Sidebar from '../admin/Sidebar';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from '../common/Header';
 import { BiArrowBack } from "react-icons/bi";
 import { InventoryService } from "../../services/InventoryService";
@@ -108,11 +109,16 @@ const AddInventory = () => {
       if (response.status === 201) {
         console.log("Inventory Created Successfully");
         setFormData(initialState);
+        toast.success("Submit Successful!");
       } else {
         console.error("Failed To create Tenant");
+        toast.error("Failed to submit Property");
+
       }
     } catch (error) {
       console.error("Error", error);
+      toast.error("An error occurred during submission");
+
     }
   };
 
@@ -235,7 +241,7 @@ const AddInventory = () => {
                         <Button type="submit">Submit</Button>
                     </div>
                 </form>
-            {/* </Sidebar> */}
+          <ToastContainer/>
         </div>
     );
 };

@@ -8,7 +8,8 @@ import {
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
 import { EmployeeService } from "../../services/EmployeeService";
-import Sidebar from "../admin/Sidebar";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
 
@@ -45,88 +46,45 @@ const EmployeeForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const validationErrors = validateForm(formData);
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
-    // navigate(`/allemployee`)
-    // code for connecting to the backend
+    console.log("handleSubmit called");
+    const validationErrors = validateForm(formData);
+    console.log("Validation Errors:", validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    } else {
+      setErrors({});
+    }
     try {
       const response = await EmployeeService.createEmployee(formData);
       console.log("Hiiiiii",response.data);
       if (response.status === 201) {
         console.log("Form data saved successfully");
         setFormData(initialState);
+        toast.success("Submit Successful!");
         setErrors({});
       } else {
         console.error("Error while saving from data");
+        toast.error("Failed to submit Property");
       }
     } catch (error) {
       console.error("Error:", error);
+      toast.error("An error occurred during submission");
     }
   };
   const validateForm = (data) => {
     const errors = {};
-
-    // Validate empName
-    if (!data.empName) {
-      errors.empName = "Employee Name is required.";
-    }
-
-    // Validate department
-    if (!data.department) {
-      errors.department = "Department is required.";
-    }
-
-    // Validate dob
-    if (!data.dob) {
-      errors.dob = "Date of Birth is required.";
-    }
-
-    // Validate gender
-    if (!data.gender) {
-      errors.gender = "Gender is required.";
-    }
-
-    // Validate contactNumber
-    if (!data.contactNumber || !/^[0-9]{10}$/.test(data.contactNumber)) {
-        errors.contactNumber = "Please enter a valid 10-digit contact number.";
-      }
-
-    // Validate bloodgroup
-    if (!data.bloodgroup) {
-      errors.bloodgroup = "Blood Group is required.";
-    }
-
-    // Validate address
-    if (!data.address) {
-      errors.address = "Address is required.";
-    }
-
-    // Validate aadhar
+//  if (!data.contactNumber || !/^[0-9]{10}$/.test(data.contactNumber)) {
+//         errors.contactNumber = "Please enter a valid 10-digit contact number.";
+//       } 
     if (!data.aadhar || !/^\d{12}$/.test(data.aadhar)) {
       errors.aadhar = "Please enter a valid 12-digit Aadhar card number.";
     }
-
-    // Validate qualification
-    if (!data.qualification) {
-      errors.qualification = "Qualification is required.";
-    }
-
-    // Validate pan
+  
     if (!data.pan || !/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(data.pan)) {
       errors.pan = "Please enter a valid PAN card number.";
     }
-
-    // Validate dateOfHiring
-    if (!data.dateOfHiring) {
-      errors.dateOfHiring = "Date of Hiring is required.";
-    }
-
-   
-
-    // Continue validating other fields...
 
     return errors;
   };
@@ -193,9 +151,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.empName && (
-                  <div className="text-danger">{errors.empName}</div>
-                )}
+               
             </Col>
             <Col className="col-sm-5">
               <select
@@ -217,9 +173,7 @@ const EmployeeForm = () => {
                 <option value="Masjid">Masjid</option>
                 <option value="Dargah">Dargah</option>
               </select>
-              {errors.department && (
-                <div className="text-danger">{errors.department}</div>
-              )}
+             
             </Col>
             
           </Row>
@@ -231,11 +185,9 @@ const EmployeeForm = () => {
                 name="dob"
                 value={formData.dob}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* {errors.date && (
-                  <div className="text-danger">{errors.date}</div>
-                )} */}
+            
             </Col>
             <Col className="col-sm-5">
               <select
@@ -251,9 +203,7 @@ const EmployeeForm = () => {
                 <option value="Female">Female</option>
                 <option value="Others">Transgender</option>
               </select>
-              {errors.gender && (
-                <div className="text-danger">{errors.gender}</div>
-              )}
+             
             </Col>
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -289,9 +239,7 @@ const EmployeeForm = () => {
                 <option value="AB+">AB+</option>
                 <option value="AB-">AB-</option>
               </select>
-              {errors.bloodgroup && (
-                <div className="text-danger">{errors.bloodgroup}</div>
-              )}
+              
             </Col>
           </Row>
           <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
@@ -305,9 +253,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                 {errors.address && (
-                  <div className="text-danger">{errors.address}</div>
-                )}
+                 
             </Col>
            
             <Col className="col-sm-5 ">
@@ -335,9 +281,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
               />
-              {errors.qualification && (
-                <div className="text-danger">{errors.qualification}</div>
-              )}
+             
             </Col>
            
              <Col className="col-sm-5 ">
@@ -365,8 +309,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                 {errors.dateOfHiring && <div className="text-danger">{errors.dateOfHiring}</div>}
-        
+                 
             </Col>
             <Col className="col-sm-5 ">
               <Input
@@ -377,9 +320,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
               />
-              {errors.qualification && (
-                <div className="text-danger">{errors.position}</div>
-              )}
+              
             </Col>
            
           </Row>
@@ -393,9 +334,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.basicSalary && (
-                  <div className="text-danger">{errors.basicSalary}</div>
-                )}
+                
             </Col>
           <Col className="col-sm-5 ">
               <Input
@@ -406,9 +345,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.netSalary && (
-                  <div className="text-danger">{errors.netSalary}</div>
-                )}
+                
             </Col>
            
             
@@ -424,9 +361,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.grossSalary && (
-                  <div className="text-danger">{errors.grossSalary}</div>
-                )}
+               
             </Col>
           <Col className="col-sm-5 ">
               <Input
@@ -437,9 +372,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.allowance && (
-                  <div className="text-danger">{errors.allowance}</div>
-                )}
+               
             </Col>
           
             
@@ -455,9 +388,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.deduction && (
-                  <div className="text-danger">{errors.deduction}</div>
-                )}
+              
             </Col> 
           <Col className="col-sm-5 ">
               <Input
@@ -466,6 +397,7 @@ const EmployeeForm = () => {
                 name="pfEmployeeContribution"
                 value={parseFloat(formData.pfEmployeeContribution).toFixed(2)} 
                 onChange={handleChange}
+                required
                 readOnly
                 />
             </Col>
@@ -480,9 +412,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.loanAmount && (
-                  <div className="text-danger">{errors.loanAmount}</div>
-                )}
+                
             </Col>
           <Col className="col-sm-5 ">
               <Input
@@ -493,9 +423,7 @@ const EmployeeForm = () => {
                 onChange={handleChange}
                 required
                 />
-                {errors.loanRepaymentAmount && (
-                  <div className="text-danger">{errors.loanRepaymentAmount}</div>
-                )}
+                
             </Col>
             
           </Row>
@@ -508,13 +436,9 @@ const EmployeeForm = () => {
                 name="inventoryItem"
                 value={formData.inventoryItem}
                 onChange={handleChange}
-                // required
+                required
                 />
-                {/* not required */}
-                
-                {/* {errors.inventoryItem && (
-                  <div className="text-danger">{errors.inventoryItem}</div>
-                )} */}
+               
             </Col>
             <Col className="col-sm-5">
            <select
@@ -523,17 +447,15 @@ const EmployeeForm = () => {
              name="status"
              value={formData.status}
              onChange={handleChange}
-            //  required
+             required
            >
              <option value="">Select Status</option>
              <option value="Present">Present</option>
              <option value="Former">Former</option>
             
-             {/* Add more payment methods as needed */}
+             
            </select>
-           {/* {errors.status && (
-             <div className="text-danger">{errors.status}</div>
-           )} */}
+      
          </Col>
             
           </Row>
@@ -541,8 +463,7 @@ const EmployeeForm = () => {
             <Button >Submit</Button>
           </div>
         </form>
-        
-      {/* </Sidebar> */}
+   <ToastContainer/>
     </div>
   );
 };

@@ -13,7 +13,8 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Addtapal = () => {
   const navigate = useNavigate();
   const initialState = {
@@ -72,11 +73,15 @@ const Addtapal = () => {
       if (response.status === 201) {
         console.log("Tenant Created Successfully");
         setFormData(initialState);
+        toast.success("Submit Successful!");
       } else {
         console.error("Failed To create Tenant");
+        toast.error("Failed to submit Voucher");
       }
     } catch (error) {
       console.error("Error", error);
+      toast.error("An error occurred during submission");
+
     }
   };
 
@@ -106,6 +111,7 @@ const Addtapal = () => {
               name="letterType"
               value={formData.letterType}
               onChange={handleChange}
+              required
             >
               <option value="">Select Letter Type</option>
               <option value="Received Letter">Received Letter</option>
@@ -120,6 +126,7 @@ const Addtapal = () => {
               name="toAddress"
               value={formData.toAddress}
               onChange={handleChange}
+              required
             />
             {errors.toAddress && <div className="text-danger">{errors.toAddress}</div>}
           </Col>
@@ -132,6 +139,7 @@ const Addtapal = () => {
               name="fromAddress"
               value={formData.fromAddress}
               onChange={handleChange}
+              required
             />
             {errors.fromAddress && <div className="text-danger">{errors.fromAddress}</div>}
           </Col>
@@ -142,6 +150,7 @@ const Addtapal = () => {
               name="date"
               value={formData.date}
               onChange={handleChange}
+              required
             />
           </Col>
         </Row>
@@ -153,6 +162,7 @@ const Addtapal = () => {
               name="letterNo"
               value={formData.letterNo}
               onChange={handleChange}
+              required
             />
           </Col>
         </Row>
@@ -160,6 +170,7 @@ const Addtapal = () => {
           <Button type="submit">Submit</Button>
         </div>
       </form>
+      <ToastContainer/>
     </div>
   );
 };

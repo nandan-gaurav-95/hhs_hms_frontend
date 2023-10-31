@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
-import  "../../../asset/style.css";
+import "../../asset/style.css"
 // import hhspage from "../../../asset/images/hhs page.jpg";
 import { HiOutlineSupport } from "react-icons/hi";
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 import { toast,ToastContainer } from "react-toastify";
-import axios from "axios";
-import { APIS } from "../api";
+// import axios from "axios";
+// import { APIS } from "../api";
 
 import {
   MDBContainer as Container,
@@ -19,8 +19,8 @@ import {
   MDBBtn as Button,
   MDBCheckbox as Checkbox,
 } from "mdb-react-ui-kit";
-import hhsLogo from "../../../asset/images/hhslogo.jpg";
-function LoginForm() {
+import hhsLogo from "../../asset/images/hhslogo.jpg"
+function LoginProperty() {
  
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordError, setPasswordError] = useState("");
@@ -59,7 +59,7 @@ function LoginForm() {
     //   if (response.status === 200) {
     //     // Handle successful login (e.g., redirect to another page)
     //     console.log("Login successful!");
-        navigate("/properties"); // Redirect to the desired page after successful login
+        navigate("/homeprop"); // Redirect to the desired page after successful login
     //   } else {
     //     // Handle login error, e.g., show an error message
     //     console.error("Login failed.");
@@ -215,4 +215,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default LoginProperty;
