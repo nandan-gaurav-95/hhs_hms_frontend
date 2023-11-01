@@ -109,7 +109,7 @@ background-color:#333;
 }
 
 .loginimage {
-  width: 75%;
+  width: 85%;
   height: 15vh;
   /* object-fit: cover; */
   position: left;
@@ -345,4 +345,12 @@ th {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .transparent-input {
+    background-color: transparent !important; 
+    border: 1px solid #bdbdbd;
+  
+  }
+  .department-select {
+    margin-bottom: 20px; 
   }
