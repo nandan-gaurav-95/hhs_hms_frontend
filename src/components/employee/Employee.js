@@ -166,9 +166,7 @@ const EmployeeForm = () => {
                 <option value="Schools">Schools</option>
                 <option value="ITI College">ITI College</option>
                 <option value="Skill Center">Skill Center</option>
-                <option value="Blood Collection Center">
-                  Blood Collection Center
-                </option>
+                <option value="Blood Collection Center"> Blood Collection Center</option>
                 <option value="Hostel">Hostel</option>
                 <option value="Masjid">Masjid</option>
                 <option value="Dargah">Dargah</option>

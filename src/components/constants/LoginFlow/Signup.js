@@ -29,7 +29,8 @@ export default function Signup() {
     email: "",
     password: "",
     gender: "",
-    address: "",
+    department: "",
+
   }
   const [formData, setFormData] = useState(initialState);
   // const [password, setPassword] = useState("");
@@ -141,15 +142,14 @@ export default function Signup() {
                 </MDBRow>
                 <MDBInput
                   wrapperClass="mb-4"
-                  label="Addresss"
+                  label="Department"
                   id="form2"
                   type="text"
-                  name="address"
-                  value={formData.address}
+                  name="department"
+                  value={formData.department}
                   onChange={handleChange}
                 />
-
-<MDBInput
+                <MDBInput
                 wrapperClass="mb-4  py-1 d-flex align-item-center "
                 label="Password"
                 id="form2"
