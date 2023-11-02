@@ -30,7 +30,7 @@ const ViewAmbulanceVan = () => {
           ambulanceobject[ambulance.amb_id] = ambulance;
         });
         setAllambulancevan(ambulanceobject);
-        setFilteredAmbulanceVan(allambulancevan);
+        setFilteredAmbulanceVan(ambulanceobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
