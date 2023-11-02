@@ -21,6 +21,8 @@ function LoginTenant() {
  
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [department, setDepartment] = useState("Tenant");
+
   
   // const handlePasswordChange = (event) => {
   //   const newPassword = event.target.value;
@@ -91,6 +93,16 @@ function LoginTenant() {
                 <p className="text-center">Login In to Tenant Management</p>
 
                 <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
+                <Input
+                className="transparent-input"
+                  wrapperClass="mb-4 py-1"
+                  label="Department"
+                  id="form3"
+                  type="text"
+                  value={department}
+                  readOnly
+                  
+                />
                   <Input
                     wrapperClass="mb-4 py-1"
                     label="Email address"

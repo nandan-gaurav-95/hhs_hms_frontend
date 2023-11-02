@@ -128,8 +128,8 @@ function InventoryDetails() {
                 <input
                   className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
                   type="text"
-                  name="inv_id"
-                  value={updatedInventory.inv_id}
+                  name="inv_name"
+                  value={updatedInventory.inv_name}
                   onChange={handleChange}
                 />
 

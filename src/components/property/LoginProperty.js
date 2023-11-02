@@ -50,6 +50,8 @@ function LoginProperty() {
   const navigate = useNavigate();
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
+  const [department, setDepartment] = useState("Property");
+
   const handleLogin = async () => {
     // try {
     //   // Prepare the login data from your form inputs (email and password)
@@ -96,6 +98,16 @@ function LoginProperty() {
                 <p className="text-center">Login In to Property Management</p>
 
                 <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
+                <Input
+                className="transparent-input"
+                  wrapperClass="mb-4 py-1"
+                  label="Department"
+                  id="form3"
+                  type="text"
+                  value={department}
+                  readOnly
+                  
+                />
                   <Input
                     wrapperClass="mb-4 py-1"
                     label="Email address"

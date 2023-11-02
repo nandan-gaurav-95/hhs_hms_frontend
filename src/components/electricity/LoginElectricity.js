@@ -18,6 +18,8 @@ import hhsLogo from "../../asset/images/hhs_logo.png";
 function LoginElectricity() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [department, setDepartment] = useState("Electricity");
+
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
@@ -93,6 +95,15 @@ function LoginElectricity() {
               <p className="text-center">Login In to Electricity</p>
 
               <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
+              <Input
+                className="transparent-input"
+                  wrapperClass="mb-4 py-1"
+                  label="Department"
+                  id="form3"
+                  type="text"
+                  value={department}
+                  readOnly
+                />
                 <Input
                   wrapperClass="mb-4 py-1"
                   label="Email address"

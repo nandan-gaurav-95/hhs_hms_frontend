@@ -137,28 +137,20 @@ export default function Signup() {
                 onChange={handleChange}
               >
                 <option value="">Select Department</option>
-                <option value="Institutation Management">
-                  Institutation Management
-                </option>
-                <option value="Property Management">Property Management</option>
-                <option value="Inventory Management">
-                  Inventory Management
-                </option>
-                <option value="Employee Management">Employee Management</option>
-                <option value="Daybook">Daybook</option>
-                <option value="Tenant Management">Tenant Management</option>
+                {/* <option value="Institutation Management"> Institutation Management </option> */}
+                <option value="Property">Property Management</option>
+                <option value="Inventory">Inventory Management</option>
+                <option value="Employee">Employee Management</option>
+                {/* <option value="Daybook">Daybook</option> */}
+                <option value="Tenant ">Tenant Management</option>
                 <option value="Tapal">Tapal</option>
-                <option value="Financial Assistance">
-                  Financial Assistance
-                </option>
+                {/* <option value="Financial Assistance"> Financial Assistance </option> */}
                 <option value="Electricity">Electricity</option>
-                <option value="Vouchers">Vouchers</option>
-                <option value="Impressed Cashbook">Impressed Cashbook</option>
+                <option value="Voucher">Vouchers</option>
+                {/* <option value="Impressed Cashbook">Impressed Cashbook</option> */}
                 <option value="HHS Complex">HHS Complex</option>
                 <option value="Dargah Complex">Dargah Complex</option>
-                <option value="Medical Acknowledgment">
-                  Medical Acknowledgment
-                </option>
+                <option value="Medical Acknowledgment">Medical Acknowledgment</option>
                 <option value="Ambulance Van">Ambulance Van</option>
                 <option value="Blood Center">Blood Center</option>
                 <option value="Parking">Parking</option>
