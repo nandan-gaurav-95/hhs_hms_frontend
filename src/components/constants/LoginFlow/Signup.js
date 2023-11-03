@@ -147,7 +147,7 @@ export default function Signup() {
                 {/* <option value="Financial Assistance"> Financial Assistance </option> */}
                 <option value="Electricity">Electricity</option>
                 <option value="Voucher">Vouchers</option>
-                {/* <option value="Impressed Cashbook">Impressed Cashbook</option> */}
+                <option value="Girls Hostel">Girls Hostel</option>
                 <option value="HHS Complex">HHS Complex</option>
                 <option value="Dargah Complex">Dargah Complex</option>
                 <option value="Medical Acknowledgment">Medical Acknowledgment</option>
