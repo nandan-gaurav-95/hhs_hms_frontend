@@ -15,6 +15,7 @@ const ViewDargahComplex = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredDargah, setFilteredDargah] = useState({}); // Initially set to all dargah complex
+  const reversedData = Object.keys(filteredDargah).reverse();
 
   const handleViewProfile = (dc_id) => {
     navigate(`/detaildergah/${dc_id}`);
@@ -116,8 +117,10 @@ const ViewDargahComplex = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredDargah).map((dcId, index) => {
-            const dargahcom = filteredDargah[dcId];
+          {/* {Object.keys(filteredDargah).map((dcId, index) => {
+            const dargahcom = filteredDargah[dcId]; */}
+              {reversedData.map((dcId, index) => {
+              const dargahcom = filteredDargah[dcId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

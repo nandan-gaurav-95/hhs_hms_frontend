@@ -14,6 +14,8 @@ const ViewMedicalAck = () => {
   const [allmedicalack, setAllmedicalack] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredMedicalAck, setFilteredMedicalAck] = useState({});
+  const reversedData = Object.keys(filteredMedicalAck).reverse();
+
   const navigate = useNavigate();
 
   const handleViewProfile = (mdack_id) => {
@@ -121,8 +123,10 @@ const ViewMedicalAck = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredMedicalAck).map((mdackId, index) => {
-            const medical = filteredMedicalAck[mdackId];
+          {/* {Object.keys(filteredMedicalAck).map((mdackId, index) => {
+            const medical = filteredMedicalAck[mdackId]; */}
+             {reversedData.map((mdackId, index) => {
+              const medical = filteredMedicalAck[mdackId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

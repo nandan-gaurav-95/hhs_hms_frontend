@@ -88,7 +88,8 @@ const ShowInventory = () => {
       sortType === "all" ||
       inventory.inv_type.toLowerCase() === sortType.toLowerCase();
     const departmentMatches =
-      departmentSortType === "all" || inventory.department === departmentSortType;
+      departmentSortType === "all" ||
+      inventory.department === departmentSortType;
 
     if (nameMatches && typeMatches && departmentMatches) {
       result[invId] = inventory;
@@ -96,7 +97,7 @@ const ShowInventory = () => {
 
     return result;
   }, {});
-
+const reversedData = Object.keys(filteredData).reverse();
   return (
     <div className="">
       <Header />
@@ -141,7 +142,9 @@ const ShowInventory = () => {
             <option value="Schools">Schools</option>
             <option value="ITI College">ITI College</option>
             <option value="Skill Center">Skill Center</option>
-            <option value="Blood Collection Center">Blood Collection Center</option>
+            <option value="Blood Collection Center">
+              Blood Collection Center
+            </option>
             <option value="Hostel">Hostel</option>
             <option value="Masjid">Masjid</option>
             <option value="Dargah">Dargah</option>
@@ -163,7 +166,7 @@ const ShowInventory = () => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(filteredData).map((invId, index) => {
+          {reversedData.map((invId, index) => {
             const inventory = filteredData[invId];
             return (
               <tr key={index}>

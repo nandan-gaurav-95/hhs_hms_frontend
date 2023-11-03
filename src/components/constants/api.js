@@ -143,6 +143,13 @@ export const APIS ={
       UPDATEVOUCHERBYID:`${API_BASE_URL}/vouchers`,//Update an existing vouchers 
       DELETEVOUCHERBYID:`${API_BASE_URL}/vouchers`,//Delete a vouchers by ID
 
+        // GirlsHostel
+        CREATEHOSTEL: `${API_BASE_URL}/hostel`,//Post-method
+        GETALLHOSTEL:`${API_BASE_URL}/hostel`,// Get-method
+        GETHOSTELBYID:`${API_BASE_URL}/hostel`,// Get specific hostel by ID
+        UPDATEHOSTELBYID:`${API_BASE_URL}/hostel`,//Update an existing hostel 
+        DELETEHOSTELBYID:`${API_BASE_URL}/hostel`,//Delete a hostel by ID
+
        // Medical Acknowledge
       CREATEMEDICALACKNWLDGE: `${API_BASE_URL}/mdclacknwldg`,//Post-method
       GETALLMEDICALACKNWLDGE:`${API_BASE_URL}/mdclacknwldg`,// Get-method

@@ -28,6 +28,7 @@ const AllEmployee = () => {
   const fetchAllEmployee = async () => {
     try {
       const response = await EmployeeService.getAllEmployee();
+      console.log("employee",response.data);
       const employeeObject = {};
       response.data.forEach((employee) => {
         // Use the employee's emp_id as the key in the object
@@ -91,6 +92,9 @@ const AllEmployee = () => {
     }
   });
 
+  // Sort the keys of filteredEmployees in reverse order
+  const reversedData = Object.keys(filteredEmployees).reverse();
+
   return (
     <div className="">
       <Header />
@@ -145,67 +149,74 @@ const AllEmployee = () => {
       </div>
 
       <Table striped>
-        <thead>
-          <tr>
-            <th>Employee Id</th>
-            <th>Name</th>
-            <th>Joining Date</th>
-            <th>Department</th>
-            <th>Position</th>
-            <th>Gender</th>
-            <th>Loan Amount</th>
-            <th>Contact No</th>
-            <th>Status</th>
-            <th>Action</th>
+  <thead>
+    <tr>
+      <th>Employee Id</th>
+      <th>Name</th>
+      <th>Joining Date</th>
+      <th>Department</th>
+      <th>Position</th>
+      <th>Gender</th>
+      <th>Loan Amount</th>
+      <th>Contact No</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {reversedData.map((employeeId, index) => {
+      const employee = filteredEmployees[employeeId];
+      if (employee) { // Check if employee is defined
+        return (
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{employee.empName}</td>
+            <td>{employee.dateOfHiring}</td>
+            <td>{employee.department}</td>
+            <td>{employee.position}</td>
+            <td>{employee.gender}</td>
+            <td>{employee.loanAmount}</td>
+            <td>{employee.contactNum}</td>
+            <td>{employee.status}</td>
+            <td>
+              <div className="dropdown">
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="secondary"
+                    id="dropdownMenuButton"
+                  >
+                    &#8942;
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => handleViewProfile(employee.emp_id)}>
+                      View Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleEditProfile(employee.emp_id)}>
+                      Edit Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleDelete(employee.emp_id)} className="red-text">
+                      Delete
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to={`/allocated-inventory/${employee.emp_id}`}>
+                        Inventory Details
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleMarkAsResigned(employee.emp_id)}>
+                      Mark as Resigned
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {filteredEmployees.map((employee, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{employee.empName}</td>
-              <td>{employee.dateOfHiring}</td>
-              <td>{employee.department}</td>
-              <td>{employee.position}</td>
-              <td>{employee.gender}</td>
-              <td>{employee.loanAmount}</td>
-              <td>{employee.contactNum}</td>
-              <td>{employee.status}</td>
-              <td>
-                <div className="dropdown">
-                  <Dropdown>
-                    <Dropdown.Toggle
-                      variant="secondary"
-                      id="dropdownMenuButton"
-                    >
-                      &#8942;
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => handleViewProfile(employee.emp_id)}>
-                        View Profile
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleEditProfile(employee.emp_id)}>
-                        Edit Profile
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleDelete(employee.emp_id)} className="red-text">
-                        Delete
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Link to={`/allocated-inventory/${employee.emp_id}`}>
-                          Inventory Details
-                        </Link>
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => handleMarkAsResigned(employee.emp_id)}>
-                        Mark as Resigned
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+        );
+      } else {
+        return null; // Skip rendering if employee is undefined
+      }
+    })}
+  </tbody>
+</Table>
     </div>
   );
 };

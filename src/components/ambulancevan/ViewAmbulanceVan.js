@@ -16,6 +16,8 @@ const ViewAmbulanceVan = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredAmbulanceVan, setFilteredAmbulanceVan] = useState({});
+  const reversedData = Object.keys(filteredAmbulanceVan).reverse();
+
 
   const handleViewProfile = (amb_id) => {
     navigate(`/detailsambulancevan/${amb_id}`);
@@ -111,8 +113,10 @@ const ViewAmbulanceVan = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredAmbulanceVan).map((ambId, index) => {
-            const ambulance = filteredAmbulanceVan[ambId];
+          {/* {Object.keys(filteredAmbulanceVan).map((ambId, index) => {
+            const ambulance = filteredAmbulanceVan[ambId]; */}
+              {reversedData.map((ambId, index) => {
+              const ambulance = filteredAmbulanceVan[ambId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

@@ -7,28 +7,47 @@ import {
   MDBInput as Input,
   MDBBtn as Button,
 } from "mdb-react-ui-kit";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { GirlsHostelService } from "../../services/GirlsHostelService";
 
 const GirlsHostel = () => {
   const navigate = useNavigate();
   const initialState = {
-    vocher_no: "",
+    // gh_id: "",//voucher no
     date: "",
-    food_material: "",
+    food: "",
     food_quantity: "",
     bill_amt: "",
     balance: "",
   };
   const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = () => {
-    
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-  
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await GirlsHostelService.createGirlHostel(formData);
+      console.log("hostel", response.data.id);
+      if (response.status === 201) {
+        console.log("Hostel Created Successfully");
+        setFormData(initialState);
+        toast.success("Submit Successful!", { autoClose: 1500 });
+      } else {
+        console.error("Failed To create Hostel");
+        toast.error("Failed to submit Girls Hostel", { autoClose: 1500 });
+      }
+    } catch (error) {
+      console.error("Error", error);
+      toast.error("An error occurred during submission", { autoClose: 1500 });
+    }
   };
 
   return (
@@ -43,15 +62,15 @@ const GirlsHostel = () => {
       <h1 className=" mb-4 text-center">Girls Hostel Impressed Book</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+          {/* <Col className="col-sm-5 ">
             <Input
               label="Vocher.No"
               type="number"
-              name="vocher_no"
-              value={formData.vocher_no}
+              name="gh_id"
+              value={formData.gh_id}
               onChange={handleChange}
             />
-          </Col>
+          </Col> */}
           <Col className="col-sm-5">
             <Input
               label="Date"
@@ -59,6 +78,7 @@ const GirlsHostel = () => {
               name="date"
               value={formData.date}
               onChange={handleChange}
+              required
             />
           </Col>
         </Row>
@@ -67,19 +87,21 @@ const GirlsHostel = () => {
             <Input
               label="Food Material"
               type="text"
-              name="food_material"
-              value={formData.food_material}
+              name="food"
+              value={formData.food}
               onChange={handleChange}
+              required
             />
           </Col>
 
           <Col className="col-sm-5">
             <Input
-              label="Food Quantity"
+              label="Food Quantity (kG)"
               type="text"
               name="food_quantity"
               value={formData.food_quantity}
               onChange={handleChange}
+              required
             />
           </Col>
         </Row>
@@ -91,6 +113,7 @@ const GirlsHostel = () => {
               name="bill_amt"
               value={formData.bill_amt}
               onChange={handleChange}
+              required
             />
           </Col>
 
@@ -101,6 +124,7 @@ const GirlsHostel = () => {
               name="balance"
               value={formData.balance}
               onChange={handleChange}
+              required
             />
           </Col>
         </Row>

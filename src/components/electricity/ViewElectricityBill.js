@@ -15,6 +15,7 @@ const ViewElectricityBill = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredEleBill, setFilteredEleBill] = useState({});
+  const reversedData = Object.keys(filteredEleBill).reverse();
 
   const handleViewProfile = (ele_id) => {
     navigate(`/detailelectricitybill/${ele_id}`);
@@ -116,8 +117,10 @@ const ViewElectricityBill = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredEleBill).map((eleId, index) => {
-            const elebill = allectricitybill[eleId];
+          {/* {Object.keys(filteredEleBill).map((eleId, index) => {
+            const elebill = allectricitybill[eleId]; */}
+              {reversedData.map((eleId, index) => {
+              const elebill = filteredEleBill[eleId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

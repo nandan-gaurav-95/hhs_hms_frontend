@@ -8,56 +8,55 @@ import axios from "axios";
 import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
-import { VoucherService } from "../../services/VoucherService";
+ import { GirlsHostelService } from "../../services/GirlsHostelService";
 
-const ViewVoucher = () => {
-  const [allvoucher, setAllvoucher] = useState({});
+const ViewGirlsHostel = () => {
+  const [allgirlshostel, setAllgirlshostel] = useState({});
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredVouchers, setFilteredVouchers] = useState({}); // Initially set to all vouchers
-  const reversedData = Object.keys(filteredVouchers).reverse();
+  const [filteredgirlshostel, setFilteredgilrshostel] = useState({}); 
 
-  const handleViewProfile = (v_id) => {
-    navigate(`/detailvoucher/${v_id}`);
+  const handleViewProfile = (gh_id) => {
+    navigate(`/detailgirlshostel/${gh_id}`);
   };
 
-  const fetchAllvoucher = async () => {
+  const fetchAllgirlshostel = async () => {
     try {
-      const response = await VoucherService.getAllVoucher();
-      console.log("API Response:", response);
+      const response = await GirlsHostelService.getAllGirlsHostel();
+      console.log("API Response girls hostel :", response);
       if (Array.isArray(response)) {
-        const voucherobject = {};
-        response.forEach((voucher) => {
-          voucherobject[voucher.v_id] = voucher;
+        const girlshostelobject = {};
+        response.forEach((girlshostel) => {
+            girlshostelobject[girlshostel.gh_id] = girlshostel;
         });
-        setAllvoucher(voucherobject);
-        setFilteredVouchers(voucherobject); // Set filteredVouchers to initially contain all vouchers
+        setAllgirlshostel(girlshostelobject);
+        setFilteredgilrshostel(girlshostelobject); // Set filteredHhscomplex to initially contain all hhscomplex
       } else {
         console.error("Invalid data received from the API:", response);
       }
     } catch (error) {
-      console.error("Error fetching voucher data:", error);
+      console.error("Error fetching  girls hostel data:", error);
     }
   };
 
   useEffect(() => {
-    fetchAllvoucher();
+    fetchAllgirlshostel();
   }, []);
 
-  const handleEditProfile = (v_id) => {
-    navigate(`/editvoucher/${v_id}`);
+  const handleEditProfile = (gh_id) => {
+    navigate(`/editgirlshostel/${gh_id}`);
   };
 
-  const handleDelete = async (v_id) => {
+  const handleDelete = async (gh_id) => {
     try {
-      await axios.delete(`${APIS.DELETEVOUCHERBYID}/${v_id}`);
+      await axios.delete(`${APIS.DELETEHOSTELBYID}/${gh_id}`);
       console.log("Deleted Successfully");
-      const updatedVoucher = { ...allvoucher };
-      delete updatedVoucher[v_id];
-      setAllvoucher(updatedVoucher);
-      setFilteredVouchers(updatedVoucher); // Update filteredVouchers after deleting
+      const updatedGIRLSHOSTEL = { ...allgirlshostel };
+      delete updatedGIRLSHOSTEL[gh_id];
+      setAllgirlshostel(updatedGIRLSHOSTEL);
+      setFilteredgilrshostel(updatedGIRLSHOSTEL); // Update filteredHhscomplex after deleting
     } catch (error) {
-      console.error("Error deleting Voucher:", error);
+      console.error("Error deleting GIRLSHOSTEL:", error);
     }
   };
 
@@ -65,19 +64,19 @@ const ViewVoucher = () => {
     const { value } = event.target;
     setSearchQuery(value);
 
-    const filtered = Object.keys(allvoucher).filter((vouId) => {
-      const voucher = allvoucher[vouId];
-      const matchesSearch = Object.values(voucher).some((field) =>
+    const filtered = Object.keys(allgirlshostel).filter((ghId) => {
+      const girlshostel = allgirlshostel[ghId];
+      const matchesSearch = Object.values(girlshostel).some((field) =>
         String(field).toLowerCase().includes(value.toLowerCase())
       );
       return matchesSearch;
     });
 
-    const filteredVoucherData = {};
-    filtered.forEach((vouId) => {
-      filteredVoucherData[vouId] = allvoucher[vouId];
+    const filteredgirlshostelData = {};
+    filtered.forEach((ghId) => {
+        filteredgirlshostelData[ghId] = allgirlshostel[ghId];
     });
-    setFilteredVouchers(filteredVoucherData);
+    setFilteredgilrshostel(filteredgirlshostelData);
   };
 
   return (
@@ -89,9 +88,9 @@ const ViewVoucher = () => {
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="title">Voucher Details</h2>
+      <h2 className="title">Girls Hostel Details</h2>
       <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className="search ms-4">
+        <div className=" search ms-4">
           <input
             label="Search"
             type="text"
@@ -107,30 +106,25 @@ const ViewVoucher = () => {
           <tr>
             <th>Sr. No.</th>
             <th>Date</th>
-            <th>Amount Paid</th>
-            <th>Towards</th>
-            <th>Cheque No.</th>
-            <th>Dated</th>
-            <th>Rupees</th>
-            <th>Remark</th>
+            <th>Food</th>
+            <th>Food Quantity</th>
+            <th>Bill Amount</th>
+            <th>Balance</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {/* {Object.keys(filteredVouchers).map((vouId, index) => {
-            const voucher = filteredVouchers[vouId]; */}
-            {reversedData.map((vouId, index) => {
-              const voucher = filteredVouchers[vouId];
+          {Object.keys(filteredgirlshostel).map((ghId, index) => {
+            const girlshostel = filteredgirlshostel[ghId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{voucher.date}</td>
-                <td>{voucher.amtPaid}</td>
-                <td>{voucher.towards}</td>
-                <td>{voucher.chequeNo}</td>
-                <td>{voucher.dated}</td>
-                <td>{voucher.rupees}</td>
-                <td>{voucher.remark}</td>
+                <td>{girlshostel.date}</td>
+                <td>{girlshostel.food}</td>
+                <td>{girlshostel.food_quantity}</td>
+                <td>{girlshostel.bill_amt}</td>
+                <td>{girlshostel.balance}</td>
+              
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -141,14 +135,14 @@ const ViewVoucher = () => {
                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => handleViewProfile(vouId)}>
-                          View Voucher
+                        <Dropdown.Item onClick={() => handleViewProfile(ghId)}>
+                          View Girls Hostel
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleEditProfile(vouId)}>
-                          Edit Voucher
+                        <Dropdown.Item onClick={() => handleEditProfile(ghId)}>
+                          Edit  Girls Hostel
                         </Dropdown.Item>
                         <Dropdown.Item
-                          onClick={() => handleDelete(vouId)}
+                          onClick={() => handleDelete(ghId)}
                           className="red-text"
                         >
                           Delete
@@ -166,4 +160,4 @@ const ViewVoucher = () => {
   );
 };
 
-export default ViewVoucher;
+export default ViewGirlsHostel;

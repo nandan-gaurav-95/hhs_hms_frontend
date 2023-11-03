@@ -13,6 +13,7 @@ const ViewParking = () => {
   const [allparking, setAllparking] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredParking, setFilteredParking] = useState({}); // Initialize with all data
+  const reversedData = Object.keys(filteredParking).reverse();
 
   const navigate = useNavigate();
   const handleViewProfile = (p_id) => {
@@ -110,8 +111,10 @@ const ViewParking = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredParking).map((parkId, index) => {
-            const parking = filteredParking[parkId];
+          {/* {Object.keys(filteredParking).map((parkId, index) => {
+            const parking = filteredParking[parkId]; */}
+            {reversedData.map((parkId, index) => {
+              const parking = filteredParking[parkId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

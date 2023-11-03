@@ -132,6 +132,11 @@ import LoginBloodCenter from "./components/bloodcenter/LoginBloodCenter";
 import HomeBloodCenter from "./components/bloodcenter/HomeBloodCenter";
 import LoginParking from "./components/parking/LoginParking";
 import HomeParking from "./components/parking/HomeParking";
+import LoginGirlsHostel from "./components/impressed_cashbook/LoginGirlsHostel";
+import HomeGirlsHostel from "./components/impressed_cashbook/HomeGirlsHostel";
+import ViewGirlsHostel from "./components/impressed_cashbook/ViewGirlsHostel";
+import EditGirlsHostel from "./components/impressed_cashbook/EditGirlsHostel";
+import DetailGirlsHostel from "./components/impressed_cashbook/DetailGirlsHostel";
 
 function App() {
   return (
@@ -229,6 +234,13 @@ function App() {
 
           <Route path="/scholarship" element={<Scholarship />}></Route>
           <Route path="/medicalaid" element={<Medicalaid />}></Route>
+
+         {/* girl hostel */}
+          <Route path="/logingirlshostel" element={<LoginGirlsHostel />}></Route>
+          <Route path="/homegirlshostel" element={<HomeGirlsHostel />}></Route>
+          <Route path="/viewgirlshostel" element={<ViewGirlsHostel />}></Route>
+          <Route path="/detailgirlshostel/:id" element={<DetailGirlsHostel />}></Route>
+          <Route path="/editgirlshostel/:id" element={<EditGirlsHostel />}></Route>
           <Route path="/hostel" element={<GirlsHostel />}></Route>
 
          {/* hhscomplex */}

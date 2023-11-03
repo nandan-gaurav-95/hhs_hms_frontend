@@ -15,6 +15,7 @@ const ViewHHSComplex = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredHhscomplex, setFilteredHhscomplex] = useState({}); // Initially set to all hhscomplex
+  const reversedData = Object.keys(filteredHhscomplex).reverse();
 
   const handleViewProfile = (hc_id) => {
     navigate(`/detailhhscomplex/${hc_id}`);
@@ -116,8 +117,10 @@ const ViewHHSComplex = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredHhscomplex).map((hcId, index) => {
-            const hhscomplex = filteredHhscomplex[hcId];
+          {/* {Object.keys(filteredHhscomplex).map((hcId, index) => {
+            const hhscomplex = filteredHhscomplex[hcId]; */}
+             {reversedData.map((hcId, index) => {
+              const hhscomplex = filteredHhscomplex[hcId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

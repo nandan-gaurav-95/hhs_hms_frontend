@@ -42,6 +42,9 @@ export default function HomePage() {
   const handleVoucherLogin = () => {
     navigate("/loginvoucher");
   };
+  const handleHostelLogin = () => {
+    navigate("/logingirlshostel");
+  };
   const handleHHSComplexLogin = () => {
     navigate("/loginhhscomplex");
   };
@@ -201,9 +204,9 @@ export default function HomePage() {
             </div>
           </div>
           <div className="card upper-card">
-            <h3>Impressed Cashbook</h3>
+            <h3>Hostel</h3>
             <div className="proceed-button">
-              <MDBDropdown>
+              {/* <MDBDropdown>
                 <MDBDropdownToggle tag="a" className="btn btn-dark">
                   Proceed
                 </MDBDropdownToggle>
@@ -223,7 +226,10 @@ export default function HomePage() {
                     <b>Complex Office</b>
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
-              </MDBDropdown>
+              </MDBDropdown> */}
+               <Button tag="a" className="btn btn-dark" onClick={handleHostelLogin}>
+                  Login
+                </Button>
             </div>
           </div>
           <div className="card upper-card">
