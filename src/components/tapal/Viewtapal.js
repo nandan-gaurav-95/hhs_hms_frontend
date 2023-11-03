@@ -10,21 +10,27 @@ import { TapalService } from "../../services/TapalService";
 import axios from 'axios';
 
 import { APIS } from "../constants/api";
+
 const Viewtapal = () => {
- 
-  const [selectLetterNo, setSelectLetterNo]=useState("all");
-  const [selectLetterType, setSelectLetterType]=useState("all");
+  const [selectLetterNo, setSelectLetterNo] = useState("all");
+  const [selectLetterType, setSelectLetterType] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const [tapalData, setTapalData] = useState([]);
-  const [filteredTapal, setFilteredTapal] = useState([]);
+  const [tapalData, setTapalData] = useState({});
+  const [filteredTapal, setFilteredTapal] = useState({});
+  const reversedData = Object.keys(filteredTapal).reverse();
 
   const fetchTapalData = async () => {
     try {
       const response = await TapalService.getAllTapal();
-      console.log("API Response:", response);
+      console.log("tapal Response:", response);
       if (Array.isArray(response)) {
-        setTapalData(response);
+        const tapalobject = {};
+        response.forEach((tapal) => {
+          tapalobject[tapal.id] = tapal;
+        });
+        setTapalData(tapalobject);
+        setFilteredTapal(tapalobject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -37,22 +43,22 @@ const Viewtapal = () => {
     fetchTapalData();
   }, []);
 
-  const handleEditProfile=(id)=>{
-    navigate (`/edit-tapal/${id}`)
-   }
-   const handleDelete= async (id) => {
+  const handleEditProfile = (id) => {
+    navigate(`/edit-tapal/${id}`);
+  }
+
+  const handleDelete = async (id) => {
     try {
       await axios.delete(`${APIS.DELETETAPALBYID}/${id}`);
       console.log("Deleted Successfully");
-      const updatedTapalData = tapalData.filter((tapal) => tapal.id !== id);
+      const updatedTapalData = { ...tapalData };
+      delete updatedTapalData[id];
       setTapalData(updatedTapalData);
+      setFilteredTapal(updatedTapalData);
     } catch (error) {
       console.error("Error deleting tapal:", error);
     }
   };
-
-  
-
 
   const handleLetterType = (event) => {
     const { value } = event.target;
@@ -63,18 +69,24 @@ const Viewtapal = () => {
     const { value } = event.target;
     setSearchQuery(value);
   };
+
   useEffect(() => {
-    const filtered = tapalData.filter((tapal) => {
-      const matchesLetterType = selectLetterType === "all" || tapal.letterType === selectLetterType;
-      const matchesSearch = Object.values(tapal).some((field) =>
-      String(field).toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    return matchesLetterType && matchesSearch;
-    });
+    const filtered = Object.keys(tapalData)
+      .filter(id => {
+        const tapal = tapalData[id];
+        const matchesLetterType = selectLetterType === "all" || tapal.letterType === selectLetterType;
+        const matchesSearch = Object.values(tapal).some(field =>
+          String(field).toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        return matchesLetterType && matchesSearch;
+      });
+      const filteredTapalData = {};
+      filtered.forEach((id) => {
+        filteredTapalData[id] = tapalData[id];
+      });
 
-    setFilteredTapal(filtered);
-  }, [searchQuery,selectLetterNo, selectLetterType, , tapalData]);
-
+    setFilteredTapal(filteredTapalData);
+  }, [searchQuery, selectLetterNo, selectLetterType, tapalData]);
 
   return (
     <div>
@@ -87,7 +99,7 @@ const Viewtapal = () => {
       </div>
       <h2 className="title">Tapal Details</h2>
       <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className=" search ms-4">
+        <div className="search ms-4">
           <input
             label="Search"
             type="text"
@@ -97,7 +109,6 @@ const Viewtapal = () => {
             onChange={handleSearchInputChange}
           />
         </div>
-       
 
         <div className="ms-4">
           <select
@@ -114,7 +125,8 @@ const Viewtapal = () => {
       </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">
-          <tr> <th>Sr. No</th>
+          <tr>
+            <th>Sr. No</th>
             <th>Letter No</th>
             <th>Letter Type</th>
             <th>Date</th>
@@ -124,29 +136,30 @@ const Viewtapal = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-        {filteredTapal.map((tapal, index) => {
-          return (
-            <tr key={tapal.id}>
-              <td>{index + 1}</td>
-              <td>{tapal.letterNo}</td>
-              <td>{tapal.letterType}</td>
-              <td>{tapal.date}</td>
-              <td>{tapal.toAddress}</td>
-              <td>{tapal.fromAddress}</td>
-
-              <td>
+  {/* {Object.keys(filteredTapal).map((id, index) => {
+    const tapal = filteredTapal[id]; */}
+    {reversedData.map((id, index) => {
+              const tapal = filteredTapal[id];
+    return (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{tapal.letterNo}</td>
+        <td>{tapal.letterType}</td>
+        <td>{tapal.date}</td>
+        <td>{tapal.toAddress}</td>
+        <td>{tapal.fromAddress}</td>
+        <td>
           <div className="dropdown">
             <Dropdown>
               <Dropdown.Toggle variant="secondary" id="dropdownMenuButton">
                 &#8942;
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                
-                <Dropdown.Item onClick={() => handleEditProfile(tapal.id)}>
+                <Dropdown.Item onClick={() => handleEditProfile(id)}>
                   Edit Tapal
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() => handleDelete(tapal.id)}
+                  onClick={() => handleDelete(id)}
                   className="red-text"
                 >
                   Delete Tapal

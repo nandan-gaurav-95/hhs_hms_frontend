@@ -30,12 +30,12 @@ const HomeTapal = () => {
                   proceed
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <NavLink to="/add">
+                  <NavLink to="/addtapal">
                     <MDBDropdownItem link>
                       <b>Add Tapal</b>
                     </MDBDropdownItem>{" "}
                   </NavLink>
-                  <NavLink to="/view">
+                  <NavLink to="/viewtapal">
                     <MDBDropdownItem link>
                       <b>View Tapal</b>
                     </MDBDropdownItem>

@@ -15,6 +15,7 @@ const ViewGirlsHostel = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredgirlshostel, setFilteredgilrshostel] = useState({}); 
+  const reversedData = Object.keys(filteredgirlshostel).reverse();
 
   const handleViewProfile = (gh_id) => {
     navigate(`/detailgirlshostel/${gh_id}`);
@@ -114,8 +115,10 @@ const ViewGirlsHostel = () => {
           </tr>
         </thead>
         <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
-          {Object.keys(filteredgirlshostel).map((ghId, index) => {
-            const girlshostel = filteredgirlshostel[ghId];
+          {/* {Object.keys(filteredgirlshostel).map((ghId, index) => {
+            const girlshostel = filteredgirlshostel[ghId]; */}
+            {reversedData.map((ghId, index) => {
+              const girlshostel = filteredgirlshostel[ghId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

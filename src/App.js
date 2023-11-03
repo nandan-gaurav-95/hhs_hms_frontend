@@ -207,8 +207,8 @@ function App() {
           {/* Tapal */}
           <Route path="/logintapal" element={<LoginTapal />}></Route>
           <Route path="/hometapal" element={<HomeTapal />}></Route>
-          <Route path="/add" element={<Addtapal />}></Route>
-          <Route path="/view" element={<Viewtapal />}></Route>
+          <Route path="/addtapal" element={<Addtapal />}></Route>
+          <Route path="/viewtapal" element={<Viewtapal />}></Route>
           <Route path="/edit-tapal" element={<Edittapal />}></Route>
 
 
