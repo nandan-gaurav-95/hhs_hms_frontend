@@ -2,15 +2,13 @@ import React from "react";
 import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 import "../../asset/homepage.css";
 import Header from "../common/Header";
-import { NavLink } from "react-router-dom";
-import {
-  MDBDropdown,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBBtn as Button,
-  MDBDropdownItem,
-} from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+
+
 export default function HomeAmbulanceVan() {
+  const navigate = useNavigate();
+
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
@@ -18,13 +16,28 @@ export default function HomeAmbulanceVan() {
     backgroundPosition: "center",
   };
 
+  const handleAddAmbulance = () => {
+    navigate("/ambulancevan");
+  };
+  const handleViewAmbulance = () => {
+    navigate("/viewambulancevan");
+  };
+
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
       <Header />
-      <div className="card-container">
+      <div className="centered-container">
         <div className="card upper-card">
-          <h3>Ambulance Van</h3>
-          <div className="proceed-button">
+          <h3>Add Ambulance trip Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleAddAmbulance}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+          {/* <div className="proceed-button">
             <MDBDropdown>
               <MDBDropdownToggle
                 tag="a"
@@ -46,7 +59,18 @@ export default function HomeAmbulanceVan() {
                 </NavLink>
               </MDBDropdownMenu>
             </MDBDropdown>
-          </div>
+          </div> */}
+        </div>
+        <div className="card upper-card">
+          <h3>View Ambulance Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleViewAmbulance}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
         </div>
       </div>
     </div>

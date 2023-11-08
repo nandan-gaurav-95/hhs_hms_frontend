@@ -57,7 +57,7 @@ import Viewtapal from "./components/tapal/Viewtapal";
 import Edittapal from "./components/tapal/Edittapal";
 import Payment from "./components/daybook/Payment";
 import Receipt from "./components/daybook/Receipt";
-import GirlsHostel from "./components/impressed_cashbook/GirlsHostel"
+import GirlsHostel from "./components/hostel/GirlsHostel"
 
 
 import Scholarship from "./components/financial_assistance/Scholarship";
@@ -132,11 +132,11 @@ import LoginBloodCenter from "./components/bloodcenter/LoginBloodCenter";
 import HomeBloodCenter from "./components/bloodcenter/HomeBloodCenter";
 import LoginParking from "./components/parking/LoginParking";
 import HomeParking from "./components/parking/HomeParking";
-import LoginGirlsHostel from "./components/impressed_cashbook/LoginGirlsHostel";
-import HomeGirlsHostel from "./components/impressed_cashbook/HomeGirlsHostel";
-import ViewGirlsHostel from "./components/impressed_cashbook/ViewGirlsHostel";
-import EditGirlsHostel from "./components/impressed_cashbook/EditGirlsHostel";
-import DetailGirlsHostel from "./components/impressed_cashbook/DetailGirlsHostel";
+import LoginGirlsHostel from "./components/hostel/LoginGirlsHostel";
+import HomeGirlsHostel from "./components/hostel/HomeGirlsHostel";
+import ViewGirlsHostel from "./components/hostel/ViewGirlsHostel";
+import EditGirlsHostel from "./components/hostel/EditGirlsHostel";
+import DetailGirlsHostel from "./components/hostel/DetailGirlsHostel";
 
 function App() {
   return (
