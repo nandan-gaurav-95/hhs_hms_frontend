@@ -108,7 +108,7 @@ function InventoryDetails() {
       {/* <Sidebar> */}
         <Row className="justify-content-center">
           <Col>
-            <h1 className="text-center mb-4">Details of {updatedInventory?.name}</h1>
+            <h1 className="text-center mb-4">Details of {updatedInventory?.inv_name}</h1>
           </Col>
         </Row>
         </div>

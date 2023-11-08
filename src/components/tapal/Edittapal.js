@@ -13,6 +13,7 @@ import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
 
+
 function Edittapal() {
   const { id } = useParams() || {};
   const [propData, setPropData] = useState("");
@@ -26,7 +27,7 @@ function Edittapal() {
       try {
         if (!id) return;
         const response = await axios.get(`${APIS.GETTAPALBYID}/${id}`);
-console.log("Id",response.data);
+console.log("tapalId",response.data);
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);

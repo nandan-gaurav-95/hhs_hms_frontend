@@ -209,7 +209,7 @@ function App() {
           <Route path="/hometapal" element={<HomeTapal />}></Route>
           <Route path="/addtapal" element={<Addtapal />}></Route>
           <Route path="/viewtapal" element={<Viewtapal />}></Route>
-          <Route path="/edit-tapal" element={<Edittapal />}></Route>
+          <Route path="/edit-tapal/:id" element={<Edittapal />}></Route>
 
 
           <Route path="/payment" element={<PaymentForm />}></Route>

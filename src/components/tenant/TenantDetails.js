@@ -20,18 +20,7 @@ function TenantDetails() {
   const [updateTenant, setupdateTenant] = useState(propData.Tenant || {});
   const navigate = useNavigate();
 
-  const tableData = {
-    // id: 1,
-    // name: "Mahesh Tawade",
-    // department: "ITI College",
-    // allocatedShop: "A-1001",
-    // contactNum: "9657089541",
-    // securityDeposit: "20000.36",
-    // rentDue: "3000.00",
-    // electricityDue: "299.03",
-    // expiryDate: "20/12/2003",
-    // status: "Active",
-  };
+  
   useEffect(() => {
     async function fetchData() {
       try {
