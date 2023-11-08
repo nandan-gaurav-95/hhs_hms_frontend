@@ -88,6 +88,7 @@ function EditBloodCenter() {
   return (
     <div className="">
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -100,6 +101,7 @@ function EditBloodCenter() {
           <h1 className="text-center mb-4">Details of {propData?.bc_id}</h1>
         </Col>
       </Row>
+      </div>
       <Row className="justify-content-center">
         <ul className="list-group">
           <Row className="justify-content-center">

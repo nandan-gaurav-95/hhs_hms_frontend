@@ -78,6 +78,7 @@ const ViewParking = () => {
   return (
     <div>
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -96,6 +97,7 @@ const ViewParking = () => {
             onChange={handleSearchInputChange}
           />
         </div>
+      </div>
       </div>
       <Table striped>
         <thead className="shadow-lg p-3 mb-5 bg-white rounded">

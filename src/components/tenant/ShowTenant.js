@@ -95,6 +95,7 @@ const ShowTenant = () => {
   return (
     <div className="">
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -102,7 +103,7 @@ const ShowTenant = () => {
         />
       </div>
       <h1 className="mb-4 text-center">Tenants Details</h1>
-
+</div>
       <div className="d-flex mb-4 align-items-center seachcontentcenter">
         <div className=" search ms-4">
           <input

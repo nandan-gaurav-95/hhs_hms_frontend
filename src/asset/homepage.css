@@ -10,10 +10,11 @@ button {
 }
 .card-container {
 display: flex;
+justify-content: center;
 /* justify-content: space-between;  */
 margin-bottom: 20px;
 margin-top: 20px;
-margin-left: 40px;
+/* margin-left: 40px;  */
 }
 
 .card {

@@ -98,7 +98,7 @@ const AllEmployee = () => {
   return (
     <div className="">
       <Header />
-
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -106,7 +106,7 @@ const AllEmployee = () => {
         />
       </div>
       <h1 className="mb-4 text-center">Employee Details</h1>
-
+</div>
       <div className="d-flex seachcontentcenter mb-4 align-items-center">
         <div className=" search ms-4">
           <Input

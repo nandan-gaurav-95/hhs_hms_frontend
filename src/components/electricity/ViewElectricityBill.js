@@ -83,7 +83,7 @@ const ViewElectricityBill = () => {
   return (
     <div>
       <Header />
-
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -91,6 +91,7 @@ const ViewElectricityBill = () => {
         />
       </div>
       <h2 className="title">Electricity Bill Details</h2>
+      </div>
       <div className="d-flex seachcontentcenter mb-4 align-items-center">
         <div className=" search ms-4">
           <input

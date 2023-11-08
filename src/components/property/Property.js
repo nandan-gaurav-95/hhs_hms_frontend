@@ -72,6 +72,7 @@ const Property = () => {
   return (
     <div className="">
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -81,6 +82,7 @@ const Property = () => {
 
       {/* <Sidebar> */}
       <h1 className=" mb-4 text-center">Add Property Details</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">

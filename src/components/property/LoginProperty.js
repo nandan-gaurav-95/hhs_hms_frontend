@@ -1,16 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
-import "../../asset/style.css"
+import "../../asset/style.css";
 // import hhspage from "../../../asset/images/hhs page.jpg";
 import { HiOutlineSupport } from "react-icons/hi";
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 // import axios from "axios";
 // import { APIS } from "../api";
-import backgroundImage  from "../../asset/images/HHMS_bG.jpg";
+import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 
 import {
   MDBContainer as Container,
@@ -22,10 +22,9 @@ import {
 } from "mdb-react-ui-kit";
 import hhsLogo from "../../asset/images/hhs_logo.png";
 function LoginProperty() {
- 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-  
+
   // const handlePasswordChange = (event) => {
   //   const newPassword = event.target.value;
   //   setPassword(newPassword);
@@ -48,8 +47,8 @@ function LoginProperty() {
     backgroundPosition: "center",
   };
   const navigate = useNavigate();
-  const [email, setEmail]= useState("");
-  const [password, setPassword]= useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [department, setDepartment] = useState("Property");
 
   const handleLogin = async () => {
@@ -59,7 +58,7 @@ function LoginProperty() {
     //     email:email,// Get email value from your form input,
     //     password: password// Get password value from your form input,
     //   };
-  
+
     //   // Make a POST request to your backend API endpoint for login
     //   console.log(loginData);
     //   const response = await axios.post(APIS.LOGINACCOUNT, loginData);
@@ -67,7 +66,7 @@ function LoginProperty() {
     //   if (response.status === 200) {
     //     // Handle successful login (e.g., redirect to another page)
     //     console.log("Login successful!");
-        navigate("/homeprop"); // Redirect to the desired page after successful login
+    navigate("/homeprop"); // Redirect to the desired page after successful login
     //   } else {
     //     // Handle login error, e.g., show an error message
     //     console.error("Login failed.");
@@ -83,39 +82,40 @@ function LoginProperty() {
   };
 
   return (
-    //  <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
+    //  <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center
     //  ">
     <div className="background-login" style={backgroundImageStyle}>
+      <Container
+        fluid
+        className="loginBOdyDiv  d-flex align-items-center justify-content-center h-100"
+      >
+        <ToastContainer />
+        <Col className="forbusiness-page col-sm-6 rounded py-0">
+          <div className="d-flex flex-row  justify-content-md-center ">
+            <div className="d-flex  w-100  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
+              <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
+                H.H.S & H.M.S
+              </h2>
+              <p className="text-center">Login In to Property Management</p>
 
-      <Container fluid className="loginBOdyDiv mt-4 d-flex align-items-center justify-content-center h-100">
-      <ToastContainer/>
-          <Col className="forbusiness-page col-sm-6 rounded py-0">
-            <div className="d-flex flex-row  justify-content-md-center ">
-              <div className="d-flex  w-75  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
-                <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
-                  H.H.S & H.M.S
-                </h2>
-                <p className="text-center">Login In to Property Management</p>
-
-                <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
+              <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
                 <Input
-                className="transparent-input"
+                  className="transparent-input"
                   wrapperClass="mb-4 py-1"
                   label="Department"
                   id="form3"
                   type="text"
                   value={department}
                   readOnly
-                  
                 />
-                  <Input
-                    wrapperClass="mb-4 py-1"
-                    label="Email address"
-                    id="form1"
-                    type="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                 <Input
+                <Input
+                  wrapperClass="mb-4 py-1"
+                  label="Email address"
+                  id="form1"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
                   wrapperClass="mb-4  py-1 d-flex align-item-center "
                   label="Password"
                   id="form2"
@@ -138,37 +138,37 @@ function LoginProperty() {
                   <div className="text-danger">{passwordError}</div>
                 )}
 
-                  <div className="d-flex justify-content-between  mb-4">
-                    <Checkbox
-                      className="flexCheck"
-                      value=""
-                      id="flexCheckDefault"
-                      label="Remember me"
-                    />
-                    <Link to="/forgetPage" className="Forgetmail ">
-                      <text className="forgetpasss">Forgot password?</text>
-                    </Link>
-                  </div>
-
-                  <Button className="mb-2"  onClick={handleLogin}>
-                    <Link to="" className="Continue text-center ">
-                      <text className="continue pt-0 mt-0 text-dark ">
+                <div className="d-flex justify-content-between  mb-4">
+                  <Checkbox
+                    className="flexCheck"
+                    value=""
+                    id="flexCheckDefault"
+                    label="Remember me"
+                  />
+                  <Link to="/forgetPage" className="Forgetmail ">
+                    <text className="forgetpasss">Forgot password?</text>
+                  </Link>
+                </div>
+                
+                <div className="loginbtn">
+                  <Button className="mb-2 logbtn" onClick={handleLogin}>                 
+                      <text className="  text-white ">
                         Log In
-                      </text>
-                    </Link>
+                      </text>                  
                   </Button>
+                </div>
 
-                  <div className="businesshr text-center">
-                     <p className="my-2 mb-2">
-                      Don't have Account?
-                      <Link to="/signUp" className="Signupdiv">
-                        <text className="signup">Create Account</text>
-                      </Link>
-                    </p>
+                <div className="businesshr text-center">
+                  <p className="my-2 mb-2">
+                    Don't have Account?
+                    <Link to="/signUp" className="Signupdiv">
+                      <text className="signup">Create Account</text>
+                    </Link>
+                  </p>
 
-                    {/* <p className="hr-lines mb-4">OR </p> */} 
+                  {/* <p className="hr-lines mb-4">OR </p> */}
 
-                    {/* <Col className=" login-logo-margin col-sm-12 mb-4">
+                  {/* <Col className=" login-logo-margin col-sm-12 mb-4">
                       <Link to="" className="loginfacebook ">
                         <text className="facebook_log  py-2 d-flex  align-items-center">
                           {" "}
@@ -180,7 +180,7 @@ function LoginProperty() {
                       </Link>
                     </Col> */}
 
-                    {/* <Col className="login-logo-margin col-sm-12 mb-2">
+                  {/* <Col className="login-logo-margin col-sm-12 mb-2">
                       <Link to="" className="logingoogle">
                         <text className="google_log py-2 d-flex  align-items-center ">
                           {" "}
@@ -191,37 +191,37 @@ function LoginProperty() {
                         </text>
                       </Link>
                     </Col> */}
-                    <div className="loginformpic mt-3 mt-0 mb-0">
+                  <div className="loginformpic mt-3 mt-0 mb-0">
                     <img
                       src={hhsLogo}
                       alt="Login image"
                       className="loginimage"
                     />
                   </div>
-                    <div className="listcontainer w-100 mt-2 d-flex justify-content-center ">
-                      <ul className="custom-list d-flex justify-content-center ">
-                        <Link>
-                          <li className=" pe-4 custom-list-item  ">
-                            <text>
+                  <div className="listcontainer w-100 mt-2 d-flex justify-content-center ">
+                    <ul className="custom-list d-flex justify-content-center ">
+                      <Link>
+                        <li className=" pe-4 custom-list-item  ">
+                          <text>
                             <HiOutlineSupport className="pt-0 pb-1" />
-                              Support{" "}
-                            </text>
-                          </li>
-                        </Link>
-                        <Link>
-                          <li className="pe-2 custom-list-item ">
-                            <text>Privacy Policy</text>
-                          </li>
-                        </Link>
-                      </ul>
-                    </div>
+                            Support{" "}
+                          </text>
+                        </li>
+                      </Link>
+                      <Link>
+                        <li className="pe-2 custom-list-item ">
+                          <text>Privacy Policy</text>
+                        </li>
+                      </Link>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-          </Col>
+          </div>
+        </Col>
 
-          {/* <Col
+        {/* <Col
             sm="8"
             className="loginImgDiv h-100 w-50 d-none d-sm-block  ps-0 pe-0"
           >
@@ -229,8 +229,7 @@ function LoginProperty() {
           </Col> */}
         {/* </Row> */}
       </Container>
-    
-     </div>
+    </div>
   );
 }
 

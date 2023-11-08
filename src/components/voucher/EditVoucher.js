@@ -86,6 +86,7 @@ function EditVoucher() {
   return (
     <div className="">
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -98,6 +99,7 @@ function EditVoucher() {
           <h1 className="text-center mb-4">Details of {propData?.v_id}</h1>
         </Col>
       </Row>
+      </div>
       <Row className="justify-content-center">
         <ul className="list-group">
           <Row className="justify-content-center">

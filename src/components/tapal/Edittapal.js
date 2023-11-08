@@ -84,6 +84,7 @@ console.log("Id",response.data);
   return (
     <div className="">
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -98,6 +99,7 @@ console.log("Id",response.data);
           </h1>
         </Col>
       </Row>
+      </div>
       <Row className="justify-content-center">
         <ul className="list-group">
           <Row className="justify-content-center">

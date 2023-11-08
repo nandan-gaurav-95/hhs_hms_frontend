@@ -179,6 +179,7 @@ const DetailVoucher = () => {
   return (
         <div>
           <Header />
+          <div className="mt-4">
           <div className="arrow-back-container">
             <BiArrowBack
               className="backLoginForm fs-2 text-dark"
@@ -186,6 +187,7 @@ const DetailVoucher = () => {
             />
           </div>
           <h2 className="mb-4 text-center entity-column">Details of Voucher No: {voucher?.v_id} </h2>
+          </div>
           <Container
             className="detail w-75 text-center"
             style={{

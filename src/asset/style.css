@@ -360,3 +360,12 @@ th {
   justify-content: center;
   height: 40vh; /* This will center the content in the viewport's height. */
 }
+
+.loginbtn{
+  display: flex;
+  justify-content: center;
+}
+
+.logbtn{
+  margin-left: 0;
+}

@@ -123,6 +123,7 @@ const AllProperties = () => {
   return (
     <div className="text-center">
       <Header />
+      <div className="mt-4">
       <div className="arrow-back-container">
         <BiArrowBack
           className="backLoginForm fs-2 text-dark"
@@ -130,6 +131,7 @@ const AllProperties = () => {
         />
       </div>
       <h2 className="mb-4">Available Properties</h2>
+      </div>
       <Col className="mb-4 d-flex flex-column align-items-center">
         <div className="input-group" style={{ maxWidth: "300px" }}>
           <input

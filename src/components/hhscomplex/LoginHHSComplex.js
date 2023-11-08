@@ -82,12 +82,12 @@ function LoginHHSComplex() {
 
       <Container
         fluid
-        className="loginBOdyDiv mt-4 d-flex align-items-center justify-content-center h-100"
+        className="loginBOdyDiv d-flex align-items-center justify-content-center h-100"
       >
         <ToastContainer />
         <Col className="forbusiness-page col-sm-6 rounded py-0">
           <div className="d-flex flex-row  justify-content-md-center ">
-            <div className="d-flex  w-75  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
+            <div className="d-flex  w-100  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
               <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
                 H.H.S & H.M.S
               </h2>
@@ -145,13 +145,13 @@ function LoginHHSComplex() {
                   </Link>
                 </div>
 
-                <Button className="mb-2" onClick={handleLogin}>
-                  <Link to="" className="Continue text-center ">
-                    <text className="continue pt-0 mt-0 text-dark ">
-                      Log In
-                    </text>
-                  </Link>
-                </Button>
+                <div className="loginbtn">
+                  <Button className="mb-2 logbtn" onClick={handleLogin}>                 
+                      <text className="  text-white ">
+                        Log In
+                      </text>                  
+                  </Button>
+                </div>
 
                 <div className="businesshr text-center">
                   <p className="my-2 mb-2">
