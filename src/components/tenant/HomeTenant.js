@@ -1,9 +1,11 @@
 import React from "react";
 
-import backgroundImage from "../../asset/images/HHMS_bG.jpg"
+import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 import "../../asset/homepage.css";
 import Header from "../common/Header";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+
 import {
   MDBDropdown,
   MDBDropdownMenu,
@@ -12,42 +14,50 @@ import {
 } from "mdb-react-ui-kit";
 
 const HomeTenant = () => {
-    const backgroundImageStyle = {
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      };
+  const navigate = useNavigate();
+
+  const backgroundImageStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
+  const handleAddTenant = () => {
+    navigate("/tenant");
+  };
+  const handleViewTenant = () => {
+    navigate("/showtenant");
+  };
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
-    <Header />
+      <Header />
 
-      <div className="card-container">
-      <div className="card upper-card">
-            <h3>Tenant Management</h3>
-            <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/tenant">
-                    <MDBDropdownItem link>
-                      <b>Add Tenant</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/showtenant">
-                    <MDBDropdownItem link>
-                      <b>View Tenants</b>
-                    </MDBDropdownItem>
-                  </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </div>
-          </div>    
+      <div className="centered-container">
+        <div className="card upper-card">
+          <h3>Add Tenant Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleAddTenant}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+        </div>
+        <div className="card upper-card">
+          <h3>View Tenant Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleViewTenant}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+        </div>
       </div>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
 export default HomeTenant;

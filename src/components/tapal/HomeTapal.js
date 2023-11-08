@@ -1,51 +1,56 @@
 import React from "react";
 
-import backgroundImage from "../../asset/images/HHMS_bG.jpg"
+import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 import "../../asset/homepage.css";
 import Header from "../common/Header";
-import { NavLink } from "react-router-dom";
-import {
-  MDBDropdown,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBDropdownItem,
-} from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const HomeTapal = () => {
-    const backgroundImageStyle = {
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      };
+  const navigate = useNavigate();
+
+  const backgroundImageStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
+
+  const handleAddTapal = () => {
+    navigate("/addtapal");
+  };
+  const handleViewTapal = () => {
+    navigate("/viewtapal");
+  };
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
-    <Header />
-
-    <div className="card upper-card">
-            <h3>Tapal</h3>
-            <div className="proceed-button">
-              <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="btn btn-dark">
-                  proceed
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <NavLink to="/addtapal">
-                    <MDBDropdownItem link>
-                      <b>Add Tapal</b>
-                    </MDBDropdownItem>{" "}
-                  </NavLink>
-                  <NavLink to="/viewtapal">
-                    <MDBDropdownItem link>
-                      <b>View Tapal</b>
-                    </MDBDropdownItem>
-                  </NavLink>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </div>
-          </div>
-  </div>
-  )
-}
+      <Header />
+      <div className="centered-container">
+        <div className="card upper-card">
+          <h3>Add Tapal Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleAddTapal}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+        </div>
+        <div className="card upper-card">
+          <h3>View Tapal Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleViewTapal}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default HomeTapal;

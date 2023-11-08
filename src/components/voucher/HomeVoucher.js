@@ -18,13 +18,20 @@ const HomeVoucher = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       };
+
+      const handleAddVoucher = () => {
+        navigate("/voucher");
+      };
+      const handleViewVoucher = () => {
+        navigate("/viewvoucher");
+      };
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
     <Header />
 
-      <div className="card-container">
+      <div className="centered-container">
       <div className="card upper-card">
-            <h3>Vouchers</h3>
+            <h3>Add Vouchers Details</h3>
             <div className="proceed-button">
               <MDBDropdown>
                 <MDBDropdownToggle tag="a" className="btn btn-dark">

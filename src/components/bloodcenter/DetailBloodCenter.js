@@ -259,7 +259,7 @@ const handleBloodCenterPdf = () => {
   <Button
     variant="primary"
     onClick={handleBloodCenterPdf}
-    style={{ height: "60px", width: "130px", lineHeight: "25px", marginTop: "20px" }}
+    style={{ height: "60px", width: "160px", lineHeight: "25px", marginTop: "20px" }}
   >
     <FaDownload style={{ marginRight: "5px" }} /> Blood center
   </Button>

@@ -4,7 +4,9 @@ import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 // import backgroundImage  from "../../asset/images/HHMS bG.jpg"
 import "../../asset/homepage.css";
 import Header from "../common/Header";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+
 import {
   MDBDropdown,
   MDBDropdownMenu,
@@ -12,6 +14,8 @@ import {
   MDBDropdownItem,
 } from "mdb-react-ui-kit";
 export default function HomeElectricity() {
+  const navigate = useNavigate();
+
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
@@ -19,40 +23,40 @@ export default function HomeElectricity() {
     backgroundPosition: "center",
   };
 
+  const handleAddElectricity = () => {
+    navigate("/electricitybill");
+  };
+  const handleViewElectricity = () => {
+    navigate("/viewelectricitybill");
+  };
+
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
       <Header />
-      <div className="card-container">
+      <div className="centered-container">
         <div className="card upper-card">
-          <h3>Electricity</h3>
-          <div className="proceed-button">
-            <MDBDropdown>
-              <MDBDropdownToggle tag="a" className="btn btn-dark">
-                Proceed
-              </MDBDropdownToggle>
-              <MDBDropdownMenu>
-                <NavLink to="/electricitybill">
-                  <MDBDropdownItem link>
-                    <b>Electricity Bill</b>
-                  </MDBDropdownItem>{" "}
-                </NavLink>
-                <NavLink to="/viewelectricitybill">
-                  <MDBDropdownItem link>
-                    <b>View Electricity Bill</b>
-                  </MDBDropdownItem>{" "}
-                </NavLink>
-                {/* <MDBDropdownItem>
-                  <b>Tenants</b>
-                </MDBDropdownItem>
-                <MDBDropdownItem>
-                  <b>Staff Quarters</b>
-                </MDBDropdownItem>
-                <MDBDropdownItem>
-                  <b>Rented Homes</b>
-                </MDBDropdownItem> */}
-              </MDBDropdownMenu>
-            </MDBDropdown>
-          </div>
+          <h3>Add Electricity Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleAddElectricity}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+          
+        </div>
+        <div className="card upper-card">
+          <h3>View Electricity Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleViewElectricity}
+            style={{ width: "100px" }}
+          >
+            Proceed
+          </Button>
+          
         </div>
       </div>
     </div>
