@@ -39,14 +39,14 @@ const GirlsHostel = () => {
       if (response.status === 201) {
         console.log("Hostel Created Successfully");
         setFormData(initialState);
-        toast.success("Submit Successful!", { autoClose: 1500 });
+        toast.success("Submit Successful!", { autoClose: 1000 });
       } else {
         console.error("Failed To create Hostel");
-        toast.error("Failed to submit Girls Hostel", { autoClose: 1500 });
+        toast.error("Failed to submit Girls Hostel", { autoClose: 1000 });
       }
     } catch (error) {
       console.error("Error", error);
-      toast.error("An error occurred during submission", { autoClose: 1500 });
+      toast.error("An error occurred during submission", { autoClose: 1000 });
     }
   };
 

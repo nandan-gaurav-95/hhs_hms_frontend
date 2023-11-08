@@ -47,15 +47,15 @@ const MedicalAck = () => {
       if (response.status === 201) {
         console.log("MedicalAck Created Successfully");
         setFormData(initialState);
-        toast.success("Submit Successful!");
+        toast.success("Submit Successful!",{autoClose:1000});
       } else {
         console.error("Failed To create MedicalAck");
-        toast.error("Failed to submit MedicalAck");
+        toast.error("Failed to submit MedicalAck",{autoClose:1000});
 
       }
     } catch (error) {
       console.error("Error", error);
-      toast.error("An error occurred during submission");
+      toast.error("An error occurred during submission",{autoClose:1000});
     }
   };
   const handleChange = (e) => {
