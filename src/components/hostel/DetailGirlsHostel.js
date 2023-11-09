@@ -72,17 +72,7 @@ const DetailGirlsHostel = () => {
     <h2 className="mb-4 text-center entity-column">Details of Girls Hostel </h2>
     </div>
     <Container
-      className="detail w-75 text-center"
-      style={{
-        height: "60vh",
-        width: "50%",
-        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
-        marginBottom: "0",
-        marginTop: "10px",  
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start", 
-      }}
+      className="detail-girlhostel"
     >
        <div className="d-flex flex-wrap">
     <div className="w-50">

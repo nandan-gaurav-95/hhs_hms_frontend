@@ -369,3 +369,57 @@ th {
 .logbtn{
   margin-left: 0;
 }
+.detail-elebill{
+  height:430px;
+  /* width: 50%; */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+}
+.pdf-btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.pdf-btn {
+  width: 48%; /* Adjust as needed */
+}
+.pdf-btn-elebill{
+       line-height: 15px;
+
+}
+
+.pdf-btn-div{
+  display: flex;
+  justify-content: center;
+}
+.pdf-btn-voucher{
+  display: flex;
+  justify-content:center;
+  margin-top: 36px;
+  width: 102%; /* Adjust as needed */
+}
+
+
+.detail-voucher {
+  height: 300px;
+  width: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
+  margin-bottom: 0;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+.detail-girlhostel {
+  height:30vh;
+  width: 45%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
+  margin-top: 10px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}

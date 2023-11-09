@@ -167,10 +167,7 @@ function App() {
           <Route path="/showtenant" element={<ShowTenant />}></Route>
           <Route path="/tenant-details/:id" element={<TenantDetails />}></Route>
           {/* <Route path="/tenant-details/:id" element={<PropertyDetailsTenant />}></Route> */}
-          <Route
-            path="/tenantprofile/:id"
-            element={<ViewTenantDetail />}
-          ></Route>
+          <Route path="/tenantprofile/:id" element={<ViewTenantDetail />}></Route>
 
           <Route path="/payroll" element={<PayrollForm />}></Route>
           <Route path="/allpayroll" element={<Allpayroll />}></Route>
@@ -309,11 +306,7 @@ function App() {
           <Route path="/viewelectricitybill" element={<ViewElectricityBill />}></Route>
           <Route path="/detailelectricitybill/:id" element={<DetailElectricityBill />}></Route>
           <Route path="/editelectricitybill/:id" element={<EditElectricityBill />}></Route>
-
-
-            
-
-
+          
         </Routes>
       </BrowserRouter>
     </div>

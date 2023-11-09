@@ -4,12 +4,10 @@ import jsPDF from "jspdf";
 import { APIS } from "../constants/api";
 import {
     MDBContainer as Container,
-    MDBRow as Row,
-    MDBCol as Col,
-    MDBInput as Input,
-    MDBBtn as Button,
   } from "mdb-react-ui-kit";
-  import  "react-select-search/style.css";
+ 
+import { Button } from "react-bootstrap";
+import  "react-select-search/style.css";
 import logo from "../../asset/images/hhslogo.jpg";
 import { FaDownload } from "react-icons/fa";
 import { BiArrowBack } from "react-icons/bi";
@@ -188,10 +186,10 @@ const handleHHSComplexPdf = () => {
       className="detail w-75 text-center"
       style={{
         height: "60vh",
-        width: "50%",
+        // width: "50%",
         boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
         marginBottom: "0",
-        marginTop: "10px",  
+        marginTop: "38px",  
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start", 
@@ -213,7 +211,7 @@ const handleHHSComplexPdf = () => {
   <Button
     variant="primary"
     onClick={handleHHSComplexPdf}
-    style={{ height: "50px", width: "150px", lineHeight: "25px", marginTop: "20px" }}
+    style={{ height: "50px", width: "150px", lineHeight: "25px", marginTop: "57px" }}
   >
     <FaDownload style={{ marginRight: "5px" }} /> HHS Complex
   </Button>
