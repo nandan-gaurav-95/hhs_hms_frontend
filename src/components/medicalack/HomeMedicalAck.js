@@ -22,10 +22,11 @@ export default function HomeMedicalAck() {
   };
 
   return (
-    <div className="background-wrapper" style={backgroundImageStyle}>
+    <div className="background-login" style={backgroundImageStyle}>
       <Header />
       <div className="centered-container">
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Add Medical Details</h3>
           <Button
             tag="a"
@@ -34,9 +35,10 @@ export default function HomeMedicalAck() {
           >
             Proceed
           </Button>
-         
+         </div>
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>View Medical Details</h3>
           <Button
             tag="a"
@@ -45,6 +47,7 @@ export default function HomeMedicalAck() {
           >
             Proceed
           </Button>
+          </div>
         </div>
       </div>
     </div>

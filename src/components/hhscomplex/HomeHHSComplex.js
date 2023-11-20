@@ -25,10 +25,11 @@ export default function HomeHHSComplex() {
   };
 
   return (
-    <div className="background-wrapper" style={backgroundImageStyle}>
+    <div className="background-login" style={backgroundImageStyle}>
       <Header />
       <div className="centered-container">
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Add HHS Complex Details</h3>
           {/* <div className="proceed-button">
             <MDBDropdown>
@@ -57,9 +58,10 @@ export default function HomeHHSComplex() {
           >
             Proceed
           </Button>
-
+</div>
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>View HHS Complex Details</h3>
           <Button
             tag="a"
@@ -69,6 +71,7 @@ export default function HomeHHSComplex() {
           >
             Proceed
           </Button>
+          </div>
         </div>
       </div>
     </div>

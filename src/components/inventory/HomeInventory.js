@@ -25,11 +25,12 @@ const HomeInventory = () => {
     navigate("/distributeinventory");
   };
   return (
-    <div className="background-wrapper" style={backgroundImageStyle}>
+    <div className="background-login" style={backgroundImageStyle}>
       <Header />
 
       <div className="centered-container">
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Add Inventory Details</h3>
           <Button
             tag="a"
@@ -39,8 +40,10 @@ const HomeInventory = () => {
           >
             Proceed
           </Button>
+          </div>
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>View Inventory Details</h3>
           <Button
             tag="a"
@@ -50,8 +53,10 @@ const HomeInventory = () => {
           >
             Proceed
           </Button>
+          </div>
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Distribute Inventory Details</h3>
           <Button
             tag="a"
@@ -61,6 +66,7 @@ const HomeInventory = () => {
           >
             Proceed
           </Button>
+          </div>
         </div>
       </div>
     </div>

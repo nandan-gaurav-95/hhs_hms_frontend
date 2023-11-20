@@ -22,10 +22,11 @@ export default function HomeParking() {
   };
 
   return (
-    <div className="background-wrapper" style={backgroundImageStyle}>
+    <div className="background-login" style={backgroundImageStyle}>
       <Header />
       <div className="centered-container">
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Add Parking Details</h3>
           <Button
             tag="a"
@@ -35,8 +36,10 @@ export default function HomeParking() {
           >
             Proceed
           </Button>
+          </div>
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>View Parking Details</h3>
           <Button
             tag="a"
@@ -45,6 +48,7 @@ export default function HomeParking() {
           >
             Proceed
           </Button>
+          </div>
         </div>
       </div>
     </div>

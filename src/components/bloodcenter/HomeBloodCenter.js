@@ -23,10 +23,11 @@ export default function HomeBloodCenter() {
   };
 
   return (
-    <div className="background-wrapper" style={backgroundImageStyle}>
+    <div className="background-login" style={backgroundImageStyle}>
       <Header />
       <div className="centered-container">
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Add Blood Center Details</h3>
           <Button
             tag="a"
@@ -36,6 +37,7 @@ export default function HomeBloodCenter() {
           >
             Proceed
           </Button>
+          </div>
           {/* <div className="proceed-button">
             <MDBDropdown>
               <MDBDropdownToggle
@@ -62,6 +64,7 @@ export default function HomeBloodCenter() {
 
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>View Blood Center Details</h3>
           <Button
             tag="a"
@@ -70,6 +73,7 @@ export default function HomeBloodCenter() {
           >
             Proceed
           </Button>
+          </div>
         </div>
       </div>
     </div>

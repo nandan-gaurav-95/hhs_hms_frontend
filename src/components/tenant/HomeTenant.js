@@ -29,11 +29,12 @@ const HomeTenant = () => {
     navigate("/showtenant");
   };
   return (
-    <div className="background-wrapper" style={backgroundImageStyle}>
+    <div className="background-login" style={backgroundImageStyle}>
       <Header />
 
       <div className="centered-container">
         <div className="card upper-card">
+        <div className="card-content">
           <h3>Add Tenant Details</h3>
           <Button
             tag="a"
@@ -42,8 +43,10 @@ const HomeTenant = () => {
           >
             Proceed
           </Button>
+          </div>
         </div>
         <div className="card upper-card">
+        <div className="card-content">
           <h3>View Tenant Details</h3>
           <Button
             tag="a"
@@ -52,6 +55,7 @@ const HomeTenant = () => {
           >
             Proceed
           </Button>
+          </div>
         </div>
       </div>
     </div>
