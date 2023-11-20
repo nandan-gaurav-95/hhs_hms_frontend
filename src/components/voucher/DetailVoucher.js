@@ -185,7 +185,8 @@ const DetailVoucher = () => {
         </h2>
       </div>
       <Container className="detail-voucher">
-        <div className="d-flex flex-wrap">
+
+        <div className="d-flex flex-wrap w-100">
           <div className="w-50">
             {firstColumnKeys
               .filter((key) => key !== "id")
@@ -197,15 +198,17 @@ const DetailVoucher = () => {
               .map((key) => renderVoucherRow(key, voucher[key]))}
           </div>
         </div>
-        <div className="pdf-btn-voucher">
+
+        <div className="pdf-btn-voucher ">
           <Button
-            variant="primary"
+            // variant="primary"
             onClick={handleVoucherPdf}
             // className="pdf-btn-elebill"
           >
             <FaDownload className="pdf-btn" /> Voucher
           </Button>
         </div>
+
       </Container>
     </div>
   );

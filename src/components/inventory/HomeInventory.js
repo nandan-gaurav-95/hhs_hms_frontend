@@ -35,7 +35,7 @@ const HomeInventory = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddInventory}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -46,7 +46,7 @@ const HomeInventory = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewInventory}
-            style={{ width: "100px" }}
+           
           >
             Proceed
           </Button>

@@ -39,7 +39,6 @@ const HomeTenant = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddTenant}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
@@ -50,7 +49,6 @@ const HomeTenant = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewTenant}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

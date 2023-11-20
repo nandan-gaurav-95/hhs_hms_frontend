@@ -31,7 +31,7 @@ const HomeDargah = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddDargah}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -43,7 +43,6 @@ const HomeDargah = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewDargah}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

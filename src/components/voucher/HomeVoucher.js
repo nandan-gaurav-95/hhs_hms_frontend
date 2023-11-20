@@ -40,7 +40,6 @@ const HomeVoucher = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddVoucher}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
@@ -52,7 +51,6 @@ const HomeVoucher = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewVoucher}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

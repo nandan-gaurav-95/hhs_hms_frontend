@@ -33,7 +33,7 @@ export default function HomeAmbulanceVan() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddAmbulance}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -67,7 +67,7 @@ export default function HomeAmbulanceVan() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewAmbulance}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>

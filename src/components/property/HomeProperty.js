@@ -35,7 +35,6 @@ export default function HomeProperty() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddProperties}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
@@ -46,7 +45,6 @@ export default function HomeProperty() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAllProperties}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

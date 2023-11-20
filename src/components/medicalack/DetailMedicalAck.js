@@ -94,7 +94,7 @@ const handleMedicalAckPdf =()=>{
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
     doc.setFontSize(9);
     doc.setTextColor(75,93,183); // RGB color (Blue)
-    doc.text("No.2,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
     doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
     doc.text("Tel : 080-22211356 / 22240309",145,42)
     // doc.setTextColor(0);
@@ -189,7 +189,7 @@ const handleMedicalAckPdf =()=>{
 
   doc.text("Yours Faithfully,",152,209);
  
-  doc.text("Special Offer",152,223);
+  doc.text("Special Officer",152,223);
   doc.text("HHS & HMS COMPLEX",141,229);
  
  

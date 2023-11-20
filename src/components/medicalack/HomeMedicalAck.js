@@ -31,7 +31,6 @@ export default function HomeMedicalAck() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddMedical}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
@@ -43,7 +42,6 @@ export default function HomeMedicalAck() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewMedical}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

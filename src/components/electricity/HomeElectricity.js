@@ -40,7 +40,7 @@ export default function HomeElectricity() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddElectricity}
-            style={{ width: "100px" }}
+           
           >
             Proceed
           </Button>
@@ -52,7 +52,7 @@ export default function HomeElectricity() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewElectricity}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>

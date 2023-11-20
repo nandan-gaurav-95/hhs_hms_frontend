@@ -358,7 +358,7 @@ th {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 40vh; /* This will center the content in the viewport's height. */
+  height: 40vh;
 }
 
 .loginbtn{
@@ -388,19 +388,18 @@ th {
   width: 48%; /* Adjust as needed */
 }
 .pdf-btn-elebill{
-       line-height: 15px;
+      
+       width: 180px;
 
 }
 
-.pdf-btn-div{
+.pdf-btn{
   display: flex;
   justify-content: center;
 }
 .pdf-btn-voucher{
-  display: flex;
-  justify-content:center;
-  margin-top: 36px;
-  width: 102%; /* Adjust as needed */
+  width: 100%;
+  margin-left: 225px;
 }
 
 
@@ -410,6 +409,8 @@ th {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
   margin-bottom: 0;
   display: flex;
+  flex-flow: row wrap;
+
   /* flex-direction: column; */
   justify-content: center;
 }

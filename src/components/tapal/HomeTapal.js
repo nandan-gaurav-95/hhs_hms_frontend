@@ -32,7 +32,7 @@ const HomeTapal = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddTapal}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -43,7 +43,7 @@ const HomeTapal = () => {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewTapal}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>

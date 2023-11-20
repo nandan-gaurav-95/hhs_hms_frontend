@@ -32,7 +32,6 @@ export default function HomeEmployee() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddEmployee}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
@@ -43,7 +42,6 @@ export default function HomeEmployee() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewEmployee}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

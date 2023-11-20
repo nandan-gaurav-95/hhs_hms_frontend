@@ -53,7 +53,7 @@ export default function HomeHHSComplex() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddHHScomplex}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -65,7 +65,7 @@ export default function HomeHHSComplex() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewHHScomplex}
-            style={{ width: "100px" }}
+           
           >
             Proceed
           </Button>

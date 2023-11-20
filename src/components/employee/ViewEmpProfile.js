@@ -66,22 +66,25 @@ const ViewEmpProfile = () => {
       );
 
       //Header Part
-      doc.setTextColor(255, 138, 0); // RGB color (red)
-      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.text("HHS HMS", 70, 20); // Adjust the Y position as needed
-      doc.setFont("helvetica", "normal"); // Reset font style to normal
-
-      //PDF Heading
-      doc.setTextColor(255, 0, 0); // RGB color (red)
-      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.text("Salary Slip", 50, 40); // Adjust the Y position as needed
-      doc.setFont("helvetica", "normal"); // Reset font style to normal
-
+    doc.rect(12,9,186,46);
+    doc.setFontSize(15);
+    doc.setTextColor(24,94,26); // RGB color (dark green)
+    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
+    doc.text("Dargahs & Allied Waqf Institutions",85,28)
+    doc.setFont('helvetica', 'normal'); // Reset font style to normal
+    doc.setFontSize(9);
+    doc.setTextColor(75,93,183); // RGB color (Blue)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
+    doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+    doc.text("Tel : 080-22211356 / 22240309",145,42)
+    
       // Reset text color to default (black)
+      doc.rect(12, 55, 186, 10); // (X, Y, Width, Height)
       doc.setTextColor(59, 48, 182);
-      doc.rect(20, 50, 160, 105); // (X, Y, Width, Height)
+      doc.setFontSize(14);
       doc.setFont("calibre", "bold");
-      doc.text(`Salary Slip of Employee: ${employee.empName}`, 25, 60); // Adjust the Y position as needed
+      doc.text(`Salary Slip of Employee: ${employee.empName}`, 25, 62); // Adjust the Y position as needed
       doc.setFont("calibre", "normal");
       doc.setTextColor(0);
 
@@ -90,8 +93,8 @@ const ViewEmpProfile = () => {
       //emp_id
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(20, 65, 160, 10); // (X, Y, Width, Height)
-      doc.rect(20, 65, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 65, 186, 10); // (X, Y, Width, Height)
+      doc.rect(12, 65, 55, 10); // (X, Y, Width, Height)
       doc.text("Employee Id :", 25, 71); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -100,8 +103,8 @@ const ViewEmpProfile = () => {
       //ContactNo
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(20, 75, 160, 10); // (X, Y, Width, Height)
-      doc.rect(20, 75, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 75, 186, 10); // (X, Y, Width, Height)
+      doc.rect(12, 75, 55, 10); // (X, Y, Width, Height)
       doc.text("Contact No :", 25, 81); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -110,8 +113,8 @@ const ViewEmpProfile = () => {
       //DateofBirth
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(20, 85, 160, 10); // (X, Y, Width, Height)
-      doc.rect(20, 85, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 85, 186, 10); // (X, Y, Width, Height)
+      doc.rect(12, 85, 55, 10); // (X, Y, Width, Height)
       doc.text("Date of Birth :", 25, 91); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -119,9 +122,9 @@ const ViewEmpProfile = () => {
 
       //Address
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 95, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 95, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 95, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 95, 55, 10); // (X, Y, Width, Height)
       doc.text("Address:", 25, 101); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -129,9 +132,9 @@ const ViewEmpProfile = () => {
 
       //Gender
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 105, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 105, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 105, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 105, 55, 10); // (X, Y, Width, Height)
       doc.text("Gender :", 25, 111); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -139,9 +142,9 @@ const ViewEmpProfile = () => {
 
       //AadharNo
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 105, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 115, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 115, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 115, 55, 10); // (X, Y, Width, Height)
       doc.text("Aadhar No :", 25, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -149,9 +152,9 @@ const ViewEmpProfile = () => {
 
       //PanNo
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 125, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 125, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 125, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 125, 55, 10); // (X, Y, Width, Height)
       doc.text("Pan No :", 25, 131); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -159,9 +162,9 @@ const ViewEmpProfile = () => {
 
       //Bloodgroup
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 135, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 135, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 135, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 135, 55, 10); // (X, Y, Width, Height)
       doc.text("Bloodgroup :", 25, 141); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -169,9 +172,9 @@ const ViewEmpProfile = () => {
 
       //Department
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 145, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 145, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 145, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 145, 55, 10); // (X, Y, Width, Height)
       doc.text("Department :", 25, 151); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -179,9 +182,9 @@ const ViewEmpProfile = () => {
 
       //Qualification
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 155, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 155, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 155, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 155, 55, 10); // (X, Y, Width, Height)
       doc.text("Qualification :", 25, 161); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -189,9 +192,9 @@ const ViewEmpProfile = () => {
 
       //position
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 165, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 165, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 165, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 165, 55, 10); // (X, Y, Width, Height)
       doc.text("position :", 25, 171); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -199,9 +202,9 @@ const ViewEmpProfile = () => {
 
       //DateOfHiring
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 175, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 175, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 175, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 175, 55, 10); // (X, Y, Width, Height)
       doc.text("Date Of Hiring :", 25, 181); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -209,9 +212,9 @@ const ViewEmpProfile = () => {
 
       //basicSalary
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 185, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 185, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 185, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 185, 55, 10); // (X, Y, Width, Height)
       doc.text("Basic Salary :", 25, 191); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -219,9 +222,9 @@ const ViewEmpProfile = () => {
 
       //NetSalary
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 195, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 195, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 195, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 195, 55, 10); // (X, Y, Width, Height)
       doc.text("NetSalary :", 25, 201); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -229,9 +232,9 @@ const ViewEmpProfile = () => {
 
       //GrossSalary
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 205, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 205, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 205, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 205, 55, 10); // (X, Y, Width, Height)
       doc.text("GrossSalary :", 25, 211); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -239,9 +242,9 @@ const ViewEmpProfile = () => {
 
       //allowance
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 215, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 215, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 215, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 215, 55, 10); // (X, Y, Width, Height)
       doc.text("Allowance :", 25, 221); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -249,9 +252,9 @@ const ViewEmpProfile = () => {
 
       //Deduction
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 225, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 225, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 225, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 225, 55, 10); // (X, Y, Width, Height)
       doc.text("Deduction :", 25, 231); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -259,9 +262,9 @@ const ViewEmpProfile = () => {
 
       //PfEmployeeContribution
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 235, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 235, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 235, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 235, 55, 10); // (X, Y, Width, Height)
       doc.text("Pf Contribution :", 25, 241); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -269,9 +272,9 @@ const ViewEmpProfile = () => {
 
       //LoanAmount
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 245, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 245, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 245, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 245, 55, 10); // (X, Y, Width, Height)
       doc.text("Loan Amount :", 25, 251); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -279,9 +282,9 @@ const ViewEmpProfile = () => {
 
       //LoanRepaymentAmount
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 255, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 255, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 255, 45, 10); // (X, Y, Width, Height)
+      doc.rect(12, 255, 55, 10); // (X, Y, Width, Height)
       doc.text("Loan Paid Amount :", 25, 261); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
@@ -334,7 +337,7 @@ const ViewEmpProfile = () => {
             .map((key) => renderEmployeeRow(key, employee[key]))}
         </div>
       </div>
-      <div style={{ marginBottom: "10px", marginLeft: "auto" }}>
+      <div style={{ marginBottom: "10px" }}>
         <Button
           variant="primary"
           onClick={handleSalarySlipPdf}

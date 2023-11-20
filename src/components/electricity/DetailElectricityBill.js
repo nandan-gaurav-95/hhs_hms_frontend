@@ -367,19 +367,18 @@ const DetailElectricityBill = () => {
         </div>
         <div
           className="pdf-btn-div"
-          style={{
-            height: "50px",
-            width: "150px",
+          style={{                   
             lineHeight: "25px",
             marginTop: "20px",
           }}
         >
           <Button
+           
             variant="primary"
             onClick={handleEleBillPdf}
             className="pdf-btn-elebill"
           >
-            <FaDownload /> PDF for Electricity Bill
+            <FaDownload /> Electricity Bill PDF
           </Button>
         </div>
       </Container>

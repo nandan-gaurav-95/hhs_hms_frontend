@@ -34,7 +34,6 @@ export default function HomeGirlsHostel() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddHostel}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
@@ -45,7 +44,6 @@ export default function HomeGirlsHostel() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewHostel}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

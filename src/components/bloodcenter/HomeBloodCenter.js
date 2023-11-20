@@ -32,7 +32,7 @@ export default function HomeBloodCenter() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddBlood}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -67,7 +67,6 @@ export default function HomeBloodCenter() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewBlood}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>

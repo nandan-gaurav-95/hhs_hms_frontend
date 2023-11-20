@@ -31,7 +31,7 @@ export default function HomeParking() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddParking}
-            style={{ width: "100px" }}
+            
           >
             Proceed
           </Button>
@@ -42,7 +42,6 @@ export default function HomeParking() {
             tag="a"
             className="btn btn-dark"
             onClick={handleViewParking}
-            style={{ width: "100px" }}
           >
             Proceed
           </Button>
