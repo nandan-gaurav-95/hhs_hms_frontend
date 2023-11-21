@@ -55,7 +55,7 @@ const DetailDargahComplex = () => {
   const dergahKeys = Object.keys(dergah);
   const halfLength = Math.ceil(dergahKeys.length / 2);
   const firstColumnKeys = dergahKeys.slice(0, halfLength);
-  const secondColumnKeys = dergahKeys.slice(halfLength);
+  const secondColumnKeys = dergahKeys.slice(0,halfLength);
    //dargah complex pdf
    const handleDargahComplexPdf = () => {
 
@@ -185,9 +185,9 @@ const DetailDargahComplex = () => {
     <h2 className="mb-4 text-center entity-column">Details of {dergah?.receiverName} </h2>
     </div>
     <Container
-      className="detail w-75 text-center"
+      className="detail w-50 text-center"
       style={{
-        height: "60vh",
+        height: "55vh",
         width: "50%",
         boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
         marginBottom: "0",

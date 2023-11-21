@@ -56,7 +56,7 @@ const DetailParking = () => {
   const parkingKeys = Object.keys(parking);
   const halfLength = Math.ceil(parkingKeys.length / 2);
   const firstColumnKeys = parkingKeys.slice(0, halfLength);
-  const secondColumnKeys = parkingKeys.slice(halfLength);
+  const secondColumnKeys = parkingKeys.slice(0,halfLength);
 
  //parking pdf
 const handleParkingrPdf = () => {
@@ -187,9 +187,9 @@ const handleParkingrPdf = () => {
     <h2 className="mb-4 text-center entity-column">Parking Details of {parking?.receiverName} </h2>
     </div>
     <Container
-      className="detail w-75 text-center"
+      className="detail w-50 text-center"
       style={{
-        height: "60vh",
+        height: "55vh",
         width: "50%",
         boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
         marginBottom: "0",
@@ -215,7 +215,7 @@ const handleParkingrPdf = () => {
   <Button
     variant="primary"
     onClick={handleParkingrPdf}
-    style={{ height: "50px", width: "130px", lineHeight: "25px", marginTop: "20px" }}
+    style={{ height: "40px", width: "130px", lineHeight: "25px", marginTop: "15px" }}
   >
     <FaDownload style={{ marginRight: "5px" }} /> Parking
   </Button>

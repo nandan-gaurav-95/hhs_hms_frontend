@@ -15,7 +15,7 @@ import { FaDownload } from "react-icons/fa";
 import { BiArrowBack } from "react-icons/bi";
 import Header from "../common/Header";
 import { useNavigate, useParams } from "react-router-dom";
-
+import bloodlogo from "../../asset/images/bloodcenterlogo.jpeg";
 const DetailBloodCenter = () => {
     const { id } = useParams();
     const [bloodcenter, setBloodcenter] = useState(null); 
@@ -80,7 +80,14 @@ const handleBloodCenterPdf = () => {
       50,     // Image width
       25      // Image height
     );
- 
+    doc.addImage(
+      bloodlogo,
+      "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+      160,     // X position
+      11,     // Y position
+      35,     // Image width
+      20      // Image height
+    );
     //Header Part
     doc.rect(12,9,186,163);
     doc.rect(12,9,186,43);
@@ -233,7 +240,7 @@ const handleBloodCenterPdf = () => {
     <h2 className="mb-4 text-center entity-column">Blood Center Details </h2>
     </div>
     <Container
-      className="detail w-75 text-center"
+      className="detail w-50 text-center"
       style={{
         height: "60vh",
         width: "50%",
@@ -261,7 +268,7 @@ const handleBloodCenterPdf = () => {
   <Button
     variant="primary"
     onClick={handleBloodCenterPdf}
-    style={{ height: "60px", width: "160px", lineHeight: "25px", marginTop: "20px" }}
+    style={{ height: "45px", width: "160px", lineHeight: "25px", marginTop: "20px" }}
   >
     <FaDownload style={{ marginRight: "5px" }} /> Blood center
   </Button>

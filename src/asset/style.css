@@ -250,36 +250,34 @@ th {
   padding: 5px;
 }
 .entity-row {
-   margin-bottom: 2px;
+  margin-bottom: 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3px; 
+  margin-bottom: 3px;
   width: 100%;
   margin-top: 10px;
- }
-.entity-column{
+}
+.entity-column {
   margin-bottom: 5px;
- 
- 
 }
 .entity-name {
   font-weight: bold;
   font-size: 18px;
   width: 100%;
-  padding-right: 40px; 
+  padding-right: 40px;
   text-align: left;
   margin-right: 10px;
-  padding-left: 70px;
+  padding-left: 20px;
 }
 
 .entity-value {
   width: 60%;
-  margin-left: 10px; 
+  margin-left: 10px;
   text-align: right;
-  padding-left: 80px;
+  padding-left: 100px;
   flex: 1;
-  padding-left: 10px; 
+  padding-left: 0px;
 }
 .search-input {
   width: 40%;
@@ -397,11 +395,18 @@ th {
   display: flex;
   justify-content: center;
 }
-.pdf-btn-voucher{
+.pdf-btn-voucher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-left: 225px;
 }
-
+.pdf-btn-ele {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
 
 .detail-voucher {
   height: 300px;

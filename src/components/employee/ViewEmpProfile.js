@@ -342,7 +342,7 @@ const ViewEmpProfile = () => {
           variant="primary"
           onClick={handleSalarySlipPdf}
           className="w-75"
-          style={{ height: "40px", lineHeight: "25px" }}
+          style={{ height: "40px", lineHeight: "25px", marginTop: "20px" }}
         >
           <FaDownload style={{ marginRight: "5px" }} /> Salary Slip
         </Button>

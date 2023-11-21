@@ -13,7 +13,7 @@ const DetailElectricityBill = () => {
   const [electricitybill, setElectricitybill] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
+ 
     // Function to fetch property by ID
     const fetchElectricityBillById = async () => {
       try {
@@ -27,6 +27,7 @@ const DetailElectricityBill = () => {
     };
 
     // Call the fetchPropertyById function when the component mounts
+    useEffect(() => {
     fetchElectricityBillById();
   }, [id]);
 
@@ -348,7 +349,17 @@ const DetailElectricityBill = () => {
           Electricity Bill of {electricitybill.month}{" "}
         </h2>
       </div>
-      <Container className="detail-elebill">
+      <Container  className="detail w-50 text-center"
+        style={{
+          height: "400px",
+          width: "100%",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
+          marginBottom: "0",
+          marginTop: "10px",  
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start", 
+        }}>
         <div className="d-flex flex-wrap">
           <div className="w-50">
             {firstColumnKeys
@@ -376,7 +387,7 @@ const DetailElectricityBill = () => {
            
             variant="primary"
             onClick={handleEleBillPdf}
-            className="pdf-btn-elebill"
+            className="pdf-btn-ele"
           >
             <FaDownload /> Electricity Bill PDF
           </Button>

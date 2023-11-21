@@ -153,7 +153,7 @@ const ViewPropertyDetail = () => {
   const propertyKeys = Object.keys(property);
   const halfLength = Math.ceil(propertyKeys.length / 2);
   const firstColumnKeys = propertyKeys.slice(0, halfLength);
-  const secondColumnKeys = propertyKeys.slice(halfLength);
+  const secondColumnKeys = propertyKeys.slice(0,halfLength);
 
   return (
     <div>
@@ -168,7 +168,7 @@ const ViewPropertyDetail = () => {
       <h2 className="mb-4 text-center entity-column">Property Details of </h2>
       </div>
       <Container
-        className="detail w-75 text-center"
+        className="detail w-50 text-center"
         style={{
           height: "430px",
           width: "50%",
