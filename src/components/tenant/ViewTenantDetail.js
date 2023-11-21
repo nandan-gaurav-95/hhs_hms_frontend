@@ -303,7 +303,7 @@ const ViewTenantDetail = () => {
       doc.rect(12, 65, 138, 10); //(X, Y, Width, Height) 3rd verticle line
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.allocatedShop}`, 70, 71); // (X, Y,Actual name)
+      doc.text(`${tenantToShow?.allocatedShop}`, 70, 71); // (X, Y,Actual name)
 
       //RR Num   not defined
       doc.setFontSize(12); // Set font size for labels

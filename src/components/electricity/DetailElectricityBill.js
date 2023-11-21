@@ -75,59 +75,62 @@ const DetailElectricityBill = () => {
         25 // Image height
       );
 
-      //Header Part
-      doc.setTextColor(255, 138, 0); // RGB color (red)
-      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.text("Hameed Shah & Haz. Muhib Shah Khadri (R) Complex,", 55, 20); // Adjust the Y position as needed
-      doc.text("Banglore", 95, 30);
-      doc.setFont("helvetica", "normal"); // Reset font style to normal
-
+       //Header Part
+    doc.rect(12,9,186,46);
+    doc.setFontSize(15);
+    doc.setTextColor(24,94,26); // RGB color (dark green)
+    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
+    doc.text("Dargahs & Allied Waqf Institutions",85,28)
+    doc.setFont('helvetica', 'normal'); // Reset font style to normal
+    doc.setFontSize(9);
+    doc.setTextColor(75,93,183); // RGB color (Blue)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
+    doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+    doc.text("Tel : 080-22211356 / 22240309",145,42)
       //PDF Heading
-      doc.setTextColor(255, 0, 0); // RGB color (red)
+      doc.setTextColor(59, 48, 182); 
+      doc.rect(12,45,186,150);// (X, Y, Width, Height)
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
+
       // expiryDate will be convert into current month
+      doc.setFontSize(14);
       doc.text(
-        `Electricity Bill, For The Month Of :${electricitybill?.month}`,
-        55,
-        40
-      ); // Adjust the Y position as needed
+        `Electricity Bill, For The Month Of :${electricitybill?.month}`, 50,52); // Adjust the Y position as needed
       doc.setFont("helvetica", "normal"); // Reset font style to normal
 
       // Reset text color to default (black)
       doc.setTextColor(0);
       doc.setFontSize(12);
-      doc.rect(20, 55, 160, 140); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 55, 90, 10); // (X, Y, Width, Height)
+      doc.rect(12, 55, 98, 10); // (X, Y, Width, Height)
       doc.text("Name: ", 25, 61); // Label "Name:"
       doc.setFont("calibre", "normal");
       doc.text(`${electricitybill?.name}`, 65, 61); // (X, Y,Actual name)
 
       //unit
-      doc.rect(20, 55, 110, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 55, 118, 10); // (X, Y, Width, Height) 2nd verticle line
       doc.text("Unit", 115, 61); // Label "Name:"
-      doc.rect(20, 65, 110, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(20, 75, 110, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(20, 85, 110, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 65, 118, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 75, 118, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 85, 118, 10); // (X, Y, Width, Height) 2nd verticle line
 
       //rate
-      doc.rect(20, 55, 130, 10); // (X, Y, Width, Height)
+      doc.rect(12, 55, 138, 10); // (X, Y, Width, Height)
       doc.text("Rate", 135, 61); // (X,Y, Label "Rate:"
 
       //amount
-      //  doc.rect(20, 55, 150, 10);// (X, Y, Width, Height)
       doc.text("Amount ", 155, 61); // Label "amount:"
-
       // Add tenant details here...
 
       //Shop no
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(20, 65, 160, 10); // (X, Y, Width, Height)
-      doc.rect(20, 65, 90, 10); // (X, Y, Width, Height)
+      doc.rect(12, 65, 186, 10); // (X, Y, Width, Height)
+      doc.rect(12, 65, 98, 10); // (X, Y, Width, Height)
       doc.text("Shop No. :", 25, 71); // Label "Name:"
 
-      doc.rect(20, 65, 130, 10); //(X, Y, Width, Height) 3rd verticle line
+      doc.rect(12, 65, 138, 10); //(X, Y, Width, Height) 3rd verticle line
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.shopNo}`, 65, 71); // (X, Y,Actual name)
@@ -135,11 +138,9 @@ const DetailElectricityBill = () => {
       //RR Num   not defined
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(20, 75, 160, 10); // (X, Y, Width, Height)
-      doc.rect(20, 75, 90, 10); // (X, Y, Width, Height)
+      doc.rect(12, 75, 138, 10); // (X, Y, Width, Height)
+      doc.rect(12, 75, 98, 10); // (X, Y, Width, Height)
       doc.text("R.R NO. :", 25, 81); // Label "Name:"
-
-      doc.rect(20, 75, 130, 10); //(X, Y, Width, Height) 3rd verticle line
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.rrNo}`, 65, 81); //(X, Y, Actual name)
@@ -147,124 +148,120 @@ const DetailElectricityBill = () => {
       //Ledger & Follo
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(20, 85, 160, 10); // (X, Y, Width, Height)
-      doc.rect(20, 85, 65, 10); // (X, Y, Width, Height)
+      doc.rect(12, 85, 186, 10); // (X, Y, Width, Height)
+      doc.rect(12, 85, 73, 10); // (X, Y, Width, Height)
       doc.text("Ledger & Follo No :", 25, 91); // Label "Ledger & Follo"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.ledger_follono}`, 65, 91); // (X, Y, Actual name)
 
-      //Fixed Charges
-      doc.rect(20, 85, 90, 10); // (X, Y, Width, Height)
-      doc.rect(20, 85, 130, 10);
+        //Fixed Charges
+        doc.rect(12, 85, 98, 10); // (X, Y, Width, Height)
+        doc.rect(12, 85, 138, 10);
 
       doc.text("Fixed Charges", 87, 91); // (X,Y, Label "Rate:"
 
       //sactionLoad
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 95, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 95, 65, 10); // (X, Y, Width, Height) 1st verticle line
+      doc.rect(12, 95, 73, 10); // (X, Y, Width, Height) 1st verticle line
       doc.text("Sanction Load :", 25, 101); // Label saction load
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.sanctionLoad}`, 65, 101); // (X, Y, Actual name)
 
       //Consumption Charges
-      doc.rect(20, 95, 90, 10); // (X, Y, Width, Height)
-      doc.rect(20, 95, 110, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(20, 95, 130, 10);
-      doc.text("Consumption", 87, 101); // (X,Y, Label "Rate:"
+      doc.rect(12, 95, 98, 10); // (X, Y, Width, Height)
+      doc.rect(12, 95, 118, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 95, 138, 10);
+      doc.text("Consumption", 87, 99); // (X,Y, Label "Rate:"
+      doc.text("Charges", 90, 103);
 
       //Tariff
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 105, 160, 10); // (X, Y, Width, Height)
+      doc.rect(12, 105, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(20, 105, 90, 10); // (X, Y, Width, Height)
       doc.text("Tariff :", 25, 111); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
+      doc.rect(12, 105, 46, 10); // (X, Y, Width, Height)
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.tariff}`, 40, 111); // (X, Y, Actual name)
 
-      doc.rect(20, 105, 38, 10); // (X, Y, Width, Height)
+      doc.rect(12, 105, 98, 10);// (X, Y, Width, Height)
       doc.setFontSize(10); // Reset font size to normal
-      doc.rect(20, 105, 90, 10); // (X, Y, Width, Height)
+      doc.rect(12, 105, 98, 10);// (X, Y, Width, Height)
       doc.text("HT 2 B", 65, 111); // (X, Y, Actual name)
-      doc.rect(20, 105, 65, 10); // (X, Y, Width, Height) 1st verticle line
+      doc.rect(12, 105, 73, 10); // (X, Y, Width, Height) 1st verticle line
 
       //  total
-      doc.rect(20, 105, 110, 10); // (X, Y, Width, Height) 4th verticle line
+      doc.rect(12, 105, 118, 10); // (X, Y, Width, Height) 4th verticle line
       doc.setFont("calibre", "bold");
       doc.text("TOTAL", 87, 111); // (X,Y, Label "Rate:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(20, 105, 130, 10); //(X, Y, Width, Height) 5th verticle line
+      doc.rect(12, 105, 138, 10); //(X, Y, Width, Height) 5th verticle line
 
       //present reading
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 115, 160, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.text("Present Reading:", 25, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(20, 115, 38, 10); // (X, Y, Width, Height) 1st verticle line
+      doc.rect(12, 115, 46, 10); // (X, Y, Width, Height) 1st verticle line
+      doc.rect(12, 115, 73, 10);
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.presentReading}`, 65, 121); // (X, Y, Actual name)
 
-      doc.rect(20, 115, 65, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 115, 73, 10);// (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
-      doc.rect(20, 115, 90, 10); // (X, Y, Width, Height) 3rd verticle line
-      doc.rect(20, 115, 110, 10); // (X, Y, Width, Height) 4th verticle line
-      doc.rect(20, 115, 130, 10); // (X, Y, Width, Height) 5th verticle line
+      doc.rect(12, 115, 98, 10); // (X, Y, Width, Height) 3rd verticle line
+      doc.rect(12, 115, 118, 10); // (X, Y, Width, Height) 4th verticle line
+      doc.rect(12, 115, 138, 10); // (X, Y, Width, Height) 5th verticle line
 
       //  tax5%
       doc.text("Tax 5%", 87, 121); // (X,Y, Label "Rate:"
 
       //previous reading
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 125, 160, 40); // (X, Y, Width, Height)
+      doc.rect(12, 125, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.text("Previous Reading", 25, 131); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(20, 125, 38, 10); // (X, Y, Width, Height) 1st verticle line
+      doc.rect(12, 125, 46, 10); // (X, Y, Width, Height) 1st verticle line
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.previousReading}`, 65, 131); // (X, Y, Actual name)
 
-      doc.rect(20, 125, 65, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(20, 125, 160, 10);
-      doc.setFontSize(10); // Reset font size to normal
-      doc.rect(20, 125, 90, 40); // (X, Y, Width, Height) 3rd verticle line
-      doc.rect(20, 125, 110, 40); // (X, Y, Width, Height) 4th verticle line
-      doc.rect(20, 125, 130, 40); // (X, Y, Width, Height) 5th verticle line
-
+      doc.rect(85, 125, 25, 70); // (X, Y, Width, Height) 3rd verticle line
+      doc.rect(130, 125, 20, 70);
+      // doc.setFontSize(10); // Reset font size to normal
+    
       //  bill amount
       doc.text("Bill Amount", 87, 131); // (X,Y, Label "Rate:"
 
       //unit consumed
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 135, 38, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.text("Unit Consumed", 25, 141); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(20, 135, 65, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(58, 135, 27, 10);// (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.unitConsumed}`, 65, 141); // (X, Y, Actual name)
 
       //unit sancd
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 145, 38, 10); // (X, Y, Width, Height)
+      doc.rect(12, 145, 46, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.text("Unit Sancd.", 25, 151); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(20, 145, 65, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 145, 73, 10); // (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.unitSancd}`, 65, 151); // (X, Y, Actual name)
 
       //date of reading
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 155, 38, 10); // (X, Y, Width, Height)
+      doc.rect(12, 155, 46, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.text("Date of Reading", 25, 161); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(20, 155, 65, 10); // (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 155, 73, 10); // (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
 
       //  1st MOnth
@@ -277,7 +274,7 @@ const DetailElectricityBill = () => {
 
       //note
       doc.setFontSize(12); // Set font size for labels
-      doc.rect(20, 165, 65, 30); // (X, Y, Width, Height)
+     
       doc.setFont("calibre", "bold");
       doc.text("Note :", 25, 171); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
@@ -289,22 +286,15 @@ const DetailElectricityBill = () => {
       doc.text("Special Officer", 131, 211);
 
       doc.text("Arrears", 90, 171); // Label "Name:"
-      doc.rect(85, 165, 25, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(110, 165, 20, 10);
-      doc.rect(130, 165, 20, 10);
-      doc.rect(150, 165, 30, 10);
+      doc.rect(85, 165, 113, 10);// (X, Y, Width, Height) 2nd verticle line
+     
 
       doc.text("Interest", 90, 181); // Label "Name:"
-      doc.rect(85, 175, 25, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(110, 175, 20, 10);
-      doc.rect(130, 175, 20, 10);
-      doc.rect(150, 175, 30, 10);
+      
 
       doc.text("Amount Due", 86, 191); // Label "Name:"
-      doc.rect(85, 185, 25, 10); // (X, Y, Width, Height) 2nd verticle line
-      doc.rect(110, 185, 20, 10);
-      doc.rect(130, 185, 20, 10);
-      doc.rect(150, 185, 30, 10);
+      doc.rect(85, 185, 113, 10); // (X, Y, Width, Height) 2nd verticle line
+      
       //  doc.setFontSize(10); // Reset font size to normal
 
       //Payment Mode
