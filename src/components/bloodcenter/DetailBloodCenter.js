@@ -75,7 +75,7 @@ const handleBloodCenterPdf = () => {
     doc.addImage(
       logoImage,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      10,     // X position
+      12,     // X position
       10,     // Y position
       50,     // Image width
       25      // Image height
@@ -83,7 +83,7 @@ const handleBloodCenterPdf = () => {
     doc.addImage(
       bloodlogo,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      160,     // X position
+      158,     // X position
       11,     // Y position
       35,     // Image width
       20      // Image height
@@ -91,25 +91,36 @@ const handleBloodCenterPdf = () => {
     //Header Part
     doc.rect(12,9,186,163);
     doc.rect(12,9,186,43);
-    doc.setFontSize(8);
-    doc.text("LICENSE NUMBER - KTK/28C-409/2022", 75, 15); // Adjust the Y position as needed
-    doc.setFontSize(15);
-    doc.setTextColor(255, 138, 0); // RGB color (red)
+    // doc.setFontSize(8);
+    // doc.text("LICENSE NUMBER - KTK/28C-409/2022", 75, 15);
+    doc.setFontSize(16);
+    doc.setTextColor(24,94,26);
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("HHS & HMS", 65, 25); // Adjust the Y position as needed
-    doc.setFontSize(10);
-    doc.text("(R.A.)",96,25)
-    doc.setFontSize(15);
+    doc.text("HHS & HMS", 61, 15); // Adjust the Y position as needed
+    doc.setFontSize(11);
+    doc.text("(R.A.)",93,16)
+    doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
-    doc.text("BLOOD CENTRE",106,25)
+    doc.text("BLOOD CENTRE",105,15)
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
-    doc.setFontSize(9);
-    doc.setTextColor(0);
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-2, Ph: 22211356/22240309",45,37)
-    doc.text("Banglore-02, Ph: 080-49894916 Mob. : 9845854991,9035963914,8123294727",55,42)
-    doc.text("Email : hhshmsbloodcentre@gmail.com Website: hhshmscomplex.com",55,47)
- 
- 
+    doc.setFontSize(12);
+    doc.setTextColor(75,93,183);
+    doc.setFont('helvetica', 'bold');
+    doc.text("(Under Karnataka State Board of Aquaf)",65,22)
+    doc.setFontSize(11);
+    doc.setTextColor(75,93,183);
+    doc.setFont('helvetica', 'normal');
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,",62,27)
+    doc.text("Cubbonpet Main Road,Banglore - 560 002",66,32)
+    doc.setFontSize(13);
+    doc.setTextColor(75,93,183);
+    doc.setFont('helvetica', 'bold');
+    doc.text("Ph : 080-4989 4916 - 98458 54991",65,38)
+    doc.setFontSize(15);
+    doc.setTextColor(75,93,183);
+    doc.setFont('helvetica', 'bold');
+    doc.text("DL. No. : KTK/28C-409/2022",65,45)
+
  //PDF Heading 
  
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
@@ -123,22 +134,22 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold'); 
   doc.text("Date :", 155, 65); // Adjust the Y position as needed
   doc.setFont('calibre','normal');
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.date}`, 170, 65);
  
  //Received with the thanks from :
  doc.setFontSize(12); // Set font size for labels
  doc.setFont('calibre', 'bold');
- doc.text("Received with the thanks from smt./Sri :", 25,81); // Label "Name:"
+ doc.text("Received with the thanks from Smt./Sri :", 25,81); // Label "Name:"
  doc.setFont('calibre', 'normal'); // Reset font style to normal
- doc.setFontSize(10); // Reset font size to normal
+ doc.setFontSize(12); // Reset font size to normal
  doc.text(`${bloodcenter?.receiverName}`, 100, 81); // (X, Y,Actual name)
  doc.setFontSize(12); // Set font size for labels
  doc.setFont('calibre', 'bold');
  doc.text("Age:", 125,91);
  doc.text("Sex:", 155,91);
  doc.setFont('calibre', 'normal'); // Reset font style to normal
- doc.setFontSize(10); // Reset font size to normal
+ doc.setFontSize(12); // Reset font size to normal
  doc.text(`${bloodcenter?.age}`, 135, 91); // (X, Y,Actual name)
  doc.text(`${bloodcenter?.gender}`, 165, 91); // (X, Y,Actual name)
  
@@ -147,7 +158,7 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold');
   doc.text("I.P.NO.", 25, 91); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.ipNo}`, 45, 91); //(X, Y, Actual name)
  
  //Hospital
@@ -155,7 +166,7 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold');
   doc.text("Hospital/N Home:", 25, 101); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.hospitalName}`, 60, 101); // (X, Y, Actual name)
  
   //sum of rupees
@@ -163,7 +174,7 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold');
   doc.text("Sum of Rupees:", 25, 111); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.rupee}`, 55, 111); // (X, Y, Actual name)
  
   //sum of rupees
@@ -171,7 +182,7 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold');
   doc.text("Towards /lab Investigation Charges for:", 25, 121); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.invstigationCharges}`,99, 121); // (X, Y, Actual name)
  
   //unit no
@@ -179,7 +190,7 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold');
   doc.text("Unit No:", 155, 121); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.unitNo}`, 175, 121); // (X, Y, Actual name)
  
   
@@ -188,7 +199,7 @@ const handleBloodCenterPdf = () => {
   doc.setFont('calibre', 'bold');
   doc.text("Blood Group:", 25, 131); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  doc.setFontSize(12); // Reset font size to normal
   doc.text(`${bloodcenter?.bloodgroup}`, 55, 131); // (X, Y, Actual name)
  
   //cash
@@ -207,7 +218,7 @@ const handleBloodCenterPdf = () => {
    doc.setFont('calibre', 'bold');
    doc.text("RS:", 25, 153); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
-   doc.setFontSize(10); // Reset font size to normal
+   doc.setFontSize(12); // Reset font size to normal
    doc.text(`${bloodcenter?.rupee}`, 35, 153); // (X, Y, Actual name)
  
  
@@ -217,7 +228,7 @@ const handleBloodCenterPdf = () => {
   doc.text("Authorised Signatory", 155, 153); // Label "Name:"
  
   //note 
-  doc.setFontSize(9); // Set font size for labels
+  doc.setFontSize(10); // Set font size for labels
   doc.setFont('calibre', 'bold');
   doc.text("Note: Blood Once Issued Will Not Be Taken Back or Replace", 55,163); // Label "Name:" 
  

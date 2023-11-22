@@ -79,33 +79,40 @@ const DetailDargahComplex = () => {
     );
 
     //Header Part
-    doc.rect(10,9,175,133);
-    doc.rect(10,9,175,33);
-    doc.setTextColor(255, 138, 0); // RGB color (red)
+    doc.rect(12,9,188,133);
+    doc.rect(12,9,188,35);
+    doc.setFontSize(15);
+    doc.setTextColor(24,94,26); // RGB color (red)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("HHS & HMS DARGAH COMPLEX, CUBBONPET,", 55, 20); // Adjust the Y position as needed
-    doc.text("BANGLORE - 560 002.", 85, 30); // Adjust the Y position as needed
-    doc.setTextColor(0);
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
+      doc.text("Dargahs & Allied Waqf Institutions",85,28)
+      doc.setFont('helvetica', 'normal'); // Reset font style to normal
+      doc.setFontSize(10);
+      doc.setTextColor(75,93,183); // RGB color (Blue)
+      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
+      doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+      doc.text("Tel : 080-22211356 / 22240309",145,42)
+      doc.setTextColor(0);
 
     //PDF Heading 
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.setFontSize(10);
-    doc.text("Receipt No.", 20, 50); // Adjust the Y position as needed 
+    doc.text("Receipt No.", 20, 53); // Adjust the Y position as needed 
     doc.setFont('helvetica', 'normal');
-    doc.text(`${dergah?.dc_id}`, 50, 50); 
+    doc.text(`${dergah?.dc_id}`, 50, 53); 
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Date :", 150, 50);
+    doc.text("Date :", 150, 53);
     doc.setFont('helvetica', 'normal');
-    doc.text(`${dergah?.date}`, 160, 50); 
+    doc.text(`${dergah?.date}`, 160, 53); 
 
 
  //Received from :
    doc.setFontSize(12); // Set font size for labels
    doc.setFont('calibre', 'bold');
-   doc.text("Received from :", 20, 60); // Label "Name:"
+   doc.text("Received from :", 20, 62); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
    doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${dergah?.receiverName}`,55, 60); // (X, Y,Actual name)
+   doc.text(`${dergah?.receiverName}`,55, 62); // (X, Y,Actual name)
 
     //sum of rupees
     doc.setFontSize(12); // Set font size for labels

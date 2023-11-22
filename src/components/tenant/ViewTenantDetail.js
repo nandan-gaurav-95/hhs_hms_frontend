@@ -216,7 +216,7 @@ const ViewTenantDetail = () => {
       doc.text(`${tenantToShow.expiryDate}`, 70, 151); // (X, Y, Actual name)
 
       // Save the PDF with a specific name
-      doc.save("rent_details.pdf");
+      doc.save("tenant.rent.pdf");
       // console.log("Download PDF clicked");
     };
   };
