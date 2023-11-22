@@ -80,34 +80,37 @@ const handleHHSComplexPdf = () => {
       );
   
       //Header Part
-      doc.rect(12,9,186,133);
-      doc.rect(12,9,186,33);
-      doc.setTextColor(255, 138, 0); // RGB color (red)
+      doc.rect(12,9,186,137);
+      doc.rect(12,9,186,40);
+      doc.setTextColor(24,94,26);
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.text("HAZRATH HAMEED SHAH COMPLEX, CUBBONPET,", 55, 20); // Adjust the Y position as needed
-      doc.text(" BANGLORE - 560 002", 90, 28);
+      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri", 54, 20); // Adjust the Y position as needed
+      doc.text("(R.A.) Dargahs & Allied Waqf Instititions", 65, 28);
       doc.setFont("helvetica", "normal"); // Reset font style to normal
-      doc.setFontSize(9);
-      doc.setTextColor(0);
-  
+      doc.setFontSize(10);
+      doc.setTextColor(75,93,183);
+      doc.text("No.3, 1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-560 002",53,35)
+      doc.text("(Register Under Karnataka State Board of Auqaf)",76,40)
+      doc.text("Tel : 080-22211356 / 2222240309",140,47)
       //PDF Heading
   
-      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.rect(30, 50, 35, 10); // (X, Y, Width, Height)
-      doc.text("No.:", 31, 57);
-      doc.text(`${hhscomplex?.hc_id}`, 39, 57); // (X, Y,Actual name)
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(0); // Use the 'helvetica' font family
+      doc.rect(30, 53, 35, 10); // (X, Y, Width, Height)
+      doc.text("No.:", 31, 59);
+      doc.text(`${hhscomplex?.hc_id}`, 39, 59); // (X, Y,Actual name)
 
-      doc.rect(70, 50, 35, 10); // (X, Y, Width, Height)
-      doc.text("L.F.No.", 71, 57);
-      doc.text(`${hhscomplex?.lfNo}`, 84, 57); // (X, Y,Actual name)
+      doc.rect(70, 53, 35, 10); // (X, Y, Width, Height)
+      doc.text("L.F.No.", 71, 59);
+      doc.text(`${hhscomplex?.lfNo}`, 84, 59); // (X, Y,Actual name)
 
-      doc.rect(110, 50, 35, 10); // (X, Y, Width, Height)
-      doc.text("R.R.No.", 112, 57);
-      doc.text(`${hhscomplex?.rrNo}`, 126, 57); // (X, Y,Actual name)
+      doc.rect(110, 53, 35, 10); // (X, Y, Width, Height)
+      doc.text("R.R.No.", 112, 59);
+      doc.text(`${hhscomplex?.rrNo}`, 126, 59); // (X, Y,Actual name)
 
-      doc.rect(150, 50, 35, 10); // (X, Y, Width, Height)
-      doc.text("Date:", 152, 57);
-      doc.text(`${hhscomplex?.date}`, 162, 57); // (X, Y,Actual name)
+      doc.rect(150, 53, 35, 10); // (X, Y, Width, Height)
+      doc.text("Date:", 152, 59);
+      doc.text(`${hhscomplex?.date}`, 162, 59); // (X, Y,Actual name)
 
       doc.setFontSize(14);
   
@@ -115,21 +118,21 @@ const handleHHSComplexPdf = () => {
   
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Received from :", 30, 71); // Label "Name:"
+      doc.text("Received from :", 30, 74); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.text(`${hhscomplex?.receiverName}`, 65, 71); // (X, Y,Actual name)
+      doc.text(`${hhscomplex?.receiverName}`, 62, 74); // (X, Y,Actual name)
       doc.setFontSize(10); // Reset font size to normal
   
       //A sum of Rupees
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("A sum of Rupees :", 30, 86); // Label "Name:"
+      doc.text("A sum of Rupees :", 30, 88); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.rupees}`, 65, 86); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.rupees}`, 65, 88); //(X, Y, Actual name)
       doc.setFont("calibre", "bold");
-      doc.text(" Rupees in words :", 105, 86);
+      doc.text(" Rupees in words :", 105, 88);
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.rupeeInWords}`, 140, 86); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.rupeeInWords}`, 140, 88); //(X, Y, Actual name)
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
   
@@ -139,32 +142,32 @@ const handleHHSComplexPdf = () => {
       doc.text(
         "by Cash/Cheque/D.D towards the Electrical Charges for Shop No. :",
         30,
-        100
+        102
       ); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.text(`${hhscomplex?.eleCharges}`, 153, 100); // (X, Y,Actual name)
+      doc.text(`${hhscomplex?.eleCharges}`, 153, 102); // (X, Y,Actual name)
       doc.setFontSize(10); // Reset font size to normal
   
       //For the month of
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("For the month of :", 30, 115); // Label "Name:"
+      doc.text("For the month of :", 30, 117); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.month}`, 65, 115); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.month}`, 65, 117); //(X, Y, Actual name)
       doc.setFont("calibre", "bold");
-      doc.text("Cheque/D.D.No :", 105, 115);
+      doc.text("Cheque/D.D.No :", 105, 117);
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.chequeNo}`, 137, 115); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.chequeNo}`, 137, 117); //(X, Y, Actual name)
   
       //Dated
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Dated :", 30, 135); // Label "Name:"
+      doc.text("Dated :", 30, 137); // Label "Name:"
       doc.setFont("calibre", "normal");
-      doc.text(`${hhscomplex?.dated}`, 45, 135); //(X, Y, Actual name)
+      doc.text(`${hhscomplex?.dated}`, 45, 137); //(X, Y, Actual name)
   
       doc.setFont("calibre", "bold");
-      doc.text("Signature of Manager", 140, 135);
+      doc.text("Signature of Manager", 139, 137);
       // Save the PDF with a specific name
       doc.save("hhscomplex.pdf");
       // console.log("Download PDF clicked");
