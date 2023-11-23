@@ -70,108 +70,109 @@ const DetailVoucher = () => {
       doc.addImage(
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-        10, // X position
-        10, // Y position
-        50, // Image width
-        25 // Image height
+         9,     // X position
+        12,     // Y position
+        45,     // Image width
+        30      // Image height
       );
 
       //Header Part
-      doc.rect(12,9,186,156);
+      doc.rect(13,9,186,146);
       doc.setFontSize(15);
       doc.setTextColor(24,94,26); // RGB color (dark green)
       doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
-      doc.text("Dargahs & Allied Waqf Institutions",85,28)
+      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 52, 18); // Adjust the Y position as needed
+      doc.text("Dargahs & Allied Waqf Institutions",85,24)
       doc.setFont('helvetica', 'normal'); // Reset font style to normal
       doc.setFontSize(10);
       doc.setTextColor(75,93,183); // RGB color (Blue)
-      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
-      doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,32)
+      doc.text("(Register Under Karnataka State Board of Auqaf)",73,36)
+      doc.setTextColor(247, 79, 160);
       doc.text("Tel : 080-22211356 / 22240309",145,42)
       doc.setTextColor(0);
 
       //PDF Heading voucher no. & date
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
       doc.setFontSize(12);
-      doc.rect(12, 55, 186, 80); //(outer rectangle X,Y,width,height)
-      doc.rect(12, 55, 186, 10); //(voucher date rect. X,Y,width,height)
-      doc.text("Voucher No. :", 20, 62); // Adjust the Y position as needed
+      doc.rect(13, 45, 186, 80); //(outer rectangle X,Y,width,height)
+      doc.rect(13, 45, 186, 10); //(voucher date rect. X,Y,width,height)
+      doc.text("Voucher No. :", 20, 52); // Adjust the Y position as needed
       doc.setFont("helvetica", "normal");
-      doc.text(`${voucher?.v_id}`, 50, 62);
+      doc.text(`${voucher?.v_id}`, 50, 52);
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.text("Date:", 130, 62);
+      doc.text("Date:", 130, 52);
       doc.setFont("helvetica", "normal");
-      doc.text(`${voucher?.date}`, 145, 62);
+      doc.text(`${voucher?.date}`, 145, 52);
 
       //Particular & amount
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
       doc.setFontSize(12);
-      doc.rect(12, 65, 186, 10); //( X,Y,width,height)
-      doc.text("PARTICULARS", 60, 72); // Adjust the Y position as needed
+      doc.rect(13, 55, 186, 10); //( X,Y,width,height)
+      doc.text("PARTICULARS", 60, 62); // Adjust the Y position as needed
 
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.rect(140, 65, 58, 70); //( X,Y,width,height)
-      doc.text("AMOUNT", 150, 72);
-      doc.rect(186, 75, 12, 60); //( X,Y,width,height)
-      doc.rect(140, 125, 58, 10); //( X,Y,width,height)
+      doc.rect(141, 55, 58, 70); //( X,Y,width,height)
+      doc.text("AMOUNT", 150, 62);
+      doc.rect(187, 65, 12, 60); //( X,Y,width,height)
+      doc.rect(141, 115, 58, 10); //( X,Y,width,height)
 
       //amt paid to
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Amount paid to:", 20, 85); // Label "Name:"
+      doc.text("Amount paid to:", 20, 75); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${voucher?.amtPaid}`, 150, 85); // (X, Y,Actual name)
+      doc.text(`${voucher?.amtPaid}`, 150, 75); // (X, Y,Actual name)
 
       //towards
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Towards:", 20, 95); // Label "Name:"
+      doc.text("Towards:", 20, 85); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${voucher?.towards}`, 150, 95); // (X, Y,Actual name)
+      doc.text(`${voucher?.towards}`, 150, 85); // (X, Y,Actual name)
 
       //Total amt
       const totalAmount =
         (parseFloat(voucher.amtPaid) || 0) + (parseFloat(voucher.towards) || 0);
       doc.setFont("calibre", "normal");
       doc.setFontSize(10);
-      doc.text(`${totalAmount}`, 150, 131);
+      doc.text(`${totalAmount}`, 150, 121);
 
       //cash/cheque no.
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("By Cash /Cheque No.", 20, 131); // Label "Name:"
+      doc.text("By Cash /Cheque No.", 20, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(12); // Reset font size to normal
-      doc.text(`${voucher?.chequeNo}`, 65, 131); // (X, Y,Actual name)
+      doc.text(`${voucher?.chequeNo}`, 65, 121); // (X, Y,Actual name)
 
       //Dated
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Dated:", 100, 131); // Label "Name:"
+      doc.text("Dated:", 100, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${voucher?.dated}`, 115, 131); // (X, Y,Actual name)
+      doc.text(`${voucher?.dated}`, 115, 121); // (X, Y,Actual name)
 
       //rupees
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Rupees:", 20, 141); // Label "Name:"
+      doc.text("Rupees:", 20, 131); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${voucher?.rupees}`, 45, 141); // (X, Y,Actual name)
+      doc.text(`${voucher?.rupees}`, 45, 131); // (X, Y,Actual name)
 
-      doc.rect(145, 142, 20, 20); //( X,Y,width,height)
+      doc.rect(145, 132, 20, 20); //( X,Y,width,height)
       doc.setFont("calibre", "bold");
-      doc.text("Stamp", 150, 154);
+      doc.text("Stamp", 150, 144);
 
       //sign
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.text("Signature ", 30, 161); // Label "Name:"
-      doc.text("Signature", 110, 161); // Label "Name:"
+      doc.text("Signature ", 30, 151); // Label "Name:"
+      doc.text("Signature", 110, 151); // Label "Name:"
 
       doc.save("voucher.pdf");
     };

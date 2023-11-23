@@ -74,19 +74,28 @@ const handleParkingrPdf = () => {
     doc.addImage(
       logoImage,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      10,     // X position
-      10,     // Y position
-      50,     // Image width
-      25      // Image height
+      9,     // X position
+      11,     // Y position
+      45,     // Image width
+     30      // Image height
+
     );
   
     //Header Part
-    doc.rect(10,9,175,133);
-    doc.rect(10,9,175,33);
-    doc.setTextColor(255, 138, 0); // RGB color (red)
+    doc.rect(13,9,186,133);
+    doc.rect(13,9,186,34);
+    doc.setFontSize(15);
+    doc.setTextColor(24,94,26); // RGB color (dark green)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("HHS & HMS DARGAH COMPLEX, CUBBONPET,", 55, 20); // Adjust the Y position as needed
-    doc.text("BANGLORE - 560 002.", 85, 30); // Adjust the Y position as needed
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 52, 17); // Adjust the Y position as needed
+    doc.text("Dargahs & Allied Waqf Institutions",82,23);
+    doc.setFont('helvetica', 'normal'); // Reset font style to normal
+    doc.setFontSize(10);
+    doc.setTextColor(75,93,183); // RGB color (Blue)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,30);
+    doc.text("(Register Under Karnataka State Board of Auqaf)",73,34);
+    doc.setTextColor(247, 79, 160);
+    doc.text("Tel : 080-22211356 / 22240309",145,40);
     doc.setTextColor(0);
   
     //PDF Heading 
