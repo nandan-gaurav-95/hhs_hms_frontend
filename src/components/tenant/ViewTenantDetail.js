@@ -89,36 +89,37 @@ const ViewTenantDetail = () => {
       doc.addImage(
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-        10, // X position
-        10, // Y position
-        50, // Image width
-        25 // Image height
+        9,     // X position
+        12,     // Y position
+        45,     // Image width
+        30      // Image height
       );
 
       
       //Header Part
-    doc.rect(12,9,186,46);
+    doc.rect(13,9,186,136);
     doc.setFontSize(15);
     doc.setTextColor(24,94,26); // RGB color (dark green)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
-    doc.text("Dargahs & Allied Waqf Institutions",85,28)
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 52, 18); // Adjust the Y position as needed
+    doc.text("Dargahs & Allied Waqf Institutions",85,24)
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setTextColor(75,93,183); // RGB color (Blue)
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
-    doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,31)
+    doc.text("(Register Under Karnataka State Board of Auqaf)",73,36);
+    doc.setTextColor(247, 79, 160);
     doc.text("Tel : 080-22211356 / 22240309",145,42)
 
  
 
       // Reset text color to default (black)
       doc.setTextColor(0);
-      doc.rect(12, 55, 186, 100); // (X, Y, Width, Height)
+      doc.rect(13, 45, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
       doc.setTextColor(59, 48, 182);
       doc.setFontSize(14);
-      doc.text(`Rent Details of Shop No: ${tenantToShow.tenantName}`, 25, 62); // Adjust the Y position as needed
+      doc.text(`Rent Details of Shop No: ${tenantToShow.tenantName}`, 25, 52); // Adjust the Y position as needed
       doc.setFont("calibre", "normal");
       doc.setTextColor(0);
 
@@ -128,92 +129,72 @@ const ViewTenantDetail = () => {
       //Name
       doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(12, 65, 186, 10); // (X, Y, Width, Height)
-      doc.rect(12, 65, 45, 10); // (X, Y, Width, Height)
-      doc.text("Name :", 25, 71); // Label "Name:"
+      doc.rect(13, 55, 45, 10); // (X, Y, Width, Height)
+      doc.text("Name :", 25, 61); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.tenantName}`, 70, 71); // (X, Y,Actual name)
+      // doc.setFontSize(12); // Reset font size to normal
+      doc.text(`${tenantToShow.tenantName}`, 70, 61); // (X, Y,Actual name)
 
       //contact no
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      doc.rect(12, 75, 186, 10); // (X, Y, Width, Height)
-      doc.rect(12, 75, 45, 10); // (X, Y, Width, Height)
-      doc.text("Contact No :", 25, 81); // Label "Name:"
+      doc.rect(13, 65, 186, 10); // (X, Y, Width, Height)
+      doc.rect(13, 65, 45, 10); // (X, Y, Width, Height)
+      doc.text("Contact No :", 25, 71); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.contactNum}`, 70, 81); //(X, Y, Actual name)
+      doc.text(`${tenantToShow.contactNum}`, 70, 71); //(X, Y, Actual name)
 
       //Address
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
-      // doc.rect(12, 85, 186, 10); // (X, Y, Width, Height)
-      doc.rect(12, 85, 45, 10); // (X, Y, Width, Height)
-      doc.text("Address :", 25, 91); // Label "Name:"
+      doc.rect(13, 75, 45, 10); // (X, Y, Width, Height)
+      doc.text("Address :", 25, 81); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.address}`, 70, 91); // (X, Y, Actual name)
+      // doc.setFontSize(10); // Reset font size to normal
+      doc.text(`${tenantToShow.address}`, 70, 81); // (X, Y, Actual name)
 
       //CollectedRent
-      doc.setFontSize(12); // Set font size for labels
-      doc.rect(12, 95, 186, 10); // (X, Y, Width, Height)
+      doc.rect(13, 85, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(12, 95, 45, 10); // (X, Y, Width, Height)
-      doc.text("Rent Collected:", 25, 101); // Label "Name:"
+      doc.rect(13, 85, 45, 10); // (X, Y, Width, Height)
+      doc.text("Rent Collected:", 25, 91); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.rentCollected}`, 70, 101); // (X, Y, Actual name)
+      doc.text(`${tenantToShow.rentCollected}`, 70, 91); // (X, Y, Actual name)
 
       //Rent Due
-      doc.setFontSize(12); // Set font size for labels
-      // doc.rect(12, 105, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(12, 105, 45, 10); // (X, Y, Width, Height)
-      doc.text("Rent Due :", 25, 111); // Label "Name:"
+      doc.rect(13, 95, 45, 10); // (X, Y, Width, Height)
+      doc.text("Rent Due :", 25, 101); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.rentDue}`, 70, 111); // (X, Y, Actual name)
+      doc.text(`${tenantToShow.rentDue}`, 70, 101); // (X, Y, Actual name)
 
       //Deposit
-      doc.setFontSize(12); // Set font size for labels
-      doc.rect(12, 115, 186, 10); // (X, Y, Width, Height)
+      doc.rect(13, 105, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(12, 115, 45, 10); // (X, Y, Width, Height)
-      doc.text("Deposit :", 25, 121); // Label "Name:"
+      doc.rect(13, 105, 45, 10); // (X, Y, Width, Height)
+      doc.text("Deposit :", 25, 111); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.securityDeposit}`, 70, 121); // (X, Y, Actual name)
+      doc.text(`${tenantToShow.securityDeposit}`, 70, 111); // (X, Y, Actual name)
 
       //paymentMode
-      doc.setFontSize(12); // Set font size for labels
-      // doc.rect(12, 125, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(12, 125, 45, 10); // (X, Y, Width, Height)
-      doc.text("Payment Mode :", 25, 131); // Label "Name:"
+      doc.rect(13, 115, 45, 10); // (X, Y, Width, Height)
+      doc.text("Payment Mode :", 25, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.paymentMethod}`, 70, 131); // (X, Y, Actual name)
+      doc.text(`${tenantToShow.paymentMethod}`, 70, 121); // (X, Y, Actual name)
 
       //Status
-      doc.setFontSize(12); // Set font size for labels
-      doc.rect(12, 135, 186, 10); // (X, Y, Width, Height)
+      doc.rect(13, 125, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(12, 135, 45, 10); // (X, Y, Width, Height)
-      doc.text("Status :", 25, 141); // Label "Name:"
+      doc.rect(13, 125, 45, 10); // (X, Y, Width, Height)
+      doc.text("Status :", 25, 131); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.status}`, 70, 141); // (X, Y, Actual name)
+      doc.text(`${tenantToShow.status}`, 70, 131); // (X, Y, Actual name)
 
       //expiryDate
-      doc.setFontSize(12); // Set font size for labels
-      // doc.rect(12, 145, 186, 10); // (X, Y, Width, Height)
       doc.setFont("calibre", "bold");
-      doc.rect(12, 145, 45, 10); // (X, Y, Width, Height)
-      doc.text("Rent Due Date:", 25, 151); // Label "Name:"
+      doc.rect(13, 135, 45, 10); // (X, Y, Width, Height)
+      doc.text("Rent Due Date:", 25, 141); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${tenantToShow.expiryDate}`, 70, 151); // (X, Y, Actual name)
+      doc.text(`${tenantToShow.expiryDate}`, 70, 141); // (X, Y, Actual name)
 
       // Save the PDF with a specific name
       doc.save("tenant.rent.pdf");

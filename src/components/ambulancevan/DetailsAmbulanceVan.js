@@ -26,6 +26,7 @@ const DetailsAmbulanceVan = () => {
     const fetchAmbulanceVanById = async () => {
       try {
         const response = await axios.get(`${APIS.GETAMBULANCEBYID}/${id}`);
+        // console.log("ambl data",response.data);
         setAmbulanceVan(response.data);
       } catch (error) {
         console.error("Error fetching AmbulanceVan:", error);
@@ -76,74 +77,69 @@ const DetailsAmbulanceVan = () => {
     doc.addImage(
       logoImage,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      10,     // X position
-      10,     // Y position
-      50,     // Image width
-      25      // Image height
+      9,     // X position
+      12,     // Y position
+      45,     // Image width
+      30      // Image height
     );
 
     //Header Part
-    doc.rect(10,9,186,103);
-    doc.rect(10,9,186,40);
+    doc.rect(12,9,186,103);
+    doc.rect(12,9,186,36);
     doc.setTextColor(24,94,26);
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri", 55, 20); // Adjust the Y position as needed
-    doc.text("(R.A.) Dargahs & Allied Waqf Instititions",65,28)
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri", 51, 18); // Adjust the Y position as needed
+    doc.text("(R.A.), Dargahs & Allied Waqf Instititions",60,25)
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setTextColor(75,93,183);
-    doc.text("No.3, 1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-560 002",55,35)
-    doc.text("(Register Under Karnataka State Board of Auqaf)",76,40)
-    doc.text("Tel : 080-22211356 / 2222240309",144,47)
+    doc.text("No.3, 1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-560 002",51,32)
+    doc.text("(Register Under Karnataka State Board of Auqaf)",76,36)
+    doc.setTextColor(247, 79, 160);
+    doc.text("Tel : 080-22211356 / 2222240309",135,42)
 
 //PDF Heading 
 
-    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.setFontSize(15);
+    doc.setFont('calibre', 'bold'); // Use the 'calibre' font family
+    doc.setFontSize(12);
     doc.setTextColor(0);
-    doc.text("AMBULANCE VAN", 80, 55); // Adjust the Y position as needed 
-    doc.text("RECEIPT", 90, 62); 
-    doc.setFont('helvetica', 'normal'); // Reset font style to normal
+    doc.text("AMBULANCE VAN", 80, 53); // Adjust the Y position as needed 
+    doc.text("RECEIPT", 90, 59); 
+    doc.setFont('calibre', 'normal'); // Reset font style to normal
   
   // Reset text color to default (black)
   doc.setTextColor(0);
-  // doc.rect(20, 50, 160, 105); // (X, Y, Width, Height)
   doc.setFont('calibre', 'bold'); 
   doc.text("Date :", 150, 64);
   doc.setFont('calibre','normal');
-  doc.setFontSize(10);
-  doc.text(`${ambulancevan?.date}`, 165, 64);// Adjust the Y position as needed
+    doc.text(`${ambulancevan?.date}`, 165, 64);// Adjust the Y position as needed
   
   //No :
-  doc.setFontSize(12); // Set font size for labels
   doc.setFont('calibre', 'bold');
   doc.text("No:-", 25, 64); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
-  // doc.text(${ambulancevan?.}, 85, 71);
+  
+  doc.text(`${ambulancevan?.amb_id}`, 35, 64);
 
  //Received with the thanks from :
- doc.setFontSize(12); // Set font size for labels
  doc.setFont('calibre', 'bold');
  doc.text("Received with the thanks from :", 25, 74); // Label "Name:"
  doc.setFont('calibre', 'normal'); // Reset font style to normal
- doc.setFontSize(10); // Reset font size to normal
+ 
  doc.text(`${ambulancevan?.receiverName}`, 85, 74); // (X, Y,Actual name)
 
  //Rupees :
- doc.setFontSize(12); // Set font size for labels
  doc.setFont('calibre', 'bold');
  doc.text("Rupees :", 25, 84); // Label "Name:"
  doc.setFont('calibre', 'normal'); // Reset font style to normal
- doc.setFontSize(10); // Reset font size to normal
+ 
  doc.text(`${ambulancevan?.rupee}`, 43, 84); // (X, Y,Actual name)
 
 //on Account of
-  doc.setFontSize(12); // Set font size for labels
   doc.setFont('calibre', 'bold');
   doc.text("On Account of :", 25, 94); // Label "Name:"
   doc.setFont('calibre', 'normal'); // Reset font style to normal
-  doc.setFontSize(10); // Reset font size to normal
+  
   doc.text(`${ambulancevan?.accHolderName}`, 55, 94); //(X, Y, Actual name)
 
 // //Rs
@@ -151,11 +147,12 @@ const DetailsAmbulanceVan = () => {
 //   doc.setFont('calibre', 'bold');
 //   doc.text("Rs.", 25, 101); // Label "Name:"
 //   doc.setFont('calibre', 'normal'); // Reset font style to normal
-//   doc.setFontSize(10); // Reset font size to normal
+
+
 //   doc.text(${ambulancevan?.rupee}, 35, 101); // (X, Y, Actual name)
 
   //Sign
-  doc.setFontSize(12); // Set font size for labels
+  // doc.setFontSize(12); // Set font size for labels
   doc.setFont('calibre', 'bold');
   doc.text("Signature", 150, 104); // Label "Name:"
 

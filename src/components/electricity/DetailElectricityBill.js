@@ -67,12 +67,13 @@ const DetailElectricityBill = () => {
     logoImage.onload = () => {
       // Add the logo image to the PDF
       doc.addImage(
+
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-        10, // X position
-        10, // Y position
-        50, // Image width
-        25 // Image height
+       8,     // X position
+      12,     // Y position
+      45,     // Image width
+     30      // Image height
       );
 
        //Header Part
@@ -80,14 +81,16 @@ const DetailElectricityBill = () => {
     doc.setFontSize(15);
     doc.setTextColor(24,94,26); // RGB color (dark green)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
-    doc.text("Dargahs & Allied Waqf Institutions",85,28)
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 50, 18); // Adjust the Y position as needed
+    doc.text("Dargahs & Allied Waqf Institutions",83,24)
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setTextColor(75,93,183); // RGB color (Blue)
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
-    doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,31)
+    doc.text("(Register Under Karnataka State Board of Auqaf)",73,36)
+    doc.setTextColor(247, 79, 160);
     doc.text("Tel : 080-22211356 / 22240309",145,42)
+
       //PDF Heading
       doc.setTextColor(59, 48, 182); 
       doc.rect(12,45,186,150);// (X, Y, Width, Height)

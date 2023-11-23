@@ -73,25 +73,27 @@ const handleHHSComplexPdf = () => {
       doc.addImage(
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-        10, // X position
-        10, // Y position
-        50, // Image width
-        25 // Image height
+        9,     // X position
+        13,     // Y position
+        45,     // Image width
+        30      // Image height
+        
       );
   
       //Header Part
       doc.rect(12,9,186,137);
-      doc.rect(12,9,186,40);
+      doc.rect(12,9,186,38);
       doc.setTextColor(24,94,26);
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri", 54, 20); // Adjust the Y position as needed
-      doc.text("(R.A.) Dargahs & Allied Waqf Instititions", 65, 28);
+      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri", 53, 18); // Adjust the Y position as needed
+      doc.text("(R.A.), Dargahs & Allied Waqf Instititions", 67, 26);
       doc.setFont("helvetica", "normal"); // Reset font style to normal
       doc.setFontSize(10);
       doc.setTextColor(75,93,183);
-      doc.text("No.3, 1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-560 002",53,35)
-      doc.text("(Register Under Karnataka State Board of Auqaf)",76,40)
-      doc.text("Tel : 080-22211356 / 2222240309",140,47)
+      doc.text("No.3, 1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore-560 002",53,34)
+      doc.text("(Register Under Karnataka State Board of Auqaf)",76,38)
+      doc.setTextColor(247, 79, 160);
+      doc.text("Tel : 080-22211356 / 2222240309",140,43)
       //PDF Heading
   
       doc.setFont("helvetica", "bold");
@@ -112,7 +114,6 @@ const handleHHSComplexPdf = () => {
       doc.text("Date:", 152, 59);
       doc.text(`${hhscomplex?.date}`, 162, 59); // (X, Y,Actual name)
 
-      doc.setFontSize(14);
   
       //Received from :
   
@@ -121,10 +122,8 @@ const handleHHSComplexPdf = () => {
       doc.text("Received from :", 30, 74); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.text(`${hhscomplex?.receiverName}`, 62, 74); // (X, Y,Actual name)
-      doc.setFontSize(10); // Reset font size to normal
   
       //A sum of Rupees
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("A sum of Rupees :", 30, 88); // Label "Name:"
       doc.setFont("calibre", "normal");
@@ -134,10 +133,8 @@ const handleHHSComplexPdf = () => {
       doc.setFont("calibre", "normal");
       doc.text(`${hhscomplex?.rupeeInWords}`, 140, 88); //(X, Y, Actual name)
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
   
       //by Cash
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text(
         "by Cash/Cheque/D.D towards the Electrical Charges for Shop No. :",
@@ -146,10 +143,8 @@ const handleHHSComplexPdf = () => {
       ); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
       doc.text(`${hhscomplex?.eleCharges}`, 153, 102); // (X, Y,Actual name)
-      doc.setFontSize(10); // Reset font size to normal
   
       //For the month of
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("For the month of :", 30, 117); // Label "Name:"
       doc.setFont("calibre", "normal");
@@ -160,7 +155,6 @@ const handleHHSComplexPdf = () => {
       doc.text(`${hhscomplex?.chequeNo}`, 137, 117); //(X, Y, Actual name)
   
       //Dated
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("Dated :", 30, 137); // Label "Name:"
       doc.setFont("calibre", "normal");

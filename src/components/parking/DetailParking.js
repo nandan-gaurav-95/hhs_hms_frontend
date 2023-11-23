@@ -107,76 +107,62 @@ const handleParkingrPdf = () => {
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
     doc.text("Date:", 130, 50);
     doc.setFont('helvetica', 'normal');
-    doc.text(`${parking?.date}`, 145, 50); 
+    doc.text(`${parking?.date}`, 143, 50); 
   
   
   //Received from :
-  //  doc.setFontSize(12); // Set font size for labels
+ 
    doc.setFont('calibre', 'bold');
    doc.text("Received from :", 20, 60); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
-   doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${parking?.receiverName}`,55, 60); // (X, Y,Actual name)
+   doc.text(`${parking?.receiverName}`,50, 60); // (X, Y,Actual name)
   
     //sum of rupees
-    doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
     doc.text("A Sum of Rupees:", 20, 70); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
-    doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${parking?.rupee}`, 60, 70); // (X, Y,Actual name)
+    doc.text(`${parking?.rupee}`, 55, 70); // (X, Y,Actual name)
   
     //rupees in the words
-    doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
     doc.text("Rupees in the words:", 20, 80); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
-    doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${parking?.rupeeInWords}`, 65, 80); // (X, Y,Actual name)
+    doc.text(`${parking?.rupeeInWords}`, 60, 80); // (X, Y,Actual name)
   
       //cash/DD/premises
-      doc.setFontSize(12); // Set font size for labels
-      doc.setFont('calibre', 'bold');
+        doc.setFont('calibre', 'bold');
       doc.text("by Cash / D.D. towards the rent for Parking:", 20, 90); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${parking?.parkingRent}`, 105, 90); // (X, Y,Actual name)
+        doc.text(`${parking?.parkingRent}`, 103, 90); // (X, Y,Actual name)
   
       //for the month 
-      doc.setFontSize(12); // Set font size for labels
-      doc.setFont('calibre', 'bold');
+        doc.setFont('calibre', 'bold');
       doc.text("in the Month of:", 20, 100); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${parking?.month}`, 55, 100); // (X, Y,Actual name)
+        doc.text(`${parking?.month}`, 53, 100); // (X, Y,Actual name)
   
        //cheque/DD no
-       doc.setFontSize(12); // Set font size for labels
+     
        doc.setFont('calibre', 'bold');
        doc.text("Cheque / D.D. No.", 20, 110); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
-       doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${parking?.chequeNo}`, 60, 110); // (X, Y,Actual name)
+           doc.text(`${parking?.chequeNo}`, 55, 110); // (X, Y,Actual name)
   
         //dated
-        doc.setFontSize(12); // Set font size for labels
-        doc.setFont('calibre', 'bold');
+            doc.setFont('calibre', 'bold');
         doc.text("Dated :", 130, 110); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
-        doc.setFontSize(10); // Reset font size to normal
         doc.text(`${parking?.dated}`, 145, 110); // (X, Y,Actual name)
   
        //drawn on
-       doc.setFontSize(12); // Set font size for labels
+     
        doc.setFont('calibre', 'bold');
        doc.text("Drawn on: ", 20, 120); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
-       doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${parking?.drawnOn}`, 45, 120); // (X, Y,Actual name)
+           doc.text(`${parking?.drawnOn}`, 42, 120); // (X, Y,Actual name)
   
         //sign
-        doc.setFontSize(12); // Set font size for labels
-        doc.setFont('calibre', 'bold');
+            doc.setFont('calibre', 'bold');
         doc.text("Signature of the Receiver", 130, 135); // Label "Name:"
         
   

@@ -72,106 +72,107 @@ const DetailDargahComplex = () => {
     doc.addImage(
       logoImage,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      10,     // X position
-      10,     // Y position
-      50,     // Image width
-      25      // Image height
+         9,     // X position
+        12,     // Y position
+        45,     // Image width
+        30      // Image height
     );
 
     //Header Part
     doc.rect(12,9,188,133);
-    doc.rect(12,9,188,35);
+    doc.rect(12,9,188,36);
     doc.setFontSize(15);
     doc.setTextColor(24,94,26); // RGB color (red)
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 22); // Adjust the Y position as needed
-      doc.text("Dargahs & Allied Waqf Institutions",85,28)
+    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 53, 18); // Adjust the Y position as needed
+      doc.text("Dargahs & Allied Waqf Institutions",84,24);
       doc.setFont('helvetica', 'normal'); // Reset font style to normal
       doc.setFontSize(10);
       doc.setTextColor(75,93,183); // RGB color (Blue)
-      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,34)
-      doc.text("(Register Under Karnataka State Board of Auqaf)",73,38)
-      doc.text("Tel : 080-22211356 / 22240309",145,42)
+      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",54,32)
+      doc.text("(Register Under Karnataka State Board of Auqaf)",73,36)
+      doc.setTextColor(247, 79, 160);
+      doc.text("Tel : 080-22211356 / 22240309",145,42);
       doc.setTextColor(0);
 
     //PDF Heading 
-    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.setFontSize(10);
+    doc.setFont('calibre', 'bold'); // Use the 'helvetica' font family
+    doc.setFontSize(12);
     doc.text("Receipt No.", 20, 53); // Adjust the Y position as needed 
-    doc.setFont('helvetica', 'normal');
-    doc.text(`${dergah?.dc_id}`, 50, 53); 
-    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+    doc.setFont('calibre', 'normal');
+    doc.text(`${dergah?.dc_id}`, 45, 53); 
+    doc.setFont('calibre', 'bold'); // Use the 'helvetica' font family
     doc.text("Date :", 150, 53);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`${dergah?.date}`, 160, 53); 
+    doc.setFont('calibre', 'normal');
+    doc.text(`${dergah?.date}`, 161, 53); 
 
 
  //Received from :
-   doc.setFontSize(12); // Set font size for labels
+  //  doc.setFontSize(12); // Set font size for labels
    doc.setFont('calibre', 'bold');
    doc.text("Received from :", 20, 62); // Label "Name:"
    doc.setFont('calibre', 'normal'); // Reset font style to normal
-   doc.setFontSize(10); // Reset font size to normal
-   doc.text(`${dergah?.receiverName}`,55, 62); // (X, Y,Actual name)
+  //  doc.setFontSize(10); // Reset font size to normal
+   doc.text(`${dergah?.receiverName}`,51, 62); // (X, Y,Actual name)
 
     //sum of rupees
-    doc.setFontSize(12); // Set font size for labels
+    // doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
     doc.text("a sum of Rupees:", 85, 71); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
-    doc.setFontSize(10); // Reset font size to normal
-    doc.text(`${dergah?.rupee}`, 120, 71); // (X, Y,Actual name)
+    // doc.setFontSize(10); // Reset font size to normal
+    doc.text(`${dergah?.rupee}`, 118, 71); // (X, Y,Actual name)
 
     //rupees in the words
-    doc.setFontSize(12); // Set font size for labels
+    // doc.setFontSize(12); // Set font size for labels
     doc.setFont('calibre', 'bold');
     doc.text("Rupees in the words:", 20, 81); // Label "Name:"
     doc.setFont('calibre', 'normal'); // Reset font style to normal
-    doc.setFontSize(10); // Reset font size to normal
+    // doc.setFontSize(10); // Reset font size to normal
     doc.text(`${dergah?.rupeeInWords}`, 60, 81); // (X, Y,Actual name)
 
       //cash/DD/premises
-      doc.setFontSize(12); // Set font size for labels
+      // doc.setFontSize(12); // Set font size for labels
       doc.setFont('calibre', 'bold');
       doc.text("by Cash / D.D. towards the rent for shop / Premises No.", 20, 91); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${dergah?.shopRent}`, 125, 91); // (X, Y,Actual name)
+      // doc.setFontSize(10); // Reset font size to normal
+      doc.text(`${dergah?.shopRent}`, 124, 91); // (X, Y,Actual name)
 
       //for the month 
-      doc.setFontSize(12); // Set font size for labels
+      // doc.setFontSize(12); // Set font size for labels
       doc.setFont('calibre', 'bold');
       doc.text("For the Month of:", 20, 101); // Label "Name:"
       doc.setFont('calibre', 'normal'); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
-      doc.text(`${dergah?.month}`, 55, 101); // (X, Y,Actual name)
+      // doc.setFontSize(10); // Reset font size to normal
+      doc.text(`${dergah?.month}`, 54, 101); // (X, Y,Actual name)
 
        //cheque/DD no
-       doc.setFontSize(12); // Set font size for labels
+      //  doc.setFontSize(12); // Set font size for labels
        doc.setFont('calibre', 'bold');
        doc.text("Cheque / D.D. No.", 20, 111); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
-       doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${dergah?.chequeNo}`, 65, 111); // (X, Y,Actual name)
+      //  doc.setFontSize(10); // Reset font size to normal
+       doc.text(`${dergah?.chequeNo}`, 57, 111); // (X, Y,Actual name)
 
         //dated
-        doc.setFontSize(12); // Set font size for labels
+        // doc.setFontSize(12); // Set font size for labels
         doc.setFont('calibre', 'bold');
         doc.text("Dated :", 130, 111); // Label "Name:"
         doc.setFont('calibre', 'normal'); // Reset font style to normal
-        doc.setFontSize(10); // Reset font size to normal
+        // doc.setFontSize(10); // Reset font size to normal
         doc.text(`${dergah?.dated}`, 145, 111); // (X, Y,Actual name)
 
        //drawn on
-       doc.setFontSize(12); // Set font size for labels
+      //  doc.setFontSize(12); // Set font size for labels
        doc.setFont('calibre', 'bold');
        doc.text("Drawn on: ", 20, 121); // Label "Name:"
        doc.setFont('calibre', 'normal'); // Reset font style to normal
-       doc.setFontSize(10); // Reset font size to normal
-       doc.text(`${dergah?.drawnOn}`, 45, 121); // (X, Y,Actual name)
+      //  doc.setFontSize(10); // Reset font size to normal
+       doc.text(`${dergah?.drawnOn}`, 42, 121); // (X, Y,Actual name)
 
         //sign
-        doc.setFontSize(12); // Set font size for labels
+        // doc.setFontSize(12); // Set font size for labels
         doc.setFont('calibre', 'bold');
         doc.text("Signature of the Receiver", 130, 135); // Label "Name:"
         

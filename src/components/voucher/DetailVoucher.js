@@ -107,10 +107,8 @@ const DetailVoucher = () => {
 
       //Particular & amount
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-      doc.setFontSize(12);
       doc.rect(13, 55, 186, 10); //( X,Y,width,height)
       doc.text("PARTICULARS", 60, 62); // Adjust the Y position as needed
-
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
       doc.rect(141, 55, 58, 70); //( X,Y,width,height)
       doc.text("AMOUNT", 150, 62);
@@ -122,46 +120,36 @@ const DetailVoucher = () => {
       doc.setFont("calibre", "bold");
       doc.text("Amount paid to:", 20, 75); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
       doc.text(`${voucher?.amtPaid}`, 150, 75); // (X, Y,Actual name)
 
       //towards
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("Towards:", 20, 85); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
       doc.text(`${voucher?.towards}`, 150, 85); // (X, Y,Actual name)
 
       //Total amt
       const totalAmount =
         (parseFloat(voucher.amtPaid) || 0) + (parseFloat(voucher.towards) || 0);
       doc.setFont("calibre", "normal");
-      doc.setFontSize(10);
       doc.text(`${totalAmount}`, 150, 121);
 
       //cash/cheque no.
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("By Cash /Cheque No.", 20, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(12); // Reset font size to normal
       doc.text(`${voucher?.chequeNo}`, 65, 121); // (X, Y,Actual name)
 
       //Dated
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("Dated:", 100, 121); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
       doc.text(`${voucher?.dated}`, 115, 121); // (X, Y,Actual name)
 
       //rupees
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("Rupees:", 20, 131); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.setFontSize(10); // Reset font size to normal
       doc.text(`${voucher?.rupees}`, 45, 131); // (X, Y,Actual name)
 
       doc.rect(145, 132, 20, 20); //( X,Y,width,height)
@@ -169,7 +157,6 @@ const DetailVoucher = () => {
       doc.text("Stamp", 150, 144);
 
       //sign
-      doc.setFontSize(12); // Set font size for labels
       doc.setFont("calibre", "bold");
       doc.text("Signature ", 30, 151); // Label "Name:"
       doc.text("Signature", 110, 151); // Label "Name:"
