@@ -75,51 +75,51 @@ const handleBloodCenterPdf = () => {
     doc.addImage(
       logoImage,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      12,     // X position
-      10,     // Y position
-      50,     // Image width
-      25      // Image height
+      9,     // X position
+      15,     // Y position
+      45,     // Image width
+      30      // Image height
     );
     doc.addImage(
       bloodlogo,
       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-      158,     // X position
-      11,     // Y position
-      35,     // Image width
-      20      // Image height
+      155,     // X position
+      16,     // Y position
+      38,     // Image width
+      25      // Image height
     );
     //Header Part
     doc.rect(12,9,186,163);
-    doc.rect(12,9,186,43);
+    doc.rect(12,9,186,41);
     // doc.setFontSize(8);
     // doc.text("LICENSE NUMBER - KTK/28C-409/2022", 75, 15);
     doc.setFontSize(16);
     doc.setTextColor(24,94,26);
     doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("HHS & HMS", 61, 15); // Adjust the Y position as needed
+    doc.text("HHS & HMS", 52, 19); // Adjust the Y position as needed
     doc.setFontSize(11);
-    doc.text("(R.A.)",93,16)
-    doc.setFontSize(16);
+    doc.text("(R.A.)",85,18)
+    doc.setFontSize(18);
     doc.setFont('helvetica', 'bold');
-    doc.text("BLOOD CENTRE",105,15)
+    doc.text("BLOOD CENTRE",97,19)
     doc.setFont('helvetica', 'normal'); // Reset font style to normal
     doc.setFontSize(12);
     doc.setTextColor(75,93,183);
     doc.setFont('helvetica', 'bold');
-    doc.text("(Under Karnataka State Board of Aquaf)",65,22)
+    doc.text("(Under Karnataka State Board of Aquaf)",62,24)
     doc.setFontSize(11);
     doc.setTextColor(75,93,183);
     doc.setFont('helvetica', 'normal');
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,",62,27)
-    doc.text("Cubbonpet Main Road,Banglore - 560 002",66,32)
+    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,",62,29)
+    doc.text("Cubbonpet Main Road,Banglore - 560 002",62,34)
     doc.setFontSize(13);
-    doc.setTextColor(75,93,183);
+    doc.setTextColor(247, 79, 160);
     doc.setFont('helvetica', 'bold');
-    doc.text("Ph : 080-4989 4916 - 98458 54991",65,38)
+    doc.text("Ph : 080-4989 4916 - 98458 54991",62,40)
     doc.setFontSize(15);
     doc.setTextColor(75,93,183);
     doc.setFont('helvetica', 'bold');
-    doc.text("DL. No. : KTK/28C-409/2022",65,45)
+    doc.text("DL. No. : KTK/28C-409/2022",62,47)
 
  //PDF Heading 
  
