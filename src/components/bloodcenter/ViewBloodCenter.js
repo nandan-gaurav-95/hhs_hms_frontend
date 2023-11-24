@@ -44,6 +44,9 @@ const ViewBloodCenter = () => {
   const handleViewProfile = (bc_id) => {
     navigate(`/detailbloodcenter/${bc_id}`);
   };
+  const handleBloodCertificate = (bc_id) => {
+    navigate(`/bloodcertificate/${bc_id}`);
+  };
 
   const handleEditProfile = (bc_id) => {
     navigate(`/editbloodcenter/${bc_id}`);
@@ -175,6 +178,11 @@ const ViewBloodCenter = () => {
                           onClick={() => handleViewProfile(bcId)}
                         >
                           View BloodCenter
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleBloodCertificate(bcId)}
+                        >
+                         Blood Certificate
                         </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => handleEditProfile(bcId)}

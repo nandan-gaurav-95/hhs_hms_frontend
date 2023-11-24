@@ -429,3 +429,17 @@ th {
   /* flex-direction: column; */
   justify-content: center;
 }
+
+/* detail blood center page  */
+.bloodBtn{
+  display: flex;
+  justify-content: center;
+}
+
+.btn{
+  --mdb-btn-padding-x: 0;
+}
+
+.bloodBtn button {
+  margin-left: 15px;
+}

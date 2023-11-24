@@ -18,6 +18,7 @@ const BloodCenter = () => {
   const initialState = {
     receiverName: "",
     date: "",
+    expirydate:"",
     ipNo: "",
     age: "",
     gender: "",
@@ -62,10 +63,31 @@ const BloodCenter = () => {
       toast.error("An error occurred during submission",{autoClose:1000});
     }
   };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({ ...prevData, [name]: value }));
+  //   setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+  // };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    let updatedFormData = { ...formData, [name]: value };
+    let updatedErrors = { ...errors, [name]: "" };
+
+    // Calculate expiry date if the 'date' field is updated
+    if (name === "date") {
+      const selectedDate = new Date(value);
+      const expiryDate = new Date(selectedDate);
+      expiryDate.setDate(selectedDate.getDate() + 42); // Add 42 days
+
+      updatedFormData = {
+        ...updatedFormData,
+        expirydate: expiryDate.toISOString().split("T")[0], // Format as YYYY-MM-DD
+      };
+    }
+
+    setFormData(updatedFormData);
+    setErrors(updatedErrors);
   };
   const validateForm = (formData) => {
     const errors = {};
@@ -146,6 +168,21 @@ const BloodCenter = () => {
               required
             />
             {errors.date && <div className="text-danger">{errors.date}</div>}
+          </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+        
+          <Col className="col-sm-5">
+            <Input
+              label="Expiry Date"
+              type="date"
+              name="expirydate"
+              value={formData.expirydate}
+              onChange={handleChange}
+              readOnly
+              required
+            />
+            {errors.expirydate && <div className="text-danger">{errors.expirydate}</div>}
           </Col>
         </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">

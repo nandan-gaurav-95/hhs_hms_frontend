@@ -261,6 +261,7 @@ function App() {
           <Route path="/homebloodcenter" element={<HomeBloodCenter />}></Route>
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
           <Route path="/viewbloodcenter" element={<ViewBloodCenter />}></Route>
+
           <Route path="/detailbloodcenter/:id" element={<DetailBloodCenter />}></Route>
           <Route path="/editbloodcenter/:id" element={<EditBloodCenter />}></Route>
 
