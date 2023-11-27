@@ -18,7 +18,7 @@ const BloodCenter = () => {
   const initialState = {
     receiverName: "",
     date: "",
-    expirydate:"",
+    expirydate: "",
     ipNo: "",
     age: "",
     gender: "",
@@ -52,15 +52,14 @@ const BloodCenter = () => {
       if (response.status === 201) {
         console.log("Blood center Created Successfully");
         setFormData(initialState);
-        toast.success("Submit Successful!",{autoClose:1000});
+        toast.success("Submit Successful!", { autoClose: 1000 });
       } else {
         console.error("Failed To create Blood center");
-        toast.error("Failed to submit Blood center",{autoClose:1000});
-
+        toast.error("Failed to submit Blood center", { autoClose: 1000 });
       }
     } catch (error) {
       console.error("Error", error);
-      toast.error("An error occurred during submission",{autoClose:1000});
+      toast.error("An error occurred during submission", { autoClose: 1000 });
     }
   };
   // const handleChange = (e) => {
@@ -134,18 +133,15 @@ const BloodCenter = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      <h1 className=" mb-4 text-center">Blood Center</h1>
+      <div className="addcontainer">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+        <h1 className="Addtext">Blood Center</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Receiver Name"
               type="text"
@@ -158,7 +154,7 @@ const BloodCenter = () => {
               <div className="text-danger">{errors.receiverName}</div>
             )}
           </Col>
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Date"
               type="date"
@@ -170,9 +166,9 @@ const BloodCenter = () => {
             {errors.date && <div className="text-danger">{errors.date}</div>}
           </Col>
         </Row>
-        
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+
+        <Row className="row">
+          <Col className="column">
             <Input
               label="I.P.No"
               type="number"
@@ -184,7 +180,7 @@ const BloodCenter = () => {
             {errors.ipNo && <div className="text-danger">{errors.ipNo}</div>}
           </Col>
 
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Age"
               type="number"
@@ -196,8 +192,8 @@ const BloodCenter = () => {
             {errors.age && <div className="text-danger">{errors.age}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <select
               className="form-select"
               type="number"
@@ -216,7 +212,7 @@ const BloodCenter = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Hospital Name "
               type="text"
@@ -230,8 +226,8 @@ const BloodCenter = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Investigation Charges "
               type="number"
@@ -244,7 +240,7 @@ const BloodCenter = () => {
               <div className="text-danger">{errors.invstigationCharges}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Unit No"
               type="number"
@@ -258,8 +254,8 @@ const BloodCenter = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <select
               className="form-select"
               id="Blood Group"
@@ -282,7 +278,7 @@ const BloodCenter = () => {
               <div className="text-danger">{errors.bloodgroup}</div>
             )}
           </Col>
-          <Col className="col-sm-5">
+          <Col className="column">
             <select
               className="form-select"
               id="paymentMethod"
@@ -302,8 +298,8 @@ const BloodCenter = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Rupee"
               type="number"
@@ -314,7 +310,7 @@ const BloodCenter = () => {
             />
             {errors.rupee && <div className="text-danger">{errors.rupee}</div>}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Remark"
               type="text"
@@ -328,9 +324,8 @@ const BloodCenter = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-        
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Expiry Date"
               type="date"
@@ -340,14 +335,16 @@ const BloodCenter = () => {
               readOnly
               required
             />
-            {errors.expirydate && <div className="text-danger">{errors.expirydate}</div>}
+            {errors.expirydate && (
+              <div className="text-danger">{errors.expirydate}</div>
+            )}
           </Col>
         </Row>
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

@@ -90,18 +90,18 @@ const Voucher = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
+      <div className="addcontainer">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className=" mb-4 text-center">Voucher</h1>
+      <h1 className="Addtext">Voucher</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Date"
               type="date"
@@ -112,7 +112,7 @@ const Voucher = () => {
             />
             {errors.date && <div className="text-danger">{errors.date}</div>}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Amount Paid"
               type="number"
@@ -126,8 +126,8 @@ const Voucher = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Towards"
               type="number"
@@ -140,7 +140,7 @@ const Voucher = () => {
               <div className="text-danger">{errors.towards}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Cheque No"
               type="text"
@@ -154,8 +154,8 @@ const Voucher = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Dated"
               type="date"
@@ -166,7 +166,7 @@ const Voucher = () => {
             />
             {errors.dated && <div className="text-danger">{errors.dated}</div>}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Rupees"
               type="number"
@@ -180,8 +180,8 @@ const Voucher = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Remark"
               type="text"
@@ -195,7 +195,7 @@ const Voucher = () => {
             )}
           </Col>
         </Row>
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

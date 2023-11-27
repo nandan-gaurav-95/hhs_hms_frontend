@@ -18,7 +18,6 @@ const ViewBloodCenter = () => {
   const [filteredBloodCenter, setFilteredBloodCenter] = useState({});
   const reversedData = Object.keys(filteredBloodCenter).reverse();
 
-
   const fetchAllBloodCenter = async () => {
     try {
       const response = await BloodCenterService.getAllBloodCenter();
@@ -92,19 +91,16 @@ const ViewBloodCenter = () => {
   }, [searchQuery, bloodGroupFilter, allBloodCenter]);
 
   return (
-    <div>
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
+      <div className="submainview">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+        <h2 className="availabletext">Blood Center Details</h2>
       </div>
-      <h2 className="title">Blood Center Details</h2>
-      </div>
-      <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className=" search ms-4">
+      <div className="searchcontentcenter">
+        <div className=" search">
           <input
             label="Search"
             type="text"
@@ -115,7 +111,7 @@ const ViewBloodCenter = () => {
           />
         </div>
 
-        <div className="ms-4">
+        <div className="invsearch">
           <select
             id="bloodGroupFilter"
             className="form-select"
@@ -135,7 +131,7 @@ const ViewBloodCenter = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="shadow-lg p-3 mb-5 bg-white rounded">
+        <thead className="">
           <tr>
             <th>Sr. No.</th>
             <th>Receiver Name</th>
@@ -147,11 +143,11 @@ const ViewBloodCenter = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
+        <tbody className="">
           {/* {Object.keys(filteredBloodCenter).map((bcId, index) => {
             const bloodCenter = allBloodCenter[bcId]; */}
-            {reversedData.map((bcId, index) => {
-              const bloodCenter = filteredBloodCenter[bcId];
+          {reversedData.map((bcId, index) => {
+            const bloodCenter = filteredBloodCenter[bcId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -171,15 +167,11 @@ const ViewBloodCenter = () => {
                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item
-                          onClick={() => handleViewProfile(bcId)}
-                        >
+                        <Dropdown.Item onClick={() => handleViewProfile(bcId)}>
                           View BloodCenter
                         </Dropdown.Item>
-                       
-                        <Dropdown.Item
-                          onClick={() => handleEditProfile(bcId)}
-                        >
+
+                        <Dropdown.Item onClick={() => handleEditProfile(bcId)}>
                           Edit BloodCenter
                         </Dropdown.Item>
                         <Dropdown.Item

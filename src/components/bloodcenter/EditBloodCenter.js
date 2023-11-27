@@ -86,29 +86,24 @@ function EditBloodCenter() {
   };
 
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
         <Col>
-          <h1 className="text-center mb-4">Details of {propData?.bc_id}</h1>
+          <h1 className="propertydetails">Details of {propData?.bc_id}</h1>
         </Col>
-      </Row>
       </div>
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>Receiver Name:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="receiverName"
                 value={updateBloodCenter.receiverName}
@@ -117,7 +112,7 @@ function EditBloodCenter() {
 
               <strong>Date</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="date"
                 name="date"
                 value={updateBloodCenter.date}
@@ -126,7 +121,7 @@ function EditBloodCenter() {
 
               <strong>I.P. NO.:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="text"
                 name="ipNo"
                 value={updateBloodCenter.ipNo}
@@ -134,7 +129,7 @@ function EditBloodCenter() {
               />
               <strong>Age:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="number"
                 name="age"
                 value={updateBloodCenter.age}
@@ -142,7 +137,7 @@ function EditBloodCenter() {
               />
               <strong>Gender:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="gender"
                 value={updateBloodCenter.gender}
@@ -151,18 +146,18 @@ function EditBloodCenter() {
               <strong>Hospital Name:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="hospitalName"
                 value={updateBloodCenter.hospitalName}
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-md-5">
+            <Col className="column">
               <strong>Invstigation Charges:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="invstigationCharges"
                 value={updateBloodCenter.invstigationCharges}
@@ -170,7 +165,7 @@ function EditBloodCenter() {
               />
               <strong>Unit No:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="unitNo"
                 value={updateBloodCenter.unitNo}
@@ -179,7 +174,7 @@ function EditBloodCenter() {
 
               <strong>Blood Group:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="text"
                 name="bloodgroup"
                 value={updateBloodCenter.bloodgroup}
@@ -187,23 +182,23 @@ function EditBloodCenter() {
               />
               <strong>Payment Method:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="paymentMethod"
                 value={updateBloodCenter.paymentMethod}
                 onChange={handleChange}
               />
-               <strong>Rupee:</strong>
+              <strong>Rupee:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="rupee"
                 value={updateBloodCenter.rupee}
                 onChange={handleChange}
               />
-               <strong>Remark:</strong>
+              <strong>Remark:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="remark"
                 value={updateBloodCenter.remark}
@@ -214,21 +209,15 @@ function EditBloodCenter() {
         </ul>
       </Row>
 
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group">
         <Col md-2>
-          <Button
-            variant="primary"
-            square
-            style={{ width: "100px" }}
-            onClick={goBack}
-          >
+          <Button variant="primary" square onClick={goBack}>
             Back
           </Button>
           <Button
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {/* Update */}

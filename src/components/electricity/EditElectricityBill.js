@@ -193,7 +193,7 @@ function EditElectricityBill() {
                 onChange={handleChange}
               />
             </Col>
-            <Row className="justify-content-center">
+            <Row className="detailsrow">
               <Col className="col-sm-5 ">
                 <strong>Date Of Reading:</strong>
 

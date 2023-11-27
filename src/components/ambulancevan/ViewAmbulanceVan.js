@@ -10,14 +10,12 @@ import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
 import { AmbulanceService } from "../../services/AmbulanceService";
 
-
 const ViewAmbulanceVan = () => {
   const [allambulancevan, setAllambulancevan] = useState({});
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredAmbulanceVan, setFilteredAmbulanceVan] = useState({});
   const reversedData = Object.keys(filteredAmbulanceVan).reverse();
-
 
   const handleViewProfile = (amb_id) => {
     navigate(`/detailsambulancevan/${amb_id}`);
@@ -55,7 +53,6 @@ const ViewAmbulanceVan = () => {
       const updatedAmbulanceVan = { ...allambulancevan };
       delete updatedAmbulanceVan[amb_id];
       setAllambulancevan(updatedAmbulanceVan);
-      
     } catch (error) {
       console.error("Error deleting AmbulanceVan :", error);
     }
@@ -79,19 +76,16 @@ const ViewAmbulanceVan = () => {
     setFilteredAmbulanceVan(filteredAmbulanceData);
   };
   return (
-    <div>
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
+      <div className="submainview">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+        <h2 className="availabletext">Ambulance Van Details</h2>
       </div>
-      <h2 className="title">Ambulance Van Details</h2>
-      </div>
-      <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className=" search ms-4">
+      <div className="forsearch">
+        <div className="input-group">
           <input
             label="Search"
             type="text"
@@ -103,7 +97,7 @@ const ViewAmbulanceVan = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="shadow-lg p-3 mb-5 bg-white rounded">
+        <thead className="">
           <tr>
             <th>Sr. No.</th>
             <th>Receiver Name</th>
@@ -114,11 +108,11 @@ const ViewAmbulanceVan = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
+        <tbody className="">
           {/* {Object.keys(filteredAmbulanceVan).map((ambId, index) => {
             const ambulance = filteredAmbulanceVan[ambId]; */}
-              {reversedData.map((ambId, index) => {
-              const ambulance = filteredAmbulanceVan[ambId];
+          {reversedData.map((ambId, index) => {
+            const ambulance = filteredAmbulanceVan[ambId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>

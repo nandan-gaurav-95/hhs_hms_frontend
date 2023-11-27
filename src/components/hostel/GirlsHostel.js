@@ -53,27 +53,15 @@ const GirlsHostel = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      <h1 className=" mb-4 text-center">Girls Hostel Impressed Book</h1>
+      <div className="addcontainer">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+        <h1 className="Addtext">Girls Hostel Impressed Book</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          {/* <Col className="col-sm-5 ">
-            <Input
-              label="Vocher.No"
-              type="number"
-              name="gh_id"
-              value={formData.gh_id}
-              onChange={handleChange}
-            />
-          </Col> */}
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Date"
               type="date"
@@ -83,9 +71,7 @@ const GirlsHostel = () => {
               required
             />
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+          <Col className="column ">
             <Input
               label="Food Material"
               type="text"
@@ -95,8 +81,9 @@ const GirlsHostel = () => {
               required
             />
           </Col>
-
-          <Col className="col-sm-5">
+        </Row>
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Food Quantity (kG)"
               type="text"
@@ -106,9 +93,7 @@ const GirlsHostel = () => {
               required
             />
           </Col>
-        </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Bill Amount"
               type="number"
@@ -118,8 +103,9 @@ const GirlsHostel = () => {
               required
             />
           </Col>
-
-          <Col className="col-sm-5 ">
+        </Row>
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Balance"
               type="number"
@@ -130,7 +116,7 @@ const GirlsHostel = () => {
             />
           </Col>
         </Row>
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

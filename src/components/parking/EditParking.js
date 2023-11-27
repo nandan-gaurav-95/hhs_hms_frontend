@@ -16,9 +16,7 @@ function EditParking() {
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updateParking, setupdateParking] = useState(
-    propData.Parking || {}
-  );
+  const [updateParking, setupdateParking] = useState(propData.Parking || {});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -86,29 +84,24 @@ function EditParking() {
   };
 
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
         <Col>
-          <h1 className="text-center mb-4">Details of {propData?.p_id}</h1>
+          <h1 className="propertydetails">Details of {propData?.p_id}</h1>
         </Col>
-      </Row>
       </div>
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>Receiver Name:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="receiverName"
                 value={updateParking.receiverName}
@@ -117,7 +110,7 @@ function EditParking() {
 
               <strong>Date</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="date"
                 name="date"
                 value={updateParking.date}
@@ -125,15 +118,15 @@ function EditParking() {
               />
               <strong>Rupees:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="rupee"
                 value={updateParking.rupee}
                 onChange={handleChange}
               />
-               <strong>Rupee In Words:</strong>
+              <strong>Rupee In Words:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="text"
                 name="rupeeInWords"
                 value={updateParking.rupeeInWords}
@@ -141,17 +134,17 @@ function EditParking() {
               />
               <strong>Parking Rent:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="text"
                 name="parkingRent"
                 value={updateParking.parkingRent}
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-md-5">
-            <strong>Month:</strong>
+            <Col className="column">
+              <strong>Month:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="month"
                 value={updateParking.month}
@@ -160,17 +153,17 @@ function EditParking() {
               <strong>Cheque No:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="chequeNo"
                 value={updateParking.chequeNo}
                 onChange={handleChange}
               />
-              
+
               <strong>Dated:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="date"
                 name="dated"
                 value={updateParking.dated}
@@ -178,7 +171,7 @@ function EditParking() {
               />
               <strong>Drawn On:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="text"
                 name="drawnOn"
                 value={updateParking.drawnOn}
@@ -186,34 +179,26 @@ function EditParking() {
               />
               <strong>Remark:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="remark"
                 value={updateParking.remark}
                 onChange={handleChange}
               />
-            
-           
             </Col>
           </Row>
         </ul>
       </Row>
 
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group">
         <Col md-2>
-          <Button
-            variant="primary"
-            square
-            style={{ width: "100px" }}
-            onClick={goBack}
-          >
+          <Button variant="primary" square onClick={goBack}>
             Back
           </Button>
           <Button
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {/* Update */}

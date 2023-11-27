@@ -62,25 +62,25 @@ const DetailGirlsHostel = () => {
   return (
     <div>
     <Header />
-    <div className="mt-4">
+    <div className="maindetails">
     <div className="arrow-back-container">
       <BiArrowBack
-        className="backLoginForm fs-2 text-dark"
+        className="addbacklogo"
         onClick={() => navigate(-1)}
       />
     </div>
-    <h2 className="mb-4 text-center entity-column">Details of Girls Hostel </h2>
+    <h2 className="propertyview">Details of Girls Hostel </h2>
     </div>
     <Container
       className="detail-girlhostel"
     >
-       <div className="d-flex flex-wrap">
-    <div className="w-50">
+       <div className="columnarrangement">
+    <div className="subcolumnarrangement">
       {firstColumnKeys
         .filter((key) => key !== "id")
         .map((key) => renderGirlshostelRow(key, girlshostel[key]))}
     </div>
-    <div className="w-50">
+    <div className="subcolumnarrangement1girl">
       {secondColumnKeys
         .filter((key) => key !== "id")
         .map((key) => renderGirlshostelRow(key, girlshostel[key]))}

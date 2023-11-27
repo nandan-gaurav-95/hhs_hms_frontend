@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
-import "../../asset/style.css"
+import "../../asset/style.css";
 // import hhspage from "../../../asset/images/hhs page.jpg";
 import { HiOutlineSupport } from "react-icons/hi";
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import {
   MDBContainer as Container,
   MDBRow as Row,
@@ -16,14 +16,12 @@ import {
   MDBCheckbox as Checkbox,
 } from "mdb-react-ui-kit";
 import hhsLogo from "../../asset/images/hhs_logo.png";
-import backgroundImage  from "../../asset/images/HHMS_bG.jpg";
+import backgroundImage from "../../asset/images/HHMS_bG.jpg";
 function LoginVoucher() {
- 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [department, setDepartment] = useState("Voucher"); // Set the default value for the Department input
 
-  
   // const handlePasswordChange = (event) => {
   //   const newPassword = event.target.value;
   //   setPassword(newPassword);
@@ -46,8 +44,8 @@ function LoginVoucher() {
     backgroundPosition: "center",
   };
   const navigate = useNavigate();
-  const [email, setEmail]= useState("");
-  const [password, setPassword]= useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handleLogin = async () => {
     // try {
     //   // Prepare the login data from your form inputs (email and password)
@@ -55,7 +53,7 @@ function LoginVoucher() {
     //     email:email,// Get email value from your form input,
     //     password: password// Get password value from your form input,
     //   };
-  
+
     //   // Make a POST request to your backend API endpoint for login
     //   console.log(loginData);
     //   const response = await axios.post(APIS.LOGINACCOUNT, loginData);
@@ -63,7 +61,7 @@ function LoginVoucher() {
     //   if (response.status === 200) {
     //     // Handle successful login (e.g., redirect to another page)
     //     console.log("Login successful!");
-        navigate("/homevoucher"); // Redirect to the desired page after successful login
+    navigate("/homevoucher"); // Redirect to the desired page after successful login
     //   } else {
     //     // Handle login error, e.g., show an error message
     //     console.error("Login failed.");
@@ -79,22 +77,19 @@ function LoginVoucher() {
   };
 
   return (
-    //  <body class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
+    //  <body class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center
     //  ">
     <div className="background-login" style={backgroundImageStyle}>
-      <Container fluid className="loginBOdyDiv d-flex align-items-center justify-content-center h-100">
-      <ToastContainer/>
-          <Col className="forbusiness-page col-sm-6 rounded py-0">
-            <div className="d-flex flex-row  justify-content-md-center ">
-              <div className="d-flex  w-100  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
-                <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
-                  H.H.S & H.M.S
-                </h2>
-                <p className="text-center">Login In to Voucher</p>
+      <Container fluid className="loginBOdyDiv">
+        <ToastContainer />
+        <Col className="forbusiness-page">
+          <div className="subforbusiness-page">
+            <h2 className="loginformtext">H.H.S & H.M.S</h2>
+            <p className="subloginformtext">Login In to Voucher</p>
 
-                <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
-                <Input
-                  className="transparent-input"
+            <div className="columnlogin">
+              <Input
+                className="transparent-input"
                 wrapperClass="mb-4 py-1"
                 label="Department"
                 id="form3"
@@ -103,67 +98,65 @@ function LoginVoucher() {
                 readOnly
                 // onChange={(e) => setDepartment(e.target.value)}
               />
-                  <Input
-                    wrapperClass="mb-4 py-1"
-                    label="Email address"
-                    id="form1"
-                    type="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                 <Input
-                  wrapperClass="mb-4  py-1 d-flex align-item-center "
-                  label="Password"
-                  id="form2"
-                  type={passwordVisible ? "text" : "password"}
-                  // value={password}
-                  // onChange={(e) => setPassword(e.target.value)}
+              <Input
+                wrapperClass="mb-4 py-1"
+                label="Email address"
+                id="form1"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                wrapperClass="mb-4  py-1 d-flex align-item-center "
+                label="Password"
+                id="form2"
+                type={passwordVisible ? "text" : "password"}
+                // value={password}
+                // onChange={(e) => setPassword(e.target.value)}
+              >
+                <span
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  style={{ cursor: "pointer" }}
                 >
-                  <span
-                    onClick={() => setPasswordVisible(!passwordVisible)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {passwordVisible ? (
-                      <AiFillEye className="mt-2 me-3" />
-                    ) : (
-                      <AiFillEyeInvisible className="mt-2 me-3" />
-                    )}
-                  </span>
-                </Input>
-                {passwordError && (
-                  <div className="text-danger">{passwordError}</div>
-                )}
+                  {passwordVisible ? (
+                    <AiFillEye className="aifileye" />
+                  ) : (
+                    <AiFillEyeInvisible className="aifileye" />
+                  )}
+                </span>
+              </Input>
+              {passwordError && (
+                <div className="text-danger">{passwordError}</div>
+              )}
 
-                  <div className="d-flex justify-content-between  mb-4">
-                    <Checkbox
-                      className="flexCheck"
-                      value=""
-                      id="flexCheckDefault"
-                      label="Remember me"
-                    />
-                    <Link to="/forgetPage" className="Forgetmail ">
-                      <text className="forgetpasss">Forgot password?</text>
-                    </Link>
-                  </div>
+              <div className="remember">
+                <Checkbox
+                  className="flexCheck"
+                  value=""
+                  id="flexCheckDefault"
+                  label="Remember me"
+                />
+                <Link to="/forgetPage" className="Forgetmail ">
+                  <text className="forgetpasss">Forgot password?</text>
+                </Link>
+              </div>
 
-                  <div className="loginbtn">
-                  <Button className="mb-2 logbtn" onClick={handleLogin}>                 
-                      <text className="  text-white ">
-                        Log In
-                      </text>                  
-                  </Button>
-                </div>
+              <div className="loginbtn">
+                <Button className="logbtn" onClick={handleLogin}>
+                  <text className="logincolor">Log In</text>
+                </Button>
+              </div>
 
-                  <div className="businesshr text-center">
-                     <p className="my-2 mb-2">
-                      Don't have Account?
-                      <Link to="/signUp" className="Signupdiv">
-                        <text className="signup">Create Account</text>
-                      </Link>
-                    </p>
+              <div className="businesshr">
+                <p className="acc">
+                  Don't have Account?
+                  <Link to="/signUp" className="Signupdiv">
+                    <text className="signup">Create Account</text>
+                  </Link>
+                </p>
 
-                    {/* <p className="hr-lines mb-4">OR </p> */} 
+                {/* <p className="hr-lines mb-4">OR </p> */}
 
-                    {/* <Col className=" login-logo-margin col-sm-12 mb-4">
+                {/* <Col className=" login-logo-margin col-sm-12 mb-4">
                       <Link to="" className="loginfacebook ">
                         <text className="facebook_log  py-2 d-flex  align-items-center">
                           {" "}
@@ -175,7 +168,7 @@ function LoginVoucher() {
                       </Link>
                     </Col> */}
 
-                    {/* <Col className="login-logo-margin col-sm-12 mb-2">
+                {/* <Col className="login-logo-margin col-sm-12 mb-2">
                       <Link to="" className="logingoogle">
                         <text className="google_log py-2 d-flex  align-items-center ">
                           {" "}
@@ -186,37 +179,36 @@ function LoginVoucher() {
                         </text>
                       </Link>
                     </Col> */}
-                    <div className="loginformpic mt-3 mt-0 mb-0">
-                    <img
-                      src={hhsLogo}
-                      alt="Login image"
-                      className="loginimage"
-                    />
-                  </div>
-                    <div className="listcontainer w-100 mt-2 d-flex justify-content-center ">
-                      <ul className="custom-list d-flex justify-content-center ">
-                        <Link>
-                          <li className=" pe-4 custom-list-item  ">
-                            <text>
-                            <HiOutlineSupport className="pt-0 pb-1" />
-                              Support{" "}
-                            </text>
-                          </li>
-                        </Link>
-                        <Link>
-                          <li className="pe-2 custom-list-item ">
-                            <text>Privacy Policy</text>
-                          </li>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
+                <div className="loginformpic">
+                  <img
+                    src={hhsLogo}
+                    alt="Login image"
+                    className="loginimage  center-logo"
+                  />
+                </div>
+                <div className="listcontainer">
+                  <ul className="custom-list">
+                    <Link>
+                      <li className="custom-list-item  ">
+                        <text>
+                          <HiOutlineSupport className="HiOutlineSupport" />
+                          Support{" "}
+                        </text>
+                      </li>
+                    </Link>
+                    <Link>
+                      <li className="custom-list-item ">
+                        <text>Privacy Policy</text>
+                      </li>
+                    </Link>
+                  </ul>
                 </div>
               </div>
             </div>
-          </Col>
+          </div>
+        </Col>
 
-          {/* <Col
+        {/* <Col
             sm="8"
             className="loginImgDiv h-100 w-50 d-none d-sm-block  ps-0 pe-0"
           >
@@ -224,8 +216,7 @@ function LoginVoucher() {
           </Col> */}
         {/* </Row> */}
       </Container>
-    
-     </div>
+    </div>
   );
 }
 

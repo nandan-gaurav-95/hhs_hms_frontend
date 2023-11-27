@@ -81,17 +81,17 @@ function LoginDargah() {
     //  <body class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
     //  ">
     <div className="background-login" style={backgroundImageStyle}>
-      <Container fluid className="loginBOdyDiv d-flex align-items-center justify-content-center h-100">
+      <Container fluid className="loginBOdyDiv">
       <ToastContainer/>
-          <Col className="forbusiness-page col-sm-6 rounded py-0">
-            <div className="d-flex flex-row  justify-content-md-center ">
-              <div className="d-flex  w-100  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
-                <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
+          <Col className="forbusiness-page">
+            <div className="subforbusiness-page">
+              
+                <h2 className="loginformtext">
                   H.H.S & H.M.S
                 </h2>
-                <p className="text-center">Login In to Dargah Complex</p>
+                <p className="subloginformtext">Login In to Dargah Complex</p>
 
-                <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
+                <div className="columnlogin">
                 <Input
                 className="transparent-input"
                   wrapperClass="mb-4 py-1"
@@ -121,9 +121,9 @@ function LoginDargah() {
                     style={{ cursor: "pointer" }}
                   >
                     {passwordVisible ? (
-                      <AiFillEye className="mt-2 me-3" />
+                      <AiFillEye className="aifileye" />
                     ) : (
-                      <AiFillEyeInvisible className="mt-2 me-3" />
+                      <AiFillEyeInvisible className="aifileye" />
                     )}
                   </span>
                 </Input>
@@ -131,7 +131,7 @@ function LoginDargah() {
                   <div className="text-danger">{passwordError}</div>
                 )}
 
-                  <div className="d-flex justify-content-between  mb-4">
+                  <div className="remember">
                     <Checkbox
                       className="flexCheck"
                       value=""
@@ -144,15 +144,15 @@ function LoginDargah() {
                   </div>
 
                   <div className="loginbtn">
-                  <Button className="mb-2 logbtn" onClick={handleLogin}>                 
-                      <text className="  text-white ">
+                  <Button className="logbtn" onClick={handleLogin}>                 
+                      <text className="logincolor">
                         Log In
                       </text>                  
                   </Button>
                 </div>
 
-                  <div className="businesshr text-center">
-                     <p className="my-2 mb-2">
+                  <div className="businesshr">
+                     <p className="acc">
                       Don't have Account?
                       <Link to="/signUp" className="Signupdiv">
                         <text className="signup">Create Account</text>
@@ -184,25 +184,25 @@ function LoginDargah() {
                         </text>
                       </Link>
                     </Col> */}
-                    <div className="loginformpic mt-3 mt-0 mb-0">
+                    <div className="loginformpic">
                     <img
                       src={hhsLogo}
                       alt="Login image"
-                      className="loginimage"
+                      className="loginimage center-logo"
                     />
                   </div>
-                    <div className="listcontainer w-100 mt-2 d-flex justify-content-center ">
-                      <ul className="custom-list d-flex justify-content-center ">
+                    <div className="listcontainer">
+                      <ul className="custom-list">
                         <Link>
-                          <li className=" pe-4 custom-list-item  ">
+                          <li className="custom-list-item  ">
                             <text>
-                            <HiOutlineSupport className="pt-0 pb-1" />
+                            <HiOutlineSupport className="HiOutlineSupport" />
                               Support{" "}
                             </text>
                           </li>
                         </Link>
                         <Link>
-                          <li className="pe-2 custom-list-item ">
+                          <li className="custom-list-item ">
                             <text>Privacy Policy</text>
                           </li>
                         </Link>
@@ -211,7 +211,7 @@ function LoginDargah() {
                   </div>
                 </div>
               </div>
-            </div>
+           
           </Col>
 
           {/* <Col

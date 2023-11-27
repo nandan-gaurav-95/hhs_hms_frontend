@@ -32,20 +32,19 @@ const ElectricityBill = () => {
   };
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("handleSubmit called");
     const validationErrors = validateForm(formData);
-  console.log("Validation Errors:", validationErrors);
+    console.log("Validation Errors:", validationErrors);
 
-  if (Object.keys(validationErrors).length > 0) {
-    setErrors(validationErrors);
-    return;
-  } else {
-    setErrors({});
-  }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    } else {
+      setErrors({});
+    }
 
     try {
       const response = await ElectricityBillService.createElectricityBill(
@@ -57,14 +56,14 @@ const ElectricityBill = () => {
       if (response.status === 201) {
         console.log("eleBill Created Successfully");
         setFormData(initialState);
-        toast.success("Submit Successful!",{autoClose:1000});
+        toast.success("Submit Successful!", { autoClose: 1000 });
       } else {
         console.error("Failed To create eleBill");
-        toast.error("Failed to submit electricity bill",{autoClose:1000});
+        toast.error("Failed to submit electricity bill", { autoClose: 1000 });
       }
     } catch (error) {
       console.error("Error", error);
-      toast.error("An error occurred during submission",{autoClose:1000});
+      toast.error("An error occurred during submission", { autoClose: 1000 });
     }
   };
   const handleChange = (e) => {
@@ -118,13 +117,10 @@ const ElectricityBill = () => {
     <div className=" ">
       <Header />
       <div className="addcontainer">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="addbacklogo"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      <h1 className="Addtext">Electricity Bill</h1>
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+        <h1 className="Addtext">Electricity Bill</h1>
       </div>
       <form onSubmit={handleSubmit}>
         <Row className="row">

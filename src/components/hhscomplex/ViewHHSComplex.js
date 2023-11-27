@@ -81,19 +81,19 @@ const ViewHHSComplex = () => {
   };
 
   return (
-    <div>
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
+      <div className="submainview">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="title">HHS Complex Details</h2>
+      <h2 className="availabletext">HHS Complex Details</h2>
       </div>
-      <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className=" search ms-4">
+      <div className="forsearch">
+        <div className="input-group">
           <input
             label="Search"
             type="text"
@@ -105,7 +105,7 @@ const ViewHHSComplex = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="shadow-lg p-3 mb-5 bg-white rounded">
+        <thead className="">
           <tr>
             <th>Sr. No.</th>
             <th>L.F. No</th>
@@ -118,7 +118,7 @@ const ViewHHSComplex = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
+        <tbody className="">
           {/* {Object.keys(filteredHhscomplex).map((hcId, index) => {
             const hhscomplex = filteredHhscomplex[hcId]; */}
              {reversedData.map((hcId, index) => {

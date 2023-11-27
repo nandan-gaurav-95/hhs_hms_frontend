@@ -149,7 +149,7 @@ function PropertyDetails() {
                   value={updatedProperty.ctsNo}
                   onChange={handleChange}
                 />
-               ) : (
+              ) : (
                 <li className="list-group-item ">{updatedProperty.ctsNo}</li>
               )}
 
@@ -340,12 +340,12 @@ function PropertyDetails() {
       <Row>
         <div className="form-group">
           <div
-            // style={{
-            //   display: "flex",
-            //   flexDirection: "row",
-            //   alignItems: "center",
-            //   justifyContent: "center",
-            // }}
+          // style={{
+          //   display: "flex",
+          //   flexDirection: "row",
+          //   alignItems: "center",
+          //   justifyContent: "center",
+          // }}
           >
             {imageData &&
               imageData.map((base64String, index) => (

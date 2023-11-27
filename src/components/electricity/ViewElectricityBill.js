@@ -92,7 +92,7 @@ const ViewElectricityBill = () => {
       </div>
       <h2 className="availabletext">Electricity Bill Details</h2>
       </div>
-      <div className="">
+      <div className="forsearch">
         <div className="input-group">
           <input
             label="Search"

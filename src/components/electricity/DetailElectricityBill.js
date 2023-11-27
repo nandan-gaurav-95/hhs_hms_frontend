@@ -13,21 +13,20 @@ const DetailElectricityBill = () => {
   const [electricitybill, setElectricitybill] = useState(null);
   const navigate = useNavigate();
 
- 
-    // Function to fetch property by ID
-    const fetchElectricityBillById = async () => {
-      try {
-        const response = await axios.get(`${APIS.GETELECITYBILLBYID}/${id}`);
-        console.log("pdf data", response.data);
-        setElectricitybill(response.data);
-      } catch (error) {
-        console.error("Error fetching ElectricityBill:", error);
-        // Handle the error as needed (e.g., show an error message)
-      }
-    };
+  // Function to fetch property by ID
+  const fetchElectricityBillById = async () => {
+    try {
+      const response = await axios.get(`${APIS.GETELECITYBILLBYID}/${id}`);
+      console.log("pdf data", response.data);
+      setElectricitybill(response.data);
+    } catch (error) {
+      console.error("Error fetching ElectricityBill:", error);
+      // Handle the error as needed (e.g., show an error message)
+    }
+  };
 
-    // Call the fetchPropertyById function when the component mounts
-    useEffect(() => {
+  // Call the fetchPropertyById function when the component mounts
+  useEffect(() => {
     fetchElectricityBillById();
   }, [id]);
 
@@ -67,39 +66,45 @@ const DetailElectricityBill = () => {
     logoImage.onload = () => {
       // Add the logo image to the PDF
       doc.addImage(
-
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-       8,     // X position
-      12,     // Y position
-      45,     // Image width
-     30      // Image height
+        8, // X position
+        12, // Y position
+        45, // Image width
+        30 // Image height
       );
 
-       //Header Part
-    doc.rect(12,9,186,46);
-    doc.setFontSize(15);
-    doc.setTextColor(24,94,26); // RGB color (dark green)
-    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 50, 18); // Adjust the Y position as needed
-    doc.text("Dargahs & Allied Waqf Institutions",83,24)
-    doc.setFont('helvetica', 'normal'); // Reset font style to normal
-    doc.setFontSize(10);
-    doc.setTextColor(75,93,183); // RGB color (Blue)
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,31)
-    doc.text("(Register Under Karnataka State Board of Auqaf)",73,36)
-    doc.setTextColor(247, 79, 160);
-    doc.text("Tel : 080-22211356 / 22240309",145,42)
+      //Header Part
+      doc.rect(12, 9, 186, 46);
+      doc.setFontSize(15);
+      doc.setTextColor(24, 94, 26); // RGB color (dark green)
+      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
+      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 50, 18); // Adjust the Y position as needed
+      doc.text("Dargahs & Allied Waqf Institutions", 83, 24);
+      doc.setFont("helvetica", "normal"); // Reset font style to normal
+      doc.setFontSize(10);
+      doc.setTextColor(75, 93, 183); // RGB color (Blue)
+      doc.text(
+        "No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",
+        53,
+        31
+      );
+      doc.text("(Register Under Karnataka State Board of Auqaf)", 73, 36);
+      doc.setTextColor(247, 79, 160);
+      doc.text("Tel : 080-22211356 / 22240309", 145, 42);
 
       //PDF Heading
-      doc.setTextColor(59, 48, 182); 
-      doc.rect(12,45,186,150);// (X, Y, Width, Height)
+      doc.setTextColor(59, 48, 182);
+      doc.rect(12, 45, 186, 150); // (X, Y, Width, Height)
       doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
 
       // expiryDate will be convert into current month
       doc.setFontSize(14);
       doc.text(
-        `Electricity Bill, For The Month Of :${electricitybill?.month}`, 50,52); // Adjust the Y position as needed
+        `Electricity Bill, For The Month Of :${electricitybill?.month}`,
+        50,
+        52
+      ); // Adjust the Y position as needed
       doc.setFont("helvetica", "normal"); // Reset font style to normal
 
       // Reset text color to default (black)
@@ -158,9 +163,9 @@ const DetailElectricityBill = () => {
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.ledger_follono}`, 65, 91); // (X, Y, Actual name)
 
-        //Fixed Charges
-        doc.rect(12, 85, 98, 10); // (X, Y, Width, Height)
-        doc.rect(12, 85, 138, 10);
+      //Fixed Charges
+      doc.rect(12, 85, 98, 10); // (X, Y, Width, Height)
+      doc.rect(12, 85, 138, 10);
 
       doc.text("Fixed Charges", 87, 91); // (X,Y, Label "Rate:"
 
@@ -190,9 +195,9 @@ const DetailElectricityBill = () => {
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.tariff}`, 40, 111); // (X, Y, Actual name)
 
-      doc.rect(12, 105, 98, 10);// (X, Y, Width, Height)
+      doc.rect(12, 105, 98, 10); // (X, Y, Width, Height)
       doc.setFontSize(10); // Reset font size to normal
-      doc.rect(12, 105, 98, 10);// (X, Y, Width, Height)
+      doc.rect(12, 105, 98, 10); // (X, Y, Width, Height)
       doc.text("HT 2 B", 65, 111); // (X, Y, Actual name)
       doc.rect(12, 105, 73, 10); // (X, Y, Width, Height) 1st verticle line
 
@@ -213,7 +218,7 @@ const DetailElectricityBill = () => {
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.presentReading}`, 65, 121); // (X, Y, Actual name)
 
-      doc.rect(12, 115, 73, 10);// (X, Y, Width, Height) 2nd verticle line
+      doc.rect(12, 115, 73, 10); // (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
       doc.rect(12, 115, 98, 10); // (X, Y, Width, Height) 3rd verticle line
       doc.rect(12, 115, 118, 10); // (X, Y, Width, Height) 4th verticle line
@@ -235,7 +240,7 @@ const DetailElectricityBill = () => {
       doc.rect(85, 125, 25, 70); // (X, Y, Width, Height) 3rd verticle line
       doc.rect(130, 125, 20, 70);
       // doc.setFontSize(10); // Reset font size to normal
-    
+
       //  bill amount
       doc.text("Bill Amount", 87, 131); // (X,Y, Label "Rate:"
 
@@ -244,7 +249,7 @@ const DetailElectricityBill = () => {
       doc.setFont("calibre", "bold");
       doc.text("Unit Consumed", 25, 141); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
-      doc.rect(58, 135, 27, 10);// (X, Y, Width, Height) 2nd verticle line
+      doc.rect(58, 135, 27, 10); // (X, Y, Width, Height) 2nd verticle line
       doc.setFontSize(10); // Reset font size to normal
       doc.text(`${electricitybill?.unitConsumed}`, 65, 141); // (X, Y, Actual name)
 
@@ -277,7 +282,7 @@ const DetailElectricityBill = () => {
 
       //note
       doc.setFontSize(12); // Set font size for labels
-     
+
       doc.setFont("calibre", "bold");
       doc.text("Note :", 25, 171); // Label "Name:"
       doc.setFont("calibre", "normal"); // Reset font style to normal
@@ -289,15 +294,13 @@ const DetailElectricityBill = () => {
       doc.text("Special Officer", 131, 211);
 
       doc.text("Arrears", 90, 171); // Label "Name:"
-      doc.rect(85, 165, 113, 10);// (X, Y, Width, Height) 2nd verticle line
-     
+      doc.rect(85, 165, 113, 10); // (X, Y, Width, Height) 2nd verticle line
 
       doc.text("Interest", 90, 181); // Label "Name:"
-      
 
       doc.text("Amount Due", 86, 191); // Label "Name:"
       doc.rect(85, 185, 113, 10); // (X, Y, Width, Height) 2nd verticle line
-      
+
       //  doc.setFontSize(10); // Reset font size to normal
 
       //Payment Mode
@@ -333,17 +336,13 @@ const DetailElectricityBill = () => {
       <Header />
       <div className="maindetails">
         <div className="arrow-back-container">
-          <BiArrowBack
-            className="addbacklogo"
-            onClick={() => navigate(-1)}
-          />
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
         <h2 className="propertyview">
           Electricity Bill of {electricitybill.month}{" "}
         </h2>
       </div>
-      <Container  className="detail"
-       >
+      <Container className="detail-ele">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -352,7 +351,7 @@ const DetailElectricityBill = () => {
                 renderElectricityBillRow(key, electricitybill[key])
               )}
           </div>
-          <div className="subcolumnarrangement">
+          <div className="subcolumnarrangement1">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) =>
@@ -360,11 +359,8 @@ const DetailElectricityBill = () => {
               )}
           </div>
         </div>
-        <div
-          className="pdf-btn-div"
-        >
+        <div className="pdf-btn-div">
           <Button
-           
             variant="primary"
             onClick={handleEleBillPdf}
             className="pdf-btn-ele"

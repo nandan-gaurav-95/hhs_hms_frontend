@@ -168,39 +168,39 @@ const DetailVoucher = () => {
   return (
     <div>
       <Header />
-      <div className="mt-4">
+      <div className="maindetails">
         <div className="arrow-back-container">
           <BiArrowBack
-            className="backLoginForm fs-2 text-dark"
+            className="addbacklogo"
             onClick={() => navigate(-1)}
           />
         </div>
-        <h2 className="mb-4 text-center entity-column">
+        <h2 className="propertyview">
           Details of Voucher No: {voucher?.v_id}{" "}
         </h2>
       </div>
       <Container className="detail-voucher">
 
-        <div className="d-flex flex-wrap w-100">
-          <div className="w-50">
+        <div className="columnarrangement">
+          <div className="subcolumnarrangement">
             {firstColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderVoucherRow(key, voucher[key]))}
           </div>
-          <div className="w-50">
+          <div className="subcolumnarrangement1">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderVoucherRow(key, voucher[key]))}
           </div>
         </div>
 
-        <div className="pdf-btn-voucher ">
+        <div className="pdf-btn-div">
           <Button
             // variant="primary"
             onClick={handleVoucherPdf}
             // className="pdf-btn-elebill"
           >
-            <FaDownload className="pdf-btn" /> Voucher
+            <FaDownload className="" /> Voucher
           </Button>
         </div>
 

@@ -88,29 +88,24 @@ function EditMedicalAck() {
   };
 
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
         <Col>
-          <h1 className="text-center mb-4">Details of {propData?.mdack_id}</h1>
+          <h1 className="propertydetails">Details of {propData?.mdack_id}</h1>
         </Col>
-      </Row>
       </div>
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>TO Name:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="toName"
                 value={updateMedicalAck.toName}
@@ -119,7 +114,7 @@ function EditMedicalAck() {
 
               <strong>Date</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="date"
                 name="date"
                 value={updateMedicalAck.date}
@@ -127,7 +122,7 @@ function EditMedicalAck() {
               />
               <strong>Rupees:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="rupees"
                 value={updateMedicalAck.rupees}
@@ -136,18 +131,18 @@ function EditMedicalAck() {
               <strong>Cheque No:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="chequeNo"
                 value={updateMedicalAck.chequeNo}
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-md-5">
+            <Col className="column">
               <strong>Dated:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="date"
                 name="dated"
                 value={updateMedicalAck.dated}
@@ -155,7 +150,7 @@ function EditMedicalAck() {
               />
               <strong>Hospital IP No:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="hospIpNo"
                 value={updateMedicalAck.hospIpNo}
@@ -164,17 +159,16 @@ function EditMedicalAck() {
               <strong>Disease:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="disease"
                 value={updateMedicalAck.disease}
                 onChange={handleChange}
               />
 
-              
               <strong>Remark:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="remark"
                 value={updateMedicalAck.remark}
@@ -185,21 +179,15 @@ function EditMedicalAck() {
         </ul>
       </Row>
 
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group">
         <Col md-2>
-          <Button
-            variant="primary"
-            square
-            style={{ width: "100px" }}
-            onClick={goBack}
-          >
+          <Button variant="primary" square onClick={goBack}>
             Back
           </Button>
           <Button
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {/* Update */}

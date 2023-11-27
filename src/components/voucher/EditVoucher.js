@@ -84,29 +84,24 @@ function EditVoucher() {
   };
 
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
         <Col>
-          <h1 className="text-center mb-4">Details of {propData?.v_id}</h1>
+          <h1 className="propertydetails">Details of {propData?.v_id}</h1>
         </Col>
-      </Row>
       </div>
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>Date:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="date"
                 name="date"
                 value={updateVoucher.date}
@@ -116,7 +111,7 @@ function EditVoucher() {
               <strong>Amount Paid</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="number"
                 name="amtPaid"
                 value={updateVoucher.amtPaid}
@@ -124,7 +119,7 @@ function EditVoucher() {
               />
               <strong>Towards</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="towards"
                 value={updateVoucher.towards}
@@ -134,7 +129,7 @@ function EditVoucher() {
             <Col className="col-md-5">
               <strong>Dated:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="date"
                 name="dated"
                 value={updateVoucher.dated}
@@ -142,7 +137,7 @@ function EditVoucher() {
               />
               <strong>Rupees:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="rupees"
                 value={updateVoucher.rupees}
@@ -151,18 +146,18 @@ function EditVoucher() {
               <strong>Cheque No:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="chequeNo"
                 value={updateVoucher.chequeNo}
                 onChange={handleChange}
               />
             </Col>
-            <Row className="justify-content-center">
-              <Col className="col-sm-5 ">
+            <Row className="detailsrow">
+              <Col className="column">
                 <strong>Remark:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="remark"
                   value={updateVoucher.remark}
@@ -174,21 +169,15 @@ function EditVoucher() {
         </ul>
       </Row>
 
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group ">
         <Col md-2>
-          <Button
-            variant="primary"
-            square
-            style={{ width: "100px" }}
-            onClick={goBack}
-          >
+          <Button variant="primary" square onClick={goBack}>
             Back
           </Button>
           <Button
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {/* Update */}
@@ -196,7 +185,6 @@ function EditVoucher() {
           </Button>
         </Col>
       </Row>
-      {/* </Sidebar> */}
     </div>
   );
 }

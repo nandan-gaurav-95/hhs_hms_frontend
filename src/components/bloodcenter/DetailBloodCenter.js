@@ -240,236 +240,234 @@ const DetailBloodCenter = () => {
     };
   };
 
-const handleCertificate =()=>{
-   // Create a new jsPDF instance
-   const doc = new jsPDF("p", "mm", "a4");
-   const logoImage = new Image();
-   logoImage.src = logo;
+  const handleCertificate = () => {
+    // Create a new jsPDF instance
+    const doc = new jsPDF("p", "mm", "a4");
+    const logoImage = new Image();
+    logoImage.src = logo;
 
-   logoImage.src = logo; // Use the imported logo image
+    logoImage.src = logo; // Use the imported logo image
 
-   // Wait for the image to load before rendering it
-   logoImage.onload = () => {
-     // Add the logo image to the PDF
-     doc.addImage(
-       logoImage,
-       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-       9, // X position
-       15, // Y position
-       45, // Image width
-       30 // Image height
-     );
-     doc.addImage(
-       bloodlogo,
-       "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-       155, // X position
-       16, // Y position
-       38, // Image width
-       25 // Image height
-     );
-     //Header Part
-     doc.rect(12, 9, 186, 251);
-     doc.rect(12, 9, 186, 41);
-     
-     // doc.text("LICENSE NUMBER - KTK/28C-409/2022", 75, 15);
-     doc.setFontSize(16);
-     doc.setTextColor(24, 94, 26);
-     doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-     doc.text("HHS & HMS", 52, 19); // Adjust the Y position as needed
-     doc.setFontSize(11);
-     doc.text("(R.A.)", 85, 18);
-     doc.setFontSize(18);
-     doc.setFont("helvetica", "bold");
-     doc.text("BLOOD CENTRE", 97, 19);
-     doc.setFont("helvetica", "normal"); // Reset font style to normal
-     doc.setFontSize(12);
-     doc.setTextColor(75, 93, 183);
-     doc.setFont("helvetica", "bold");
-     doc.text("(Under Karnataka State Board of Aquaf)", 62, 24);
-     doc.setFontSize(11);
-     doc.setTextColor(75, 93, 183);
-     doc.setFont("helvetica", "normal");
-     doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,", 62, 29);
-     doc.text("Cubbonpet Main Road,Banglore - 560 002", 62, 34);
-     doc.setFontSize(13);
-     doc.setTextColor(247, 79, 160);
-     doc.setFont("helvetica", "bold");
-     doc.text("Ph : 080-4989 4916 - 98458 54991", 62, 40);
-     doc.setFontSize(15);
-     doc.setTextColor(75, 93, 183);
-     doc.setFont("helvetica", "bold");
-     doc.text("DL. No. : KTK/28C-409/2022", 62, 47);
+    // Wait for the image to load before rendering it
+    logoImage.onload = () => {
+      // Add the logo image to the PDF
+      doc.addImage(
+        logoImage,
+        "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+        9, // X position
+        15, // Y position
+        45, // Image width
+        30 // Image height
+      );
+      doc.addImage(
+        bloodlogo,
+        "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
+        155, // X position
+        16, // Y position
+        38, // Image width
+        25 // Image height
+      );
+      //Header Part
+      doc.rect(12, 9, 186, 251);
+      doc.rect(12, 9, 186, 41);
 
-     //PDF Heading
+      // doc.text("LICENSE NUMBER - KTK/28C-409/2022", 75, 15);
+      doc.setFontSize(16);
+      doc.setTextColor(24, 94, 26);
+      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
+      doc.text("HHS & HMS", 52, 19); // Adjust the Y position as needed
+      doc.setFontSize(11);
+      doc.text("(R.A.)", 85, 18);
+      doc.setFontSize(18);
+      doc.setFont("helvetica", "bold");
+      doc.text("BLOOD CENTRE", 97, 19);
+      doc.setFont("helvetica", "normal"); // Reset font style to normal
+      doc.setFontSize(12);
+      doc.setTextColor(75, 93, 183);
+      doc.setFont("helvetica", "bold");
+      doc.text("(Under Karnataka State Board of Aquaf)", 62, 24);
+      doc.setFontSize(11);
+      doc.setTextColor(75, 93, 183);
+      doc.setFont("helvetica", "normal");
+      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,", 62, 29);
+      doc.text("Cubbonpet Main Road,Banglore - 560 002", 62, 34);
+      doc.setFontSize(13);
+      doc.setTextColor(247, 79, 160);
+      doc.setFont("helvetica", "bold");
+      doc.text("Ph : 080-4989 4916 - 98458 54991", 62, 40);
+      doc.setFontSize(15);
+      doc.setTextColor(75, 93, 183);
+      doc.setFont("helvetica", "bold");
+      doc.text("DL. No. : KTK/28C-409/2022", 62, 47);
 
-     doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
-     doc.setFontSize(15);
-     doc.text("WHOLE HUMAN BLOOD IP", 55, 57); // Adjust the Y position as needed
-     doc.setTextColor(0); // Reset text color to default (black)
-     doc.setFontSize(11);
-     doc.setFont("calibre", "normal");
-     doc.text("Prepared from blood collected (350ml) from voluntary / Replacement Donor in (49 ml) of CPDA in Solution", 17, 63);
+      //PDF Heading
 
-     //blood group & rh factor 
-     doc.setFont("calibre", "bold");
-     doc.setFontSize(15); // Reset font size to normal
-     doc.rect(12, 65, 186, 10);
-     doc.text("BLOOD GROUP & Rh FACTOR :", 20, 72); // Adjust the Y position as needed
-     doc.text(`${bloodcenter?.bloodgroup}`, 103, 72);
+      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
+      doc.setFontSize(15);
+      doc.text("WHOLE HUMAN BLOOD IP", 55, 57); // Adjust the Y position as needed
+      doc.setTextColor(0); // Reset text color to default (black)
+      doc.setFontSize(11);
+      doc.setFont("calibre", "normal");
+      doc.text(
+        "Prepared from blood collected (350ml) from voluntary / Replacement Donor in (49 ml) of CPDA in Solution",
+        17,
+        63
+      );
+
+      //blood group & rh factor
+      doc.setFont("calibre", "bold");
+      doc.setFontSize(15); // Reset font size to normal
+      doc.rect(12, 65, 186, 10);
+      doc.text("BLOOD GROUP & Rh FACTOR :", 20, 72); // Adjust the Y position as needed
+      doc.text(`${bloodcenter?.bloodgroup}`, 103, 72);
 
       //unit no
-     doc.setFontSize(12); // Reset font size to normal
-     doc.text("UNIT NO :", 20, 82); // Label "Name:"
-     doc.setFont("calibre", "normal"); // Reset font style to normal
-     doc.text(`${bloodcenter?.unitNo}`, 45, 82); // (X, Y,Actual name)
+      doc.setFontSize(12); // Reset font size to normal
+      doc.text("UNIT NO :", 20, 82); // Label "Name:"
+      doc.setFont("calibre", "normal"); // Reset font style to normal
+      doc.text(`${bloodcenter?.unitNo}`, 45, 82); // (X, Y,Actual name)
 
-     //date
-     doc.rect(12, 85, 186, 10);
-     doc.text("Date of Collection of Blood :", 20, 92); // Adjust the Y position as needed
-     doc.text(`${bloodcenter?.date}`, 70, 92);
+      //date
+      doc.rect(12, 85, 186, 10);
+      doc.text("Date of Collection of Blood :", 20, 92); // Adjust the Y position as needed
+      doc.text(`${bloodcenter?.date}`, 70, 92);
 
-     doc.text("Date of Expiry :", 20, 102); // Adjust the Y position as needed
-     doc.text(`${bloodcenter?.expirydate}`, 50, 102);
+      doc.text("Date of Expiry :", 20, 102); // Adjust the Y position as needed
+      doc.text(`${bloodcenter?.expirydate}`, 50, 102);
 
-     doc.rect(12, 105, 186, 10);
-     doc.setFont("calibre", "bold");
-     doc.text("Screened & Found negative for MP, Non-Reactive for Syphilis, HBsag, HIV I & II & HCV", 20, 112);
-     doc.setFont("calibre", "normal");
+      doc.rect(12, 105, 186, 10);
+      doc.setFont("calibre", "bold");
+      doc.text(
+        "Screened & Found negative for MP, Non-Reactive for Syphilis, HBsag, HIV I & II & HCV",
+        20,
+        112
+      );
+      doc.setFont("calibre", "normal");
 
-  // patient Name
-    doc.text("Patient Name:", 20, 122);
-    doc.text(`${bloodcenter?.receiverName}`, 45, 122); // (X, Y,Actual name)
+      // patient Name
+      doc.text("Patient Name:", 20, 122);
+      doc.text(`${bloodcenter?.receiverName}`, 45, 122); // (X, Y,Actual name)
 
-    // age
-     doc.text("Age:", 125, 122);
-     doc.text(`${bloodcenter?.age}`, 135, 122); // (X, Y,Actual name)
+      // age
+      doc.text("Age:", 125, 122);
+      doc.text(`${bloodcenter?.age}`, 135, 122); // (X, Y,Actual name)
 
-     //IP no
-     doc.rect(12, 125, 186, 10);
-     doc.text("IP NO :", 20, 131); // Label "Name:"
-     doc.text(`${bloodcenter?.ipNo}`, 40, 131); //(X, Y, Actual name)
+      //IP no
+      doc.rect(12, 125, 186, 10);
+      doc.text("IP NO :", 20, 131); // Label "Name:"
+      doc.text(`${bloodcenter?.ipNo}`, 40, 131); //(X, Y, Actual name)
 
-     //Hospital
-     doc.text("Hospital :", 20, 141); // Label "Name:"
-     doc.text(`${bloodcenter?.hospitalName}`, 40, 141); // (X, Y, Actual name)
+      //Hospital
+      doc.text("Hospital :", 20, 141); // Label "Name:"
+      doc.text(`${bloodcenter?.hospitalName}`, 40, 141); // (X, Y, Actual name)
 
-     //blood group
-     doc.rect(12, 145, 186, 10);
-     doc.text("Blood Group & Rh :", 20, 151); // Label "Name:"
-     doc.text(`${bloodcenter?.bloodgroup}`, 57, 151); // (X, Y, Actual name)
+      //blood group
+      doc.rect(12, 145, 186, 10);
+      doc.text("Blood Group & Rh :", 20, 151); // Label "Name:"
+      doc.text(`${bloodcenter?.bloodgroup}`, 57, 151); // (X, Y, Actual name)
 
-     //cross matching
-     doc.setFont("calibre", "bold");
-     doc.text("CROSS MATCHING : COMPATIBLE", 55, 161); // Label "Name:"
+      //cross matching
+      doc.setFont("calibre", "bold");
+      doc.text("CROSS MATCHING : COMPATIBLE", 55, 161); // Label "Name:"
 
-    //  issue date 
-    const currentDate = new Date();
-    const issueDate = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
-    doc.rect(12, 165, 186, 20);
-    doc.setFont("calibre", "normal");
-    doc.text(`Date & Time of Issue: ${issueDate}`, 20, 171);
-  
-     doc.setFont("calibre", "bold");
-     doc.text("Issued by :", 20, 181); // Label "Name:"
-     doc.text("Checked by :", 135, 181); // Label "Name:"
-     
-    // caution
-     doc.setTextColor(255,0,0); // RGB warning color code
-     doc.text("CAUTION", 20, 191); // Label "Name:"
-     doc.setTextColor(0); // RGB warning color code
-     doc.setFont("calibre", "normal");
-     doc.text(" 1. Administer without warning.", 20, 196); // Label "Name:"
-     doc.text(" 2. Shake gently before use.", 20, 201); // Label "Name:"
-     doc.text(" 3. Do not add any medication to this blood / component.", 20, 206); // Label "Name:"
-     doc.text(" 4. Check blood group on label and recipient's group and Name before administration.", 20, 211); // Label "Name:"
-     doc.text(" 5. Use a fresh, clean and sterile transfusion set with filter to transfuse the blood | component.", 20, 216); // Label "Name:"
-     doc.text(" 6. Do not dispense without prescription.", 20, 221); // Label "Name:"
-     doc.text(" 7. Do not use if there is any visible evidence of deterioration like haemolysis, clotting or discoloration.", 20, 226); // Label "Name:"
-     doc.text(" 8. Store between 2\u00B0C to 6\u00B0C.", 20, 231); // Label "Name:"
-     doc.text(" 9. Appropriate compatiable cross-matched blood without a typical antibody in recipient's", 20, 236); // Label "Name:"
-    doc.text(" should be used.",40,241)
-     doc.text("10. If Haemolysis present, it must be transfused to recipients of O Group only.", 20, 246); // Label "Name:"
+      //  issue date
+      const currentDate = new Date();
+      const issueDate = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
+      doc.rect(12, 165, 186, 20);
+      doc.setFont("calibre", "normal");
+      doc.text(`Date & Time of Issue: ${issueDate}`, 20, 171);
+
+      doc.setFont("calibre", "bold");
+      doc.text("Issued by :", 20, 181); // Label "Name:"
+      doc.text("Checked by :", 135, 181); // Label "Name:"
+
+      // caution
+      doc.setTextColor(255, 0, 0); // RGB warning color code
+      doc.text("CAUTION", 20, 191); // Label "Name:"
+      doc.setTextColor(0); // RGB warning color code
+      doc.setFont("calibre", "normal");
+      doc.text(" 1. Administer without warning.", 20, 196); // Label "Name:"
+      doc.text(" 2. Shake gently before use.", 20, 201); // Label "Name:"
+      doc.text(
+        " 3. Do not add any medication to this blood / component.",
+        20,
+        206
+      ); // Label "Name:"
+      doc.text(
+        " 4. Check blood group on label and recipient's group and Name before administration.",
+        20,
+        211
+      ); // Label "Name:"
+      doc.text(
+        " 5. Use a fresh, clean and sterile transfusion set with filter to transfuse the blood | component.",
+        20,
+        216
+      ); // Label "Name:"
+      doc.text(" 6. Do not dispense without prescription.", 20, 221); // Label "Name:"
+      doc.text(
+        " 7. Do not use if there is any visible evidence of deterioration like haemolysis, clotting or discoloration.",
+        20,
+        226
+      ); // Label "Name:"
+      doc.text(" 8. Store between 2\u00B0C to 6\u00B0C.", 20, 231); // Label "Name:"
+      doc.text(
+        " 9. Appropriate compatiable cross-matched blood without a typical antibody in recipient's",
+        20,
+        236
+      ); // Label "Name:"
+      doc.text(" should be used.", 40, 241);
+      doc.text(
+        "10. If Haemolysis present, it must be transfused to recipients of O Group only.",
+        20,
+        246
+      ); // Label "Name:"
 
       //  Warning
       doc.rect(12, 250, 186, 10);
       doc.setFont("calibre", "bold");
       doc.setTextColor(237, 155, 2); // RGB warning color code
-      doc.text("BLOOD / COMPONENTS ONCE ISSUES WILL NOT BE TAKEN BACK OR REPLACE", 20, 256); // Label "Name:"
-      
-     // Save the PDF with a specific name
-     doc.save("blood_certificate.pdf");
-     // console.log("Download PDF clicked");
-   };
+      doc.text(
+        "BLOOD / COMPONENTS ONCE ISSUES WILL NOT BE TAKEN BACK OR REPLACE",
+        20,
+        256
+      ); // Label "Name:"
 
-}
+      // Save the PDF with a specific name
+      doc.save("blood_certificate.pdf");
+      // console.log("Download PDF clicked");
+    };
+  };
 
   return (
     <div>
       <Header />
-      <div className="mt-4">
+      <div className="maindetails">
         <div className="arrow-back-container">
-          <BiArrowBack
-            className="backLoginForm fs-2 text-dark"
-            onClick={() => navigate(-1)}
-          />
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h2 className="mb-4 text-center entity-column">
-          Blood Center Details{" "}
-        </h2>
+        <h2 className="propertyview">Blood Center Details </h2>
       </div>
-      <Container
-        className="detail w-50 text-center"
-        style={{
-          height: "65vh",
-          width: "50%",
-          boxShadow:
-            "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
-          marginBottom: "0",
-          marginTop: "10px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-        }}
-      >
-        <div className="d-flex flex-wrap">
-          <div className="w-50 pt-2">
+      <Container className="detail">
+        <div className="columnarrangement">
+          <div className="subcolumnarrangement">
             {firstColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderBloodcenterRow(key, bloodcenter[key]))}
           </div>
-          <div className="w-50 pt-2">
+          <div className="subcolumnarrangement1">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderBloodcenterRow(key, bloodcenter[key]))}
           </div>
         </div>
-<div className="bloodBtn">
-<Button
-          variant="primary"
-          onClick={handleBloodCenterPdf}
-          style={{
-            height: "45px",
-            width: "160px",
-            
-            marginTop: "20px",
-          }}
-        >
-          <FaDownload style={{ marginRight: "5px" }} /> Blood center
-        </Button>
-        <Button
-          variant="primary"
-          onClick={handleCertificate}
-          style={{
-            height: "45px",
-            width: "160px",
-            textAlign: "center",
-            marginTop: "20px",
-          }}
-        >
-          <FaDownload style={{ marginRight: "5px" }} /> Blood Certificate
-        </Button>
-</div>
-
+        <div className="bloodBtn">
+          <Button variant="primary" onClick={handleBloodCenterPdf}>
+            <FaDownload /> Blood center
+          </Button>
+          <Button variant="primary" onClick={handleCertificate}>
+            <FaDownload /> Blood Certificate
+          </Button>
+        </div>
       </Container>
     </div>
   );

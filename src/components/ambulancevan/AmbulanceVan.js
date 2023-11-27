@@ -86,18 +86,18 @@ const AmbulanceVan = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
+      <div className="addcontainer">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className=" mb-4 text-center">Ambulance Van</h1>
+      <h1 className="Addtext">Ambulance Van</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="ReceiverName"
               type="text"
@@ -110,7 +110,7 @@ const AmbulanceVan = () => {
               <div className="text-danger">{errors.receiverName}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Date"
               type="date"
@@ -122,8 +122,8 @@ const AmbulanceVan = () => {
             {errors.date && <div className="text-danger">{errors.date}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Account Holder Name"
               type="text"
@@ -136,7 +136,7 @@ const AmbulanceVan = () => {
               <div className="text-danger">{errors.accHolderName}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Rupee"
               type="number"
@@ -148,8 +148,8 @@ const AmbulanceVan = () => {
             {errors.rupee && <div className="text-danger">{errors.rupee}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Remark"
               type="text"
@@ -163,7 +163,7 @@ const AmbulanceVan = () => {
             )}
           </Col>
         </Row>
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

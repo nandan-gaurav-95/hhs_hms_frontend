@@ -109,18 +109,18 @@ const HHSComplex = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
+      <div className="addcontainer">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className=" mb-4 text-center">HHS Complex</h1>
+      <h1 className="Addtext">HHS Complex</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="L.F.No."
               type="number"
@@ -131,7 +131,7 @@ const HHSComplex = () => {
             />
             {errors.lfNo && <div className="text-danger">{errors.lfNo}</div>}
           </Col>
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="R.R.NO"
               type="number"
@@ -143,8 +143,8 @@ const HHSComplex = () => {
             {errors.rrNo && <div className="text-danger">{errors.rrNo}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Date"
               type="date"
@@ -156,7 +156,7 @@ const HHSComplex = () => {
             {errors.date && <div className="text-danger">{errors.date}</div>}
           </Col>
 
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Receiver Name"
               type="text"
@@ -170,8 +170,8 @@ const HHSComplex = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Rupee"
               type="number"
@@ -185,7 +185,7 @@ const HHSComplex = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Rupee In Words "
               type="text"
@@ -199,8 +199,8 @@ const HHSComplex = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Electrical Charges "
               type="number"
@@ -213,7 +213,7 @@ const HHSComplex = () => {
               <div className="text-danger">{errors.eleCharges}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <select
               className="form-select"
               type="text"
@@ -239,8 +239,8 @@ const HHSComplex = () => {
             {errors.month && <div className="text-danger">{errors.month}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Cheque No"
               type="text"
@@ -253,7 +253,7 @@ const HHSComplex = () => {
               <div className="text-danger">{errors.chequeNo}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Dated"
               type="date"
@@ -265,8 +265,8 @@ const HHSComplex = () => {
             {errors.dated && <div className="text-danger">{errors.dated}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Remark"
               type="text"
@@ -280,7 +280,7 @@ const HHSComplex = () => {
             )}
           </Col>
         </Row>
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>
