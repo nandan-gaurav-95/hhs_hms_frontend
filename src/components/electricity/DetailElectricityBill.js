@@ -331,37 +331,28 @@ const DetailElectricityBill = () => {
   return (
     <div>
       <Header />
-      <div className="mt-4">
+      <div className="maindetails">
         <div className="arrow-back-container">
           <BiArrowBack
-            className="backLoginForm fs-2 text-dark"
+            className="addbacklogo"
             onClick={() => navigate(-1)}
           />
         </div>
-        <h2 className="mb-4 text-center entity-column">
+        <h2 className="propertyview">
           Electricity Bill of {electricitybill.month}{" "}
         </h2>
       </div>
-      <Container  className="detail w-50 text-center"
-        style={{
-          height: "400px",
-          width: "100%",
-          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
-          marginBottom: "0",
-          marginTop: "10px",  
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start", 
-        }}>
-        <div className="d-flex flex-wrap">
-          <div className="w-50">
+      <Container  className="detail"
+       >
+        <div className="columnarrangement">
+          <div className="subcolumnarrangement">
             {firstColumnKeys
               .filter((key) => key !== "id")
               .map((key) =>
                 renderElectricityBillRow(key, electricitybill[key])
               )}
           </div>
-          <div className="w-50 pe-5 ">
+          <div className="subcolumnarrangement">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) =>
@@ -371,10 +362,6 @@ const DetailElectricityBill = () => {
         </div>
         <div
           className="pdf-btn-div"
-          style={{                   
-            lineHeight: "25px",
-            marginTop: "20px",
-          }}
         >
           <Button
            

@@ -99,19 +99,19 @@ const ShowInventory = () => {
   }, {});
 const reversedData = Object.keys(filteredData).reverse();
   return (
-    <div className="">
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
+      <div className="submainview">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className="mb-4 text-center">Show All Inventory</h1>
+      <h1 className="availabletext">Show All Inventory</h1>
 </div>
-      <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className=" search ms-4">
+      <div className="searchcontentcenter">
+        <div className=" search ">
           <Input
             label="Search"
             type="text"
@@ -119,7 +119,7 @@ const reversedData = Object.keys(filteredData).reverse();
             onChange={handleSearchChange}
           />
         </div>
-        <div className="ms-3">
+        <div className="invsearch">
           <select
             id="sortType"
             className="form-select"
@@ -132,7 +132,7 @@ const reversedData = Object.keys(filteredData).reverse();
           </select>
         </div>
 
-        <div className="ms-3">
+        <div className="invsearch">
           <select
             id="departmentSortType"
             className="form-select"

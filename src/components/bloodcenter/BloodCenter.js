@@ -170,21 +170,7 @@ const BloodCenter = () => {
             {errors.date && <div className="text-danger">{errors.date}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
         
-          <Col className="col-sm-5">
-            <Input
-              label="Expiry Date"
-              type="date"
-              name="expirydate"
-              value={formData.expirydate}
-              onChange={handleChange}
-              readOnly
-              required
-            />
-            {errors.expirydate && <div className="text-danger">{errors.expirydate}</div>}
-          </Col>
-        </Row>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
           <Col className="col-sm-5 ">
             <Input
@@ -340,6 +326,21 @@ const BloodCenter = () => {
             {errors.remark && (
               <div className="text-danger">{errors.remark}</div>
             )}
+          </Col>
+        </Row>
+        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
+        
+          <Col className="col-sm-5">
+            <Input
+              label="Expiry Date"
+              type="date"
+              name="expirydate"
+              value={formData.expirydate}
+              onChange={handleChange}
+              readOnly
+              required
+            />
+            {errors.expirydate && <div className="text-danger">{errors.expirydate}</div>}
           </Col>
         </Row>
         <div className="text-center mt-4 ">

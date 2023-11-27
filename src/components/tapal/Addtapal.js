@@ -95,18 +95,18 @@ const Addtapal = () => {
   return (
     <div className="">
       <Header />
-      <div className="mt-4">
+      <div className="addcontainer">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className=" mb-4 text-center">Add Tapal</h1>
+      <h1 className="Addtext">Add Tapal</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <select
               className="form-select"
               id="Letter Type"
@@ -121,7 +121,7 @@ const Addtapal = () => {
             </select>
             {errors.letterType && <div className="text-danger">{errors.letterType}</div>}
           </Col>
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="To Address"
               type="text"
@@ -133,8 +133,8 @@ const Addtapal = () => {
             {errors.toAddress && <div className="text-danger">{errors.toAddress}</div>}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="From Address"
               type="text"
@@ -145,7 +145,7 @@ const Addtapal = () => {
             />
             {errors.fromAddress && <div className="text-danger">{errors.fromAddress}</div>}
           </Col>
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Date"
               type="date"
@@ -156,8 +156,8 @@ const Addtapal = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="letterno"
               type="number"
@@ -168,7 +168,7 @@ const Addtapal = () => {
             />
           </Col>
         </Row>
-        <div className="text-center mt-4">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

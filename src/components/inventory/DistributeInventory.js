@@ -37,18 +37,16 @@ const DistributeInventory = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      <h1 className=" mb-4 text-center">Distribute Inventory</h1>
+      <div className="addcontainer">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
+        <h1 className="Addtext">Distribute Inventory</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Employee ID"
               type="text"
@@ -57,7 +55,7 @@ const DistributeInventory = () => {
               onChange={handleChange}
             />
           </Col>
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Employee Name"
               type="text"
@@ -67,8 +65,8 @@ const DistributeInventory = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Inventory Name"
               type="text"
@@ -78,7 +76,7 @@ const DistributeInventory = () => {
             />
           </Col>
 
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Quantity"
               type="number"
@@ -88,25 +86,24 @@ const DistributeInventory = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
-          <select
-                                className="form-select"
-                                id="select Inventory"
-                                name="inventory"
-                                value={formData.inventory}
-                                onChange={handleChange}
-                                required
-                                >
-                                <option value="">Select Inventory Type</option>
-                                <option value="Consumable">Consumable</option>
-                                <option value="NonConsumable ">NonConsumable</option>
-                            </select>  
-            
+        <Row className="row">
+          <Col className="column">
+            <select
+              className="form-select"
+              id="select Inventory"
+              name="inventory"
+              value={formData.inventory}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Inventory Type</option>
+              <option value="Consumable">Consumable</option>
+              <option value="NonConsumable ">NonConsumable</option>
+            </select>
           </Col>
         </Row>
-        
-        <div className="text-center mt-4 ">
+
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
         {/* <div className="text-center mt-4 ">

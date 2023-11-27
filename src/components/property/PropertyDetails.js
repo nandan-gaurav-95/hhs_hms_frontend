@@ -18,7 +18,9 @@ function PropertyDetails() {
   const [propData, setPropData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedProperty, setUpdatedProperty] = useState(propData.property || {});
+  const [updatedProperty, setUpdatedProperty] = useState(
+    propData.property || {}
+  );
   const [imageData, setImageData] = useState(null);
   const navigate = useNavigate();
 
@@ -27,8 +29,8 @@ function PropertyDetails() {
       try {
         const response = await axios.get(`${APIS.GETPROPBYID}/${id}`);
         const { status, data } = response;
-      
-        console.log("Hiii",response.data)
+
+        console.log("Hiii", response.data);
         if (status === 200) {
           setPropData(data);
           setUpdatedProperty(data);
@@ -58,7 +60,10 @@ function PropertyDetails() {
     setEditMode(!editMode);
     if (editMode) {
       try {
-        const response = await axios.put(`${APIS.UPDATEPROPERTY}/${id}`, updatedProperty);
+        const response = await axios.put(
+          `${APIS.UPDATEPROPERTY}/${id}`,
+          updatedProperty
+        );
         if (response.status === 200) {
           console.log("Property details updated successfully");
           navigate(`/property-details/${id}`);
@@ -93,7 +98,7 @@ function PropertyDetails() {
   const handlePhotos = async () => {
     // try {
     //   if (!id) return;
-    //   const response = await axios.get(`${APIS.GETCOMPANYPHOTOS}/${id}`);
+    //   const response = await axios.get(${APIS.GETCOMPANYPHOTOS}/${id});
     //   console.log("Hoiiiiiii", response);
     //   setImageData(response.data);
     // } catch (error) {
@@ -107,7 +112,7 @@ function PropertyDetails() {
     //   console.log("in handle photos", id);
     //   if (!id) return;
     //   const response = await axios.delete(
-    //     `${APIS.DELETECOMPANYPHOTOS}/${id}`
+    //     ${APIS.DELETECOMPANYPHOTOS}/${id}
     //   );
     //   setImageData(null);
     //   console.log("Deleted", response);
@@ -118,84 +123,60 @@ function PropertyDetails() {
 
   // Use the companyName in your component
   return (
-    <div className="">
-      <Header/>
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
-        {/* <Col md="1">
-          {propData?.imageData && (
-            <img
-              style={{
-                marginLeft: "10px",
-                marginTop: "0px",
-                width: "150px",
-                height: "100px",
-              }}
-              src={`data:${propData?.logo?.type};base64,${propData?.imageData}`}
-              alt="Company Logo"
-            />
-          )}
-        </Col> */}
+    <div className="editcontainer">
+      <Header />
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
         <Col>
-          <h1 className="text-center mb-4">
+          <h1 className="propertydetails">
             Property Details of {propData?.propertyName}
           </h1>
         </Col>
-      </Row>
       </div>
 
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>CST No:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="ctsNo"
                   value={updatedProperty.ctsNo}
                   onChange={handleChange}
                 />
-              ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.ctsNo}
-                </li>
+               ) : (
+                <li className="list-group-item ">{updatedProperty.ctsNo}</li>
               )}
 
               <strong>Email:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="email"
                   value={updatedProperty.email}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.email}
-                </li>
+                <li className="list-group-item ">{updatedProperty.email}</li>
               )}
 
               <strong>Account Name:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="accountName"
                   value={updatedProperty.accountName}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                <li className="list-group-item">
                   {updatedProperty.accountName}
                 </li>
               )}
@@ -203,29 +184,27 @@ function PropertyDetails() {
               <strong>Address:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="address"
                   value={updatedProperty.address}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.address}
-                </li>
+                <li className="list-group-item">{updatedProperty.address}</li>
               )}
 
               <strong>Annual Income:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="annualIncome"
                   value={updatedProperty.annualIncome}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                <li className="list-group-item">
                   {updatedProperty.annualIncome}
                 </li>
               )}
@@ -233,75 +212,67 @@ function PropertyDetails() {
               <strong>Boundries:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="boundries"
                   value={updatedProperty.boundries}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.boundries}
-                </li>
+                <li className="list-group-item">{updatedProperty.boundries}</li>
               )}
             </Col>
-            <Col className="col-sm-5 ">
+            <Col className="column">
               <strong>Extent Acres:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="area"
                   value={updatedProperty.area}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.area}
-                </li>
+                <li className="list-group-item">{updatedProperty.area}</li>
               )}
 
               <strong>Gazzet No:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="gazzetNo"
                   value={updatedProperty.gazzetNo}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.gazzetNo}
-                </li>
+                <li className="list-group-item">{updatedProperty.gazzetNo}</li>
               )}
 
               <strong>GST No:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="gstNo"
                   value={updatedProperty.gstNo}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.gstNo}
-                </li>
+                <li className="list-group-item">{updatedProperty.gstNo}</li>
               )}
 
               <strong>Registration Number:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="registrationNo"
                   value={updatedProperty.registrationNo}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                <li className="list-group-item">
                   {updatedProperty.registrationNo}
                 </li>
               )}
@@ -309,30 +280,27 @@ function PropertyDetails() {
               <strong>Tax Amount:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="taxAmt"
                   value={updatedProperty.taxAmt}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
-                  {updatedProperty.taxAmt}
-                </li>
+                <li className="list-group-item">{updatedProperty.taxAmt}</li>
               )}
-              
 
               <strong>Village Name:</strong>
               {editMode ? (
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
                   name="villageNm"
                   value={updatedProperty.villageNm}
                   onChange={handleChange}
                 />
               ) : (
-                <li className="list-group-item d-flex rounded-5 justify-content-between align-items-center">
+                <li className="list-group-item ">
                   {updatedProperty.villageNm}
                 </li>
               )}
@@ -340,7 +308,7 @@ function PropertyDetails() {
           </Row>
         </ul>
       </Row>
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group ">
         <Col md-2>
           {/* <Button
             variant="primary"
@@ -354,7 +322,6 @@ function PropertyDetails() {
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {editMode ? "Update" : "Edit"}
@@ -371,14 +338,14 @@ function PropertyDetails() {
         </Col>
       </Row>
       <Row>
-        <div className="text-center mt-4 form-group row">
-        <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent:"center"
-            }}
+        <div className="form-group">
+          <div
+            // style={{
+            //   display: "flex",
+            //   flexDirection: "row",
+            //   alignItems: "center",
+            //   justifyContent: "center",
+            // }}
           >
             {imageData &&
               imageData.map((base64String, index) => (
@@ -388,22 +355,18 @@ function PropertyDetails() {
                       width: "200px",
                       height: "150px",
                     }}
-                    src={`data:${imageData?.data?.type};base64,${base64String}`} // Assuming the images are JPEG format
+                    src={`data:${imageData?.data?.type};base64,${base64String}`}
                     alt={`Property photo ${index + 1}`}
                   />
                 </div>
               ))}
           </div>
-            {imageData && (<button
-              className="delete-button"
-              onClick={handleDelete}
-            >
+          {imageData && (
+            <button className="delete-button" onClick={handleDelete}>
               Delete
-          </button>
-           )}
-            
+            </button>
+          )}
         </div>
-        
       </Row>
       {/* </Sidebar> */}
     </div>

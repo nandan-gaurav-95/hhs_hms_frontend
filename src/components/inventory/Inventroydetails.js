@@ -6,7 +6,6 @@ import {
   MDBRow as Row,
   MDBCol as Col,
   MDBBtn as Button,
- 
 } from "mdb-react-ui-kit";
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
@@ -15,36 +14,37 @@ import { BiArrowBack } from "react-icons/bi";
 import axios from "axios";
 import { APIS } from "../constants/api";
 
-
 function InventoryDetails() {
   const { id } = useParams() || {};
   const [InventoryData, setInventoryData] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [updatedInventory, setUpdatedInventory] = useState(InventoryData.inventory || {});
-   
-    useEffect(() => {
-      async function fetchData() {
-        try {
-          const response = await axios.get(`${APIS.GETINVENTORYITEMBYID}/${id}`);
-          const { status, data } = response;
+  const [updatedInventory, setUpdatedInventory] = useState(
+    InventoryData.inventory || {}
+  );
 
-          console.log("Hiii",response.data)
-          if (status === 200) {
-            setInventoryData(data);
-            setUpdatedInventory(data);
-          } else {
-            console.error("Error while fetching inventory data");
-          }
-          setLoading(false);
-        } catch (error) {
-          console.error("Error:", error);
-          setLoading(false);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`${APIS.GETINVENTORYITEMBYID}/${id}`);
+        const { status, data } = response;
+
+        console.log("Hiii", response.data);
+        if (status === 200) {
+          setInventoryData(data);
+          setUpdatedInventory(data);
+        } else {
+          console.error("Error while fetching inventory data");
         }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error:", error);
+        setLoading(false);
       }
-      fetchData();
-    }, [id]);
+    }
+    fetchData();
+  }, [id]);
 
   if (loading) {
     // Handle loading state here (e.g., display a loading spinner)
@@ -60,7 +60,10 @@ function InventoryDetails() {
     setEditMode(!editMode);
     if (editMode) {
       try {
-        const response = await axios.put(`${APIS.UPDATEINVENTORYITEMBYID}/${id}`, updatedInventory);
+        const response = await axios.put(
+          `${APIS.UPDATEINVENTORYITEMBYID}/${id}`,
+          updatedInventory
+        );
         if (response.status === 200) {
           console.log("Employee details updated successfully");
           navigate(`/inventory-details/${id}`);
@@ -75,8 +78,6 @@ function InventoryDetails() {
       setEditMode(true);
     }
   };
-
-  
 
   const goBack = (event) => {
     // event.preventDefault();
@@ -94,92 +95,87 @@ function InventoryDetails() {
     // console.log(propData);
   };
 
- 
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-        <Row className="justify-content-center">
-          <Col>
-            <h1 className="text-center mb-4">Details of {updatedInventory?.inv_name}</h1>
-          </Col>
-        </Row>
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <Row className="justify-content-center">
-          <ul className="list-group">
-            <Row className="justify-content-center">
-              <Col className="col-sm-5 ">
-                <strong>Inventory ID:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="inv_id"
-                  value={updatedInventory.inv_id}
-                  onChange={handleChange}
-                />
+        {/* <Sidebar> */}
+    
+          <Col>
+            <h1 className="propertydetails">
+              Details of {updatedInventory?.inv_name}
+            </h1>
+          </Col>
+     
+      </div>
+      <Row className="detailsrow">
+        <ul className="list-group">
+          <Row className="detailsrow">
+            <Col className="column">
+              <strong>Inventory ID:</strong>
+              <input
+                className="list-group-item input-field"
+                type="text"
+                name="inv_id"
+                value={updatedInventory.inv_id}
+                onChange={handleChange}
+              />
 
-                <strong>Inventory Name</strong>
+              <strong>Inventory Name</strong>
 
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="inv_name"
-                  value={updatedInventory.inv_name}
-                  onChange={handleChange}
-                />
+              <input
+                className="list-group-item input-field"
+                type="text"
+                name="inv_name"
+                value={updatedInventory.inv_name}
+                onChange={handleChange}
+              />
 
-                <strong>Quantity:</strong>
+              <strong>Quantity:</strong>
 
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="quantity"
-                  value={updatedInventory.quantity}
-                  onChange={handleChange}
-                />
-              </Col>
-              <Col className="col-md-5">
-                <strong>Department:</strong>
-
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="department"
-                  value={updatedInventory.department}
-                  onChange={handleChange}
-                />
-
-                <strong>Type:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="inv_type"
-                  value={updatedInventory.inv_type}
-                  onChange={handleChange}
-                />
-
-                <strong>Price:</strong>
-
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="price"
-                  value={updatedInventory.price}
-                  onChange={handleChange}
-                /> </Col>
-                  <Row className="justify-content-center">
-              <Col className="col-sm-5 ">
+              <input
+                className="list-group-item input-field"
+                type="text"
+                name="quantity"
+                value={updatedInventory.quantity}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col className="column">
+              <strong>Department:</strong>
+              <input
+                className="list-group-item input-field"
+                type="text"
+                name="department"
+                value={updatedInventory.department}
+                onChange={handleChange}
+              />
+              <strong>Type:</strong>
+              <input
+                className="list-group-item input-field"
+                type="text"
+                name="inv_type"
+                value={updatedInventory.inv_type}
+                onChange={handleChange}
+              />
+              <strong>Price:</strong>
+              <input
+                className="list-group-item input-field"
+                type="text"
+                name="price"
+                value={updatedInventory.price}
+                onChange={handleChange}
+              />{" "}
+            </Col>
+            <Row className="detailsrow">
+              <Col className="column ">
                 <strong>Date:</strong>
 
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="date"
                   name="date"
                   value={updatedInventory.date}
@@ -187,13 +183,13 @@ function InventoryDetails() {
                 />
               </Col>
             </Row>
-            </Row>
-          </ul>
-        </Row>
+          </Row>
+        </ul>
+      </Row>
 
-        <Row className="text-center mt-4 form-group row ">
-          <Col md-2>
-            {/* <Button
+      <Row className="form-group ">
+        <Col md-2>
+          {/* <Button
               variant="primary"
               square
               style={{ width: "100px" }}
@@ -201,18 +197,17 @@ function InventoryDetails() {
             >
               Back
             </Button> */}
-            <Button
-              variant="primary"
-              type="submit"
-              square
-              style={{ marginLeft: "10px", width: "100px" }}
-              onClick={handleEditMode}
-            >
-               {editMode ? "Update" : "Edit"}
-              {/* Update */}
-            </Button>
-          </Col>
-        </Row>
+          <Button
+            variant="primary"
+            type="submit"
+            square
+            onClick={handleEditMode}
+          >
+            {editMode ? "Update" : "Edit"}
+            {/* Update */}
+          </Button>
+        </Col>
+      </Row>
       {/* </Sidebar> */}
     </div>
   );

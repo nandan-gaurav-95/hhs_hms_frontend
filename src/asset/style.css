@@ -1,15 +1,15 @@
 .delete-button {
   margin-top: 10px;
   margin-left: 47%;
-  padding: 4px 10px; 
-  background-color: #e75a4a; 
-  color: white; 
-  border: none; 
+  padding: 4px 10px;
+  background-color: #e75a4a;
+  color: white;
+  border: none;
   border-radius: 5px;
-  cursor: pointer; 
+  cursor: pointer;
   width: 100px;
 }
-.sideBar-div{
+.sideBar-div {
   max-width: 100%;
   max-height: 100%;
   padding: 0;
@@ -18,7 +18,7 @@
 }
 
 .delete-button:hover {
-  background-color: #d32f2f; 
+  background-color: #d32f2f;
 }
 .text-danger {
   text-align: center;
@@ -27,34 +27,30 @@
 .container {
   display: flex;
   flex-direction: row;
-  width:100%;
+  width: 100%;
   height: 100vh;
 }
-.icon{
+.icon {
   color: white;
-
 }
 .link_text {
-  color:white; 
-  
+  color: white;
 }
 .sidebar {
-
   width: 40%;
-  max-height: 100vh; 
-  min-width: 50px; 
-  transition: width 0.3s ease; 
-background-color:#333;
-  
+  max-height: 100vh;
+  min-width: 50px;
+  transition: width 0.3s ease;
+  background-color: #333;
 }
-.children{
-  width:70%;
-  max-height:100%;
+.children {
+  width: 70%;
+  max-height: 100%;
   /* background-image: linear-gradient(to top right, #0a8270, #7cff6b);   */
 }
 .children {
-  flex-grow: 1; 
-  transition: margin-left 0.3s ease; 
+  flex-grow: 1;
+  transition: margin-left 0.3s ease;
 }
 .children.collapsed {
   margin-left: 150px;
@@ -71,7 +67,7 @@ background-color:#333;
 
 .icon {
   margin-right: 10px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   color: white;
 }
 .link-text {
@@ -80,14 +76,14 @@ background-color:#333;
   color: white;
   /* font-size: 20px; */
   font-weight: bold;
-} 
+}
 .hidden-text {
   display: none;
 }
 
 .submenu-item .submenu-text {
   color: white;
-  margin-right:10px;
+  margin-right: 10px;
   margin-bottom: 20px;
 }
 .bars {
@@ -95,10 +91,9 @@ background-color:#333;
   color: white;
 }
 .backLogin:hover {
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 5px;
-  color: #FFF;
-  
+  color: #fff;
 }
 .backLoginForm:hover {
   border: 1px solid gray;
@@ -106,13 +101,6 @@ background-color:#333;
 .loginpic {
   width: 150px;
   height: 30px;
-}
-
-.loginimage {
-  width: 85%;
-  height: 15vh;
-  /* object-fit: cover; */
-  position: left;
 }
 .alllogin-container {
   width: 70%;
@@ -129,9 +117,9 @@ background-color:#333;
 }
 
 .backLogin:hover {
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 5px;
-  color: #FFF;
+  color: #fff;
 }
 .backLoginForm:hover {
   border: 1px solid gray;
@@ -141,15 +129,8 @@ background-color:#333;
 .listcontainer {
   width: 100%;
   display: flex;
-
 }
-.forbusiness-page {
- width:50%;
- /* height:100%; */
-  background: linear-gradient(to bottom right, #abf47a, #cbe77c, #a9e4a9, #b8f898, #bbe994, #c9eea6);
 
-
-}
 .login-logo-margin {
   border: 1px solid rgb(199, 195, 195);
   border-radius: 5px;
@@ -190,63 +171,52 @@ background-color:#333;
 }
 .forgetpagemaindiv,
 .Otpmaindiv {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Forgetdiv {
-    width: 100%;
+  width: 100%;
 }
- .signupimage {
+.signupimage {
   width: 100%;
   height: 110vh;
   object-fit: cover;
   position: left;
 }
 .logo {
-  color: #FFF;
-}
-.loginBOdyDiv{
-  height: 100%;
+  color: #fff;
 }
 
 .submenu-text {
   color: white;
-  margin-right:10px;
+  margin-right: 10px;
   margin-bottom: 20px;
 }
-.submenu-icon{
+.submenu-icon {
   color: white;
- margin: 0px 10px 20px 20px;
+  margin: 0px 10px 20px 20px;
 }
 .red-text {
   color: red;
 }
-.text-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+
 .submenu-text {
   color: white;
-  margin-right:10px;
+  margin-right: 10px;
   margin-bottom: 20px;
-  
 }
-.submenu-icon{
+.submenu-icon {
   color: white;
- 
- margin: 0px 10px 20px 20px;
-  
+
+  margin: 0px 10px 20px 20px;
 }
 
 th {
-  white-space: nowrap; 
-  text-align: center; 
+  white-space: nowrap;
+  text-align: center;
   padding: 5px;
 }
 .entity-row {
@@ -284,15 +254,13 @@ th {
   padding: 15px;
   margin-left: 25px;
 }
-.title{
+.title {
   text-align: center;
- 
 }
 .transaction-history-title {
   margin-top: 40px;
   position: relative;
 }
-
 
 .button-container {
   display: flex;
@@ -300,14 +268,14 @@ th {
 }
 
 .button-container button {
-  width: 40%; 
-  height:50px;
-  margin-left: 40px; 
+  width: 40%;
+  height: 50px;
+  margin-left: 40px;
 }
-.space{
-  width:15%;
+.space {
+  width: 15%;
 }
-.box{
+.box {
   display: flex;
   flex-direction: row;
 }
@@ -317,60 +285,59 @@ th {
 }
 
 .filter-select {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
-.filter-input{
-  width:100px;
+.filter-input {
+  width: 100px;
   margin-right: 10px;
   height: 28px;
 }
 
-.date-input{
+.date-input {
   margin-right: 10px;
-  width:100px;
+  width: 100px;
 }
 .arrow-back-container {
   position: absolute;
   /* top:0px; */
-  left: 20px; 
+  left: 20px;
 }
-.search{
-
-  width:30%;
-
-  }
-  .seachcontentcenter{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .transparent-input {
-    background-color: transparent !important; 
-    border: 1px solid #bdbdbd;
-  
-  }
-  .department-select {
-    margin-bottom: 20px; 
-  }
-  /* .centered-container {
+.search {
+  width: 30%;
+}
+.seachcontentcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.transparent-input {
+  background-color: transparent !important;
+  border: 1px solid #bdbdbd;
+}
+.department-select {
+  margin-bottom: 20px;
+}
+/* .centered-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 40vh;
 } */
 
-.loginbtn{
+.loginbtn {
   display: flex;
   justify-content: center;
 }
 
-.logbtn{
+.logbtn {
   margin-left: 0;
 }
-.detail-elebill{
-  height:430px;
+.detail-elebill {
+  height: 430px;
   /* width: 50%; */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
@@ -378,20 +345,21 @@ th {
 }
 .pdf-btn-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-top: 30px;
+  padding-left: 95px;
+  align-items: center;
+  text-align: center;
 }
 
 .pdf-btn {
-  width: 48%; /* Adjust as needed */
+  width: 30%; /* Adjust as needed */
 }
-.pdf-btn-elebill{
-      
-       width: 180px;
-
+.pdf-btn-elebill {
+  width: 180px;
 }
 
-.pdf-btn{
+.pdf-btn {
   display: flex;
   justify-content: center;
 }
@@ -411,7 +379,9 @@ th {
 .detail-voucher {
   height: 300px;
   width: 50%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
   margin-bottom: 0;
   display: flex;
   flex-flow: row wrap;
@@ -421,13 +391,367 @@ th {
 }
 
 .detail-girlhostel {
-  height:30vh;
+  height: 30vh;
   width: 45%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
   margin-top: 10px;
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
+}
+
+/* loginpage */
+
+.loginBOdyDiv {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forbusiness-page {
+  background: linear-gradient(to bottom right, #acf57b, #cbe77c, #a9e4a9, #b8f898, #bbe994, #c9eea6);
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 0.25rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.subforbusiness-page {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 3px 50px;
+}
+.loginformtext {
+  font-size: 28px;
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+.subloginformtext {
+  text-align: center;
+}
+.columnlogin {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 3px 50px;
+  margin-bottom: 10px;
+}
+.aifileye {
+  margin-top: 10px;
+  margin-inline-end: 24px;
+}
+.remember {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.logbtn {
+  margin-bottom: 10px;
+}
+.logincolor {
+  color: rgb(250, 242, 242);
+}
+.acc {
+  margin-top: 10px;
+  text-align: center;
+}
+.listcontainer {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.custom-list {
+  display: flex;
+  justify-content: center;
+}
+.custom-list-item {
+  padding-inline-end: 30px;
+}
+.HiOutlineSupport {
+  padding-top: 0px;
+  padding-bottom: 3px;
+}
+.center-logo {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+  height: 15vh;
+}
+
+/* signup */
+
+.signupacc {
+  text-align: center;
+  padding-bottom: 5px;
+}
+.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.background-signup {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh;
+}
+.center-logosignup {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  height: 15vh;
+}
+.backLoginForm {
+  font-size: 35px;
+  margin-inline-start: 0.75rem;
+  margin-top: 15px;
+}
+
+/* forgetpage */
+
+.subforget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+}
+.backLoginFormforget {
+  font-size: 40px;
+  margin-bottom: 495px;
+  margin-inline-start: 0.75rem;
+  border-radius: 0.25rem;
+  color: #000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.mainforget {
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 0.25rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bglight {
+  background-color: #f9fafc;
+  border-radius: 0.25rem;
+  box-shadow: 0 2.25rem 2.25rem rgba(0, 0, 0, 0.075);
+  width: 75%;
+  height: 70%;
+  padding-left: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+}
+.forgetcolumn {
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 0.25rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.forgetsubmit {
+  color: #000;
+}
+
+/* header */
+/* styles.css */
+
+.h1-custom-style {
+  margin-right: 40px;
+  padding: 0 130px;
+  padding-right: 20px;
+  text-shadow:
+    2px 2px 0 #fffacd,
+    -2px -2px 0 #fffacd,
+    2px -2px 0 #fffacd,
+    -2px 2px 0 #fffacd;
+}
+
+.headertext {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.subheadertext {
+  text-align: center;
+}
+
+/* Add Form */
+
+.addcontainer {
+  margin-top: 10px;
+}
+.addbacklogo {
+  font-size: 35px;
+  color: #000;
+}
+.Addtext {
+  text-align: center;
+  margin-top: 1px;
+  margin-bottom: 20px;
+}
+.row {
+  margin-top: 5px;
+  margin-bottom: 18px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.column {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+.submitbtn {
+  margin-bottom: 25px;
+  text-align: center;
+  margin-right: 37px;
+}
+
+/* view page */
+
+.deletebtn {
+  color: red;
+}
+.mainview {
+  text-align: center;
+}
+.submainview {
+  margin-top: 8px;
+}
+.availabletext {
+  margin-bottom: 18px;
+}
+.forsearch {
+  margin-bottom: 18px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.input-group {
+  width: 300px;
+}
+.viewbody {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+}
+
+/* detail page */
+
+.maindetails {
+  margin-top: 4px;
+}
+.propertyview {
+  margin-bottom: 38px;
+  text-align: center;
+  flex-flow: column;
+}
+.detail {
+  text-align: center;
+  width: 700px;
+  height: 430px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailemp{
+  text-align: center;
+  width: 700px;
+  height: 570px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.columnarrangement {
+  display: flex;
+  flex-wrap: wrap;
+}
+.subcolumnarrangement {
+  width: 330px;
+}
+.subcolumnarrangement1 {
+  width: 310px;
+}
+
+/* edit page */
+
+.editcontainer {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0 20px;
+}
+.mainedit {
+  margin-top: 15px;
+}
+.propertydetails {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.detailsrow {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 7px;
+  max-width: 550px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.input-field {
+  width: calc(100% - 0px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.searchcontentcenter{
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+  text-align: center;
+  padding-left: 325px;
+}
+.invsearch{
+  margin: 7px;
+  padding: 0px;
+}
+.form-group {
+  text-align: center;
 }
 
 /* detail blood center page  */

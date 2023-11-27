@@ -3,7 +3,7 @@ import "../../../asset/style.css";
 import {
   MDBContainer,
   MDBInput,
-  MDBBtn,
+  MDBBtn as Button,
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
@@ -86,26 +86,26 @@ export default function Signup() {
   // };
 
   return (
-    <div className="background-login" style={backgroundImageStyle}>
+    <div className="background-signup" style={backgroundImageStyle}>
     {/* <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center"> */}
       <ToastContainer />
       <MDBContainer
         fluid
-        className="loginBOdyDiv d-flex align-items-center justify-content-center"
+        className="loginBOdyDiv"
       >
         {/* <MDBRow> */}
-        <MDBCol className="forbusiness-page col-sm-6 rounded py-0">
+        <MDBCol className="forbusiness-page ">
           <BiArrowBack
-            className="backLoginForm fs-2 mt-4 ms-3 rounded  text-dark d-flex justify-content-start align-item-start"
+            className="backLoginForm "
             onClick={() => navigate(-1)}
           />
 
-          <div className="d-flex flex-row  justify-content-md-center ">
-            <div className="d-flex  w-75  p-5 py-1 pb-0 d-flex  flex-column  justify-content-center align-item-center">
-              <h2 className="loginformtext fs-3 fw-bold text-center">
+          <div className="subforbusiness-page">
+            <div className="subforbusiness-page">
+              <h2 className="loginformtext ">
                 H.H.S & H.M.S
               </h2>
-              <p className="text-center pb-3">Sign Up to Account</p>
+              <p className="signupacc">Sign Up to Account</p>
 
               <MDBInput
                 wrapperClass="mb-4"
@@ -170,9 +170,9 @@ export default function Signup() {
                   style={{ cursor: "pointer" }}
                 >
                   {passwordVisible ? (
-                    <AiFillEye className="mt-2 me-3" />
+                    <AiFillEye className="aifileye" />
                   ) : (
-                    <AiFillEyeInvisible className="mt-2 me-3" />
+                    <AiFillEyeInvisible className="aifileye" />
                   )}
                 </span>
               </MDBInput>
@@ -192,17 +192,19 @@ export default function Signup() {
                   style={{ cursor: "pointer" }}
                 >
                   {confirmpasswordVisible ? (
-                    <AiFillEye className="mt-2 me-3" />
+                    <AiFillEye className="aifileye" />
                   ) : (
-                    <AiFillEyeInvisible className="mt-2 me-3" />
+                    <AiFillEyeInvisible className="aifileye" />
                   )}
                 </span>
               </MDBInput>
-              <MDBBtn onClick={handleSignup}>
-                <text className="login text-white">Sign Up</text>
-              </MDBBtn>
+              <div className="loginbtn">
+                <Button className="logbtn" onClick={handleSignup}>
+                  <text className="logincolor">Sign Up</text>
+                </Button>
+              </div>
               <div className="text-center">
-                <p className="my-2">
+                <p className="acc">
                   Already have an account?
                   <Link to="/" className="Signupdiv">
                     <text className="signup">Login</text>
@@ -235,14 +237,14 @@ export default function Signup() {
                     </Link>
                   </MDBCol> */}
 
-                <div className="loginformpic mt-0 mb-0">
-                  <img src={hhsLogo} alt="Login image" className="loginimage" />
+                <div className="loginformpic ">
+                <img src={hhsLogo} alt="Login image" className="loginimage center-logosignup" />
                 </div>
 
                 {/* bottom link list */}
 
-                <div className="listcontainer w-100 d-flex justify-content-center ">
-                  <ul className="custom-list d-flex justify-content-center ">
+                <div className="listcontainer  ">
+                  <ul className="custom-list">
                     {/* <span className="GBDiv pt-1 pe-0 me-0">GB</span>
                       <Link>
                         <li className="ps-0 ms-0 pe-2 custom-list-item list-unstyled">
@@ -250,15 +252,15 @@ export default function Signup() {
                         </li>
                       </Link> */}
                     <Link>
-                      <li className=" pe-4 custom-list-item  ">
+                      <li className=" custom-list-item  ">
                         <text>
-                          <HiOutlineSupport className="pt-0 pb-1" />
+                          <HiOutlineSupport className="HiOutlineSupport" />
                           Support{" "}
                         </text>
                       </li>
                     </Link>
                     <Link>
-                      <li className="pe-2 custom-list-item ">
+                      <li className="custom-list-item ">
                         <text>Privacy Policy</text>
                       </li>
                     </Link>

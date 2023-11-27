@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  MDBContainer,
+  MDBContainer as Container,
   MDBRow as Row,
   MDBCol as Col,
   MDBInput as Input,
@@ -58,34 +58,31 @@ const Property = () => {
       if (response.status === 201) {
         console.log("Property data saved successfully");
         setFormData(initialState);
-        toast.success("Submit Successful!",{autoClose:1000});
+        toast.success("Submit Successful!", { autoClose: 1000 });
       } else {
         console.error("Error while saving Property data");
-        toast.error("Failed to submit Property",{autoClose:1000});
+        toast.error("Failed to submit Property", { autoClose: 1000 });
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred during submission",{autoClose:1000});
+      toast.error("An error occurred during submission", { autoClose: 1000 });
     }
   };
 
   return (
     <div className="">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
+      <div className="addcontainer">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
 
-      {/* <Sidebar> */}
-      <h1 className=" mb-4 text-center">Add Property Details</h1>
+        {/* <Sidebar> */}
+        <h1 className="Addtext">Add Property Details</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Property Name"
               type="text"
@@ -95,7 +92,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Town/Village"
               type="text"
@@ -106,8 +103,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <select
               className="form-select"
               id="proptype"
@@ -115,7 +112,6 @@ const Property = () => {
               value={formData.proptype}
               onChange={handleChange}
               required
-              style={{ marginTop: "20px" }}
             >
               <option value="">Property Type</option>
               <option value="Schools">Schools</option>
@@ -130,7 +126,7 @@ const Property = () => {
               <option value="Dargah">Dargah</option>
             </select>
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Enter E-mail"
               type="email"
@@ -141,8 +137,8 @@ const Property = () => {
             />
           </Col>
         </Row>{" "}
-        <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="GST No."
               type="text"
@@ -152,7 +148,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Phone No."
               type="text"
@@ -163,8 +159,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="CTS Number"
               type="text"
@@ -174,7 +170,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Area/size"
               type="number"
@@ -186,8 +182,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="boundries"
               type="text"
@@ -197,7 +193,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="taxAmt"
               type="number"
@@ -209,8 +205,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="accountName"
               type="text"
@@ -220,7 +216,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="annualIncome"
               type="number"
@@ -232,8 +228,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="address"
               type="text"
@@ -243,7 +239,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="registrationNo"
               type="number"
@@ -254,8 +250,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Gazzet No"
               type="text"
@@ -265,7 +261,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Rent"
               type="text"
@@ -276,8 +272,8 @@ const Property = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Maintenance Charges"
               type="text"
@@ -287,7 +283,7 @@ const Property = () => {
               required
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <select
               className="form-select"
               id="occupied"
@@ -302,7 +298,7 @@ const Property = () => {
             </select>
           </Col>
         </Row>
-        <div className="mt-4 text-center">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

@@ -89,19 +89,19 @@ const Viewtapal = () => {
   }, [searchQuery, selectLetterNo, selectLetterType, tapalData]);
 
   return (
-    <div>
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
+      <div className="submainview">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="title">Tapal Details</h2>
+      <h2 className="availabletext">Tapal Details</h2>
       </div>
-      <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className="search ms-4">
+      <div className="searchcontentcenter">
+        <div className="search">
           <input
             label="Search"
             type="text"
@@ -112,7 +112,7 @@ const Viewtapal = () => {
           />
         </div>
 
-        <div className="ms-4">
+        <div className="invsearch">
           <select
             id="lettertypeFilter"
             className="form-select"
@@ -126,7 +126,7 @@ const Viewtapal = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="shadow-lg p-3 mb-5 bg-white rounded">
+        <thead>
           <tr>
             <th>Sr. No</th>
             <th>Letter No</th>
@@ -137,7 +137,7 @@ const Viewtapal = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
+        <tbody>
   {/* {Object.keys(filteredTapal).map((id, index) => {
     const tapal = filteredTapal[id]; */}
     {reversedData.map((id, index) => {

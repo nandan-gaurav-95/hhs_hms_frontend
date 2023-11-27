@@ -96,19 +96,19 @@ const AllEmployee = () => {
   const reversedData = Object.keys(filteredEmployees).reverse();
 
   return (
-    <div className="">
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
+      <div className="submainview">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className="mb-4 text-center">Employee Details</h1>
+      <h1 className="availabletext">Employee Details</h1>
 </div>
-      <div className="d-flex seachcontentcenter mb-4 align-items-center">
-        <div className=" search ms-4">
+      <div className="searchcontentcenter">
+        <div className=" search">
           <Input
             label="Search"
             type="text"
@@ -116,7 +116,7 @@ const AllEmployee = () => {
             onChange={handleSearchChange}
           />
         </div>
-        <div className="ms-3">
+        <div className="invsearch">
           <select
             id="sortType"
             className="form-select"
@@ -129,7 +129,7 @@ const AllEmployee = () => {
           </select>
         </div>
 
-        <div className="ms-3">
+        <div className="invsearch">
           <select
             id="departmentSortType"
             className="form-select"

@@ -117,18 +117,18 @@ const ElectricityBill = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
+      <div className="addcontainer">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h1 className=" mb-4 text-center">Electricity Bill</h1>
+      <h1 className="Addtext">Electricity Bill</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Name"
               type="text"
@@ -139,7 +139,7 @@ const ElectricityBill = () => {
             />
             {errors.name && <div className="text-danger">{errors.name}</div>}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column ">
             <Input
               label="Shop No"
               type="text"
@@ -153,8 +153,8 @@ const ElectricityBill = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="R.R. No."
               type="number"
@@ -166,7 +166,7 @@ const ElectricityBill = () => {
             {errors.rrNo && <div className="text-danger">{errors.rrNo}</div>}
           </Col>
 
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Ledger Follo No"
               type="number"
@@ -180,8 +180,8 @@ const ElectricityBill = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column ">
             <Input
               label="Sanction Load "
               type="text"
@@ -194,7 +194,7 @@ const ElectricityBill = () => {
               <div className="text-danger">{errors.sanctionLoad}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Tariff"
               type="text"
@@ -208,8 +208,8 @@ const ElectricityBill = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Present Reading"
               type="text"
@@ -222,7 +222,7 @@ const ElectricityBill = () => {
               <div className="text-danger">{errors.presentReading}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Previous Reading"
               type="text"
@@ -236,8 +236,8 @@ const ElectricityBill = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column ">
             <Input
               label="Unit Consumed"
               type="text"
@@ -250,7 +250,7 @@ const ElectricityBill = () => {
               <div className="text-danger">{errors.unitConsumed}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Unit Sancd"
               type="text"
@@ -264,8 +264,8 @@ const ElectricityBill = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row ">
+          <Col className="column">
             <Input
               label="Date Of Reading"
               type="date"
@@ -279,7 +279,7 @@ const ElectricityBill = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <select
               className="form-select"
               type="text"
@@ -306,7 +306,7 @@ const ElectricityBill = () => {
           </Col>
         </Row>
 
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

@@ -90,7 +90,7 @@ const AllProperties = () => {
           <td>{property.gstNo}</td>
           <td>{property.mobNo}</td>
           <td>{property.villageNm}</td>
-          <td>{property.area}</td>
+          {/* <td>{property.area}</td> */}
           <td>{property.gazzetNo}</td>
           <td>{property.mcharges}</td>
           <td>
@@ -108,7 +108,7 @@ const AllProperties = () => {
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() => handleDelete(propId)}
-                    className="red-text"
+                    className="deletebtn"
                   >
                     Delete Profile
                   </Dropdown.Item>
@@ -121,29 +121,29 @@ const AllProperties = () => {
     });
 
   return (
-    <div className="text-center">
+    <div className="mainview">
       <Header />
-      <div className="mt-4">
+      <div className="submainview">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      <h2 className="mb-4">Available Properties</h2>
+      <h2 className="availabletext">Available Properties</h2>
       </div>
-      <Col className="mb-4 d-flex flex-column align-items-center">
-        <div className="input-group" style={{ maxWidth: "300px" }}>
+      <Col className="forsearch">
+        <div className="input-group">
           <input
             type="text"
             placeholder="Search Company..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="form-control rounded"
-            style={{
-              borderTopRightRadius: "1.25rem",
-              borderBottomRightRadius: "1.25rem",
-            }}
+            // style={{
+            //   borderTopRightRadius: "1.25rem",
+            //   borderBottomRightRadius: "1.25rem",
+            // }}
           />
           <div className="input-group-append">
             <span className="input-group-text" onClick={handleSearch}>
@@ -153,7 +153,7 @@ const AllProperties = () => {
         </div>
       </Col>
       <Table>
-        <thead className="shadow-lg p-3 mb-5 bg-white rounded">
+        <thead className="viewbody">
           <tr>
             <th>SI.No</th>
             <th>Property Name</th>
@@ -161,13 +161,13 @@ const AllProperties = () => {
             <th>GST NO</th>
             <th>Contact NO</th>
             <th>Location</th>
-            <th>Size</th>
+            {/* <th>Size</th> */}
             <th>Gazzet NO</th>
             <th>Maintenance Charges</th>
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="shadow-lg p-3 mb-5 bg-white rounded">
+        <tbody className="subviewbody">
           {filteredProperties}
         </tbody>
       </Table>

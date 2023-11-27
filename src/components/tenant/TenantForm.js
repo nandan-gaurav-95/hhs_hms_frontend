@@ -132,19 +132,19 @@ const TenantForm = () => {
   return (
     <div className=" ">
       <Header />
-      <div className="mt-4">
+      <div className="addcontainer">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
       {/* <Sidebar> */}
-      <h1 className=" mb-4 text-center">Tenant Management</h1>
+      <h1 className="Addtext">Tenant Management</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Name"
               type="text"
@@ -158,7 +158,7 @@ const TenantForm = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5">
+          <Col className="column">
             <select
               className="form-select"
               id="Complex"
@@ -176,8 +176,8 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column ">
             <Input
               label="Contact No"
               type="tel"
@@ -191,7 +191,7 @@ const TenantForm = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5">
+          <Col className="column">
             <Input
               label="Allocated Shop"
               type="text"
@@ -205,8 +205,8 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Current Address"
               type="text"
@@ -220,7 +220,7 @@ const TenantForm = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5 ">
+          <Col className="column ">
             <Input
               label="Deposit"
               type="text"
@@ -234,8 +234,8 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column">
             <Input
               label="Rent Due"
               type="text"
@@ -248,7 +248,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.rentDue}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Electricity Due"
               type="text"
@@ -262,8 +262,8 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <select
               className="form-select"
               id="paymentMethod"
@@ -283,7 +283,7 @@ const TenantForm = () => {
               <div className="text-danger">{errors.paymentMethod}</div>
             )}
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Collection Details"
               type="text"
@@ -297,8 +297,8 @@ const TenantForm = () => {
             )}
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column ">
             <Input
               label="Bill Generation/Total Bill"
               type="text"
@@ -312,7 +312,7 @@ const TenantForm = () => {
             )}
           </Col>
 
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Agreement Start Date"
               type="date"
@@ -323,8 +323,8 @@ const TenantForm = () => {
           </Col>
         </Row>
 
-        <Row className="row mt-4 mb-2 justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+        <Row className="row">
+          <Col className="column ">
             <Input
               label="Collected Rent"
               type="text"
@@ -333,7 +333,7 @@ const TenantForm = () => {
               onChange={handleChange}
             />
           </Col>
-          <Col className="col-sm-5 ">
+          <Col className="column">
             <Input
               label="Agreement Expiry Date"
               type="date"
@@ -343,8 +343,8 @@ const TenantForm = () => {
             />
           </Col>
         </Row>
-        <Row className="row mt-4 mb-2  justify-content-evenly align-items-center">
-          <Col className="col-sm-5">
+        <Row className="row">
+          <Col className="column">
             <select
               className="form-select"
               id="status"
@@ -363,7 +363,7 @@ const TenantForm = () => {
           </Col>
         </Row>
 
-        <div className="text-center mt-4 ">
+        <div className="submitbtn">
           <Button type="submit">Submit</Button>
         </div>
       </form>

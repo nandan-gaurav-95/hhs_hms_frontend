@@ -20,7 +20,6 @@ function LoginEmployee() {
   const [passwordError, setPasswordError] = useState("");
   const [department, setDepartment] = useState("Employee");
 
-
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
@@ -82,91 +81,82 @@ function LoginEmployee() {
       {/* <body class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center 
      "> */}
 
-      <Container
-        fluid
-        className="loginBOdyDiv d-flex align-items-center justify-content-center h-100"
-      >
+      <Container fluid className="loginBOdyDiv">
         <ToastContainer />
-        <Col className="forbusiness-page col-sm-6 rounded py-0">
-          <div className="d-flex flex-row  justify-content-md-center ">
-            <div className="d-flex  w-100  p-5 py-1 pb-0 d-flex  flex-column justify-content-center align-item-center">
-              <h2 className="loginformtext fs-3 p-3 fw-bold text-center">
-                H.H.S & H.M.S
-              </h2>
-              <p className="text-center">Login In to Employee Management</p>
+        <Col className="forbusiness-page">
+          <div className="subforbusiness-page">
+            <h2 className="loginformtext">H.H.S & H.M.S</h2>
+            <p className="subloginformtext">Login In to Employee Management</p>
 
-              <div className=" px-4 pb-0 d-flex  flex-column  justify-content-center">
+            <div className="columnlogin">
               <Input
                 className="transparent-input"
-                  wrapperClass="mb-4 py-1"
-                  label="Department"
-                  id="form3"
-                  type="text"
-                  value={department}
-                  readOnly
-                  
-                />
-                <Input
-                  wrapperClass="mb-4 py-1"
-                  label="Email address"
-                  id="form1"
-                  type="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  wrapperClass="mb-4  py-1 d-flex align-item-center "
-                  label="Password"
-                  id="form2"
-                  type={passwordVisible ? "text" : "password"}
-                  // value={password}
-                  // onChange={(e) => setPassword(e.target.value)}
+                wrapperClass="mb-4 py-1"
+                label="Department"
+                id="form3"
+                type="text"
+                value={department}
+                readOnly
+              />
+              <Input
+                wrapperClass="mb-4 py-1"
+                label="Email address"
+                id="form1"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                wrapperClass="mb-4  py-1 d-flex align-item-center "
+                label="Password"
+                id="form2"
+                type={passwordVisible ? "text" : "password"}
+                // value={password}
+                // onChange={(e) => setPassword(e.target.value)}
+              >
+                <span
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  style={{ cursor: "pointer" }}
                 >
-                  <span
-                    onClick={() => setPasswordVisible(!passwordVisible)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {passwordVisible ? (
-                      <AiFillEye className="mt-2 me-3" />
-                    ) : (
-                      <AiFillEyeInvisible className="mt-2 me-3" />
-                    )}
-                  </span>
-                </Input>
-                {passwordError && (
-                  <div className="text-danger">{passwordError}</div>
-                )}
+                  {passwordVisible ? (
+                    <AiFillEye className="aifileye" />
+                  ) : (
+                    <AiFillEyeInvisible className="aifileye" />
+                  )}
+                </span>
+              </Input>
+              {passwordError && (
+                <div className="text-danger">{passwordError}</div>
+              )}
 
-                <div className="d-flex justify-content-between  mb-4">
-                  <Checkbox
-                    className="flexCheck"
-                    value=""
-                    id="flexCheckDefault"
-                    label="Remember me"
-                  />
-                  <Link to="/forgetPage" className="Forgetmail ">
-                    <text className="forgetpasss">Forgot password?</text>
-                  </Link>
-                </div>
-                  
-                <div className="loginbtn">
-                <Button className="mb-2" onClick={handleLogin}>
-                    <text className=" text-white ">
-                      Log In
-                    </text>
+              <div className="remember">
+                <Checkbox
+                  className="flexCheck"
+                  value=""
+                  id="flexCheckDefault"
+                  label="Remember me"
+                />
+                <Link to="/forgetPage" className="Forgetmail ">
+                  <text className="forgetpasss">Forgot password?</text>
+                </Link>
+              </div>
+
+              <div className="loginbtn">
+                <Button className="logbtn" onClick={handleLogin}>
+                  <text className="logincolor ">Log In</text>
                 </Button>
-                </div>
+              </div>
 
-                <div className="businesshr text-center">
-                  <p className="my-2 mb-2">
-                    Don't have Account?
-                    <Link to="/signUp" className="Signupdiv">
-                      <text className="signup">Create Account</text>
-                    </Link>
-                  </p>
+              <div className="businesshr">
+                <p className="acc">
+                  Don't have Account?
+                  <Link to="/signUp" className="Signupdiv">
+                    <text className="signup">Create Account</text>
+                  </Link>
+                </p>
 
-                  {/* <p className="hr-lines mb-4">OR </p> */}
+                {/* <p className="hr-lines mb-4">OR </p> */}
 
-                  {/* <Col className=" login-logo-margin col-sm-12 mb-4">
+                {/* <Col className=" login-logo-margin col-sm-12 mb-4">
                       <Link to="" className="loginfacebook ">
                         <text className="facebook_log  py-2 d-flex  align-items-center">
                           {" "}
@@ -178,7 +168,7 @@ function LoginEmployee() {
                       </Link>
                     </Col> */}
 
-                  {/* <Col className="login-logo-margin col-sm-12 mb-2">
+                {/* <Col className="login-logo-margin col-sm-12 mb-2">
                       <Link to="" className="logingoogle">
                         <text className="google_log py-2 d-flex  align-items-center ">
                           {" "}
@@ -189,30 +179,29 @@ function LoginEmployee() {
                         </text>
                       </Link>
                     </Col> */}
-                  <div className="loginformpic mt-3 mt-0 mb-0">
-                    <img
-                      src={hhsLogo}
-                      alt="Login image"
-                      className="loginimage"
-                    />
-                  </div>
-                  <div className="listcontainer w-100 mt-2 d-flex justify-content-center ">
-                    <ul className="custom-list d-flex justify-content-center ">
-                      <Link>
-                        <li className=" pe-4 custom-list-item  ">
-                          <text>
-                            <HiOutlineSupport className="pt-0 pb-1" />
-                            Support{" "}
-                          </text>
-                        </li>
-                      </Link>
-                      <Link>
-                        <li className="pe-2 custom-list-item ">
-                          <text>Privacy Policy</text>
-                        </li>
-                      </Link>
-                    </ul>
-                  </div>
+                <div className="loginformpic">
+                  <img
+                    src={hhsLogo}
+                    alt="Login image"
+                    className="loginimage center-logo"
+                  />
+                </div>
+                <div className="listcontainer">
+                  <ul className="custom-list">
+                    <Link>
+                      <li className=" custom-list-item  ">
+                        <text>
+                          <HiOutlineSupport className="HiOutlineSupport" />
+                          Support{" "}
+                        </text>
+                      </li>
+                    </Link>
+                    <Link>
+                      <li className="custom-list-item ">
+                        <text>Privacy Policy</text>
+                      </li>
+                    </Link>
+                  </ul>
                 </div>
               </div>
             </div>

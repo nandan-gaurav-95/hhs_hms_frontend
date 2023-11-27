@@ -95,33 +95,31 @@ useEffect(() => {
 
   
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header/>
-      <div className="mt-4">
+      <div className="mainedit">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
-        
+     
         <Col>
-          <h1 className="text-center mb-4">Details of {updatedEmployee?.empName}</h1>
+          <h1 className="propertydetails">Details of {updatedEmployee?.empName}</h1>
         </Col>
-      </Row>
+     
 </div>
           
       
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
 
               <strong>Empolyee ID:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="emp_id"
                   value={updatedEmployee.emp_id}
@@ -132,7 +130,7 @@ useEffect(() => {
               <strong>Employee Name</strong>
              
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="empName"
                   value={updatedEmployee.empName}
@@ -142,7 +140,7 @@ useEffect(() => {
               <strong>Department:</strong>
               
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="department"
                   value={updatedEmployee.department}
@@ -152,7 +150,7 @@ useEffect(() => {
               <strong>DOB:</strong>
             
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="date"
                   name="dob"
                   value={updatedEmployee.dob}
@@ -161,7 +159,7 @@ useEffect(() => {
 
               <strong>Gender:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="gender"
                   value={updatedEmployee.gender}
@@ -170,7 +168,7 @@ useEffect(() => {
 
               <strong>Contact Number:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="tel"
                   name="contactNum"
                   value={updatedEmployee.contactNum}
@@ -179,7 +177,7 @@ useEffect(() => {
                 
               <strong>Blood Group:</strong>
               <select
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="Blood Group"
                 name="bloodgroup"
                 value={updatedEmployee.bloodgroup}
@@ -197,7 +195,7 @@ useEffect(() => {
               </select>
               <strong>Aadhar Number:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="number"
                   name="aadhar"
                   value={updatedEmployee.aadhar}
@@ -208,7 +206,7 @@ useEffect(() => {
    
             <strong>Qualification:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="qualification"
                   value={updatedEmployee.qualification}
@@ -218,7 +216,7 @@ useEffect(() => {
 
                 <strong>PAN Number:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="pan"
                   value={updatedEmployee.pan}
@@ -226,11 +224,11 @@ useEffect(() => {
                   required
                 />
                 </Col>
-                 <Col className="col-sm-5 ">
+                 <Col className="column">
 
                 <strong>Position:</strong>
                 <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 className="list-group-item input-field "
                   type="text"
                   name="position"
                   value={updatedEmployee.position}
@@ -240,7 +238,7 @@ useEffect(() => {
             
             <strong>Basic Salary:</strong>            
                 <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 className="list-group-item input-field "
                  type="text"
                  name="basicSalary"
                  value={updatedEmployee.basicSalary}
@@ -251,7 +249,7 @@ useEffect(() => {
               <strong>Net Salary:</strong>
    
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                   name="netSalary"
                   value={updatedEmployee.netSalary}
@@ -262,7 +260,7 @@ useEffect(() => {
                 <strong>Gross Salary:</strong>
   
                 <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 className="list-group-item input-field"
                   type="text"
                   name="grossSalary"
                   value={updatedEmployee.grossSalary}
@@ -273,7 +271,7 @@ useEffect(() => {
               <strong>Allowance:</strong>            
 
                 <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 className="list-group-item input-field"
                  type="text"
                  name="allowance"
                  value={updatedEmployee.allowance}
@@ -283,7 +281,7 @@ useEffect(() => {
               <strong>Deduction:</strong>
    
                 <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="deduction"
                 value={updatedEmployee.deduction}
@@ -294,7 +292,7 @@ useEffect(() => {
               <strong>Loan Amount:</strong>            
 
                 <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 className="list-group-item input-field"
                 type="text"
                 name="loanAmount"
                 value={updatedEmployee.loanAmount}
@@ -304,7 +302,7 @@ useEffect(() => {
               <strong>Loan Repayment Amount:</strong>
    
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="text"
                 name="loanRepaymentAmount"
                 value={updatedEmployee.loanRepaymentAmount}
@@ -323,7 +321,7 @@ useEffect(() => {
                 /> */}
                 <strong>Inventory Item</strong>
                 <input
-                 className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                 className="list-group-item input-field"
                  type="text"
                  name="inventoryItem"
                  value={updatedEmployee.inventoryItem}
@@ -332,7 +330,7 @@ useEffect(() => {
                 />
                 <strong>Date Of Hiring:</strong>
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="date"
                   name="dateOfHiring"
                   value={updatedEmployee.dateOfHiring}
@@ -345,7 +343,7 @@ useEffect(() => {
           
         </ul>
       </Row>
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group ">
         <Col md-2>
           {/* <Button
             variant="primary"
@@ -359,7 +357,6 @@ useEffect(() => {
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {editMode ? "Update" : "Edit"}

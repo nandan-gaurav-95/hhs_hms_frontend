@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { APIS } from "../constants/api";
 import { TapalService } from "../../services/TapalService";
-import axios from 'axios';
+import axios from "axios";
 import {
   MDBContainer as Container,
   MDBRow as Row,
@@ -12,7 +12,6 @@ import {
 import Sidebar from "../admin/Sidebar";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
-
 
 function Edittapal() {
   const { id } = useParams() || {};
@@ -27,7 +26,7 @@ function Edittapal() {
       try {
         if (!id) return;
         const response = await axios.get(`${APIS.GETTAPALBYID}/${id}`);
-console.log("tapalId",response.data);
+        console.log("tapalId", response.data);
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
@@ -65,10 +64,13 @@ console.log("tapalId",response.data);
     setEditMode(!editMode);
     if (editMode) {
       try {
-         const response = await axios.put(`${APIS.UPDATETAPALBYID}/${id}`, updateTapal);
+        const response = await axios.put(
+          `${APIS.UPDATETAPALBYID}/${id}`,
+          updateTapal
+        );
         if (response.status === 200) {
           console.log("tapal details updated successfully");
-         
+
           setEditMode(false);
         } else {
           console.error("Error while updating tapal data");
@@ -83,31 +85,24 @@ console.log("tapalId",response.data);
     }
   };
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-      <Row className="justify-content-center">
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
         <Col>
-          <h1 className="text-center mb-4">
-            Details of {propData?.letterNo}
-          </h1>
+          <h1 className="propertydetails">Details of {propData?.letterNo}</h1>
         </Col>
-      </Row>
       </div>
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>Letter No</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="letterNo"
                 value={updateTapal.letterNo}
@@ -116,18 +111,18 @@ console.log("tapalId",response.data);
               <strong>To Address</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item  input-field"
                 type="text"
                 name="toAddress"
                 value={updateTapal.toAddress}
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-md-5">
+            <Col className="column">
               <strong>Letter Type</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item  input-field"
                 type="text"
                 name="letterType"
                 value={updateTapal.letterType}
@@ -135,7 +130,7 @@ console.log("tapalId",response.data);
               />
               <strong>From Address</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item  input-field"
                 type="text"
                 name="fromAddress"
                 value={updateTapal.fromAddress}
@@ -145,7 +140,7 @@ console.log("tapalId",response.data);
             <Col className="col-md-5">
               <strong>Date</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item  input-field"
                 type="date"
                 name="date"
                 value={updateTapal.date}
@@ -156,18 +151,17 @@ console.log("tapalId",response.data);
         </ul>
       </Row>
 
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group ">
         <Col md-2>
-        <Button
-              variant="primary"
-              type="submit"
-              square
-              style={{ marginLeft: "10px", width: "100px" }}
-              onClick={handleEditMode}
-            >
-              {/* Update */}
-              {editMode ? "Update" : "Edit"} 
-            </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            square
+            onClick={handleEditMode}
+          >
+            {/* Update */}
+            {editMode ? "Update" : "Edit"}
+          </Button>
         </Col>
       </Row>
       {/* </Sidebar> */}

@@ -9,14 +9,14 @@ import { APIS } from "../api";
 
 export default function ForgetPage() {
   const navigate = useNavigate();
-  const initialState ={
+  const initialState = {
     email: "",
     newPassword: "",
     confirmPassword: "",
-  }
+  };
   const [formData, setFormData] = useState(initialState);
   const [passwordVisible, setPasswordVisible] = useState(false);
- 
+
   const handleResetPassword = async () => {
     try {
       if (formData.newPassword !== formData.confirmPassword) {
@@ -42,67 +42,75 @@ export default function ForgetPage() {
     }
   };
 
-
-
   return (
-    <div className="forgetpagemaindiv d-flex justify-content-center align-item-center">
-      <MDBContainer className="rounded d-flex justify-content-center align-item-center">
+    <div className="forgetpagemaindiv">
+      <MDBContainer className="subforget">
         <BiArrowBack
-          className="backLoginForm fs-2 mt-4 ms-3 rounded text-dark d-flex justify-content-start align-item-start"
+          className="backLoginFormforget "
           onClick={() => navigate(-1)}
         />
-        <MDBCol className="col-sm-6 rounded d-flex justify-content-center align-items-center">
-          <div className="bg-light rounded shadow w-75 px-3 pt-4 pb-5">
-            <div className="loginformpic float-left"></div>
-            <h2 className="loginformtext fs-3 fw-bold text-center p-5">
-              Forgot Password
-            </h2>
-            <div className="px-5 d-flex flex-column justify-content-center align-items-center">
+        <MDBCol className="mainforget">
+          <div className="bglight">
+            <div className="loginformpic "></div>
+            <h2 className="loginformtext ">Forgot Password</h2>
+            <div className="forgetcolumn ">
               <MDBInput
                 wrapperClass=" mb-4 "
                 label="Email address"
                 id="form1"
                 type="email"
-          
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
               />
               <MDBInput
                 wrapperClass="mb-4 d-flex align-item-center "
                 label="Enter New Password"
                 id="form2"
                 type={passwordVisible ? "text" : "password"}
-          
                 value={formData.newPassword}
-                onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, newPassword: e.target.value })
+                }
               >
                 <span
-                    onClick={() => setPasswordVisible(!passwordVisible)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {passwordVisible ? (
-                      <AiFillEye className="mt-2 me-3" />
-                    ) : (
-                      <AiFillEyeInvisible className="mt-2 me-3" />
-                    )}
-                  </span>
-                </MDBInput>
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {passwordVisible ? (
+                    <AiFillEye className="aifileye" />
+                  ) : (
+                    <AiFillEyeInvisible className="aifileye" />
+                  )}
+                </span>
+              </MDBInput>
 
               <MDBInput
                 wrapperClass="mb-4 d-flex align-item-center "
                 label="Confirm Password"
                 id="form2"
                 type="password"
-             
                 value={formData.confirmPassword}
-                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, confirmPassword: e.target.value })
+                }
               >
                 {" "}
-                <AiFillEyeInvisible className="mt-2 me-3" />
+                <span
+                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {passwordVisible ? (
+                    <AiFillEye className="aifileye" />
+                  ) : (
+                    <AiFillEyeInvisible className="aifileye" />
+                  )}
+                </span>
               </MDBInput>
               <MDBBtn onClick={handleResetPassword}>
-              <Link to="/" className="Forgetdiv">
-                  <text className="forgetsubmit text-dark">Submit</text>
+                <Link to="/" className="Forgetdiv">
+                  <text className="forgetsubmit">Submit</text>
                 </Link>
               </MDBBtn>
             </div>

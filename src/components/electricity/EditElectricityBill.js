@@ -86,29 +86,29 @@ function EditElectricityBill() {
   };
 
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
+      <div className="mainedit">
       <div className="arrow-back-container">
         <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
+          className="addbacklogo"
           onClick={() => navigate(-1)}
         />
       </div>
       {/* <Sidebar> */}
-      <Row className="justify-content-center">
+  
         <Col>
-          <h1 className="text-center mb-4">Details of {propData?.month}</h1>
+          <h1 className="propertydetails">Details of {propData?.month}</h1>
         </Col>
-      </Row>
+     
       </div>
-      <Row className="justify-content-center">
+      <Row className="detailsrow">
         <ul className="list-group">
-          <Row className="justify-content-center">
-            <Col className="col-sm-5 ">
+          <Row className="detailsrow">
+            <Col className="column">
               <strong>Name:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="name"
                 value={updateElectricityBill.name}
@@ -118,7 +118,7 @@ function EditElectricityBill() {
               <strong>Shop No</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="shopNo"
                 value={updateElectricityBill.shopNo}
@@ -126,7 +126,7 @@ function EditElectricityBill() {
               />
               <strong>R.R. NO.</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="number"
                 name="rrNo"
                 value={updateElectricityBill.rrNo}
@@ -135,7 +135,7 @@ function EditElectricityBill() {
               <strong>Ledger Follo No:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="ledger_follono"
                 value={updateElectricityBill.ledger_follono}
@@ -144,7 +144,7 @@ function EditElectricityBill() {
               <strong>Unit Sanction:</strong>
 
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="unitSancd"
                 value={updateElectricityBill.unitSancd}
@@ -154,7 +154,7 @@ function EditElectricityBill() {
             <Col className="col-md-5">
               <strong>Sanction Load:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 id="text"
                 name="sanctionLoad"
                 value={updateElectricityBill.sanctionLoad}
@@ -162,7 +162,7 @@ function EditElectricityBill() {
               />
               <strong>Tariff:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="tariff"
                 value={updateElectricityBill.tariff}
@@ -170,7 +170,7 @@ function EditElectricityBill() {
               />
               <strong>Present Reading:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="presentReading"
                 value={updateElectricityBill.presentReading}
@@ -178,7 +178,7 @@ function EditElectricityBill() {
               />
               <strong>Previous Reading:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="previousReading"
                 value={updateElectricityBill.previousReading}
@@ -186,7 +186,7 @@ function EditElectricityBill() {
               />{" "}
               <strong>Unit Consumed:</strong>
               <input
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                className="list-group-item input-field"
                 type="text"
                 name="unitConsumed"
                 value={updateElectricityBill.unitConsumed}
@@ -198,7 +198,7 @@ function EditElectricityBill() {
                 <strong>Date Of Reading:</strong>
 
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item input-field"
                   type="date"
                   name="dateOfReading"
                   value={updateElectricityBill.dateOfReading}
@@ -210,12 +210,11 @@ function EditElectricityBill() {
         </ul>
       </Row>
 
-      <Row className="text-center mt-4 form-group row ">
+      <Row className="form-group  ">
         <Col md-2>
           <Button
             variant="primary"
             square
-            style={{ width: "100px" }}
             onClick={goBack}
           >
             Back
@@ -224,7 +223,6 @@ function EditElectricityBill() {
             variant="primary"
             type="submit"
             square
-            style={{ marginLeft: "10px", width: "100px" }}
             onClick={handleEditMode}
           >
             {/* Update */}

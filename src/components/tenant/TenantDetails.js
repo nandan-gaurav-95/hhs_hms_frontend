@@ -20,13 +20,12 @@ function TenantDetails() {
   const [updateTenant, setupdateTenant] = useState(propData.Tenant || {});
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     async function fetchData() {
       try {
         if (!id) return;
         const response = await axios.get(`${APIS.GETTENANTBYID}/${id}`);
-console.log("tntId",response.data);
+        console.log("tntId", response.data);
         const { status = "", data } = response;
         if (status === 200) {
           setPropData(data);
@@ -59,7 +58,10 @@ console.log("tntId",response.data);
     setEditMode(!editMode);
     if (editMode) {
       try {
-         const response = await axios.put(`${APIS.UPDATETENANTBYID}/${id}`, updateTenant);
+        const response = await axios.put(
+          `${APIS.UPDATETENANTBYID}/${id}`,
+          updateTenant
+        );
         if (response.status === 200) {
           console.log("Tenant details updated successfully");
           // navigate(`/payroll-details/${id}`)
@@ -102,141 +104,134 @@ console.log("tntId",response.data);
     // setThumbnails(updatedThumbnails);
   };
   return (
-    <div className="">
+    <div className="editcontainer">
       <Header />
-      <div className="mt-4">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="backLoginForm fs-2 text-dark"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      {/* <Sidebar> */}
-        <Row className="justify-content-center">
-          <Col>
-            <h1 className="text-center mb-4">Details of {propData?.tenantName}</h1>
-          </Col>
-        </Row>
+      <div className="mainedit">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <Row className="justify-content-center">
-          <ul className="list-group">
-            <Row className="justify-content-center">
-              <Col className="col-sm-5 ">
-                <strong>Tenant ID:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="tnt_id"
-                  value={updateTenant.tnt_id}
-                  onChange={handleChange}
-                />
+        {/* <Sidebar> */}
 
-                <strong>Tenant Name</strong>
+        <Col>
+          <h1 className="propertydetails">Details of {propData?.tenantName}</h1>
+        </Col>
+      </div>
+      <Row className="detailsrow">
+        <ul className="list-group">
+          <Row className="detailsrow">
+            <Col className="column">
+              <strong>Tenant ID:</strong>
+              <input
+                className="list-group-item input-field "
+                type="text"
+                name="tnt_id"
+                value={updateTenant.tnt_id}
+                onChange={handleChange}
+              />
 
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="tenantName"
-                  value={updateTenant.tenantName}
-                  onChange={handleChange}
-                />
-                <strong>Expiry Date:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="date"
-                  name="expiryDate"
-                  value={updateTenant.expiryDate}
-                  onChange={handleChange}
-                />
-                <strong>Allocated shop:</strong>
+              <strong>Tenant Name</strong>
 
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="allocatedShop"
-                  value={updateTenant.allocatedShop}
-                  onChange={handleChange}
-                />
-              </Col>
-              <Col className="col-md-5">
+              <input
+                className="list-group-item  input-field"
+                type="text"
+                name="tenantName"
+                value={updateTenant.tenantName}
+                onChange={handleChange}
+              />
+              <strong>Expiry Date:</strong>
+              <input
+                className="list-group-item  input-field"
+                type="date"
+                name="expiryDate"
+                value={updateTenant.expiryDate}
+                onChange={handleChange}
+              />
+              <strong>Allocated shop:</strong>
+
+              <input
+                className="list-group-item  input-field"
+                type="text"
+                name="allocatedShop"
+                value={updateTenant.allocatedShop}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col className="col-md-5">
               <strong>Complex:</strong>
-                <select
-                className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+              <select
+                className="list-group-item  input-field"
                 id="Complex"
                 name="complex"
                 value={updateTenant.complex}
                 onChange={handleChange}
-             
-                >
+              >
                 <option value="">Select Complex</option>
                 <option value="Bhatkal Complex">Bhatkal Complex</option>
                 <option value="Abbas Ali Complex">Abbas Ali Complex </option>
-                
               </select>
-                <strong>Conatact no:</strong>
+              <strong>Conatact no:</strong>
+              <input
+                className="list-group-item  input-field"
+                type="text"
+                name="contactNum"
+                value={updateTenant.contactNum}
+                onChange={handleChange}
+              />
+              <strong>Electricity Due:</strong>
+              <input
+                className="list-group-item  input-field"
+                type="text"
+                name="electricityDue"
+                value={updateTenant.electricityDue}
+                onChange={handleChange}
+              />
+              <strong>Security Deposit:</strong>
+              <input
+                className="list-group-item  input-field"
+                type="text"
+                name="securityDeposit"
+                value={updateTenant.securityDeposit}
+                onChange={handleChange}
+              />{" "}
+            </Col>
+            <Row className="justify-content-center">
+              <Col className="col-sm-5 ">
+                <strong>Rent Due:</strong>
+
                 <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
+                  className="list-group-item  input-field"
                   type="text"
-                  name="contactNum"
-                  value={updateTenant.contactNum}
+                  name="rentDue"
+                  value={updateTenant.rentDue}
                   onChange={handleChange}
                 />
-                <strong>Electricity Due:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="electricityDue"
-                  value={updateTenant.electricityDue}
-                  onChange={handleChange}
-                />
-                <strong>Security Deposit:</strong>
-                <input
-                  className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                  type="text"
-                  name="securityDeposit"
-                  value={updateTenant.securityDeposit}
-                  onChange={handleChange}
-                />{" "}
               </Col>
-              <Row className="justify-content-center">
-                <Col className="col-sm-5 ">
-                  <strong>Rent Due:</strong>
-
-                  <input
-                    className="list-group-item d-flex w-100 rounded-5 justify-content-between align-items-center"
-                    type="text"
-                    name="rentDue"
-                    value={updateTenant.rentDue}
-                    onChange={handleChange}
-                  />
-                </Col>
-              </Row>
             </Row>
-          </ul>
-        </Row>
+          </Row>
+        </ul>
+      </Row>
 
-        <Row className="text-center mt-4 form-group row ">
-          <Col md-2>
-            <Button
-              variant="primary"
-              square
-              style={{ width: "100px" }}
-              onClick={goBack}
-            >
-              Back
-            </Button>
-            <Button
-              variant="primary"
-              type="submit"
-              square
-              style={{ marginLeft: "10px", width: "100px" }}
-              onClick={handleEditMode}
-            >
-              {/* Update */}
-              {editMode ? "Update" : "Edit"} 
-            </Button>
-          </Col>
-        </Row>
+      <Row className="form-group  ">
+        <Col md-2>
+          <Button
+            variant="primary"
+            square
+            style={{ width: "100px" }}
+            onClick={goBack}
+          >
+            Back
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            square
+            onClick={handleEditMode}
+          >
+            {/* Update */}
+            {editMode ? "Update" : "Edit"}
+          </Button>
+        </Col>
+      </Row>
       {/* </Sidebar> */}
     </div>
   );

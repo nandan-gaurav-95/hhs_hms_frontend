@@ -32,12 +32,14 @@ const ViewEmpProfile = () => {
       <div className="entity-name">
         {key.replace(/([A-Z])/g, " $1").trim()}:
       </div>
-      <div className="entity-value" style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+      <div
+        className="entity-value"
+        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+      >
         {value}
       </div>
     </div>
   );
-  
 
   if (!employee) {
     return <div>Loading...</div>; // You can display a loading indicator here
@@ -59,27 +61,31 @@ const ViewEmpProfile = () => {
       doc.addImage(
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-        9,     // X position
-        12,     // Y position
-        45,     // Image width
-        30      // Image height
+        9, // X position
+        12, // Y position
+        45, // Image width
+        30 // Image height
       );
 
       //Header Part
-    doc.rect(13,9,186,246);
-    doc.setFontSize(15);
-    doc.setTextColor(24,94,26); // RGB color (dark green)
-    doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
-    doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),",52, 18); // Adjust the Y position as needed
-    doc.text("Dargahs & Allied Waqf Institutions",85,24)
-    doc.setFont('helvetica', 'normal'); // Reset font style to normal
-    doc.setFontSize(10);
-    doc.setTextColor(75,93,183); // RGB color (Blue)
-    doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,31)
-    doc.text("(Register Under Karnataka State Board of Auqaf)",73,36);
-    doc.setTextColor(247, 79, 160);
-    doc.text("Tel : 080-22211356 / 22240309",145,42)
-    
+      doc.rect(13, 9, 186, 246);
+      doc.setFontSize(15);
+      doc.setTextColor(24, 94, 26); // RGB color (dark green)
+      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
+      doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 52, 18); // Adjust the Y position as needed
+      doc.text("Dargahs & Allied Waqf Institutions", 85, 24);
+      doc.setFont("helvetica", "normal"); // Reset font style to normal
+      doc.setFontSize(10);
+      doc.setTextColor(75, 93, 183); // RGB color (Blue)
+      doc.text(
+        "No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",
+        53,
+        31
+      );
+      doc.text("(Register Under Karnataka State Board of Auqaf)", 73, 36);
+      doc.setTextColor(247, 79, 160);
+      doc.text("Tel : 080-22211356 / 22240309", 145, 42);
+
       // Reset text color to default (black)
       doc.rect(13, 45, 186, 10); // (X, Y, Width, Height)
       doc.setTextColor(59, 48, 182);
@@ -213,7 +219,7 @@ const ViewEmpProfile = () => {
       doc.text(`${employee.allowance}`, 70, 211); // (X, Y, Actual name)
 
       //Deduction
-     
+
       doc.setFont("calibre", "bold");
       doc.rect(13, 215, 55, 10); // (X, Y, Width, Height)
       doc.text("Deduction :", 25, 221); // Label "Name:"
@@ -229,7 +235,7 @@ const ViewEmpProfile = () => {
       doc.text(`${employee.pfEmployeeContribution}`, 70, 231); // (X, Y, Actual name)
 
       //LoanAmount
-     
+
       doc.setFont("calibre", "bold");
       doc.rect(13, 235, 55, 10); // (X, Y, Width, Height)
       doc.text("Loan Amount :", 25, 241); // Label "Name:"
@@ -246,64 +252,50 @@ const ViewEmpProfile = () => {
 
       // Save the PDF with a specific name
       doc.save("salary_slip.pdf");
-      console.log("emp pdf data",employee);
+      console.log("emp pdf data", employee);
       console.log("Download PDF clicked");
     };
   };
 
   return (
     <div>
-    <Header />
-    <div className="mt-4">
-    <div className="arrow-back-container">
-      <BiArrowBack
-        className="backLoginForm fs-2 text-dark"
-        onClick={() => navigate(-1)}
-      />
-    </div>
-    <h2 className="mb-4 text-center entity-column">
-      Details of {employee?.empName}{" "}
-    </h2>
-    </div>
-    <Container
-      className="detail w-75 text-center"
-      style={{
-        height: "90vh",
-        width: "50%",
-        boxShadow:
-          "0 10px 30px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.23)",
-        marginBottom: "0",
-        marginTop: "10px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-      }}
-    >
-      <div className="d-flex flex-wrap">
-        <div className="w-50">
-          {firstColumnKeys
-            .filter((key) => key !== "id")
-            .map((key) => renderEmployeeRow(key, employee[key]))}
+      <Header />
+      <div className="maindetails">
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <div className="w-50">
-          {secondColumnKeys
-            .filter((key) => key !== "id")
-            .map((key) => renderEmployeeRow(key, employee[key]))}
+        <h2 className="propertyview">
+          Details of {employee?.empName}{" "}
+        </h2>
+      </div>
+      <Container
+        className="detailemp"
+      >
+        <div className="columnarrangement">
+          <div className="subcolumnarrangement">
+            {firstColumnKeys
+              .filter((key) => key !== "id")
+              .map((key) => renderEmployeeRow(key, employee[key]))}
+          </div>
+          <div className="subcolumnarrangement">
+            {secondColumnKeys
+              .filter((key) => key !== "id")
+              .map((key) => renderEmployeeRow(key, employee[key]))}
+          </div>
         </div>
-      </div>
-      <div style={{ marginBottom: "10px" }}>
-        <Button
-          variant="primary"
-          onClick={handleSalarySlipPdf}
-          className="w-75"
-          style={{ height: "40px", lineHeight: "25px", marginTop: "20px" }}
-        >
-          <FaDownload style={{ marginRight: "5px" }} /> Salary Slip
-        </Button>
-      </div>
-    </Container>
-  </div>
-);
+        <div >
+          <Button
+            variant="primary"
+            onClick={handleSalarySlipPdf}
+            className=""
+           
+          >
+            <FaDownload  /> Salary Slip
+          </Button>
+        </div>
+      </Container>
+    </div>
+  );
 };
 
 export default ViewEmpProfile;
