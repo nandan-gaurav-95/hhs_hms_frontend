@@ -372,31 +372,45 @@ th {
 .pdf-btn-ele {
   text-align: center;
   width: 30%;
+  padding-top: 10px;
 }
 
-.detail-voucher {
-  height: 300px;
-  width: 50%;
+.detailvoucher {
+  text-align: center;
+  width: 700px;
+  height: 250px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
-  margin-bottom: 0;
-  display: flex;
-  flex-flow: row wrap;
-
-  /* flex-direction: column; */
-  justify-content: center;
+  margin: 100px auto;
+  padding: 20px;
+  display: flex; 
+   flex-direction: column;
+  justify-content: space-between;
+}
+.detailhhscomp{
+  text-align: center;
+  width: 700px;
+  height: 350px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 60px auto;
+  padding: 20px;
+  display: flex; 
+   flex-direction: column;
+  justify-content: space-between;
 }
 
+
 .detail-girlhostel {
-  height: 30vh;
+  height: 20vh;
   width: 45%;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
-  margin-top: 10px;
+  margin-top: 150px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
 }
 
@@ -426,6 +440,12 @@ th {
 .loginformtext {
   font-size: 28px;
   padding: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+.loginformtextsign {
+  font-size: 28px;
+  padding: 0px;
   font-weight: bold;
   text-align: center;
 }
@@ -478,8 +498,8 @@ th {
 .center-logo {
   display: block;
   margin: 0 auto;
-  width: 40%;
-  height: 15vh;
+  width: 35%;
+  height: 14vh;
 }
 
 /* signup */
@@ -613,7 +633,7 @@ th {
   max-width: 41.666667%;
 }
 .submitbtn {
-  margin-bottom: 25px;
+  margin-top: 25px;
   text-align: center;
   margin-right: 37px;
 }
@@ -648,10 +668,17 @@ th {
   background-color: #ffffff;
   border-radius: 0.375rem;
 }
+.subviewbody{
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+}
 .detail-ele{
   text-align: center;
   width: 700px;
-  height: 350px;
+  height: 360px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
@@ -662,14 +689,42 @@ th {
   flex-direction: column;
   justify-content: space-between;
 }
-
+.detailtenant{
+  text-align: center;
+  width: 700px;
+  height: 460px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 40px auto;
+  padding: 20px;
+  padding-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detail-voucher{
+  text-align: center;
+  width: 700px;
+  height: 460px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 40px auto;
+  padding: 20px;
+  padding-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 /* detail page */
 
 .maindetails {
   margin-top: 4px;
 }
 .propertyview {
-  margin-bottom: 38px;
+  margin-top: 15px;
+  margin-bottom: 30px;
   text-align: center;
   flex-flow: column;
 }
@@ -689,7 +744,7 @@ th {
 .detailemp{
   text-align: center;
   width: 700px;
-  height: 570px;
+  height: 600px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
@@ -710,7 +765,16 @@ th {
   width: 310px;
 }
 .subcolumnarrangementgirl {
-  width: 310px;
+  width: 250px;
+}
+.subcolumnarrangementgirl1 {
+  width: 250px;
+}
+.salarybtn{
+  margin-top: 15px;
+}
+.voucherbtn{
+  text-align: center;
 }
 
 /* edit page */
@@ -718,8 +782,9 @@ th {
 .editcontainer {
   width: 100%;
   overflow-x: hidden;
-  padding: 0 20px;
+  padding: 0;
 }
+
 .mainedit {
   margin-top: 15px;
 }
@@ -730,7 +795,6 @@ th {
 .detailsrow {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -761,12 +825,31 @@ th {
   text-align: center;
   padding-left: 325px;
 }
+.searchcontentcenteremp{
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+  text-align: center;
+  padding-left: 355px;
+}
+.searchcontentcenterinv{
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+  text-align: center;
+  padding-left: 485px;
+}
 .invsearch{
   margin: 7px;
   padding: 0px;
 }
 .form-group {
   text-align: center;
+  padding-right: 40px;
+ 
+}
+.editbtn{
+  margin-right: 2rem;
 }
 
 /* detail blood center page  */

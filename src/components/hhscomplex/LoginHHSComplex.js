@@ -146,7 +146,7 @@ function LoginHHSComplex() {
               </div>
 
               <div className="businesshr">
-                <p className="my-2 mb-2acc">
+                <p className="acc">
                   Don't have Account?
                   <Link to="/signUp" className="Signupdiv">
                     <text className="signup">Create Account</text>

@@ -100,7 +100,7 @@ const Viewtapal = () => {
       </div>
       <h2 className="availabletext">Tapal Details</h2>
       </div>
-      <div className="searchcontentcenter">
+      <div className="searchcontentcenterinv">
         <div className="search">
           <input
             label="Search"

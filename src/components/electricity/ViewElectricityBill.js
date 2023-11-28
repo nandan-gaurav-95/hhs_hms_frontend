@@ -105,7 +105,7 @@ const ViewElectricityBill = () => {
         </div>
       </div>
       <Table striped>
-        <thead>
+        <thead className="viewbody"> 
           <tr>
             <th>Sr. No.</th>
             <th>Name</th>
@@ -117,7 +117,7 @@ const ViewElectricityBill = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredEleBill).map((eleId, index) => {
             const elebill = allectricitybill[eleId]; */}
               {reversedData.map((eleId, index) => {

@@ -154,7 +154,7 @@ const reversedData = Object.keys(filteredData).reverse();
       </div>
 
       <Table striped>
-        <thead>
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Name</th>
@@ -166,7 +166,7 @@ const reversedData = Object.keys(filteredData).reverse();
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="subviewbody">
           {reversedData.map((invId, index) => {
             const inventory = filteredData[invId];
             return (

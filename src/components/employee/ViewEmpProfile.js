@@ -264,33 +264,24 @@ const ViewEmpProfile = () => {
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h2 className="propertyview">
-          Details of {employee?.empName}{" "}
-        </h2>
+        <h2 className="propertyview">Details of {employee?.empName} </h2>
       </div>
-      <Container
-        className="detailemp"
-      >
+      <Container className="detailemp">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderEmployeeRow(key, employee[key]))}
           </div>
-          <div className="subcolumnarrangement">
+          <div className="subcolumnarrangement1">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderEmployeeRow(key, employee[key]))}
           </div>
         </div>
-        <div >
-          <Button
-            variant="primary"
-            onClick={handleSalarySlipPdf}
-            className=""
-           
-          >
-            <FaDownload  /> Salary Slip
+        <div>
+          <Button variant="primary" onClick={handleSalarySlipPdf} className="salarybtn">
+            <FaDownload /> Salary Slip
           </Button>
         </div>
       </Container>

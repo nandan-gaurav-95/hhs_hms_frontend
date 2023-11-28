@@ -105,7 +105,7 @@ const ViewGirlsHostel = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Date</th>
@@ -116,7 +116,7 @@ const ViewGirlsHostel = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredgirlshostel).map((ghId, index) => {
             const girlshostel = filteredgirlshostel[ghId]; */}
             {reversedData.map((ghId, index) => {

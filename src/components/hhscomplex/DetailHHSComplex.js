@@ -177,7 +177,7 @@ const DetailHHSComplex = () => {
         </div>
         <h2 className="propertyview">Details of HHS Complex </h2>
       </div>
-      <Container className="detail">
+      <Container className="detailhhscomp">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -190,7 +190,7 @@ const DetailHHSComplex = () => {
               .map((key) => renderHhscomplexRow(key, hhscomplex[key]))}
           </div>
         </div>
-        <div className="pdf-btn-div">
+        <div >
         <Button variant="primary" onClick={handleHHSComplexPdf}>
           <FaDownload /> HHS Complex
         </Button>

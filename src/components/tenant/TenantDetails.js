@@ -194,8 +194,8 @@ function TenantDetails() {
                 onChange={handleChange}
               />{" "}
             </Col>
-            <Row className="justify-content-center">
-              <Col className="col-sm-5 ">
+            <Row className="detailsrow">
+              <Col className="column">
                 <strong>Rent Due:</strong>
 
                 <input
@@ -212,15 +212,7 @@ function TenantDetails() {
       </Row>
 
       <Row className="form-group  ">
-        <Col md-2>
-          <Button
-            variant="primary"
-            square
-            style={{ width: "100px" }}
-            onClick={goBack}
-          >
-            Back
-          </Button>
+        <Col className="editbtn">
           <Button
             variant="primary"
             type="submit"

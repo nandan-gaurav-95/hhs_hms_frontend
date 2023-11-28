@@ -102,7 +102,7 @@ export default function Signup() {
 
           <div className="subforbusiness-page">
             <div className="subforbusiness-page">
-              <h2 className="loginformtext ">
+              <h2 className="loginformtextsign ">
                 H.H.S & H.M.S
               </h2>
               <p className="signupacc">Sign Up to Account</p>

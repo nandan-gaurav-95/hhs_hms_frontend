@@ -105,7 +105,7 @@ const ViewHHSComplex = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>L.F. No</th>
@@ -118,7 +118,7 @@ const ViewHHSComplex = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredHhscomplex).map((hcId, index) => {
             const hhscomplex = filteredHhscomplex[hcId]; */}
              {reversedData.map((hcId, index) => {

@@ -179,8 +179,7 @@ const DetailVoucher = () => {
           Details of Voucher No: {voucher?.v_id}{" "}
         </h2>
       </div>
-      <Container className="detail-voucher">
-
+      <Container className="detailvoucher">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -194,15 +193,15 @@ const DetailVoucher = () => {
           </div>
         </div>
 
-        <div className="pdf-btn-div">
+        <div>
           <Button
             // variant="primary"
             onClick={handleVoucherPdf}
-            // className="pdf-btn-elebill"
+         
           >
-            <FaDownload className="" /> Voucher
+            <FaDownload className="voucherbtn" /> Voucher
           </Button>
-        </div>
+          </div>
 
       </Container>
     </div>

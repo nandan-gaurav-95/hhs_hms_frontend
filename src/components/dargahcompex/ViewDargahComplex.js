@@ -105,7 +105,7 @@ const ViewDargahComplex = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Receiver Name</th>
@@ -118,7 +118,7 @@ const ViewDargahComplex = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredDargah).map((dcId, index) => {
             const dargahcom = filteredDargah[dcId]; */}
               {reversedData.map((dcId, index) => {

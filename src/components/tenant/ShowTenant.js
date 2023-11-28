@@ -104,7 +104,7 @@ const ShowTenant = () => {
       </div>
       <h1 className="availabletext">Tenants Details</h1>
 </div>
-      <div className="searchcontentcenter">
+      <div className="searchcontentcenteremp">
         <div className="search">
           <input
             label="Search"
@@ -142,7 +142,7 @@ const ShowTenant = () => {
         </div>
       </div>
       <Table striped>
-        <thead>
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Name</th>
@@ -157,7 +157,7 @@ const ShowTenant = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="subviewbody">
           {filteredTenants.map((tenant, index) => (
             <tr key={tenant.tnt_id}>
               <td>{index + 1}</td>

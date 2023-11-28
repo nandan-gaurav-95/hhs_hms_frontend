@@ -105,7 +105,7 @@ const ViewVoucher = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Date</th>
@@ -118,7 +118,7 @@ const ViewVoucher = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredVouchers).map((vouId, index) => {
             const voucher = filteredVouchers[vouId]; */}
             {reversedData.map((vouId, index) => {

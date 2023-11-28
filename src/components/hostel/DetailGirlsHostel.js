@@ -75,12 +75,12 @@ const DetailGirlsHostel = () => {
       className="detail-girlhostel"
     >
        <div className="columnarrangement">
-    <div className="subcolumnarrangement">
+    <div className="subcolumnarrangementgirl">
       {firstColumnKeys
         .filter((key) => key !== "id")
         .map((key) => renderGirlshostelRow(key, girlshostel[key]))}
     </div>
-    <div className="subcolumnarrangement1girl">
+    <div className="subcolumnarrangementgirl1">
       {secondColumnKeys
         .filter((key) => key !== "id")
         .map((key) => renderGirlshostelRow(key, girlshostel[key]))}

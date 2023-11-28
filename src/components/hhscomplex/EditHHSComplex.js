@@ -189,7 +189,7 @@ function EditHHSComplex() {
               />
             </Col>
             <Row className="detailsrow">
-              <Col className="col-sm-5 ">
+              <Col className="column">
                 <strong>Remark:</strong>
                 <input
                   className="list-group-item input-field "
@@ -205,10 +205,8 @@ function EditHHSComplex() {
       </Row>
 
       <Row className="form-group">
-        <Col md-2>
-          <Button variant="primary" square onClick={goBack}>
-            Back
-          </Button>
+        <Col className="editbtn">
+
           <Button
             variant="primary"
             type="submit"

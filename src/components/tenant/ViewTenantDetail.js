@@ -476,14 +476,14 @@ const ViewTenantDetail = () => {
         </div>
         <h2 className="propertyview">Details of {tenantToShow?.tenantName}</h2>
       </div>
-      <Container className="detail">
+      <Container className="detailtenant">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderTenantRow(key, tenantToShow[key]))}
           </div>
-          <div className="subcolumnarrangement">
+          <div className="subcolumnarrangement1">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderTenantRow(key, tenantToShow[key]))}
