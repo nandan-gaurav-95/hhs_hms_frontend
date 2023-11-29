@@ -9,11 +9,12 @@ import {
 } from "mdb-react-ui-kit";
 import Header from "../common/Header";
 import { BiArrowBack } from "react-icons/bi";
+import { MedicalAidService } from "../../services/MedicalAidService";
 
 const Medicalaid = () => {
   const navigate = useNavigate();
   const initialState = {
-    Si_no: "",
+    // med_id: "",
     patient_name: "",
     address_patient: "",
     hospital_name: "",
@@ -26,9 +27,24 @@ const Medicalaid = () => {
   };
   const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {
-    
+  const handleSubmit =async (e) => {
+    try {
+      const response = await MedicalAidService.CreateMedicalAid(formData);
+      console.log("Medical Aid", response.data);
+      if (response.status === 201) {
+        console.log("Medical Aid Created Successfully");
+        setFormData(initialState);
+        // toast.success("Submit Successful!",{autoClose: 1000,});
+      } else {
+        console.error("Failed To create Medical Aid");
+        // toast.error("Failed to submit Medical Aid",{autoClose: 1000,});
+      }
+    } catch (error) {
+      console.error("Error", error);
+      // toast.error("An error occurred during submission",{autoClose: 1000,});
+    }
   };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -47,15 +63,15 @@ const Medicalaid = () => {
       <h1 className=" mb-4 text-center">Medical Aid</h1>
       <form onSubmit={handleSubmit}>
         <Row className="row mt-8 mb-4  justify-content-evenly align-items-center">
-          <Col className="col-sm-5 ">
+          {/* <Col className="col-sm-5 ">
             <Input
               label="SI.No"
               type="number"
-              name="Si_no"
-              value={formData.Si_no}
+              name="med_id"
+              value={formData.med_id}
               onChange={handleChange}
             />
-          </Col>
+          </Col> */}
           <Col className="col-sm-5">
             <Input
               label="Name of the Patient"
@@ -112,7 +128,7 @@ const Medicalaid = () => {
           <Col className="col-sm-5 ">
             <Input
               label="Cheque No."
-              type="number"
+              type="text"
               name="chq_no"
               value={formData.chq_no}
               onChange={handleChange}

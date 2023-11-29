@@ -156,4 +156,11 @@ export const APIS ={
       GETMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,// Get specific Medical Acknowledge by ID
       UPDATEMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,//Update an existing Medical Acknowledge 
       DELETEMEDICALACKNWLDGEBYID:`${API_BASE_URL}/mdclacknwldg`,//Delete a Medical Acknowledge by ID
+
+      // Medical Aid
+      CREATEMEDICALAID:` ${API_BASE_URL}/medicalaid`,//Post-method
+      GETALLMEDICALAID:`${API_BASE_URL}/medicalaid`,// Get-method
+      GETMEDICALAIDBYID:`${API_BASE_URL}/medicalaid`,// Get specific Medical Aid by ID
+      UPDATEMEDICALAIDBYID:`${API_BASE_URL}/medicalaid`,//Update an existing Medical Aid 
+      DELETEMEDICALAIDBYID:`${API_BASE_URL}/medicalaid`,//Delete a Medical Aid by ID
 }

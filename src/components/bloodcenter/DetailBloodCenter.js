@@ -37,20 +37,45 @@ const DetailBloodCenter = () => {
       // Handle the error as needed (e.g., show an error message)
     }
   };
+  const humanReadableNames = {
+    age: "Age",
+    // bc_id: "Blood Center Id",
+    bloodgroup: "Blood Group",
+    date: "Date",
+    expirydate: "Expiry Date",
+    gender: "Gender",
+    hospitalName: "Hospital Name",
+    invstigationCharges: "Investigation Charges",
+    ipNo: "I.P. No",
+    paymentMethod: "Payment Method",
+    receiverName: "Receiver Name",
+    remark: "Remark",
+    rupee: "Rupee",
+    unitNo: "Unit No",
+    // Add more mappings as needed
+  };
 
-  const renderBloodcenterRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+  const renderBloodcenterRow = (key, value) => {
+    
+      // Exclude the 'bc_id' key
+      if (key === 'bc_id') {
+        return null;
+      }
+    return (
+      <div key={key} className="d-flex entity-row">
+        <div className="entity-name">
+          {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+          {humanReadableNames[key] || key}:
+        </div>
+        <div
+          className="entity-value"
+          style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+        >
+          {value}
+        </div>
       </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    );
+  }
 
   if (!bloodcenter) {
     return <div>Blood Center for this id not found.</div>;

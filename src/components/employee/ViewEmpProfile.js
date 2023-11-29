@@ -26,20 +26,52 @@ const ViewEmpProfile = () => {
   useEffect(() => {
     fetctEmployeeById();
   }, []);
+  const humanReadableNames = {
+    //  emp_id;
+    empName: "Employee Name",
+    department: "Department",
+    dob: "Date of Birth",
+    gender: "Gender",
+    contactNum: "Mobile No.",
+    bloodgroup: "Blood Group",
+    address: "Address",
+    aadhar: "Aadhar No.",
+    pan: "Pan No",
+    qualification: "Qualification",
+    dateOfHiring: "Date of Hiring",
+    position: "Position",
 
-  const renderEmployeeRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+    basicSalary: "Basic Salary",
+    netSalary: "Net Salary",
+    grossSalary: "Gross Salary",
+    allowance: "Allowance",
+    deduction: "Deduction",
+    pfEmployeeContribution: "PF",
+    loanAmount: "Loan Amount",
+    loanRepaymentAmount: "Repayment Amount",
+    inventoryItems: "Inventoy Item",
+    status: "Status",
+  };
+
+  const renderEmployeeRow = (key, value) => {
+    if(key==="emp_id"){
+      return null;
+      }
+   return (
+      <div key={key} className="d-flex entity-row">
+        <div className="entity-name">
+          {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+          {humanReadableNames[key] || key}:
+        </div>
+        <div
+          className="entity-value"
+          style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+        >
+          {value}
+        </div>
       </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    );
+  }
 
   if (!employee) {
     return <div>Loading...</div>; // You can display a loading indicator here

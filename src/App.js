@@ -61,7 +61,7 @@ import GirlsHostel from "./components/hostel/GirlsHostel"
 
 
 import Scholarship from "./components/financial_assistance/Scholarship";
-import Medicalaid from "./components/financial_assistance/Medicalaid";
+import Medicalaid from "./components/medicalaid/Medicalaid";
 
 //hhs and dargah complex
 import HHSComplex from "./components/hhscomplex/HHSComplex";
