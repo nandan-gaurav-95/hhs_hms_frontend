@@ -66,6 +66,9 @@ export default function HomePage() {
   const handleParkingLogin = () => {
     navigate("/loginparking");
   };
+  const handleMedicalAidLogin = () => {
+    navigate("/loginmedicalaid");
+  };
   return (
     <div className="background-wrapper" style={backgroundImageStyle}>
       <Header />
@@ -332,6 +335,18 @@ export default function HomePage() {
               tag="a"
               className="btn btn-dark"
               onClick={handleParkingLogin}
+            >
+              login
+            </Button>
+          </div>
+        </div>
+        <div className="card upper-card">
+          <h3>Medical Aid</h3>
+          <div className="proceed-button">
+            <Button
+              tag="a"
+              className="btn btn-dark"
+              onClick={handleMedicalAidLogin}
             >
               login
             </Button>

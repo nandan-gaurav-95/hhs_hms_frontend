@@ -50,20 +50,44 @@ const ViewTenantDetail = () => {
     fetchTenantById();
     // fetchEleBillById();
   }, []);
+  const humanReadableNames = {
+    // tnt_id;
+    tenantName: "Tenant Name",
+    complex: "Complex",
+    address: "Address",
+    contactNum: "Mobile No.",
+    allocatedShop: "Allocated Shop",
+    rentCollected: "Collected Rent",
+    rentDue: "Rent Due",
+    securityDeposit: "Deposit",
+    electricityDue: "Electricity Due",
+    collectionDetails: "Collection Details",
+    billGeneration: "Bill",
+    startDate: "Start Date",
+    expiryDate: "Expiry Date",
+    paymentMethod: "Payment Method",
+    status: "Status",
+  };
+  const renderTenantRow = (key, value) =>{
+    if(key==="tnt_id"){
+      return null;
+    }
 
-  const renderTenantRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
-      </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    return(
+     <div key={key} className="d-flex entity-row">
+       <div className="entity-name">
+         {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+         {humanReadableNames[key] || key}:
+       </div>
+       <div
+         className="entity-value"
+         style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+       >
+         {value}
+       </div>
+     </div>
+   );
+  }
 
   if (!tenantToShow) {
     return <div>Property not found.</div>;

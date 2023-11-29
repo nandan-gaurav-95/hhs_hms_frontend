@@ -33,19 +33,36 @@ const DetailVoucher = () => {
     fetchVoucherById();
   }, [id]);
 
-  const renderVoucherRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
-      </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+  const humanReadableNames = {
+    //  v_id;
+    date: "Date",
+    amtPaid: "Amount Paid",
+    towards: "Towards",
+    chequeNo: "Cheque No",
+    dated: "Dated",
+    rupees: "Rupees",
+    remark: "Remark",
+  };
+  const renderVoucherRow = (key, value) =>{
+    if(key==="v_id"){
+      return null;
+    }
+    
+   return (
+     <div key={key} className="d-flex entity-row">
+       <div className="entity-name">
+         {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+         {humanReadableNames[key] || key}:
+       </div>
+       <div
+         className="entity-value"
+         style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+       >
+         {value}
+       </div>
+     </div>
+   );
+  }
 
   if (!voucher) {
     return <div>ElectricityBill not found.</div>;
@@ -70,26 +87,30 @@ const DetailVoucher = () => {
       doc.addImage(
         logoImage,
         "JPEG", // You can specify the format here (e.g., "PNG", "JPEG", etc.)
-         9,     // X position
-        12,     // Y position
-        45,     // Image width
-        30      // Image height
+        9, // X position
+        12, // Y position
+        45, // Image width
+        30 // Image height
       );
 
       //Header Part
-      doc.rect(13,9,186,146);
+      doc.rect(13, 9, 186, 146);
       doc.setFontSize(15);
-      doc.setTextColor(24,94,26); // RGB color (dark green)
-      doc.setFont('helvetica', 'bold'); // Use the 'helvetica' font family
+      doc.setTextColor(24, 94, 26); // RGB color (dark green)
+      doc.setFont("helvetica", "bold"); // Use the 'helvetica' font family
       doc.text("Hazrath Hameed Shah & Hazrath Muhib Shah Khadri(RA),", 52, 18); // Adjust the Y position as needed
-      doc.text("Dargahs & Allied Waqf Institutions",85,24)
-      doc.setFont('helvetica', 'normal'); // Reset font style to normal
+      doc.text("Dargahs & Allied Waqf Institutions", 85, 24);
+      doc.setFont("helvetica", "normal"); // Reset font style to normal
       doc.setFontSize(10);
-      doc.setTextColor(75,93,183); // RGB color (Blue)
-      doc.text("No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",53,32)
-      doc.text("(Register Under Karnataka State Board of Auqaf)",73,36)
+      doc.setTextColor(75, 93, 183); // RGB color (Blue)
+      doc.text(
+        "No.3,1st Floor,Hazrath Hameed Shah Complex,Cubbonpet Main Road,Banglore - 560 002",
+        53,
+        32
+      );
+      doc.text("(Register Under Karnataka State Board of Auqaf)", 73, 36);
       doc.setTextColor(247, 79, 160);
-      doc.text("Tel : 080-22211356 / 22240309",145,42)
+      doc.text("Tel : 080-22211356 / 22240309", 145, 42);
       doc.setTextColor(0);
 
       //PDF Heading voucher no. & date
@@ -170,10 +191,7 @@ const DetailVoucher = () => {
       <Header />
       <div className="maindetails">
         <div className="arrow-back-container">
-          <BiArrowBack
-            className="addbacklogo"
-            onClick={() => navigate(-1)}
-          />
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
         <h2 className="propertyview">
           Details of Voucher No: {voucher?.v_id}{" "}
@@ -197,12 +215,10 @@ const DetailVoucher = () => {
           <Button
             // variant="primary"
             onClick={handleVoucherPdf}
-         
           >
             <FaDownload className="voucherbtn" /> Voucher
           </Button>
-          </div>
-
+        </div>
       </Container>
     </div>
   );

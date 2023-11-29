@@ -61,7 +61,6 @@ import GirlsHostel from "./components/hostel/GirlsHostel"
 
 
 import Scholarship from "./components/financial_assistance/Scholarship";
-import Medicalaid from "./components/medicalaid/Medicalaid";
 
 //hhs and dargah complex
 import HHSComplex from "./components/hhscomplex/HHSComplex";
@@ -137,6 +136,13 @@ import HomeGirlsHostel from "./components/hostel/HomeGirlsHostel";
 import ViewGirlsHostel from "./components/hostel/ViewGirlsHostel";
 import EditGirlsHostel from "./components/hostel/EditGirlsHostel";
 import DetailGirlsHostel from "./components/hostel/DetailGirlsHostel";
+
+import Medicalaid from "./components/medicalaid/Medicalaid";
+import LoginMedicalaid from "./components/medicalaid/LoginMedicalaid";
+import HomeMedicalaid from "./components/medicalaid/HomeMedicalaid";
+import ViewMedicalaid from "./components/medicalaid/ViewMedicalaid";
+import DetailsMedicalaid from "./components/medicalaid/DetailsMedicalaid";
+import EditMedicalaid from "./components/medicalaid/EditMedicalaid";
 
 function App() {
   return (
@@ -308,6 +314,14 @@ function App() {
           <Route path="/detailelectricitybill/:id" element={<DetailElectricityBill />}></Route>
           <Route path="/editelectricitybill/:id" element={<EditElectricityBill />}></Route>
           
+          {/* Medical Aid  */}
+          <Route path="/medicalaid" element={<Medicalaid />}></Route>
+          <Route path="/loginmedicalaid" element={<LoginMedicalaid />}></Route>
+          <Route path="/homemedicalaid" element={<HomeMedicalaid />}></Route>
+          <Route path="/viewmedicalaid" element={<ViewMedicalaid />}></Route>
+          <Route path="/detailmedicalaid/:id" element={<DetailsMedicalaid />}></Route>
+          <Route path="/editmedicalaid/:id" element={<EditMedicalaid />}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>

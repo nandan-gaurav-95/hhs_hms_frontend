@@ -37,10 +37,41 @@ const ViewPropertyDetail = () => {
   //   return <div>Property not found.</div>;
   // }
 
-  const renderPropertyRow = (key, value) => (
+  const humanReadableNames = { 
+    propertyName: "Property Name",
+    proptype: "Property Type",
+    email: "Email",
+    gstNo: "GST No.",
+    mobNo: "Mobile No.",
+    villageNm: "Village Name",
+    ctsNo: "CTS No.",
+    area: "Area",
+    boundries: "Boundaries",
+    taxAmt: "Tax Amount",
+    accountName: "Account Name",
+    annualIncome: "Annual Income",
+    address: "Address",
+    registrationNo: "Registration No",
+    gazzetNo: "Gazzet No",
+    rent: "Rent",
+    mcharges: "Maintenance Charge",
+    occupied: "Occupied",
+  };
+  // const propertyToShow = property.find((prop) => prop.id === parseInt(id));
+
+  // if (!propertyToShow) {
+  //   return <div>Property not found.</div>;
+  // }
+
+  const renderPropertyRow = (key, value) => {
+    if(key==="prop_id"){
+      return null;
+      }
+    return(
     <div key={key} className="d-flex entity-row">
       <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+        {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+        {humanReadableNames[key] || key}:
       </div>
       <div
         className="entity-value"
@@ -50,6 +81,7 @@ const ViewPropertyDetail = () => {
       </div>
     </div>
   );
+}
 
   if (!property) {
     return <div>Property not found.</div>;

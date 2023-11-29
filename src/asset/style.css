@@ -649,6 +649,19 @@ th {
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
   margin: 40px auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailmedicalaid {
+  text-align: center;
+  width: 700px;
+  height: 250px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 100px auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
