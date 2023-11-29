@@ -215,7 +215,7 @@ const DetailMedicalAck = () => {
         </div>
         <h2 className="propertyview">Medical Details {medicalack?.toName} </h2>
       </div>
-      <Container className="detail">
+      <Container className="detailmedical">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -229,7 +229,7 @@ const DetailMedicalAck = () => {
           </div>
         </div>
         <div className="pdf-btn-div">
-          <Button variant="primary" onClick={handleMedicalAckPdf}>
+          <Button variant="primary" onClick={handleMedicalAckPdf} className="medicalbtn">
             <FaDownload /> Medical Acknowledge
           </Button>
         </div>

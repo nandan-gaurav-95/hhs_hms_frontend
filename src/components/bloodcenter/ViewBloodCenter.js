@@ -99,7 +99,7 @@ const ViewBloodCenter = () => {
         </div>
         <h2 className="availabletext">Blood Center Details</h2>
       </div>
-      <div className="searchcontentcenter">
+      <div className="searchcontentcenterblood">
         <div className=" search">
           <input
             label="Search"
@@ -131,7 +131,7 @@ const ViewBloodCenter = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Receiver Name</th>
@@ -143,7 +143,7 @@ const ViewBloodCenter = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredBloodCenter).map((bcId, index) => {
             const bloodCenter = allBloodCenter[bcId]; */}
           {reversedData.map((bcId, index) => {

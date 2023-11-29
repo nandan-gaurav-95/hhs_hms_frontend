@@ -178,7 +178,7 @@ const DetailsAmbulanceVan = () => {
           Ambulance Van Details of {ambulancevan?.receiverName}{" "}
         </h2>
       </div>
-      <Container className="detail">
+      <Container className="detailambulance">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -191,8 +191,8 @@ const DetailsAmbulanceVan = () => {
               .map((key) => renderAmbulanceVanRow(key, ambulancevan[key]))}
           </div>
         </div>
-        <div className="pdf-btn-div">
-          <Button variant="primary" onClick={handleAmbulancePdf}>
+        <div className="ambpdfbtn">
+          <Button variant="primary" onClick={handleAmbulancePdf} className="ambulancebtn">
             <FaDownload /> Ambulance Van
           </Button>
         </div>

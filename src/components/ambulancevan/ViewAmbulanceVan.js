@@ -97,7 +97,7 @@ const ViewAmbulanceVan = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>Receiver Name</th>
@@ -108,7 +108,7 @@ const ViewAmbulanceVan = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredAmbulanceVan).map((ambId, index) => {
             const ambulance = filteredAmbulanceVan[ambId]; */}
           {reversedData.map((ambId, index) => {

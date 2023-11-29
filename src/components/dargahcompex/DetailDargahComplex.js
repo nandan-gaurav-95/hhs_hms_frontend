@@ -192,7 +192,7 @@ const DetailDargahComplex = () => {
         </div>
         <h2 className="propertyview">Details of {dergah?.receiverName} </h2>
       </div>
-      <Container className="detail">
+      <Container className="detaildargah">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -206,8 +206,8 @@ const DetailDargahComplex = () => {
           </div>
         </div>
         <div className="pdf-btn-div">
-          <Button variant="primary" onClick={handleDargahComplexPdf}>
-            <FaDownload /> Dargah Complex
+          <Button variant="primary" onClick={handleDargahComplexPdf} className="dargahbtn">
+            <FaDownload/> Dargah Complex
           </Button>
         </div>
       </Container>

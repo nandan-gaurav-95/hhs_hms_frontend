@@ -87,12 +87,9 @@ export default function Signup() {
 
   return (
     <div className="background-signup" style={backgroundImageStyle}>
-    {/* <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center"> */}
+      {/* <div class="loginBOdyDiv bg-light d-flex justify-content-center align-item-center"> */}
       <ToastContainer />
-      <MDBContainer
-        fluid
-        className="loginBOdyDiv"
-      >
+      <MDBContainer fluid className="loginBOdyDiv">
         {/* <MDBRow> */}
         <MDBCol className="forbusiness-page ">
           <BiArrowBack
@@ -102,13 +99,11 @@ export default function Signup() {
 
           <div className="subforbusiness-page">
             <div className="subforbusiness-page">
-              <h2 className="loginformtextsign ">
-                H.H.S & H.M.S
-              </h2>
+              <h2 className="loginformtextsign ">H.H.S & H.M.S</h2>
               <p className="signupacc">Sign Up to Account</p>
 
               <MDBInput
-                wrapperClass="mb-4"
+                wrapperClass="loginremember1"
                 label="Name"
                 id="signupform2"
                 type="text"
@@ -117,7 +112,7 @@ export default function Signup() {
                 onChange={handleChange}
               />
               <MDBInput
-                wrapperClass=" mb-4 "
+                wrapperClass="loginremember1"
                 label="Email address"
                 id="form1"
                 type="email"
@@ -128,7 +123,7 @@ export default function Signup() {
 
               <select
                 className="form-select department-select transparent-input"
-                wrapperClass="mb-4"
+                wrapperClass="loginremember1"
                 label="Department"
                 id="form2"
                 type="text"
@@ -150,20 +145,22 @@ export default function Signup() {
                 <option value="Girls Hostel">Girls Hostel</option>
                 <option value="HHS Complex">HHS Complex</option>
                 <option value="Dargah Complex">Dargah Complex</option>
-                <option value="Medical Acknowledgment">Medical Acknowledgment</option>
+                <option value="Medical Acknowledgment">
+                  Medical Acknowledgment
+                </option>
                 <option value="Ambulance Van">Ambulance Van</option>
                 <option value="Blood Center">Blood Center</option>
                 <option value="Parking">Parking</option>
               </select>
-
               <MDBInput
-                wrapperClass="mb-4  py-1 d-flex align-item-center "
+                wrapperClass="loginremember2  password-input-wrapper"
                 label="Password"
                 id="form2"
                 name="password"
                 type={passwordVisible ? "text" : "password"}
                 value={formData.password}
                 onChange={handleChange}
+                
               >
                 <span
                   onClick={() => setPasswordVisible(!passwordVisible)}
@@ -180,7 +177,7 @@ export default function Signup() {
                 <div className="text-danger">{passwordError}</div>
               )}
               <MDBInput
-                wrapperClass="mb-4  py-1 d-flex align-item-center "
+                wrapperClass="loginremember2  confirm-password-input-wrapper"
                 label="Confirm Password"
                 id="form2"
                 type={confirmpasswordVisible ? "text" : "Password"}
@@ -237,13 +234,17 @@ export default function Signup() {
                     </Link>
                   </MDBCol> */}
 
-                <div className="loginformpic ">
-                <img src={hhsLogo} alt="Login image" className="loginimage center-logosignup" />
+                <div className="loginformpic">
+                  <img
+                    src={hhsLogo}
+                    alt="Login image"
+                    className="loginimage center-logosignup"
+                  />
                 </div>
 
                 {/* bottom link list */}
 
-                <div className="listcontainer  ">
+                <div className="listcontainer">
                   <ul className="custom-list">
                     {/* <span className="GBDiv pt-1 pe-0 me-0">GB</span>
                       <Link>

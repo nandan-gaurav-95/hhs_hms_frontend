@@ -183,7 +183,7 @@ const DetailParking = () => {
           Parking Details of {parking?.receiverName}{" "}
         </h2>
       </div>
-      <Container className="detail">
+      <Container className="detailparking">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys

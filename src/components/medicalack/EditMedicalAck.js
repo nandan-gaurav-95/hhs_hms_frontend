@@ -180,10 +180,7 @@ function EditMedicalAck() {
       </Row>
 
       <Row className="form-group">
-        <Col md-2>
-          <Button variant="primary" square onClick={goBack}>
-            Back
-          </Button>
+        <Col className="editbtn" >
           <Button
             variant="primary"
             type="submit"

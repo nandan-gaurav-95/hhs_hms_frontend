@@ -95,7 +95,7 @@ function LoginMedicalAck() {
                 <div className="columnlogin">
                 <Input
                 className="transparent-input"
-                  wrapperClass="mb-4 py-1"
+                  wrapperClass="loginremember1"
                   label="Department"
                   id="form3"
                   type="text"
@@ -103,14 +103,14 @@ function LoginMedicalAck() {
                   readOnly
                 />
                   <Input
-                    wrapperClass="mb-4 py-1"
+                    wrapperClass="loginremember1"
                     label="Email address"
                     id="form1"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                  <Input
-                  wrapperClass="mb-4  py-1 d-flex align-item-center "
+                  wrapperClass="loginremember2"
                   label="Password"
                   id="form2"
                   type={passwordVisible ? "text" : "password"}

@@ -107,7 +107,7 @@ const ViewMedicalAck = () => {
         </div>
       </div>
       <Table striped>
-        <thead className="">
+        <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
             <th>To Name</th>
@@ -121,7 +121,7 @@ const ViewMedicalAck = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="subviewbody">
           {/* {Object.keys(filteredMedicalAck).map((mdackId, index) => {
             const medical = filteredMedicalAck[mdackId]; */}
           {reversedData.map((mdackId, index) => {

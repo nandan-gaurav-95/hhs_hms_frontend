@@ -89,17 +89,13 @@ function EditDargahComplex() {
     <div className="editcontainer">
       <Header />
       <div className="mainedit">
-      <div className="arrow-back-container">
-        <BiArrowBack
-          className="addbacklogo"
-          onClick={() => navigate(-1)}
-        />
-      </div>
-      
+        <div className="arrow-back-container">
+          <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
+        </div>
+
         <Col>
           <h1 className="propertydetails">Details of {propData?.dc_id}</h1>
         </Col>
-     
       </div>
       <Row className="detailsrow">
         <ul className="list-group">
@@ -130,7 +126,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.rupee}
                 onChange={handleChange}
               />
-               <strong>Rupee In Words:</strong>
+              <strong>Rupee In Words:</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -148,7 +144,7 @@ function EditDargahComplex() {
               />
             </Col>
             <Col className="column">
-            <strong>Month:</strong>
+              <strong>Month:</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -165,7 +161,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.chequeNo}
                 onChange={handleChange}
               />
-              
+
               <strong>Dated:</strong>
 
               <input
@@ -191,23 +187,13 @@ function EditDargahComplex() {
                 value={updateDargahComplex.remark}
                 onChange={handleChange}
               />
-            
-           
             </Col>
           </Row>
         </ul>
       </Row>
 
       <Row className="form-group">
-        <Col md-2>
-          <Button
-            variant="primary"
-            square
-            style={{ width: "100px" }}
-            onClick={goBack}
-          >
-            Back
-          </Button>
+        <Col className="editbtn">
           <Button
             variant="primary"
             type="submit"

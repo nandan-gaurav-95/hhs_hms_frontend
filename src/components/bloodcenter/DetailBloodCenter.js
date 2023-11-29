@@ -447,7 +447,7 @@ const DetailBloodCenter = () => {
         </div>
         <h2 className="propertyview">Blood Center Details </h2>
       </div>
-      <Container className="detail">
+      <Container className="detailblood">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys
@@ -461,10 +461,18 @@ const DetailBloodCenter = () => {
           </div>
         </div>
         <div className="bloodBtn">
-          <Button variant="primary" onClick={handleBloodCenterPdf}>
+          <Button
+            variant="primary"
+            onClick={handleBloodCenterPdf}
+            className="bloodpdf"
+          >
             <FaDownload /> Blood center
           </Button>
-          <Button variant="primary" onClick={handleCertificate}>
+          <Button
+            variant="primary"
+            onClick={handleCertificate}
+            className="bloodpdf1"
+          >
             <FaDownload /> Blood Certificate
           </Button>
         </div>

@@ -1,3 +1,5 @@
+/* for photos */
+
 .delete-button {
   margin-top: 10px;
   margin-left: 47%;
@@ -9,14 +11,6 @@
   cursor: pointer;
   width: 100px;
 }
-.sideBar-div {
-  max-width: 100%;
-  max-height: 100%;
-  padding: 0;
-  margin: 0;
-  /* background: linear-gradient(to top right, #0a8270, #7cff6b); */
-}
-
 .delete-button:hover {
   background-color: #d32f2f;
 }
@@ -24,17 +18,20 @@
   text-align: center;
 }
 
+/* Sidebar */
+
 .container {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 100vh;
 }
-.icon {
-  color: white;
-}
-.link_text {
-  color: white;
+.sideBar-div {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
+  /* background: linear-gradient(to top right, #0a8270, #7cff6b); */
 }
 .sidebar {
   width: 40%;
@@ -46,25 +43,22 @@
 .children {
   width: 70%;
   max-height: 100%;
-  /* background-image: linear-gradient(to top right, #0a8270, #7cff6b);   */
-}
-.children {
   flex-grow: 1;
   transition: margin-left 0.3s ease;
+  /* background-image: linear-gradient(to top right, #0a8270, #7cff6b);   */
 }
 .children.collapsed {
   margin-left: 150px;
   transition: margin-left 0.3s ease;
 }
 .collapsed .sidebar {
-  width: 50px; /* Adjusted width when collapsed */
+  width: 50px;
 }
 .link-content {
-  display: flex; /* Use flexbox */
-  align-items: center; /* Center items vertically */
+  display: flex;
+  align-items: center;
   /* background-color: #d32f2f; */
 }
-
 .icon {
   margin-right: 10px;
   margin-bottom: 20px;
@@ -80,14 +74,36 @@
 .hidden-text {
   display: none;
 }
-
 .submenu-item .submenu-text {
   color: white;
   margin-right: 10px;
   margin-bottom: 20px;
 }
+.submenu-text {
+  color: white;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+.submenu-icon {
+  color: white;
+  margin: 0px 10px 20px 20px;
+}
+.red-text {
+  color: red;
+}
+
+.submenu-text {
+  color: white;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+.submenu-icon {
+  color: white;
+
+  margin: 0px 10px 20px 20px;
+}
 .bars {
-  margin-bottom: 20px; /* Adjust the margin as needed */
+  margin-bottom: 20px;
   color: white;
 }
 .backLogin:hover {
@@ -189,66 +205,14 @@
 .logo {
   color: #fff;
 }
-
-.submenu-text {
-  color: white;
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-.submenu-icon {
-  color: white;
-  margin: 0px 10px 20px 20px;
-}
-.red-text {
-  color: red;
-}
-
-.submenu-text {
-  color: white;
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-.submenu-icon {
-  color: white;
-
-  margin: 0px 10px 20px 20px;
-}
-
 th {
   white-space: nowrap;
   text-align: center;
   padding: 5px;
 }
-.entity-row {
-  margin-bottom: 2px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3px;
-  width: 100%;
-  margin-top: 10px;
-}
-.entity-column {
-  margin-bottom: 5px;
-}
-.entity-name {
-  font-weight: bold;
-  font-size: 18px;
-  width: 100%;
-  padding-right: 40px;
-  text-align: left;
-  margin-right: 10px;
-  padding-left: 20px;
-}
 
-.entity-value {
-  width: 60%;
-  margin-left: 10px;
-  text-align: right;
-  padding-left: 100px;
-  flex: 1;
-  padding-left: 0px;
-}
+/* Search */
+
 .search-input {
   width: 40%;
   padding: 15px;
@@ -261,12 +225,10 @@ th {
   margin-top: 40px;
   position: relative;
 }
-
 .button-container {
   display: flex;
   align-items: center;
 }
-
 .button-container button {
   width: 40%;
   height: 50px;
@@ -279,11 +241,13 @@ th {
   display: flex;
   flex-direction: row;
 }
+
+/* Filter */
+
 .filter-options {
   display: flex;
   align-items: center;
 }
-
 .filter-select {
   margin-right: 10px;
 }
@@ -292,7 +256,6 @@ th {
   margin-right: 10px;
   height: 28px;
 }
-
 .date-input {
   margin-right: 10px;
   width: 100px;
@@ -317,101 +280,12 @@ th {
 .department-select {
   margin-bottom: 20px;
 }
-/* .centered-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 40vh;
-} */
-
 .loginbtn {
   display: flex;
   justify-content: center;
 }
-
 .logbtn {
   margin-left: 0;
-}
-.detail-elebill {
-  height: 430px;
-  /* width: 50%; */
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: flex-start; */
-}
-.pdf-btn-container {
-  display: flex;
-  /* justify-content: space-between; */
-  margin-top: 30px;
-  padding-left: 95px;
-  align-items: center;
-  text-align: center;
-}
-
-.pdf-btn {
-  width: 30%; /* Adjust as needed */
-}
-.pdf-btn-elebill {
-  width: 180px;
-}
-
-.pdf-btn {
-  display: flex;
-  justify-content: center;
-}
-.pdf-btn-voucher {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.pdf-btn-ele {
-  text-align: center;
-  width: 30%;
-  padding-top: 10px;
-}
-
-.detailvoucher {
-  text-align: center;
-  width: 700px;
-  height: 250px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 100px auto;
-  padding: 20px;
-  display: flex; 
-   flex-direction: column;
-  justify-content: space-between;
-}
-.detailhhscomp{
-  text-align: center;
-  width: 700px;
-  height: 350px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 60px auto;
-  padding: 20px;
-  display: flex; 
-   flex-direction: column;
-  justify-content: space-between;
-}
-
-
-.detail-girlhostel {
-  height: 20vh;
-  width: 45%;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin-top: 150px;
-  display: flex;
-  justify-content: center;
 }
 
 /* loginpage */
@@ -463,13 +337,26 @@ th {
   margin-top: 10px;
   margin-inline-end: 24px;
 }
+.loginremember1{
+  margin-bottom: 1rem;
+  padding-top: 0.25rem; 
+  padding-bottom: 0.25rem;
+}
+.loginremember2{
+  padding-top: 0.25rem; 
+  padding-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+}
 .remember {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 20px;
 }
 .logbtn {
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 .logincolor {
   color: rgb(250, 242, 242);
@@ -532,6 +419,14 @@ th {
   margin-inline-start: 0.75rem;
   margin-top: 15px;
 }
+.password-input-wrapper {
+  margin-bottom: 0.50rem; 
+}
+
+.confirm-password-input-wrapper {
+  margin-top: 0.50rem; 
+}
+
 
 /* forgetpage */
 
@@ -585,7 +480,6 @@ th {
 }
 
 /* header */
-/* styles.css */
 
 .h1-custom-style {
   margin-right: 40px;
@@ -597,7 +491,6 @@ th {
     2px -2px 0 #fffacd,
     -2px 2px 0 #fffacd;
 }
-
 .headertext {
   display: flex;
   flex-flow: column;
@@ -668,57 +561,77 @@ th {
   background-color: #ffffff;
   border-radius: 0.375rem;
 }
-.subviewbody{
+.subviewbody {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   margin-bottom: 1.25rem;
   background-color: #ffffff;
   border-radius: 0.375rem;
 }
-.detail-ele{
-  text-align: center;
-  width: 700px;
-  height: 360px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 40px auto;
-  padding: 20px;
-  padding-bottom: 250px;
+.searchcontentcenter {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.detailtenant{
+  margin-bottom: 8px;
+  align-items: center;
   text-align: center;
-  width: 700px;
-  height: 460px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 40px auto;
-  padding: 20px;
-  padding-bottom: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding-left: 325px;
 }
-.detail-voucher{
+.searchcontentcenteremp {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
   text-align: center;
-  width: 700px;
-  height: 460px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 40px auto;
-  padding: 20px;
-  padding-bottom: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding-left: 355px;
 }
+.searchcontentcenterinv {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+  text-align: center;
+  padding-left: 485px;
+}
+.searchcontentcenterblood {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+  text-align: center;
+  padding-left: 515px;
+}
+.invsearch {
+  margin: 7px;
+  padding: 0px;
+}
+
 /* detail page */
 
+.entity-row {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+  width: 100%;
+  margin-top: 10px;
+}
+.entity-column {
+  margin-bottom: 5px;
+}
+.entity-name {
+  font-weight: bold;
+  font-size: 18px;
+  width: 100%;
+  padding-right: 40px;
+  text-align: left;
+  margin-right: 10px;
+  padding-left: 20px;
+}
+.entity-value {
+  width: 60%;
+  margin-left: 10px;
+  text-align: right;
+  padding-left: 100px;
+  flex: 1;
+  padding-left: 0px;
+}
 .maindetails {
   margin-top: 4px;
 }
@@ -741,7 +654,136 @@ th {
   flex-direction: column;
   justify-content: space-between;
 }
-.detailemp{
+.detail-ele {
+  text-align: center;
+  width: 700px;
+  height: 360px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 40px auto;
+  padding: 20px;
+  padding-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailtenant {
+  text-align: center;
+  width: 700px;
+  height: 460px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 40px auto;
+  padding: 20px;
+  padding-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailvoucher {
+  text-align: center;
+  width: 700px;
+  height: 250px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 100px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailhhscomp {
+  text-align: center;
+  width: 700px;
+  height: 350px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 60px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detaildargah {
+  text-align: center;
+  width: 700px;
+  height: 350px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 60px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailmedical {
+  text-align: center;
+  width: 700px;
+  height: 300px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 80px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailambulance {
+  text-align: center;
+  width: 700px;
+  height: 230px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 110px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailblood {
+  text-align: center;
+  width: 700px;
+  height: 390px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 35px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailparking {
+  text-align: center;
+  width: 700px;
+  height: 330px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 65px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detail-girlhostel {
+  height: 20vh;
+  width: 45%;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+}
+.detailemp {
   text-align: center;
   width: 700px;
   height: 600px;
@@ -770,11 +812,82 @@ th {
 .subcolumnarrangementgirl1 {
   width: 250px;
 }
-.salarybtn{
+.salarybtn {
   margin-top: 15px;
 }
-.voucherbtn{
+.voucherbtn {
   text-align: center;
+}
+.pdf-btn {
+  width: 30%;
+}
+.pdf-btn-elebill {
+  width: 180px;
+}
+.pdf-btn {
+  display: flex;
+  justify-content: center;
+}
+.pdf-btn-voucher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.pdf-btn-ele {
+  text-align: center;
+  width: 30%;
+  padding-top: 10px;
+}
+.detail-elebill {
+  height: 430px;
+  /* width: 50%; */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+}
+.pdf-btn-container {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 30px;
+  padding-left: 95px;
+  align-items: center;
+  text-align: center;
+}
+.pdf-btn-div {
+  padding-bottom: 10px;
+}
+.dargahbtn {
+  width: 25%;
+}
+.medicalbtn {
+  width: 30%;
+}
+.ambpdfbtn {
+  padding-top: 20px;
+}
+.ambulancebtn {
+  width: 25%;
+}
+.bloodpdf {
+  width: 25%;
+}
+.bloodpdf1 {
+  width: 25%;
+}
+.bloodBtn {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  --mdb-btn-padding-x: 0;
+}
+.bloodBtn button {
+  margin-left: 15px;
 }
 
 /* edit page */
@@ -784,7 +897,6 @@ th {
   overflow-x: hidden;
   padding: 0;
 }
-
 .mainedit {
   margin-top: 15px;
 }
@@ -797,7 +909,6 @@ th {
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .list-group-item {
   display: flex;
   justify-content: space-between;
@@ -818,50 +929,11 @@ th {
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.searchcontentcenter{
-  display: flex;
-  margin-bottom: 8px;
-  align-items: center;
-  text-align: center;
-  padding-left: 325px;
-}
-.searchcontentcenteremp{
-  display: flex;
-  margin-bottom: 8px;
-  align-items: center;
-  text-align: center;
-  padding-left: 355px;
-}
-.searchcontentcenterinv{
-  display: flex;
-  margin-bottom: 8px;
-  align-items: center;
-  text-align: center;
-  padding-left: 485px;
-}
-.invsearch{
-  margin: 7px;
-  padding: 0px;
-}
 .form-group {
   text-align: center;
   padding-right: 40px;
- 
 }
-.editbtn{
+.editbtn {
   margin-right: 2rem;
 }
 
-/* detail blood center page  */
-.bloodBtn{
-  display: flex;
-  justify-content: center;
-}
-
-.btn{
-  --mdb-btn-padding-x: 0;
-}
-
-.bloodBtn button {
-  margin-left: 15px;
-}

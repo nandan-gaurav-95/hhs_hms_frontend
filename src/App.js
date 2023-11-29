@@ -144,7 +144,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* sign in */}
-          {/* <Route path="login" element={<LoginForm />}></Route> */}
+          <Route path="login" element={<LoginForm />}></Route>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/forgetPage" element={<ForgetPage />}></Route>
           <Route path="/signUp" element={<Signup />}></Route>
