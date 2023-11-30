@@ -19,7 +19,7 @@ const HomeInventory = () => {
     navigate("/addinventory");
   };
   const handleViewInventory = () => {
-    navigate("/showinventory");
+    navigate("/allinventories");
   };
   const handleDistributeInventory = () => {
     navigate("/distributeinventory");

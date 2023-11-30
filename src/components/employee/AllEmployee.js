@@ -58,11 +58,13 @@ const AllEmployee = () => {
   };
 
   const handleViewProfile = (emp_id) => {
-    navigate(`/employeeprofile/${emp_id}`);
+    // navigate(`/employeeprofile/${emp_id}`);
+    navigate(`/employeedetails/${emp_id}`);
   };
 
   const handleEditProfile = (id) => {
-    navigate(`/employee-details/${id}`);
+    // navigate(`/employee-details/${id}`);
+    navigate(`/editemployee/${id}`);
   };
 
   const handleDelete = async (emp_id) => {
@@ -193,31 +195,31 @@ const AllEmployee = () => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                           <Dropdown.Item
-                            onClick={() => handleViewProfile(employee.emp_id)}
+                            onClick={() => handleViewProfile(employee?.emp_id)}
                           >
                             View Profile
                           </Dropdown.Item>
                           <Dropdown.Item
-                            onClick={() => handleEditProfile(employee.emp_id)}
+                            onClick={() => handleEditProfile(employee?.emp_id)}
                           >
                             Edit Profile
                           </Dropdown.Item>
                           <Dropdown.Item
-                            onClick={() => handleDelete(employee.emp_id)}
+                            onClick={() => handleDelete(employee?.emp_id)}
                             className="red-text"
                           >
                             Delete
                           </Dropdown.Item>
                           <Dropdown.Item>
                             <Link
-                              to={`/allocated-inventory/${employee.emp_id}`}
+                              to={`/allocated-inventory/${employee?.emp_id}`}
                             >
                               Inventory Details
                             </Link>
                           </Dropdown.Item>
                           <Dropdown.Item
                             onClick={() =>
-                              handleMarkAsResigned(employee.emp_id)
+                              handleMarkAsResigned(employee?.emp_id)
                             }
                           >
                             Mark as Resigned

@@ -26,7 +26,7 @@ const HomeTenant = () => {
     navigate("/tenant");
   };
   const handleViewTenant = () => {
-    navigate("/showtenant");
+    navigate("/alltenants");
   };
   return (
     <div className="background-login" style={backgroundImageStyle}>

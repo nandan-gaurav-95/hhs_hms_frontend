@@ -161,8 +161,8 @@ function App() {
           <Route path="/loginprop" element={<LoginProperty />}></Route>
           <Route path="/homeprop" element={<HomeProperty />}></Route>
           <Route path="/allProperties" element={<AllProperties />}></Route>
-          <Route path="/profile/:id" element={<ViewPropertyDetail />}></Route>
-          <Route path="/property-details/:id" element={<PropertyDetails />}></Route>
+          <Route path="/propertydetail/:id" element={<ViewPropertyDetail />}></Route>
+          <Route path="/editproperty/:id" element={<PropertyDetails />}></Route>
           <Route path="/properties" element={<Property />}></Route>
           <Route path="/property-photo/:id" element={<PropertyPhotoForm />}></Route>
          
@@ -170,10 +170,10 @@ function App() {
           <Route path="/logintenant" element={<LoginTenant />}></Route>
           <Route path="/hometenant" element={<HomeTenant />}></Route>
           <Route path="/tenant" element={<TenantForm />}></Route>
-          <Route path="/showtenant" element={<ShowTenant />}></Route>
-          <Route path="/tenant-details/:id" element={<TenantDetails />}></Route>
+          <Route path="/alltenants" element={<ShowTenant />}></Route>
+          <Route path="/edittenant/:id" element={<TenantDetails />}></Route>
           {/* <Route path="/tenant-details/:id" element={<PropertyDetailsTenant />}></Route> */}
-          <Route path="/tenantprofile/:id" element={<ViewTenantDetail />}></Route>
+          <Route path="/tenantdetails/:id" element={<ViewTenantDetail />}></Route>
 
           <Route path="/payroll" element={<PayrollForm />}></Route>
           <Route path="/allpayroll" element={<Allpayroll />}></Route>
@@ -184,10 +184,10 @@ function App() {
           <Route path="/logininventory" element={<LoginInventory />}></Route>
           <Route path="/homeinventory" element={<HomeInventory />}></Route>
           <Route path="/inventory" element={<InventoryForm />}></Route>
-          <Route path="/allinventory" element={<AllinventoryForm />}></Route>
-          <Route path="/inventory-details/:id" element={<InventoryDetails />} ></Route>
+          {/* <Route path="/allinventory" element={<AllinventoryForm />}></Route> */}
+          <Route path="/editinventory/:id" element={<InventoryDetails />} ></Route>
           <Route path="/addinventory" element={<AddInventory />}></Route>
-          <Route path="/showinventory" element={<ShowInventory />}></Route>
+          <Route path="/allinventories" element={<ShowInventory />}></Route>
           <Route path="/distributeinventory" element={<DistributeInventory />}></Route>
           <Route path="/allocated-inventory/:id" element={<AllocatedInventory />} />
 
@@ -197,8 +197,8 @@ function App() {
           <Route path="/homeemployee" element={<HomeEmployee />}></Route>
           <Route path="/employee" element={<EmployeeForm />}></Route>
           <Route path="/allemployee" element={<AllEmployeeForm />}></Route>
-          <Route path="/employee-details/:id" element={<EmpolyeeDetails />}></Route>
-          <Route path="/employeeprofile/:id" element={<ViewEmpProfile />} ></Route>
+          <Route path="/editemployee/:id" element={<EmpolyeeDetails />}></Route>
+          <Route path="/employeedetails/:id" element={<ViewEmpProfile />} ></Route>
 
           {/* Daybook */}
           <Route path="/daybook" element={<DayBook />}></Route>

@@ -60,7 +60,7 @@ const ShowInventory = () => {
   };
 
   const handleEditProfile = (inv_id) => {
-    navigate(`/inventory-details/${inv_id}`);
+    navigate(`/editinventory/${inv_id}`);
   };
 
   const handleSearchChange = (event) => {

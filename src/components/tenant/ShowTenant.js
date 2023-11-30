@@ -58,7 +58,7 @@ const ShowTenant = () => {
   };
 
   const handleEditProfile = (tnt_id) => {
-    navigate(`/tenant-details/${tnt_id}`);
+    navigate(`/edittenant/${tnt_id}`);
   };
 
   const handleDelete = async (tnt_id) => {
@@ -75,7 +75,7 @@ const ShowTenant = () => {
   };
 
   const handleViewProfile = (tnt_id) => {
-    navigate(`/tenantprofile/${tnt_id}`);
+    navigate(`/tenantdetails/${tnt_id}`);
   };
   useEffect(() => {
     const filtered = tenantData.filter((tenant) => {
@@ -181,17 +181,17 @@ const ShowTenant = () => {
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item
-                        onClick={() => handleViewProfile(tenant.tnt_id)}
+                        onClick={() => handleViewProfile(tenant?.tnt_id)}
                       >
                         View Profile
                       </Dropdown.Item>
                       <Dropdown.Item
-                        onClick={() => handleEditProfile(tenant.tnt_id)}
+                        onClick={() => handleEditProfile(tenant?.tnt_id)}
                       >
                         Edit Profile
                       </Dropdown.Item>
                       <Dropdown.Item
-                        onClick={() => handleDelete(tenant.tnt_id)}
+                        onClick={() => handleDelete(tenant?.tnt_id)}
                         className="red-text"
                       >
                         Delete Profile

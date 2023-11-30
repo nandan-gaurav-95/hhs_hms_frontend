@@ -65,11 +65,11 @@ const AllProperties = () => {
  
 
   const handleViewProfile = (prop_id) => {
-    navigate(`/profile/${prop_id}`);
+    navigate(`/propertydetail/${prop_id}`);
   };
 
   const handleEditProfile = (id) => {
-    navigate(`/property-details/${id}`);
+    navigate(`/editproperty/${id}`);
   };
 
   const handleDelete = async (prop_id) => {
