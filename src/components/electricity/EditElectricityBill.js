@@ -106,7 +106,7 @@ function EditElectricityBill() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Name:</strong>
+              <strong>Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -124,7 +124,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.shopNo}
                 onChange={handleChange}
               />
-              <strong>R.R. NO.</strong>
+              <strong>RR. NO.</strong>
               <input
                 className="list-group-item input-field"
                 type="number"
@@ -132,7 +132,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.rrNo}
                 onChange={handleChange}
               />
-              <strong>Ledger Follo No:</strong>
+              <strong>Ledger Follo No</strong>
 
               <input
                 className="list-group-item input-field"
@@ -141,7 +141,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.ledger_follono}
                 onChange={handleChange}
               />
-              <strong>Unit Sanction:</strong>
+              <strong>Unit Sanction</strong>
 
               <input
                 className="list-group-item input-field"
@@ -151,8 +151,8 @@ function EditElectricityBill() {
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-md-5">
-              <strong>Sanction Load:</strong>
+            <Col className="column">
+              <strong>Sanction Load</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -160,7 +160,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.sanctionLoad}
                 onChange={handleChange}
               />
-              <strong>Tariff:</strong>
+              <strong>Tariff</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -168,7 +168,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.tariff}
                 onChange={handleChange}
               />
-              <strong>Present Reading:</strong>
+              <strong>Present Reading</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -176,7 +176,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.presentReading}
                 onChange={handleChange}
               />
-              <strong>Previous Reading:</strong>
+              <strong>Previous Reading</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -184,7 +184,7 @@ function EditElectricityBill() {
                 value={updateElectricityBill.previousReading}
                 onChange={handleChange}
               />{" "}
-              <strong>Unit Consumed:</strong>
+              <strong>Unit Consumed</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -195,7 +195,7 @@ function EditElectricityBill() {
             </Col>
             <Row className="detailsrow">
               <Col className="column ">
-                <strong>Date Of Reading:</strong>
+                <strong>Date Of Reading</strong>
 
                 <input
                   className="list-group-item input-field"

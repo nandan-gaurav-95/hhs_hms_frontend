@@ -212,7 +212,7 @@ const DetailHHSComplex = () => {
           </div>
         </div>
         <div>
-          <Button variant="primary" onClick={handleHHSComplexPdf}>
+          <Button variant="primary" onClick={handleHHSComplexPdf} className="hhsbtn">
             <FaDownload /> HHS Complex
           </Button>
         </div>

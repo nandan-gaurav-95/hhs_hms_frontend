@@ -109,7 +109,7 @@ const ViewGirlsHostel = () => {
           <tr>
             <th>Sr. No.</th>
             <th>Date</th>
-            <th>Food</th>
+            <th>Food Item</th>
             <th>Food Quantity</th>
             <th>Bill Amount</th>
             <th>Balance</th>

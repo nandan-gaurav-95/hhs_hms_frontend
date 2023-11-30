@@ -115,7 +115,7 @@ function InventoryDetails() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Inventory ID:</strong>
+              <strong>Inventory ID</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -134,7 +134,7 @@ function InventoryDetails() {
                 onChange={handleChange}
               />
 
-              <strong>Quantity:</strong>
+              <strong>Quantity</strong>
 
               <input
                 className="list-group-item input-field"
@@ -145,23 +145,40 @@ function InventoryDetails() {
               />
             </Col>
             <Col className="column">
-              <strong>Department:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="department"
-                value={updatedInventory.department}
-                onChange={handleChange}
-              />
-              <strong>Type:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="inv_type"
-                value={updatedInventory.inv_type}
-                onChange={handleChange}
-              />
-              <strong>Price:</strong>
+              <strong>Department</strong>
+              <select
+               className="list-group-item input-field"
+              id="Department"
+              name="department"
+              value={updatedInventory.department}
+              onChange={handleChange}
+              required
+            >
+    
+              <option value="Schools">Schools</option>
+              <option value="ITI College">ITI College</option>
+              <option value="Skill Center">Skill Center</option>
+              <option value="Blood Collection Center">
+                {" "}
+                Blood Collection Center
+              </option>
+              <option value="Hostel">Hostel</option>
+              <option value="Masjid">Masjid</option>
+              <option value="Dargah">Dargah</option>
+            </select>
+              <strong>Type</strong>
+              <select
+               className="list-group-item input-field"
+              id="select Inventory"
+              name="inv_type"
+              value={updatedInventory.inv_type}
+              onChange={handleChange}
+              required
+            >
+              <option value="Consumable">Consumable</option>
+              <option value="NonConsumable ">NonConsumable</option>
+            </select>
+              <strong>Price</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -172,7 +189,7 @@ function InventoryDetails() {
             </Col>
             <Row className="detailsrow">
               <Col className="column ">
-                <strong>Date:</strong>
+                <strong>Date</strong>
 
                 <input
                   className="list-group-item input-field"

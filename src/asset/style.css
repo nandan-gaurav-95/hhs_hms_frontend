@@ -633,18 +633,27 @@ th {
   padding-left: 0px;
 }
 .maindetails {
-  margin-top: 4px;
+  margin-top: 10px;
+}
+.maindetailsvou {
+  margin-top: 40px;
 }
 .propertyview {
-  margin-top: 15px;
+  margin-top: 28px;
   margin-bottom: 30px;
+  text-align: center;
+  flex-flow: column;
+}
+.propertyviewvoucher{
+  margin-top: 30px;
+  margin-bottom: 10px;
   text-align: center;
   flex-flow: column;
 }
 .detail {
   text-align: center;
   width: 700px;
-  height: 430px;
+  height: 410px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
@@ -724,11 +733,11 @@ th {
 .detaildargah {
   text-align: center;
   width: 700px;
-  height: 350px;
+  height: 300px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 60px auto;
+  margin: 75px auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -741,7 +750,7 @@ th {
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
-  margin: 80px auto;
+  margin: 70px auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -798,8 +807,8 @@ th {
 }
 .detailemp {
   text-align: center;
-  width: 700px;
-  height: 600px;
+  width: 800px;
+  height: 550px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
@@ -819,6 +828,12 @@ th {
 .subcolumnarrangement1 {
   width: 310px;
 }
+.subcolumnarrangementemp {
+  width: 380px;
+}
+.subcolumnarrangement1emp {
+  width: 360px;
+}
 .subcolumnarrangementgirl {
   width: 250px;
 }
@@ -826,7 +841,11 @@ th {
   width: 250px;
 }
 .salarybtn {
-  margin-top: 15px;
+  margin-bottom: 17px;
+}
+.hhsbtn{
+width:30%;
+margin-top: 10px;
 }
 .voucherbtn {
   text-align: center;
@@ -848,12 +867,11 @@ th {
   width: 100%;
 }
 .pdf-btn-ele {
-  text-align: center;
-  width: 30%;
-  padding-top: 10px;
+  margin-top: 40px;
+width: 30%;
 }
 .detail-elebill {
-  height: 430px;
+  height: 450px;
   /* width: 50%; */
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
@@ -872,10 +890,11 @@ th {
   text-align: center;
 }
 .pdf-btn-div {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 .dargahbtn {
   width: 25%;
+  margin-top: 15px;
 }
 .medicalbtn {
   width: 30%;
@@ -887,9 +906,11 @@ th {
   width: 25%;
 }
 .bloodpdf {
+  margin-bottom: 10px;
   width: 25%;
 }
 .bloodpdf1 {
+  margin-bottom: 10px;
   width: 25%;
 }
 .bloodBtn {

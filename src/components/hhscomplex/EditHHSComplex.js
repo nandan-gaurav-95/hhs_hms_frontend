@@ -101,7 +101,7 @@ function EditHHSComplex() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>L.F. No:</strong>
+              <strong>L.F. No</strong>
               <input
                 className="list-group-item input-field"
                 type="number"
@@ -110,7 +110,7 @@ function EditHHSComplex() {
                 onChange={handleChange}
               />
 
-              <strong>R.R. NO.</strong>
+              <strong>RR. NO.</strong>
 
               <input
                 className="list-group-item input-field"
@@ -127,7 +127,7 @@ function EditHHSComplex() {
                 value={updateHHSComplex.date}
                 onChange={handleChange}
               />
-              <strong>Receiver Name:</strong>
+              <strong>Receiver Name</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -135,7 +135,7 @@ function EditHHSComplex() {
                 value={updateHHSComplex.receiverName}
                 onChange={handleChange}
               />
-              <strong>Rupees:</strong>
+              <strong>Rupees</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -145,7 +145,7 @@ function EditHHSComplex() {
               />
             </Col>
             <Col className="column">
-              <strong>Rupee In Words:</strong>
+              <strong>Rupee In Words</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -153,7 +153,7 @@ function EditHHSComplex() {
                 value={updateHHSComplex.rupeeInWords}
                 onChange={handleChange}
               />
-              <strong>Electrical Charges:</strong>
+              <strong>Electrical Charges</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -161,15 +161,30 @@ function EditHHSComplex() {
                 value={updateHHSComplex.eleCharges}
                 onChange={handleChange}
               />
-              <strong>Month:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="month"
-                value={updateHHSComplex.month}
-                onChange={handleChange}
-              />
-              <strong>Cheque No:</strong>
+              <strong>Month</strong>
+              <select
+              className="list-group-item input-field"
+              type="text"
+              name="month"
+              value={updateHHSComplex.month}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+              <strong>Cheque No</strong>
 
               <input
                 className="list-group-item input-field"
@@ -178,7 +193,7 @@ function EditHHSComplex() {
                 value={updateHHSComplex.chequeNo}
                 onChange={handleChange}
               />
-              <strong>Date:</strong>
+              <strong>Date</strong>
 
               <input
                 className="list-group-item input-field"
@@ -190,7 +205,7 @@ function EditHHSComplex() {
             </Col>
             <Row className="detailsrow">
               <Col className="column">
-                <strong>Remark:</strong>
+                <strong>Remark</strong>
                 <input
                   className="list-group-item input-field "
                   type="text"

@@ -101,7 +101,7 @@ function EditGirlsHostel() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Date:</strong>
+              <strong>Date</strong>
               <input
                 className="list-group-item input-field"
                 type="date"
@@ -129,7 +129,7 @@ function EditGirlsHostel() {
                 value={updatedGIRLSHOSTEL.food_quantity}
                 onChange={handleChange}
               />
-              <strong>Bill Amount:</strong>
+              <strong>Bill Amount</strong>
               <input
                 className="list-group-item input-field"
                 id="number"
@@ -139,7 +139,7 @@ function EditGirlsHostel() {
               />
             </Col>
             <Col className="column">
-              <strong>Balance:</strong>
+              <strong>Balance</strong>
               <input
                 className="list-group-item input-field"
                 type="number"

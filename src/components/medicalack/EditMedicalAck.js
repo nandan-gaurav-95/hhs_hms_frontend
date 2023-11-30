@@ -103,7 +103,7 @@ function EditMedicalAck() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>TO Name:</strong>
+              <strong>TO Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -120,7 +120,7 @@ function EditMedicalAck() {
                 value={updateMedicalAck.date}
                 onChange={handleChange}
               />
-              <strong>Rupees:</strong>
+              <strong>Rupees</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -128,7 +128,7 @@ function EditMedicalAck() {
                 value={updateMedicalAck.rupees}
                 onChange={handleChange}
               />
-              <strong>Cheque No:</strong>
+              <strong>Cheque No</strong>
 
               <input
                 className="list-group-item input-field"
@@ -139,7 +139,7 @@ function EditMedicalAck() {
               />
             </Col>
             <Col className="column">
-              <strong>Dated:</strong>
+              <strong>Dated</strong>
 
               <input
                 className="list-group-item input-field"
@@ -148,7 +148,7 @@ function EditMedicalAck() {
                 value={updateMedicalAck.dated}
                 onChange={handleChange}
               />
-              <strong>Hospital IP No:</strong>
+              <strong>Hospital IP No</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -156,7 +156,7 @@ function EditMedicalAck() {
                 value={updateMedicalAck.hospIpNo}
                 onChange={handleChange}
               />
-              <strong>Disease:</strong>
+              <strong>Disease</strong>
 
               <input
                 className="list-group-item input-field"
@@ -166,7 +166,7 @@ function EditMedicalAck() {
                 onChange={handleChange}
               />
 
-              <strong>Remark:</strong>
+              <strong>Remark</strong>
               <input
                 className="list-group-item input-field"
                 type="text"

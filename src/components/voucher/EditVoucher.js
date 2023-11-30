@@ -99,7 +99,7 @@ function EditVoucher() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Date:</strong>
+              <strong>Date</strong>
               <input
                 className="list-group-item input-field"
                 type="date"
@@ -126,8 +126,8 @@ function EditVoucher() {
                 onChange={handleChange}
               />
             </Col>
-            <Col className="col-md-5">
-              <strong>Dated:</strong>
+            <Col className="column">
+              <strong>Dated</strong>
               <input
                 className="list-group-item input-field"
                 id="date"
@@ -135,7 +135,7 @@ function EditVoucher() {
                 value={updateVoucher.dated}
                 onChange={handleChange}
               />
-              <strong>Rupees:</strong>
+              <strong>Rupees</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -143,7 +143,7 @@ function EditVoucher() {
                 value={updateVoucher.rupees}
                 onChange={handleChange}
               />
-              <strong>Cheque No:</strong>
+              <strong>Cheque No</strong>
 
               <input
                 className="list-group-item input-field"
@@ -155,7 +155,7 @@ function EditVoucher() {
             </Col>
             <Row className="detailsrow">
               <Col className="column">
-                <strong>Remark:</strong>
+                <strong>Remark</strong>
                 <input
                   className="list-group-item input-field"
                   type="text"
@@ -170,10 +170,10 @@ function EditVoucher() {
       </Row>
 
       <Row className="form-group ">
-        <Col md-2>
-          <Button variant="primary" square onClick={goBack}>
+        <Col className="editbtn">
+          {/* <Button variant="primary" square onClick={goBack}>
             Back
-          </Button>
+          </Button> */}
           <Button
             variant="primary"
             type="submit"

@@ -101,7 +101,7 @@ function EditDargahComplex() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Receiver Name:</strong>
+              <strong>Receiver Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -118,7 +118,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.date}
                 onChange={handleChange}
               />
-              <strong>Rupees:</strong>
+              <strong>Rupees</strong>
               <input
                 className="list-group-item input-field"
                 type="number"
@@ -126,7 +126,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.rupee}
                 onChange={handleChange}
               />
-              <strong>Rupee In Words:</strong>
+              <strong>Rupee In Words</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -134,7 +134,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.rupeeInWords}
                 onChange={handleChange}
               />
-              <strong>Shop Rent:</strong>
+              <strong>Shop Rent</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -144,15 +144,30 @@ function EditDargahComplex() {
               />
             </Col>
             <Col className="column">
-              <strong>Month:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="month"
-                value={updateDargahComplex.month}
-                onChange={handleChange}
-              />
-              <strong>Cheque No:</strong>
+              <strong>Month</strong>
+              <select
+              className="list-group-item input-field"
+              type="text"
+              name="month"
+              value={updateDargahComplex.month}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+              <strong>Cheque No</strong>
 
               <input
                 className="list-group-item input-field"
@@ -162,7 +177,7 @@ function EditDargahComplex() {
                 onChange={handleChange}
               />
 
-              <strong>Dated:</strong>
+              <strong>Dated</strong>
 
               <input
                 className="list-group-item input-field"
@@ -171,7 +186,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.dated}
                 onChange={handleChange}
               />
-              <strong>Drawn On:</strong>
+              <strong>Drawn On</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -179,7 +194,7 @@ function EditDargahComplex() {
                 value={updateDargahComplex.drawnOn}
                 onChange={handleChange}
               />
-              <strong>Remark:</strong>
+              <strong>Remark</strong>
               <input
                 className="list-group-item input-field"
                 type="text"

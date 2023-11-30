@@ -113,7 +113,7 @@ function EmployeeDetails() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Empolyee ID:</strong>
+              <strong>Empolyee ID</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -133,17 +133,30 @@ function EmployeeDetails() {
                 onChange={handleChange}
               />
 
-              <strong>Department:</strong>
+              <strong>Department</strong>
 
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="department"
-                value={updatedEmployee.department}
-                onChange={handleChange}
-              />
+              <select
+              className="list-group-item input-field"
+              id="Department"
+              name="department"
+              value={updatedEmployee.department}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Department</option>
+              <option value="Schools">Schools</option>
+              <option value="ITI College">ITI College</option>
+              <option value="Skill Center">Skill Center</option>
+              <option value="Blood Collection Center">
+                {" "}
+                Blood Collection Center
+              </option>
+              <option value="Hostel">Hostel</option>
+              <option value="Masjid">Masjid</option>
+              <option value="Dargah">Dargah</option>
+            </select>
 
-              <strong>DOB:</strong>
+              <strong>DOB</strong>
 
               <input
                 className="list-group-item input-field"
@@ -153,16 +166,22 @@ function EmployeeDetails() {
                 onChange={handleChange}
               />
 
-              <strong>Gender:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="gender"
-                value={updatedEmployee.gender}
-                onChange={handleChange}
-              />
+              <strong>Gender</strong>
+              <select
+              className="list-group-item input-field"
+              id="Gender"
+              name="gender"
+              value={updatedEmployee.gender}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Transgender</option>
+            </select>
 
-              <strong>Contact Number:</strong>
+              <strong>Contact Number</strong>
               <input
                 className="list-group-item input-field"
                 type="tel"
@@ -171,7 +190,7 @@ function EmployeeDetails() {
                 onChange={handleChange}
               />
 
-              <strong>Blood Group:</strong>
+              <strong>Blood Group</strong>
               <select
                 className="list-group-item input-field"
                 id="Blood Group"
@@ -189,7 +208,7 @@ function EmployeeDetails() {
                 <option value="AB+">AB+</option>
                 <option value="AB-">AB-</option>
               </select>
-              <strong>Aadhar Number:</strong>
+              <strong>Aadhar Number</strong>
               <input
                 className="list-group-item input-field"
                 type="number"
@@ -199,7 +218,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>Qualification:</strong>
+              <strong>Qualification</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -209,7 +228,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>PAN Number:</strong>
+              <strong>PAN Number</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -220,7 +239,7 @@ function EmployeeDetails() {
               />
             </Col>
             <Col className="column">
-              <strong>Position:</strong>
+              <strong>Position</strong>
               <input
                 className="list-group-item input-field "
                 type="text"
@@ -230,7 +249,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>Basic Salary:</strong>
+              <strong>Basic Salary</strong>
               <input
                 className="list-group-item input-field "
                 type="text"
@@ -240,7 +259,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>Net Salary:</strong>
+              <strong>Net Salary</strong>
 
               <input
                 className="list-group-item input-field"
@@ -251,7 +270,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>Gross Salary:</strong>
+              <strong>Gross Salary</strong>
 
               <input
                 className="list-group-item input-field"
@@ -262,7 +281,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>Allowance:</strong>
+              <strong>Allowance</strong>
 
               <input
                 className="list-group-item input-field"
@@ -272,7 +291,7 @@ function EmployeeDetails() {
                 onChange={handleChange}
                 required
               />
-              <strong>Deduction:</strong>
+              <strong>Deduction</strong>
 
               <input
                 className="list-group-item input-field"
@@ -283,7 +302,7 @@ function EmployeeDetails() {
                 required
               />
 
-              <strong>Loan Amount:</strong>
+              <strong>Loan Amount</strong>
 
               <input
                 className="list-group-item input-field"
@@ -293,7 +312,7 @@ function EmployeeDetails() {
                 onChange={handleChange}
                 required
               />
-              <strong>Loan Repayment Amount:</strong>
+              <strong>Loan Repayment Amount</strong>
 
               <input
                 className="list-group-item input-field"
@@ -322,7 +341,7 @@ function EmployeeDetails() {
                 onChange={handleChange}
                 required
               />
-              <strong>Date Of Hiring:</strong>
+              <strong>Date Of Hiring</strong>
               <input
                 className="list-group-item input-field"
                 type="date"
@@ -336,7 +355,7 @@ function EmployeeDetails() {
         </ul>
       </Row>
       <Row className="form-group ">
-        <Col md-2>
+        <Col className="editbtn">
           {/* <Button
             variant="primary"
             square

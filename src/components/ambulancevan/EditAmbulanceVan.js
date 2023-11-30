@@ -101,7 +101,7 @@ function EditAmbulanceVan() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Receiver Name:</strong>
+              <strong>Receiver Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -120,7 +120,7 @@ function EditAmbulanceVan() {
               />
             </Col>
             <Col className="column">
-              <strong>Account HolderName:</strong>
+              <strong>Account HolderName</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -128,7 +128,7 @@ function EditAmbulanceVan() {
                 value={updateAmbulanceVan.accHolderName}
                 onChange={handleChange}
               />
-              <strong>Rupees:</strong>
+              <strong>Rupees</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -139,7 +139,7 @@ function EditAmbulanceVan() {
             </Col>
             <Row className="detailsrow">
               <Col className="column">
-                <strong>Remark:</strong>
+                <strong>Remark</strong>
                 <input
                   className="list-group-item input-field"
                   type="text"

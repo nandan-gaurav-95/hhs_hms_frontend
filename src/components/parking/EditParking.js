@@ -99,7 +99,7 @@ function EditParking() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Receiver Name:</strong>
+              <strong>Receiver Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -116,7 +116,7 @@ function EditParking() {
                 value={updateParking.date}
                 onChange={handleChange}
               />
-              <strong>Rupees:</strong>
+              <strong>Rupees</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -124,7 +124,7 @@ function EditParking() {
                 value={updateParking.rupee}
                 onChange={handleChange}
               />
-              <strong>Rupee In Words:</strong>
+              <strong>Rupee In Words</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -132,7 +132,7 @@ function EditParking() {
                 value={updateParking.rupeeInWords}
                 onChange={handleChange}
               />
-              <strong>Parking Rent:</strong>
+              <strong>Parking Rent</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -142,15 +142,30 @@ function EditParking() {
               />
             </Col>
             <Col className="column">
-              <strong>Month:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="month"
-                value={updateParking.month}
-                onChange={handleChange}
-              />
-              <strong>Cheque No:</strong>
+              <strong>Month</strong>
+              <select
+              className="list-group-item input-field"
+              type="text"
+              name="month"
+              value={updateParking.month}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+              <strong>Cheque No</strong>
 
               <input
                 className="list-group-item input-field"
@@ -160,7 +175,7 @@ function EditParking() {
                 onChange={handleChange}
               />
 
-              <strong>Dated:</strong>
+              <strong>Dated</strong>
 
               <input
                 className="list-group-item input-field"
@@ -169,7 +184,7 @@ function EditParking() {
                 value={updateParking.dated}
                 onChange={handleChange}
               />
-              <strong>Drawn On:</strong>
+              <strong>Drawn On</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -177,7 +192,7 @@ function EditParking() {
                 value={updateParking.drawnOn}
                 onChange={handleChange}
               />
-              <strong>Remark:</strong>
+              <strong>Remark</strong>
               <input
                 className="list-group-item input-field"
                 type="text"

@@ -436,7 +436,7 @@ const DetailElectricityBill = () => {
               )}
           </div>
         </div>
-        <div className="pdf-btn-div">
+        <div >
           <Button
             variant="primary"
             onClick={handleEleBillPdf}

@@ -110,7 +110,7 @@ const ViewElectricityBill = () => {
             <th>Sr. No.</th>
             <th>Name</th>
             <th>Shop No</th>
-            <th>R.R. NO.</th>
+            <th>RR. NO.</th>
             <th>Ledger Follo No</th>
             <th>Sanction Load</th>
             <th>Tariff</th>

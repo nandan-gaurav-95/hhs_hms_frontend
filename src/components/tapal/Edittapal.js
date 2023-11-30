@@ -111,7 +111,7 @@ function Edittapal() {
               <strong>To Address</strong>
 
               <input
-                className="list-group-item  input-field"
+                className="list-group-item input-field"
                 type="text"
                 name="toAddress"
                 value={updateTapal.toAddress}
@@ -121,13 +121,18 @@ function Edittapal() {
             <Col className="column">
               <strong>Letter Type</strong>
 
-              <input
-                className="list-group-item  input-field"
-                type="text"
-                name="letterType"
-                value={updateTapal.letterType}
-                onChange={handleChange}
-              />
+              <select
+              className="list-group-item input-field"
+              id="Letter Type"
+              name="letterType"
+              value={updateTapal.letterType}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Letter Type</option>
+              <option value="Received Letter">Received Letter</option>
+              <option value="Out Letter">Out Letter</option>
+            </select>
               <strong>From Address</strong>
               <input
                 className="list-group-item  input-field"

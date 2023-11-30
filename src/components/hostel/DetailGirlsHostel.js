@@ -76,7 +76,7 @@ const DetailGirlsHostel = () => {
   return (
     <div>
     <Header />
-    <div className="maindetails">
+    <div className="maindetailsvou">
     <div className="arrow-back-container">
       <BiArrowBack
         className="addbacklogo"

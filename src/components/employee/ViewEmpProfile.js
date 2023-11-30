@@ -299,12 +299,12 @@ const ViewEmpProfile = () => {
       </div>
       <Container className="detailemp">
         <div className="columnarrangement">
-          <div className="subcolumnarrangement">
+          <div className="subcolumnarrangement1emp">
             {firstColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderEmployeeRow(key, employee[key]))}
           </div>
-          <div className="subcolumnarrangement1">
+          <div className="subcolumnarrangementemp">
             {secondColumnKeys
               .filter((key) => key !== "id")
               .map((key) => renderEmployeeRow(key, employee[key]))}

@@ -189,11 +189,11 @@ const DetailVoucher = () => {
   return (
     <div>
       <Header />
-      <div className="maindetails">
+      <div className="maindetailsvou">
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h2 className="propertyview">
+        <h2 className="propertyviewvoucher">
           Details of Voucher No: {voucher?.v_id}{" "}
         </h2>
       </div>

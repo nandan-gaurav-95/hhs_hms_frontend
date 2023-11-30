@@ -101,7 +101,7 @@ function EditBloodCenter() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Receiver Name:</strong>
+              <strong>Receiver Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -119,7 +119,7 @@ function EditBloodCenter() {
                 onChange={handleChange}
               />
 
-              <strong>I.P. NO.:</strong>
+              <strong>I.P. NO.</strong>
               <input
                 className="list-group-item input-field"
                 id="text"
@@ -127,7 +127,7 @@ function EditBloodCenter() {
                 value={updateBloodCenter.ipNo}
                 onChange={handleChange}
               />
-              <strong>Age:</strong>
+              <strong>Age</strong>
               <input
                 className="list-group-item input-field"
                 id="number"
@@ -135,15 +135,22 @@ function EditBloodCenter() {
                 value={updateBloodCenter.age}
                 onChange={handleChange}
               />
-              <strong>Gender:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="gender"
-                value={updateBloodCenter.gender}
-                onChange={handleChange}
-              />
-              <strong>Hospital Name:</strong>
+              <strong>Gender</strong>
+              <select
+              className="list-group-item input-field"
+              type="number"
+              name="gender"
+              value={updateBloodCenter.gender}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
+          
+              <strong>Hospital Name</strong>
 
               <input
                 className="list-group-item input-field"
@@ -154,7 +161,7 @@ function EditBloodCenter() {
               />
             </Col>
             <Col className="column">
-              <strong>Invstigation Charges:</strong>
+              <strong>Invstigation Charges</strong>
 
               <input
                 className="list-group-item input-field"
@@ -163,7 +170,7 @@ function EditBloodCenter() {
                 value={updateBloodCenter.invstigationCharges}
                 onChange={handleChange}
               />
-              <strong>Unit No:</strong>
+              <strong>Unit No</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -172,23 +179,41 @@ function EditBloodCenter() {
                 onChange={handleChange}
               />
 
-              <strong>Blood Group:</strong>
-              <input
-                className="list-group-item input-field"
-                id="text"
-                name="bloodgroup"
-                value={updateBloodCenter.bloodgroup}
-                onChange={handleChange}
-              />
-              <strong>Payment Method:</strong>
-              <input
-                className="list-group-item input-field"
-                type="text"
-                name="paymentMethod"
-                value={updateBloodCenter.paymentMethod}
-                onChange={handleChange}
-              />
-              <strong>Rupee:</strong>
+              <strong>Blood Group</strong>
+              <select
+              className="list-group-item input-field"
+              id="Blood Group"
+              name="bloodgroup"
+              value={updateBloodCenter.bloodgroup}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Blood Group</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+            <strong>Payment Method</strong>
+            <select
+              className="list-group-item input-field"
+              id="paymentMethod"
+              name="paymentMethod"
+              value={updateBloodCenter.paymentMethod}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Payment Method</option>
+              <option value="online">Online</option>
+              <option value="Cash">Cash</option>
+              <option value="Cheque">Cheque</option>
+              <option value="demand_draft">Demand Draft</option>
+            </select>
+              <strong>Rupee</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -196,7 +221,7 @@ function EditBloodCenter() {
                 value={updateBloodCenter.rupee}
                 onChange={handleChange}
               />
-              <strong>Remark:</strong>
+              <strong>Remark</strong>
               <input
                 className="list-group-item input-field"
                 type="text"

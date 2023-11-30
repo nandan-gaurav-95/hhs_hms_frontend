@@ -120,7 +120,7 @@ function TenantDetails() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Tenant ID:</strong>
+              <strong>Tenant ID</strong>
               <input
                 className="list-group-item input-field "
                 type="text"
@@ -138,7 +138,7 @@ function TenantDetails() {
                 value={updateTenant.tenantName}
                 onChange={handleChange}
               />
-              <strong>Expiry Date:</strong>
+              <strong>Expiry Date</strong>
               <input
                 className="list-group-item  input-field"
                 type="date"
@@ -146,7 +146,7 @@ function TenantDetails() {
                 value={updateTenant.expiryDate}
                 onChange={handleChange}
               />
-              <strong>Allocated shop:</strong>
+              <strong>Allocated shop</strong>
 
               <input
                 className="list-group-item  input-field"
@@ -157,7 +157,7 @@ function TenantDetails() {
               />
             </Col>
             <Col className="col-md-5">
-              <strong>Complex:</strong>
+              <strong>Complex</strong>
               <select
                 className="list-group-item  input-field"
                 id="Complex"
@@ -169,7 +169,7 @@ function TenantDetails() {
                 <option value="Bhatkal Complex">Bhatkal Complex</option>
                 <option value="Abbas Ali Complex">Abbas Ali Complex </option>
               </select>
-              <strong>Conatact no:</strong>
+              <strong>Conatact no</strong>
               <input
                 className="list-group-item  input-field"
                 type="text"
@@ -177,7 +177,7 @@ function TenantDetails() {
                 value={updateTenant.contactNum}
                 onChange={handleChange}
               />
-              <strong>Electricity Due:</strong>
+              <strong>Electricity Due</strong>
               <input
                 className="list-group-item  input-field"
                 type="text"
@@ -185,7 +185,7 @@ function TenantDetails() {
                 value={updateTenant.electricityDue}
                 onChange={handleChange}
               />
-              <strong>Security Deposit:</strong>
+              <strong>Security Deposit</strong>
               <input
                 className="list-group-item  input-field"
                 type="text"
@@ -196,7 +196,7 @@ function TenantDetails() {
             </Col>
             <Row className="detailsrow">
               <Col className="column">
-                <strong>Rent Due:</strong>
+                <strong>Rent Due</strong>
 
                 <input
                   className="list-group-item  input-field"

@@ -18,11 +18,14 @@ const AllProperties = () => {
   const [allProperty, setAllProperty] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+ 
+
 
   // Function to fetch data from the API
   const fetchAllProperties = async () => {
     try {
       const response = await PropertyService.getAllProperties();
+      console.log("property", response.data);
       const propertyObject = {};
       response.data.forEach((property) => {
         // Use the property's prop_id as the key in the object
@@ -38,11 +41,28 @@ const AllProperties = () => {
     fetchAllProperties(); // Fetch data when the component mounts
   }, []);
 
-  const handleSearch = () => {
-    // You can perform search actions here if needed
-    // For now, it just logs the search query
-    console.log("Performing search for:", searchQuery);
+  const handleSearch = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
   };
+
+  // Filter property based on search query
+  const filteredProperty = Object.values(allProperty).filter((property) => {
+    // Check if any of the property fields contain the search query
+    const isSearchedProperty =
+      property.propertyName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      // property.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      // Include other fields for search as needed
+      property.villageNm.toLowerCase().includes(searchQuery.toLowerCase()) ;
+      // Add more fields as needed for searching
+      // Example:
+      // property.anyOtherField.toLowerCase().includes(searchQuery.toLowerCase());
+  
+    return isSearchedProperty;
+  });
+  
+  const reversedData = Object.keys(filteredProperty).reverse();
+ 
 
   const handleViewProfile = (prop_id) => {
     navigate(`/profile/${prop_id}`);
@@ -71,54 +91,7 @@ const AllProperties = () => {
     }
   };
 
-  // Filter properties based on search query
-  const filteredProperties = Object.keys(allProperty)
-    .filter((propId) => {
-      const property = allProperty[propId];
-      return (
-        property.propertyName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        property.email.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    })
-    .map((propId, index) => {
-      const property = allProperty[propId];
-      return (
-        <tr key={index}>
-          <td>{index + 1}</td>
-          <td>{property.propertyName}</td>
-          <td>{property.email}</td>
-          <td>{property.gstNo}</td>
-          <td>{property.mobNo}</td>
-          <td>{property.villageNm}</td>
-          {/* <td>{property.area}</td> */}
-          <td>{property.gazzetNo}</td>
-          <td>{property.mcharges}</td>
-          <td>
-            <div className="dropdown">
-              <Dropdown>
-                <Dropdown.Toggle variant="secondary" id="dropdownMenuButton">
-                  &#8942;
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={() => handleViewProfile(propId)}>
-                    View Profile
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleEditProfile(propId)}>
-                    Edit Profile
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => handleDelete(propId)}
-                    className="deletebtn"
-                  >
-                    Delete Profile
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          </td>
-        </tr>
-      );
-    });
+ 
 
   return (
     <div className="mainview">
@@ -168,7 +141,47 @@ const AllProperties = () => {
           </tr>
         </thead>
         <tbody className="subviewbody">
-          {filteredProperties}
+         
+          {reversedData.map((propId, index) => {
+             const property = filteredProperty[propId];
+             console.log();
+             return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{property.propertyName}</td>
+                <td>{property.email}</td>
+                <td>{property.gstNo}</td>
+                <td>{property.mobNo}</td>
+                <td>{property.villageNm}</td>
+                {/* <td>{property.area}</td> */}
+                <td>{property.gazzetNo}</td>
+                <td>{property.mcharges}</td>
+                <td>
+                  <div className="dropdown">
+                    <Dropdown>
+                      <Dropdown.Toggle variant="secondary" id="dropdownMenuButton">
+                        &#8942;
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => handleViewProfile(property?.prop_id)}>
+                          View Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleEditProfile(property?.prop_id)}>
+                          Edit Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleDelete(property?.prop_id)}
+                          className="deletebtn"
+                        >
+                          Delete Profile
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>

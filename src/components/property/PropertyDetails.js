@@ -140,7 +140,7 @@ function PropertyDetails() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>CST No:</strong>
+              <strong>CST No</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -153,7 +153,7 @@ function PropertyDetails() {
                 <li className="list-group-item ">{updatedProperty.ctsNo}</li>
               )}
 
-              <strong>Email:</strong>
+              <strong>Email</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -166,7 +166,7 @@ function PropertyDetails() {
                 <li className="list-group-item ">{updatedProperty.email}</li>
               )}
 
-              <strong>Account Name:</strong>
+              <strong>Account Name</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -181,7 +181,7 @@ function PropertyDetails() {
                 </li>
               )}
 
-              <strong>Address:</strong>
+              <strong>Address</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -194,7 +194,7 @@ function PropertyDetails() {
                 <li className="list-group-item">{updatedProperty.address}</li>
               )}
 
-              <strong>Annual Income:</strong>
+              <strong>Annual Income</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -209,7 +209,7 @@ function PropertyDetails() {
                 </li>
               )}
 
-              <strong>Boundries:</strong>
+              <strong>Boundaries</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -223,7 +223,7 @@ function PropertyDetails() {
               )}
             </Col>
             <Col className="column">
-              <strong>Extent Acres:</strong>
+              <strong>Extent Acres</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -236,7 +236,7 @@ function PropertyDetails() {
                 <li className="list-group-item">{updatedProperty.area}</li>
               )}
 
-              <strong>Gazzet No:</strong>
+              <strong>Gazzet No</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -249,7 +249,7 @@ function PropertyDetails() {
                 <li className="list-group-item">{updatedProperty.gazzetNo}</li>
               )}
 
-              <strong>GST No:</strong>
+              <strong>GST No</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -262,7 +262,7 @@ function PropertyDetails() {
                 <li className="list-group-item">{updatedProperty.gstNo}</li>
               )}
 
-              <strong>Registration Number:</strong>
+              <strong>Registration Number</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -277,7 +277,7 @@ function PropertyDetails() {
                 </li>
               )}
 
-              <strong>Tax Amount:</strong>
+              <strong>Tax Amount</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
@@ -290,7 +290,7 @@ function PropertyDetails() {
                 <li className="list-group-item">{updatedProperty.taxAmt}</li>
               )}
 
-              <strong>Village Name:</strong>
+              <strong>Village Name</strong>
               {editMode ? (
                 <input
                   className="list-group-item  input-field"
