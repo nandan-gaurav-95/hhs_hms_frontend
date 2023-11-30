@@ -39,16 +39,30 @@ const DetailGirlsHostel = () => {
       fetchGirlshostelById();
     }, [id]);
   
-    const renderGirlshostelRow = (key, value) => (
-      <div key={key} className="d-flex entity-row">
-        <div className="entity-name">
-          {key.replace(/([A-Z])/g, " $1").trim()}:
+    const humanReadableNames = {
+      // gh_id;
+       food:"Food Item",
+       food_quantity:"Food Quantity",
+       bill_amt:"Bill Amount",
+       balance:"Balance",
+       date:"Date",
+    };
+    const renderGirlshostelRow = (key, value) =>{
+      if(key==="gh_id"){
+        return null;
+      }
+     return (
+        <div key={key} className="d-flex entity-row">
+          <div className="entity-name">
+            {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+            {humanReadableNames[key] || key}:
+          </div>
+          <div className="entity-value" style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+            {value}
+          </div>
         </div>
-        <div className="entity-value" style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
-          {value}
-        </div>
-      </div>
-    );
+      );
+    } 
   
     if (!girlshostel) {
       return <div>girlshostel not found.</div>;

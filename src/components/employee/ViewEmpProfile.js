@@ -17,7 +17,7 @@ const ViewEmpProfile = () => {
   const fetctEmployeeById = async () => {
     try {
       const response = await axios.get(`${APIS.GETEMPLOYEEBYID}/${id}`);
-      // console.log("Api response",response.data);
+      // console.log("employee by id",response.data);
       setEmployee(response.data);
     } catch (error) {
       console.error("Error fetching property:", error);
@@ -38,9 +38,8 @@ const ViewEmpProfile = () => {
     aadhar: "Aadhar No.",
     pan: "Pan No",
     qualification: "Qualification",
-    dateOfHiring: "Date of Hiring",
+    dateOfHiring: "Date of Joining",
     position: "Position",
-
     basicSalary: "Basic Salary",
     netSalary: "Net Salary",
     grossSalary: "Gross Salary",

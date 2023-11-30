@@ -113,7 +113,7 @@ const ViewMedicalaid = () => {
             <th>Patient Name</th>
             <th>Patient Address</th>
             <th>Hospital Name</th>
-            <th>Aliment</th>
+            <th>Ailment</th>
             <th>Amount Sanction</th>
             <th>Cheque Number</th>
             <th>Date</th>

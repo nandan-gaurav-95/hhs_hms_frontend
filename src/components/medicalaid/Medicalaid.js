@@ -137,7 +137,7 @@ const Medicalaid = () => {
           </Col>
           <Col className="column">
             <Input
-              label="Aliment"
+              label="Ailment"
               type="text"
               name="aliment"
               value={formData.aliment}

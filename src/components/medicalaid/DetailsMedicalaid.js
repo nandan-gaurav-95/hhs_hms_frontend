@@ -38,19 +38,38 @@ const DetailsMedicalaid = () => {
     fetchMedicalAidById();
   }, [id]);
 
-  const renderMedicalaidRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+  const humanReadableNames = {
+    //  med_id; 
+     patient_name:"Patient Name",
+     address_patient:"Patient Address",
+     hospital_name:"Hospital Name",
+     aliment:"Ailment",
+     amt_sanction:"Sanction Amount",
+     chq_no:"Cheque No",//Vide Cheque No.
+     date:"Date",
+     total:"Total",
+     remark:"Remark",
+  };
+
+  const renderMedicalaidRow = (key, value) => {
+    if(key==="med_id"){
+      return null;
+    }
+    return(
+      <div key={key} className="d-flex entity-row">
+        <div className="entity-name">
+          {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+          {humanReadableNames[key] || key}:
+        </div>
+        <div
+          className="entity-value"
+          style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+        >
+          {value}
+        </div>
       </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    );
+  }
 
   if (!medicalaid) {
     return <div>Parking not found.</div>;
@@ -61,7 +80,6 @@ const DetailsMedicalaid = () => {
   const firstColumnKeys = medicalaidKeys.slice(0, halfLength);
   const secondColumnKeys = medicalaidKeys.slice(halfLength);
 
- 
   return (
     <div>
       <Header />
@@ -69,7 +87,7 @@ const DetailsMedicalaid = () => {
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h2 className="propertyview">Medical Aid Details {medicalaid?.toName} </h2>
+        <h2 className="propertyview">Medical Aids of {medicalaid?.patient_name} </h2>
       </div>
       <Container className="detailmedicalaid">
         <div className="columnarrangement">

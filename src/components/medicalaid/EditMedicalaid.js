@@ -96,7 +96,7 @@ function EditMedicalaid() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Patient Name:</strong>
+              <strong>Patient Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
@@ -121,7 +121,7 @@ function EditMedicalaid() {
                 value={updateMedicalaid.hospital_name}
                 onChange={handleChange}
               />
-              <strong>Aliment</strong>
+              <strong>Ailment</strong>
 
               <input
                 className="list-group-item input-field"
@@ -168,7 +168,7 @@ function EditMedicalaid() {
               />
             </Col>
             <Col className="col-md-5">
-              <strong>Remark:</strong>
+              <strong>Remark</strong>
               <input
                 className="list-group-item input-field"
                 type="text"

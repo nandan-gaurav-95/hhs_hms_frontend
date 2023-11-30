@@ -34,19 +34,40 @@ const DetailHHSComplex = () => {
     fetchHhscomplexById();
   }, [id]);
 
-  const renderHhscomplexRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+  const humanReadableNames = {
+    //  hc_id; //Hhs Complex id == receipt No
+    lfNo: "Lf No.",
+    rrNo: "RR No.",
+    date: "Date",
+    receiverName: "Receiver Name",
+    rupees: "Rupees",
+    rupeeInWords: "Rupee In Words",
+    eleCharges: "Ele. Charges",
+    month: "Month",
+    chequeNo: "ChequeNo",
+    dated: "Dated",
+    remark: "Remark",
+  };
+
+  const renderHhscomplexRow = (key, value) =>{
+    if(key==="hc_id"){
+      return null;
+    }
+    return (
+      <div key={key} className="d-flex entity-row">
+        <div className="entity-name">
+          {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+          {humanReadableNames[key] || key}:
+        </div>
+        <div
+          className="entity-value"
+          style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+        >
+          {value}
+        </div>
       </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    );
+  } 
 
   if (!hhscomplex) {
     return <div>HHS not found.</div>;
@@ -190,10 +211,10 @@ const DetailHHSComplex = () => {
               .map((key) => renderHhscomplexRow(key, hhscomplex[key]))}
           </div>
         </div>
-        <div >
-        <Button variant="primary" onClick={handleHHSComplexPdf}>
-          <FaDownload /> HHS Complex
-        </Button>
+        <div>
+          <Button variant="primary" onClick={handleHHSComplexPdf}>
+            <FaDownload /> HHS Complex
+          </Button>
         </div>
       </Container>
     </div>

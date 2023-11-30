@@ -31,20 +31,38 @@ const DetailDargahComplex = () => {
     // Call the fetchPropertyById function when the component mounts
     fetchDergahById();
   }, [id]);
-
-  const renderDergahRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+  const humanReadableNames = {
+    // dc_id; //Dargah Complex id == receipt No
+	 receiverName:"Receiver Name",
+	 date:"Date",
+	rupee:"Rupee",
+	 rupeeInWords:"Rupee In Words",
+	 shopRent:"Shop Rent",
+	 month:"Month",
+	 chequeNo:"Cheque No",
+	 dated:"Dated",
+	 drawnOn:"Drawn On",
+	 remark:"Remark",
+  };
+  const renderDergahRow = (key, value) =>{
+    if(key==="dc_id"){
+      return null;
+    }
+    return (
+      <div key={key} className="d-flex entity-row">
+        <div className="entity-name">
+          {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+          {humanReadableNames[key] || key}:
+        </div>
+        <div
+          className="entity-value"
+          style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+        >
+          {value}
+        </div>
       </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    );
+  }
 
   if (!dergah) {
     return <div>Dargah Data not found.</div>;

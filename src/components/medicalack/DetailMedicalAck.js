@@ -39,20 +39,36 @@ const DetailMedicalAck = () => {
     // Call the fetchPropertyById function when the component mounts
     fetchMedicalAcknowledgeById();
   }, [id]);
-
-  const renderMedicalackRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
-      </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+  const humanReadableNames = {
+    //  mdack_id; //medical ackn id == HHS/HMS/F.A. 
+	 toName:"To Name",
+	 date:"Date",
+	 rupees:"Rupees",
+	 chequeNo:"Cheque No",//Vide Cheque No.
+	 dated:"Dated",
+	 hospIpNo:"Hospital Ip No.",
+	 disease:"Disease",
+	 remark:"Remark",
+  };
+  const renderMedicalackRow = (key, value) =>{
+    if(key==="mdack_id"){
+      return null;
+    }
+   return (
+     <div key={key} className="d-flex entity-row">
+       <div className="entity-name">
+         {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+         {humanReadableNames[key] || key}:
+       </div>
+       <div
+         className="entity-value"
+         style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+       >
+         {value}
+       </div>
+     </div>
+   );
+  }
 
   if (!medicalack) {
     return <div>Parking not found.</div>;

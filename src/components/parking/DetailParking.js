@@ -37,20 +37,38 @@ const DetailParking = () => {
     // Call the fetchPropertyById function when the component mounts
     fetchParkingById();
   }, [id]);
-
-  const renderParkingRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
-      </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+  const humanReadableNames = {
+    //  p_id; //blood center id == receipt No
+	 receiverName:"Receiver Name",//Received from : 
+	 date:"Date",
+	 rupee:"Rupee",//A Sum of Rupees:
+	 rupeeInWords:"Rupee In Words",
+	 parkingRent:"Rarking Rent",
+	 month:"Month",
+	 chequeNo:"ChequeNo",//Cheque / D.D. No. 
+	 dated:"Dated",
+	 drawnOn:"Drawn On",
+	 remark:"Remark",
+  };
+  const renderParkingRow = (key, value) =>{
+    if(key==="p_id"){
+      return null;
+    }
+    return(
+     <div key={key} className="d-flex entity-row">
+       <div className="entity-name">
+         {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+         {humanReadableNames[key] || key}:
+       </div>
+       <div
+         className="entity-value"
+         style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+       >
+         {value}
+       </div>
+     </div>
+   );
+  }
 
   if (!parking) {
     return <div>Parking not found.</div>;
@@ -59,7 +77,7 @@ const DetailParking = () => {
   const parkingKeys = Object.keys(parking);
   const halfLength = Math.ceil(parkingKeys.length / 2);
   const firstColumnKeys = parkingKeys.slice(0, halfLength);
-  const secondColumnKeys = parkingKeys.slice(0, halfLength);
+  const secondColumnKeys = parkingKeys.slice( halfLength);
 
   //parking pdf
   const handleParkingrPdf = () => {

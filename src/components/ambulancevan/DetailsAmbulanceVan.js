@@ -36,20 +36,33 @@ const DetailsAmbulanceVan = () => {
     // Call the fetchPropertyById function when the component mounts
     fetchAmbulanceVanById();
   }, [id]);
-
-  const renderAmbulanceVanRow = (key, value) => (
-    <div key={key} className="d-flex entity-row">
-      <div className="entity-name">
-        {key.replace(/([A-Z])/g, " $1").trim()}:
+  const humanReadableNames = {
+  //  amb_id;// AmbulanceVan receipt Id
+     receiverName:"Receiver Name",
+     date:"Date",
+     accHolderName:"Acc. Holder Name",
+     rupee:"Rupees",
+     remark:"Remark",
+  };
+  const renderAmbulanceVanRow = (key, value) => {
+    if(key==="amb_id"){
+      return null;
+    }
+    return(
+      <div key={key} className="d-flex entity-row">
+        <div className="entity-name">
+          {/* {key.replace(/([A-Z])/g, " $1").trim()}: */}
+          {humanReadableNames[key] || key}:
+        </div>
+        <div
+          className="entity-value"
+          style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
+        >
+          {value}
+        </div>
       </div>
-      <div
-        className="entity-value"
-        style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+    );
+  }
 
   if (!ambulancevan) {
     return <div>ambulancevan not found.</div>;
