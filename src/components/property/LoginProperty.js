@@ -90,10 +90,12 @@ function LoginProperty() {
         <Col className="forbusiness-page">
           <div className="subforbusiness-page">
             <h2 className="loginformtext">H.H.S & H.M.S</h2>
-            <p className="subloginformtext">Login In to Property Management</p>
+            <p className="loginaddress">No.3, 1st Floor, Hazrath Hameed Shah Complex, Cubbonpet Main Road, Banglore - 560 002</p>
+            <p className="subloginaddress">(Register Under Karnataka State Board of Auqaf)</p>
+            <p className="subloginformtextprop"> Property Department</p>
 
             <div className="columnlogin">
-              <Input
+              {/* <Input
                 className="transparent-input"
                 wrapperClass="loginremember1"
                 label="Department"
@@ -101,7 +103,7 @@ function LoginProperty() {
                 type="text"
                 value={department}
                 readOnly
-              />
+              /> */}
               <Input
                 wrapperClass="loginremember1"
                 label="Email address"

@@ -21,6 +21,12 @@ export default function HomeBloodCenter() {
   const handleViewBlood = () => {
     navigate("/viewbloodcenter");
   };
+  const handleReceiveBlood = () => {
+    navigate("/receiveblood");
+  };
+  const handleBloodReceiversInv = () => {
+    navigate("/receiversbloodinv");
+  };
 
   return (
     <div className="background-login" style={backgroundImageStyle}>
@@ -28,7 +34,7 @@ export default function HomeBloodCenter() {
       <div className="centered-container">
         <div className="card upper-card">
         <div className="card-content">
-          <h3>Add Blood Center Details</h3>
+          <h3>Blood Donars Details</h3>
           <Button
             tag="a"
             className="btn btn-dark"
@@ -38,38 +44,39 @@ export default function HomeBloodCenter() {
             Proceed
           </Button>
           </div>
-          {/* <div className="proceed-button">
-            <MDBDropdown>
-              <MDBDropdownToggle
-                tag="a"
-                className="btn btn-dark"
-               
-              >
-                proceed
-              </MDBDropdownToggle>
-              <MDBDropdownMenu>
-              <NavLink to="/bloodcenter">
-                  <MDBDropdownItem link>
-                    <b>Blood Center</b>
-                  </MDBDropdownItem>
-                </NavLink>
-                <NavLink to="/viewbloodcenter">
-                  <MDBDropdownItem link>
-                    <b>View Blood Center</b>
-                  </MDBDropdownItem>
-                </NavLink>
-              </MDBDropdownMenu>
-            </MDBDropdown>
-          </div> */}
 
         </div>
         <div className="card upper-card">
         <div className="card-content">
-          <h3>View Blood Center Details</h3>
+          <h3>Blood Donar Inventory</h3>
           <Button
             tag="a"
             className="btn btn-dark"
             onClick={handleViewBlood}
+          >
+            Proceed
+          </Button>
+          </div>
+        </div> 
+        <div className="card upper-card">
+        <div className="card-content">
+          <h3>Blood Receiver Details</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleReceiveBlood}
+          >
+            Proceed
+          </Button>
+          </div>
+        </div>
+        <div className="card upper-card">
+        <div className="card-content">
+          <h3>Blood Receivers Inventory</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleBloodReceiversInv}
           >
             Proceed
           </Button>

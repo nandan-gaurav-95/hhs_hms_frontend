@@ -48,7 +48,7 @@ const DetailBloodCenter = () => {
     invstigationCharges: "Investigation Charges",
     ipNo: "I.P. No",
     paymentMethod: "Payment Method",
-    receiverName: "Receiver Name",
+    donarName: "Donar Name",
     remark: "Remark",
     rupee: "Rupee",
     unitNo: "Unit No",

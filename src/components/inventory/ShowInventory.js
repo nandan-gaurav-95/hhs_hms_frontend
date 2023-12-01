@@ -97,7 +97,7 @@ const ShowInventory = () => {
 
     return result;
   }, {});
-const reversedData = Object.keys(filteredData).reverse();
+ const reversedData = Object.keys(filteredData).reverse();
   return (
     <div className="mainview">
       <Header />

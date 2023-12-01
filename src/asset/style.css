@@ -313,9 +313,10 @@ th {
 }
 .loginformtext {
   font-size: 28px;
-  padding: 15px;
+  padding: 5px 15px; 
   font-weight: bold;
   text-align: center;
+  margin-bottom: 5px; 
 }
 .loginformtextsign {
   font-size: 28px;
@@ -325,6 +326,14 @@ th {
 }
 .subloginformtext {
   text-align: center;
+  font-weight: bold;
+  margin-bottom: 13px; 
+}
+.subloginformtextprop {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 17px; 
+  font-size: 20px;
 }
 .columnlogin {
   width: 100%;
@@ -387,6 +396,14 @@ th {
   margin: 0 auto;
   width: 35%;
   height: 14vh;
+}
+.loginaddress {
+  text-align: center;
+  margin-bottom: 0px; 
+}
+.subloginaddress {
+  text-align: center;
+  margin-bottom: 15px; 
 }
 
 /* signup */

@@ -144,6 +144,11 @@ import ViewMedicalaid from "./components/medicalaid/ViewMedicalaid";
 import DetailsMedicalaid from "./components/medicalaid/DetailsMedicalaid";
 import EditMedicalaid from "./components/medicalaid/EditMedicalaid";
 
+import BloodReceiver from "./components/bloodcenter/BloodReceiver";
+import ViewBloodReceiver from "./components/bloodcenter/ViewBloodReceiver";
+import DetailBloodReceiver from "./components/bloodcenter/DetailBloodReceiver";
+import EditBloodReceiver from "./components/bloodcenter/EditBloodReceiver";
+
 function App() {
   return (
     <div className="App">
@@ -266,11 +271,13 @@ function App() {
          <Route path="/loginbloodcenter" element={<LoginBloodCenter />}></Route>
           <Route path="/homebloodcenter" element={<HomeBloodCenter />}></Route>
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
+          <Route path="/receiveblood" element={<BloodReceiver/>}></Route>
           <Route path="/viewbloodcenter" element={<ViewBloodCenter />}></Route>
-
           <Route path="/detailbloodcenter/:id" element={<DetailBloodCenter />}></Route>
           <Route path="/editbloodcenter/:id" element={<EditBloodCenter />}></Route>
-
+          <Route path="/receiversbloodinv" element={<ViewBloodReceiver />}></Route>
+          <Route path="/detailbloodreceiver/:id" element={<DetailBloodReceiver />}></Route>
+          <Route path="/editbloodreceiver/:id" element={<EditBloodReceiver />}></Route>
           
           {/* ambulance Van */}
           <Route path="/loginambulancevan" element={<LoginAmbulanceVan />}></Route>

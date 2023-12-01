@@ -8,26 +8,26 @@ import axios from "axios";
 import { APIS } from "../constants/api";
 import { BiArrowBack } from "react-icons/bi";
 import { Dropdown } from "react-bootstrap";
-import { BloodCenterService } from "../../services/BloodCenterService";
+import { BloodReceiverService } from "../../services/BloodReceiverService";
 
-const ViewBloodCenter = () => {
-  const [allBloodCenter, setAllBloodCenter] = useState({});
+const ViewBloodReceiver = () => {
+  const [allBloodReceiver, setAllBloodReceiver] = useState({});
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [bloodGroupFilter, setBloodGroupFilter] = useState("all");
-  const [filteredBloodCenter, setFilteredBloodCenter] = useState({});
-  const reversedData = Object.keys(filteredBloodCenter).reverse();
+  const [filteredBloodReceiver, setFilteredBloodReceiver] = useState({});
+  const reversedData = Object.keys(filteredBloodReceiver).reverse();
 
-  const fetchAllBloodCenter = async () => {
+  const fetchAllBloodReceiver = async () => {
     try {
-      const response = await BloodCenterService.getAllBloodCenter();
+      const response = await BloodReceiverService.getAllBloodReceiver();
       console.log("API Response:", response);
       if (Array.isArray(response)) {
-        const bloodCenterObject = {};
-        response.forEach((bloodCenter) => {
-          bloodCenterObject[bloodCenter.bc_id] = bloodCenter;
+        const bloodReceiverObject = {};
+        response.forEach((bloodReceiver) => {
+            bloodReceiverObject[bloodReceiver.br_id] = bloodReceiver;
         });
-        setAllBloodCenter(bloodCenterObject);
+        setAllBloodReceiver(bloodReceiverObject);
       } else {
         console.error("Invalid data received from the API:", response);
       }
@@ -37,26 +37,26 @@ const ViewBloodCenter = () => {
   };
 
   useEffect(() => {
-    fetchAllBloodCenter();
+    fetchAllBloodReceiver();
   }, []);
 
-  const handleViewProfile = (bc_id) => {
-    navigate(`/detailbloodcenter/${bc_id}`);
+  const handleViewProfile = (br_id) => {
+    navigate(`/detailbloodreceiver/${br_id}`);
   };
 
-  const handleEditProfile = (bc_id) => {
-    navigate(`/editbloodcenter/${bc_id}`);
+  const handleEditProfile = (br_id) => {
+    navigate(`/editbloodreceiver/${br_id}`);
   };
 
-  const handleDelete = async (bc_id) => {
+  const handleDelete = async (br_id) => {
     try {
-      await axios.delete(`${APIS.DELETEBLOODCENTERBYID}/${bc_id}`);
+      await axios.delete(`${APIS.DELETEBLOODRECEIVERBYID}/${br_id}`);
       console.log("Deleted Successfully");
-      const updatedBloodCenter = { ...allBloodCenter };
-      delete updatedBloodCenter[bc_id];
-      setAllBloodCenter(updatedBloodCenter);
+      const updatedBloodReceiver = { ...allBloodReceiver };
+      delete updatedBloodReceiver[br_id];
+      setAllBloodReceiver(updatedBloodReceiver);
     } catch (error) {
-      console.error("Error deleting BloodCenter:", error);
+      console.error("Error deleting BloodReceiver:", error);
     }
   };
 
@@ -71,24 +71,24 @@ const ViewBloodCenter = () => {
   };
 
   useEffect(() => {
-    const filteredBloodCenters = Object.keys(allBloodCenter).filter((bcId) => {
-      const bloodCenter = allBloodCenter[bcId];
+    const filteredBloodReceiver = Object.keys(allBloodReceiver).filter((brId) => {
+      const bloodReceiver = allBloodReceiver[brId];
       const matchesBloodGroup =
         bloodGroupFilter === "all" ||
-        bloodCenter.bloodgroup === bloodGroupFilter;
-      const matchesSearch = Object.values(bloodCenter).some((field) =>
+        bloodReceiver.bloodgroup === bloodGroupFilter;
+      const matchesSearch = Object.values(bloodReceiver).some((field) =>
         String(field).toLowerCase().includes(searchQuery.toLowerCase())
       );
       return matchesBloodGroup && matchesSearch;
     });
 
-    const filteredBloodCenterObject = {};
-    filteredBloodCenters.forEach((bcId) => {
-      filteredBloodCenterObject[bcId] = allBloodCenter[bcId];
+    const filteredBloodReceiverObject = {};
+    filteredBloodReceiver.forEach((brId) => {
+      filteredBloodReceiverObject[brId] = allBloodReceiver[brId];
     });
 
-    setFilteredBloodCenter(filteredBloodCenterObject);
-  }, [searchQuery, bloodGroupFilter, allBloodCenter]);
+    setFilteredBloodReceiver(filteredBloodReceiverObject);
+  }, [searchQuery, bloodGroupFilter, allBloodReceiver]);
 
   return (
     <div className="mainview">
@@ -97,7 +97,7 @@ const ViewBloodCenter = () => {
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h2 className="availabletext">Blood Center Details</h2>
+        <h2 className="availabletext">Blood Receiver Details</h2>
       </div>
       <div className="searchcontentcenterblood">
         <div className=" search">
@@ -134,29 +134,29 @@ const ViewBloodCenter = () => {
         <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
-            <th>Donar Name</th>
+            <th>Receiver Name</th>
+            <th>Date</th>
             <th>Blood Group</th>
-            <th>Unit NO.</th>
             <th>Age</th>
+            <th>Unit No</th>
             <th>Gender</th>
-            <th>Hospital Name</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody className="subviewbody">
           {/* {Object.keys(filteredBloodCenter).map((bcId, index) => {
             const bloodCenter = allBloodCenter[bcId]; */}
-          {reversedData.map((bcId, index) => {
-            const bloodCenter = filteredBloodCenter[bcId];
+          {reversedData.map((brId, index) => {
+            const bloodReceiver = filteredBloodReceiver[brId];
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{bloodCenter.donarName}</td>
-                <td>{bloodCenter.bloodgroup}</td>
-                <td>{bloodCenter.unitNo}</td>
-                <td>{bloodCenter.age}</td>
-                <td>{bloodCenter.gender}</td>
-                <td>{bloodCenter.hospitalName}</td>
+                <td>{bloodReceiver.receiverName}</td>
+                <td>{bloodReceiver.date}</td>
+                <td>{bloodReceiver.bloodgroup}</td>
+                <td>{bloodReceiver.age}</td>
+                <td>{bloodReceiver.unitNo}</td>
+                <td>{bloodReceiver.gender}</td>
                 <td>
                   <div className="dropdown">
                     <Dropdown>
@@ -167,15 +167,15 @@ const ViewBloodCenter = () => {
                         &#8942;
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => handleViewProfile(bcId)}>
+                        <Dropdown.Item onClick={() => handleViewProfile(brId)}>
                           View 
                         </Dropdown.Item>
 
-                        <Dropdown.Item onClick={() => handleEditProfile(bcId)}>
-                          Edit
+                        <Dropdown.Item onClick={() => handleEditProfile(brId)}>
+                          Edit 
                         </Dropdown.Item>
                         <Dropdown.Item
-                          onClick={() => handleDelete(bcId)}
+                          onClick={() => handleDelete(brId)}
                           className="red-text"
                         >
                           Delete
@@ -193,4 +193,4 @@ const ViewBloodCenter = () => {
   );
 };
 
-export default ViewBloodCenter;
+export default ViewBloodReceiver;
