@@ -148,6 +148,7 @@ import BloodReceiver from "./components/bloodcenter/BloodReceiver";
 import ViewBloodReceiver from "./components/bloodcenter/ViewBloodReceiver";
 import DetailBloodReceiver from "./components/bloodcenter/DetailBloodReceiver";
 import EditBloodReceiver from "./components/bloodcenter/EditBloodReceiver";
+import BloodGroupInv from "./components/bloodcenter/BloodGroupInv";
 
 function App() {
   return (
@@ -271,6 +272,7 @@ function App() {
          <Route path="/loginbloodcenter" element={<LoginBloodCenter />}></Route>
           <Route path="/homebloodcenter" element={<HomeBloodCenter />}></Route>
           <Route path="/bloodcenter" element={<BloodCenter />}></Route>
+          <Route path="/bloodgroupInv" element={<BloodGroupInv />}></Route>
           <Route path="/receiveblood" element={<BloodReceiver/>}></Route>
           <Route path="/viewbloodcenter" element={<ViewBloodCenter />}></Route>
           <Route path="/detailbloodcenter/:id" element={<DetailBloodCenter />}></Route>

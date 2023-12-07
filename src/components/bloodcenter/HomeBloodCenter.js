@@ -27,11 +27,16 @@ export default function HomeBloodCenter() {
   const handleBloodReceiversInv = () => {
     navigate("/receiversbloodinv");
   };
+  const handleBloodInv = () => {
+    navigate("/bloodgroupInv");
+  };
 
   return (
     <div className="background-login" style={backgroundImageStyle}>
       <Header />
       <div className="centered-container">
+        <div className="row">
+
         <div className="card upper-card">
         <div className="card-content">
           <h3>Blood Donars Details</h3>
@@ -39,7 +44,6 @@ export default function HomeBloodCenter() {
             tag="a"
             className="btn btn-dark"
             onClick={handleAddBlood}
-            
           >
             Proceed
           </Button>
@@ -59,6 +63,22 @@ export default function HomeBloodCenter() {
           </div>
         </div> 
         <div className="card upper-card">
+        <div className="card-content">
+          <h3>Blood Group Inventory</h3>
+          <Button
+            tag="a"
+            className="btn btn-dark"
+            onClick={handleBloodInv}
+          >
+            Proceed
+          </Button>
+          </div>
+        </div> 
+       
+      </div>
+        </div>
+      <div className="row">
+      <div className="card upper-card">
         <div className="card-content">
           <h3>Blood Receiver Details</h3>
           <Button
@@ -82,6 +102,7 @@ export default function HomeBloodCenter() {
           </Button>
           </div>
         </div>
+
       </div>
     </div>
   );

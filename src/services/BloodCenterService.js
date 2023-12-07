@@ -54,6 +54,16 @@ createBloodCenter : async (formData) => {
         throw error;
        }
     },
+
+    //Blood group wise Inventory
+    getbloodGroupInventory : async ()=>{
+        try{
+            const response =await axios.get(APIS.BLOODDONARINVENTORY,)
+            return response.data
+        }catch(error){
+            throw error;
+        }
+    },
 }
 
  

@@ -101,12 +101,13 @@ export const APIS ={
      UPDATEAMBULANCEBYID:`${API_BASE_URL}/ambulance`,//Update an existing Ambulance 
      DELETEAMBULANCEBYID:`${API_BASE_URL}/ambulance`,//Delete a Ambulance by ID
 
-//Blood-center-Donor
+ //Blood-center-Donor
       CREATEBLOODCENTER: `${API_BASE_URL}/blood`,//Post-method
       GETALLBLOODCENTER:`${API_BASE_URL}/blood`,// Get-method
       GETBLOODCENTERBYID:`${API_BASE_URL}/blood`,// Get specific Blood-center by ID
       UPDATEBLOODCENTERBYID:`${API_BASE_URL}/blood`,//Update an existing Blood-center 
       DELETEBLOODCENTERBYID:`${API_BASE_URL}/blood`,//Delete a Blood-center by ID
+      BLOODDONARINVENTORY:`${API_BASE_URL}/blood/donarinv`,//get blood group wise total unit of blood 
 
  //Blood-receiver
       CREATEBLOODRECEIVER: `${API_BASE_URL}/bloodreceiver`,//Post-method
@@ -115,7 +116,7 @@ export const APIS ={
       UPDATEBLOODRECEIVERBYID:`${API_BASE_URL}/bloodreceiver`,//Update an existing Blood-receiver 
       DELETEBLOODRECEIVERBYID:`${API_BASE_URL}/bloodreceiver`,//Delete a Blood-receiver by ID
 
-   // Dargah complex
+ // Dargah complex
       CREATEDARGAHCOMPLEX: `${API_BASE_URL}/dc`,//Post-method
       GETALLDARGAHCOMPLEX:`${API_BASE_URL}/dc`,// Get-method
       GETDARGAHCOMPLEXBYID:`${API_BASE_URL}/dc`,// Get specific  Dargah complex by ID
