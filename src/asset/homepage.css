@@ -23,6 +23,13 @@ margin-top: 20px;
   width: 100%;
   height: 45vh;
 }
+.centered-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 19vh;
+}
 .upper-card {
   width: 265px;
   height: 150px;

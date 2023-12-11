@@ -41,7 +41,7 @@ function LoginMedicalaid() {
   //   }
   // };
   const backgroundImageStyle = {
-    backgroundImage:`url(${backgroundImage})`,
+    backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -90,18 +90,16 @@ function LoginMedicalaid() {
         <Col className="forbusiness-page">
           <div className="subforbusiness-page">
             <h2 className="loginformtext">H.H.S & H.M.S</h2>
-            <p className="subloginformtext">Login In to Medical Aid</p>
+            <p className="loginaddress">
+              No.3, 1st Floor, Hazrath Hameed Shah Complex, Cubbonpet Main Road,
+              Banglore - 560 002
+            </p>
+            <p className="subloginaddress">
+              (Register Under Karnataka State Board of Auqaf)
+            </p>
+            <p className="subloginformtextprop">Medical Aid Department</p>
 
             <div className="columnlogin">
-              <Input
-                className="transparent-input"
-                wrapperClass="loginremember1"
-                label="Department"
-                id="form3"
-                type="text"
-                value={department}
-                readOnly
-              />
               <Input
                 wrapperClass="loginremember1"
                 label="Email address"

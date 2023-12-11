@@ -101,12 +101,12 @@ function EditBloodCenter() {
         <ul className="list-group">
           <Row className="detailsrow">
             <Col className="column">
-              <strong>Receiver Name</strong>
+              <strong>Donar Name</strong>
               <input
                 className="list-group-item input-field"
                 type="text"
-                name="receiverName"
-                value={updateBloodCenter.receiverName}
+                name="donarName"
+                value={updateBloodCenter.donarName}
                 onChange={handleChange}
               />
 

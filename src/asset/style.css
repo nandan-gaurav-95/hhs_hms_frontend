@@ -332,8 +332,8 @@ th {
 .subloginformtextprop {
   text-align: center;
   font-weight: bold;
-  margin-bottom: 17px; 
-  font-size: 20px;
+  margin-bottom: 13px; 
+  font-size: 24px;
 }
 .columnlogin {
   width: 100%;
@@ -364,8 +364,8 @@ th {
   margin-top: 20px;
 }
 .logbtn {
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 .logincolor {
   color: rgb(250, 242, 242);
@@ -376,7 +376,7 @@ th {
 }
 .listcontainer {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
 }
@@ -403,7 +403,7 @@ th {
 }
 .subloginaddress {
   text-align: center;
-  margin-bottom: 15px; 
+  margin-bottom: 10px; 
 }
 
 /* signup */
@@ -535,6 +535,11 @@ th {
 .row {
   margin-top: 5px;
   margin-bottom: 18px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.rows{
+  margin-top: 5px;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -794,6 +799,19 @@ th {
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 6px 10px rgba(0, 0, 0, 0.23);
   margin: 35px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detailbloodreciver{
+  text-align: center;
+  width: 700px;
+  height: 300px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 10px rgba(0, 0, 0, 0.23);
+  margin: 70px auto;
   padding: 20px;
   display: flex;
   flex-direction: column;

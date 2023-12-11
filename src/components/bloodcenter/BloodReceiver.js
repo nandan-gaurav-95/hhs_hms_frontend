@@ -31,7 +31,7 @@ const BloodReceiver = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit called");
+    // console.log("handleSubmit called");
     const validationErrors = validateForm(formData);
     console.log("Validation Errors:", validationErrors);
 
@@ -46,7 +46,7 @@ const BloodReceiver = () => {
       const response = await BloodReceiverService.createBloodReceiver(formData);
       console.log("Blood center", response.data);
       if (response.status === 201) {
-        console.log("Blood center Created Successfully");
+        console.log("Patient Details Added Successfully");
         setFormData(initialState);
         toast.success("Submit Successful!", { autoClose: 1000 });
       } else {
@@ -55,7 +55,15 @@ const BloodReceiver = () => {
       }
     } catch (error) {
       console.error("Error", error);
-      toast.error("An error occurred during submission", { autoClose: 1000 });
+  
+      if (error.response && error.response.data && error.response.data.message) {
+        // Display the specific error message from the API response
+        const errorMessage = error.response.data.message;
+        toast.error(errorMessage, { autoClose: 2000 });
+      } else {
+        // Generic error message for any other errors
+        toast.error("An error occurred during submission", { autoClose: 1000 });
+      }
     }
   };
   //   const handleChange = (e) => {

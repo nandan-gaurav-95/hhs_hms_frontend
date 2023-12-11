@@ -36,73 +36,63 @@ export default function HomeBloodCenter() {
       <Header />
       <div className="centered-container">
         <div className="row">
-
-        <div className="card upper-card">
-        <div className="card-content">
-          <h3>Blood Donars Details</h3>
-          <Button
-            tag="a"
-            className="btn btn-dark"
-            onClick={handleAddBlood}
-          >
-            Proceed
-          </Button>
+          <div className="card upper-card">
+            <div className="card-content">
+              <h3>Blood Donars Details</h3>
+              <Button tag="a" className="btn btn-dark" onClick={handleAddBlood}>
+                Proceed
+              </Button>
+            </div>
           </div>
-
+          <div className="card upper-card">
+            <div className="card-content">
+              <h3>Blood Donar Inventory</h3>
+              <Button
+                tag="a"
+                className="btn btn-dark"
+                onClick={handleViewBlood}
+              >
+                Proceed
+              </Button>
+            </div>
+          </div>
+          <div className="card upper-card">
+            <div className="card-content">
+              <h3>Blood Group Inventory</h3>
+              <Button tag="a" className="btn btn-dark" onClick={handleBloodInv}>
+                Proceed
+              </Button>
+            </div>
+          </div>
         </div>
-        <div className="card upper-card">
-        <div className="card-content">
-          <h3>Blood Donar Inventory</h3>
-          <Button
-            tag="a"
-            className="btn btn-dark"
-            onClick={handleViewBlood}
-          >
-            Proceed
-          </Button>
-          </div>
-        </div> 
-        <div className="card upper-card">
-        <div className="card-content">
-          <h3>Blood Group Inventory</h3>
-          <Button
-            tag="a"
-            className="btn btn-dark"
-            onClick={handleBloodInv}
-          >
-            Proceed
-          </Button>
-          </div>
-        </div> 
-       
       </div>
-        </div>
-      <div className="row">
-      <div className="card upper-card">
-        <div className="card-content">
-          <h3>Blood Receiver Details</h3>
-          <Button
-            tag="a"
-            className="btn btn-dark"
-            onClick={handleReceiveBlood}
-          >
-            Proceed
-          </Button>
+      <div className="centered-container1">
+        <div className="row">
+          <div className="card upper-card">
+            <div className="card-content">
+              <h3>Blood Receiver Details</h3>
+              <Button
+                tag="a"
+                className="btn btn-dark"
+                onClick={handleReceiveBlood}
+              >
+                Proceed
+              </Button>
+            </div>
+          </div>
+          <div className="card upper-card">
+            <div className="card-content">
+              <h3>Blood Receivers Inventory</h3>
+              <Button
+                tag="a"
+                className="btn btn-dark"
+                onClick={handleBloodReceiversInv}
+              >
+                Proceed
+              </Button>
+            </div>
           </div>
         </div>
-        <div className="card upper-card">
-        <div className="card-content">
-          <h3>Blood Receivers Inventory</h3>
-          <Button
-            tag="a"
-            className="btn btn-dark"
-            onClick={handleBloodReceiversInv}
-          >
-            Proceed
-          </Button>
-          </div>
-        </div>
-
       </div>
     </div>
   );

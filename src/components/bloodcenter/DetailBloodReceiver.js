@@ -50,11 +50,10 @@ const DetailBloodReceiver = () => {
   };
 
   const renderBloodreceiverRow = (key, value) => {
-    
-      // Exclude the 'bc_id' key
-      if (key === 'br_id') {
-        return null;
-      }
+    // Exclude the 'bc_id' key
+    if (key === "br_id") {
+      return null;
+    }
     return (
       <div key={key} className="d-flex entity-row">
         <div className="entity-name">
@@ -69,7 +68,7 @@ const DetailBloodReceiver = () => {
         </div>
       </div>
     );
-  }
+  };
 
   if (!bloodreceiver) {
     return <div>Blood Center for this id not found.</div>;
@@ -89,7 +88,7 @@ const DetailBloodReceiver = () => {
         </div>
         <h2 className="propertyview">Blood Receiver Details </h2>
       </div>
-      <Container className="detailblood">
+      <Container className="detailbloodreciver">
         <div className="columnarrangement">
           <div className="subcolumnarrangement">
             {firstColumnKeys

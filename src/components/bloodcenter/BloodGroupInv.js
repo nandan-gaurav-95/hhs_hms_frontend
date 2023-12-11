@@ -13,9 +13,10 @@ import { BloodCenterService } from "../../services/BloodCenterService";
 
 const BloodGroupInv = () => {
     const [allBloodGroup,setAllBloodGroup]=useState({});
-    const reversedData = Object.keys(allBloodGroup).reverse();
-
+    // const reversedData = Object.keys(allBloodGroup).reverse();
     const navigate = useNavigate();
+
+
     const fetchBloodGroupInv =async()=>{
         try {
             const response=await BloodCenterService.getbloodGroupInventory();
@@ -39,6 +40,14 @@ const BloodGroupInv = () => {
         fetchBloodGroupInv();
       }, []);
 
+    // Custom sorting logic for blood groups
+    const sortBloodGroups = (a, b) => {
+      const bloodGroupsOrder = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
+      const trimmedA = a.trim();
+      const trimmedB = b.trim();
+      return bloodGroupsOrder.indexOf(trimmedA) - bloodGroupsOrder.indexOf(trimmedB);
+    };
+
   return (
     <div className="mainview">
       <Header />
@@ -53,27 +62,40 @@ const BloodGroupInv = () => {
         <thead className="viewbody">
           <tr>
             <th>Sr. No.</th>
-           
             <th>Blood Group</th>
             <th>Total Unit NO.</th>
           </tr>
         </thead>
-        <tbody className="subviewbody">
+        {/* <tbody className="subviewbody"> */}
           {/* {Object.keys(filteredBloodCenter).map((bcId, index) => {
             const bloodCenter = allBloodCenter[bcId]; */}
-         {reversedData.map((bsId, index) => {
+         {/* {reversedData.map((bsId, index) => {
             const bloodCenter = allBloodGroup[bsId];
             return (
               <tr key={index}>
-                <td>{index + 1}</td>
-                
-                <td>{bloodCenter.bloodgroup}</td>
+                <td>{index + 1}</td> */}
+                 {/* <td>{simplifyBloodGroup(bloodCenter.bloodgroup)}</td> */}
+                {/* <td>{bloodCenter.bloodgroup}</td>
                 <td>{bloodCenter.totalUnitsInStock}</td>
                
                
               </tr>
             );
           })}
+        </tbody> */}
+         <tbody className="subviewbody">
+          {Object.keys(allBloodGroup)
+            .sort(sortBloodGroups)
+            .map((bsId, index) => {
+              const bloodCenter = allBloodGroup[bsId];
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{bloodCenter.bloodgroup}</td>
+                  <td>{bloodCenter.totalUnitsInStock}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </div>
