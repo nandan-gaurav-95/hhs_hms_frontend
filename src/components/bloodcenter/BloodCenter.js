@@ -137,7 +137,20 @@ const BloodCenter = () => {
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h1 className="Addtext">Blood Donar Details</h1>
+        <div className="title-and-buttons">
+          <h1 className="availabletextblood">Blood Donar Details</h1>
+          <div className="button-containerinv">
+            <Button type="button" onClick={() => navigate("/viewbloodcenter")}>
+              Blood Donar Inventory
+            </Button>
+            <Button
+              type="button"
+              onClick={() => navigate("/bloodgroupInv")}
+            >
+              blood group inventory
+            </Button>
+          </div>
+        </div>
       </div>
       <form onSubmit={handleSubmit}>
         <Row className="row">
