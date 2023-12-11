@@ -55,8 +55,12 @@ const BloodReceiver = () => {
       }
     } catch (error) {
       console.error("Error", error);
-  
-      if (error.response && error.response.data && error.response.data.message) {
+
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         // Display the specific error message from the API response
         const errorMessage = error.response.data.message;
         toast.error(errorMessage, { autoClose: 2000 });
@@ -123,7 +127,21 @@ const BloodReceiver = () => {
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h1 className="Addtext">Blood Receiver Details</h1>
+
+        <div className="title-and-buttons">
+          <h1 className="availabletextblood">Blood Receiver Details</h1>
+          <div className="button-containerinv">
+            <Button type="button" onClick={() => navigate("/bloodgroupInv")}>
+              Blood Inventory
+            </Button>
+            <Button
+              type="button"
+              onClick={() => navigate("/receiversbloodinv")}
+            >
+              Receiver Inventory
+            </Button>
+          </div>
+        </div>
       </div>
       <form onSubmit={handleSubmit}>
         <Row className="row">
