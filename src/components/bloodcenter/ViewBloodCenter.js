@@ -97,7 +97,7 @@ const ViewBloodCenter = () => {
         <div className="arrow-back-container">
           <BiArrowBack className="addbacklogo" onClick={() => navigate(-1)} />
         </div>
-        <h2 className="availabletext">Blood Center Details</h2>
+        <h2 className="availabletext">Blood Donar Details</h2>
       </div>
       <div className="searchcontentcenterblood">
         <div className=" search">

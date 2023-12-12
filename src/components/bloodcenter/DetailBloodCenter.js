@@ -41,7 +41,7 @@ const DetailBloodCenter = () => {
     age: "Age",
     // bc_id: "Blood Center Id",
     bloodgroup: "Blood Group",
-    date: "Date",
+    date: "Donate Date",
     expirydate: "Expiry Date",
     gender: "Gender",
     hospitalName: "Hospital Name",
